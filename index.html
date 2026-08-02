@@ -11,7 +11,7 @@
     --line:#E4E9F0; --line-2:#EFF3F7;
     --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
     --amber:#E8912D; --amber-soft:#FFF5E8;
-    --slate:#526480; --up:#0E9F6E;
+    --slate:#526480; --slate-soft:#F1F5FA; --up:#0E9F6E;
     --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
     --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
     --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
@@ -23,19 +23,16 @@
       radial-gradient(1100px 460px at 15% -8%, rgba(61,90,254,.08), transparent 60%),
       radial-gradient(800px 380px at 88% -4%, rgba(232,145,45,.07), transparent 60%),
       linear-gradient(180deg,#F7F9FC 0%, var(--bg) 40%);
-    background-attachment:fixed;
-    color:var(--ink);
-    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    background-attachment:fixed;color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,sans-serif;
     line-height:1.8;-webkit-font-smoothing:antialiased;padding:26px 15px 70px;
   }
-  .wrap{max-width:700px;margin:0 auto;}
+  .wrap{max-width:740px;margin:0 auto;}
   .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
 
-  header{
-    background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+  header{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
     border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
-    padding:30px 30px 26px;position:relative;overflow:hidden;
-  }
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
   header::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
     background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
   header::after{content:"";position:absolute;top:-80px;right:-60px;width:250px;height:250px;border-radius:50%;
@@ -48,13 +45,15 @@
   h1{font-size:31px;font-weight:800;line-height:1.32;letter-spacing:-.022em;margin-top:18px;
     background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;}
-  .sub{color:var(--ink-2);font-size:13.5px;margin-top:11px;max-width:52ch;}
-  .count{font-size:12px;color:var(--ink-3);margin-top:12px;font-family:ui-monospace,Menlo,monospace;
-    display:inline-block;background:var(--surface-2);border:1px solid var(--line);
-    border-radius:999px;padding:4px 13px;}
+  .sub{color:var(--ink-2);font-size:13.5px;margin-top:11px;max-width:54ch;}
+  .counts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .cbadge{font-size:11.5px;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);
+    border-radius:999px;padding:5px 14px;font-family:ui-monospace,Menlo,monospace;}
+  .cbadge b{color:var(--ink);font-weight:800;}
 
+  /* 最新号 */
   .latest{background:linear-gradient(150deg,#FFFFFF 0%, #FEFCF8 60%, #FFFAF2 100%);
-    border:1px solid rgba(232,145,45,.24);border-radius:18px;padding:22px 24px;margin-top:20px;
+    border:1px solid rgba(232,145,45,.24);border-radius:18px;padding:22px 24px;margin-top:18px;
     box-shadow:var(--sh-2);position:relative;overflow:hidden;}
   .latest::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
     background:linear-gradient(180deg,var(--amber),#F5C87A);}
@@ -69,45 +68,64 @@
   .btn-w{background:var(--surface);color:var(--slate);border:1.5px solid var(--line);}
   .btn-w:hover{border-color:var(--slate);transform:translateY(-1px);}
 
-  .divider{display:flex;align-items:center;gap:14px;margin:34px 4px 6px;}
-  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  /* 区切り */
+  .divider{display:flex;align-items:center;gap:12px;margin:34px 4px 8px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
     color:var(--ink-3);white-space:nowrap;}
-  .divider::before,.divider::after{content:"";height:1px;flex:1;
-    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+  .divider .cnt{font-size:10px;color:var(--ink-3);background:var(--surface-2);
+    border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-family:ui-monospace,monospace;}
+  .divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,var(--line),transparent);}
 
+  /* 号カード */
   .issue{background:linear-gradient(180deg,var(--surface),var(--surface-2));
-    border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-top:10px;
-    display:flex;align-items:center;gap:16px;box-shadow:var(--sh-1);transition:all .14s;}
-  .issue:hover{box-shadow:var(--sh-2);}
-  .issue .num{font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:800;
-    color:var(--brand);background:var(--brand-soft);border-radius:7px;padding:4px 9px;flex:none;}
+    border:1px solid var(--line);border-radius:13px;padding:14px 17px;margin-top:9px;
+    display:flex;align-items:center;gap:15px;box-shadow:var(--sh-1);transition:all .14s;}
+  .issue:hover{box-shadow:var(--sh-2);border-color:#D3DBE6;}
+  .issue.wk{border-left:3px solid var(--slate);}
+  .issue.dy{border-left:3px solid var(--brand);}
+  .issue .num{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;font-weight:800;
+    color:var(--ink-3);flex:none;min-width:34px;}
   .issue .body{flex:1;min-width:0;}
-  .issue .dt{font-size:15px;font-weight:700;}
-  .issue .meta{font-size:11.5px;color:var(--ink-3);margin-top:1px;}
-  .issue .go{display:flex;gap:7px;flex:none;flex-wrap:wrap;justify-content:flex-end;}
-  .chip{text-decoration:none;font-size:12px;font-weight:700;border-radius:8px;padding:6px 12px;
-    white-space:nowrap;transition:all .13s;}
+  .issue .dt{font-size:14.5px;font-weight:700;}
+  .issue .meta{font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.55;}
+  .issue .go{flex:none;}
+  .chip{text-decoration:none;font-size:12px;font-weight:700;border-radius:8px;padding:7px 14px;
+    white-space:nowrap;transition:all .13s;display:inline-block;}
   .chip-d{background:var(--brand-soft);color:var(--brand);border:1px solid rgba(61,90,254,.2);}
   .chip-d:hover{background:var(--brand);color:#fff;}
   .chip-w{background:#F1F5FA;color:var(--slate);border:1px solid rgba(82,100,128,.18);}
   .chip-w:hover{background:var(--slate);color:#fff;}
   @media(max-width:540px){
-    .issue{flex-wrap:wrap;gap:9px;}
-    .issue .go{width:100%;justify-content:flex-start;}
+    .issue{flex-wrap:wrap;gap:8px;}
+    .issue .go{width:100%;}
+    .chip{display:block;text-align:center;}
     h1{font-size:25px;}
     header{padding:24px 20px 22px;}
   }
 
+  /* 過去のまとめ */
+  .past{background:var(--surface-2);border:1px dashed var(--line);border-radius:13px;
+    padding:15px 18px;margin-top:12px;}
+  .past h3{font-size:12.5px;font-weight:800;color:var(--ink-2);margin-bottom:6px;}
+  .past p{font-size:12.5px;color:var(--ink-3);line-height:1.75;}
+  .past .mrow{display:flex;align-items:baseline;gap:10px;padding:6px 0;
+    border-top:1px solid var(--line-2);font-size:12.5px;}
+  .past .mrow:first-of-type{border-top:none;}
+  .past .mo{font-family:ui-monospace,Menlo,monospace;font-weight:800;color:var(--ink-2);flex:none;width:62px;}
+  .past .desc{color:var(--ink-3);flex:1;}
+  .past .n{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--ink-3);flex:none;}
+
   .howto{background:linear-gradient(180deg,#FFFCF6,var(--amber-soft));
     border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
-    border-radius:0 14px 14px 0;padding:16px 18px;margin-top:32px;box-shadow:var(--sh-1);}
+    border-radius:0 14px 14px 0;padding:16px 18px;margin-top:30px;box-shadow:var(--sh-1);}
   .howto h3{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
     color:#B0700F;margin-bottom:9px;}
-  .howto p{font-size:13px;color:#5A4523;margin-bottom:6px;}
+  .howto p{font-size:12.5px;color:#5A4523;margin-bottom:6px;}
   .howto code{background:#F5E8D2;color:#8A5A0F;border-radius:5px;padding:1px 6px;
-    font-family:ui-monospace,Menlo,monospace;font-size:12px;}
+    font-family:ui-monospace,Menlo,monospace;font-size:11.5px;}
 
-  .foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+  .foot{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);
     font-size:11.5px;color:var(--ink-3);line-height:1.75;}
 </style>
 </head>
@@ -117,103 +135,125 @@
   <header>
     <span class="brandtag"><i></i>Morning Brief · Archive</span>
     <h1>Morning Brief<br>記録</h1>
-    <p class="sub">毎日版・週刊版の発行済みレポートを、日付順に保存しています。最新号は一番上、過去号はその下に積み上がっていきます。</p>
-    <span class="count">全 6 号を記録</span>
+    <p class="sub">毎日版・週刊版の発行済みレポートを日付順に保存しています。直近は<strong>毎日版6日分・週刊版3週分</strong>を一覧で表示し、それ以前は下の「過去のまとめ」に集約しています。</p>
+    <div class="counts">
+      <span class="cbadge">毎日版 <b>6</b> 号</span>
+      <span class="cbadge">週刊版 <b>2</b> 号</span>
+      <span class="cbadge">通算 <b>8</b> 号</span>
+    </div>
   </header>
 
   <div class="latest">
     <span class="lbl">Latest — 最新号</span>
-    <h2>2026年8月1日（土）</h2>
-    <div class="d">週刊版 第2号 ／ 往って来いの一週間、答え合わせ8件、古民家フル版</div>
+    <h2>2026年8月2日（日）</h2>
+    <div class="d">毎日版 第6号 ／ 令和8年熊本地震（死者36人・避難者9,228人）、米巨大IT5社の決算</div>
     <div class="links">
-      <a class="btn btn-d" href="weekly-2026-08-01.html">週刊版を読む →</a>
-      <a class="btn btn-w" href="daily-2026-07-31.html">最新の毎日版 →</a>
+      <a class="btn btn-d" href="daily-2026-08-02.html">毎日版を読む →</a>
+      <a class="btn btn-w" href="weekly-2026-08-01.html">最新の週刊版 →</a>
     </div>
   </div>
 
-  <div class="divider"><span>Archive — 発行の記録</span></div>
+  <!-- 週刊版 -->
+  <div class="divider"><span>Weekly — 週刊版</span><span class="cnt">直近3週</span></div>
 
-  <div id="archive">
-
-    <div class="issue">
-      <div class="num">No.6</div>
-      <div class="body">
-        <div class="dt">2026年8月1日（土）</div>
-        <div class="meta">週刊版 ／ 答え合わせ8件・介入・古民家8件フル版</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-w" href="weekly-2026-08-01.html">週刊版</a>
-      </div>
+  <div class="issue wk">
+    <div class="num">W2</div>
+    <div class="body">
+      <div class="dt">2026年8月1日（土）</div>
+      <div class="meta">往って来いの一週間 ／ 週間−249円だが値幅4,915円・円買い介入・答え合わせ8件（当たり4・外れ2・保留2）・古民家フル版8件</div>
     </div>
+    <div class="go"><a class="chip chip-w" href="weekly-2026-08-01.html">開く</a></div>
+  </div>
 
-    <div class="issue">
-      <div class="num">No.5</div>
-      <div class="body">
-        <div class="dt">2026年7月31日（金）</div>
-        <div class="meta">毎日版・拡大版 ／ 日銀会合・上方修正ラッシュ・MSFT急伸</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-d" href="daily-2026-07-31.html">毎日版</a>
-      </div>
+  <div class="issue wk">
+    <div class="num">W1</div>
+    <div class="body">
+      <div class="dt">2026年7月27日（月）</div>
+      <div class="meta">創刊号・特別発行 ／ 日経3週ぶりプラス・AI投資の回収が主題に・古民家8件</div>
     </div>
+    <div class="go"><a class="chip chip-w" href="weekly-2026-07-27.html">開く</a></div>
+  </div>
 
-    <div class="issue">
-      <div class="num">No.4</div>
-      <div class="body">
-        <div class="dt">2026年7月30日（木）</div>
-        <div class="meta">毎日版 ／ FOMC・中東再燃・バリューシフト</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-d" href="daily-2026-07-30.html">毎日版</a>
-      </div>
+  <!-- 毎日版 -->
+  <div class="divider"><span>Daily — 毎日版</span><span class="cnt">直近6日</span></div>
+
+  <div class="issue dy">
+    <div class="num">D6</div>
+    <div class="body">
+      <div class="dt">2026年8月2日（日）</div>
+      <div class="meta">令和8年熊本地震（震度7・死者36人）・支援窓口・米巨大IT5社の決算</div>
     </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-08-02.html">開く</a></div>
+  </div>
 
-    <div class="issue">
-      <div class="num">No.3</div>
-      <div class="body">
-        <div class="dt">2026年7月29日（水）</div>
-        <div class="meta">毎日版 ／ 半導体ショック・キーエンス好決算・本日FOMC</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-d" href="daily-2026-07-29.html">毎日版</a>
-      </div>
+  <div class="issue dy">
+    <div class="num">D5</div>
+    <div class="body">
+      <div class="dt">2026年7月31日（金）</div>
+      <div class="meta">拡大版 ／ 半導体が3日ぶり反発・上方修正ラッシュ・マイクロソフト15%高・日銀会合</div>
     </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-07-31.html">開く</a></div>
+  </div>
 
-    <div class="issue">
-      <div class="num">No.2</div>
-      <div class="body">
-        <div class="dt">2026年7月28日（火）</div>
-        <div class="meta">毎日版 ／ 停戦・原油急落・中銀ウイーク</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-d" href="daily-2026-07-28.html">毎日版</a>
-      </div>
+  <div class="issue dy">
+    <div class="num">D4</div>
+    <div class="body">
+      <div class="dt">2026年7月30日（木）</div>
+      <div class="meta">FOMCは9対3で据え置き・中東再燃でサウジ初参戦・日経とTOPIXが逆行</div>
     </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-07-30.html">開く</a></div>
+  </div>
 
-    <div class="issue">
-      <div class="num">No.1</div>
-      <div class="body">
-        <div class="dt">2026年7月27日（月）</div>
-        <div class="meta">創刊号・特別発行 ／ 毎日版＋週刊版</div>
-      </div>
-      <div class="go">
-        <a class="chip chip-d" href="daily-2026-07-27.html">毎日版</a>
-        <a class="chip chip-w" href="weekly-2026-07-27.html">週刊版</a>
-      </div>
+  <div class="issue dy">
+    <div class="num">D3</div>
+    <div class="body">
+      <div class="dt">2026年7月29日（水）</div>
+      <div class="meta">中国の露光装置報道で半導体急落・韓国KOSPI−10.84%・キーエンス好決算</div>
     </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-07-29.html">開く</a></div>
+  </div>
 
+  <div class="issue dy">
+    <div class="num">D2</div>
+    <div class="body">
+      <div class="dt">2026年7月28日（火）</div>
+      <div class="meta">米・イラン停戦で原油8.7%安・日経は3日ぶり反発・計算資源の奪い合い</div>
+    </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-07-28.html">開く</a></div>
+  </div>
+
+  <div class="issue dy">
+    <div class="num">D1</div>
+    <div class="body">
+      <div class="dt">2026年7月27日（月）</div>
+      <div class="meta">創刊号 ／ 日経3週ぶりプラス・円40年ぶり安値・AI投資の回収が主題に</div>
+    </div>
+    <div class="go"><a class="chip chip-d" href="daily-2026-07-27.html">開く</a></div>
+  </div>
+
+  <!-- 過去のまとめ -->
+  <div class="divider"><span>Archive — 過去のまとめ</span></div>
+
+  <div class="past">
+    <h3>月別の記録</h3>
+    <div class="mrow">
+      <span class="mo">2026年7月</span>
+      <span class="desc">創刊。中東情勢と原油の乱高下、中国の露光装置報道による半導体ショック、日米の中央銀行会合、円買い介入。日経は月間12.31%の下落。</span>
+      <span class="n">7号</span>
+    </div>
+    <p style="margin-top:10px;">直近の一覧に表示されなくなった号は、ここに月単位でまとめていきます。ファイル自体は削除せず残るため、<code style="background:#EFE7D8;color:#8A5A0F;border-radius:4px;padding:1px 5px;font-family:ui-monospace,monospace;font-size:11px;">daily-2026-07-27.html</code> のように日付でURLを直接開けます。</p>
   </div>
 
   <div class="howto">
-    <h3>号を追加する手順</h3>
-    <p>① 新しいレポートを <code>daily-YYYY-MM-DD.html</code> / <code>weekly-YYYY-MM-DD.html</code> の名前でフォルダに追加（過去号は消さない）</p>
-    <p>② この目次の「最新号」ブロックの日付とリンクを書き換え</p>
-    <p>③ 「発行の記録」の一番上に、1号分をコピーして日付を変えて追加</p>
-    <p>④ フォルダごとCloudflareにアップすればURLはそのまま、記録が積み上がります</p>
+    <h3>更新の手順</h3>
+    <p>① 受け取った<strong>3ファイル</strong>（週刊版／最新の毎日版／この目次）を <code>brief</code> フォルダに追加・上書き</p>
+    <p>② 過去号のファイルはフォルダに残したまま（消さない）</p>
+    <p>③ フォルダごとCloudflareの「新規展開」へドラッグ&amp;ドロップ →「デプロイ」</p>
+    <p>④ URLは変わらず、記録が積み上がります</p>
   </div>
 
   <div class="foot">
-    <p>この目次ページ（index.html）が記録の入口です。各号のファイルは日付入りの名前で個別に保存され、URLとして残ります。／ 情報提供が目的で、投資助言ではありません。</p>
+    <p>この目次ページ（index.html）が記録の入口です。各号のファイルは日付入りの名前で個別に保存され、URLとして残ります。一覧は毎日版6日分・週刊版3週分まで表示し、それ以前は月別のまとめに移ります。／ 情報提供が目的で、投資助言ではありません。</p>
   </div>
 
 </div>
