@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 朝の一日レポート — 2026年8月8日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;max-width:56ch;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+  .gloss{border-bottom:1px dotted var(--brand);cursor:help;}
+  .gloss-note{display:block;margin-top:7px;padding:8px 12px;font-size:12px;line-height:1.7;
+    color:#3E4A5C;background:linear-gradient(180deg,#F7FAFF 0%, #F1F5FD 100%);
+    border:1px solid rgba(61,90,254,.14);border-left:2.5px solid var(--brand);border-radius:0 9px 9px 0;}
+  .gloss-note b{color:var(--brand);font-weight:800;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .lvl{margin:13px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .lvl>div{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:10px 14px;background:var(--surface);border-top:1px solid var(--line-2);}
+  .lvl>div:first-child{border-top:none;background:linear-gradient(180deg,#FFFDF8,#FFFAF2);}
+  .lb{font-size:12.5px;color:var(--ink-2);}
+  .vv{font-size:15px;font-weight:800;letter-spacing:-.02em;}
+
+  .fx-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding:16px 18px;border-radius:14px;margin-bottom:14px;
+    background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFF 62%,#F4F7FF 100%);
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .fx-pair{font-size:11px;font-weight:800;letter-spacing:.11em;color:var(--ink-3);text-transform:uppercase;}
+  .fx-rate{font-size:38px;font-weight:800;letter-spacing:-.038em;line-height:1.05;margin-top:3px;}
+  .fx-rate small{font-size:15px;font-weight:700;color:var(--ink-3);margin-left:3px;}
+  .fx-meta{font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.75;}
+
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:430px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .cta{font-size:14px;color:var(--ink-2);text-align:center;}
+  .cta b{color:var(--ink);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .fx-rate{font-size:32px;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+  .support .acct{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#fff;
+    border:1px solid rgba(14,159,110,.2);border-radius:8px;padding:9px 12px;margin-top:8px;line-height:1.85;}
+
+  /* 目次 */
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  /* ラベル */
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-ref{color:var(--slate);background:var(--slate-soft);border:1px solid rgba(82,100,128,.2);}
+  .lab-find{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .lab-pos{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .lab-neu{color:#4A5563;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-risk{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-analysis{color:var(--purple);background:var(--purple-soft);border:1px solid rgba(122,78,191,.26);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-check{color:#8794A3;background:#F4F6F9;border:1px solid var(--line);}
+
+  /* 折り畳み */
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  /* 上へ戻る */
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年8月8日（土）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝の要点は、11。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の共有レポートです。本日は土曜のため国内外の株式市場は休場で、市場データは8月7日（金）の最終値が最新となります。最大の変化は、8月7日21時30分発表の米7月分雇用統計が市場予想を大きく下回り、ドル円が158円台から一時156円台後半まで急落したことです。台風13号は8日未明にかけて勢力を強め、久米島の北西へ接近しています。熊本地震は死者38人のまま変化ありませんが、避難者数は減少が続いています。今回の調査で確認できた内容をお届けします。</p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-quake">Kumamoto <span class="kw-arrow">↓</span></a></span><span>
+        <b>熊本地震、死者38人のまま。台風13号は勢力を強め久米島の北西へ接近しています。</b>避難者は6,630人（8月7日18時発表）で、前日の6,737人からさらに減少しています。
+        <span class="but"><em>但し</em> 気象庁の8月8日2時45分発表では、<strong>台風13号（非常に強い勢力、中心気圧935hPa、最大風速45m/s）は久米島の北西約50kmを西南西へ進んでおり</strong>、8月7日時点（950hPa・40m/s）より勢力を強めています。8日は沖縄・奄美地方で猛烈な風と大雨に厳重な警戒が必要です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-fx">FX <span class="kw-arrow">↓</span></a></span><span>
+        <b>ドル円は雇用統計後に急落、158円台前半から一時156円台後半まで円高が進みました。</b>8月8日朝時点の正確な水準は今回の調査では確認できておらず、要確認です。
+        <span class="but"><em>但し</em> 8月7日21時30分発表の<strong>7月分米雇用統計は非農業部門雇用者数が前月比2.3万人減</strong>（市場予想は8万人増）と大幅な下振れで、5月・6月分も大きく下方修正されました。米10年債利回りは4.66%台から4.60%台へ低下しています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jp">Nikkei <span class="kw-arrow">↓</span></a></span><span>
+        <b>日経平均は8月7日、76円55銭安の6万5,606円71銭で終了しました（前日比-0.12%）。</b>本日は土曜で休場です。
+        <span class="but"><em>但し</em> 前場は一時1,000円超下落する場面もありましたが、後場に買いが入り下げ幅を大きく縮小しました。ソフトバンクグループやレーザーテックの下落が重荷になったと伝えられています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-us">US Mkt <span class="kw-arrow">↓</span></a></span><span>
+        <b>NYダウ・S&amp;P500・ナスダックがそろって上昇し、S&amp;P500・ナスダックは最高値を更新しました。</b>ダウは151.83ドル高の5万4,036.93ドル、S&amp;P500は47.68ポイント高の7,757.64、ナスダックは342.27ポイント高の2万6,690.62です。
+        <span class="but"><em>但し</em> 弱い雇用統計を受けて<strong>早期利上げ観測が後退</strong>したことが、ハイテク・半導体株中心の買いにつながったと伝えられています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-commodity">Oil <span class="kw-arrow">↓</span></a></span><span>
+        <b>NY金は雇用統計を受けた金利低下で反発、4,399.7ドル（+2.3%）まで上昇しました。</b>WTI原油も続伸傾向と伝えられています。
+        <span class="but"><em>但し</em> WTI原油の8月7日終値は、今回の調査で確認できた複数の記事が前日と同じ77.29ドルを表示しており、正確な8月7日終値は要確認です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-crypto">Crypto <span class="kw-arrow">↓</span></a></span><span>
+        <b>ビットコインは8月7日20時57分時点で6万4,976.91ドルへ上昇しました（+0.91%）。</b>6万5,000ドル台には引き続き慎重な動きです。
+        <span class="but"><em>但し</em> 8月8日朝時点の一次データでの正確な値は確認できておらず、<strong>チャートまたはお手元の取引所での最新値をご確認ください。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">AI <span class="kw-arrow">↓</span></a></span><span>
+        <b>OpenAIと元アップルのジョナサン・アイブ氏が開発中のAIデバイスについて、Bloombergが2027年発売・300ドル超の価格帯と報じています。</b>
+        <span class="but"><em>但し</em> <strong>正式発表はまだなく、報道段階の情報</strong>です。あわせてAnthropicが初代最高渉外責任者にティノ・クエヤール氏を任命したと伝えられています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-robot">Robot <span class="kw-arrow">↓</span></a></span><span>
+        <b>BYDの人型ロボット正式発表は、引き続き「8月中」の予告のままです。</b>8月8日時点でも正式発表は確認できていません。
+        <span class="but"><em>但し</em> 中国・小鵬（XPENG）の人型ロボット「IRON」は広州工場で小規模な試験生産を開始したと伝えられています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-corp">Corp <span class="kw-arrow">↓</span></a></span><span>
+        <b>8月7日は679社が決算を発表、フジクラ・川崎重工・第一生命・商船三井などが増益見通しでした。</b>
+        <span class="but"><em>但し</em> ソニーグループが正午、トヨタ自動車が午後2時に決算発表を予定しており、個別の詳細は今回の調査では確認できていません（要確認）。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-estate">Estate <span class="kw-arrow">↓</span></a></span><span>
+        <b>古民家・地域活性は、今回の調査でも「特別注目の物件」は確認できませんでした。</b>
+        <span class="but"><em>但し</em> 全国版空き家・空き地バンクには全国1,144自治体が参加し、5月末時点で累計約2万5,600件が成約したとの集計があります。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-life">Life <span class="kw-arrow">↓</span></a></span><span>
+        <b>熊本地震で被災した自動車部品大手アステモの宇城工場が、8月7日に一部生産ラインで稼働を再開したと伝えられています。</b>
+        <span class="but"><em>但し</em> 7月の国内電動車販売は前年同月比8.2%増（3か月連続増）、うちEVは同2.9倍と7月として過去最高だったとの報道もあります。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">熊本地震 死者</div><div class="vl mono">38</div><div class="ch">前日比±0人</div><div class="ctx">8/7 18時発表</div></div>
+      <div class="cell"><div class="nm">台風13号 中心気圧</div><div class="vl mono">935hPa</div><div class="ch down">非常に強い勢力</div><div class="ctx">8/8 2:45発表・久米島の北西</div></div>
+      <div class="cell"><div class="nm">USD/JPY</div><div class="vl mono">156円台後半〜</div><div class="ch down"><span class="ar">▼</span> 雇用統計で急落</div><div class="ctx">8/7 21時30分以降・要確認</div></div>
+      <div class="cell"><div class="nm">日経平均（金・終値）</div><div class="vl mono">65,606.71</div><div class="ch down"><span class="ar">▼</span> -76.55</div><div class="ctx">8/7終値・本日休場</div></div>
+      <div class="cell"><div class="nm">NYダウ（金）</div><div class="vl mono">54,036.93</div><div class="ch up"><span class="ar">▲</span> +151.83</div></div>
+      <div class="cell"><div class="nm">NASDAQ（金・最高値）</div><div class="vl mono">26,690.62</div><div class="ch up"><span class="ar">▲</span> +342.27</div></div>
+      <div class="cell"><div class="nm">WTI原油・NY金</div><div class="vl mono">原油続伸・金反発</div><div class="ch up">金+2.3%</div><div class="ctx">8/7・WTI終値は要確認</div></div>
+      <div class="cell"><div class="nm">ビットコイン</div><div class="vl mono">$64,976.91</div><div class="ch up"><span class="ar">▲</span> +0.91%</div><div class="ctx">8/7 20時57分時点</div></div>
+    </div>
+
+    <p class="jump">この先は分野別ダイジェストと詳細です。<a href="#deep">↓</a></p>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#sec-quake">熊本地震続報</a></li>
+      <li><a href="#sec-fx">為替・金利</a></li>
+      <li><a href="#sec-jp">国内株式</a></li>
+      <li><a href="#sec-us">米国市場</a></li>
+      <li><a href="#sec-commodity">商品・地政学</a></li>
+      <li><a href="#sec-crypto">暗号資産</a></li>
+      <li><a href="#sec-corp">企業・決算</a></li>
+      <li><a href="#sec-ai">AI</a></li>
+      <li><a href="#sec-robot">ロボット・テクノロジー</a></li>
+      <li><a href="#sec-estate">古民家・地域活性</a></li>
+      <li><a href="#sec-life">生活・自動車</a></li>
+      <li><a href="#sec-more">チャート</a></li>
+      <li><a href="#sec-watch">ウォッチリスト</a></li>
+    </ul>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <!-- 熊本地震 -->
+  <section class="quake" id="sec-quake">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kumamoto</span><span class="sec-title">令和8年熊本地震 続報 <span class="sub">/ 発生から12日目、台風13号が勢力を強め接近</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-warn">注意</span></div>
+      <h4>死者38人で変化なし、避難者は6,630人へさらに減少</h4>
+      <p><strong>熊本県は8月7日18時時点で、死者は引き続き38人（災害関連死の疑いを含む）と発表しています。</strong>避難者は<strong>6,630人</strong>（8月7日18時発表）で、8月6日18時の6,737人からさらに減少しています。断水戸数の8月5日以降の新しい集計値は、今回の調査では確認できておらず、8月4日時点の<strong>4万4,000戸余り</strong>が直近確認できる値のままです（要確認）。国土交通省・気象庁の発表では、地震活動は増減を繰り返しながら大局的には緩やかに減少しているものの、<strong>今後1週間程度は最大震度5強程度以上の地震に注意が必要</strong>とされています。</p>
+    </div>
+
+    <div class="dmg">
+      <div><div class="k">死者</div><div class="v">38</div><div class="u">人（8/7 18時発表）</div></div>
+      <div><div class="k">避難者</div><div class="v">6,630</div><div class="u">人（8/7 18時発表）</div></div>
+      <div><div class="k">断水</div><div class="v">44,000+</div><div class="u">戸余り（8/4時点・要確認）</div></div>
+      <div><div class="k">台風13号</div><div class="v">久米島の北西約50km</div><div class="u">気象庁8/8 2:45発表</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--ink-3);margin-top:-4px;">※熊本県・NHK・気象庁発表より。断水戸数は8月4日時点の直近確認値であり、その後変わっている可能性があります。</p>
+
+    <details class="dd">
+      <summary>詳しく読む — 台風13号の勢力強化と、生活再建への影響</summary>
+      <div class="ddbody">
+
+        <div class="item">
+          <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-warn">注意</span><span class="lab lab-fact">事実</span></div>
+          <h4>台風13号、非常に強い勢力で久米島の北西へ。8日は沖縄・奄美で厳重警戒</h4>
+          <p>気象庁の8月8日2時45分発表によると、台風13号は<strong>「非常に強い」勢力（中心気圧935hPa、最大風速45m/s、最大瞬間風速60m/s）</strong>で久米島の北西約50kmを西南西へ時速20kmで進んでいます。8月7日8時45分発表時点（950hPa・最大風速40m/s）と比べて<strong>勢力が強まっている</strong>点に注意が必要です。台風は動きが遅く、8日（土）も沖縄・奄美地方では猛烈な風と大雨が長引く見通しで、その後9日にかけて東シナ海を西寄りに進むと予想されています。予報円・進路は今後変わる可能性があります。</p>
+        </div>
+
+        <div class="why">
+          <h5>避難者数の減少は、生活再建が着実に進んでいることを示しています</h5>
+          <p>避難者数は8月5日の7,122人→8月6日6,737人→8月7日6,630人と、日を追って減少が続いています。熊本県・NHKの発表によれば、地域によっては断水解消も進んでおり、生活基盤の復旧は着実に進展しているとみられます。</p>
+        </div>
+
+        <div class="counter">
+          <h5>別の見方 — 台風の接近・強化は、被災地にとって新たなリスクです</h5>
+          <p>台風13号の中心は沖縄・奄美地方を通過する見込みで、現時点の予報では熊本県本土への直接的な影響は大きくないとみられます。ただし進路や勢力は今後変わる可能性があり、九州各地でも大雨・強風への注意が必要です。断水・避難生活が続く熊本の被災地にとっては、天候悪化そのものが生活再建の妨げになり得る点に留意が必要です。この見方は気象予報・市場観測に基づくものであり、確定した被害予測ではありません。</p>
+        </div>
+      </div>
+    </details>
+
+    <div class="support" style="margin-top:16px;">
+      <h5>支援の窓口（再掲・要点のみ）</h5>
+      <p>義援金は<strong>熊本県（7/29〜10/30）</strong>と<strong>日本赤十字社（7/31〜10/30）</strong>で受付中です。振込先の口座番号・注意点など詳細は、<a class="src" href="daily-2026-08-02.html#sec-support">8月2日号の支援窓口セクション</a>にまとめてあります。振込先は必ず公式ページでご確認ください。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://news.web.nhk/newsweb/na/na-k10015198921000" target="_blank" rel="noopener">NHKニュース（死者38人・避難所6,630人、8月7日発表）</a> ・ <a class="src" href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁（令和8年熊本地震ポータル）</a>［一次］ ・ <a class="src" href="https://kumanichi.com/articles/2018619" target="_blank" rel="noopener">熊本日日新聞社（断水解消の見通し）</a> ・ <a class="src" href="https://weathernews.jp/onebox/typhoon/13/" target="_blank" rel="noopener">ウェザーニュース（台風13号の進路予想）</a> ・ <a class="src" href="https://www.fukuishimbun.co.jp/articles/-/2660468" target="_blank" rel="noopener">福井新聞ONLINE（気象庁予想進路、8月7日15時時点）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 為替・金利 -->
+  <section id="sec-fx">
+    <div class="sec-head"><span class="tick"></span><span class="cat">FX &amp; Rates</span><span class="sec-title">為替・金利 <span class="sub">/ 弱い雇用統計でドル急落、156円台後半まで円高</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-view">市場の見方</span></div>
+      <h4>ドル円、雇用統計後に158円台から一時156円台後半へ急落</h4>
+      <p>ドル円は8月7日<strong>9時時点の158円42銭</strong>から日中は158円台で推移していましたが、<strong>21時30分の7月分米雇用統計の発表後に一時156円68銭近辺まで急落</strong>しました。前日の「早期利上げ観測」を受けたドル高の流れが、一日で反転した形です。<strong>8月8日朝時点（本レポート作成時点）の正確な水準は今回の調査では確認できておらず、要確認です。</strong>お手元のチャート・取引所で最新値をご確認ください。</p>
+      <p>下落の直接の材料は、<strong>非農業部門雇用者数が前月比2.3万人減</strong>（市場予想は8万人増）という大幅な下振れです。失業率は4.1%へ低下しましたが、労働参加率も61.5%から61.4%へ低下しており、就職が進んだというより求職自体を諦めた人の影響が含まれるとの見方が伝えられています。5月・6月分もそれぞれ12.9万人増→6.3万人増、5.7万人増→2.0万人増へ大きく下方修正されました。</p>
+    </div>
+
+    <div class="fx-top">
+      <div>
+        <div class="fx-pair">USD / JPY</div>
+        <div class="fx-rate mono">156円台後半〜<small>要確認</small></div>
+      </div>
+      <div class="fx-meta">8月7日21時30分の米雇用統計後に158円台から急落<br>8月8日朝時点の正確な値は確認できておらず要確認</div>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 前日までの「早期利上げ観測」との整合、米長期金利の動き</summary>
+      <div class="ddbody">
+        <div class="why">
+          <h5>前日は「早期利上げ観測」でドル高、一夜で正反対の流れに</h5>
+          <p>8月7日朝の時点では、英フィナンシャル・タイムズ紙によるウォーシュFRB議長・クック理事の早期利上げ観測報道を受けてドル高（158円台前半）が進んでいました（8月7日号既報）。しかし同日夜の雇用統計が大幅な下振れとなったことで、市場は一転して<strong>早期利上げ観測を後退</strong>させ、ドル売り・円買いが優勢になったと伝えられています。報道段階の観測と、公式統計の結果が同日中に入れ替わった形です。</p>
+        </div>
+        <div class="counter">
+          <h5>別の見方 — 米10年債利回りの低下が、円買いを後押ししたとの見方</h5>
+          <p>米10年国債利回りは雇用統計後に4.66%台から4.60%台へ低下したと伝えられています。日米金利差の縮小観測が、ドル円の急落につながった一因との見方が伝えられています。この見方は市場観測であり、確定した分析ではありません。</p>
+        </div>
+        <div class="note">
+          <h5>来週の主な予定</h5>
+          <p>日本銀行は8月10日（月）に、7月30〜31日開催分の金融政策決定会合における「主な意見」を公表予定です。次回FOMCは9月15〜16日開催予定で、来週の開催予定はありません。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://news.web.nhk/newsweb/na/na-k10015199721000" target="_blank" rel="noopener">NHKニュース（円高ドル安、米雇用統計発表受け）</a> ・ <a class="src" href="https://zai.diamond.jp/articles/-/493626" target="_blank" rel="noopener">ダイヤモンド・ザイ（雇用統計ネガティブサプライズ、利上げ観測後退）</a> ・ <a class="src" href="https://fx.minkabu.jp/news/375615" target="_blank" rel="noopener">みんかぶFX（ドル急落、ドル円一時156円台）</a> ・ <a class="src" href="https://www.boj.or.jp/statistics/market/forex/fxdaily/index.htm" target="_blank" rel="noopener">日本銀行（外国為替市況）</a>［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 国内株式 -->
+  <section id="sec-jp">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Japan Equity</span><span class="sec-title">国内株式 <span class="sub">/ 8月7日終値は76円安、本日は休場</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-neu">中立</span></div>
+      <h4>日経平均、8月7日終値は76円55銭安の6万5,606円71銭</h4>
+      <p><strong>本日8月8日（土）は株式市場が休場のため、直近の値は8月7日の終値です。</strong>日経平均は前日比76円55銭安（-0.12%）の<strong>6万5,606円71銭</strong>で取引を終えました。前場は一時1,000円を超える下落となり、安値は6万4,651円49銭（10時42分）まで下げましたが、後場にかけて下げ渋り、最終的に下げ幅を大きく縮小しました。ソフトバンクグループやレーザーテックなどAI・半導体関連の一角が軟調だった一方、後半は押し目買いが入ったと伝えられています。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 下げ渋りの背景</summary>
+      <div class="ddbody">
+        <div class="why">
+          <h5>ソフトバンクグループの決算「不発」と受け止められた面があります</h5>
+          <p>日本経済新聞は、ソフトバンクグループの決算が市場の期待ほどの好感を呼ばず、株価が失速したと報じています（企業・決算セクションで既報の8月6日発表分）。半導体・AI関連株全般に、決算を受けた持ち高調整の動きがあったとみられます。</p>
+        </div>
+        <div class="counter">
+          <h5>別の見方 — 米国株の底堅さが、後場の下げ渋りにつながった可能性</h5>
+          <p>米国では同日夜（日本時間8月7日21時30分以降）に発表された雇用統計を受けて早期利上げ観測が後退し、米国株式市場は結果的に3指数そろって上昇しました（米国市場セクション参照）。ただし、この米国市場の動きは日本市場の取引終了後であるため、8月7日の日経平均の下げ渋りとの直接の因果関係は確認できておらず、要検証です。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://www.nikkei.com/article/DGXZQOFL070JL0X00C26A8000000/" target="_blank" rel="noopener">日本経済新聞（終値76円安の6万5,606円）</a> ・ <a class="src" href="https://www.nikkei.com/article/DGXZQOUB070M4TX00C26A8000000/" target="_blank" rel="noopener">日本経済新聞（SBG決算不発で失速）</a> ・ <a class="src" href="https://kabutan.jp/news/marketnews/?b=n202608071512" target="_blank" rel="noopener">株探（大引け、小幅続落・後半下げ渋る）</a> ・ <a class="src" href="https://miken.muragon.com/entry/3167.html" target="_blank" rel="noopener">個人ブログ（大引け詳細値、安値時刻の参考情報）</a> ・ <a class="src" href="https://www.jpx.co.jp/markets/statistics-equities/daily/index.html" target="_blank" rel="noopener">日本取引所グループ</a>［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 米国市場 -->
+  <section id="sec-us">
+    <div class="sec-head"><span class="tick"></span><span class="cat">US Market</span><span class="sec-title">米国市場 <span class="sub">/ 3指数そろって上昇、S&amp;P500・ナスダックは最高値更新</span></span></div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">NYダウ</div><div class="vl mono">54,036.93</div><div class="ch up"><span class="ar">▲</span> +151.83</div></div>
+      <div class="eq"><div class="nm">S&amp;P500</div><div class="vl mono">7,757.64</div><div class="ch up"><span class="ar">▲</span> +0.62%</div></div>
+      <div class="eq"><div class="nm">NASDAQ</div><div class="vl mono">26,690.62</div><div class="ch up"><span class="ar">▲</span> +1.30%</div></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-pos">ポジティブ</span><span class="lab lab-fact">事実</span></div>
+      <h4>弱い雇用統計を受け早期利上げ観測が後退、ハイテク中心に買い</h4>
+      <p>8月7日の米国株式市場は3指数がそろって上昇しました。<strong>NYダウは151.83ドル高（+0.28%）の5万4,036.93ドル、S&amp;P500は47.68ポイント高（+0.62%）の7,757.64、ナスダック総合は342.27ポイント高（+1.30%）の2万6,690.62</strong>でした。同日発表の7月分雇用統計が市場予想を大きく下回ったことで、FRBの早期利上げ観測が後退し、ハイテク・半導体関連株を中心に買いが優勢になったと伝えられています。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 「早期利上げ観測」の一日での反転</summary>
+      <div class="ddbody">
+        <div class="why">
+          <h5>前日の懸念材料が、一夜で買い材料に転じました</h5>
+          <p>8月6日は早期利上げ観測（ウォーシュ議長・クック理事の報道）が株式市場の重荷となり3指数そろって下落していましたが（8月7日号既報）、8月7日は雇用統計の下振れでその観測が後退し、正反対の反応となりました。日々の材料で相場の方向感が入れ替わりやすい局面が続いています。</p>
+        </div>
+        <div class="counter">
+          <h5>別の見方 — 弱い雇用統計は、景気減速のシグナルという捉え方もあります</h5>
+          <p>雇用統計の下振れを「利上げ観測後退による株高材料」と捉える見方がある一方、労働市場の実際の減速を示すものであり、先行きの企業業績・消費への懸念材料になり得るとの見方もあります。どちらも市場参加者の観測であり、確定した分析ではありません。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://www.nikkei.com/article/DGXZQOFL080090Y6A800C2000000/" target="_blank" rel="noopener">日本経済新聞（NYダウ反発、雇用統計悪化で利上げ観測後退・S&amp;P500最高値）</a> ・ <a class="src" href="https://fx.minkabu.jp/news/375641" target="_blank" rel="noopener">みんかぶFX（ダウ反発・ナスダック大幅高、9月利上げ期待後退）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 商品・地政学 -->
+  <section id="sec-commodity">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Commodities</span><span class="sec-title">商品・地政学 <span class="sub">/ 金は金利低下で反発、原油は続伸傾向</span></span></div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">WTI原油（9月限）</div><div class="vl mono">要確認</div><div class="ch">続伸との報道</div></div>
+      <div class="eq"><div class="nm">NY金（12月限）</div><div class="vl mono">$4,399.7</div><div class="ch up"><span class="ar">▲</span> +2.3%</div></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-check">要検証</span></div>
+      <h4>NY金、弱い雇用統計を受けた金利低下で反発・一時6週間ぶり高値</h4>
+      <p>8月7日のNY市場で、<strong>NY金（12月限）は100.1ドル高（+2.3%）の4,399.7ドル</strong>へ反発し、取引時間中には<strong>4,432.3ドルと6週間ぶりの高値</strong>を付けました。同日発表の弱い米雇用統計を受けて米長期金利が低下し、利息のつかない資産である金の投資妙味が増したことが買い材料になったと伝えられています。</p>
+      <p><strong>WTI原油（9月限）については、今回の調査で確認できた複数の記事が8月6日終値・8月7日付けの記事のいずれでも同じ77.29ドル（+2.75%）という数値を示しており、8月7日単独の終値として正確な数値を切り分けて確認することができませんでした。要確認とし、報道の傾向としては「続伸」（ホルムズ海峡を巡る不透明感の継続）と伝えられている点のみ採用します。</strong></p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 金利要因と地政学要因の重なり</summary>
+      <div class="ddbody">
+        <div class="why">
+          <h5>金利低下は、金にとって明確な追い風です</h5>
+          <p>雇用統計の下振れを受けた米長期金利の低下は、配当・金利を生まない資産である金にとって典型的な買い材料です。8月6日は逆に金利上昇を受けて金が反落していただけに（8月7日号既報）、一日での反転となりました。</p>
+        </div>
+        <div class="counter">
+          <h5>別の見方 — 原油はホルムズ海峡の地政学材料が引き続き主因との見方</h5>
+          <p>原油については金利要因よりも、イラン議会によるホルムズ海峡の通航規制を巡る協議の不透明感が続いていることが主な買い材料として伝えられています。金と原油で値動きの主因が異なる可能性がある点に留意が必要です。この見方は市場観測であり、確定した分析ではありません。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://www.nikkei.com/article/DGXZQOFL07BHY0X00C26A8000000/" target="_blank" rel="noopener">日本経済新聞（NY商品、原油続伸・金反発）</a> ・ <a class="src" href="https://www.oanda.jp/lab-education/market_news/2026_08_07_wtioil/" target="_blank" rel="noopener">OANDA証券（WTI原油見通し、ホルムズ海峡の不透明感）</a> ・ <a class="src" href="https://www.nikkei.com/markets/commodities/" target="_blank" rel="noopener">日本経済新聞（商品市況）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 暗号資産 -->
+  <section id="sec-crypto">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Crypto</span><span class="sec-title">暗号資産 <span class="sub">/ 6万5,000ドル手前で小幅上昇、引き続き膠着</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-ref">参考</span><span class="lab lab-neu">中立</span><span class="lab lab-check">要検証</span></div>
+      <h4>ビットコイン、8月7日20時57分時点で6万4,976.91ドルへ上昇</h4>
+      <p>ビットコインは<strong>8月7日20時57分（日本時間）時点で6万4,976.91ドル</strong>（前日比+584.32ドル、+0.91%）まで上昇しました。高値は6万5,158.30ドル、安値は6万4,120.89ドルでした。株探の報道では、ロンドン時間に入って買いが優勢になった一方、6万5,000ドル台への回復にはなお慎重な値動きが続いているとされています。<strong>8月8日朝時点の一次データでの正確な値は、今回の調査では確認できておらず、要確認です。</strong>チャートまたはお手元の取引所での最新値をご確認ください。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 直近数週間のレンジ</summary>
+      <div class="ddbody">
+        <div class="note">
+          <h5>8週間にわたり5.8万〜6.7万ドルのレンジが続いているとの分析があります</h5>
+          <p>複数の暗号資産メディアの分析では、ビットコインはここ8週間ほど5万8,000ドルから6万7,000ドルのレンジ内で推移しており、上下いずれかへのブレイクが注目されているとされています。この分析は情報提供元の見立てであり、将来の値動きを保証するものではありません。</p>
+        </div>
+        <div class="counter">
+          <h5>別の見方 — 株式市場の底堅さとの相関</h5>
+          <p>8月7日は米国株式市場が3指数そろって上昇しており（米国市場セクション参照）、ビットコインの上昇もリスク資産全般への選好が広がったことを反映した値動きの一つとみられます。ただし、この見方は市場観測であり、確定した分析ではありません。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://s.kabutan.jp/news/n202608071757/" target="_blank" rel="noopener">株探（ビットコイン上昇、雇用統計控え・8月7日）</a> ・ <a class="src" href="https://bitbank.cc/knowledge/markets/article/bitbank-daily-2026-08-07" target="_blank" rel="noopener">ビットバンク（BTC相場分析、8月7日）</a> ・ <a class="src" href="https://jp.tradingview.com/symbols/COINBASE-BTCUSD/" target="_blank" rel="noopener">TradingView（COINBASE:BTCUSD ライブ価格）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 企業・決算 -->
+  <section id="sec-corp">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Corp</span><span class="sec-title">企業・決算 <span class="sub">/ 8月7日は679社が決算発表、ソニー・トヨタも</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-neu">中立</span></div>
+      <h4>8月7日は679社が決算発表、フジクラ・川崎重工など増益見通し</h4>
+      <p>8月7日は<strong>フジクラ、川崎重工業、リクルート</strong>など679社が決算を発表しました。株探の集計では、<strong>フジクラは経常利益58.4%増、川崎重工は同1.0%増、第一生命は同15.3%増、商船三井は同28.0%増</strong>の見通しが伝えられています。あわせて<strong>ソニーグループが正午、トヨタ自動車が午後2時に決算発表を予定</strong>していましたが、それぞれの決算内容の詳細は今回の調査では確認できておらず、要確認です。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — トヨタの中期生産計画報道</summary>
+      <div class="ddbody">
+        <div class="note">
+          <h5>トヨタ、2027年の国内生産を350万台規模とする計画と報じられています</h5>
+          <p>トヨタ自動車が2027年の国内生産台数を350万台規模とする計画を固めたと報じられています。実現すれば、リーマン・ショック後の2009年以降で最も高い水準になるとされています。この報道は決算発表とは別の中期計画に関する記事であり、8月7日の決算発表そのものの内容とは異なる点にご留意ください。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://s.kabutan.jp/news/n202608070224/" target="_blank" rel="noopener">株探（本日の決算発表予定、679社・8月7日）</a> ・ <a class="src" href="https://www.nikkei.com/article/DGXZQOUC062690W5A800C2000000/" target="_blank" rel="noopener">日本経済新聞（トヨタ決算・8月7日の主な予定）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AI -->
+  <section id="sec-ai">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; Tech</span><span class="sec-title">AI・生成AI <span class="sub">/ OpenAI×アイブ氏デバイス報道、Anthropicは要職を新設</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-neu">中立</span><span class="lab lab-fact">事実</span></div>
+      <h4>OpenAIとジョナサン・アイブ氏のAIデバイス、2027年発売・300ドル超と報道</h4>
+      <p>BloombergのMark Gurman記者は、OpenAIと元アップルのデザイナーであるジョナサン・アイブ氏が共同開発中のAIデバイスについて、<strong>2027年に300ドル以上の価格帯で発売される見込み</strong>だと報じています。<strong>正式な仕様・発売時期はOpenAIから公式発表されておらず、報道段階の情報である点にご留意ください。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-ref">参考</span><span class="lab lab-neu">中立</span><span class="lab lab-fact">事実</span></div>
+      <h4>Anthropic、初代最高渉外責任者にティノ・クエヤール氏を任命と伝えられる</h4>
+      <p>Anthropicが初代Chief Global Affairs Officer（最高渉外責任者）にティノ・クエヤール氏を任命したと伝えられています。あわせて、xAIが音声AI「Grok Voice」を「Think Fast 2.0」へアップグレードしたとの報道もあります。いずれも週間ニュースまとめ経由の情報であり、一次発表そのものは今回の調査では直接確認できていません（要確認）。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — AI総合研究機構としての注目点</summary>
+      <div class="ddbody">
+        <div class="counter">
+          <h5>別の見方 — AI投資回収への懸念と、新製品・新体制構築の動きは並行しています</h5>
+          <p>ソフトバンクグループの決算でも指摘された「AI投資回収への道筋」への懸念（企業・決算セクション参照）が市場で意識される一方、OpenAI・Anthropic・xAIなど主要各社は新製品開発や組織体制の強化を継続しています。市場の懸念と各社の実際の投資・開発ペースは必ずしも一致しない点に留意が必要です。この見方は市場観測であり、確定した分析ではありません。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://journal.omoshigo.link/trend/workai/20260807-20316/" target="_blank" rel="noopener">働き方×AIニュース（8月7日付、OpenAI×アイブ氏デバイス等のまとめ）</a> ・ <a class="src" href="https://tech-noisy.com/2026/08/03/ai-weekly-news-2026-07-27-2026-08-02/" target="_blank" rel="noopener">TECH NOISY（週間AI公式発表まとめ）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ロボット・テクノロジー -->
+  <section id="sec-robot">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Robotics</span><span class="sec-title">ロボット・テクノロジー <span class="sub">/ BYDは予告のまま、中国勢の量産準備が進行</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-ref">参考</span><span class="lab lab-neu">中立</span><span class="lab lab-check">要検証</span></div>
+      <h4>BYD人型ロボット、「8月」予告のまま正式発表は8日時点でも未確認</h4>
+      <p>中国BYDは自社初の人型ロボットについて、<strong>「8月」の正式発表</strong>を予告していましたが、8月8日時点の調査でも正式発表そのものはまだ確認できていません。全国のディーラー店舗に1店舗あたり2〜3台を配置し、来店客への接客・車種説明・デモンストレーションに活用する構想は変わっていません。</p>
+      <p>一方、中国・小鵬（XPENG）の人型ロボット「IRON」は<strong>広州工場で小規模な試験生産を開始</strong>したと報じられています。同社は2026年内の量産開始、2027年以降に世界各地の販売店・商業用途への順次導入を計画しているとされています。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — 業界の位置づけ</summary>
+      <div class="ddbody">
+        <div class="note">
+          <h5>「頭脳」と「量産」、両輪の動きを引き続き注視します</h5>
+          <p>これまでお伝えしてきたGoogle DeepMind「Gemini Robotics 2」（頭脳側の進化）に加え、BYD・小鵬など中国自動車メーカー各社が量産・現場投入側の準備を進めている状況です。8月19日に北京で開催予定の世界ロボット大会2026でも、新製品発表や産業協力の動きが集中する見通しです。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://36kr.jp/499705/" target="_blank" rel="noopener">36Kr Japan（BYD人型ロボット8月発表予告）</a> ・ <a class="src" href="https://news.yahoo.co.jp/articles/259579bf1e2859a14834bfc6eba47303aef45918" target="_blank" rel="noopener">Yahoo!ニュース（36Kr Japan転載）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 古民家・地域活性 -->
+  <section id="sec-estate">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Estate</span><span class="sec-title">古民家・田舎・地域活性 <span class="sub">/ 特別注目の物件はなし、全国版バンクの集計を確認</span></span></div>
+
+    <div class="note">
+      <h5>特別注目の不動産情報について</h5>
+      <p>今回の調査では、個別にご確認いただくレベルの<strong>「特別注目の物件」は見つかりませんでした。</strong>各地の空き家バンクを確認しましたが、通常の物件掲載が中心で、無理に取り上げるべき掘り出し物は今回はありません。</p>
+    </div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-ref">参考</span><span class="lab lab-neu">中立</span><span class="lab lab-fact">事実</span></div>
+      <h4>全国版空き家・空き地バンク、1,144自治体が参加・累計約2万5,600件成約</h4>
+      <p>2026年5月末時点で、全国1,144の自治体が「全国版空き家・空き地バンク」に参加しており、これまでの成約件数は約2万5,600件に上るとの集計が紹介されています。空き家を改修し「古民家」として再生し、カフェなど人気店へ転じる例も各地で紹介されています。個別の掘り出し物件情報ではなく、制度・市場全体の参考情報として掲載します。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.homes.co.jp/akiyabank/chugoku/kagawa/" target="_blank" rel="noopener">LIFULL HOME'S 空き家バンク（香川）</a> ・ <a class="src" href="https://www.reds.co.jp/p112005/" target="_blank" rel="noopener">REDS（空き家・空き地バンクの解説）</a> ・ <a class="src" href="https://lumiarch.ntt-east.co.jp/articles/202607_vacant_house/" target="_blank" rel="noopener">Lumiarch（空き家活用の成功事例）</a> ・ <a class="src" href="https://www.pref.shiga.lg.jp/ippan/kendoseibi/zyuutaku/19000.html" target="_blank" rel="noopener">滋賀県（空き家バンク）</a>［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 生活・自動車 -->
+  <section id="sec-life">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Life &amp; Auto</span><span class="sec-title">生活・自動車 <span class="sub">/ 被災地の部品工場が稼働再開、EV販売は7月として過去最高</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span><span class="lab lab-pos">ポジティブ</span></div>
+      <h4>熊本地震で被災したアステモ宇城工場、8月7日に一部生産ラインで稼働再開</h4>
+      <p>熊本地震で被災した自動車部品大手アステモの宇城工場が、<strong>8月7日に一部の生産ラインで稼働を再開した</strong>と報じられています。震災からの産業復旧の一環として、熊本地震続報セクションとあわせてご確認ください。具体的な稼働率・生産再開の範囲については、今回の調査では確認できておらず、要確認です。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-ref">参考</span><span class="lab lab-pos">ポジティブ</span><span class="lab lab-fact">事実</span></div>
+      <h4>7月の国内電動車販売、前年同月比8.2%増・EVは7月として過去最高</h4>
+      <p>2026年7月の国内電動車販売（乗用車）は前年同月比8.2%増の19万7,162台となり、3か月連続で増加したと伝えられています。このうち電気自動車（EV）の販売台数は前年同月比2.9倍の1万1,983台で、7月として過去最高を記録したとされています。あわせて、東海道・山陽・九州新幹線の「EXサービス」が改訂され、スマートフォンでの「ご利用票」表示など利便性向上が9月から順次開始されると伝えられています。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.marklines.com/ja/" target="_blank" rel="noopener">マークラインズ（自動車産業ポータル）</a> ・ <a class="src" href="https://kuruma-news.jp/" target="_blank" rel="noopener">くるまのニュース</a>（アステモ・EV販売動向の一次配信元は今回の調査では特定できず、要確認）</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Charts — 主要チャート（3点）</span></div>
+
+  <section id="sec-more">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Charts</span><span class="sec-title">為替・株価・暗号資産 <span class="sub">/ 今日の材料に直結する3点</span></span></div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-bottom:14px;">日次レポートのチャート上限（2〜3点）に沿って、今日の材料に直結する3点だけを掲載しています。</p>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">USD/JPY <span>ドル円・雇用統計後の急落を確認</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="1" aria-pressed="false">1分<small>数時間</small></button>
+          <button class="tf" data-i="3" aria-pressed="false">3分<small>半日</small></button>
+          <button class="tf" data-i="5" aria-pressed="false">5分<small>1日</small></button>
+          <button class="tf" data-i="15" aria-pressed="true">15分<small>1週間</small></button>
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="FX:USDJPY" data-i="15"></div>
+      <div class="cw-foot"><span>15分足で、雇用統計発表後の急落局面を確認できます</span></div>
+    </div>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">日経225 <span>Nikkei 225 先物</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="1" aria-pressed="false">1分<small>数時間</small></button>
+          <button class="tf" data-i="3" aria-pressed="false">3分<small>半日</small></button>
+          <button class="tf" data-i="5" aria-pressed="false">5分<small>1日</small></button>
+          <button class="tf" data-i="15" aria-pressed="false">15分<small>1週間</small></button>
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="true">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="OSE:NK2251!" data-i="60"></div>
+      <div class="cw-foot"><span>1時間足で、8月7日の前場急落・後場の下げ渋りを確認できます</span></div>
+    </div>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">BTC/USD <span>ビットコイン</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="1" aria-pressed="false">1分<small>数時間</small></button>
+          <button class="tf" data-i="3" aria-pressed="false">3分<small>半日</small></button>
+          <button class="tf" data-i="5" aria-pressed="false">5分<small>1日</small></button>
+          <button class="tf" data-i="15" aria-pressed="false">15分<small>1週間</small></button>
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="true">4時間<small>数か月</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="COINBASE:BTCUSD" data-i="240"></div>
+      <div class="cw-foot"><span>4時間足で、6万4,000〜6万5,000ドル台のレンジを確認できます</span></div>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Watchlist</span></div>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">今週末〜来週の注目 <span class="sub">/ ボタンで開く</span></span></div>
+    <p style="font-size:13.5px;margin-bottom:13px;">押すとログイン中のご自身のTradingViewで開きます。週末は台風13号の沖縄・奄美地方への影響、週明けはドル円の週末明け反応と日銀「主な意見」（8月10日公表）が焦点です。</p>
+    <div class="tvgrid">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=FX%3AUSDJPY&interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">ドル円（15分足）</span><span class="tvlink-desc">雇用統計後に158円台から156円台後半へ急落</span><span class="tvlink-sym mono">FX:USDJPY ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物</span><span class="tvlink-desc">8月7日は前場急落から後場に下げ渋り</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=NASDAQ%3AIXIC&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NASDAQ総合</span><span class="tvlink-desc">利上げ観測後退で最高値更新</span><span class="tvlink-sym mono">NASDAQ:IXIC ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AGOLD&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NY金</span><span class="tvlink-desc">金利低下で反発、一時6週間ぶり高値</span><span class="tvlink-sym mono">TVC:GOLD ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUSOIL&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">WTI原油</span><span class="tvlink-desc">ホルムズ海峡の不透明感で続伸傾向</span><span class="tvlink-sym mono">TVC:USOIL ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=COINBASE%3ABTCUSD&interval=240" target="_blank" rel="noopener"><span class="tvlink-ja">ビットコイン</span><span class="tvlink-desc">6万5,000ドル手前で引き続き膠着</span><span class="tvlink-sym mono">COINBASE:BTCUSD ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUS10Y&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">米10年国債利回り</span><span class="tvlink-desc">雇用統計後に4.66%台から4.60%台へ低下</span><span class="tvlink-sym mono">TVC:US10Y ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TSE%3A9984&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">ソフトバンクグループ</span><span class="tvlink-desc">決算「不発」との報道後の週明け反応</span><span class="tvlink-sym mono">TSE:9984 ↗</span></a>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot">
+    <div class="askai">
+      <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+      <p class="askai-desc">質問文をコピーして、お好きなAIを開いて貼り付けてください。</p>
+      <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。</p>
+      <div class="askai-box">
+        <textarea class="askai-q" id="askaiQ" readonly rows="2">この朝レポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+        <button type="button" class="askai-copy" id="askaiCopyBtn">コピー</button>
+      </div>
+      <div class="askai-links">
+        <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">ChatGPTを開く ↗</a>
+        <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Geminiを開く ↗</a>
+        <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claudeを開く ↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--ink-3);text-align:center;margin-top:10px;">「〇〇」の部分を気になった項目名に書き換えてからお使いください。レポート本文は自動送信されません。<br>熊本地震・台風13号の状況は、続報が出た段階で毎日版で追います。</p>
+    </div>
+    <p class="disc">本レポートはAI総合研究機構の朝の共有レポートです。論調の目安：ポジティブ4割・中立4割・注意/ネガティブ2割を目安に編集していますが、災害・重大リスクに関する情報はこの比率に関係なく目立つ位置に掲載しています。事実と観測・見方・予測は区別して記載し、確定していない見立ては「見方」「観測」「可能性」「予報」と明記しています。／ 情報源は一次情報を優先しています（気象庁・日本銀行・日本取引所グループ・各自治体公式ページへ直接リンク）。ニュース・解説の情報源は特定媒体に偏らないよう複数媒体に分散しています（目安として1情報源が全体の25〜30%を超えないよう配慮）。／ 本日8月8日（土）は国内外の株式市場が休場のため、株式関連の数値は8月7日（金）の終値です。ドル円は8月7日21時30分の米雇用統計発表後に急落したことまでは複数の報道で確認できていますが、8月8日朝時点の正確な水準は今回の調査では確認できておらず、要確認としています。WTI原油の8月7日単独の終値も、確認できた資料の間で数値を切り分けられず要確認としています。ビットコインは8月7日20時57分時点の値です。熊本地震の被害状況は8月7日18時発表分（死者・避難者数）・8月4日時点（断水戸数）の熊本県・NHK等の発表に基づき、その後変動している可能性があります。台風13号の進路・勢力は気象庁8月8日2時45分発表時点でまだ確定していません。最新の状況は各公式ページでご確認ください。確認できなかった項目は本文中に「要確認」と明記しています。／ 不動産情報は現況が変わりうる旨、ご留意ください。特別注目の不動産情報は、該当する物件がない場合は掲載していません。／ 数値は出典元の直近値、チャートはTradingViewのライブデータです。いずれも情報提供が目的で、投資判断への助言ではありません。／ 生成: 2026年8月8日</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var ta = document.getElementById('askaiQ');
+  if(!btn || !ta) return;
+  btn.addEventListener('click', function(){
+    function showCopied(){
+      var orig = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('is-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('is-copied'); }, 2000);
+    }
+    function fallback(){
+      ta.removeAttribute('readonly');
+      ta.focus();
+      ta.select();
+      try{
+        if(document.execCommand('copy')) showCopied();
+      }catch(e){}
+      ta.setAttribute('readonly', 'readonly');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(showCopied, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
