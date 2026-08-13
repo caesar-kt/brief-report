@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 朝の一日レポート — 2026年8月13日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;max-width:56ch;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .fx-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding:16px 18px;border-radius:14px;margin-bottom:14px;
+    background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFF 62%,#F4F7FF 100%);
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .fx-pair{font-size:11px;font-weight:800;letter-spacing:.11em;color:var(--ink-3);text-transform:uppercase;}
+  .fx-rate{font-size:38px;font-weight:800;letter-spacing:-.038em;line-height:1.05;margin-top:3px;}
+  .fx-rate small{font-size:15px;font-weight:700;color:var(--ink-3);margin-left:3px;}
+  .fx-meta{font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.75;}
+
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:430px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .cta{font-size:14px;color:var(--ink-2);text-align:center;}
+  .cta b{color:var(--ink);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .fx-rate{font-size:32px;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+  .support .acct{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#fff;
+    border:1px solid rgba(14,159,110,.2);border-radius:8px;padding:9px 12px;margin-top:8px;line-height:1.85;}
+
+  /* 目次 */
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  /* ラベル */
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-ref{color:var(--slate);background:var(--slate-soft);border:1px solid rgba(82,100,128,.2);}
+  .lab-find{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .lab-pos{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .lab-neu{color:#4A5563;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-risk{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-analysis{color:var(--purple);background:var(--purple-soft);border:1px solid rgba(122,78,191,.26);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-check{color:#8794A3;background:#F4F6F9;border:1px solid var(--line);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  /* 折り畳み */
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  /* 上へ戻る */
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+</style>
+<style>
+  /* ==== 災害支援シグナル v1 ==== */
+  .dsig-wrap{margin:16px 0;}
+  .dsig-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .dsig-head h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);}
+  .dsig-card{border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--line);background:var(--surface-2);}
+  .dsig-red{border-color:rgba(224,36,36,.35);background:linear-gradient(180deg,#FFFBFB,#FFF5F5);}
+  .dsig-amber{border-color:rgba(232,145,45,.35);background:linear-gradient(180deg,#FFFDF8,#FFF8EC);}
+  .dsig-green{border-color:rgba(14,159,110,.3);background:linear-gradient(180deg,#F8FDFB,#F1FAF6);}
+  .dsig-gray{border-color:var(--line);background:var(--surface-2);}
+  .dsig-title{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .dsig-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;}
+  .dsig-red .dsig-badge{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .dsig-amber .dsig-badge{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .dsig-green .dsig-badge{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .dsig-gray .dsig-badge{color:#8794A3;background:#F4F6F9;border:1px solid var(--line);}
+  .dsig-days{font-size:11px;color:var(--ink-3);font-weight:700;}
+  .dsig-flow{display:flex;flex-wrap:wrap;gap:4px;font-size:10.5px;margin:8px 0;color:var(--ink-3);}
+  .dsig-flow span{padding:2px 7px;border-radius:6px;background:var(--line-2);}
+  .dsig-flow span.done{background:#EAF7F1;color:#0B7A55;font-weight:700;}
+  .dsig-flow span.unknown{background:var(--line-2);color:var(--ink-3);border:1px dashed var(--line);}
+  .dsig-rows{font-size:12.5px;color:var(--ink-2);}
+  .dsig-rows div{display:flex;gap:6px;padding:3px 0;border-top:1px dashed var(--line-2);}
+  .dsig-rows div:first-child{border-top:none;}
+  .dsig-rows .k{flex:none;width:92px;color:var(--ink-3);font-weight:700;}
+  .dsig-rows .v-unknown{color:#8794A3;font-style:italic;}
+  .dsig-meta{font-size:10.5px;color:var(--ink-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);}
+  .dsig-meta a{color:inherit;}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年8月13日（木）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝の要点は、8。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の共有レポートです。本日8月13日(木)は東京証券取引所・米国市場ともに通常の取引日です。本レポートで使用している株式関連の確定値は8/12終値を基準としています。8月12日夜に発表された米7月CPIは総合・コアともに市場予想どおりでしたが、ドル円は終盤にかけて159円45銭前後まで上昇し、9月FOMCでの利上げ確率はロイターによれば約40%へ低下しました。台風15号は8月12日午前9時に丹後半島沖で熱帯低気圧に変わり、負傷者9人・倒木や停電の被害が確認されました。コロンビアで8/10発生したM7.4地震は、AP通信は死者少なくとも265人・行方不明約500人(公式)、ロイターは死者約250人・負傷3,770人と報じており、情報源により数値が大きく異なります。熊本地震の死者は39人で更新なし、避難者は3,585人・81箇所へさらに減少しました。「災害支援シグナル」は本日も継続し、宇城市の断水が4,098戸まで大きく減少した一方、八代市・氷川町は横ばいです。前日8月12日号からの変化点を中心にお届けします。</p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-quake">Kumamoto <span class="kw-arrow">↓</span></a></span><span>
+        <b>熊本地震の死者は39人で更新なし(8/12 14時時点)。避難者は3,585人・81箇所へさらに減少しました(8/11の3,714人・89箇所から)。</b>断水は宇城市が4,098戸まで大きく減少した一方、八代市(22,979戸)・氷川町(2,132戸)はほぼ横ばいです。
+        <span class="but"><em>但し</em> 八代市周辺は8/13が新月・大潮のピークにあたり、浸水・冠水への注意喚起が国交省から出ています。詳細は本文セクションをご覧ください。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-fx">FX <span class="kw-arrow">↓</span></a></span><span>
+        <b>ドル円は8/12のNY市場終盤にかけて上昇し、159円45銭前後(7/31以来の水準)まで強含みました。</b>米CPIは総合・コアとも市場予想どおりでしたが、ドル売りは長続きしませんでした。
+        <span class="but"><em>但し</em> ロイターによれば、FRBが9月15-16日のFOMCで利上げを決定する確率は約40%で、前週から低下しています(10月までの利上げ確率は56%)。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jp">Nikkei <span class="kw-arrow">↓</span></a></span><span>
+        <b>日経平均は8/12、AI・半導体関連への買いを支えに続伸し、6万7,524円06銭(前日比+553円84銭、+0.83%)で終えました。</b>日経225先物(9月限)の夜間取引は、清算値比70円高の6万7,730円で寄り付いています。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-us">US Mkt <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国市場は8/12、NYダウ5万3,770.27ドル(-21.58、-0.04%)とほぼ横ばいの一方、S&amp;P500は7,748.50(+0.26%)、NASDAQは2万6,588.49(+0.54%)と上昇しました。</b>市場予想どおりだった米CPIを受け、方向感は限定的ながら底堅い値動きとなりました。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-commodity">Oil <span class="kw-arrow">↓</span></a></span><span>
+        <b>WTI原油は8/12終値83.27ドル(+0.07、+0.1%)と小幅ながら続伸しました。</b>中東情勢を巡る供給懸念が引き続き相場を下支えしているとみられます。
+        <span class="but"><em>但し</em> NY金も8/12終値4,467.5ドル(+0.6%)と6日ぶりに大幅反発しました。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-crypto">Crypto <span class="kw-arrow">↓</span></a></span><span>
+        <b>ビットコインは8/12午後9時(日本時間)時点で6万4,182.85ドル前後(前日比+0.77%程度)で推移しています。</b>8週間続くレンジ相場が引き続き続いています。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">AI <span class="kw-arrow">↓</span></a></span><span>
+        <b>AI・半導体分野で、今回の調査では8/12〜8/13朝にかけての重要な新規発表は確認できませんでした。</b>NVIDIAのAIインフラ金融基盤(8/10発表)についても、個別パートナーとの具体的な資金調達条件の続報は今回確認できていません。
+        <span class="but"><em>但し</em> EU AI Actの対話型AI・AI生成コンテンツに関する透明性義務が、2026年8月から適用段階に入っています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">World <span class="kw-arrow">↓</span></a></span><span>
+        <b>コロンビアで8/10発生したM7.4地震について、AP通信は死者少なくとも265人・行方不明約500人(公式、民間データでは4,100人超)、ロイターは死者約250人・負傷3,770人と報じています。</b>情報源により数値が大きく異なり、単一の確定値は特定できていません。
+        <span class="but"><em>但し</em> ホルムズ海峡はこう着状態が続いており(8/12 NHK)、新たな進展は確認できていません。台風15号は8/12午前9時に熱帯低気圧化し、負傷者9人・倒木や停電の被害が確認されています。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">コロンビア地震 死者</div><div class="vl mono">AP265人/Reuters250人</div><div class="ch down">情報源により差あり</div><div class="ctx">AP・ロイター、いずれも8/12時点報道</div></div>
+      <div class="cell"><div class="nm">熊本地震 死者/避難者</div><div class="vl mono">39人</div><div class="ch">避難者3,585人・81箇所</div><div class="ctx">8/12 14時時点、更新なし/減少</div></div>
+      <div class="cell"><div class="nm">災害支援シグナル</div><div class="vl mono">🔴×3 🟡×1</div><div class="ch">宇城市が大きく改善</div><div class="ctx">断水4自治体を継続追跡・17日目</div></div>
+      <div class="cell"><div class="nm">USD/JPY</div><div class="vl mono">159円台半ば</div><div class="ch up">8/12 NY終盤159.45付近</div><div class="ctx">7/31以来の水準まで強含み</div></div>
+      <div class="cell"><div class="nm">日経225先物（夜間）</div><div class="vl mono">67,730</div><div class="ch up">清算値比+70</div><div class="ctx">本日は現物取引日</div></div>
+      <div class="cell"><div class="nm">NYダウ（8/12終値）</div><div class="vl mono">53,770.27</div><div class="ch down">-21.58(-0.04%)</div><div class="ctx">S&amp;P500・NASDAQは上昇</div></div>
+      <div class="cell"><div class="nm">WTI原油（8/12終値）</div><div class="vl mono">$83.27</div><div class="ch up">+0.1%・続伸</div><div class="ctx">中東供給懸念が下支え</div></div>
+      <div class="cell"><div class="nm">NY金（8/12終値）</div><div class="vl mono">$4,467.5</div><div class="ch up">+0.6%・6日ぶり大幅反発</div><div class="ctx">ロイター確定値</div></div>
+      <div class="cell"><div class="nm">ビットコイン</div><div class="vl mono">$64,182付近</div><div class="ch up">+0.77%程度</div><div class="ctx">8/12 21時(日本時間)時点</div></div>
+    </div>
+
+    <p class="jump">この先は分野別ダイジェストと詳細です。<a href="#deep">↓</a></p>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#sec-quake">熊本地震・災害支援シグナル</a></li>
+      <li><a href="#sec-fx">為替・金利</a></li>
+      <li><a href="#sec-jp">国内株式</a></li>
+      <li><a href="#sec-us">米国市場</a></li>
+      <li><a href="#sec-commodity">商品</a></li>
+      <li><a href="#sec-crypto">暗号資産</a></li>
+      <li><a href="#sec-ai">AI</a></li>
+      <li><a href="#sec-world">世界情勢・コロンビア地震・台風15号</a></li>
+      <li><a href="#sec-thin">今回情報が薄かった分野</a></li>
+      <li><a href="#sec-watch">ウォッチリスト</a></li>
+    </ul>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <!-- 熊本地震・災害支援シグナル -->
+  <section class="quake" id="sec-quake">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kumamoto</span><span class="sec-title">令和8年熊本地震 <span class="sub">/ 死者は更新なし、避難者は減少続く</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>死者39人で更新なし、避難者3,585人・81箇所へさらに減少。住宅被害は約26,900棟、うち全壊1,252棟</h4>
+      <p>複数の報道(いずれも2026年8月12日時点、NHK・TKUテレビ熊本)によれば、<strong>死者は災害関連死の疑いを含めて39人</strong>で、8月10日18時時点の確認値から更新はありません。<strong>避難者は県内81箇所の避難所で3,585人</strong>となり、8月11日14時時点の3,714人・89箇所からさらに減少しています。人的被害の総数(死者を含む)は393人、住宅被害は推計約26,900棟(うち全壊1,252棟)と報じられています。断水については、下記「災害支援シグナル」で自治体別に詳しく追っています。</p>
+      <p style="font-size:12.5px;color:var(--ink-3);">※避難者数について、報道により3,585人・3,652人などわずかに異なる数値が見られましたが、本レポートは同一時点(8/12 14時)を明記した複数記事で一致している3,585人を採用しました。</p>
+    </div>
+
+    <div class="dmg">
+      <div><div class="k">死者</div><div class="v">39</div><div class="u">人（8/10確認値・更新なし）</div></div>
+      <div><div class="k">避難者</div><div class="v">3,585</div><div class="u">人・81箇所（8/12 14時時点）</div></div>
+      <div><div class="k">断水（追跡3自治体合計）</div><div class="v">約29,200</div><div class="u">戸（8/12 13時時点、後述）</div></div>
+      <div><div class="k">継続日数</div><div class="v">17日目</div><div class="u">断水開始2026-07-28から</div></div>
+    </div>
+
+    <div class="dsig-wrap" id="sec-support-signal">
+      <div class="dsig-head"><span class="tick"></span><h5>災害支援シグナル（🔴/🟡/🟢/⚪ 支援状況・継続2日目）</h5></div>
+      <p style="font-size:12.5px;color:var(--ink-3);margin-bottom:10px;">「災害を報じて終わらない。」を理念に、断水・不足物資の状況を必要→確保→手配→輸送→到着の各段階まで追い、確認できないことは「確認できず」と明示します。熊本地震の断水が続く4自治体を継続して追跡しています。</p>
+
+      <div class="dsig-card dsig-red">
+        <div class="dsig-title">
+          <span class="dsig-badge">🔴 支援必要・明確な不足あり</span>
+          <span class="dsig-days">断水17日目（実態継続日数。2026-07-28から連続）</span>
+        </div>
+        <p style="font-size:13px;">熊本県八代市：断水22,979戸（国土交通省第38報、2026-08-12 13:00発表・断水表は同日近傍時点。前日から横ばい）。海上保安庁の給水支援は7/29〜8/12累計で226台・275世帯・約485.6トン(前日の約481.0トン・266世帯から増加)。8/13は新月・大潮のピークにあたり、国交省・気象庁・国土地理院が八代市周辺の沿岸・河口付近での浸水・冠水に注意を呼びかけています。</p>
+        <div class="dsig-flow">
+          <span class="unknown">必要：戸数は確定／水量は未確認</span>
+          <span class="unknown">確保：未確認</span>
+          <span class="done">手配：給水車計80台(八代市55台+八代生活環境事務組合25台のうち氷川町分を除く一部)</span>
+          <span class="unknown">発送：未確認</span>
+          <span class="unknown">輸送中：未確認</span>
+          <span class="done">到着：海保支援・八代港で7/29〜8/12累計約485.6トン配布</span>
+          <span class="done">受領：275世帯（海上保安庁公表）</span>
+          <span class="unknown">配布（全戸ベース）：未確認</span>
+        </div>
+        <div class="dsig-rows">
+          <div><span class="k">避難者数</span><span class="v-unknown">確認できず（自治体別内訳なし。県全体では81箇所・3,585人）</span></div>
+          <div><span class="k">不足物資</span><span>飲料水・生活用水（断水）</span></div>
+          <div><span class="k">必要量</span><span class="v-unknown">確認できず（戸数ベースのみ把握、水量単位は未公表）</span></div>
+          <div><span class="k">確保量</span><span class="v-unknown">確認できず（配布実績485.6トンは判明も、必要量比は不明）</span></div>
+          <div><span class="k">輸送状況</span><span class="v-unknown">確認できず（給水車稼働中。個別車両のリアルタイム動向は不明）</span></div>
+          <div><span class="k">到着状況</span><span>八代港へ約485.6トン・275世帯分配布（海上保安庁、7/29〜8/12累計）</span></div>
+          <div><span class="k">新たなリスク</span><span>8/13(新月)を含む大潮期間、満潮時の浸水・冠水に注意(国交省第38報)</span></div>
+        </div>
+        <div class="dsig-meta">
+          情報源：<a href="https://www.mlit.go.jp/common/002016437.pdf" target="_blank" rel="noopener">国土交通省 第38報</a>（8/12 13:00発表）／
+          こちらの確認：2026-08-13／確度：一次情報／
+          支援先：熊本県義援金・日本赤十字社（詳細は<a href="daily-2026-08-02.html#sec-support">8/2号 支援窓口</a>参照）
+        </div>
+      </div>
+
+      <div class="dsig-card dsig-red">
+        <div class="dsig-title">
+          <span class="dsig-badge">🔴 支援必要・明確な不足あり</span>
+          <span class="dsig-days">断水17日目（実態継続日数）</span>
+        </div>
+        <p style="font-size:13px;"><strong>熊本県宇城市：断水が4,098戸まで大きく減少しました</strong>（国土交通省第38報、2026-08-12 13:00発表。前日の8,187戸からほぼ半減）。管破損に伴う漏水があり、一部地域で試験通水を実施中です。</p>
+        <div class="dsig-flow">
+          <span class="done">改善：断水戸数がほぼ半減(8,187→4,098戸)</span>
+          <span class="unknown">必要：水量未確認</span>
+          <span class="done">手配：給水車32台（国交省4・日水協20・自衛隊8）</span>
+          <span class="done">到着：海保支援・三角港で7/29〜8/12累計約304.6トン・750世帯配布</span>
+          <span class="unknown">配布（全戸ベース）：未確認</span>
+        </div>
+        <div class="dsig-rows">
+          <div><span class="k">避難者数</span><span class="v-unknown">確認できず（自治体別内訳なし）</span></div>
+          <div><span class="k">不足物資</span><span>飲料水・生活用水（断水）</span></div>
+          <div><span class="k">確保量</span><span class="v-unknown">確認できず（三角港配布304.6トンは判明も、必要量比は不明）</span></div>
+          <div><span class="k">輸送状況</span><span class="v-unknown">確認できず</span></div>
+        </div>
+        <div class="dsig-meta">
+          情報源：<a href="https://www.mlit.go.jp/common/002016437.pdf" target="_blank" rel="noopener">国交省第38報</a>／こちらの確認：2026-08-13／確度：一次情報
+        </div>
+      </div>
+
+      <div class="dsig-card dsig-red">
+        <div class="dsig-title">
+          <span class="dsig-badge">🔴 支援必要・明確な不足あり</span>
+          <span class="dsig-days">断水17日目（実態継続日数）</span>
+        </div>
+        <p style="font-size:13px;">熊本県八代郡氷川町：断水2,132戸（国土交通省第38報、2026-08-12 13:00発表。前日からほぼ横ばい）。可搬式浄水装置が2026-08-04より稼働中、2026-08-09より入浴施設への給水にも活用（更新なし）。</p>
+        <div class="dsig-flow">
+          <span class="unknown">必要：水量未確認</span>
+          <span class="unknown">確保：未確認</span>
+          <span class="done">手配：給水車（八代生活環境事務組合扱い、氷川町分は自衛隊1台を含む）</span>
+          <span class="unknown">発送：未確認</span>
+          <span class="unknown">輸送中：未確認</span>
+          <span class="done">到着：可搬式浄水装置が入浴施設へ給水中（更新なし）</span>
+          <span class="unknown">受領：世帯数ベースは未確認</span>
+        </div>
+        <div class="dsig-meta">
+          情報源：<a href="https://www.mlit.go.jp/common/002016437.pdf" target="_blank" rel="noopener">国交省第38報</a>／こちらの確認：2026-08-13／確度：一次情報
+        </div>
+      </div>
+
+      <div class="dsig-card dsig-amber">
+        <div class="dsig-title">
+          <span class="dsig-badge">🟡 注意・一部不足（夜間のみ断水）</span>
+          <span class="dsig-days">継続日数：要確認</span>
+        </div>
+        <p style="font-size:13px;">熊本県上天草市：国交省の戸数統計上は「断水解消（現在0戸）」のままですが、実態は夜間断水（21時〜翌11時）が大矢野町（湯島地区除く）・姫戸町・龍ケ岳町で継続しているとみられます。<strong>8/13朝時点でこれを更新する一次情報は今回の調査では確認できず、前日から状況の変化は確認できていません。</strong>民間の給水情報サイトに8/12〜13にかけての計画断水と思われる記述も見られましたが、地震由来の断水と同一の措置か出典上明確に確認できなかったため、今回は採用を見送りました。</p>
+        <div class="dsig-meta">
+          統計上0でも実態は充足していないため、方針「情報がないことを🟢にしない」に基づき🟡を維持。
+          情報源：<a href="https://www.mlit.go.jp/common/002016437.pdf" target="_blank" rel="noopener">国交省第38報</a>／こちらの確認：2026-08-13
+        </div>
+      </div>
+    </div>
+
+    <div class="support" style="margin-top:16px;">
+      <h5>支援の窓口（再掲・要点のみ）</h5>
+      <p>義援金は<strong>熊本県（7/29〜10/30）</strong>と<strong>日本赤十字社（7/31〜10/30）</strong>で受付中です。振込先の口座番号・注意点など詳細は、<a class="src" href="daily-2026-08-02.html#sec-support">8月2日号の支援窓口セクション</a>にまとめてあります。振込先は必ず公式ページでご確認ください。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.mlit.go.jp/common/002016437.pdf" target="_blank" rel="noopener">国土交通省 第38報</a>（8/12 13:00発表）［一次］ ・ <a class="src" href="https://news.web.nhk/newsweb/na/nd-20260812de43373" target="_blank" rel="noopener">NHK（8/12、死者39人・避難者3,585人）</a> ・ <a class="src" href="https://news.yahoo.co.jp/articles/091fee2698f0b14ff99c7227ae0c05d99e60ebf4" target="_blank" rel="noopener">Yahoo!ニュース／TKUテレビ熊本（住宅被害・人的被害393人）</a> ・ <a class="src" href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁（令和8年熊本地震ポータル）</a>［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 為替・金利 -->
+  <section id="sec-fx">
+    <div class="sec-head"><span class="tick"></span><span class="cat">FX &amp; Rates</span><span class="sec-title">為替・金利 <span class="sub">/ ドル円は159円台半ばまで強含み</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>ドル円、米CPI通過後に159円台半ばへ強含み。9月利上げ確率は約40%へ低下</h4>
+      <p>8月12日夜(日本時間21:30)に発表された米7月CPIは、総合指数が前年比+3.4%(6月+3.5%から鈍化、市場予想と一致)、コア指数(食品・エネルギー除く)が前年比+2.5%(6月+2.6%から鈍化)と、いずれも市場予想どおりの結果でした。9月にFRBが利上げに踏み切るとの観測は後退しましたが、ドル売りは長続きせず、<strong>ドル円は終盤の取引で0.1%高の159円45銭前後、7月31日以来の水準まで強含みました</strong>(NY終値は159.41〜159.44円)。ロイターによれば、CME「フェドウオッチ」が算出するFRBの9月15-16日FOMCでの利上げ確率は約40%で、前週から低下しています(10月までの利上げ確率は56%)。アナリストは、7月のCPIだけでは9月FOMCの政策判断を決定づけないとの見方を示しています。</p>
+    </div>
+
+    <details class="dd">
+      <summary>詳しく読む — FOMCスタンスと今後の焦点</summary>
+      <div class="ddbody">
+        <div class="why">
+          <h5>次の焦点は本日8/13発表の米PPI(7月分)</h5>
+          <p>米東部時間8時30分(日本時間21時30分)に発表される予定です。市場予想の具体的な数値は今回の調査では確認できておらず要確認です。</p>
+        </div>
+        <div class="counter">
+          <h5>FRBのスタンスに大きな変化はなし</h5>
+          <p>7月28-29日のFOMCで政策金利を3.50〜3.75%に5会合連続で据え置くことを決定していますが、採決は9対3(3人が利上げを主張)と意見が割れています。8月12日のCPI発表後、FRB高官からの新たな発言等は今回の調査では確認できませんでした。9月FOMCまでには8月分の米雇用統計やインフレ指標など追加データも公表される見込みです。</p>
+        </div>
+      </div>
+    </details>
+    <p class="srcline">出典 <a class="src" href="https://news.infoseek.co.jp/article/12reutersJAPAN_KBN3U323Y/" target="_blank" rel="noopener">ロイター（ドル円159.45円、9月利上げ確率約40%）</a> ・ <a class="src" href="https://fx.minkabu.jp/news/375934" target="_blank" rel="noopener">みんかぶFX/為替（ドル円159円台に戻す）</a> ・ <a class="src" href="https://www.nikkei.com/article/DGXZQOGN112960R10C26A8000000/" target="_blank" rel="noopener">日本経済新聞（米7月CPI詳細）</a> ・ <a class="src" href="https://www.boj.or.jp/statistics/market/forex/fxdaily/index.htm" target="_blank" rel="noopener">日本銀行</a>［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 国内株式 -->
+  <section id="sec-jp">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Japan Equity</span><span class="sec-title">国内株式 <span class="sub">/ AI・半導体関連買われ続伸、6万7,500円台</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>日経平均、AI・半導体関連への買いで続伸。直近の確定終値として8/12終値を掲載</h4>
+      <p>日経平均株価は8月12日、<strong>前日比+553円84銭(+0.83%)高の6万7,524円06銭で続伸</strong>して取引を終えました。AI・半導体関連銘柄への買いが指数を押し上げたと報じられています。本日8月13日(木)は通常の取引日です。直近の確定終値として8/12終値を掲載しています。</p>
+      <p>大阪取引所の日経225先物(9月限)夜間取引は、日中の清算値比+70円高の6万7,730円で寄り付きました。夜間取引の終値については今回の調査では確認できておらず要確認です。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.jpx.co.jp/markets/statistics-equities/daily/index.html" target="_blank" rel="noopener">日本取引所グループ</a>［一次］ ・ <a class="src" href="https://s.kabutan.jp/news/n202608121177/" target="_blank" rel="noopener">株探（日経225先物夜間取引）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 米国市場 -->
+  <section id="sec-us">
+    <div class="sec-head"><span class="tick"></span><span class="cat">US Market</span><span class="sec-title">米国市場 <span class="sub">/ CPI無難通過でS&amp;P500・NASDAQは上昇、NYダウは小幅安</span></span></div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">NYダウ（8/12終値）</div><div class="vl mono">53,770.27</div><div class="ch down"><span class="ar">▼</span> -21.58(-0.04%)</div></div>
+      <div class="eq"><div class="nm">S&amp;P500（8/12終値）</div><div class="vl mono">7,748.50</div><div class="ch up"><span class="ar">▲</span> +0.26%</div></div>
+      <div class="eq"><div class="nm">NASDAQ（8/12終値）</div><div class="vl mono">26,588.49</div><div class="ch up"><span class="ar">▲</span> +0.54%</div></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <p>米国株式市場は8月12日、<strong>NYダウが5万3,770.27ドル(前日比-21.58、-0.04%)とほぼ横ばいで終えた一方、S&amp;P500は7,748.50(+0.26%)、NASDAQは2万6,588.49(+0.54%)と上昇しました</strong>。市場予想どおりだった7月CPI発表を受け、インフレ鈍化基調が確認されたことが、ハイテク株を中心とした買いにつながったとみられます。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.cnbc.com/amp/2026/08/11/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC（米株市場、CPI後の反応）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 商品 -->
+  <section id="sec-commodity">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Commodities</span><span class="sec-title">商品 <span class="sub">/ WTI原油は小幅続伸、NY金は6日ぶりに大幅反発</span></span></div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">WTI原油（9月限・8/12終値）</div><div class="vl mono">$83.27</div><div class="ch up"><span class="ar">▲</span> +0.07(+0.1%)</div></div>
+      <div class="eq"><div class="nm">NY金（12月限・8/12終値）</div><div class="vl mono">$4,467.5</div><div class="ch up"><span class="ar">▲</span> +0.6%・6日ぶり大幅反発</div></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>WTI原油は小幅続伸、NY金は6日ぶりに大幅反発</h4>
+      <p>WTI原油(9月限)は8月12日、<strong>前日比0.07ドル高(+0.1%)の83.27ドルで終値をつけ、続伸</strong>しました。中東情勢を巡る供給懸念が引き続き相場を下支えしているとみられます。<strong>NY金(12月限)は8月12日、前日比+0.6%の4,467.5ドルで終値をつけ、6日ぶりに大幅反発しました</strong>(ロイター確定値)。東京市場の金・白金も、NY高を受けて6日続伸しています。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://kabushiki.jp/market/indexes/WTICO00100" target="_blank" rel="noopener">株式新聞Web（WTI原油、8/12終値）</a> ・ <a class="src" href="https://finance.yahoo.co.jp/news/detail/806abed501145b340c3431333c38cbae144a29fe" target="_blank" rel="noopener">Yahoo!ファイナンス／トレーダーズ・ウェブ（NY原油・金相場12日、金は6日ぶり大幅反発）</a> ・ <a class="src" href="https://finance.yahoo.co.jp/news/detail/8d0c67b3758d6ba43806e597de232c67d605d778" target="_blank" rel="noopener">Yahoo!ファイナンス／時事通信（東京貴金属、NY高受け6日続伸）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 暗号資産 -->
+  <section id="sec-crypto">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Crypto</span><span class="sec-title">暗号資産 <span class="sub">/ ビットコイン、レンジ相場が継続</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-thin">情報少なめ</span></div>
+      <h4>ビットコイン、CPI通過後も大きな方向感なくレンジ内で推移</h4>
+      <p>ビットコインは8月12日午後9時(日本時間)時点で、<strong>6万4,182.85ドル前後(前日比+488.64ドル、+0.77%程度)</strong>で取引されています。5〜8週間続くレンジ(ボックス)圏での取引が続いており、注目されていた米CPIが市場予想どおりの結果だったこともあり、大きな方向感は出ていません。8月13日朝時点でのさらなる値動きは今回の調査では確認できておらず要確認です。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://s.kabutan.jp/news/n202608121379/" target="_blank" rel="noopener">株探（ビットコイン、レンジ相場続く）</a> ・ <a class="src" href="https://jp.bloomingbit.io/feed/news/118161" target="_blank" rel="noopener">Bloomingbit（ビットコイン、5週続くボックス圏）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AI -->
+  <section id="sec-ai">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; Tech</span><span class="sec-title">AI・生成AI <span class="sub">/ 今回、重要な新規発表は確認できず</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-thin">情報少なめ</span></div>
+      <h4>OpenAI・Google・Anthropic・NVIDIA・Microsoft等について、8/12〜8/13朝の重要な新規発表は確認できず</h4>
+      <p>今回の調査では、OpenAI・Google・Anthropic・NVIDIA・Microsoft・Meta・Amazon・半導体・AIインフラ・ロボット・AIエージェントの各分野について、2026年8月12日〜8月13日朝にかけての一次情報に基づく重要な新規発表は確認できませんでした。8月10日にNVIDIAが発表したApollo・BlackRock・Blackstone・Brookfield・Goldman Sachs・KKRとのAIコンピュート金融基盤構築(5,000億ドル超)についても、個別パートナーとの具体的な資金調達条件等の続報は今回確認できていません。</p>
+      <p>なお、EU(欧州連合)のAI Act(AI法)第50条の透明性義務(対話型AIとの対話であることの明示、AI生成・改変コンテンツの明示等)が、<strong>2026年8月2日から適用段階に入りました</strong>(欧州委員会公式)。違反時の制裁金は最大1,500万ユーロまたは全世界年間売上高の3%です。日本企業への直接的な影響範囲は今回の調査では確認できておらず要確認です。</p>
+    </div>
+    <div class="note">
+      <h5>この項目についてのメモ</h5>
+      <p>検索では日付が明確でない、あるいは数週間前とみられるAI関連記事も見つかりましたが、「昨日から何が変わったか」を重視する本レポートの方針上、発表日を明確に確認できないものは今回採用を見送りました。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noopener">欧州委員会「Transparency obligations under Article 50 of the AI Act」</a>［一次］。その他の分野は検索により確認できた情報の範囲内で、個別の一次情報リンクは今回確認できず</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 世界情勢・台風15号 -->
+  <section id="sec-world">
+    <div class="sec-head"><span class="tick"></span><span class="cat">World</span><span class="sec-title">世界情勢・台風15号 <span class="sub">/ コロンビア地震は情報源により数値が大きく異なる、台風15号は熱帯低気圧化・被害確認</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>コロンビアM7.4地震、AP通信は死者265人・行方不明約500人(公式)、ロイターは死者250人・負傷3,770人と報道</h4>
+      <p>2026年8月10日に発生したコロンビア西部チョコ県付近を震源とするマグニチュード7.4の地震について、<strong>AP通信は死者少なくとも265人、公式の行方不明者数は約500人(民間の追跡データベースでは4,100人超)と報じています。一方、ロイターは死者約250人・負傷3,770人としています。</strong>いずれも2026年8月12日時点の報道で、<strong>情報源により死者・行方不明者・負傷者の数値が大きく異なり、単一の確定値は今回の調査でも特定できていません。</strong>本レポートでは特定の集計サイトの数値に一本化せず、通信社ごとの数値をそのまま併記しています。</p>
+      <p>コロンビア地質調査所によれば、余震は70回以上発生しています。コロンビア政府は全国災害非常事態を宣言しており、救助活動が続いています。日本からの具体的な新たな支援・声明は今回の調査では確認できていません。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>ホルムズ海峡、こう着状態が継続</h4>
+      <p>NHKの8月12日12時24分配信の記事によれば、イラン最高国家安全保障会議のレザイ事務局長は「米国が海上封鎖や軍事行動を終わらせない限りホルムズ海峡が開放されることはない」との立場を改めて示しており、米国とイランの双方が互いに異なる主張を続ける中でこう着状態が続いています。8月11日の表明から実質的な進展は今回の調査では確認できませんでした。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>台風15号、8/12午前9時に熱帯低気圧化。負傷者9人、倒木・停電の被害</h4>
+      <p>8月11日午後8時頃に茨城県南部へ上陸した台風15号は、本州を西進し、<strong>8月12日午前9時に丹後半島沖の日本海で熱帯低気圧に変わりました</strong>。総務省消防庁の8月12日午前9時時点のまとめでは、岩手・茨城・栃木の3県で計7人、埼玉県で2人の計9人が強風による転倒等で軽傷を負ったほか、倒木や約3,480戸の停電といった被害が確認されています。<strong>8/12発表の24時間降水量予報(8/13朝まで)は本レポート発行時点で期限が過ぎているため、本日分の更新値は今回の調査では確認できておらず、掲載を見送りました。</strong>熱帯低気圧化後も湿った空気の流れ込みが続いており、大雨・土砂災害・浸水への注意は引き続き必要です。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://apnews.com/article/a35440647cc3efed1bbce935d223565e" target="_blank" rel="noopener">AP通信（コロンビア地震、死者265人・行方不明約500人〈公式〉・民間データ4,100人超）</a> ・ <a class="src" href="https://topics.smt.docomo.ne.jp/article/reuters/world/reuters-20260811043" target="_blank" rel="noopener">ロイター（コロンビア地震、死者250人超）</a> ・ <a class="src" href="https://news.web.nhk/newsweb/na/nd-20260812de43385" target="_blank" rel="noopener">NHK（ホルムズ海峡、8/12 12:24配信）</a> ・ <a class="src" href="https://tenki.jp/forecaster/deskpart/2026/08/12/40111.html" target="_blank" rel="noopener">tenki.jp（台風15号、熱帯低気圧化）</a> ・ <a class="src" href="https://news.web.nhk/newsweb/na/nd-20260811de43291" target="_blank" rel="noopener">NHK（台風15号、負傷者・停電）</a> ・ <a class="src" href="https://www.nikkei.com/article/DGXZQOUD111RJ0R10C26A8000000/" target="_blank" rel="noopener">日本経済新聞（台風15号、本州横断）</a></p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 情報が薄かった分野 -->
+  <section id="sec-thin">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Note</span><span class="sec-title">今回、情報が薄かった分野 <span class="sub">/ 水増しせず、そのまま明示します</span></span></div>
+    <div class="note">
+      <p><strong>AI・生成AI・半導体：</strong>8/12〜8/13朝にかけて、一次情報で確認できる重要な新規発表は今回の調査では特定できませんでした（詳細は上記AIセクション参照）。</p>
+      <p><strong>ウクライナ・ロシア情勢：</strong>8/12時点での具体的な進展・新規報道は今回の調査では確認できませんでした。</p>
+      <p><strong>企業・決算：</strong>アプライド・マテリアルズが8/13に決算発表を予定していること以外、個別の重要決算・ニュースは今回の調査では特定できませんでした。</p>
+      <p><strong>台風15号の8/13朝の降水量実況：</strong>8/12発表の予報は本レポート発行時点で期限切れのため、最新の実況値は今回の調査では確認できませんでした（世界情勢セクション参照）。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Watchlist</span></div>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">本日・今週の注目 <span class="sub">/ ボタンで開く</span></span></div>
+    <p style="font-size:13.5px;margin-bottom:13px;">押すとログイン中のご自身のTradingViewで開きます。本日は米PPI発表と、熊本の断水復旧状況・八代市周辺の大潮による浸水リスクが焦点です。</p>
+
+    <div class="sp today"><span class="dt mono">8/13(木)</span><span class="ev">米<b>PPI</b>(7月分)発表 — 米東部時間8:30/日本時間21:30、市場予想は今回の調査では確認できず要確認</span></div>
+    <div class="sp today"><span class="dt mono">8/13(木)</span><span class="ev">アプライド・マテリアルズ、Q3決算発表・決算電話会議(米東部時間16:30) — 会社ガイダンス: 売上高89.5億ドル±5億ドル、非GAAP EPS 3.36ドル±0.20ドル</span></div>
+    <div class="sp today"><span class="dt mono">8/13(木)</span><span class="ev">新月・大潮のピーク — 八代市周辺の沿岸・河口付近で満潮時の浸水・冠水に注意（国交省）</span></div>
+    <div class="sp"><span class="dt mono">8/14(金)</span><span class="ev">米<b>小売売上高</b>(7月分)発表 — 米東部時間8:30/日本時間21:30(米Census Bureau公式)</span></div>
+    <div class="sp"><span class="dt mono">継続</span><span class="ev">熊本地震・断水状況 — 災害支援シグナルで毎日追跡</span></div>
+
+    <div class="tvgrid" style="margin-top:14px;">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=FX%3AUSDJPY&interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">ドル円（15分足）</span><span class="tvlink-desc">159円台半ばから160円方向を試すか確認</span><span class="tvlink-sym mono">FX:USDJPY ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物</span><span class="tvlink-desc">本日9時の現物取引再開後の反応に注目</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUSOIL&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">WTI原油</span><span class="tvlink-desc">中東情勢の緊迫化を継続注視</span><span class="tvlink-sym mono">TVC:USOIL ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=COINBASE%3ABTCUSD&interval=240" target="_blank" rel="noopener"><span class="tvlink-ja">ビットコイン</span><span class="tvlink-desc">レンジを抜けるか確認</span><span class="tvlink-sym mono">COINBASE:BTCUSD ↗</span></a>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot">
+    <div class="askai">
+      <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+      <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。</p>
+      <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。</p>
+      <div class="askai-box">
+        <textarea class="askai-q" id="askaiQ" readonly rows="2">この朝レポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+        <button type="button" class="askai-copy" id="askaiCopyBtn">コピー</button>
+      </div>
+      <div class="askai-links">
+        <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する（1）↗</a>
+        <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する（2）↗</a>
+        <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する（3）↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--ink-3);text-align:center;margin-top:10px;">（1）（2）（3）はそれぞれ普段お使いのAIチャットサービスに対応しています。「〇〇」の部分を気になった項目名に書き換えてからお使いください。レポート本文は自動送信されません。<br>熊本地震の状況と災害支援シグナルは、続報が出た段階で毎日版で追います。</p>
+    </div>
+    <p class="disc">本レポートはAI総合研究機構の朝の共有レポートです。本日8月13日(木)は東京証券取引所・米国市場ともに通常の取引日です。本レポートで使用している株式関連の確定値は8/12終値を基準としています。AI総合研究機構「災害支援シグナル」は本日も継続運用しています。「災害を報じて終わらない。」を理念に、断水・支援物資の状況を必要→確保→手配→輸送→到着の各段階まで追い、確認できないことは推測で埋めず「確認できず」と明示しています。情報がないことを🟢と表示することはしません。／ 論調の目安：ポジティブ4割・中立4割・注意/ネガティブ2割を目安に編集していますが、災害・重大リスクに関する情報はこの比率に関係なく目立つ位置に掲載しています。事実と観測・見方・予測は区別して記載し、確定していない見立ては「見方」「観測」「可能性」「予報」と明記しています。／ 情報源は一次情報を優先しています（気象庁・日本銀行・日本取引所グループ・国土交通省等へ直接リンク）。ニュース・解説の情報源は特定媒体に偏らないよう複数媒体に分散しています。／ 熊本地震の死者数は8月10日18時時点(39人)の確認値のままで、本日の調査でも更新は確認できておらず要確認です。コロンビア地震の被害数値は情報源により差があり、単一の確定値は特定できていません。最新の状況は各公式ページでご確認ください。／ 数値は出典元の直近値、チャートはTradingViewのライブデータです。いずれも情報提供が目的で、投資判断への助言ではありません。／ 生成: 2026年8月13日</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var ta = document.getElementById('askaiQ');
+  if(!btn || !ta) return;
+  btn.addEventListener('click', function(){
+    function showCopied(){
+      var orig = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('is-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('is-copied'); }, 2000);
+    }
+    function fallback(){
+      ta.removeAttribute('readonly');
+      ta.focus();
+      ta.select();
+      try{
+        if(document.execCommand('copy')) showCopied();
+      }catch(e){}
+      ta.setAttribute('readonly', 'readonly');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(showCopied, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
