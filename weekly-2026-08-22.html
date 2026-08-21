@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Brief — 2026年8月22日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .fx-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding:16px 18px;border-radius:14px;margin-bottom:14px;
+    background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFF 62%,#F4F7FF 100%);
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .fx-pair{font-size:11px;font-weight:800;letter-spacing:.11em;color:var(--ink-3);text-transform:uppercase;}
+  .fx-rate{font-size:38px;font-weight:800;letter-spacing:-.038em;line-height:1.05;margin-top:3px;}
+  .fx-rate small{font-size:15px;font-weight:700;color:var(--ink-3);margin-left:3px;}
+  .fx-meta{font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.75;}
+
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:430px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .cta{font-size:14px;color:var(--ink-2);text-align:center;}
+  .cta b{color:var(--ink);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  @media(max-width:560px){
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .fx-rate{font-size:32px;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  /* 週刊版の追加スタイル */
+  .chk{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line-2);align-items:flex-start;}
+  .chk:first-of-type{border-top:none;padding-top:2px;}
+  .mark{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;
+    justify-content:center;font-size:14px;font-weight:800;color:#fff;}
+  .m-ok{background:linear-gradient(140deg,#0E9F6E,#34C79A);}
+  .m-ng{background:linear-gradient(140deg,#E02424,#F26D6D);}
+  .m-half{background:linear-gradient(140deg,#E8912D,#F5C87A);}
+  .chk .body{flex:1;min-width:0;}
+  .said{display:block;font-size:12.5px;color:var(--ink-3);padding:7px 11px;margin-bottom:7px;
+    background:var(--surface-2);border-left:2px solid var(--line);border-radius:0 8px 8px 0;font-style:italic;}
+  .chk .body b{color:var(--ink);}
+  .chk .body p{font-size:13.5px;margin-bottom:5px;}
+  .wk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .wk{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 10px;text-align:center;}
+  .wk .d{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .wk .v{font-size:15px;font-weight:800;margin-top:3px;letter-spacing:-.02em;}
+  .wk .c{font-size:11px;font-weight:700;margin-top:2px;}
+  .wk .c.up{color:var(--up);} .wk .c.down{color:var(--down);} .wk .c.flat{color:var(--ink-3);}
+  @media(max-width:640px){.wk-grid{grid-template-columns:repeat(3,1fr);}}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:19px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>Weekly Brief</span>
+      <span class="date">2026年8月22日（土）／ 第5号</span>
+    </div>
+    <h1 class="hello">日経平均は5日続伸から一転、2日間で3,894円安。<br>週の後半、新たな地震と台風が同時に発生しました。</h1>
+    <p class="sub-hello">対象期間は8/16（日）〜8/22（土）。市場は8/17（月）まで5日続伸を維持し1カ月半ぶりに69,220円台へ乗せましたが、8/18（火）にトランプ大統領の「ホルムズ海峡は米国領」発言等を受けて大幅反落、8/19（水）も続落し2営業日で3,893.83円（-5.58%）下落。米財務省の国債買い戻し拡大発表を受け8/20（木）に反発、8/21（金）は小幅反落の66,016.36円で着地しました（週間 -2,697.44円、-3.93%）。災害面では、熊本地震の断水が週を通じて約27,400戸から約4,300戸へ84%減少する一方、千葉豪雨は死者が9人→13人へ増加しつつも鉄道再開・断水解消が進みました。週の後半には、インドネシア・フローレス島沖でM7.7の新規地震（死者83人）と、台風18号（ソウデル）の発生・急速な勢力上振れという<strong>2件の新規災害が同時に加わりました。</strong>世界情勢では、ホルムズ海峡の緊張激化（「米国領」発言・UAEへのミサイル着弾・対イラン経済戦争宣言）、ザポリージャ原発の外部電源完全喪失、米国によるICC所長（日本人）への制裁という、性質の異なる複数の緊迫化が同じ週に集中しました。まずは、先週の見立ての答え合わせから。</p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-check">Week <span class="kw-arrow">↓</span></a></span><span>
+        <b>日経平均は5日続伸で1カ月半ぶりの69,220円台から一転、2営業日で3,893.83円（-5.58%）の急落を経て、週間では-2,697.44円（-3.93%）の下落で着地しました。</b>
+        <span class="but"><em>但し</em> 米国株は週間でNYダウ-0.85%・S&amp;P500-1.43%・NASDAQ-2.05%と、<strong>日米そろって下落した週</strong>でした（詳細は米国市場セクション参照）。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-quake">Kumamoto <span class="kw-arrow">↓</span></a></span><span>
+        <b>熊本地震の断水は、週初の約27,400戸から週末の約4,300戸へ、週を通じて約84%減少しました。</b>死者39人は週を通じ一切変化がありません。
+        <span class="but"><em>但し</em> 建設型応急住宅は整備決定分276戸(15団地)がすべて着工済みとなった一方、<strong>断水解消(水道本管までの通水可能化)の目標は引き続き「8月末」</strong>のままです。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-chiba">Chiba <span class="kw-arrow">↓</span></a></span><span>
+        <b>千葉豪雨は死者が9人→13人へ増加しましたが、JR外房線の大網〜本納間が予定どおり再開し、断水も解消しました。</b>
+        誉田〜大網間は引き続き8/24再開目標です。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-newquakes">Indonesia <span class="kw-arrow">↓</span></a></span><span>
+        <b>週の半ば、インドネシア・フローレス島沖でM7.7の地震が新たに発生していたことが判明し、死者は週末までにBasarnas発表で83人まで増加しました。</b>
+        <span class="but"><em>但し</em> 国家防災庁(BNPB)公式による確認はまだ取れておらず、発表主体の違いに留意が必要です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-newquakes">Typhoon <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風18号(ソウデル)が週の後半に発生し、週末にかけて最大瞬間70m/sの「非常に強い」勢力への発達予想、沖縄本島近海への接近ルートまで一気に上振れしました。</b>
+        週初にはまだ存在すらしていなかった台風が、週末には最優先級の注目項目になっています。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">Hormuz <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡情勢は週の半ばに一気に緊迫化しました。トランプ大統領が「ホルムズ海峡は米国領」とSNS投稿し、UAEへのイランのミサイル発射(5月以来初)も発表されました。</b>
+        週末には対イラン「経済戦争」宣言、UAEの対イラン全面取引停止まで進みました。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">ICC <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国が8/18、国際刑事裁判所(ICC)の赤根智子所長ら2人を制裁対象に指定するという異例の事態が発生しました。</b>
+        日本政府は「非常に遺憾」と表明、超党派議連やオランダも反応する国際問題に発展しています。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">AI <span class="kw-arrow">↓</span></a></span><span>
+        <b>NVIDIAがOpenAIのデータセンター向けに最大1,050億ドルの支払い保証を約束し、Unitree Roboticsは上海上場初日に一時+629%高となりました。</b>
+        今週から国内AIの重点観測を開始し、NEC「cotomi Agent」のMicrosoft Marketplace販売開始等を確認しています。
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-next">Next <span class="kw-arrow">↓</span></a></span><span>
+        <b>来週の焦点は、台風18号の沖縄接近と米・対カナダ関税の決着です。</b>
+        ジャクソンホール会議(新FRB議長ウォーシュ氏の初講演)、NVIDIA決算(8/26)も注目されます。
+      </span></li>
+    </ul>
+
+    <div class="wk-grid">
+      <div class="wk"><div class="d">8/17 月</div><div class="v mono">69,220</div><div class="c up">+506</div></div>
+      <div class="wk"><div class="d">8/18 火</div><div class="v mono">67,461</div><div class="c down">-1,760</div></div>
+      <div class="wk"><div class="d">8/19 水</div><div class="v mono">65,326</div><div class="c down">-2,134</div></div>
+      <div class="wk"><div class="d">8/20 木</div><div class="v mono">66,217</div><div class="c up">+890</div></div>
+      <div class="wk"><div class="d">8/21 金</div><div class="v mono">66,016</div><div class="c down">-200</div></div>
+    </div>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">日経平均 週間</div><div class="vl mono">-2,697</div><div class="ch down">-3.93%</div><div class="ctx">68,714 → 66,016</div></div>
+      <div class="cell"><div class="nm">終値ベース値幅</div><div class="vl mono">3,894</div><div class="ch">終値高69,220 / 終値安65,326</div><div class="ctx">週前半の急伸→急落→反発</div></div>
+      <div class="cell"><div class="nm">熊本 断水（3自治体）</div><div class="vl mono">約4,300戸</div><div class="ch up">週初比 約23,100戸減（-84%）</div><div class="ctx">週を通じ最大の改善項目</div></div>
+      <div class="cell"><div class="nm">ビットコイン 週間</div><div class="vl mono">+約22%</div><div class="ch up">約64,500→78,294ドル</div><div class="ctx">木曜以降の急伸が牽引</div></div>
+    </div>
+
+    <p class="jump">まずは、先週の見立ての答え合わせから。<a href="#sec-check">↓</a></p>
+  </header>
+
+  <div class="divider" id="deep"><span>Follow-up — 先週の答え合わせ</span></div>
+
+  <section id="sec-check">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Check</span><span class="sec-title">予想は当たったか <span class="sub">/ 外した分も載せます</span></span></div>
+
+    <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:6px;">先週（weekly-2026-08-15.html）で示した<strong>AI総合研究機構としての見立て</strong>を検証します。今回は検証可能な1件中、1件が的中しました。</p>
+
+    <div class="chk">
+      <span class="mark m-ok">✓</span>
+      <div class="body">
+        <span class="said">8/15の週刊版に書いたこと ——「来週は158〜160円のレンジ推移を軸に見ています」</span>
+        <b>的中しました。</b>
+        <p>ドル円は週を通じて<strong>158.17円(週央8/19安値)〜159.60円台(週前半高値)のレンジ内</strong>で推移し、160円を上抜けることも158円を明確に割り込むこともありませんでした。週前半(8/17〜8/18)は159円台で推移し、週半ば8/19に米財務省の国債買い戻し拡大発表を受けて158.17円まで急伸(円高)、週後半は158円台後半〜159円台前半へ戻すという値動きでしたが、<strong>終始レンジ内に収まった</strong>点で見立てどおりの展開でした。</p>
+        <p>先週同時に触れた「日本株の独歩高がどこまで続くか」という観測(明確な方向予想ではなく注視点としての記載)については、実際には<strong>週後半に大幅な反落(2営業日で-5.58%)が発生し、独歩高は続きませんでした。</strong>この点は firm な予想ではなかったため、今回の当たり/外れの集計対象からは外しています。</p>
+      </div>
+    </div>
+
+    <div class="counter">
+      <h5>この答え合わせ自体への、別の見方</h5>
+      <p>今回は珍しくレンジ予想が的中しましたが、<strong>レンジの中で何が起きたか(週半ばの急落・急反発)までは予想の対象にしていませんでした。</strong>「値幅の見立て」と「値動きの中身の見立て」は別物であることが、今回もあらためて確認できます。</p>
+    </div>
+  </section>
+
+  <div class="divider"><span>This Week — 今週の3大変化</span></div>
+
+  <section id="sec-changes">
+    <div class="sec-head"><span class="tick"></span><span class="cat">3 Changes</span><span class="sec-title">今週の3大変化</span></div>
+
+    <div class="item">
+      <h4>①　熊本地震の断水が週を通じて84%減少、8月末解消目標が現実味を帯びる</h4>
+      <p>週初の約27,400戸(8/16時点)から、週末の約4,300戸(8/21時点)まで、<strong>週を通じて約23,100戸(-84%)の大幅な改善</strong>が続きました。特に8/16→8/17に約27,400戸→約8,400戸へ約7割減という急激な進捗があり、以降も緩やかな減少が継続しています。建設型応急住宅も整備決定分276戸(15団地)がすべて着工済みとなり、生活再建のフェーズが着実に進んでいます。</p>
+    </div>
+    <div class="item">
+      <h4>②　日本株が5日続伸から一転、2営業日で-5.58%の急落。米財務省の長期国債買い戻し拡大で反発</h4>
+      <p>8/17(月)まで5日続伸で1カ月半ぶりに69,220円台へ乗せましたが、8/18(火)〜8/19(水)の2営業日で<strong>3,893.83円(-5.58%)の急落</strong>となりました。背景はホルムズ海峡緊迫(トランプ氏「米国領」発言等)による長期金利上昇・AI半導体株総崩れです。8/19に米財務省が長期国債買い戻し規模を倍増(最低20億ドル→最低40億ドル)すると発表したことを受け金利が急低下し、8/20は+890円37銭(+1.36%)で反発。週を通じて<strong>「金利上昇による株安」→「米財務省による長期国債買い戻し拡大」→「株の反発」</strong>という一連の流れが完結しました。</p>
+    </div>
+    <div class="item">
+      <h4>③　世界情勢が一気に緊迫化。ホルムズ海峡・ザポリージャ原発・ICC制裁が同じ週に集中</h4>
+      <p>8/18のトランプ大統領「ホルムズ海峡は米国領」発言、8/18のUAEへのイランのミサイル発射(5月以来初)、8/18の米国によるICC赤根所長への制裁、8/18のザポリージャ原発ドローン攻撃(16人死傷)から8/20の外部電源完全喪失まで、<strong>性質の異なる複数の国際緊迫化が同じ1週間に集中しました。</strong>週末にはトランプ大統領の対イラン「経済戦争」宣言、UAEの対イラン全面取引停止まで進み、緊張が緩和する兆しは週を通じて確認できませんでした。</p>
+    </div>
+  </section>
+
+  <div class="divider"><span>Ongoing — 継続観測</span></div>
+
+  <section id="sec-continuity">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Ongoing</span><span class="sec-title">継続観測 <span class="sub">/ 先週から変わらず続いていること</span></span></div>
+
+    <div class="item">
+      <h4>コロンビア地震の死者数は、週を通じて情報源間の食い違いが解消していません</h4>
+      <p>週初281人(8/13発表、更新確認できず)→8/18に287人・行方不明194人→8/19は287人のまま(コロンビア政府発表を継続採用)→8/20に289人・行方不明143人(捜索進展による振り分けとの見方)→<strong>週末の8/21配信ではロシア国営メディアが死者319人と報道する一方、別報道は死者254人とするなど、週の最後になって情報源間の食い違いがむしろ拡大しました。</strong>コロンビア政府公式(大統領府・UNGRD)による8/21時点の直接発表は今回の調査でも確認できておらず、当研究所では8/20発表の314人・行方不明262人を最後に確認できた公式値として扱っています。</p>
+    </div>
+    <div class="item">
+      <h4>千葉豪雨・熊本地震とも、大規模な通信障害の報告は週を通じて確認されていません</h4>
+      <p>週内で報じられた各種災害・事故について、NTTドコモ・KDDI・SoftBank各社の公式障害情報を継続確認しましたが、<strong>大規模な通信インフラ障害は今週も報告されませんでした。</strong></p>
+    </div>
+  </section>
+
+  <div class="divider"><span>Turning Point — 今週の転換点</span></div>
+
+  <section id="sec-turning">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Turning Point</span><span class="sec-title">今週の転換点</span></div>
+
+    <div class="item">
+      <h4>8/18(火) — 最も情報が集中した一日。株安・ホルムズ緊迫・ICC制裁・原発ドローン攻撃が重なる</h4>
+      <p>日経平均が6営業日ぶりの大幅反落(-2.54%)となった同じ8月18日に、トランプ大統領の「ホルムズ海峡は米国領」発言、米国によるICC赤根所長らへの制裁指定、ザポリージャ原発でのドローン攻撃(16人死傷)が重なりました。<strong>週内で最も多くの重大事案が集中した一日</strong>という点で、今週最大の転換点です。</p>
+    </div>
+    <div class="item">
+      <h4>8/19(水) — 米財務省の国債買い戻し拡大発表が、金利急低下・株反発・金急反発の起点に</h4>
+      <p>8/19に発表された米財務省の長期国債買い戻し規模の倍増方針は、その日のうちに米長期金利を急低下させ(10年債一時4.65%前後)、翌8/20の日本株反発(+1.36%)、金の急反発(スポット一時+3.6%超)につながりました。<strong>一つの政策発表が複数市場に同時に波及した</strong>典型例です。</p>
+    </div>
+    <div class="item">
+      <h4>8/19〜8/20 — インドネシア地震・台風18号という2件の新規災害が相次いで表面化</h4>
+      <p>実際の発生は8/15(インドネシア地震)・8/19(台風18号認定)でしたが、いずれも<strong>週の後半になって毎日版の最優先項目に浮上</strong>しました。週初時点では存在すら確認されていなかった項目が、週末には気象庁公式予報で「非常に強い」勢力・沖縄接近ルートまで具体化するなど、急速に重要度を増しています。</p>
+    </div>
+  </section>
+
+  <div class="divider"><span>Weekly Charts — 日足・週足で見る</span></div>
+
+  <div class="note" style="margin-top:14px;">
+    <h5>週刊版のチャートについて</h5>
+    <p>週刊版は<strong>30分・1時間・4時間・日足・週足・月足</strong>を軸にしています。毎日版が1分〜4時間足で「その日の動き」を見るのに対し、こちらは<strong>週以上のトレンド</strong>を見る構成です。</p>
+  </div>
+
+  <!-- 千葉豪雨 -->
+  <section id="sec-chiba">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Chiba Heavy Rain</span><span class="sec-title">千葉豪雨 週間まとめ <span class="sub">/ 死者は9人→13人へ増加も、鉄道再開・断水解消が進捗</span></span></div>
+
+    <div class="dmg">
+      <div><div class="k">死者（週末時点）</div><div class="v">13</div><div class="u">人・週初9人から+4</div></div>
+      <div><div class="k">行方不明（週末時点）</div><div class="v">1</div><div class="u">人・週内2人まで増加後、減少</div></div>
+      <div><div class="k">住宅被害</div><div class="v">2,314+</div><div class="u">棟(全壊3含む)・8/18時点</div></div>
+      <div><div class="k">断水（千葉市）</div><div class="v">解消</div><div class="u">8/19応急給水で解消</div></div>
+    </div>
+
+    <div class="item">
+      <h4>週の流れ — 死者数は週前半・週半ばに2度増加、鉄道は大網〜本納間が予定どおり再開</h4>
+      <p>死者数は週初9人(70代男性の死亡を8/16号で新確認)から、8/19号で新たに2人の死亡が確認され<strong>13人</strong>まで増加しました。行方不明者は一時2人まで増えた後、1人まで減少しています。住宅被害は8/18時点で浸水約2,000棟、8/19時点で床上・床下計2,314棟(全壊3・半壊等63棟含む)、負傷37人です。断水は週初の約50戸(千葉市)から、<strong>8/19の応急給水作業により8/19〜20にかけて解消</strong>しました。</p>
+      <p>鉄道は、JR外房線大網〜本納間が<strong>8月18日始発から予定どおり運転再開</strong>し、22日時点でも再開状態を維持しています。誉田〜大網間は引き続き8月24日の再開目標です。道路は都道府県道の通行止めが、週初の2県8区間から週末には1県4区間まで段階的に縮小しました。</p>
+    </div>
+
+    <div class="why">
+      <h5>放置車両対応、土砂災害警報の解除など、復旧のための行政対応も並行して進捗</h5>
+      <p>8/16、千葉県災害時交通マネジメント検討会が設置され、8/18には放置車両対応プロジェクトチームが発足(仮置場405台分確保)。8/17〜8/18にかけて路上放置車両の撤去(レッカー車17台体制)も進みました。レベル4土砂災害危険警報は8/16 8:00時点で全域解除されています。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 死者数の増加は「新規被害」ではなく「確認の遅れ」の可能性</h5>
+      <p>週内2度の死者数増加(9→10→13人)は、いずれも既存の被害状況の確認・集計が進んだ結果として報告されており、新たな二次災害による死者増加ではないとみられます。ただし、この点についての明示的な当局コメントは今回の調査では確認できておらず、要確認です。</p>
+    </div>
+    <p class="srcline">出典 気象庁［一次］ ・ 国土交通省 第7報・第8報［一次］ ・ 内閣府とりまとめ［一次］ ・ 各日の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- 熊本地震 -->
+  <section id="sec-quake">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kumamoto</span><span class="sec-title">熊本地震 週間まとめ <span class="sub">/ 断水が週を通じて84%減少、死者数は一切変化なし</span></span></div>
+
+    <div class="dmg">
+      <div><div class="k">死者（週を通じ）</div><div class="v">39</div><div class="u">人・変化なし</div></div>
+      <div><div class="k">断水 8/16(7:30)</div><div class="v">約27,400</div><div class="u">戸(3自治体計)</div></div>
+      <div><div class="k">断水 8/21(7:30)</div><div class="v">約4,300</div><div class="u">戸(3自治体計)</div></div>
+      <div><div class="k">建設型応急住宅</div><div class="v">276戸</div><div class="u">整備決定分すべて着工済み</div></div>
+    </div>
+
+    <div class="item">
+      <h4>週の流れ — 8/16→8/17に約7割減という最大の進捗、以降も緩やかな改善が継続</h4>
+      <p>死者39人は週を通じて一切更新がなく、新たな犠牲は確認されていません。断水は<strong>8/16時点の約27,400戸から、8/17発表分(第43報)で約8,400戸へ約7割の急減</strong>を記録しました。以降も、8/18約7,300戸→8/19約5,400戸→8/20約4,900戸→8/21約4,300戸と、緩やかな減少が一週間を通じて継続しています。内訳では、八代市が21,584戸(8/16)→1,021戸(8/21)、宇城市が4,098戸(8/16、横ばい)→2,579戸(8/21)、氷川町が1,704戸(8/16)→684戸(8/21)と、いずれも大きく改善しました。</p>
+      <p>国道219号新萩原橋(八代市)の通行止めは週を通じて継続していますが、8月下旬の一般車両通行再開見込みに変化はありません。鉄道は、JR鹿児島線宇土駅〜小川駅間で8/19からバス代替輸送が開始され、週末には8月26日から宇土駅〜八代駅間へのバス代行輸送拡大も判明しました。</p>
+    </div>
+
+    <div class="why">
+      <h5>「必要→確保→手配→輸送→到着」の進捗 — 海保給水支援は週を通じて積み増しが継続</h5>
+      <p>八代港での海上保安庁給水支援は、7/29〜8/15累計の約511.8トン・302世帯から、7/29〜8/21累計で約538.5トン・489世帯へ増加。三角港も同期間で約310.3トン・777世帯から約312.8トン・847世帯へ積み増しが続いています。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 「8割改善」は喜ばしい進捗だが、残る4,300戸は依然として生活に直結する不足</h5>
+      <p>週を通じての改善幅は大きいものの、<strong>週末時点でなお4,300戸が断水中</strong>で、多くは管路の漏水調査のため通水後も使用自粛が要請されています。断水解消(水道本管までの通水可能化)の目標時期は週を通じて「8月末」のまま変わっておらず、最後の仕上げ段階にはなお時間がかかる可能性があります。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.mlit.go.jp/common/002017654.pdf" target="_blank" rel="noopener">国土交通省 第43報〜第47報</a>［一次］ ・ 海上保安庁（給水支援実績）［一次］ ・ 各日の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- 新規災害：インドネシア地震・台風18号 -->
+  <section id="sec-newquakes">
+    <div class="sec-head"><span class="tick"></span><span class="cat">New This Week</span><span class="sec-title">インドネシア地震・台風18号 <span class="sub">/ 週の後半に加わった2件の新規災害</span></span></div>
+
+    <div class="item">
+      <h4>インドネシア・フローレス島沖地震（M7.7） — 死者は週内で68人→83人に増加</h4>
+      <p>現地時間8月15日午前6時ごろ、東ヌサトゥンガラ州フローレス島北部沖でM7.7の地震が発生し、震源近傍で津波約1.6mを観測しました。当研究所では8/19号で初めて取り上げ、当時はBNPB(国家防災庁)発表として<strong>死者68人・負傷200人超、住宅被害1,300戸超、避難者約5,000人</strong>と報じられていました。週末の8/21配信では、国家捜索救助庁(Basarnas)発表として<strong>死者83人・重傷328人・軽傷639人</strong>まで増加しており、<strong>発表主体がBNPBからBasarnasへ変わっている点、BNPB公式による確認が週を通じて取れていない点</strong>には注意が必要です。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>台風18号（ソウデル） — 発生から数日で「非常に強い」勢力・沖縄接近ルートまで予想が具体化</h4>
+      <p>気象庁は8月19日12:00、トラック諸島近海の熱帯低気圧を台風18号(ソウデル)と認定しました。認定直後の8/19 13:05発表では「8/23頃に小笠原近海接近、8/24には強い勢力で日本の南を進む見込み」という比較的穏やかな予想でしたが、<strong>週を追うごとに勢力予想が急速に上振れし</strong>、8/21 3時発表では「23日に最大風速45m/sの非常に強い勢力」、同日18:45発表では<strong>「23日に最大風速50m/s・瞬間70m/s・925hPaの非常に強い勢力」へさらに上方修正され、26日15時には沖縄本島近海へ進むルートまで気象庁の公式予報に登場</strong>しました。認定からわずか2日あまりでの急速な情報更新は、今週最も変化の速かった項目の一つです。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — どちらも「週初には存在しなかった」項目です</h5>
+      <p>インドネシア地震(発生8/15)・台風18号(認定8/19)は、いずれも先週の週刊版(8/15号)の時点では影も形もなかった項目です。1週間という単位で見たときに、既存の災害の推移を追うだけでなく、<strong>新たに発生する事案そのものを見逃さないことの重要性</strong>を、今週はあらためて示しています。</p>
+    </div>
+    <p class="srcline">出典 BNPB・新華社（インドネシア地震、既報値68人）［一次相当］ ・ Basarnas経由の新華社報道（8/21配信、83人） ・ 気象庁（台風18号、2026年8月19〜21日発表）［一次］</p>
+  </section>
+
+  <!-- 為替・金利 -->
+  <section id="sec-fx">
+    <div class="sec-head"><span class="tick"></span><span class="cat">FX &amp; Rates</span><span class="sec-title">為替・金利 <span class="sub">/ 158〜160円のレンジ内で、金利急上昇・急低下の乱高下</span></span></div>
+
+    <div class="fx-top">
+      <div><div class="fx-pair">USD / JPY 週末</div><div class="fx-rate mono">158円台後半</div></div>
+      <div class="fx-meta">週内レンジ 158.17円〜159.60円台<br>週半ば8/19に急伸(円高)、以降戻す</div>
+    </div>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">USD/JPY <span>ドル円</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+          <button class="tf" data-i="D" aria-pressed="true">日足<small>年</small></button>
+          <button class="tf" data-i="W" aria-pressed="false">週足<small>長期</small></button>
+          <button class="tf" data-i="M" aria-pressed="false">月足<small>数十年</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="FX:USDJPY" data-i="D"></div>
+      <div class="cw-foot"><span>日足で、週半ばの急伸(円高)と週後半の戻しが確認できます</span></div>
+    </div>
+
+    <div class="item">
+      <h4>何が起きたか — 金利急上昇からの急低下という、方向感の激しい一週間</h4>
+      <p>週前半(8/17〜8/18)は159円台で推移し、米・イラン覚書の交渉期限切れ(8/16)を受けたホルムズ海峡緊迫から長期金利が上昇、<strong>米30年債利回りは一時5.33%台(2007年以来・約19年ぶり高水準)</strong>まで上昇しました。8/18にはトランプ大統領の「ホルムズ海峡は米国領」発言、UAEへのイランのミサイル発射も重なり、米10年債利回りは一時4.74〜4.75%まで上昇。ところが<strong>8/19、米財務省が長期国債買い戻し規模の倍増(最低20億ドル→最低40億ドル、9/9実施分から適用)を発表すると、金利は一気に急低下</strong>(10年債一時4.65%前後、30年債一時5.207%)し、<strong>ドル円もNY終値158.17円(前日159.61円から急伸)まで円高が進行</strong>しました。週後半は158.7円台(8/20)〜158円台後半〜159円台前半(8/21)へ戻し、週を終えています。</p>
+    </div>
+
+    <div class="why">
+      <h5>FOMC議事録(7/28-29分)も週内に公表 — 2016年9月以来最も分裂した投票</h5>
+      <p>8/19に公表されたFOMC議事録では、ハマック・カシュカリ・ローガンの3総裁が利上げを主張して反対票を投じたことが明らかになり、<strong>2016年9月以来最も分裂した投票</strong>だったと報じられています。金利観測の不確実性が高まる中での財務省の買い戻し拡大発表という組み合わせが、週半ばの急変動を増幅させたとみられます。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 「レンジは当たった」が「中身は荒かった」週でした</h5>
+      <p>答え合わせセクションで触れたとおり、158〜160円というレンジ自体は週を通じて維持されましたが、<strong>その中身は金利急上昇→米財務省の長期国債買い戻し拡大→金利急低下という、決して穏やかではない値動き</strong>でした。来週は台風18号の進路、米・対カナダ関税の決着、ジャクソンホール会議(新FRB議長ウォーシュ氏の初講演)といった材料が控えており、レンジ自体が上下どちらかに破れる可能性も含めて注視が必要です。</p>
+    </div>
+    <p class="srcline">出典 各日の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html） ・ 米財務省（国債買い戻し規模拡大発表、2026年8月19日）［一次］ ・ FOMC議事録（2026年8月19日公表）［一次］</p>
+  </section>
+
+  <!-- 国内株式 -->
+  <section id="sec-eq">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Japan Equity</span><span class="sec-title">国内株式 <span class="sub">/ 5日続伸から一転、週間-3.93%。乱高下の一週間</span></span></div>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">日経225 <span>Nikkei 225 先物</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+          <button class="tf" data-i="D" aria-pressed="true">日足<small>年</small></button>
+          <button class="tf" data-i="W" aria-pressed="false">週足<small>長期</small></button>
+          <button class="tf" data-i="M" aria-pressed="false">月足<small>数十年</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="OSE:NK2251!" data-i="D"></div>
+      <div class="cw-foot"><span>日足で、月曜の高値から水曜の急落、木曜の反発が確認できます</span></div>
+    </div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">週末終値</div><div class="vl mono">66,016.36</div><div class="ch down">週間 -2,697.44円（-3.93%）</div></div>
+      <div class="eq"><div class="nm">週内終値高値</div><div class="vl mono">69,220.25</div><div class="ch up">8/17</div></div>
+      <div class="eq"><div class="nm">週内終値安値</div><div class="vl mono">65,326.42</div><div class="ch down">8/19</div></div>
+    </div>
+
+    <div class="why">
+      <h5>週の流れ — 何が起きたか</h5>
+      <p><strong>8/17（月）</strong>——前週末比+506.45円（+0.74%）で5日続伸、1カ月半ぶりに69,000円台を回復。<strong>8/18（火）</strong>——ホルムズ海峡緊迫・長期金利上昇・AI半導体株総崩れを受け-1,759.52円（-2.54%）、6営業日ぶりの大幅反落。国内長期金利も一時2.945%(約30年ぶり水準)まで上昇。<strong>8/19（水）</strong>——前日の流れを引き継ぎ-2,134.31円（-3.16%）の2日連続大幅安、下げ幅は一時2,300円超。<strong>8/20（木）</strong>——米財務省の国債買い戻し拡大発表を受けた金利低下・米国株高の流れを引き継ぎ+890.37円（+1.36%）で3営業日ぶり反発。<strong>8/21（金）</strong>——米ウォルマート決算を受けた個人消費減速懸念の波及で消費関連株が売られ-200.43円（-0.30%）の反落。TOPIXは同日+7.56pt（+0.19%）と逆行高でした。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 米国株も週間で下落しており、「日本株だけの調整」ではありません</h5>
+      <p>先週(8/15号)は日本株が独歩高で米国株がほぼ横ばいという組み合わせでしたが、今週は<strong>NYダウ・S&amp;P500・NASDAQも週間でそろって下落</strong>しており(詳細は米国市場セクション参照)、先週見られた日米デカップリングは今週は解消しました。ホルムズ海峡緊迫という共通材料が、日米双方の株式市場を同じ方向に動かした週といえます。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.jpx.co.jp/markets/statistics-equities/daily/index.html" target="_blank" rel="noopener">日本取引所グループ</a>［一次］ ・ 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- 米国市場 -->
+  <section id="sec-us">
+    <div class="sec-head"><span class="tick"></span><span class="cat">US Market</span><span class="sec-title">米国市場 <span class="sub">/ 3指数そろって週間下落、木曜のウォルマート急落が重し</span></span></div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">NYダウ 週末</div><div class="vl mono">53,277.01</div><div class="ch down">週間 -455.40（-0.85%）</div></div>
+      <div class="eq"><div class="nm">S&amp;P500 週末</div><div class="vl mono">7,674.37</div><div class="ch down">週間 -111.39（-1.43%）</div></div>
+      <div class="eq"><div class="nm">NASDAQ 週末</div><div class="vl mono">26,180.46</div><div class="ch down">週間 -548.70（-2.05%）</div></div>
+    </div>
+
+    <div class="item">
+      <h4>週の流れ — 週前半に反落継続、水曜に反発、木曜に急落、金曜に反発</h4>
+      <p><strong>8/17（月）</strong>——NYダウ53,459.78（-272.63）、S&amp;P500 7,745.06（-40.70）、NASDAQ 26,644.91（-84.25）とそろって反落。<strong>8/18（火）</strong>——ホルムズ海峡緊迫でNYダウ53,343.40（-116.38）と続落もS&amp;P500・NASDAQも軟調（NASDAQは-355.20、-1.33%の3日続落）。<strong>8/19（水）</strong>——米財務省の買い戻し拡大発表を受け金利が急低下し、NYダウ53,463.05（+119.65）、S&amp;P500 7,707.98（+16.22）、NASDAQ 26,331.09（+41.38）と3指数そろって反発。<strong>8/20（木）</strong>——ウォルマートの決算(既存店売上高の伸びが6年ぶりの低水準)を受け3指数そろって反落、NYダウは-703.84（-1.32%）の大幅安。<strong>8/21（金）</strong>——前日の急落からの自律反発でNYダウ53,277.01（+517.80、+0.98%）など3指数そろって反発しました。</p>
+    </div>
+
+    <div class="why">
+      <h5>週の中身は反落・反発の連続でも、週間ではそろって下落に収束</h5>
+      <p>週の中では8/19の反発・8/20の急落・8/21の反発と方向感が目まぐるしく入れ替わりましたが、<strong>週間で見るとNYダウ-0.85%・S&amp;P500-1.43%・NASDAQ-2.05%とそろって下落</strong>しました。特にNASDAQの下落率が大きく、AI・半導体関連株の週後半にかけての軟調さが影響したとみられます。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — ウォルマート決算は「消費減速」という新しい懸念材料を提示しました</h5>
+      <p>8/20のウォルマート決算(増収増益ながら既存店売上高の伸びが6年ぶりの低水準)は、<strong>これまでの週で中心的だった「金利・地政学」材料とは異なる「個人消費減速」という新しい懸念軸</strong>を市場に提示しました。この論点が来週以降どこまで広がるかは、注視すべき新たな観測点です。</p>
+    </div>
+    <p class="srcline">出典 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html） ・ Yahoo Finance（週末終値、2026年8月21日）</p>
+  </section>
+
+  <!-- 商品・暗号資産 -->
+  <section id="sec-commodity">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Commodities</span><span class="sec-title">商品・暗号資産 <span class="sub">/ 原油は週間+約6%、ビットコインは木曜以降に急伸し週間+約22%</span></span></div>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">WTI原油 <span>USOIL</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+          <button class="tf" data-i="D" aria-pressed="true">日足<small>年</small></button>
+          <button class="tf" data-i="W" aria-pressed="false">週足<small>長期</small></button>
+          <button class="tf" data-i="M" aria-pressed="false">月足<small>数十年</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="TVC:USOIL" data-i="D"></div>
+      <div class="cw-foot"><span>週を通じてホルムズ海峡緊迫を背景に上昇基調が続いたことが確認できます</span></div>
+    </div>
+
+    <div class="item">
+      <h4>原油 — ホルムズ海峡緊迫を背景に週間+約6%の上昇</h4>
+      <p>WTI原油は前週末(8/14)の82.32ドルから、<strong>8/17に84.50ドル(+2.5%)、8/18に84.94ドル(+0.5%)、8/19は4営業日続伸で一時86.31ドル、8/20は85.83ドル(+1.05%)、週末8/21は87.06ドル(+0.3%)</strong>と、週を通じて上昇基調が続きました。週間では+4.74ドル(+約5.8%)。トランプ大統領のホルムズ海峡関連発言・対イラン経済戦争宣言を受けた供給リスクプレミアムが一貫した背景です。</p>
+      <h4>金 — 週半ばに急伸、週末にかけてさらに上値を伸ばす</h4>
+      <p>金は前週末4,430.60ドルから、8/17に4,473.70ドル(+0.8%)、8/18に4,420.60ドル(-1.2%)といったん反落した後、8/19に米財務省の買い戻し拡大発表を受けスポット一時4,499.20ドル(日中+3.6%超)まで急伸。週後半も上昇が続き、8/20に4,575.60ドル前後、週末8/21には4,600.3ドル前後まで到達しました。週間では約+170ドル(+約3.8%)の上昇です。</p>
+      <h4>ビットコイン — 木曜以降に急伸、週間+約22%で2024年11月以来の上げ幅</h4>
+      <p>週前半(8/17〜8/19)は64,300〜64,900ドル台のレンジで推移していましたが、<strong>8/20に78日ぶりに7万ドル台を回復(71,853.69ドル)し、8/21にはさらに前日比+7.66%の78,294.72ドルまで急伸</strong>しました。週間騰落率は+約22%と2024年11月以来の高さです。米国のビットコイン現物ETFは8/20分として6億600万ドルの流入(5月1日以来最大)を記録しました。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 原油・金・ビットコインが、同じ週の後半にそろって上昇しました</h5>
+      <p>通常、原油・金(安全資産)・ビットコイン(リスク資産寄り)は必ずしも同じ方向には動きませんが、今週後半は<strong>地政学リスク(原油・金)と、米財務省の緩和的措置への期待(金・ビットコイン)という異なる理由から、3資産そろって上昇</strong>するという珍しい組み合わせになりました。</p>
+    </div>
+    <p class="srcline">出典 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html） ・ ts2.tech（ビットコイン、2026年8月21日） ・ Bitcoin News（現物ETFフロー、2026年8月20日）</p>
+  </section>
+
+  <!-- AI週間 -->
+  <section id="sec-ai">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; Tech</span><span class="sec-title">AI・半導体・データセンター 週間まとめ <span class="sub">/ NVIDIA-OpenAIの巨額保証、国内AI重点観測を今週から開始</span></span></div>
+
+    <div class="why">
+      <h5>今週の一行まとめ</h5>
+      <p>週の前半はNVIDIAとOpenAIの巨額データセンター保証契約と半導体市況の記録的統計が中心で、週の後半はOpenAI・Anthropic・Google・xAIが相次いで新発表を行いました。<strong>今週から「国内AIの重点観測」という新方針が確定し、今回が最初の重点回です。</strong></p>
+    </div>
+
+    <div class="item">
+      <h4>週前半 — NVIDIAがOpenAIのデータセンターに最大1,050億ドルの支払い保証、半導体販売額は前年比+123.6%</h4>
+      <p>NVIDIAは8/17締結・8/18報道で、<strong>OpenAIのオハイオ州データセンター(SB Energy社開発)向けに最大1,050億ドルの支払い保証(backstop)を約束</strong>しました。直接投資ではなく債務保証契約で、当初検討額(約2,500億ドル)から大きく圧縮されています。OpenAIは最大約8GWの計算能力を確保する計画で、最初の800MWは2028年稼働予定。あわせてApollo・BlackRock・Blackstone・Brookfield・Goldman Sachs・KKRと提携し、5,000億ドル超の第三者資本動員プラットフォームも発表しました。半導体では、SIA(半導体工業会)が8/18に発表した2026年6月の世界半導体販売額が<strong>前年比+123.6%の1,345億ドル</strong>と記録的な伸びを示し、SIA会長は「2026年通期チップ販売額1.5兆ドル超」の見通しを示しています。8/20にはSamsung・SK hynixの2026年上半期設備投資合計が前年同期比+35.1%の43兆1,980億ウォンと確認されました。なお、OpenAI・Anthropic・Googleの推論APIから暗号化推論トレースを抽出できるとする研究報告(8/10公開)への各社の公式対応は、週を通じて確認できませんでした。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>週後半 — OpenAI・Anthropic・Google・xAIが相次いで新発表、Samsungの値上げも複数ソースで確認</h4>
+      <p>OpenAIは8/18に「ChatGPT for Teens」とChatGPT Ads欧州展開拡大を発表し、8/20には新チーム「Strategic Futures」のブログ「AI Futures」創刊、Apple Messages連携プラグインのリリースノートも公開されました。Anthropicは8/21、Claude Codeの大型アップデートとSonnet 5の値下げ恒久化($2/$10)を発表。Googleは検索AI ModeでGemini 3.7 Flashの一部稼働を開始、xAIはGrok 4.6のAPI提供を開始しています。前号「未確認」としていたSamsungのファウンドリ価格値上げ(最大15%)は、週末にかけて複数ソースで確認が取れました。国内では、ソフトバンクとエリクソンが5G商用網でのAIネイティブ無線リンク適応スケジューラの有効性を検証(8/20)、NTTドコモビジネスがクローズドAIエージェントの提供を開始(8/17)しています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>国内AI重点観測（今週から開始） — NECがMicrosoft Marketplaceで「cotomi Agent」を販売開始</h4>
+      <p>今週から、Sakana AI・PFN/PLaMo・NTT/tsuzumi・NEC/cotomi・NII/LLM-jp・楽天・ABEJA・ELYZA・Stockmark・ExaWizards・国内AI半導体・Physical AI・大学研究機関・行政AIを対象に、国内AIの重点観測を開始しました。初回の確認結果は次のとおりです。</p>
+      <p><strong>NEC</strong>は8月18日、Microsoft Marketplaceで業務自動化AIエージェント「NEC cotomi Agent」の販売を開始したと発表しました(NEC公式)。独自のエージェント技術「cotomi Act」により個人・組織の暗黙知を抽出・活用し、Web上の業務を自動実行する仕組みで、料金は月額1.5万円(税別)/ユーザー、まず国内向けに提供し将来的にグローバル展開する計画です。<strong>Stockmark</strong>は8/18頃、FDE(Forward Deployed Engineer)組織の拡大を発表したと報じられていますが、一次情報(同社公式ページ)への直接アクセスができず、二次報道ベースの確認にとどまります。<strong>内閣府</strong>は8/18、「AI時代の知的財産」検討会(第13回)で、生成AI事業者に学習データ概要の開示等を求める「プリンシプル・コード(仮称)」の最終案を提示しました。法的拘束力はなく秋にも正式決定・運用開始の見込みで、コンプライ・オア・エクスプレイン方式・海外事業者にも適用予定です。<strong>Sakana AI</strong>は8/13の「Sakana Chat」更新に続き、8/21に「Sakana Translate」をアップデートし、翻訳モデルに新世代の「Sakana Namazu」を搭載したと公式発表しました(詳細は既報)。</p>
+      <p><strong>NTT/tsuzumi・PFN/PLaMo・NII/LLM-jp・楽天・ABEJA・ELYZA・ExaWizards・国内AI半導体(Rapidus等)・大学研究機関・行政AI(内閣府以外)</strong>については、今回の調査期間(8/16〜8/22)内でのピンポイントな新規発表・一次確認は取れませんでした。「動きがなかった」と断定はできませんが、少なくとも本レポートで報じるに足る一次情報は確認できなかったという点を、正直にお伝えします。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 国内AIの「動きの少なさ」自体も、一つの観測材料です</h5>
+      <p>今回が国内AI重点観測の初回であるため、比較対象となる「先週の水準」がまだありません。海外大手(OpenAI・Anthropic・Google・xAI)がほぼ毎日のように新発表を行っているのに対し、<strong>今週確認できた国内AIの一次発表は数件にとどまりました。</strong>これが恒常的な傾向か、たまたま今週が静かだっただけかは、来週以降の継続観測で判断していきます。</p>
+    </div>
+    <p class="srcline">出典 NVIDIA・OpenAI公式（データセンター保証契約、2026年8月17〜18日）［一次］ ・ OpenAI公式（ChatGPT for Teens・ChatGPT Ads、2026年8月18日／Apple Messages連携リリースノート・AI Futures、2026年8月20日）［一次］ ・ Anthropic Release Notes（2026年8月21日）［一次］ ・ SIA（半導体販売統計、2026年8月18日）［一次］ ・ ソフトバンク／エリクソン公式（AI-RAN検証、2026年8月20日）［一次］ ・ NTTドコモビジネス公式（クローズドAIエージェント、2026年8月17日）［一次］ ・ NEC公式プレスリリース（cotomi Agent、2026年8月18日）［一次］ ・ <a class="src" href="https://sakana.ai/translate-update/" target="_blank" rel="noopener">Sakana AI公式ブログ</a>（Sakana Translateアップデート、2026年8月21日）［一次］ ・ 内閣府検討会資料（AI時代の知的財産、2026年8月18日）［一次］ ・ Stockmark関連はVOIX等の二次報道ベース（同社公式ページの一次確認はできず） ・ 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- ロボット -->
+  <section id="sec-robot">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Robotics</span><span class="sec-title">ロボット 週間まとめ <span class="sub">/ Unitree Roboticsが上海上場、初日一時+629%高</span></span></div>
+
+    <div class="item">
+      <h4>Unitree Robotics、上海STAR市場に上場。初日一時+629%高、中国本土初の上場ヒューマノイドメーカーに</h4>
+      <p>Unitree Roboticsは8/6に150.80元/株で価格決定(バリュエーション約90.4億ドル)、個人投資家申込倍率は約8,000倍に達したと8/19号で紹介していましたが、<strong>実際に8月19日に上海STAR市場へ上場し、初日一時629%高、終値は公募価格比+460%(845元)</strong>となりました。中国本土初の上場ヒューマノイドロボットメーカーで、創業者Wang Xingxing氏(36歳)の保有株評価額は約1,030億元に達したと報じられています。2025年売上高は約17億元(海外比率40%超)で、上場翌日以降も高値圏を維持しています。ただし米FCCが2026年7月に中国製ヒューマノイド/四足歩行ロボットを対象機器認証の対象外とする規制を導入しており、規制施行前に認可済みの既存モデルは米国での販売を継続できる一方、新型モデルには米国防総省の「条件付き承認」が新たに必須になるなど、北米市場での不透明感も指摘されています。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 株価の急騰は、必ずしも実力を正確に反映しているとは限りません</h5>
+      <p>上場初日の+629%という値動きは、新規上場株特有の需給要因(公募株数の少なさ、期待先行の買い)による部分も大きいとみられます。2025年の実売上高(約17億元)と、初日高値時点の時価総額との関係については、今回の調査では詳細な検証ができておらず、株価の持続性は要注視です。</p>
+    </div>
+    <p class="srcline">出典 複数金融メディア（Unitree株価、2026年8月19〜21日） ・ 各日の毎日版（daily-2026-08-19.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- 自動車 -->
+  <section id="sec-auto">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Auto &amp; Mobility</span><span class="sec-title">自動車・モビリティ <span class="sub">/ 今週も独自の重要な新規動向は確認できず</span></span></div>
+    <div class="note">
+      <p>トヨタ・日産・ホンダの全固体電池搭載EVをめぐる目標・状況(トヨタ2027〜2028年度、日産2027〜2028年度、ホンダのパイロットライン稼働)に、週を通じて変化はありませんでした。週末にBYDが成都モーターショーで新型EVセダン(CLTC航続1,008km)を発表した以外、今週の毎日版では独自の重要な新規発表は確認できませんでした。なお、NVIDIAの物理AIプラットフォーム「Alpamayo」を軸に、業界の関心がEVそのものから自動運転技術へ再びシフトしているとの分析があり、今後の産業構造への影響を注視する価値があるテーマです。</p>
+    </div>
+  </section>
+
+  <!-- 通信 -->
+  <section id="sec-telecom">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Telecom</span><span class="sec-title">通信 <span class="sub">/ NTTの2件の発表以外、大規模障害等の報告なし</span></span></div>
+    <div class="note">
+      <p>週後半、NTTドコモビジネスのクローズドAIエージェント提供開始(8/17)、ソフトバンク×エリクソンのAI-RAN検証(8/20)、NTTドコモのAI時代向けネットワーク設計指針の国際標準化(8/21)と、NTTグループ関連の発表が3件確認できました(いずれもAI・半導体セクションと一部重複)。千葉豪雨・熊本地震・その他の災害に伴う大規模な通信インフラ障害は、週を通じて報告されませんでした。</p>
+    </div>
+  </section>
+
+  <!-- 古民家・民泊 -->
+  <section id="sec-kominka">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kominka &amp; Minpaku</span><span class="sec-title">古民家・民泊 <span class="sub">/ 観光庁の民泊ゼロ日規制通知が週末に表面化、第3研究所との横断共有テーマ</span></span></div>
+    <div class="item">
+      <h4>観光庁・国交省・厚労省が7/15付通知で、自治体による民泊のゼロ日規制を容認する方針転換</h4>
+      <p>週末の8/22号で新たに確認した内容ですが、観光庁・国土交通省・厚生労働省は<strong>7月15日付で、自治体による民泊(住宅宿泊事業)の「年間ゼロ日規制」(実質的な通年禁止)を容認する技術的助言を全国自治体へ通知</strong>していました。通知自体は7月15日付ですが、業界団体(シェアリングエコノミー協会等)の反応が8月15〜17日にかけて相次ぎ、今週になって表面化した形です。あわせてICT管理の義務化も明確化されています。個別自治体では、渋谷区が7月1日に条例改正を全面施行(制限区域拡大、不在型180日営業特例廃止)、大阪市が5月29日で特区民泊の新規申請受付を終了しています。</p>
+    </div>
+    <div class="why">
+      <h5>第3研究所（てとさんち・てとまち）への関連</h5>
+      <p>古民家一棟貸し宿泊事業を進める第3研究所にも直接関わりうる制度動向です。てとさんち・てとまちの立地する甲賀市信楽町における自治体規制の方向性は、住宅宿泊事業法の枠組みで運営する場合の営業可能日数や届出要件に影響しうるため、今後も継続して確認する価値があります。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.mlit.go.jp/kankocho/news06_00067.html" target="_blank" rel="noopener">観光庁 報道発表</a>（2026年7月15日）［一次］ ・ トラベルボイス・シェアリングエコノミー協会（業界反応、2026年8月15〜17日）</p>
+  </section>
+
+  <!-- 不動産価格変動 -->
+  <section id="sec-realestate">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Real Estate</span><span class="sec-title">不動産価格変動 <span class="sub">/ JLL調査：商業用不動産投資額が過去最高</span></span></div>
+    <div class="item">
+      <h4>2026年上半期の商業用不動産投資額、前年比+17%の3兆7,517億円で過去最高</h4>
+      <p>週の前半に紹介したJLL調査(8/3発表)によれば、<strong>2026年上半期の日本の商業用不動産投資額は前年比+17%の3兆7,517億円で過去最高</strong>を記録しました。海外投資家による投資額は前年比+1%の1兆1,105億円(全体の約30%)。用途別ではオフィス45%・賃貸住宅19%・物流14%、地域別では東京都心5区が45%・東京圏全体で66%を占めています。通期予測は約7兆円(前年比約10%増)です。週の後半にかけて新規の統計発表は確認できませんでした。</p>
+    </div>
+    <p class="srcline">出典 JLL調査発表（PR TIMES、2026年8月3日） ・ 各日の毎日版（daily-2026-08-19.html〜daily-2026-08-22.html）</p>
+  </section>
+
+  <!-- 世界情勢 -->
+  <section id="sec-world">
+    <div class="sec-head"><span class="tick"></span><span class="cat">World</span><span class="sec-title">世界情勢 週間まとめ <span class="sub">/ ホルムズ海峡・ザポリージャ原発・ICC制裁・米加関税が同時進行</span></span></div>
+
+    <div class="item">
+      <h4>ホルムズ海峡・イラン情勢 — 「米国領」発言からミサイル着弾、経済戦争宣言まで一気に緊迫化</h4>
+      <p>8/16の米・イラン覚書(6月締結)交渉期限切れを起点に、週を通じて緊張が段階的に高まりました。<strong>8/18、トランプ大統領がホルムズ海峡を「新たな米国領」とSNS投稿し、同日UAE国防省がイランから弾道ミサイル2発の発射(1発はUAE領海内へ着弾、5月以来初)を発表</strong>しました。米国防長官は「海上封鎖を無期限に維持できる」と表明。週末にかけて、トランプ大統領は対イラン「前例のない経済戦争」を宣言し、UAEはイランとの全貿易・金融取引を全面停止したと発表(イラン側は「根拠がない」「偽旗作戦」の可能性を示唆)。Kplerのデータでは、8月1日〜19日のホルムズ海峡通過船舶が計236隻と、開戦前の1日約130隻という水準と比べ大幅に減少しています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>ザポリージャ原発 — ドローン攻撃から外部電源完全喪失まで、週を通じて悪化</h4>
+      <p>8/18午前6時頃(現地時間)、ロシア占領下のザポリージャ原発職員バス停付近でドローンが爆発し、IAEA発表で計16人が死傷(1人死亡)しました。ロシア・ウクライナ双方が互いを非難しています。<strong>8/20には、最後まで残っていた外部電源線(330kVフェロスプラフナ1号線)が失われ、非常用ディーゼル発電機のみで安全系統を維持する状態</strong>に陥りました。侵攻開始後の外部電源喪失は21回目(一部報道では24回目)で、IAEAグロッシ事務局長は「憂慮すべき、持続不可能な傾向」と述べています。週末にかけて外部電源の復旧やIAEAの追加声明は確認できませんでした。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>米国のICC所長制裁 — 日本人所長が対象という異例の事態、国内外で反発が拡大</h4>
+      <p>米国は8/18、国際刑事裁判所(ICC)の赤根智子所長ら2人を制裁対象に指定しました。ネタニヤフ首相への逮捕状発行等を理由にICCを「米国主権への脅威」と位置づけたもので、<strong>日本人がICCトップとして直接制裁対象となる異例の事案</strong>です。日本政府(外務報道官談話、その後高市首相も)は「非常に遺憾」と表明。週を通じて超党派の国会議員グループが非難声明を発表し、オランダ外相は赤根所長を対話に招待、赤根所長本人も「これが国際法の支配の終わりの始まりにならないようにすることが重要」とコメントしています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>米・対カナダ関税 — 発動直前の3日間延期を経て、週末の新発動期限も決着は未確認</h4>
+      <p>当初8/19発動予定だった対カナダ50%追加関税は、8/18にトランプ大統領が3日間延期する布告に署名し、新たな期限は8月22日(本レポート発行日)となりました。自動車関税を25%→15%、鉄鋼・アルミを50%→25%へ引き下げる方向の調整が報じられ、カナダのルクレール貿易相は「非常に近い」と発言していますが、<strong>本レポート確定時点(8/22朝)で最終合意の成立・関税発動いずれも一次情報での確認は取れておらず、報道間で記述が分かれています。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <h4>ウクライナ情勢・日ロ関係</h4>
+      <p>ウクライナ軍は8/15夜〜16朝、モスクワ方面へ約600機のドローンを投入(タス通信「過去2年で最大規模」)。8/18朝にはロシア軍がウクライナ・ハルキウ州ペチェニヒ村を巡航ミサイルで攻撃し、10人が死亡しました。日ロ関係では、プーチン大統領の択捉島訪問(8/13)への日本の抗議に対しロシア側が反発し、8/17に武藤顕・駐ロシア大使が外務省に呼び出される事案がありましたが、週末にかけての新たな進展は確認できませんでした。</p>
+    </div>
+
+    <div class="counter">
+      <h5>別の見方 — 個別の事案は独立していますが、根底には「米国の強硬姿勢」という共通の流れがあります</h5>
+      <p>ホルムズ海峡での「米国領」発言、ICCへの制裁、対カナダ関税のいずれも、<strong>米国が同盟国・国際機関を含む相手に対して強い姿勢を示す</strong>という共通の傾向が今週は目立ちました。個々の事案の是非については当研究所は評価を行わず、確認できる事実・各当事者の主張・経済/生活/安全保障への影響を分けて記載する方針を維持しています。</p>
+    </div>
+    <p class="srcline">出典 各日の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html） ・ IAEA公式発表［一次］ ・ JETRO（米加関税）［一次相当］ ・ Kpler（ホルムズ海峡通過船舶数）</p>
+  </section>
+
+  <!-- 情報が薄かった分野 -->
+  <section id="sec-thin">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Note</span><span class="sec-title">今週、情報が薄かった分野 <span class="sub">/ 水増しせず、そのまま明示します</span></span></div>
+    <div class="note">
+      <p><strong>国内AI(重点観測初回)：</strong>NEC・Stockmark・内閣府・Sakana AI以外の対象(PFN/PLaMo・NTT/tsuzumi・NII/LLM-jp・楽天・ABEJA・ELYZA・ExaWizards・国内AI半導体・Physical AI・大学研究機関)は、今回の期間内でのピンポイントな一次発表を確認できませんでした。</p>
+      <p><strong>自動車・モビリティ：</strong>BYDの新型EVセダン以外、独自の重要な新規発表は確認できませんでした。</p>
+      <p><strong>コロンビア地震の死者数：</strong>週末にかけて報道間の食い違いがむしろ拡大し、単一の確定値には絞り込めていません。</p>
+      <p><strong>米・対カナダ関税の最終決着：</strong>本レポート確定時点(8/22朝)で確認できていません。</p>
+      <p><strong>ザポリージャ原発の復旧見通し：</strong>8/20の外部電源完全喪失以降、続報は確認できませんでした。</p>
+    </div>
+  </section>
+
+  <!-- 来週の予定 -->
+  <section id="sec-next">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Next Week</span><span class="sec-title">来週の注目</span></div>
+
+    <div class="sp today"><div class="dt">8/23 日</div><div class="ev"><b>台風18号</b><span> — 最大瞬間70m/sの「非常に強い」勢力で小笠原近海へ接近の予想</span></div></div>
+    <div class="sp"><div class="dt">8/24 月</div><div class="ev"><b>JR外房線 誉田〜大網間</b><span>再開目標日</span></div></div>
+    <div class="sp"><div class="dt">8/24 月</div><div class="ev"><b>台風18号</b><span>、「日本の南」まで進む見通し</span></div></div>
+    <div class="sp"><div class="dt">8/25 火</div><div class="ev"><b>熊本地震</b><span> — 台風18号の影響を受ける可能性がある期間の始期</span></div></div>
+    <div class="sp"><div class="dt">8/25 火</div><div class="ev"><b>米ケース・シラー住宅価格指数・CB消費者信頼感指数</b><span>発表予定</span></div></div>
+    <div class="sp"><div class="dt">8/26 水</div><div class="ev"><b>熊本地震</b><span> — 宇土駅〜八代駅間、バス代行輸送の実施に向け調整中</span></div></div>
+    <div class="sp"><div class="dt">8/26 水</div><div class="ev"><b>米エヌビディア決算発表</b><span>予定(市場の焦点)</span></div></div>
+    <div class="sp"><div class="dt">8/27〜29</div><div class="ev"><b>米ジャクソンホール経済シンポジウム</b><span>、新FRB議長ウォーシュ氏の就任後初の主要講演</span></div></div>
+    <div class="sp"><div class="dt">8月末</div><div class="ev"><b>熊本地震</b><span> — 断水解消(水道本管までの通水可能化)の目標時期</span></div></div>
+    <div class="sp"><div class="dt">継続</div><div class="ev"><b>米・対カナダ関税の最終決着、コロンビア地震・インドネシア地震の続報を毎日版で追跡</b></div></div>
+
+    <div class="why">
+      <h5>ここまでは確認できている公式予定です</h5>
+      <p>8/26のNVIDIA決算、8/27〜29のジャクソンホール会議は、いずれも公表済みの日程です。台風18号の進路・勢力は気象庁の今後の発表により更新される可能性が高い点にご留意ください。</p>
+    </div>
+
+    <div class="counter">
+      <h5>ここからは、当研究所としての観測・見方です</h5>
+      <p>来週最大の焦点は<strong>台風18号の進路</strong>とみています。沖縄・奄美への接近が公式予報でも示されつつあり、熊本地震の復旧作業や九州本土への影響と合わせて注視が必要です。市場面では、米・対カナダ関税の決着内容と、ジャクソンホール会議での新FRB議長ウォーシュ氏の発言姿勢が、ドル円・金利の方向性を左右する最大の材料になるとみています。今週見られた「地政学リスク→金利上昇→財務省の緊急対応→金利低下」という力学が来週も繰り返されるかどうかも、注目点です。<span style="color:var(--ink-3)">（この見立ては来週の週刊版で検証します）</span></p>
+    </div>
+  </section>
+
+  <div class="divider"><span>Watchlist — 世界の市場をボタンで開く</span></div>
+
+  <div class="note" style="margin-top:14px;">
+    <h5>この一覧の使い方</h5>
+    <p>ここは<strong>埋め込みチャートではなく、TradingViewを開くリンク集</strong>です。押すと<strong>ログイン中のご自身のTradingView</strong>で、その銘柄が日足で開きます。</p>
+  </div>
+
+  <section id="sec-week-list">
+    <div class="sec-head"><span class="tick"></span><span class="cat">This Week</span><span class="sec-title">今週の主役 <span class="sub">/ 動いた銘柄</span></span></div>
+    <div class="tvgrid">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物</span><span class="tvlink-desc">5日続伸から一転、2日間で-5.58%の急落</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=FX%3AUSDJPY&interval=240" target="_blank" rel="noopener"><span class="tvlink-ja">ドル円（4時間足）</span><span class="tvlink-desc">158〜160円レンジ内で、金利連動の乱高下</span><span class="tvlink-sym mono">FX:USDJPY ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=DJ%3ADJI&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NYダウ</span><span class="tvlink-desc">週間ではNASDAQと共にそろって下落</span><span class="tvlink-sym mono">DJ:DJI ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=NASDAQ%3AIXIC&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NASDAQ総合</span><span class="tvlink-desc">週間-2.05%、3指数で最大の下げ</span><span class="tvlink-sym mono">NASDAQ:IXIC ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUSOIL&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">WTI原油</span><span class="tvlink-desc">ホルムズ海峡緊迫を背景に週間+約6%</span><span class="tvlink-sym mono">TVC:USOIL ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AGOLD&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NY金</span><span class="tvlink-desc">財務省の買い戻し拡大発表後に急伸</span><span class="tvlink-sym mono">TVC:GOLD ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=COINBASE%3ABTCUSD&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">ビットコイン</span><span class="tvlink-desc">木曜以降に急伸、週間+約22%</span><span class="tvlink-sym mono">COINBASE:BTCUSD ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=SSE%3A688981&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">Unitree Robotics(参考)</span><span class="tvlink-desc">上海上場初日、一時+629%高</span><span class="tvlink-sym mono">SSE ↗</span></a>
+    </div>
+  </section>
+
+  <div class="divider"><span>Detail &amp; Sources — 詳細データと情報源</span></div>
+
+  <section id="sources">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Sources</span><span class="sec-title">週間データと情報源 <span class="sub">/ 裏取り</span></span></div>
+
+    <div class="item" id="src-week">
+      <span class="tagline">Weekly</span>
+      <h4>今週の日経平均・日別終値</h4>
+      <p class="mono" style="font-size:12.5px;line-height:2;">
+        8/14（前週末） <strong>68,713.80</strong><br>
+        8/17（月） <strong>69,220.25</strong>（+506.45／+0.74%）<br>
+        8/18（火） <strong>67,460.73</strong>（-1,759.52／-2.54%）<br>
+        8/19（水） <strong>65,326.42</strong>（-2,134.31／-3.16%）<br>
+        8/20（木） <strong>66,216.79</strong>（+890.37／+1.36%）<br>
+        8/21（金） <strong>66,016.36</strong>（-200.43／-0.30%）<br>
+        <strong>週間 -2,697.44円（-3.93%）／ 終値ベース値幅 3,893.83円／ 上昇2日・下落3日</strong>
+      </p>
+      <p class="srcline">情報源 <a class="src" href="https://www.jpx.co.jp/markets/statistics-equities/daily/index.html" target="_blank" rel="noopener">日本取引所グループ（統計）</a>［一次］ ・ 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html）</p>
+    </div>
+
+    <div class="item" id="src-us-week">
+      <span class="tagline">US Market</span>
+      <h4>今週の米国3指数・日別終値</h4>
+      <p class="mono" style="font-size:12.5px;line-height:2;">
+        NYダウ　8/14 <strong>53,732.41</strong> → 8/17 <strong>53,459.78</strong>(-272.63) → 8/18 <strong>53,343.40</strong>(-116.38) → 8/19 <strong>53,463.05</strong>(+119.65) → 8/20 <strong>52,759.21</strong>(-703.84) → 8/21 <strong>53,277.01</strong>(+517.80)　週間 -455.40(-0.85%)<br>
+        S&amp;P500　8/14 <strong>7,785.76</strong> → 8/21 <strong>7,674.37</strong>　週間 -111.39(-1.43%)<br>
+        NASDAQ　8/14 <strong>26,729.16</strong> → 8/21 <strong>26,180.46</strong>　週間 -548.70(-2.05%)
+      </p>
+      <p class="srcline">情報源 各日の毎日版（daily-2026-08-17.html〜daily-2026-08-22.html） ・ Yahoo Finance（週末終値）</p>
+    </div>
+
+    <div class="item" id="src-quake-week">
+      <span class="tagline">Kumamoto</span>
+      <h4>熊本地震 断水戸数の推移(3自治体合計)</h4>
+      <p class="mono" style="font-size:12.5px;line-height:2;">
+        8/16(7:30) <strong>約27,400戸</strong>(八代21,584・宇城4,098・氷川1,704) → 8/17(第43報) <strong>約8,400戸</strong>(八代3,483・宇城3,570・氷川1,351) → 8/18(第44報) <strong>約7,300戸</strong>(八代2,369・宇城3,570・氷川1,336) → 8/19(第45報) <strong>約5,400戸</strong>(八代1,365・宇城2,910・氷川1,154) → 8/20(第46報) <strong>約4,900戸</strong>(八代1,021・宇城2,910・氷川961) → 8/21(第47報) <strong>約4,300戸</strong>(八代1,021・宇城2,579・氷川684)
+      </p>
+      <p class="srcline">情報源 <a class="src" href="https://www.mlit.go.jp/common/002017654.pdf" target="_blank" rel="noopener">国土交通省 第43報〜第47報</a>［一次］ ・ 各日の毎日版</p>
+    </div>
+
+    <div class="item" id="src-colombia-week">
+      <span class="tagline">Colombia</span>
+      <h4>コロンビア地震 死者数の推移（情報源により差があります）</h4>
+      <p class="mono" style="font-size:12.5px;line-height:2;">
+        8/13発表 <strong>281人</strong>（不明379人） → 8/18報道 <strong>287人</strong>（不明194人） → 8/19 <strong>287人</strong>（更新なし、政府値を継続採用） → 8/20発表 <strong>289人</strong>（不明143人） → 前号8/20時点で確認できた最新の政府公式値は<strong>314人</strong>（不明262人、8/19発表・時事通信8/20配信） → 8/21報道 <strong>254人〜319人</strong>（情報源間で食い違い、政府公式の直接確認は未確認）
+      </p>
+      <p class="srcline">情報源 各日の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html） ・ スプートニク中国語版（8/21配信）</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="cta">気になった項目は、チャットで <b>「〇〇をもっと詳しく」</b> と送ってください。<br><span style="font-size:13px;color:var(--ink-3)">次回の週刊版は8月29日（土）。平日は毎日版をお届けします。</span></p>
+    <p class="disc">AI総合研究機構の週刊版で示した近未来予想の答え合わせを継続しています。今週は検証可能な1件中、当たり1・外れ0でした。理由は本文に記載しています。／ 論調の方針：ポジティブ約4割・中立約4割・注意/ネガティブ約2割を目安としつつ、災害・重大リスクに関する情報は比率に関係なく目立つ位置に掲載しています。事実と数値は中立として扱い、観測・見方・予測は明確にラベルしています。／ 情報源は一次情報を優先し（気象庁・国土交通省・海上保安庁・IAEA・日本取引所グループ・米財務省等へ直接リンク）、特定媒体に偏らないよう分散させています。／ 対象期間は2026年8月16日〜8月22日。市場部分は主に取引日の8月17日〜8月21日を中心に整理しました。本レポートは今週の毎日版（daily-2026-08-16.html〜daily-2026-08-22.html）の内容を横断的に再構成・検証したもので、単純な要約・連結ではありません。／ 今週から国内AIの重点観測を開始しました。今回確認できた一次情報は限定的で、対象企業・組織の多くは「確認できず」としています。継続観測によって傾向を見極めていきます。／ コロンビア地震の死者数、米・対カナダ関税の最終決着、ザポリージャ原発の復旧見通しは、本レポート確定時点で確定情報が得られておらず「要確認」としています。最新の状況は各公式ページでご確認ください。／ 数値は各日の毎日版・一次情報源に記載の値です。不動産情報は現況が変わっている可能性があるため、必ず出典元でご確認ください。／ いずれも情報提供が目的で、投資判断への助言ではありません。相場は変動し、時間足の分析が将来の値動きを示すものでもありません。／ 生成: 2026年8月22日</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
+</body>
+</html>
