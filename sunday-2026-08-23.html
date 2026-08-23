@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本のAIはいま、どこまで来たのか。 — AI総合研究機構 Sunday Special</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(122,78,191,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],div[id]{scroll-margin-top:14px;}
+
+  /* ===== ヘッダー(読み物寄り、紫アクセントで毎日版/週刊版と区別) ===== */
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFCFF 55%, #FAF9FF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:34px 30px 28px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--purple) 0%, #9B7BD4 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(122,78,191,.08),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--purple);background:var(--purple-soft);
+    border:1px solid rgba(122,78,191,.18);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--purple);display:inline-block;
+    box-shadow:0 0 0 3px rgba(122,78,191,.16);font-style:normal;}
+  .issuetag{font-size:11px;font-weight:800;color:var(--ink-3);letter-spacing:.05em;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;margin-top:4px;}
+  .kicker{font-size:12.5px;color:var(--purple);font-weight:700;letter-spacing:.04em;margin-top:22px;}
+  h1.hello{font-size:28px;font-weight:800;line-height:1.42;letter-spacing:-.02em;margin-top:8px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .subtitle{font-size:15px;color:var(--ink-2);margin-top:12px;font-weight:600;line-height:1.7;}
+  .lede{color:var(--ink-2);font-size:14.5px;margin-top:16px;line-height:1.9;}
+  .lede strong{color:var(--ink);}
+
+  .navtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:12.5px;}
+  .navtop a{color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .navtop a:hover{color:var(--purple);border-color:var(--purple);}
+
+  /* ===== 内部目次 ===== */
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+  .toc ol{list-style:none;counter-reset:tocnum;display:flex;flex-direction:column;gap:2px;}
+  .toc li{counter-increment:tocnum;}
+  .toc a{display:flex;gap:10px;align-items:baseline;text-decoration:none;font-size:13.5px;font-weight:700;
+    color:var(--ink-2);padding:7px 4px;border-radius:8px;transition:all .13s;}
+  .toc a:hover{background:var(--purple-soft);color:var(--purple);}
+  .toc a::before{content:counter(tocnum);flex:none;width:20px;height:20px;border-radius:6px;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink-3);
+    font-family:ui-monospace,Menlo,monospace;font-size:10.5px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  /* ===== セクション共通 ===== */
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:26px 26px 24px;margin-top:16px;}
+  .step-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;padding-bottom:15px;
+    border-bottom:1px solid var(--line);}
+  .step-num{flex:none;width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(140deg,var(--purple),#9B7BD4);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;
+    box-shadow:0 3px 8px rgba(122,78,191,.25);font-family:ui-monospace,Menlo,monospace;}
+  .step-title{font-size:19px;font-weight:800;letter-spacing:-.018em;}
+  .step-sub{font-size:12.5px;font-weight:600;color:var(--ink-3);margin-top:2px;}
+
+  h3.sec-h{font-size:16px;font-weight:800;margin:24px 0 8px;letter-spacing:-.01em;color:var(--ink);}
+  h3.sec-h:first-child{margin-top:0;}
+  h4{font-size:14.5px;font-weight:700;margin:14px 0 6px;letter-spacing:-.01em;}
+  p{font-size:14.5px;color:var(--ink-2);margin-bottom:11px;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:700;}
+  .lead-q{font-size:15.5px;color:var(--ink);font-weight:700;line-height:1.7;margin:18px 0;
+    padding-left:16px;border-left:3px solid var(--purple);}
+
+  /* ===== 第1段: 数字カードリスト ===== */
+  .numlist{list-style:none;}
+  .numlist li{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line-2);}
+  .numlist li:first-child{border-top:none;padding-top:0;}
+  .numlist .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--purple-soft);
+    color:var(--purple);font-weight:800;font-size:13px;font-family:ui-monospace,Menlo,monospace;
+    display:flex;align-items:center;justify-content:center;}
+  .numlist .body p{font-size:14px;margin-bottom:0;}
+  .numlist .body h4{margin:0 0 4px;font-size:14.5px;}
+
+  .summary-box{background:linear-gradient(180deg,#FBFAFF 0%, var(--purple-soft) 100%);
+    border:1px solid rgba(122,78,191,.2);border-left:3px solid var(--purple);
+    border-radius:0 12px 12px 0;padding:16px 18px;margin-top:18px;}
+  .summary-box p{font-size:13.5px;color:#3E3560;margin-bottom:0;line-height:1.85;}
+  .summary-box strong{color:#2B2247;}
+
+  /* ===== 第2段: 5層 ===== */
+  .layer{margin-top:22px;padding-top:20px;border-top:1px solid var(--line-2);}
+  .layer:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+  .layer-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .layer-badge{flex:none;width:28px;height:28px;border-radius:8px;background:var(--slate-soft);
+    color:var(--slate);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center;
+    font-family:ui-monospace,Menlo,monospace;}
+  .layer-title{font-size:15.5px;font-weight:800;}
+
+  /* ===== why/counter/note(既存踏襲) ===== */
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  /* ===== 3軸カード(国産AIとは何か) ===== */
+  .axis-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0;}
+  @media(min-width:640px){.axis-grid{grid-template-columns:repeat(3,1fr);}}
+  .axis-card{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;}
+  .axis-card .ax-n{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:800;
+    color:var(--purple);letter-spacing:.1em;}
+  .axis-card h5{font-size:14.5px;font-weight:800;margin:5px 0 8px;}
+  .axis-card p{font-size:12.5px;margin-bottom:0;}
+
+  /* ===== Sakana AI年表 ===== */
+  .timeline{list-style:none;margin-top:14px;}
+  .tl-item{display:flex;gap:14px;padding:11px 0;border-top:1px dashed var(--line);}
+  .tl-item:first-child{border-top:none;padding-top:0;}
+  .tl-date{flex:none;width:76px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:800;color:var(--purple);}
+  .tl-body{font-size:13.5px;color:var(--ink-2);line-height:1.75;}
+  .tl-body b{color:var(--ink);}
+  .tl-src{font-size:11px;margin-left:4px;}
+  .tl-src a{color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);white-space:nowrap;}
+  .tl-src a:hover{color:var(--purple);border-color:var(--purple);}
+
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--purple);border-bottom-color:var(--purple);}
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:15px;padding-top:12px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+
+  /* ===== 3AIが見た日本AI ===== */
+  .ai3-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px;}
+  @media(min-width:680px){.ai3-grid{grid-template-columns:repeat(3,1fr);}}
+  .ai3-card{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px;
+    display:flex;flex-direction:column;gap:10px;}
+  .ai3-avatar{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:800;color:#fff;font-family:ui-monospace,Menlo,monospace;}
+  .ai3-gp{background:linear-gradient(140deg,#10A37F,#1CC99B);}
+  .ai3-gemi{background:linear-gradient(140deg,#4285F4,#7BA7FA);}
+  .ai3-kuro{background:linear-gradient(140deg,#D97757,#E8A184);}
+  .ai3-name{font-size:11px;font-weight:800;color:var(--ink-3);letter-spacing:.05em;}
+  .ai3-topic{font-size:15px;font-weight:800;color:var(--ink);line-height:1.5;}
+  .ai3-reason{font-size:12.5px;color:var(--ink-2);line-height:1.75;}
+  .ai3-watch{font-size:11.5px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:9px;margin-top:2px;}
+  .ai3-watch b{display:block;color:var(--ink-3);font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+  .ai3-watch ul{list-style:none;display:flex;flex-direction:column;gap:3px;}
+  .ai3-watch li::before{content:"→ ";color:var(--ink-3);}
+
+  /* ===== 次に何を見るか ===== */
+  .watch-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px;}
+  @media(min-width:640px){.watch-grid{grid-template-columns:1fr 1fr;}}
+  .watch-card{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:15px 16px;}
+  .watch-card h5{font-size:13px;font-weight:800;margin-bottom:8px;color:var(--purple);}
+  .watch-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .watch-card li{font-size:12.5px;color:var(--ink-2);padding-left:14px;position:relative;line-height:1.6;}
+  .watch-card li::before{content:"›";position:absolute;left:0;color:var(--purple);font-weight:800;}
+
+  /* ===== 結論(強調枠) ===== */
+  .conclusion-box{background:linear-gradient(165deg,#F9F7FF 0%,#FDFCFF 100%);
+    border:1px solid rgba(122,78,191,.22);border-radius:16px;padding:24px 24px;margin-top:6px;}
+  .conclusion-box p{font-size:14.5px;}
+  .conclusion-box .big{font-size:17px;font-weight:800;color:var(--ink);line-height:1.6;margin-bottom:14px;}
+
+  /* ===== 制作方法・フッター ===== */
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .method-box{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .method-box h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+  .method-box p{font-size:12.5px;line-height:1.8;}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .backtop{text-align:right;margin-top:16px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--purple);border-color:var(--purple);}
+
+  .toindex{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:700;
+    color:var(--purple);background:var(--purple-soft);border:1px solid rgba(122,78,191,.2);
+    border-radius:10px;padding:9px 16px;margin-top:18px;}
+  .toindex:hover{background:var(--purple);color:#fff;}
+  .toindex-wrap{text-align:center;}
+
+  @media(max-width:560px){
+    .mast{padding:26px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:23px;}
+    section{padding:20px 18px 18px;}
+    .step-num{width:38px;height:38px;font-size:13px;}
+    .step-title{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <div class="navtop">
+    <a href="index.html">← 一覧へ戻る</a>
+    <span>AI総合研究機構</span>
+  </div>
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special</span>
+      <span class="issuetag">S1 / 第1号</span>
+    </div>
+    <div class="date">2026年8月23日（日）発行</div>
+    <div class="kicker">日曜版・特集 第1号</div>
+    <h1 class="hello">日本のAIはいま、どこまで来たのか。</h1>
+    <p class="subtitle">「国産」の意味が変わる2026年夏 — Sakana AIから見る、日本AIの現在地</p>
+    <p class="lede">「日本のAIは、アメリカや中国に遅れているのか。」この問いだけで日本のAIを見ると、2026年夏に起きている変化のかなりの部分を見落としてしまいます。<strong>日本は巨大モデル競争をやめたわけではありません。巨大モデル一本で勝負する以外の競争軸を、同時に作り始めています。</strong>Sakana AIを中心に、「どの会社が一番強いか」ではなく「日本はAIの何を自分たちで握ろうとしているのか」という視点で見ていきます。</p>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#s-30sec">第1段｜30秒で分かる</a></li>
+      <li><a href="#s-5min">第2段｜5分で分かる — 日本AIの地図</a></li>
+      <li><a href="#s-deep">第3段｜深掘り</a></li>
+      <li><a href="#s-3ai">3AIが見た日本AI</a></li>
+      <li><a href="#s-next">次に何を見るか</a></li>
+      <li><a href="#s-conclusion">結論</a></li>
+      <li><a href="#s-method">制作方法</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>Part 1</span></div>
+
+  <!-- 第1段: 30秒で分かる -->
+  <section id="s-30sec">
+    <div class="step-head">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">30秒で分かる</div>
+        <div class="step-sub">日本のAIで、いま何が起きているのか</div>
+      </div>
+    </div>
+
+    <ul class="numlist">
+      <li><span class="n">1</span><div class="body">
+        <h4>「国産AI」が一つの意味では説明できなくなってきた</h4>
+        <p>ゼロから日本で作るAIだけでなく、海外の公開モデルを日本向けに高度化するAI、複数モデルを組み合わせるAI、国内・閉域環境で管理するAIまで、異なる戦略が並行しています。</p>
+      </div></li>
+      <li><span class="n">2</span><div class="body">
+        <h4>Sakana AIは「世界最大モデルを自社だけで作る」とは異なる道を選んでいる</h4>
+        <p>2026年8月3日に公開されたAPI「Sakana Namazu」は、海外の公開モデル(Kimi K2.6)を基盤に、日本語・日本の商習慣・日本の業務文脈へ追加学習したモデルです。Web検索やコード実行も備え、OpenAI互換APIとして提供されています。</p>
+      </div></li>
+      <li><span class="n">3</span><div class="body">
+        <h4>さらにSakana Fuguは「一つのAI」ではなく、複数AIを指揮する仕組み</h4>
+        <p>Fuguは、小型の「指揮者モデル」が処理方法を判断し、必要に応じて複数の高性能モデルを呼び出します。8月10日には、指揮者モデルの基盤を別系統のモデル(Gemma 4)へ変更しても、既存版と遜色ない性能を確認したとSakana AIが発表しました。</p>
+      </div></li>
+      <li><span class="n">4</span><div class="body">
+        <h4>ゼロから作る国産AIも止まっていない</h4>
+        <p>Preferred Networksは6月22日にフルスクラッチ型「PLaMo 3.0 Prime」を正式提供。NTTのtsuzumi 2は軽量性と日本語ビジネス文書処理を重視し、オンプレミスやプライベートクラウドでの利用を想定しています。</p>
+      </div></li>
+      <li><span class="n">5</span><div class="body">
+        <h4>研究側でも、小さく見えて重要な更新が続いている</h4>
+        <p>国立情報学研究所(NII)のLLM-jpは8月18日、約332億パラメータのDense型「LLM-jp-4 33B」を公開しました。企業1社だけではなく、研究者・大学・企業を横断するオープンな日本語AI基盤が更新を続けています。</p>
+      </div></li>
+      <li><span class="n">6</span><div class="body">
+        <h4>AIは「研究」から「実際の仕事」へ入り始めている</h4>
+        <p>Sakana AIと大和証券の共同プロジェクトは、8月1日付で技術検証からウェルスマネジメント領域の本番開発フェーズへ移行したと、8月5日に発表されました。</p>
+      </div></li>
+      <li><span class="n">7</span><div class="body">
+        <h4>行政でもAIが実際の災害対応へ入った</h4>
+        <p>デジタル庁は7月28日の熊本地震(最大震度7)を受け、翌29日からガバメントAI「源内」を被災自治体・関係自治体・災害対策機関等へ緊急提供。当初約3週間としていた提供期間を、8月19日に9月30日まで延長しました。</p>
+      </div></li>
+    </ul>
+
+    <div class="summary-box">
+      <p>一言でまとめると、<strong>日本のAI競争は「一番大きなモデルを誰が作るか」だけではなくなっています。</strong>作る、適応する、束ねる、守る、現場へ入れる、現実世界を動かす。その複数の層で、日本独自の競争が始まっています。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Part 2</span></div>
+
+  <!-- 第2段: 5分で分かる -->
+  <section id="s-5min">
+    <div class="step-head">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">5分で分かる</div>
+        <div class="step-sub">日本AIの現在地を「何を握るか」で見る</div>
+      </div>
+    </div>
+
+    <p>日本AIを会社名だけで分類すると、同じ企業が何度も登場して全体像が見えにくくなります。今回は、<strong>AIのどの部分を自分たちで握ろうとしているのか</strong>という5つの層で見ます。</p>
+
+    <div class="layer">
+      <div class="layer-head"><span class="layer-badge">①</span><span class="layer-title">作る｜事前学習から基盤モデルを作る</span></div>
+      <p>代表例はPreferred NetworksのPLaMo、NTTのtsuzumi、NECのcotomi、NII／LLM-jpなどです。PLaMoは、他社モデルを基盤にせず、アーキテクチャや学習データを構築し事前学習から開発するフルスクラッチ路線を明確にしています。<strong>PLaMo 3.0 Prime</strong>（2026年6月22日提供開始）では、Reasoningモデルと Non-reasoningモデルを用意し、コンテキスト長も64kから256kへ拡張されました。</p>
+      <p>NTTのtsuzumi 2は別の方向です。モデルを巨大化するのではなく、比較的限られたGPU環境(1GPU)で動かせる軽量性、図表を含む日本語ビジネス文書、機微情報を扱うオンプレミス／プライベートクラウド用途を重視しています。そしてNII／LLM-jpは、8月18日に33B規模のDenseモデルを公開しました。LLM-jpはモデルだけでなく、コーパスや評価・学習ツールもオープンに公開しており(Apache 2.0ライセンス)、企業の商品競争とは異なる「日本のAI研究基盤」という役割を持っています。</p>
+      <p class="srcline">出典 <a class="src" href="https://llm-jp.nii.ac.jp/news/20260818/" target="_blank" rel="noopener">国立情報学研究所(NII)／LLM-jp公式</a>「LLM-jp-4 33B」公開(2026年8月18日)［一次］ ・ <a class="src" href="https://www.preferred.jp/ja/news/pr20260622" target="_blank" rel="noopener">Preferred Networks公式</a>「PLaMo 3.0 Prime」提供開始(2026年6月22日)［一次］ ・ <a class="src" href="https://group.ntt/jp/newsrelease/2026/05/19/260519a.html" target="_blank" rel="noopener">NTT公式</a>「tsuzumi 2 Vision」1GPU・オンプレミス／プライベートクラウド対応(2026年5月19日)［一次］</p>
+    </div>
+
+    <div class="layer">
+      <div class="layer-head"><span class="layer-badge">②</span><span class="layer-title">合わせる｜世界のモデルを日本仕様へ適応する</span></div>
+      <p>Sakana Namazuが象徴的です。Namazuは海外モデルをそのまま提供するものではありません。日本語、日本の業務、日本の商習慣に合わせて追加学習を行い、応答特性についても日本向けの調整を行っています。ここで重要なのは、「外国モデルを使ったから日本AIではない」と単純に切るだけでは、技術の価値を十分に説明できなくなっていることです。一方で、ベースモデルを海外に依存しているという事実も消えません。だからこそ、<strong>どこまでを海外に依存し、どこからを国内で制御するのか</strong>が新しい評価軸になります。</p>
+    </div>
+
+    <div class="layer">
+      <div class="layer-head"><span class="layer-badge">③</span><span class="layer-title">束ねる｜複数AIを一つの能力として使う</span></div>
+      <p>Sakana Fuguは、この特集で最も注目したい存在の一つです。Fuguは一つの巨大LLMにすべての知識・能力を持たせるのではありません。「指揮者モデル」が、この問題をどのAIへどのように任せるかを判断し、複数のモデルを動的に使い分けます。Sakana AIは8月10日、指揮者モデルの基盤を別系統のモデル(Gemma 4)へ載せ替える検証を実施し、従来版と遜色ない性能と同等のコスト削減効果を確認したと発表しました。同社は今後、事前学習から国内で構築されたモデルを指揮者モデルの基盤として使える体制も目指すとしています。これは、「国産か外国産か」をモデル1個だけで判断するのではなく、<strong>AIシステムのどの層を国内で制御するのか</strong>という発想につながります。</p>
+    </div>
+
+    <div class="layer">
+      <div class="layer-head"><span class="layer-badge">④</span><span class="layer-title">守る・置く｜どこでAIを動かすか</span></div>
+      <p>AIが企業・行政・医療・金融へ入るほど、性能だけでは決められません。「入力した情報はどこへ行くのか」「どこで推論されるのか」「誰がデータへアクセスできるのか」「外部サービスが止まった場合に業務を継続できるのか」という問題が大きくなります。tsuzumiなどがオンプレミス／プライベートクラウドを重視するのは、その需要を表しています。NECもcotomiを中核に、企業業務向けAIエージェントやセキュアな提供形態を広げています。ここでは「国産だから安全」と考えてはいけません。大切なのは、<strong>モデルの出身国ではなく、実際のデータ処理、実行環境、契約、アクセス制御、継続性を確認すること</strong>です。</p>
+      <p class="srcline">出典 <a class="src" href="https://group.ntt/jp/newsrelease/2026/05/19/260519a.html" target="_blank" rel="noopener">NTT公式</a>「tsuzumi 2 Vision」機微情報向けオンプレミス／プライベートクラウド対応［一次］ ・ <a class="src" href="https://jpn.nec.com/gpu/cotomi/index.html" target="_blank" rel="noopener">NEC公式</a>「cotomi」搭載オンプレミス環境・機密情報利用に関する製品情報［一次］</p>
+    </div>
+
+    <div class="layer">
+      <div class="layer-head"><span class="layer-badge">⑤</span><span class="layer-title">現実世界へ出す｜Physical AI</span></div>
+      <p>日本が今後かなり注目すべき分野がPhysical AIです。AIが文章を生成するだけではなく、カメラ、センサー、音声、映像などから現実世界を理解し、ロボット、自動車、産業機械などの行動につなげます。国内でも企業連合や政府支援による基盤づくりが始まっています。ただし、2026年8月時点ではまだ本格的な成果を評価できる段階ではありません。「大きな計画がある」ことと「世界で使われる技術が完成した」ことは別です。ここは数年間追う必要があります。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Part 3</span></div>
+
+  <!-- 第3段: 深掘り -->
+  <section id="s-deep">
+    <div class="step-head">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">深掘り</div>
+        <div class="step-sub">Sakana AIは、何が変わったのか</div>
+      </div>
+    </div>
+
+    <h3 class="sec-h" id="s-sakana-history">研究から企業実装へ — Sakana AIの時間軸</h3>
+    <p>Sakana AIを見るとき、モデル単体のベンチマークだけを追うと、この半年の変化を見落とします。重要なのは、<strong>研究成果を出す会社から、研究成果を製品・API・企業業務へつなげる会社へ移り始めていること</strong>です。</p>
+
+    <ul class="timeline">
+      <li class="tl-item"><span class="tl-date">3/24</span><span class="tl-body"><b>Namazuシリーズ(α版)</b>を発表、搭載したチャットサービス「Sakana Chat」を公開。<span class="tl-src"><a class="src" href="https://sakana.ai/namazu-alpha/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">6/15</span><span class="tl-body">初の商用プロダクト「<b>Sakana Marlin</b>」(リサーチエージェント)提供開始。<span class="tl-src"><a class="src" href="https://sakana.ai/marlin-release/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">6/22</span><span class="tl-body">複数AIを協調させるマルチエージェントモデル「<b>Sakana Fugu</b>」正式提供開始。<span class="tl-src"><a class="src" href="https://sakana.ai/fugu-release/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">7/6</span><span class="tl-body">Sakana Chatに翻訳機能「<b>Sakana Translate</b>」を追加(日英中、Namazuベース)。<span class="tl-src"><a class="src" href="https://sakana.ai/translate-release/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">8/3</span><span class="tl-body">Namazuをアップデートし、API「<b>Sakana Namazu</b>」として提供開始(基盤はKimi K2.6)。<span class="tl-src"><a class="src" href="https://sakana.ai/namazu-api/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">8/5</span><span class="tl-body"><b>大和証券</b>との共同AIプロジェクトが、8月1日付でウェルスマネジメント領域の本番開発フェーズへ移行したと発表。<span class="tl-src"><a class="src" href="https://sakana.ai/daiwa-shoken-full-scale/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">8/10</span><span class="tl-body">Fuguの指揮者モデルを<b>Gemma 4</b>(Apache 2.0)ベースでも訓練し、既存版と遜色ない性能・同等のコスト削減効果を確認。<span class="tl-src"><a class="src" href="https://sakana.ai/fugu-gemma4/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">8/13</span><span class="tl-body">Sakana ChatへFugu・新世代Namazu・Pythonコード実行・成果物プレビュー・画像/文書添付を追加。<span class="tl-src"><a class="src" href="https://sakana.ai/chat-update/" target="_blank" rel="noopener">出典</a></span></span></li>
+      <li class="tl-item"><span class="tl-date">8/21</span><span class="tl-body">Sakana Translateのモデルを新世代Namazuへ更新。<span class="tl-src"><a class="src" href="https://sakana.ai/translate-update/" target="_blank" rel="noopener">出典</a></span></span></li>
+    </ul>
+
+    <p style="margin-top:14px;">一連の動きを見ると、<strong>研究 → 製品 → API → 一般利用 → 企業実装</strong>が連続してきたことが分かります。</p>
+
+    <h3 class="sec-h" id="s-orchestration">「一番賢いAI」を作らなくても競争できるのか</h3>
+    <p>Fuguが投げかけている問いはここです。最強のAIを1個作るのではなく、優れたAIを探し、組み合わせ、仕事ごとに最適なAIへ任せる能力そのものを競争力にできないか。これはAI総合研究機構が複数AIを使って観測・比較する考え方とも近いものがあります。</p>
+    <div class="counter">
+      <h5>但し、オーケストレーションにも弱点がある</h5>
+      <p>呼び出す外部モデルへの依存。モデルごとの価格変更。利用規約変更。サービス停止。レイテンシ。データの扱い。そして、どのモデルをどの判断で選んでいるのかという透明性。「複数AIを使うから安全・高性能」なのではありません。使い分けを誰が設計し、どこまで検証できるのかが重要になります。</p>
+    </div>
+
+    <h3 class="sec-h" id="s-kokusan">「国産AI」とは何なのか</h3>
+    <p>今回3AIで独立調査して、最も面白かった問いの一つがこれでした。「国産」という言葉を、一つの軸だけで判断することが難しくなっています。少なくとも、3つに分けて考える必要があります。</p>
+    <div class="axis-grid">
+      <div class="axis-card">
+        <div class="ax-n">AXIS 1</div>
+        <h5>出自</h5>
+        <p>誰が、どこで、何を使ってモデルを作ったのか。ゼロから国内で作るモデルもあれば、世界の公開モデルを基盤として日本向けに追加学習するモデルもあります。</p>
+      </div>
+      <div class="axis-card">
+        <div class="ax-n">AXIS 2</div>
+        <h5>適合</h5>
+        <p>誰の言語・文化・商習慣・業務へ合わせたのか。日本語の敬語、企業文書、金融、行政など、日本固有の文脈へ適応させること自体が技術競争になっています。</p>
+      </div>
+      <div class="axis-card">
+        <div class="ax-n">AXIS 3</div>
+        <h5>統治・制御</h5>
+        <p>誰がAIの構成を決めるのか。どこで動かすのか。どのモデルを使うのか。供給元が変わった時に入れ替えられるのか。自分たちの意思で継続できるのか。</p>
+      </div>
+    </div>
+    <p style="margin-top:10px;">2026年の日本AIを考えるうえで、③は今後ますます重要になる可能性があります。</p>
+
+    <h3 class="sec-h" id="s-gennai">AIが災害対応へ入った「源内」</h3>
+    <p>今回、派手なモデル発表とは別に残しておきたい記録があります。<strong>7月28日16時27分、熊本県熊本地方でM7.1・最大震度7の地震が発生</strong>した翌日の<strong>7月29日11時頃</strong>、デジタル庁はガバメントAI「源内」を被災自治体、関係自治体、災害対策機関等へ緊急提供しました。</p>
+    <p>提供された機能は派手ではありません。通知文の作成。資料の要約。音声の文字起こし。既存Excelファイルの表形式への変換処理。しかし災害対応では、こうした地味な事務作業が大量に発生します。<strong>当初約3週間の予定だった提供期間は、8月19日に9月30日まで延長されました。</strong></p>
+    <div class="why">
+      <h5>ただし、断定しないこと</h5>
+      <p>「延長されたから大量に使われた」とは確認できません。デジタル庁公式発表には、利用人数・利用回数等の統計は公表されていません。確認できる重要な事実は、<strong>政府内で試験・展開されてきたAI環境が、実際の大規模災害対応を目的として関係機関へ緊急提供され、提供期間まで延長された</strong>ということです。AIの社会実装を見るとき、モデルのベンチマークだけではなく、こうした「実際に使うための運用」が今後重要になります。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.digital.go.jp/news/cb912b3b-49c9-4a02-aa46-4056b96c1d4f" target="_blank" rel="noopener">デジタル庁 公式発表</a>「熊本地震の被災自治体等へ、ガバメントAI 源内を緊急提供します(更新)」(2026年7月29日公開、8月19日更新)［一次］ ・ <a class="src" href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 令和8年熊本地震ポータルサイト</a>［一次］</p>
+
+    <h3 class="sec-h" id="s-weakness">日本AIの弱点も変わっていない</h3>
+    <p>ここまでを見ると、日本AIに新しい可能性がたくさんあるように見えます。しかし、課題も大きいままです。</p>
+    <p><strong>第一は計算資源と資金です。</strong>世界最大級のAI企業と同じ規模で、すべての領域を正面から競うのは容易ではありません。<strong>第二は利用規模です。</strong>良いモデルを作ったことと、多くの企業や一般利用者が継続して使うことは別です。<strong>第三はベンチマークです。</strong>「世界トップクラス」という発表を見るときには、同サイズ帯なのか、同価格帯なのか、評価問題を誰が作ったのか、実際の業務でも同じ結果になるのかを確認する必要があります。<strong>第四は海外技術との関係です。</strong>GPU、クラウド、オープンモデル、ソフトウェアなど、AIのサプライチェーンを完全に一国内で閉じることは現実的ではありません。</p>
+    <p>だから重要なのは、「全部国産か」という純度競争ではなく、<strong>どこを国内で握る必要があり、どこは世界と組む方が合理的なのかを明確にすること</strong>だと考えます。</p>
+
+    <h3 class="sec-h" id="s-strength">日本に勝負できる場所はあるのか</h3>
+    <p>今回の調査から、少なくとも可能性のある領域はいくつも見えます。日本語。敬語・商習慣。金融。行政。機密性の高い企業文書。製造現場。省電力・軽量AI。オンプレミス。ロボット。自動車。Physical AI。そして、複数AIを組み合わせるオーケストレーション。</p>
+    <p>これらは、「世界最大のモデルを持っている国だけがAIで勝つ」という競争とは少し違います。一方で、日本だから自然に勝てる領域でもありません。日本企業が持つデータ、現場、製造技術、制度、言語を、<strong>実際に世界で使えるAI製品へ変えられるか</strong>が次の勝負になります。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>3 AIs, 3 Views</span></div>
+
+  <!-- 3AIが見た日本AI -->
+  <section id="s-3ai">
+    <div class="step-head">
+      <div class="step-num">＋</div>
+      <div>
+        <div class="step-title">3AIが見た日本AI</div>
+        <div class="step-sub">同じテーマを独立調査した結果、3AIが選んだのは違うものでした(優劣なし・並列掲載)</div>
+      </div>
+    </div>
+
+    <div class="ai3-grid">
+      <div class="ai3-card">
+        <div class="ai3-avatar ai3-gp">GP</div>
+        <div class="ai3-name">GPちゃん(ChatGPT)が見た日本AI</div>
+        <div class="ai3-topic">LLM-jp-4 33B</div>
+        <div class="ai3-reason">企業1社の競争だけではなく、大学・研究者・企業を横断したオープンな日本語AI基盤が継続的に更新されていること。8月18日公開の約332億パラメータDenseモデルは、大型企業発表ほど目立たず通常ニュースでは見落としやすいが、重要な直近動向。</div>
+        <div class="ai3-watch"><b>今後見ること</b><ul>
+          <li>派生モデルが生まれるか</li>
+          <li>研究だけでなく企業利用へつながるか</li>
+          <li>日本のAI評価・学習基盤として定着するか</li>
+        </ul></div>
+      </div>
+      <div class="ai3-card">
+        <div class="ai3-avatar ai3-gemi">Ge</div>
+        <div class="ai3-name">ジェミちゃん(Gemini)が見た日本AI</div>
+        <div class="ai3-topic">tsuzumi・cotomiに見る「企業が使えるAI」</div>
+        <div class="ai3-reason">世界最大モデルではなく、金融・医療・行政・企業機密など「安心して実務へ入れられるAI」という別の競争軸が生まれていること。NTT tsuzumi・NEC cotomiが示す、オンプレミス・閉域AIという方向性に注目。</div>
+        <div class="ai3-watch"><b>今後見ること</b><ul>
+          <li>PoCで終わるか</li>
+          <li>本当の基幹業務へ入り継続利用されるか</li>
+        </ul></div>
+      </div>
+      <div class="ai3-card">
+        <div class="ai3-avatar ai3-kuro">Cl</div>
+        <div class="ai3-name">クロちゃん(Claude)が見た日本AI</div>
+        <div class="ai3-topic">熊本地震対応でのガバメントAI「源内」の緊急提供継続</div>
+        <div class="ai3-reason">新モデルやベンチマークではなく、AIが実際の行政・災害対応へ入った「運用の記録」に価値を見た。7月29日の緊急提供開始、8月19日の9月30日までの延長という事実そのものに注目。</div>
+        <div class="ai3-watch"><b>今後見ること</b><ul>
+          <li>利用件数・実際に役立った業務</li>
+          <li>自治体からの評価</li>
+          <li>災害対応後も平時利用へつながるか</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="summary-box" style="margin-top:20px;">
+      <p><strong>3AIの答えを重ねると</strong> — GPちゃんは研究基盤、ジェミちゃんは企業実務、クロちゃんは行政の実運用を選びました。しかし重ねると一つの流れになります。研究で作る。企業で使える形へする。社会の現場へ入れる。日本のAIが本当に競争力を持つかどうかは、<strong>この3つが切れずにつながるか</strong>にかかっています。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Watchpoints</span></div>
+
+  <!-- 次に何を見るか -->
+  <section id="s-next">
+    <div class="step-head">
+      <div class="step-num">◎</div>
+      <div>
+        <div class="step-title">次に何を見るか</div>
+        <div class="step-sub">この特集で結論を固定するつもりはありません。2026年8月23日は観測開始点です</div>
+      </div>
+    </div>
+
+    <div class="watch-grid">
+      <div class="watch-card">
+        <h5>🐟 Sakana AI</h5>
+        <ul>
+          <li>Fuguの指揮者モデルに国産モデル版が実際に登場するか</li>
+          <li>Namazu APIの企業利用がどこまで広がるか</li>
+          <li>大和証券などの本番開発が実運用へ進むか</li>
+          <li>日本国外で利用事例が生まれるか</li>
+        </ul>
+      </div>
+      <div class="watch-card">
+        <h5>🏗️ PLaMo・tsuzumi・cotomi</h5>
+        <ul>
+          <li>ベンチマークではなく企業の本番業務でどこまで定着するか</li>
+          <li>オンプレミス・閉域環境の需要がどこまで伸びるか</li>
+        </ul>
+      </div>
+      <div class="watch-card">
+        <h5>📚 LLM-jp</h5>
+        <ul>
+          <li>33B公開後に派生研究・企業利用が増えるか</li>
+        </ul>
+      </div>
+      <div class="watch-card">
+        <h5>🏛️ ガバメントAI</h5>
+        <ul>
+          <li>源内の実利用結果</li>
+          <li>国内LLMの評価</li>
+          <li>今後の正式調達</li>
+        </ul>
+      </div>
+      <div class="watch-card">
+        <h5>🤖 Physical AI</h5>
+        <ul>
+          <li>国内の大型構想が、実際のモデル・データ・ロボットへ結びつくか</li>
+        </ul>
+      </div>
+      <div class="watch-card">
+        <h5>🇯🇵 そして日本AI全体</h5>
+        <ul>
+          <li>世界のモデルを利用することと、自分たちで制御できる部分を持つこと</li>
+          <li>そのバランスをどう取るのか</li>
+        </ul>
+      </div>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>結論</span></div>
+
+  <!-- 結論 -->
+  <section id="s-conclusion">
+    <div class="conclusion-box">
+      <p class="big">日本のAIはいま、どこまで来たのでしょうか。私たちの答えは、「世界に追いついた」でも、「完全に遅れた」でもありません。</p>
+      <p>世界最大級のモデル、計算資源、利用者規模という競争では、海外巨大企業との差は依然として大きい。しかし同時に、日本語へ合わせる。日本の企業へ入れる。複数AIを束ねる。自分たちで動かせる部分を確保する。災害や行政へ使う。そしてロボットや製造業へつなぐ。という<strong>別の競争が始まっています。</strong></p>
+      <p>2026年夏に変わり始めているのは、「国産AIとは何か」という<strong>定義そのもの</strong>なのかもしれません。すべてを日本だけで作ることだけが国産なのか。世界の技術を使いながら、日本の言語・現場・価値観へ適応させることも競争力なのか。複数のAIを組み合わせ、必要に応じて入れ替えられることも主権なのか。</p>
+      <p>まだ答えは決まっていません。だからこそ、私たちはこれからも、大きな発表だけではなく、小さな更新、実装、失敗、見落とし、そして実際に使われた記録まで追っていきます。「どのAIが一番強いか」だけではなく、AIがどこで、誰のために、どう使われ始めているのか。そこに、日本AIの本当の現在地が表れると考えています。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot" id="s-method">
+    <div class="method-box">
+      <h5>制作方法</h5>
+      <p>本特集は、ChatGPT（GPちゃん）、Gemini（ジェミちゃん）、Claude（クロちゃん）が同一テーマを独立して調査・考察し、共通点・相違点・独自発見を比較したうえで、GPちゃんが統合編集しました。事実確認では一次情報を優先し、確認できない事項は二次情報ベース／要確認として区別しています。</p>
+    </div>
+    <p class="disc">本特集はAI総合研究機構の日曜版・読み物企画です。企業礼賛・特定企業への肩入れを目的とせず、Sakana AIについても強み・弱みの双方を記載しています。数字・日付・モデル名は、掲載前にSakana AI公式ブログ、NII/LLM-jp公式、Preferred Networks公式、デジタル庁公式、気象庁等の一次情報で確認しています(本文中に出典リンクを掲載)。政治・安全保障に関わる話題(防衛分野でのAI活用候補等)については、政府公式発表で確認できない事項を確定事項として記載していません。「日本は巨大モデル競争から完全に降りた」「源内は延長されたので大量に利用された」「海外AIは危険」「国産AIなら安全」といった断定は行わず、確認できる事実と考察を分離しています。／ 生成: 2026年8月23日</p>
+  </footer>
+
+  <div class="toindex-wrap">
+    <a class="toindex" href="index.html">← AI総合研究機構 レポート一覧へ戻る</a>
+  </div>
+
+</div>
+</body>
+</html>
