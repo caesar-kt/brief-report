@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 朝の一日レポート — 2026年8月29日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年8月29日（土）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝の要点は14件です。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の共有レポートです。本日は土曜日のため、市場関連の数値は<strong>8月28日(金)の終値・引け情報</strong>として明記しています。<strong>令和8年熊本地震の断水は、熊本県が8月28日「県内全域で解消」と発表しました(八代市は26日、宇城市・氷川町は28日に復旧完了)</strong>。<strong>北陸の大雨は国交省第5報(8月28日17時発表)で河川の氾濫危険水位超過はなくなりましたが、氷見市の一部で断水・通行止めが続いています。KDDIの8月26日発表は奄美地方(台風18号)の障害であり北陸豪雨とは別事案で、8月28日20時41分の復旧発表そのものは一次情報で確認できませんでした</strong>。<strong>ウェーク島近海で台風23号「バンラン」が新たに発生(8月28日12時)しましたが、日本への直接接近は現時点で予想されていません。台風22号「アータウ」も日本のはるか東へ抜ける見込みです</strong>。市場では、<strong>NVIDIA株価は決算翌々日の8月28日(金)通常取引で-4.57%の217.55ドルとなり、8月26日→27日(+8.74%)→28日(-4.57%)と大きく振れました。報道では、前日の急騰後の利益確定売りや、Fed新議長ウォーシュ氏のジャクソンホール講演を受けた金利観測の悪化などが下押し要因として挙げられていますが、決算そのものへの評価だけでは説明できず、需給・金利など複数要因が重なった可能性があります</strong>。<strong>ウォーシュ氏本人は講演原文で利上げ・利下げのどちらも明言しておらず、「タカ派的」との評価は市場・報道側の解釈である点を、FRB公式原文で確認しました</strong>。<strong>米連邦地裁は8月27日夜(米太平洋時間)、国防総省によるAnthropicへの「サプライチェーンリスク」指定を違法・無効とする判決を下しました(政府側は控訴の構えとみられ、法的な最終確定ではありません)</strong>。<strong>ホルムズ海峡の通航量は8月24〜27日で5隻→17隻→7隻と大きく変動しており、「悪化トレンドの継続」「回復」のどちらも断定できない状況です</strong>。<strong>ロシア国内のガソリン供給が需要の70%水準という数字は匿名の業界筋情報であり、ロシア政府による確認はありません。ウクライナの食料物流損傷「約90%」はウクライナ農業省自身の推計で、同省自体は組織的な食料不足リスクを否定しています</strong>。<strong>Reutersは8月28日、中国の人型ロボット「Tiangong Ultra」の100m走8.64秒とウサイン・ボルトの世界記録9.58秒を比較する分析記事を配信し、スタート条件・歩容・停止能力の違いを整理しました(日曜特集第2号に向けて蓄積)</strong>。</p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-hokuriku-rain">Hokuriku Rain <span class="kw-arrow">↓</span></a></span><span>
+        <b>国交省北陸地方整備局・第5報(8/28 17時発表)。河川の氾濫危険水位超過はなくなり、道路も大半が解除。氷見市の一部地区でなお断水・道路規制が継続。</b>
+        <span class="but"><em>要確認</em> KDDIの8/28 20:41復旧発表は一次情報で確認できず。8/26発表は奄美地方(台風18号)の障害で北陸豪雨とは別事案です。docomoの北陸障害はNHK報道の二次確認のみで、docomo公式一次資料には到達できていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-typhoon23">Typhoon23 <span class="kw-arrow">↓</span></a></span><span>
+        <b>【新規】台風23号「バンラン」がウェーク島近海で発生(8/28 12時)。8/29 3時時点で中心気圧992hPa・最大風速25m/s。日本への直接接近は現時点で予想されていません。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-typhoon22">Typhoon22 <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風22号「アータウ」は8/29 6時時点も996hPa・最大風速20m/sで北北西に進行中。進路予報上は8/30に日本のはるか東へ抜け、日本への直接接近は予想されていません。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-kumamoto">Kumamoto <span class="kw-arrow">↓</span></a></span><span>
+        <b>【解消】令和8年熊本地震の断水は、熊本県が8月28日「県内全域で解消」と発表。八代市は26日、宇城市・氷川町は28日に復旧完了しました。7/28の発生から33日目です。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jacksonhole">Jackson Hole <span class="kw-arrow">↓</span></a></span><span>
+        <b>【答え合わせ】Fed新議長ウォーシュ氏の講演原文を確認したところ、9月の利上げ・利下げへの直接言及はなく「タカ派的」との評価は市場・報道側の解釈でした。NVIDIA株は8/26→27(+8.74%)→28(-4.57%)と大きく振れています。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-us">US Market <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国市場は8/28(金)、S&amp;P500 7,711.76(-0.25%)・Nasdaq 26,402.42(-0.52%)・Dow 53,559.99(-0.02%)で反落しました(土曜のため金曜終値)。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jp">Nikkei <span class="kw-arrow">↓</span></a></span><span>
+        <b>日経平均は8/28(金)、前日比+273.58円(+0.41%)の66,405.56円で反発しました(土曜のため金曜終値)。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-security">Anthropic v. DoD <span class="kw-arrow">↓</span></a></span><span>
+        <b>米連邦地裁(北カリフォルニア、Rita Lin判事)は8/27夜、国防総省によるAnthropicへの「サプライチェーンリスク」指定を違法・無効とする判決。修正1条・5条違反等が理由で、政府側の控訴可能性はあり法的な最終確定ではありません。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-hormuz">Hormuz <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡の通航量(Kplerデータ)は8/25〜27で5隻→17隻→7隻と大きく変動。IMF PortWatch(straits.live集計)は8/23の3隻/日が最終確定値のまま更新されていません。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">Russia-Ukraine <span class="kw-arrow">↓</span></a></span><span>
+        <b>ロシア国内ガソリン供給「需要の70%」は匿名業界筋情報。ウクライナ食料物流損傷「約90%」はウクライナ農業省自身の推計で、同省は組織的な食料不足リスクを否定しています。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-humanoid">Tiangong v. Bolt <span class="kw-arrow">↓</span></a></span><span>
+        <b>Reutersが8/28、Tiangong Ultraの100m走8.64秒とボルトの世界記録9.58秒を比較。スタート条件・歩数・停止能力の違いを専門家コメントとともに整理しました(日曜特集向け蓄積)。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-robotics">NSK×Atom <span class="kw-arrow">↓</span></a></span><span>
+        <b>日本精工とアトムが8/20にMOU締結、8/26にアトムが「フィジカルAIファウンドリ」開設を発表。アトム側説明では2027年市場投入・2027年末に常時200台稼働を目指すとしています。西宮市・阪神電鉄は8/31から自動運転EVバスの実証運行を開始します。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-fx">FX &amp; Commodity <span class="kw-arrow">↓</span></a></span><span>
+        <b>ドル円は8/29早朝(日本時間)160円前後で推移(情報源により幅あり)。WTI原油は8/28、82.82ドル(-0.86%)とイラン=オマーン合意を受け軟化しました。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">Weekend Watch <span class="kw-arrow">↓</span></a></span><span>
+        <b>本日は土曜日のため国内外市場は休場です。台風23号・22号の進路更新、北陸の復旧状況、日曜特集第2号(ヒューマノイド)の準備を継続して確認します。</b>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">熊本地震断水</div><div class="vl mono">県内全域解消</div><div class="ch up">8/28熊本県発表</div><div class="ctx">7/28発生から33日目</div></div>
+      <div class="cell"><div class="nm">台風23号バンラン(8/29 3時)</div><div class="vl mono">992hPa 25m/s</div><div class="ch">日本への影響は未定</div><div class="ctx">ウェーク島近海を北上</div></div>
+      <div class="cell"><div class="nm">台風22号アータウ(8/29 6時)</div><div class="vl mono">996hPa 20m/s</div><div class="ch">日本のはるか東へ</div><div class="ctx">北北西へ時速15km</div></div>
+      <div class="cell"><div class="nm">NVIDIA(8/28終値)</div><div class="vl mono">$217.55</div><div class="ch down">-4.57%</div><div class="ctx">27日+8.74%から反落</div></div>
+      <div class="cell"><div class="nm">日経平均(8/28終値)</div><div class="vl mono">66,405.56</div><div class="ch up">+0.41%</div><div class="ctx">土曜のため金曜終値</div></div>
+      <div class="cell"><div class="nm">S&amp;P500(8/28終値)</div><div class="vl mono">7,711.76</div><div class="ch down">-0.25%</div><div class="ctx">Warsh講演を受け反落</div></div>
+      <div class="cell"><div class="nm">WTI原油(8/28)</div><div class="vl mono">$82.82</div><div class="ch down">-0.86%</div><div class="ctx">イラン=オマーン合意受け軟化</div></div>
+      <div class="cell"><div class="nm">ドル円(8/29早朝)</div><div class="vl mono">160円前後</div><div class="ch">情報源により幅あり</div><div class="ctx">要確認</div></div>
+    </div>
+
+    <p class="jump">この先は分野別ダイジェストと詳細です。<a href="#deep">↓</a></p>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#sec-hokuriku-rain">北陸大雨・続報</a></li>
+      <li><a href="#sec-typhoon23">台風23号バンラン(新規)</a></li>
+      <li><a href="#sec-typhoon22">台風22号アータウ・続報</a></li>
+      <li><a href="#sec-kumamoto">令和8年熊本地震・断水解消</a></li>
+      <li><a href="#sec-jacksonhole">ジャクソンホール答え合わせ・NVIDIA株価3段階</a></li>
+      <li><a href="#sec-us">米国市場(8/28終値)</a></li>
+      <li><a href="#sec-jp">国内株式(8/28終値)</a></li>
+      <li><a href="#sec-fx">為替</a></li>
+      <li><a href="#sec-commodity">商品(原油・金)</a></li>
+      <li><a href="#sec-crypto">暗号資産</a></li>
+      <li><a href="#sec-ai-security">AI安全保障・技術動向</a></li>
+      <li><a href="#sec-humanoid">Tiangong Ultra対ボルト・分析</a></li>
+      <li><a href="#sec-robotics">ロボット・自動車</a></li>
+      <li><a href="#sec-kominka">古民家・不動産</a></li>
+      <li><a href="#sec-hormuz">ホルムズ海峡・中東</a></li>
+      <li><a href="#sec-world">ロシア・ウクライナ</a></li>
+      <li><a href="#sec-thin">今回情報が薄かった分野</a></li>
+      <li><a href="#sec-watch">ウォッチリスト</a></li>
+    </ul>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <!-- 北陸大雨・続報 -->
+  <section class="quake" id="sec-hokuriku-rain">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Follow-up</span><span class="sec-title">北陸大雨・続報 <span class="sub">/ 河川の危険水位超過はなし。氷見市の一部でなお断水・規制が継続</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>国交省北陸地方整備局・第5報(8/28 17時発表、基準時刻15時)。河川は直轄・県管理とも氾濫危険水位の超過なし</h4>
+      <p>国土交通省北陸地方整備局の第5報(記者発表:2026年8月28日17時00分、内容基準は同日15時00分現在)によれば、<strong>直轄河川・県管理河川とも氾濫危険水位の超過はありません。避難判断水位を超えているのは大野川水系河北潟のみ</strong>です。8月27日時点で報じられていた10河川11か所の氾濫(NHK等既報)からは改善しています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>断水は氷見市の一部地区で継続。道路は北陸道が解除も一部補助国道・地方道は規制継続</h4>
+      <p><strong>断水は富山県氷見市の複数地区で継続しています。仏生寺(上中)地区30戸・入善町舟見地区30戸は復旧済み、日名田地区8戸は28日中の解消見込み、吉滝地区3戸・長坂地区3戸は復旧見込み未定</strong>です。<strong>北陸自動車道の砺波IC〜小杉ICは8月27日11時25分に通行止めとなりましたが、8月28日6時00分に解除されました。</strong>国道160号・8号など直轄国道の多くも28日朝までに解除された一方、<strong>一部補助国道(415号・471号・249号等)は15時時点でなお通行止めが継続しています。地方道は富山県23路線36箇所、石川県8路線8箇所が規制中</strong>で、解除状況の内訳は本レポート確定時点で確認できていません(要確認)。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>土砂災害は富山10件・石川3件。孤立解消・停電戸数・鉄道運休・人的被害の全体集計は第5報に明記なし</h4>
+      <p><strong>土砂災害の被害報告は富山県で10件(うち人家全壊1件、他は確認中)、石川県で3件(詳細確認中)</strong>です。公営住宅は氷見市で床上浸水40戸・床下浸水2戸の記載がありますが、<strong>孤立解消状況・停電戸数・鉄道運休状況・人的/住家被害の全体集計は第5報に明記がなく、本レポート確定時点で確認できていません(要確認)。</strong>鉄道はJR氷見線が28日終日運休、城端線・高山線(猪谷〜富山)が17時頃まで運休、七尾線(高松〜七尾)は27日から終日運休が継続していると富山テレビ等が報じています(二次情報、JR西日本公式での一次確認はできていません)。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 ― 通信2系統の混同を避ける</h5>
+      <p>前回のGPちゃん指摘にあった「KDDIが8/28 20:41に復旧」という情報について一次情報を確認しましたが、<strong>KDDI公式(news.kddi.com)への直接アクセスができず、この復旧発表そのものは確認できませんでした。</strong>確認できたKDDI公式発表(8月26日9時)は、<strong>鹿児島県大島郡(瀬戸内町・徳之島町等)・沖縄県島尻郡での台風18号による障害であり、北陸の大雨とは別事案です。</strong>一方、<strong>NTTドコモについては、NHK記事(8月28日22時18分配信)が石川県羽咋市・宝達志水町、富山県氷見市での通信影響(原因は大雨による停電等)を報じています</strong>が、ドコモ公式お知らせページを直接確認したところ取得時点では「重大な障害発生情報はありません」と表示されており、<strong>ドコモ公式の一次情報としては確認できていません(NHK報道による二次確認のみ)。</strong>「KDDIが北陸で8/28夜に復旧した」という前提は誤りである可能性が高く、今回は北陸の通信障害(ドコモ・二次情報)と台風18号関連のKDDI障害(奄美・沖縄・一次情報)を明確に分離して記載しました。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.hrr.mlit.go.jp/saigai/r080827/260828press02.pdf" target="_blank" rel="noopener">国土交通省北陸地方整備局 第5報</a>(2026年8月28日17時00分発表、基準15時00分現在)［一次］ ・ <a class="src" href="https://news.kddi.com/important/news/important_202608261768.html" target="_blank" rel="noopener">KDDI公式</a>(2026年8月26日9時、奄美地方の障害)［一次］ ・ NHK詳報(2026年8月28日22時18分、ドコモ北陸影響の二次確認) ・ 富山テレビ・鉄道系報道(運休情報、二次情報)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 台風23号バンラン -->
+  <section class="quake" id="sec-typhoon23">
+    <div class="sec-head"><span class="tick"></span><span class="cat">新規発生</span><span class="sec-title">台風23号「バンラン」 <span class="sub">/ ウェーク島近海で発生。日本への直接接近は現時点で予想されていません</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>8/28 12時、ウェーク島近海で台風23号「バンラン」発生。8/29 3時時点で中心気圧992hPa・最大風速25m/s</h4>
+      <p>気象庁によれば、<strong>台風23号「バンラン(BANG-LANG)」は8月28日12時、ウェーク島近海(北緯18度25分・東経165度05分)で発生</strong>しました。発生時点の中心気圧は1002hPa、最大風速18m/s、最大瞬間風速25m/s、強風域半径165km、北東へ時速20kmで進行(ウェザーニュース)。<strong>8月29日03時時点(tenki.jp、同日04時20分発表)では北緯20度50分・東経167度05分に位置し、中心気圧992hPa、最大風速25m/s、最大瞬間風速35m/sまで発達</strong>しています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>進路予報は北東から北へ。9/2に熱帯低気圧化の見込みで、日本への直接接近は予想されていない</h4>
+      <p><strong>進路は北東から北へ向かい、8月31日15時には「日本のはるか東」、9月2日15時にはアリューシャン列島南で熱帯低気圧に変わる見込み</strong>です。この予報通りであれば、<strong>日本への直接接近・上陸は現時点で予想されていません。</strong>ただし関係海域では「しけとなり警戒が必要」とされており、太平洋沿岸への高波・うねりの可能性は否定できません(要確認)。台風22号との藤原の効果に言及する記事もありますが、一次情報での裏付けは取れていません。</p>
+    </div>
+
+    <p class="srcline">出典 ウェザーニュース(2026年8月28日発表) ・ <a class="src" href="https://tenki.jp/bousai/typhoon/2623/" target="_blank" rel="noopener">tenki.jp 台風情報</a>(2026年8月29日04時20分発表)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 台風22号アータウ -->
+  <section class="quake" id="sec-typhoon22">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Follow-up</span><span class="sec-title">台風22号「アータウ」・続報 <span class="sub">/ 8/29 6時も996hPaで足踏み。進路予報上は日本のはるか東へ</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>8/29 6時現在、北緯26度30分・東経166度00分。中心気圧996hPa(前号8/28 15時予報から変化なし)、最大風速20m/s</h4>
+      <p>tenki.jp(2026年8月29日06時45分発表)による最新実況では、<strong>8月29日06時現在の位置は北緯26度30分・東経166度00分、中心気圧996hPa(前号の8月28日15時予報値から変化なし)、最大風速20m/s・最大瞬間風速30m/s、北北西へ時速15kmで進行</strong>しています。<strong>進路予報は8月30日15時に「日本のはるか東」、9月2日15時にアリューシャン列島南で温帯低気圧化する見込みで、日本列島への直接接近は予想されていません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-thin">要確認</span></div>
+      <h4>一部報道は「29日に最大瞬間風速35m/sまで発達」と予測。tenki.jp実況値とは未達で今後の発達可能性に留意</h4>
+      <p>別の報道(ATV青森テレビ、Yahoo!ニュース)では「29日に最大瞬間風速35m/s・中心気圧992hPaまで発達する見込み」としており、<strong>tenki.jpの実況値(996hPa・瞬間30m/s)はこれに未達の状態です。今後さらに発達する可能性がある点に留意が必要ですが、断定はしません。</strong>台風23号「バンラン」とは番号・位置とも別物であり、混同なきよう記載しています。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://tenki.jp/bousai/typhoon/2622/" target="_blank" rel="noopener">tenki.jp 台風情報</a>(2026年8月29日06時45分発表) ・ ATV青森テレビ、Yahoo!ニュース(発達予測、二次情報)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 令和8年熊本地震・断水解消 -->
+  <section class="quake" id="sec-kumamoto">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害支援シグナル・解消</span><span class="sec-title">令和8年熊本地震・断水解消 <span class="sub">/ 熊本県が8/28、県内全域での解消を発表</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>熊本県が8/28、断水が県内全域で解消と発表。八代市は26日、宇城市・氷川町は28日に復旧完了</h4>
+      <p>毎日新聞(Yahoo!ニュース配信、2026年8月28日18時48分)によれば、<strong>熊本県は8月28日、熊本地震による水道の断水が県内全域で解消されたと発表しました。国土交通省によると、最大で約10万8000戸が断水の影響を受けていました。八代市は8月26日に解消済みで、宇城市と氷川町は8月28日に復旧が終了</strong>したと報じられています。<strong>前回記録(8月27日10時現在の内閣府資料)の宇城市195戸・氷川町75戸から、いずれも0戸へ完全復旧しました。</strong>7月28日の地震発生から33日目での解消です。</p>
+    </div>
+
+    <div class="dmg">
+      <div><div class="k">八代市</div><div class="v">0<span style="font-size:12px">戸</span></div><div class="u">8/26解消</div></div>
+      <div><div class="k">宇城市</div><div class="v">0<span style="font-size:12px">戸</span></div><div class="u">8/28解消</div></div>
+      <div><div class="k">八代郡氷川町</div><div class="v">0<span style="font-size:12px">戸</span></div><div class="u">8/28解消</div></div>
+      <div><div class="k">上天草市</div><div class="v">?<span style="font-size:12px">戸</span></div><div class="u">要確認(下記参照)</div></div>
+    </div>
+
+    <div class="item" style="margin-top:4px;">
+      <div class="labs"><span class="lab lab-thin">要確認</span></div>
+      <h4>上天草市の夜間断水の実態について、「県内全域解消」発表との関係は確認できていない</h4>
+      <p>今回参照した記事(毎日新聞・Yahoo!ニュース)には<strong>上天草市個別の記述がなく、前号までに「戸数統計上は0(解消)だが、夜間断水が実態として継続している可能性がある」と要確認扱いで追跡していた論点が、今回の「県内全域解消」発表にどう位置づけられるかは本レポート確定時点で確認できていません(要確認)。</strong>次号以降、内閣府・国交省の一次資料が更新され次第、個別に確認します。<strong>熊本県公式発表(記者発表資料等)の一次情報そのものには、本レポート確定時点で到達できておらず、報道(毎日新聞)経由の確認である点も明記します。</strong></p>
+    </div>
+
+    <div class="support">
+      <h5>支援情報</h5>
+      <p>熊本県義援金受付(2026年7月29日〜10月30日)、日本赤十字社(2026年7月31日〜10月30日)。個別の断水対応への直接支援窓口は今回の調査では確認できていません。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://news.yahoo.co.jp/articles/3ea3822141484ab3f3b61d4266281ba154083281" target="_blank" rel="noopener">毎日新聞(Yahoo!ニュース配信)</a>(2026年8月28日18時48分)・ <a class="src" href="https://news.yahoo.co.jp/pickup/6593449" target="_blank" rel="noopener">Yahoo!ニュース まとめ</a>(2026年8月28日22時14分) ・ 熊本県発表(記者発表資料への一次到達は今回未確認)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ジャクソンホール答え合わせ・NVIDIA株価3段階 -->
+  <section id="sec-jacksonhole">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Jackson Hole · 答え合わせ</span><span class="sec-title">ジャクソンホール答え合わせ・NVIDIA株価3段階 <span class="sub">/ ウォーシュ氏は明言せず。市場の「タカ派」解釈と決算後の乱高下を分けて整理</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">確認・答え合わせ</span></div>
+      <h4>FRB公式原文を確認。ウォーシュ氏は「2%は確固たる目標」「そうでなければやるべき仕事がある」と述べたが、9月の利上げ・利下げは明言していない</h4>
+      <p>FRB公式サイトで、Fed新議長ケビン・ウォーシュ氏の講演原文("In Our Time"、2026年8月28日・カンザスシティ連銀主催ジャクソンホール経済政策シンポジウム、就任100日目での初講演)を確認しました。<strong>原文は「The Fed's price-stability objective of 2 percent, as measured by the PCE price index, is a firm, fixed target(2%という物価安定目標は確固たる不変の目標である)」、また「We must be confident that underlying inflation is moving to our objective, clearly and at sufficient speed. Otherwise, we have work to do.(基調的インフレが明確かつ十分な速さで目標に向かっていると確信できなければ、我々にはやるべき仕事がある)」と述べています。</strong>一方で<strong>ウォーシュ氏はフォワードガイダンス自体を明示的に拒否しており、「経済への理解がテイラー・ルールのような単純な関数に機械的に頼れるほど精緻であればよいのだが」「(方針を)概略・道しるべと呼んでもいいが、フォワードガイダンスとは呼ばないでほしい」と述べ、9月の利上げ・利下げを直接示唆・断定する発言はありませんでした。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実(市場側の解釈)</span></div>
+      <h4>市場はこれを「タカ派的」と解釈。9月利上げ確率は35%前後→55〜57%へ急上昇、2年債利回りが急伸</h4>
+      <p>ウォーシュ氏本人は方向性を明言していないにもかかわらず、<strong>市場は講演を「タカ派的」と解釈しました。CME FedWatchベースの9月利上げ確率は、講演前の35%前後から講演後は55〜57%へ急上昇したと複数メディア(CNBC、Mishtalk)が報じています。</strong>米2年国債利回りは講演を受け6bp超上昇し4.298%まで跳ねました(CNBC)。<strong>米10年債利回りは情報源により4.68%前後〜4.72%と幅があり、正確な確定値は一本化できていません(要確認)。</strong>短期金利がより大きく反応し長期金利の反応は相対的に限定的という「短期主導のタカ派反応」だったと整理できます。<strong>「タカ派的」との評価はあくまで市場・報道側の解釈であり、ウォーシュ氏本人の発言そのものではない点を、原文にあたることで確認できました。</strong></p>
+    </div>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">NVIDIA(8/26終値)</div><div class="vl mono">$209.66</div><div class="ch down"><span class="ar">▼</span> -1.59%</div></div>
+      <div class="eq"><div class="nm">NVIDIA(8/27終値)</div><div class="vl mono">$227.98</div><div class="ch up"><span class="ar">▲</span> +8.74%</div></div>
+      <div class="eq"><div class="nm">NVIDIA(8/28終値)</div><div class="vl mono">$217.55</div><div class="ch down"><span class="ar">▼</span> -4.57%</div></div>
+    </div>
+
+    <div class="item" style="margin-top:4px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>NVIDIA株は8/26→27→28で-1.59%→+8.74%→-4.57%の3段階。下落要因は複数指摘され、単一の原因には断定できない</h4>
+      <p><strong>NVIDIAは8月26日の通常取引終値209.66ドル(-1.59%)の引け後に決算を発表。第2四半期売上高962.2億ドル・EPS2.22ドルはいずれも市場予想を超過しました。</strong>時間外では当初下落したものの、第3四半期売上高ガイダンス1,080億ドル(市場予想超)を受けて反発。<strong>翌8月27日の通常取引では+8.74%の227.98ドルまで急伸しましたが、8月28日は-4.57%の217.55ドルへ反落しました(3日間の推移:$209.66→$227.98→$217.55)。</strong>8月28日朝の時点で、NVIDIA・AMDは1.5%前後、Intelは2%超の下落でプレマーケットが始まっていました。<strong>報道では、前日の急騰後の利益確定売りや、期待値・ポジションの偏り、ウォーシュ講演を受けたさらなる金利観測の悪化などが下押し要因として挙げられています</strong>が、<strong>決算そのものへの評価だけでこの値動きを説明することはできず、需給・金利など複数要因が重なった可能性がある、という整理にとどめます。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p>今回は「発言そのもの」と「市場の受け止め」を分けて確認する作業が特に重要でした。<strong>ウォーシュ氏の講演原文には利上げ・利下げの明言がなく、フォワードガイダンスを明確に拒否している</strong>一方で、市場は「やるべき仕事がある」という一節を強く受け止め、短期金利の急伸・株安という形で反応しました。<strong>NVIDIA株価の3段階の動きについても、決算内容単独では説明しきれず、需給(利益確定)とマクロ環境(金利)を含む複数の要因が重なった可能性がある</strong>ことがうかがえます。「好決算=株高が続く」という単純な図式ではなく、決算の中身と市場のポジション・マクロ環境を分けて評価する必要があります。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm" target="_blank" rel="noopener">FRB公式・ウォーシュ議長講演原文"In Our Time"</a>(2026年8月28日)［一次］ ・ <a class="src" href="https://www.cnbc.com/2026/08/28/-september-fed-decision-now-a-coin-flip-as-rate-hike-odds-increase.html" target="_blank" rel="noopener">CNBC</a>(利上げ確率) ・ <a class="src" href="https://www.cnbc.com/2026/08/27/us-bonds-us10y-jackson-hold.html" target="_blank" rel="noopener">CNBC</a>(2年債利回り) ・ <a class="src" href="https://stockanalysis.com/stocks/nvda/history/" target="_blank" rel="noopener">stockanalysis.com</a>(NVIDIA株価履歴) ・ <a class="src" href="https://invezz.com/ng/news/2026/08/28/nvidia-amd-intel-stocks-slide-premarket-why-investors-are-suddenly-taking-profits/" target="_blank" rel="noopener">Invezz</a>(半導体株プレマーケット分析)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 米国市場 -->
+  <section id="sec-us">
+    <div class="sec-head"><span class="tick"></span><span class="cat">US Market · 土曜のため金曜終値</span><span class="sec-title">米国市場(8/28終値) <span class="sub">/ ジャクソンホール講演を受け主要3指数とも反落</span></span></div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>S&amp;P500 7,711.76(-0.25%)・Nasdaq 26,402.42(-0.52%)・Dow 53,559.99(-0.02%)</h4>
+      <p>米国株式市場は8月28日(金)、<strong>Fed新議長ウォーシュ氏のジャクソンホール講演を受けた金利観測の悪化に加え、前日急騰した半導体株の利益確定売りが重なり、S&amp;P500が7,711.76(-0.25%)、ナスダック総合が26,402.42(-0.52%)、ダウ工業株30種が53,559.99(-0.02%、ほぼ横ばい)と主要3指数がそろって反落</strong>しました(出典:Yahoo Finance)。<strong>本日8月29日(土)は米国市場休場のため、この8月28日終値が直近の確定値です。</strong>詳細は前項「ジャクソンホール答え合わせ・NVIDIA株価3段階」を参照してください。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html" target="_blank" rel="noopener">Yahoo Finance市場ライブ</a>(2026年8月28日)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 国内株式 -->
+  <section id="sec-jp">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Japan Equity · 土曜のため金曜終値</span><span class="sec-title">国内株式(8/28終値) <span class="sub">/ 日経平均は反発。AI・半導体関連中心に買われるも上値は重い展開</span></span></div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>日経平均66,405.56円(+273.58円、+0.41%)で反発。始値66,104.49円・高値66,842.82円・安値66,012.20円</h4>
+      <p>2026年8月28日の東京市場は、<strong>前日のNVIDIA株急伸(+8.74%)を受けAI・半導体関連が買われ、日経平均は前日比+273円58銭(+0.41%)の66,405円56銭で反発しました。</strong>始値66,104.49円、高値66,842.82円、安値66,012.20円と、<strong>取引時間中は一時66,800円台まで上昇する場面もありましたが、上値の重い展開となりました</strong>(株探ニュース、財経新聞)。<strong>本日8月29日(土)は東京市場も休場のため、この8月28日終値が直近の確定値です。</strong>個別銘柄の詳細動向は本レポート確定時点で確認できていません(要確認)。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://www.zaikei.co.jp/article/20260828/867790.html" target="_blank" rel="noopener">財経新聞</a>(2026年8月28日) ・ 株探ニュース(同日) ・ 日本経済新聞(同日)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 為替 -->
+  <section id="sec-fx">
+    <div class="sec-head"><span class="tick"></span><span class="cat">FX</span><span class="sec-title">為替 <span class="sub">/ ドル円は8/28夜に160円台へ。8/29早朝時点の水準は情報源により幅あり</span></span></div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">要確認</span><span class="lab lab-fact">事実</span></div>
+      <h4>ドル円は8/28(金)夜に160円台へ。8/29(土)早朝(日本時間3〜7時台)は160円07銭〜160円14銭のレンジで、前日比の基準は情報源により異なる</h4>
+      <p><strong>ドル円は8月28日(金)、ジャクソンホール講演後の金利観測を受け夜にかけて160円台に乗せる場面がありました。8月29日(土)早朝(日本時間)の複数の報道では、160円07銭〜160円08銭(北日本新聞webun、日本時間7時現在)、160円13銭〜160円14銭(前日比-63銭、別の情報源)、160円06銭〜160円07銭(前日比+67銭、さらに別の情報源)と、水準・前日比の基準がそれぞれ異なっています。</strong>比較の起点(NY引け比か、東京前日同時刻比か)が情報源により統一されていないため、<strong>正確な前日比・確定水準は本レポート確定時点で一本化できていません(要確認)。</strong>方向感としては、7月PCE指数の上振れ(既報)とジャクソンホール講演のタカ派的解釈を受けた円安基調が続いているとみられます。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://webun.jp/articles/-/1083204" target="_blank" rel="noopener">北日本新聞webun</a>(2026年8月29日03時発表、日本時間7時現在) ・ 松井証券FXマーケット情報、財経新聞(東京為替、2026年8月28日、数値に幅あり)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 商品 -->
+  <section id="sec-commodity">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Commodities</span><span class="sec-title">商品(原油・金) <span class="sub">/ 原油はイラン=オマーン合意を受け軟化。ホルムズ情勢の織り込みに変化</span></span></div>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">WTI原油(8/28)</div><div class="vl mono">$82.82</div><div class="ch down">-0.86%</div></div>
+      <div class="eq"><div class="nm">ブレント原油(8/28)</div><div class="vl mono">$88.22</div><div class="ch down">-0.34%</div></div>
+    </div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>WTI原油82.82ドル(-0.86%)・ブレント88.22ドル(-0.34%)。イラン=オマーンの暫定航路合意を受け金曜には83ドル前後まで軟化</h4>
+      <p><strong>原油価格は8月28日、WTIが82.82ドル/バレル(前日比-0.86%)、ブレントが88.22ドル/バレル(前日比-0.34%)</strong>となりました。<strong>8月26日発表のイラン=オマーンの収入配分・暫定航路に関する枠組み合意を受け、金曜には83ドル前後まで軟化する場面がありました(前セッションの上昇分を一部縮小)。</strong>詳細は「ホルムズ海峡・中東」セクションを参照してください。金についての8月28日時点の確定値は、本レポート確定時点で確認できていません(要確認)。</p>
+    </div>
+    <p class="srcline">出典 <a class="src" href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">TradingEconomics</a>(2026年8月28日) ・ 各種市況記事(イラン=オマーン合意との関連)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 暗号資産 -->
+  <section id="sec-crypto">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Crypto</span><span class="sec-title">暗号資産 <span class="sub">/ 8/28時点の確定値は今回確認できず</span></span></div>
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">情報少なめ</span></div>
+      <h4>ビットコイン・イーサリアムの8/28終値、8/29早朝時点の水準は今回の調査対象に含まれておらず確認できていません</h4>
+      <p><strong>本号の調査範囲では暗号資産市場の8月28日時点データを個別に確認できていません(要確認)。</strong>前号(8/28号)ではビットコインが8月27日8時50分(米東部時間)時点で79,317.69ドルと報告しています。ジャクソンホール講演を受けた金利観測の変化が暗号資産にどう波及したかは、次号以降で確認します。</p>
+    </div>
+    <p class="srcline">出典 (今号では新規確認なし。前号:Yahoo Finance、2026年8月27日8:50am ET時点)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AI安全保障・技術動向 -->
+  <section id="sec-ai-security">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; National Security</span><span class="sec-title">AI安全保障・技術動向 <span class="sub">/ 米連邦地裁がAnthropic側の主張を認める判決。国防総省との対立の構図を整理</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>米連邦地裁(Rita Lin判事)が8/27夜、国防総省によるAnthropicへの「サプライチェーンリスク」指定を違法・無効とする判決</h4>
+      <p><strong>2026年2月、ヘグセス国防長官およびトランプ大統領が、Anthropicを政府調達関連の「サプライチェーンリスク」に指定しました。これは連邦統一調達規則(FAR)に基づく、米企業に対する初の公的な同種指定とされています。</strong>発端は、Claudeの軍事利用交渉での対立でした。<strong>国防総省は完全自律兵器・国内大規模監視を含む無制限利用を求めましたが、Anthropicは自律兵器・国内監視への不使用という安全ガードレールの撤廃を拒否しました。</strong>Anthropicは2026年3月9日、連邦地裁(カリフォルニア州北部地区)に提訴。<strong>2026年8月27日夜(米太平洋時間)、Rita Lin判事は59ページに及ぶ本案判決で、米連邦地裁は国防総省によるAnthropicへの「サプライチェーンリスク」指定を違法・無効とする判決を下しました。修正第1条違反(政府批判への不当な報復)、修正第5条違反(適正手続きの欠如)、行政手続法上「恣意的で気まぐれ」との判断です。</strong>判事は「国家安全保障の空虚な援用は、政府批判者を処罰・報復するための白紙委任ではない」と指摘しています。<strong>政府側の控訴可能性が記事内でも指摘されており、法的な最終確定ではない点に留意が必要です。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>Anthropicは判決を歓迎するコメント。政府側は控訴の構え。判決文原本(PACER)へは直接アクセスできず</h4>
+      <p><strong>Anthropic広報はCNBC取材に対し「この指定が違法だったという裁判所の判断を歓迎する。国家安全保障のためAIを活用すべく、政府との建設的な協働に引き続き注力する」とコメントしました。政府側は控訴の構えとみられます(国防次官エミル・マイケル氏は過去に仮差止めを「恥辱」と批判)。</strong>複数の独立報道(CNBC、CNN、NPR、TechCrunch、Forbes)で判決の存在・日時・裁判官名・法的根拠は一致していますが、<strong>判決文原本(PACER)への直接アクセスはできておらず、国防総省側の公式反論・声明の一次資料も確認できていません(報道による確認である点を明記します)。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>AI企業と政府の関係は「安全保障利用/民間利用/企業の安全基準/調達制度」の4層で見る必要がある</h4>
+      <p>今回のケースは単純な「規制対企業」ではなく、少なくとも4層に分けて整理できます。<strong>(1)安全保障利用:国防総省はClaudeの自律兵器・監視分野での無制限活用を要求、Anthropicは自社の安全ガードレール維持で対立。(2)民間・商用利用:Anthropicの民間・エンタープライズ契約は継続、指定は連邦政府調達文脈に限定。(3)企業の安全基準:Anthropicの利用制限は自社ポリシーだが、これが「政府批判」とみなされ報復指定を招いたと判事が認定。(4)政府調達制度:サプライチェーンリスク指定は本来「外国による妨害・サイバー脅威」を想定した制度であり、国内企業への政治的動機での適用は今回が初とされ、制度目的からの逸脱が違法性判断の一因</strong>となっています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>OpenAIの推論チップ「Jalapeño」がベンチマーク初公表。デジタル庁の生成AI調達ガイドラインは6月発表済みで新規更新なし</h4>
+      <p><strong>OpenAIがBroadcomと共同開発した自社初カスタムASIC「Jalapeño」の推論チップについて、8月25〜26日に初のベンチマーク結果が公表されました。既存比で推論スループット1.5〜1.9倍/kW、レイテンシ1.7〜3.6倍改善と発表され、開発期間は9ヶ月の短期間とされています。</strong>国内では、<strong>デジタル庁が2026年6月12日付で「生成AIの調達・利活用に係るガイドライン」を公表済みで、8月28日時点での新規発表は確認できませんでした。</strong>なお、AIによるサイバー攻撃対策の公開書簡(OpenAI・Anthropic・Microsoft等100社超、8月27日発表)は前号(8/28号)で既報の通りです。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p>今回の判決は、AI企業と政府の関係が一様ではないことを改めて示しています。<strong>Anthropicは軍事・監視利用について自ら定めた安全ガードレールを維持し、それを理由とした報復的な行政措置を司法が明確に否定した</strong>という点で、AIガバナンスと表現の自由・適正手続きが交差する重要な事例です。判決文原本や政府側の公式反論には未到達であり、控訴の有無を含め継続的な確認が必要です。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.cnbc.com/2026/08/28/judge-blocks-pentagon-blacklist--anthropic-.html" target="_blank" rel="noopener">CNBC</a>(2026年8月28日) ・ <a class="src" href="https://www.cnn.com/2026/08/27/tech/anthropic-pentagon-supply-chain-risk-unlawful-hnk" target="_blank" rel="noopener">CNN</a> ・ <a class="src" href="https://www.npr.org/2026/08/28/nx-s1-5947761/judge-pentagon-anthropic-illegal" target="_blank" rel="noopener">NPR</a> ・ <a class="src" href="https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/" target="_blank" rel="noopener">TechCrunch</a> ・ <a class="src" href="https://www.forbes.com/sites/siladityaray/2026/08/28/federal-judge-blocks-pentagons-illegal-designation-of-anthropic-as-a-supply-chain-risk/" target="_blank" rel="noopener">Forbes</a> ・ <a class="src" href="https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/" target="_blank" rel="noopener">TechCrunch</a>(Jalapeñoチップ) ・ <a class="src" href="https://www.digital.go.jp/assets/contents/node/information/field_ref_resources/decb64eb-f26e-41cb-8d37-f3dd173108b8/59054b35/20260612_resources_standard_guidelines_guideline_01.pdf" target="_blank" rel="noopener">デジタル庁</a>(生成AI調達ガイドライン、2026年6月12日)［一次］</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- Tiangong Ultra対ボルト -->
+  <section id="sec-humanoid">
+    <div class="sec-head"><span class="tick"></span><span class="cat">China Humanoid · 日曜特集蓄積</span><span class="sec-title">Tiangong Ultra対ボルト・分析 <span class="sub">/ 「速さの記録」と「総合的な身体能力」を明確に区別したReuters分析</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>Reutersが8/28配信。Tiangong Ultraの100m走8.64秒とボルトの世界記録9.58秒を比較し、複数の留保を専門家コメントとともに整理</h4>
+      <p>Reuters記者Eduardo Baptista氏・Ju-min Park氏による分析記事(タイトル:"China's record robotic strides show the limits of human speed"、2026年8月28日配信、北京時間08時10分。reuters.com本体への直接アクセスはできず、同一内容の複数転載先〈StreetInsider、AsiaOne、Geo.tv、SRN News等〉で内容一致を確認)によれば、<strong>北京・X-Humanoid製「Tiangong Ultra」は決勝で100mを8.64秒、平均時速約42kmで走破しました。ウサイン・ボルトの人間世界記録は9.58秒(2009年ベルリン世界選手権)</strong>です。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>スタート条件・歩数に大きな差。ボルトはクラウチングスタートで41歩、Tiangongは直立スタートで50歩以上</h4>
+      <p><strong>ボルトはクラウチングスタート・スターティングブロックを使用し反応時間0.146秒で飛び出したのに対し、Tiangongは「不格好で直立した姿勢」からのスタートで、初回世界記録走では信号認識の遅れにより始動に約1秒を要しました。</strong>米ブリガムヤング大学のIain Hunter教授(米陸上競技連盟スポーツ科学者)は「スターティングブロックを使用できれば、ロボットはさらに速くなり得る」とし、<strong>序盤5m地点ではボルトが約2秒先行していたと試算しています。</strong>歩数についても、<strong>ボルトが41歩で走破するのに対し、Tiangongは初回記録走で50歩以上を要しており</strong>、韓国・光云大学のPark Suhan教授は「人間の走りの模倣ではなく、モーター性能を最大限に引き出す戦略の反映」と分析しています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>ゴール後、最高速度を維持したままクッション付き壁に衝突。「止まれず壊れるようでは意味がない」との指摘</h4>
+      <p>記事は<strong>Tiangongが最高速度を維持したまま、ゴール後の最終局面でクッション付きの壁に衝突したことをレース映像から明記しています。</strong>モンタナ大学のバイオメカニクス専門家Matt Bundle氏は「トップスピードに達しても、止まれずに壊れてしまうのでは意味がない」とコメントしています。<strong>なお、準決勝時に別のロボットの胴体から発火した事案(Al Jazeera既報)がこのReuters記事内でも言及されているかは確認できませんでした。</strong></p>
+    </div>
+
+    <div class="counter">
+      <h5>「速さの記録更新」と「総合的な身体能力」は別軸で評価すべき</h5>
+      <p>タイ・マヒドン大学のスポーツ科学者Parunchaya Jamkrajang氏は、<strong>「歩幅を広げすぎると転倒するため、小刻みで途切れがちな歩容がバランス維持に役立っている」とロボットの歩容を分析した上で、「方向転換や、走行中に自律的に『これには衝突しない』と判断する能力が実装されれば、それは単なる速度更新よりもはるかに印象的だ」</strong>と指摘しています。記事タイトル自体が「ロボットの記録的な歩みが、人間の速度の限界を示す」という慎重なフレーミングを取っており、<strong>「ロボットがボルトのように、あるいはいかなる人間のようにも走って勝ったわけではない」という留保が明記</strong>されています。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方(日曜特集第2号向けメモ)</h5>
+      <p>今回のReuters分析は、単純な「ロボットが人間を超えた/超えていない」という一軸評価ではなく、<strong>「スタート条件」「歩容の原理」「制動・安全性」「自律的判断力」という複数の観点で分けて評価すべき</strong>ことを示しています。速さの記録更新自体は事実ですが、それは不利なスタート条件下での記録であり、かつ制動・自律判断といった「実際に仕事ができるか」に直結する能力とは別の指標です。前号(8/28号)の「中国ヒューマノイド産業のギャップ」(工場での生産性は人間の約2割)と合わせ、日曜特集第2号ではこの「速さ」と「総合的な身体能力」の区別を軸に構成する価値があります。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.asiaone.com/china/chinas-record-robotic-strides-show-limits-human-speed" target="_blank" rel="noopener">AsiaOne(Reuters配信)</a>(2026年8月28日) ・ <a class="src" href="https://www.streetinsider.com/Reuters/China%E2%80%99s+record+robotic+strides+show+the+limits+of+human+speed/26991923.html" target="_blank" rel="noopener">StreetInsider/Reuters</a> ・ <a class="src" href="https://www.geo.tv/latest/679556-chinas-record-robotic-strides-show-the-limits-of-human-speed" target="_blank" rel="noopener">Geo.tv</a> ・ SRN News ・ Al Jazeera(準決勝発火事案、既報)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ロボット・自動車 -->
+  <section id="sec-robotics">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Robotics &amp; Auto</span><span class="sec-title">ロボット・自動車 <span class="sub">/ 国産ヒューマノイドの提携発表と自動運転バスの実運行移行</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>日本精工とアトムが8/20にMOU締結。8/26にアトムが「フィジカルAIファウンドリ」開設を発表</h4>
+      <p><strong>日本精工(NSK)とアトムは8月20日、ヒューマノイドロボット分野でのMOU締結を公式発表しました。8月26日には、アトムが「フィジカルAIファウンドリ」の開設を発表しています。</strong>国産ヒューマノイド「アトム」(身長175cm・重量70kg・時速4km・片手15kg/両手30kg積載)について、<strong>アトム側の説明によれば、2027年の市場投入を目指し、2027年末までに常時200台稼働を目指すとしています。</strong>NSKは軸受など部品供給とアクチュエーター信頼性向上のためのAI学習データ収集で協力します。<strong>日刊工業新聞系報道では、2035年に年産20万台規模を目指す計画と報じられていますが、これは報道ベースの目標であり、アトム側の公式発表としては確認できていません。</strong>用途は製造・物流業で、<strong>自動車関連複数社からの約100台の購入引き合いについても、アトム側の説明・報道に基づく情報です。</strong>価格は未公表で、実配備実績はまだ確認できていません(引き合い段階)。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>西宮市・阪神電鉄が8/31から自動運転EVバスの実証運行を開始。研究デモから実運行への移行段階</h4>
+      <p><strong>兵庫県西宮市と阪神電気鉄道は8月31日から、甲子園エリアでAI活用の自動運転EVバス「Minibus 2.0」(最高速度約40km/h)の実証実験を開始します。</strong>甲子園駅前を起終点に東西2ルートを運行し、期間は2027年1月30日までの約100日間、一般乗車開始は11月中旬からで、<strong>2027年度中の自動運転レベル4認可取得を目指す</strong>としています。研究デモではなく実運行への移行段階にある事例です。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>旭化成が電池材料の新ラインを竣工。農業ロボットも長野県で実証運転が開始</h4>
+      <p><strong>旭化成は8月26日発表(竣工式は8月20日)、米ノースカロライナ州シャーロットでリチウムイオン電池向け湿式セパレータ「ハイポア」の塗工ラインを竣工しました。供給開始は2027年中頃予定</strong>です。<strong>農業ロボット分野では、長野県御代田町でSYN-ROBOTICSが除草・畝マッピング等の実証運転を8月から開始し、2027年4月に20台の商用販売を予定</strong>しています(太陽光充電によるカーボンニュートラル農業を志向)。全固体電池搭載EVは国内各社とも2027〜2028年度計画のままで、8月下旬時点の新規発表は確認できませんでした。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://monoist.itmedia.co.jp/mn/articles/2608/21/news049.html" target="_blank" rel="noopener">MONOist</a>(NSK×アトム、2026年8月21日) ・ <a class="src" href="https://www.hanshin.co.jp/press/detail/005204.html" target="_blank" rel="noopener">阪神電気鉄道公式</a>(自動運転バス)［一次］ ・ <a class="src" href="https://www.nishi.or.jp/kotsu/kotsu/kotsukeikaku/jidounten/koushien_jidounten/R8jidouunten.html" target="_blank" rel="noopener">西宮市公式</a>［一次］ ・ レスポンス(旭化成、2026年8月28日) ・ 日本農業新聞(農業ロボット)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 古民家・不動産 -->
+  <section id="sec-kominka">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kominka &amp; Real Estate</span><span class="sec-title">古民家・不動産 <span class="sub">/ 制度背景の整理と、各自治体の空き家補助金の継続状況</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">制度背景・既存制度</span></div>
+      <h4>2018年6月15日施行の旅館業法改正・施行令改正で、最低客室数基準はすでに撤廃されている</h4>
+      <p><strong>2018年(平成30年)6月15日施行の旅館業法改正・施行令改正により、「ホテル営業」「旅館営業」が「旅館・ホテル営業」に統合され、最低客室数基準(ホテル10室以上・旅館5室以上)はすでに撤廃されています。1客室の最低床面積は7㎡以上(寝台を置く場合9㎡以上)に整理され、一定条件でICT設備による玄関帳場等の代替も認められています。</strong>本日の新規ニュースではなく、<strong>古民家・町家など小規模宿泊施設を考える上で重要な制度背景</strong>として、第3研究所の宿泊事業(てとさんち等)との関連で改めて整理しました(厚生労働省一次資料により確認)。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>空き家活用補助金は各自治体で令和8年度事業が継続中。全国一律の新規発表は今回確認できず</h4>
+      <p><strong>新潟市は令和8年度空き家活用推進事業の予算残高が7月29日時点で約1300万円(執行率約80%)。福岡市は令和8年度から地域貢献等空き家活用補助金の対象要件を拡充。八王子市も令和8年度空き家利活用促進整備補助金を実施中</strong>です。<strong>民泊「ゼロ日規制」については、観光庁が7月15日、住宅地での適用を自治体条例で容認する技術的助言を発出済み(既報)で、大阪市の特区民泊は5月29日で新規受付を終了しています。</strong>地価動向については、インバウンド需要地・産業誘致エリアと産業撤退・災害影響地域との「二極化」が鮮明との業界メディアの見立てがありますが、<strong>これは分析・観測であり、8月28〜29日前後の国交省等による新規一次発表は確認できませんでした。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.mhlw.go.jp/content/11130500/001178401.pdf" target="_blank" rel="noopener">厚生労働省(旅館業法施行令改正、2018年6月15日施行)</a>［一次］ ・ <a class="src" href="https://www.mlit.go.jp/kankocho/news06_00067.html" target="_blank" rel="noopener">観光庁「ゼロ日規制」技術的助言</a>(2026年7月15日)［一次］ ・ 新潟市公式、福岡市公式、八王子市公式(空き家補助金) ・ 東急リバブル解説記事(地価、業界メディアの見方)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ホルムズ海峡 -->
+  <section id="sec-hormuz">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Hormuz &amp; Iran</span><span class="sec-title">ホルムズ海峡・中東 <span class="sub">/ 通航データは日々大きく変動。「悪化」「回復」どちらも断定は避ける</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実</span></div>
+      <h4>Kplerデータで8/25〜27は5隻→17隻→7隻と大きく変動。IMF PortWatchは8/23の3隻/日が最終確定値のまま</h4>
+      <p><strong>民間データ(Kpler、Reuters報道)によれば、通航隻数は8月25日(火)5隻、8月26日(水)17隻、8月27日(木)7隻(直近10日平均15隻を下回る)と日々大きく変動しています。</strong>週次集計では<strong>8月17〜23日の通航は121隻(前週8月10〜16日の118隻からわずかに増加)で、うち経路不明62隻、イラン一方的設定航路56隻、制裁対象船16隻(前週9隻から増加)</strong>でした。一方、<strong>IMF PortWatch(straits.live集計)の確定値は依然8月23日=3隻/日(平時基準85隻/日の約4%)のままで、8月24日以降は未公表です(同サイトは週次・火曜更新のため)。</strong>「前日から大きく減少」という表現は、8月27日分(7隻)が26日分(17隻)から減少したことを指しており、<strong>8月24〜27日の推移は単調な悪化ではなく大きく変動しており、週間合計はむしろ前週よりわずかに増加している点には注意が必要です。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実(当事者の主張)</span></div>
+      <h4>イラン・米国とも「自国が海峡を管理している」と主張。実際の通航量は双方の主張とは独立して低水準</h4>
+      <p><strong>イラン革命防衛隊バスィージ司令官タエブ師(8月13〜14日)は「ホルムズ海峡はイラン・イスラム共和国の管理・統制下にある」、イラン中央軍司令部報道官ゾルファガリ氏も同様の発言をしています。一方トランプ大統領は8月12日「米国はホルムズ海峡を完全に支配している」と発言しました。</strong>両者とも「自国が海峡を支配している」と主張していますが、<strong>実際の通航データ(Kpler/PortWatch)は平時比数%〜20%程度の低水準で推移しており、両者の「完全掌握」主張とは独立して、通航量そのものは依然として大幅制限下にあります。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>イラン・オマーンが暫定航路で合意も、イランは「完全開放ではない」と強調。原油価格・保険料率は高止まり</h4>
+      <p><strong>8月26日、イラン外務次官ガリババディ氏が幅7マイル(11.3km)の暫定航路合意を発表しましたが、氏自身が「これは完全な開放ではない」と明確に強調しています。</strong>革命防衛隊(IRGC)は同日「海峡水域の各国配分・収入配分について合意した」と発表しましたが、イラン・オマーン両外務省の共同声明はより慎重で「暫定枠組み」としています。<strong>イラン側が挙げる完全正常化の条件は、(1)米海軍による封鎖の解除、(2)制裁解除、(3)凍結資産の解除、(4)戦争被害への完全補償、(5)米軍のイラン周辺からの撤退</strong>です。<strong>戦争保険料率は船体価格の7.5〜10%(平時の30〜40倍水準)、VLCCスポット運賃は1日あたり約64.7万ドルの記録的水準</strong>にとどまっています。日本のエネルギー調達については、原油輸入の91%を依存し、備蓄約200日分(約6.5ヶ月分)を維持、2028年3月末までの安定供給が見込まれるとJETRO(8/4付分析引用)が伝えています。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://straits.live/" target="_blank" rel="noopener">straits.live(IMF PortWatch集計)</a> ・ <a class="src" href="https://www.al-monitor.com/originals/2026/08/shipping-traffic-strait-hormuz-slips-below-10-day-average-data-shows" target="_blank" rel="noopener">Al-Monitor</a>(2026年8月27日) ・ <a class="src" href="https://www.foreignpolicyjournal.com/2026/08/27/strait-of-hormuz-traffic-holds-steady-as-route-uncertainty-persists-kpler-data-shows/" target="_blank" rel="noopener">Foreign Policy Journal</a> ・ <a class="src" href="https://www.aljazeera.com/economy/2026/8/26/top-official-says-iran-oman-have-agreed-new-temporary-hormuz-route" target="_blank" rel="noopener">Al Jazeera</a>(イラン=オマーン合意) ・ <a class="src" href="https://www.jetro.go.jp/biznews/2026/08/8fa9407d538fdef9.html" target="_blank" rel="noopener">JETRO</a>(日本のエネルギー調達、2026年8月4日)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ロシア・ウクライナ -->
+  <section id="sec-world">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Russia-Ukraine</span><span class="sec-title">ロシア・ウクライナ <span class="sub">/ ロシア国内ガソリン70%説・ウクライナ食料物流90%説はいずれも一方当事者由来の数字</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">要検証</span></div>
+      <h4>ロシア国内ガソリン供給「需要の70%」は匿名の業界筋情報。ロシア政府による確認はなし</h4>
+      <p><strong>ロシア国内のガソリン供給が需要の約70%水準にとどまっているという数字は、匿名の業界筋情報に基づくものであり、ロシア政府による公式確認は得られていません。</strong>前号(8/28号)で報じた「5月以降始まった燃料不足が6月時点で全ロシア地域の約3分の2に拡大」との既報や、8月10日のニジネカムスク製油所攻撃(13人死亡・75人負傷)とあわせ、<strong>ロシア国内の燃料供給網が引き続き圧迫されている傾向自体は複数報道で確認できますが、「70%」という具体的な水準を政府統計等の一次資料で裏付けることはできていません(要確認)。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">要検証</span></div>
+      <h4>ウクライナ食料物流の損傷「約90%」はウクライナ農業省自身の推計。同省自体は組織的な食料不足リスクを否定</h4>
+      <p><strong>ウクライナの食料物流(「近代的」流通能力ベース)の約90%が損傷しているという数字は、ウクライナ農業省自身の推計です。一方で同省自体は、これによる組織的な食料不足リスクを否定しています。</strong>この指標は、前号(8/28号)で報じた「黒海穀物輸出能力の97%以上が前年シーズン比で停止(Reuters8月19日分析)」とは別の指標である点に注意が必要です。<strong>前者は国内の食料流通・物流インフラ全般、後者は黒海・アゾフ海経由の輸出能力に関する数字であり、混同しないよう記載します。</strong>いずれも当事者(ロシア・ウクライナ双方)由来またはその推計に基づく数字であり、独立した検証機関による確認は本レポート確定時点で確認できていません。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p>今回のロシア・ウクライナ関連の数字は、<strong>いずれも「当事者自身、または当事者に近い匿名筋の推計」であるという共通点があります。</strong>数字自体を否定する材料はありませんが、独立検証ができていない以上、単一の確定値として扱うのではなく、出所を明記した上で幅を持たせて記載することが適切です。特に「食料不足リスクは否定」という農業省自身のコメントと「90%が損傷」という同じ農業省の推計が同居している点は、深刻さの表現と実際のリスク評価に開きがある可能性を示しており、今後も継続して確認します。</p>
+    </div>
+
+    <p class="srcline">出典 (匿名業界筋情報・ウクライナ農業省推計、いずれも一次資料への直接到達は今回未確認。前号既報の黒海穀物輸出データ:<a class="src" href="https://gcaptain.com/russia-and-ukraines-black-sea-grain-exports-grind-to-a-virtual-halt/" target="_blank" rel="noopener">gCaptain</a>、Reuters2026年8月19日分析)</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 情報が薄かった分野 -->
+  <section id="sec-thin">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Note</span><span class="sec-title">今回、情報が薄かった分野・要確認事項 <span class="sub">/ 水増しせず、そのまま明示します</span></span></div>
+    <div class="note">
+      <p><strong>北陸大雨の孤立解消・停電戸数・鉄道運休・人的被害の全体集計:</strong> 国交省第5報に明記がなく確認できませんでした。</p>
+      <p><strong>KDDIの北陸豪雨での復旧発表(8/28 20:41):</strong> 一次情報で確認できませんでした。確認できたKDDI公式発表は奄美地方(台風18号)に関するものです。docomoの北陸障害も公式一次資料には到達できず、NHK報道による二次確認のみです。</p>
+      <p><strong>上天草市の夜間断水と「県内全域解消」発表の関係:</strong> 熊本県の一次発表資料に到達できず、報道(毎日新聞)経由の確認にとどまり、確認できませんでした。</p>
+      <p><strong>米10年債利回りの確定値、ドル円の正確な前日比:</strong> 情報源間で数値・比較基準に幅があり、一本化できませんでした。</p>
+      <p><strong>暗号資産(ビットコイン・イーサリアム)の8/28時点データ:</strong> 今回の調査範囲では確認できませんでした。</p>
+      <p><strong>ロシア国内ガソリン供給70%・ウクライナ食料物流損傷90%の一次資料:</strong> いずれも当事者由来の推計・匿名筋情報にとどまり、独立検証はできていません。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Watchlist</span></div>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">週末・来週の注目 <span class="sub">/ ボタンで開く</span></span></div>
+    <p style="font-size:13.5px;margin-bottom:13px;">押すとログイン中のご自身のTradingViewで開きます。本日8月29日(土)・明日30日(日)は国内外の主要市場が休場です。台風23号・22号の進路更新、北陸の復旧状況、日曜特集第2号(ヒューマノイド)の準備を継続して確認します。</p>
+
+    <div class="sp today"><span class="dt mono">8/29(土)〜8/30(日)</span><span class="ev">国内外市場は休場。台風23号「バンラン」・22号「アータウ」の進路予報更新を継続確認</span></div>
+    <div class="sp today"><span class="dt mono">8/29(土)</span><span class="ev">北陸(氷見市等)の断水・道路規制の解消状況、docomo・KDDI公式一次情報の確認</span></div>
+    <div class="sp"><span class="dt mono">8/31(月)</span><span class="ev">西宮市・阪神電鉄の自動運転EVバス「Minibus 2.0」実証運行開始(甲子園エリア2ルート)</span></div>
+    <div class="sp"><span class="dt mono">8/31(月)</span><span class="ev">台風23号「バンラン」、進路予報上は「日本のはるか東」に達する見込み</span></div>
+    <div class="sp"><span class="dt mono">9/2(水)</span><span class="ev">台風22号・23号とも、進路予報上はアリューシャン列島南で熱帯低気圧・温帯低気圧化の見込み</span></div>
+    <div class="sp"><span class="dt mono">9月中旬</span><span class="ev">令和8年都道府県地価調査(基準地価)発表予定</span></div>
+    <div class="sp"><span class="dt mono">継続</span><span class="ev">ホルムズ海峡の通航実態(IMF PortWatchデータ更新)、Anthropic対国防総省訴訟の控訴動向、ロシア・ウクライナのエネルギー/食料物流の独立検証、中国ヒューマノイド産業の動向(日曜特集第2号に向け継続蓄積)を毎日版で追跡</span></div>
+
+    <div class="tvgrid" style="margin-top:14px;">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=FX%3AUSDJPY&interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">ドル円(15分足)</span><span class="tvlink-desc">週明けの値動きを確認</span><span class="tvlink-sym mono">FX:USDJPY ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物</span><span class="tvlink-desc">8/28の反発からの値動きを確認</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=NASDAQ%3ANVDA&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">NVIDIA</span><span class="tvlink-desc">8/26→27→28の3段階の値動きを確認</span><span class="tvlink-sym mono">NASDAQ:NVDA ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUSOIL&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">WTI原油</span><span class="tvlink-desc">ホルムズ海峡・イラン=オマーン合意を受けた値動きを確認</span><span class="tvlink-sym mono">TVC:USOIL ↗</span></a>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot">
+    <div class="askai">
+      <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+      <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。</p>
+      <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。</p>
+      <div class="askai-box">
+        <textarea class="askai-q" id="askaiQ" readonly rows="2">この朝レポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+        <button type="button" class="askai-copy" id="askaiCopyBtn">コピー</button>
+      </div>
+      <div class="askai-links">
+        <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1) ↗</a>
+        <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2) ↗</a>
+        <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3) ↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--ink-3);text-align:center;margin-top:10px;">(1)(2)(3)はそれぞれ普段お使いのAIチャットサービスに対応しています。「〇〇」の部分を気になった項目名に書き換えてからお使いください。レポート本文は自動送信されません。<br>北陸の復旧状況、台風23号・22号の進路、Anthropic対国防総省訴訟の控訴動向は、続報が出た段階で毎日版で追います。</p>
+    </div>
+    <p style="text-align:center;margin-top:16px;"><a href="index.html" style="font-size:12.5px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);">← レポート一覧へ戻る</a></p>
+    <p class="disc">本レポートはAI総合研究機構の朝の共有レポートです。本日8月29日(土)は市場休場のため、市場関連数値は8月28日(金)終値として明記しています。令和8年熊本地震の断水は8月28日、熊本県が県内全域での解消を発表しました。台風23号「バンラン」・22号「アータウ」の日本への直接影響は現時点で予想されていませんが、断定はしていません。確認できないことは推測で埋めず「確認できず」「要確認」と明示し、情報がないことを改善と扱うことはしません。／ 論調の目安:ポジティブ4割・中立4割・注意/ネガティブ2割を目安に編集していますが、災害・重大リスクに関する情報はこの比率に関係なく目立つ位置に掲載しています。事実と観測・見方・予測は区別して記載し、確定していない見立ては「見方」「観測」「可能性」「予報」と明記しています。政治的に敏感な話題(ロシア・ウクライナ情勢、ホルムズ海峡、Anthropic対国防総省訴訟等)についても、重要度を理由に除外はせず、確認できる事実・各当事者の主張・経済/生活/安全保障への影響を分けて記載し、特定の立場への支持・批判は行っていません。／ 情報源は一次情報を優先しています(気象庁・国土交通省・FRB公式・裁判所報道・観光庁・デジタル庁等へ直接リンク)。ニュース・解説の情報源は特定媒体に偏らないよう複数媒体に分散しています。NVIDIA株価・日経平均終値・気象庁台風情報は複数の独立した情報源で相互照合しています。／ 数値は出典元の直近値、チャートはTradingViewのライブデータです。いずれも情報提供が目的で、投資判断への助言ではありません。／ 生成:2026年8月29日。</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var ta = document.getElementById('askaiQ');
+  if(!btn || !ta) return;
+  btn.addEventListener('click', function(){
+    function showCopied(){
+      var orig = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('is-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('is-copied'); }, 2000);
+    }
+    function fallback(){
+      ta.removeAttribute('readonly');
+      ta.focus();
+      ta.select();
+      try{
+        if(document.execCommand('copy')) showCopied();
+      }catch(e){}
+      ta.setAttribute('readonly', 'readonly');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(showCopied, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
