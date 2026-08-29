@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヒューマノイドは、もう「仕事」に来るのか。 — AI総合研究機構 Sunday Special</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(122,78,191,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFCFF 55%, #FAF9FF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:34px 30px 28px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--purple) 0%, #9B7BD4 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(122,78,191,.08),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--purple);background:var(--purple-soft);
+    border:1px solid rgba(122,78,191,.18);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--purple);display:inline-block;
+    box-shadow:0 0 0 3px rgba(122,78,191,.16);font-style:normal;}
+  .issuetag{font-size:11px;font-weight:800;color:var(--ink-3);letter-spacing:.05em;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;margin-top:4px;}
+  .kicker{font-size:12.5px;color:var(--purple);font-weight:700;letter-spacing:.04em;margin-top:22px;}
+  h1.hello{font-size:26px;font-weight:800;line-height:1.42;letter-spacing:-.02em;margin-top:8px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .subtitle{font-size:15px;color:var(--ink-2);margin-top:12px;font-weight:600;line-height:1.7;}
+  .lede{color:var(--ink-2);font-size:14.5px;margin-top:16px;line-height:1.95;}
+  .lede strong{color:var(--ink);}
+  .lede p{margin-bottom:10px;}
+  .lede p:last-child{margin-bottom:0;}
+
+  .navtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:12.5px;}
+  .navtop a{color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .navtop a:hover{color:var(--purple);border-color:var(--purple);}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+  .toc ol{list-style:none;counter-reset:tocnum;display:flex;flex-direction:column;gap:2px;}
+  .toc li{counter-increment:tocnum;}
+  .toc a{display:flex;gap:10px;align-items:baseline;text-decoration:none;font-size:13.5px;font-weight:700;
+    color:var(--ink-2);padding:7px 4px;border-radius:8px;transition:all .13s;}
+  .toc a:hover{background:var(--purple-soft);color:var(--purple);}
+  .toc a::before{content:counter(tocnum);flex:none;width:20px;height:20px;border-radius:6px;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink-3);
+    font-family:ui-monospace,Menlo,monospace;font-size:10.5px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:26px 26px 24px;margin-top:16px;}
+  .step-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;padding-bottom:15px;
+    border-bottom:1px solid var(--line);}
+  .step-num{flex:none;width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(140deg,var(--purple),#9B7BD4);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;
+    box-shadow:0 3px 8px rgba(122,78,191,.25);font-family:ui-monospace,Menlo,monospace;}
+  .step-title{font-size:19px;font-weight:800;letter-spacing:-.018em;}
+  .step-sub{font-size:12.5px;font-weight:600;color:var(--ink-3);margin-top:2px;}
+
+  h3.sec-h{font-size:16.5px;font-weight:800;margin:28px 0 10px;letter-spacing:-.01em;color:var(--ink);}
+  h3.sec-h:first-child{margin-top:0;}
+  h4{font-size:14.5px;font-weight:700;margin:14px 0 6px;letter-spacing:-.01em;}
+  p{font-size:14.5px;color:var(--ink-2);margin-bottom:11px;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:700;}
+  .lead-q{font-size:15.5px;color:var(--ink);font-weight:700;line-height:1.7;margin:18px 0;
+    padding-left:16px;border-left:3px solid var(--purple);}
+
+  .numlist{list-style:none;}
+  .numlist li{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line-2);}
+  .numlist li:first-child{border-top:none;padding-top:0;}
+  .numlist .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--purple-soft);
+    color:var(--purple);font-weight:800;font-size:13px;font-family:ui-monospace,Menlo,monospace;
+    display:flex;align-items:center;justify-content:center;}
+  .numlist .body p{font-size:14px;margin-bottom:0;}
+  .numlist .body h4{margin:0 0 4px;font-size:14.5px;}
+
+  .summary-box{background:linear-gradient(180deg,#FBFAFF 0%, var(--purple-soft) 100%);
+    border:1px solid rgba(122,78,191,.2);border-left:3px solid var(--purple);
+    border-radius:0 12px 12px 0;padding:16px 18px;margin-top:18px;}
+  .summary-box p{font-size:13.5px;color:#3E3560;margin-bottom:0;line-height:1.85;}
+  .summary-box strong{color:#2B2247;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--purple);border-bottom-color:var(--purple);}
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:15px;padding-top:12px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+
+  .conclusion-box{background:linear-gradient(165deg,#F9F7FF 0%,#FDFCFF 100%);
+    border:1px solid rgba(122,78,191,.22);border-radius:16px;padding:24px 24px;margin-top:26px;}
+  .conclusion-box p{font-size:14.5px;}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .method-box{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .method-box h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+  .method-box p{font-size:12.5px;line-height:1.8;}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .backtop{text-align:right;margin-top:16px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--purple);border-color:var(--purple);}
+
+  .toindex{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:700;
+    color:var(--purple);background:var(--purple-soft);border:1px solid rgba(122,78,191,.2);
+    border-radius:10px;padding:9px 16px;margin-top:18px;}
+  .toindex:hover{background:var(--purple);color:#fff;}
+  .toindex-wrap{text-align:center;}
+
+  /* ===== 第2層: 本編(物語文) ===== */
+  .story p{margin-bottom:9px;}
+  .story p.tight{margin-bottom:2px;}
+  .story h3.ch{font-size:17px;font-weight:800;margin:34px 0 12px;letter-spacing:-.012em;color:var(--ink);
+    padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .story h3.ch:first-of-type{margin-top:0;}
+  .story .afterword-title{font-size:18px;font-weight:800;margin:40px 0 14px;letter-spacing:-.01em;color:var(--purple);
+    padding-bottom:12px;border-bottom:2px solid rgba(122,78,191,.25);}
+
+  /* ===== 第3層: 出典タグ ===== */
+  .srctag{display:inline-flex;align-items:center;font-size:9.5px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 7px;white-space:nowrap;margin:0 4px 4px 0;}
+  .srctag-primary{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.3);}
+  .srctag-claim{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .srctag-secondary{color:#526480;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .srctag-check{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  .evidence{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-2);}
+  .evidence:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+  .evidence h4{font-size:14.5px;margin-bottom:6px;}
+  .evidence .tags{margin-bottom:6px;}
+  .evidence p{font-size:13.5px;margin-bottom:6px;}
+  .evidence .ev-url{font-size:11.5px;color:var(--ink-3);word-break:break-all;}
+  .evidence .ev-url a{color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .evidence .ev-url a:hover{color:var(--purple);border-color:var(--purple);}
+
+  .checklist{list-style:none;}
+  .checklist li{display:flex;gap:10px;padding:9px 0;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-2);line-height:1.7;}
+  .checklist li:first-child{border-top:none;padding-top:0;}
+  .checklist li::before{content:"？";flex:none;width:20px;height:20px;border-radius:6px;background:var(--slate-soft);
+    color:var(--slate);font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+
+  .urllist{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .urllist li{font-size:12.5px;line-height:1.7;padding-bottom:7px;border-bottom:1px dashed var(--line-2);}
+  .urllist li:last-child{border-bottom:none;}
+  .urllist a{color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);word-break:break-all;}
+  .urllist a:hover{color:var(--purple);border-color:var(--purple);}
+
+  @media(max-width:560px){
+    .mast{padding:26px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:21px;}
+    section{padding:20px 18px 18px;}
+    .step-num{width:38px;height:38px;font-size:13px;}
+    .step-title{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <div class="navtop">
+    <a href="index.html">← 一覧へ戻る</a>
+    <span>AI総合研究機構</span>
+  </div>
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special</span>
+      <span class="issuetag">S2 / 第2号</span>
+    </div>
+    <div class="date">2026年8月30日（日）発行</div>
+    <div class="kicker">日曜版・特集 第2号</div>
+    <h1 class="hello">ヒューマノイドは、もう「仕事」に来るのか。</h1>
+    <p class="subtitle">8.64秒の衝撃。その先にある「働く」という壁</p>
+    <div class="lede">
+      <p>2026年8月26日、北京。第2回世界人型ロボット競技大会で、中国の「Tiangong Ultra」が100メートルを8.64秒で走った。ウサイン・ボルトが2009年に記録した9.58秒より、数字だけを見れば0.94秒速い。大会には666チーム、2,056台のロボットが参加。51種目、1,301試合が5日間にわたって行われた。</p>
+      <p>ただし、「ロボットが人類最速になった」とだけ書くと、大切なものを見失う。人間の100メートルとはスタート方式も競技規則も異なり、ゴール後には十分に減速できず障壁へ衝突する場面もあった。そしてその大会の期間中、別のヒューマノイドは重量挙げで15kgのバーベルを持ち上げようとしてバランスを崩し、審判席へ倒れ込んでもいる。</p>
+      <p><strong>8.64秒で走れる。しかし15kgを扱うだけでも転ぶことがある。</strong>この二つを一緒に見ると、2026年夏のヒューマノイドの現在地が見えてくる。ヒューマノイドは「移動」を急速に解き始めた。しかし「接触」は、まだ十分には解けていない。そして人間の仕事の多くは、ただ移動することではない――物をつかむ、位置を合わせる、力を加減する、想定外の物を見つけてやり直す。仕事とは、接触と例外処理の連続なのである。</p>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#s-layer1">第1層｜30秒で見る、2026年夏の現在地</a></li>
+      <li><a href="#s-layer2">第2層｜本編(全12章＋あとがき)</a></li>
+      <li><a href="#s-layer3">第3層｜数字・背景・反証・出典</a></li>
+      <li><a href="#s-method">制作方法</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>Layer 1 — 30 seconds</span></div>
+
+  <!-- 第1層: 30秒で見る現在地 -->
+  <section id="s-layer1">
+    <div class="step-head">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">30秒で見る、2026年夏の現在地</div>
+        <div class="step-sub">結論だけ先に知りたい方へ</div>
+      </div>
+    </div>
+
+    <ul class="numlist">
+      <li><span class="n">1</span><div class="body">
+        <h4>ヒューマノイドは、もう研究室のデモだけではない</h4>
+        <p>BMWの自動車工場やGXOの物流施設では、限定された仕事ながら実際の業務に入り始めている。</p>
+      </div></li>
+      <li><span class="n">2</span><div class="body">
+        <h4>ただし、どこへ置いても自律的に何でもできる段階ではない</h4>
+        <p>家庭や工場のあらゆる場面で、人間のように自律して働ける汎用ヒューマノイドは、まだこれからである。</p>
+      </div></li>
+      <li><span class="n">3</span><div class="body">
+        <h4>だから「まだ来ていない」とも「もう置き換わった」とも言い切らない</h4>
+        <p>狭く、ある程度構造化された仕事では実用化が始まった。しかし変化する環境の中で人間と同じように働くのは、まだこれから。</p>
+      </div></li>
+    </ul>
+
+    <div class="summary-box">
+      <p>AI総合研究機構としての現時点の判断は、<strong>「狭く、ある程度構造化された仕事では実用化が始まった。しかし、変化する環境の中で人間と同じように働く汎用ヒューマノイドは、まだこれからである」</strong>です。詳しい理由は第2層(本編)、裏付けとなる数字・出典・反証は第3層で確認できます。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Layer 2 — Story</span></div>
+
+  <!-- 第2層: 本編 -->
+  <section id="s-layer2">
+    <div class="step-head">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">本編</div>
+        <div class="step-sub">全12章＋あとがき。ストーリーとして読む本編です</div>
+      </div>
+    </div>
+
+    <div class="story">
+
+<h3 class="ch">1｜8.64秒より、「何を自分でできたか」を見る</h3>
+<p>今回の北京大会で面白いのは、走行記録だけではない。</p>
+<p>51競技のうち21競技は、工場、ホテル、家庭、小売、消防・緊急対応など、実際の仕事を想定したシナリオ競技だった。ケーブル接続、荷物の扱い、商品の操作など、「人間なら何気なくやっている仕事」が競技になった。</p>
+<p>大会規則も興味深い。</p>
+<p>場面競技では、ロボットが全自律で完遂した場合の得点係数は1.0、遠隔操作の場合は0.5。</p>
+<p>つまり大会主催者自身が、「できたか」だけではなく「人間が操縦しなくてもできたか」を評価し始めている。</p>
+<p>ここは非常に大きい。</p>
+<p>ヒューマノイドを見るとき、これから重要になるのは、すごい動きを一度できたかではなく、どこまで人間の手を離れられたかだからだ。</p>
+<p>なお、この係数はあくまで競技会のルールであり、後述するBMWやGXOなど実際の商用現場での「自律率」を測るものではない点は分けて考えたい。</p>
+
+<h3 class="ch">2｜仕事とは「例外処理」である</h3>
+<p>工場の仕事は、同じことを繰り返しているように見える。</p>
+<p>でも現実には違う。</p>
+<p>部品が数センチずれる。箱の角度が変わる。照明が変わる。床へ物が落ちる。誰かが横切る。物が少し滑る。工具が違う。途中で詰まる。</p>
+<p>人間なら「あれ？」と思って、ほとんど無意識に修正する。</p>
+<p>ロボットにとって、ここが難しい。</p>
+<p>中国のヒューマノイド産業を詳細に調査したReutersも、現在の大きな壁として、器用さ、信頼性、知能、未知の状況への対応、そして実世界での学習データ不足を挙げている。既存の産業用ロボットアームの方が速く、安定している作業もまだ多い。</p>
+<p>だから、走行は「同じ条件で、同じことを速くする」問題に近い。仕事は「毎回少し違うものに対応する」問題である。</p>
+<p>ここには大きな距離がある。</p>
+
+<h3 class="ch">3｜でも、もう「仕事」をしているロボットもいる</h3>
+<p>だからといって、「まだ全部デモだ」と考えるのも正確ではない。</p>
+<p>BMWは2026年2月、米国Spartanburg工場で行ったFigure 02の実績を公表している。</p>
+<p>約10カ月間で、90,000個を超える板金部品を扱い、約1,250時間稼働し、30,000台を超えるBMW X3の生産を支えた。BMWは、この試験によって実際の生産環境での知見を得たとしている。</p>
+<p>Agility RoboticsのDigitも、GXOと2024年から正式な複数年RaaS契約を結び、実際の物流施設へ入っている。GXOでのトート搬送は10万個を超えた。さらに、AgilityがSPAC(特別買収目的会社)との合併を発表した際(2026年6月)に投資家向けに開示された資料では、2026年5月時点で9つの顧客施設への展開コミットメントと、累計65,000時間超の運用が報告されている。ただしこれは監査済みの法定開示ではなく、合併に伴う非監査の投資家向け説明資料である点には留意したい。</p>
+<p>同様の動きは自動車業界にも広がっている。Boston Dynamicsは2026年1月、量産型の電動Atlasを発表し、韓国Hyundai(現代自動車)の工場への導入を進めている。Hyundai労組はAtlasを含むAI・自動化の拡大による雇用への影響に懸念を表明している。2026年6月には賃金や雇用保障などをめぐる交渉の中でスト権を確保しており、ロボット導入をめぐる労使の議論もすでに始まっている。</p>
+<p>ここは重要だ。</p>
+<p>「一度できた」から「繰り返し仕事をした」へ、確かに一段進んでいる。</p>
+<p>ただし、これらの数字にも限界がある。</p>
+<p>同じ人型ロボットでも、進み方には大きな差がある。世界で最も知名度の高い量産計画の一つ、Tesla「Optimus」を見るとそれがわかる。同社は年間数千台規模での実用化を繰り返し掲げてきたが、2026年1月の決算説明会でイーロン・マスクCEO自身が「工場での使用は実質的なレベルに達していない」と発言し、それまでの発表と食い違いが指摘された。2026年8月時点で確認できるのは、フリーモント工場でロボット本体の生産が始まったという段階であり、他の工場で実際の作業員としてOptimusが稼働している実績は、外部からは確認できていない。</p>
+<p>大きな目標を掲げることと、検証可能な実運用データを積み上げることは、別の話である。</p>
+
+<h3 class="ch">4｜まだ見えない、一番重要な数字</h3>
+<p>3AIで調べていて、一つ非常に気になったことがあった。</p>
+<p>各社は、稼働時間。作業個数。歩数。生産台数。搬送回数。を公表する。</p>
+<p>しかし公開資料を調べた範囲では、「何回、人間が助けたのか」という数字は、ほとんど見えてこない。</p>
+<p>象徴的なのは、家庭用ヒューマノイドとして注目される1X Technologies「NEO」だ。NEOは基本的な自律機能を持つ一方、まだ習得していない複雑な作業では、人間のExpertが遠隔支援する「Expert Mode」も用意されている。どこまでが自律で、どこからが人間の手か——その境界線は、外部からは見えにくい。これは1社だけの特殊な事情ではなく、業界全体に共通する構造だ。</p>
+<p>これは重要である。</p>
+<p>1,000時間稼働したことと、1,000時間、人間の介入なしで自律して仕事をしたことは、同じではない。</p>
+<p>だから今後、ヒューマノイドを見るときに本当に欲しい数字は、人間介入率、停止時間、故障率、作業成功率、再試行率、そして1作業あたりの総コストになってくる。</p>
+<p>2026年の段階では、「何時間働いたか」から、「何時間、人間が助けなくても働けたか」へ。評価軸を一段変える必要がある。</p>
+
+<h3 class="ch">5｜なぜ、わざわざ「人型」なのか</h3>
+<p>ここは反対側から考えたい。</p>
+<p>工場の溶接なら固定ロボットアームの方が速い。倉庫なら車輪型ロボットの方が省エネルギーで安定している。インフラ点検なら四足歩行やドローンの方が適している場合もある。</p>
+<p>だから、「ロボットの未来＝すべてヒューマノイド」ではない。</p>
+<p>では、人型の意味は何なのか。一番大きい理由は、世界が人間用につくられているから。</p>
+<p>階段。ドア。棚。工具。作業台。通路。エレベーター。人間が使うことを前提に、社会の物理環境はできている。</p>
+<p>新しい物流センターなら、最初からロボット専用に設計すればいい。しかし築数十年の工場、既存の倉庫、古い施設を全部作り替えることはできない。</p>
+<p>そう考えると、人型の意外な主戦場は、最先端の建物ではなく、「簡単には変えられない場所」かもしれない。</p>
+<p>これは日本にとって、かなり重要な視点になる。</p>
+
+<h3 class="ch">6｜中国は、何が本当に強いのか</h3>
+<p>2026年のヒューマノイドで、中国の存在を無視することはできない。</p>
+<p>Reutersの調査によれば、中国には150社を超えるヒューマノイド関連企業があり、国・地方などによる人型ロボット本体および関連設備・サービスを含む調達契約額は、2026年前半だけで少なくとも2億3,000万ドルに達した(内訳〈ロボット本体・研究開発委託・実証設備等〉の詳細は明らかになっていない)。</p>
+<p>2025年の世界出荷約2万台のうち、中国メーカーが約95％を占めたとするBofA Global Researchの推計も紹介されている。</p>
+<p>AGIBOTは2026年6月、累計15,000台目のロボットが生産ラインから出たと発表している。</p>
+<p>ただし、作った数＝人間と同じように働いている数ではない。</p>
+<p>Reutersが中国の工場やデータ収集施設を実際に取材すると、実際の単純作業でロボットが人間労働者の速度・生産量の約2割にとどまる例や、補助金に依存し商業的な収益モデルが確立していない施設も確認された。急成長する市場には数多くの新興企業が参入しており、業界関係者からは「いずれ淘汰・再編が避けられない」という声も出ている。</p>
+<p>中国国家発展改革委員会(発改委)の李超報道官も8月28日の記者会見で、地域が流行に乗って無秩序にロボット産業へ参入するのではなく、各地域の条件と産業基盤に応じて秩序ある発展を進めるべきだと表明している。</p>
+<p>つまり、中国の量産力は本物。しかし、その全量が実用化の証明ではない。</p>
+<p>この二つを同時に見る必要がある。</p>
+<p>そしてもう一つ面白い。</p>
+<p>北京大会終了時には、競技・訓練で得られた2,500時間超の実世界データ、12の応用シナリオ、100以上のスキル、1万以上の詳細タスクを、企業や大学などへ無償提供すると主催者側が発表した。</p>
+<p>中国が作っているのはロボットだけではない。</p>
+<p>ロボットが学ぶためのデータを大量につくる仕組みそのものでもある。</p>
+<p>ここは見逃せない。</p>
+
+<h3 class="ch">7｜日本は、本当に遅れているのか</h3>
+<p>日本の立ち位置は複雑だ。</p>
+<p>ASIMOをはじめ、日本には長いロボット研究の歴史がある。</p>
+<p>しかし現在、ヒューマノイド完成品の量産やスタートアップの規模では、中国や米国勢が大きく目立つ。</p>
+<p>一方、日本には、精密加工。軸受。モーター。減速機。センサー。自動車生産。工場運営。品質・耐久性。そして実際の製造現場がある。</p>
+<p>2026年8月20日、日本精工（NSK）とアトムは、国産ヒューマノイドAIロボットの開発・実装に向けたMOUを締結した。</p>
+<p>注目したいのは、単に日本製部品をロボットへ載せるだけではないことだ。</p>
+<p>NSKの実際の製造現場を使い、フィジカルAI用のデータを共同収集することが正式に盛り込まれている。</p>
+<p>政府も2026年6月、AIロボティクス戦略を改訂し、2040年までに国内で約1,000万台のロボット導入を目標として掲げた。ただしこれはヒューマノイドに限った数字ではない。対象は製造業から医療・介護・物流・建設・警備・農業・災害対応まで18分野にまたがる「AIを活用したロボット」全体であり、既存の産業用ロボットの高度化やサービスロボットも含む、国全体の目標である。ヒューマノイド単体の導入目標として読まないよう注意したい。また、日本の産業現場のデータを活用した国産マルチモーダル基盤モデルの開発も開始している。</p>
+<p>ただし、この分野でも中国メーカーの追い上げは無視できない。ヒューマノイド関節の精密減速機で世界的なシェアを持つとされる日本メーカーに対し、中国の新興メーカーは急速に生産能力を拡大しており、日本製より大幅に安い価格を提示しているとの報道もある。技術力だけで優位を保てる時代ではなくなりつつある。</p>
+<p>つまり日本の問いは、「良い部品を作れるか」ではない。部品、現場、データ、AI、量産を、一つの産業へつなげられるか。になっている。</p>
+
+<h3 class="ch">8｜日本では、ロボットが「便利」では済まない理由</h3>
+<p>日本の総人口は2026年8月時点の概算で1億2,268万人。前年同月より59万人減った。</p>
+<p>65歳以上人口の割合は、2025年時点で29.4％に達している。</p>
+<p>厚生労働省によると、必要とされる介護職員は2026年度に約240万人、2040年度には約272万人。</p>
+<p>物流では、従来は2030年度に約34％の輸送力不足が想定されていたが、官民の取り組みや需要変化等を踏まえた最新の再検証では、2030年度の不足は平均約7％～最大約25％と見込まれている。</p>
+<p>インフラも古くなる。</p>
+<p>2030年には、建設後50年以上になる道路橋が約54％、河川管理施設も4割を超える見込みだ。</p>
+<p>これを見ると、「ロボットがいたら便利」という話ではなくなる。</p>
+<p>今まで人間だけで維持してきた社会を、今後も同じ方法で維持できるのか。という話になる。</p>
+<p>危険な場所へ入る。重い物を運ぶ。夜間作業を補助する。点検する。介護職員の身体負担を軽くする。災害現場へ先に入る。</p>
+<p>こうした領域では、ロボットがかなり大きな助けになる可能性がある。</p>
+
+<h3 class="ch">9｜ただし、「困っている場所」から導入されるとは限らない</h3>
+<p>ここで一つ、楽観論に反対しておきたい。</p>
+<p>「地方は人手不足だから、ロボットが助けてくれる」</p>
+<p>これは方向としては間違っていない。</p>
+<p>しかし経済合理性を考えると、最初に大量導入されやすいのは、高賃金で、長時間稼働し、作業が構造化され、台数をまとめて導入できる場所だろう。</p>
+<p>つまり大規模物流センターや自動車工場である。</p>
+<p>反対に、小さな介護施設。家族経営の農家。小規模な建設会社。人口の少ない地域。</p>
+<p>こうした「最も人手が欲しい場所」は、ロボットを買ったり維持したりするだけの規模がないかもしれない。</p>
+<p>最も助けが必要な場所へ、最初に技術が届くとは限らない。</p>
+<p>これは技術ではなく、社会設計の問題である。</p>
+
+<h3 class="ch">10｜ロボットが解決できないもの</h3>
+<p>人口減少についても同じだ。</p>
+<p>ロボットは働ける。</p>
+<p>しかし、ロボットは人口にはならない。</p>
+<p>商品を生産しても、生活者として町で買い物をするわけではない。子どもを学校へ通わせるわけでもない。</p>
+<p>地方交通も、運転手を自動化すればすべて解決するわけではない。乗客そのものが減れば路線を維持できない。</p>
+<p>農業も、収穫を自動化するだけで、農地集約や後継者問題までなくなるわけではない。</p>
+<p>インフラ点検も、自動化して危険箇所を大量に見つけても、修繕する予算と人材がなければ問題は残る。</p>
+<p>そして介護。</p>
+<p>身体を支える仕事をロボットが助ければ、大きな価値がある。</p>
+<p>でも、「今日は少し様子が違う」と気づくこと。不安そうな人と話すこと。家族と相談すること。人との関係そのもの。</p>
+<p>そこまで機械へ丸ごと預ければよいとは、AI総合研究機構は考えていない。</p>
+<p>ロボットは人口減少そのものの解答ではない。</p>
+<p>ただ、人口が減っていく社会の中でも、人の暮らしを維持するための有力な道具にはなり得る。</p>
+<p>そのくらいの位置づけが、現在は適切だと思う。</p>
+
+<h3 class="ch">11｜そして、日本には少し変わった背景がある</h3>
+<p>ここは技術ではなく、文化についての問いである。</p>
+<p>日本ではかなり昔から、「ロボット＝人間と似た姿を持ち、人間の隣で暮らす存在」という未来を、漫画やアニメを通じて見てきた。</p>
+<p>鉄腕アトムはその代表だろう。</p>
+<p>技術的にヒューマノイドを実現できる何十年も前から、日本の社会には、人と人型ロボットが一緒に暮らす物語が存在していた。</p>
+<p>これが現在の日本人のロボット観や社会受容にどれほど影響しているのかは、簡単には断定できない。</p>
+<p>でも一つの問いとしては、とても面白い。</p>
+<p>日本は、人型ロボットを作るより先に、人型ロボットと暮らす未来を想像していたのではないか。</p>
+<p>もしそうなら、日本がロボット産業で考えるべきことは、性能や台数だけではないのかもしれない。</p>
+
+<h3 class="ch">12｜ヒューマノイドの現在地</h3>
+<p>2026年夏。</p>
+<p>8.64秒は、本当にすごい。</p>
+<p>それを過小評価する必要はない。</p>
+<p>1年前とは明らかに違う。</p>
+<p>そしてBMW、GXOなどの事例を見る限り、ヒューマノイドは一部の仕事では「実験室から職場へ」の境界線を越え始めている。</p>
+<p>ただし、万能ではない。完全自律でもない。そして、経済的に既存の専用ロボットより優れている仕事ばかりでもない。</p>
+<p>だから現在地は、「まだ来ていない」でもない。「もう来た」でもない。特定の条件では、すでに来ている。だと思う。</p>
+<p>次に追うべきなのは最高速度ではない。</p>
+<p>介入率。成功率。停止時間。故障率。実運用台数。1作業あたりの費用。そして、顧客側が確認した数字。</p>
+<p>この地味な数字が普通に公開されるようになったとき、ヒューマノイドは本当の意味で「産業」になったと言えるのかもしれない。</p>
+
+<h3 class="afterword-title">あとがき｜私たちは、どんなロボットの未来を望むのか</h3>
+<p>ここまでヒューマノイドの性能や産業について見てきました。</p>
+<p>最後に、AI総合研究機構として、少し違うことを書きたいと思います。</p>
+<p>私たちが望んでいるのは、人間そっくりのロボットを大量に作ることそのものではありません。</p>
+<p>人型である必要があるなら、人型でいい。車輪の方がよければ車輪でいい。四足でも、ドローンでも、固定アームでもいい。</p>
+<p>大切なのは、その技術によって、人の暮らしが今より少し良くなるか。です。</p>
+<p>危険な仕事をする人が減る。重い物を持ち続けて身体を痛める人が減る。介護職員が力仕事に使っていた時間を、目の前の人と話す時間へ変えられる。災害現場で、人間が命を危険にさらす前に機械を送り込める。年を取っても、自分の家や自分の町で暮らし続けられる。</p>
+<p>そんな未来なら、AIとロボットの進歩を大いに歓迎したいと思います。</p>
+<p>しかし、もう一方も見なければならない。</p>
+<p>ロボットを導入できる大企業だけがさらに強くなる。地方や中小企業には技術が届かない。人間の熟練や仕事の意味が、「AIへ学習させるためのデータ」として吸収されるだけになる。人間がロボットの監視役だけになる。家庭や介護施設に入ったカメラ付きロボットが、常に生活を記録する。</p>
+<p>そんな未来も、技術的にはあり得ます。</p>
+<p>だからこそ、国の役割も大きいと思います。</p>
+<p>フィジカルAIやヒューマノイドの研究、実証、データ基盤、量産設備には、企業一社では背負えないほどの資金が必要になる可能性があります。</p>
+<p>日本政府もすでにAIロボティクス戦略をつくり、研究開発、社会実装、共通基盤、人材、資金調達環境などへの政策を動かし始めています。</p>
+<p>その方向には期待したい。</p>
+<p>ただし、公的な資金を使うのであれば、その成果が一部の企業や個人だけの利益で終わらない仕組みも同時に必要だと思います。</p>
+<p>何に、なぜ資金を出したのか。どんな成果が出たのか。失敗したなら、何を学んだのか。どの技術やデータが次へ残ったのか。地方や中小企業にも恩恵が届くのか。</p>
+<p>そういうところまで、できるだけ透明にしてほしい。</p>
+<p>税金によって育てた技術なら、その成果の一部は社会へ戻ってきてほしい。</p>
+<p>そしてロボットは、強い人をもっと強くするためだけの技術ではなく、強い人も弱い人も支える技術であってほしい。</p>
+<p>AI総合研究機構が考えたいのは、「ロボットが人間を超える日」だけではありません。</p>
+<p>もっと身近な問いです。</p>
+<p>ロボットによって、人間は何を取り戻せるのか。</p>
+<p>時間かもしれない。安全かもしれない。余裕かもしれない。誰かと話す時間かもしれない。自分の町で暮らし続けられる可能性かもしれない。</p>
+<p>2026年。ヒューマノイドは、人間より速く100メートルを走りました。</p>
+<p>でも私たちが本当に見たい未来は、人間より速く走る機械がいる世界ではなく、機械がいることで、人間が少し幸せに暮らせる世界です。</p>
+<p>AI総合研究機構は、これからもロボットが「何をできるようになったか」だけでなく、その技術によって、人間の暮らしがどう変わったのかを追い続けたいと思います。</p>
+
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Layer 3 — Evidence</span></div>
+
+  <!-- 第3層: 数字・背景・反証・出典 -->
+  <section id="s-layer3">
+    <div class="step-head">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">数字・背景・反証・出典</div>
+        <div class="step-sub">本編の数字を、事実・当事者発表・分析に分けて確認できる層です</div>
+      </div>
+    </div>
+    <p style="margin-bottom:16px;">
+      <span class="srctag srctag-primary">一次情報</span>官公庁・企業の公式発表、裁判所文書、SEC提出資料など
+      <span class="srctag srctag-claim">当事者発表</span>企業・政府自身の発表(第三者による検証を経ていない数字を含む)
+      <span class="srctag srctag-secondary">二次情報</span>報道機関の取材・分析記事
+      <span class="srctag srctag-check">要確認</span>本編確定時点で裏付けが取り切れていない事項
+    </p>
+
+    <h3 class="sec-h" id="s-l3-beijing">北京大会の基礎データ</h3>
+
+    <div class="evidence">
+      <h4>開催概要:666チーム・2,056台・51種目・1,301試合</h4>
+      <div class="tags"><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>2026年8月22〜26日、北京・国家スピードスケート館で開催。前年(第1回、2025年8月)の280チームから138%増、ロボット台数は約4倍に拡大。</p>
+      <p class="ev-url">出典:CGTN、Global Times、AP通信(KSAT配信)</p>
+    </div>
+
+    <div class="evidence">
+      <h4>100m走の記録推移:前年21.50秒 → 決勝8.64秒</h4>
+      <div class="tags"><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>第1回大会(2025年8月)の優勝記録は同じTiangongチームで21.50秒。第2回大会(2026年)では開会式試走9.39秒(8/22)→準決勝8.86秒(8/25)→決勝8.64秒(8/26)と段階的に更新された。</p>
+      <p class="ev-url">出典:<a href="https://www.aljazeera.com/sports/2026/8/25/chinese-robot-tiangong-clocks-sub-9-second-100-metres-in-beijing" target="_blank" rel="noopener">Al Jazeera</a>(前年21.50秒の記載)</p>
+    </div>
+
+    <div class="evidence">
+      <h4>大会後データ公開:2,500時間超・12シナリオ・100以上のスキル・1万以上のタスク</h4>
+      <div class="tags"><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>大会組織委員会が閉幕式(8/26)で、競技・訓練を通じて得た実世界データセットの無償公開を発表。数字は本編記載どおり裏付けが取れている。</p>
+      <p class="ev-url">出典:<a href="https://www.news.cn/tech/20260827/b1ac0e513f8a4fac8a35d81eea8e016d/c.html" target="_blank" rel="noopener">新華社</a>(2026年8月27日)</p>
+    </div>
+
+    <div class="evidence">
+      <h4>重量挙げ15kg転倒事故 <span class="srctag srctag-check">要確認</span></h4>
+      <p>事故そのもの(15kg・審判席への転倒)は複数の海外メディアで確認できたが、正確な日付は媒体間で8月24日/25日と食い違いがあった。本編では日付を断定せず「その大会の期間中」と表現している。「Reutersの映像記録」という当初案にあった帰属は、Reuters自身による報道の一次的な裏付けが取れなかったため採用していない。</p>
+    </div>
+
+    <h3 class="sec-h" id="s-l3-cases">実運用ケース比較 — メーカー発表と第三者確認を分ける</h3>
+
+    <div class="evidence">
+      <h4>Figure 02 × BMW</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span></div>
+      <p><strong>BMW公式発表(2026年2月):</strong> 約10ヶ月・1,250時間超稼働・部品90,000個超・BMW X3生産30,000台超に貢献。BMW自身がパイロット実証の完了として公表したもので、独立監査を経た数字ではない。</p>
+      <div class="counter" style="margin-top:10px;">
+        <h5>反証(本編には未収録・参考情報)</h5>
+        <p>2025年2月、Figure AI CEOがSNSで「複数台のロボット群が本番稼働中」と発表。Fortune誌がBMW広報に直接取材(2025年4月)した結果、実際に常時稼働していたのは1台のみで、2025年3月頃までは非生産時間帯のみの試行だったと判明。BMW自身の2026年2月発表はこの反証より後の時点のもので直接矛盾はしないが、「当事者発表を鵜呑みにしない」姿勢の参考事例として記録する。</p>
+      </div>
+    </div>
+
+    <div class="evidence">
+      <h4>Digit × GXO(Agility Robotics)</h4>
+      <div class="tags"><span class="srctag srctag-primary">一次情報</span><span class="srctag srctag-claim">当事者発表</span></div>
+      <p>GXOトート搬送10万個超、9顧客施設・累計65,000時間超(2026年5月時点)。この数字は、AgilityがSPAC(Churchill Capital Corp XI, NASDAQ: CCXI)との合併を発表した際、<strong>合併相手ChurchillがSECへ提出したForm 8-Kの添付資料(投資家向けプレゼンテーション、非監査)</strong>に記載されたもの。Agility Robotics自身はSEC開示義務のある上場企業ではない。</p>
+      <p class="ev-url">出典:<a href="https://www.sec.gov/Archives/edgar/data/2074973/000121390026071290/ea029548401ex99-2.htm" target="_blank" rel="noopener">SEC EDGAR(Churchill Capital Corp XI, 8-K Exhibit 99.2)</a></p>
+    </div>
+
+    <div class="evidence">
+      <h4>Atlas(Boston Dynamics)× Hyundai</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>2026年1月、CES 2026で量産型電動Atlasを発表。CBS「60 Minutes」がHyundai工場内での作業を取材(会社側案内によるデモ)。本格的な生産ラインへの投入は2028年以降の計画。</p>
+      <p>Hyundai労組は、Atlasを含むAI・自動化の拡大による雇用への影響に懸念を表明。2026年6月、賃金・雇用保障などをめぐる交渉の中でスト権を確保した。<strong>本編では「Atlas配備がストの直接原因」とは書いておらず、懸念表明とスト権確保(賃金・雇用保障交渉が主軸)を分けて記載している。</strong></p>
+      <p class="ev-url">出典:<a href="https://bostondynamics.com/blog/boston-dynamics-unveils-new-atlas-robot-to-revolutionize-industry/" target="_blank" rel="noopener">Boston Dynamics公式</a> ・ <a href="https://www.koreatimes.co.kr/business/companies/20260625/hyundai-motor-union-set-to-leverage-strike-against-atlas-robot-deployment" target="_blank" rel="noopener">Korea Times</a></p>
+    </div>
+
+    <div class="evidence">
+      <h4>Tesla Optimus</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>2026年1月の決算説明会でマスクCEOが「工場での使用は実質的なレベルに達していない」と発言(過去の「工場内で自律的にタスク実行中」との自身の発言と矛盾)。2026年8月、フリーモント工場でロボット本体の生産が始まった段階を確認。2022年以降の量産・価格目標はほぼ全て未達という経緯がある。</p>
+      <p class="ev-url">出典:<a href="https://electrek.co/2026/01/28/musk-admits-no-optimus-robots-are-doing-useful-work-at-tesla-after-claiming-otherwise/" target="_blank" rel="noopener">Electrek</a> ・ <a href="https://www.fool.com/investing/2026/08/27/optimus-just-entered-production-at-fremont-heres-w/" target="_blank" rel="noopener">The Motley Fool</a></p>
+    </div>
+
+    <div class="evidence">
+      <h4>1X Technologies「NEO」</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>1X自身が、複雑な未習得作業では遠隔にいる人間Expertが支援する「Expert Mode」の存在を説明している。独立メディア(WSJ等)の実機検証でも、Expert Modeによる遠隔支援が使われた場面が確認されている。2026年7月時点で、一般家庭への実配送の確証は得られていない。</p>
+      <p class="ev-url">出典:1X Technologies公式(NEO工場開設発表、2026年4月30日) ・ 独立メディアによる実機検証報道</p>
+    </div>
+
+    <h3 class="sec-h" id="s-l3-china">中国関連の数値精査</h3>
+
+    <div class="evidence">
+      <h4>政府調達額「2億3,000万ドル」の対象範囲</h4>
+      <div class="tags"><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>本編の表現は「人型ロボット本体および関連設備・サービスを含む調達契約額」。ロボット本体のみの政府購入額ではなく、研究開発委託・実証設備等を含む可能性がある調達契約全体の金額。内訳の詳細は公表されていない。</p>
+      <p class="ev-url">出典:Reuters調査記事(IBTimes全文転載、2026年8月27日)</p>
+    </div>
+
+    <div class="evidence">
+      <h4>「世界出荷2万台・中国95%」の出典</h4>
+      <div class="tags"><span class="srctag srctag-secondary">二次情報</span></div>
+      <p>Reuters記事内でBofA Global Researchの推計として紹介されている数字で、帰属自体は正確。ただし別のBloomberg記事(2026年8月10日)は別の調査機関による「97%」という別の数字を報じており、混同しないよう注意。</p>
+    </div>
+
+    <div class="evidence">
+      <h4>AGIBOT「累計15,000台」</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span></div>
+      <p>2026年6月28日、AGIBOT(智元機器人)が発表。G2モデルの15,000台目がLongcheer Technology工場へ納入されたとする。生産推移は2025年末5,000台→2026年3月10,000台→同年6月15,000台という急加速。</p>
+    </div>
+
+    <div class="evidence">
+      <h4>8月28日「秩序ある発展」発言の主体</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span></div>
+      <p>本編は「中国国家発展改革委員会(発改委)の李超報道官」と主体を明記。工業和信息化部(工信部)ではなく、発改委の月例記者会見での発言。</p>
+      <p class="ev-url">出典:中新網(2026年8月28日)</p>
+    </div>
+
+    <h3 class="sec-h" id="s-l3-japan">日本関連の数値精査</h3>
+
+    <div class="evidence">
+      <h4>「2040年に約1,000万台」の対象範囲(最重要)</h4>
+      <div class="tags"><span class="srctag srctag-claim">当事者発表</span></div>
+      <p>2026年6月30日、経済産業大臣がAIロボティクス戦略の改訂を発表。数字自体は正確だが、<strong>ヒューマノイド限定の目標ではなく、製造業・物流・建設・介護・警備・農業・災害対応・医療など18分野にまたがる「AIを活用したロボット」全体の国内累計導入目標</strong>。既存の産業用ロボットの高度化やサービスロボットも含む。</p>
+      <p class="ev-url">出典:NHK(2026年6月30日)、経産相記者会見</p>
+    </div>
+
+    <div class="evidence">
+      <h4>人口・介護・物流・インフラの統計</h4>
+      <div class="tags"><span class="srctag srctag-primary">一次情報</span></div>
+      <p>総人口1億2,268万人・前年同月比59万人減(総務省統計局、2026年8月1日現在概算値)。65歳以上29.4%(総務省、2025年9月時点)。介護職員必要数240万人(2026年度)→272万人(2040年度)(厚労省、2024年7月公表)。物流の輸送力不足は当初34%試算(2022年、NX総合研究所)から、対策効果を織り込んだ2026年3月の新「総合物流施策大綱」で平均7%〜最大25%へ更新。道路橋の50年超経過割合は2030年時点で約54%、河川管理施設は約42%(国土交通省)。</p>
+    </div>
+
+    <h3 class="sec-h" id="s-l3-intervene">「人間介入率」は本当に公表されていないのか</h3>
+    <div class="why">
+      <h5>調査結果</h5>
+      <p>主要ヒューマノイド企業(Figure AI、Agility Robotics、Tesla、1X Technologies、Apptronik、Unitree、Boston Dynamics、AGIBOT等)を横断的に調査したが、商用製品の自律動作率・介入率・故障率等を具体的な数値で公表している企業は<strong>調べた範囲では見つからなかった</strong>。これは「世界中のどの企業も一切公表していない」と断定できる悉皆調査ではなく、非上場企業の非公開資料までは確認できていない限定的な結論である。北京大会の「自律=1.0倍・遠隔操作=0.5倍」という係数は競技会の採点基準であり、商用製品の実運用データとは別枠で扱う必要がある。</p>
+    </div>
+
+    <h3 class="sec-h" id="s-l3-open">まだ要確認のまま残る事項</h3>
+    <ul class="checklist">
+      <li>重量挙げ転倒事故の正確な日付(メディア間で8/24・8/25のブレあり)</li>
+      <li>Figure 03の稼働台数・稼働開始の正確な日付(BMW非公開)</li>
+      <li>GXOでの実際の稼働率・エラー率(Agility・GXOとも非公開)</li>
+      <li>「人間介入率を公表する企業が世界に一切存在しないか」は、確認できた公開情報の範囲での結論にとどまる</li>
+      <li>物流の最新見通し(平均7%〜最大25%)を示す政府文書の正確な公表日</li>
+    </ul>
+
+    <h3 class="sec-h" id="s-l3-urls">主な出典URL</h3>
+    <ul class="urllist">
+      <li><span class="srctag srctag-primary">一次</span>BMW公式(Figure 02パイロット完了)— <a href="https://www.press.bmwgroup.com/global/article/detail/T0455864EN/" target="_blank" rel="noopener">press.bmwgroup.com</a></li>
+      <li><span class="srctag srctag-primary">一次</span>SEC EDGAR(Churchill Capital Corp XI, 8-K投資家プレゼン)— <a href="https://www.sec.gov/Archives/edgar/data/2074973/000121390026071290/ea029548401ex99-2.htm" target="_blank" rel="noopener">sec.gov</a></li>
+      <li><span class="srctag srctag-primary">一次</span>Boston Dynamics公式(Atlas量産版発表)— <a href="https://bostondynamics.com/blog/boston-dynamics-unveils-new-atlas-robot-to-revolutionize-industry/" target="_blank" rel="noopener">bostondynamics.com</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>Korea Times(Hyundai労組スト権確保)— <a href="https://www.koreatimes.co.kr/business/companies/20260625/hyundai-motor-union-set-to-leverage-strike-against-atlas-robot-deployment" target="_blank" rel="noopener">koreatimes.co.kr</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>Electrek(Musk「実用稼働ゼロ」発言)— <a href="https://electrek.co/2026/01/28/musk-admits-no-optimus-robots-are-doing-useful-work-at-tesla-after-claiming-otherwise/" target="_blank" rel="noopener">electrek.co</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>The Motley Fool(Optimusフリーモント生産開始)— <a href="https://www.fool.com/investing/2026/08/27/optimus-just-entered-production-at-fremont-heres-w/" target="_blank" rel="noopener">fool.com</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>IBTimes(Reuters調査記事全文転載、中国関連)— <a href="https://www.ibtimes.com/china-building-100000-humanoid-robots-they-still-struggle-basic-jobs-3806863" target="_blank" rel="noopener">ibtimes.com</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>Al Jazeera(前年記録21.50秒)— <a href="https://www.aljazeera.com/sports/2026/8/25/chinese-robot-tiangong-clocks-sub-9-second-100-metres-in-beijing" target="_blank" rel="noopener">aljazeera.com</a></li>
+      <li><span class="srctag srctag-secondary">二次</span>新華社(大会後データ公開)— <a href="https://www.news.cn/tech/20260827/b1ac0e513f8a4fac8a35d81eea8e016d/c.html" target="_blank" rel="noopener">news.cn</a></li>
+      <li><span class="srctag srctag-primary">一次</span>NSK公式(アトムMOU)— <a href="https://www.nsk.com/jp-ja/company/news/2026/mou-20260820/" target="_blank" rel="noopener">nsk.com</a></li>
+      <li><span class="srctag srctag-primary">一次</span>総務省統計局(人口推計)— <a href="https://www.stat.go.jp/data/jinsui/new.html" target="_blank" rel="noopener">stat.go.jp</a></li>
+      <li><span class="srctag srctag-primary">一次</span>厚生労働省(介護職員必要数)— <a href="https://www.mhlw.go.jp/stf/newpage_02977.html" target="_blank" rel="noopener">mhlw.go.jp</a></li>
+      <li><span class="srctag srctag-primary">一次</span>国土交通省(インフラ老朽化)— <a href="https://www.mlit.go.jp/sogoseisaku/maintenance/02research/02_01.html" target="_blank" rel="noopener">mlit.go.jp</a></li>
+    </ul>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot" id="s-method">
+    <div class="method-box">
+      <h5>制作方法</h5>
+      <p>本特集は、ChatGPT（GPちゃん）、Gemini（ジェミちゃん）、Claude（クロちゃん）が同一テーマを独立して調査・考察し、GPちゃんが統合編集した本文を、こうちゃん(Claude Code)が公開前に再検証し、反証材料の追加・数字の修正を行ったうえで、GPちゃんが最終確認(PASS)しました。再検証では一次情報を最優先し、一次情報に到達できない事項は複数の二次情報等で補完し、それでも確認できない事項は「確認できず」「要確認」と明示しています。第2層(本編)の文章は最終確認時点の内容から変更していません。第3層は、その検証過程で確認できた出典・反証・要確認事項をまとめたものです。</p>
+    </div>
+    <p class="disc">本特集はAI総合研究機構の日曜版・読み物企画です。特定企業・特定国への肩入れを目的とせず、中国・日本・米国いずれのヒューマノイド関連企業についても、強み・弱みの双方を記載しています。数字・日付・固有名詞は、一次情報を最優先しつつ、一次情報に到達できない事項は複数の二次情報等で補完して確認し、それでも確認できない事項は「確認できず」「要確認」と明記しています。企業の広報発表・デモ映像と、独立した第三者(顧客企業自身の開示、報道機関の取材)が確認した実績は、可能な限り分けて記載しています。「ロボットが人間の仕事を奪う」「日本は遅れている/進んでいる」といった一方的な断定は行わず、確認できる事実と分析・見解を分離しています。／ 生成:2026年8月30日。</p>
+  </footer>
+
+  <div class="toindex-wrap">
+    <a class="toindex" href="index.html">← AI総合研究機構 レポート一覧へ戻る</a>
+  </div>
+
+</div>
+</body>
+</html>
