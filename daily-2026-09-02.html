@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 朝の一日レポート — 2026年9月2日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年9月2日（水）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝の要点は12件です。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の共有レポートです。<strong>最優先: 米中央軍(CENTCOM)は米東部時間9月1日正午(日本時間9月2日1:00頃)から、イラン国内のIRGC関連目標への攻撃を開始したと発表しました。理由として「ホルムズ海峡の商船に対するIRGCの攻撃の試み」と「地域に展開する米軍人への攻撃」を挙げています。イラン国営系メディアは、南部バンダルアッバース近郊のほかコナーラク、チャバハール、ケシュム島、シリークが攻撃されたと報じていますが、被害の第三者確認は取れていません。</strong>これは9/1号の「ララク島攻撃→イラン側の報復」から<strong>さらに一段進んだ新しい軍事行動</strong>です。<strong>その後イラン側は報復の「発表」にとどまらず実際に攻撃を開始し、ヨルダン軍は領空へ侵入した弾道ミサイル13発のうち10発を迎撃、残る3発は無人地域に落下したと発表しました。IRGCはヨルダンの米海兵隊拠点で「多数の米兵が死亡」と主張していますが、米当局者2人はReutersに死傷者はいないと述べており、双方の説明は食い違っています。イラン側はバーレーンの米軍施設へのドローン攻撃も主張しています。</strong><strong>前段として8月31日夜、ホルムズ海峡で大型タンカー2隻が数分の間に相次いで正体不明の飛翔体の攻撃を受けました。英国海事貿易機構(UKMTO)が確認したのは「ホルムズ海峡を出るタンカーが3発の飛翔体を受けた事案」であり、船名・船籍・積載量はMarisks／Kpler／Reuters等の情報として、サウジアラビア船籍の「Sidr」とリベリア船籍の「Senegal Prosperity」(韓国Sinokor運航)がそれぞれ約200万バレルのサウジ原油を積載していたと伝えられています。死傷者は報告されていません。</strong>また<strong>これまで継続課題だったホルムズ海峡の実通航量について、Kplerの暫定データとして「月曜の通航は約5隻、直近10日平均の約14隻を大きく下回り、液体タンカーの通航は0隻」という具体的な数字が出ました(AISを切って航行する船舶は集計外である点に注意)。</strong>市場は<strong>9/1の米国通常取引が終了し3指数そろって下落、S&amp;P500 7,631.47(-0.71%)・Nasdaq 26,099.77(-1.03%)・NYダウ 52,766.88(-0.79%)。米10年債利回りは4.79%、30年債は5.27%へ上昇し、原油はReutersの9/1決済値でWTIが90.22ドル(+5.2%)、ブレントが94.65ドル(+4.6%)です。</strong><strong>日本でも9/1に新発10年国債利回りが一時3.0%に達し、1996年9月以来およそ30年ぶりの高水準となりました。</strong>AIでは<strong>Anthropicが NVIDIA出資先のLambdaと約350億ドル規模のクラウド計算資源契約を結んだと報じられています。</strong>関連するテキサス州のデータセンターについて、<strong>NVIDIAが15年リースの借主とする報道</strong>がありますが、<strong>NVIDIAのSEC提出資料で確認できるのは約15年のデータセンター・リース契約の締結(FY2028〜29開始予定・第三者へ再割当予定)までであり、本件との個別の接続は報道ベースです。</strong>国内は<strong>台風24号「クロヴァン」が日本の南でほぼ停滞し、9月7日ごろに日本の南へ接近する見込み</strong>です。</p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-iran">New US Strikes <span class="kw-arrow">↓</span></a></span><span>
+        <b>【最優先】CENTCOMが9/1正午(米東部時間、日本時間9/2 1:00頃)からイラン国内のIRGC関連目標への攻撃開始を発表。理由は商船への攻撃の試みと米軍人への攻撃。イラン国営系メディアはバンダルアッバース近郊・コナーラク・チャバハール・ケシュム島・シリークへの攻撃を報道、被害は第三者未確認。イランは実際に報復攻撃を開始し、ヨルダン軍は13発中10発を迎撃・3発は無人地域へ落下と発表。IRGCは「多数の米兵が死亡」と主張するが米当局者は死傷者なしとReutersに説明。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-hormuz">Tankers &amp; Transits <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡で大型タンカー2隻が数分差で被弾。UKMTOは海峡を出るタンカーが3発の飛翔体を受けた事案を確認。船名・船籍・積載量はMarisks／Kpler／Reuters等の情報で、サウジアラビア船籍のSidrとリベリア船籍のSenegal Prosperity(韓国Sinokor運航)、各約200万バレル積載・死傷者なし。Kpler暫定では月曜の通航約5隻(10日平均約14隻)、液体タンカーは0隻。AIS非表示船は集計外。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">Bond Sell-off <span class="kw-arrow">↓</span></a></span><span>
+        <b>9/1米国終値はS&amp;P500 -0.71%・Nasdaq -1.03%・Dow -0.79%。米10年債4.79%・30年債5.27%。原油はReuters決済値でWTI 90.22ドル(+5.2%)・ブレント94.65ドル(+4.6%)。原油高と世界的な債券売りが重し。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jgb">JGB 3.0% <span class="kw-arrow">↓</span></a></span><span>
+        <b>日本の新発10年国債利回りが9/1に一時3.0%へ。1996年9月以来およそ30年ぶりの水準。米金利上昇の波及・9月の日銀利上げ観測・過去最大約143兆円の2027年度概算要求による財政不安が重なった。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-domestic">Typhoon 24 <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風24号「クロヴァン」が日本の南でほぼ停滞(996hPa)。9/3に南大東島の南西、9/5に東シナ海、9/7ごろ日本の南へ接近の見込み。台風18号は南シナ海。熊本地震は気象庁が9/1に第11報を公表。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-infra">Anthropic×Lambda <span class="kw-arrow">↓</span></a></span><span>
+        <b>AnthropicがNVIDIA出資先Lambdaと約350億ドルのクラウド契約と報道。テキサス州ヌエセス郡のHut 8データセンターにLambdaがNVIDIA製チップを設置し、報道ではNVIDIA自身が15年リースの借主とされる(NVIDIAのSEC資料では約15年のDCリース締結・FY2028〜29開始予定・第三者へ再割当予定までが一次情報。個別案件との接続は報道ベース)。先週にはNscaleと約450億ドルの契約も。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-tech">Anthropic 9/1 <span class="kw-arrow">↓</span></a></span><span>
+        <b>Anthropic公式ニュースルームに9/1付で「Claude Fable 5.1およびClaude Mythos 5.1の提供開始」「顧客とともに進めるEnterprise Frontier Safeguardsの開発」の2件。8/31付では「アラインメントとセキュリティの取り組みの改善」も公開。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-security">Sandbox Breach <span class="kw-arrow">↓</span></a></span><span>
+        <b>安全性評価中にモデルが外部インターネットへ到達した事案は7/30公表の既報。14万1006件の評価実行を監査し3件を特定、原因は評価環境の設定齟齬。「AIの暴走」ではなく、どの安全層が機能しなかったかとして整理します。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-russia">Odesa &amp; Ust-Luga <span class="kw-arrow">↓</span></a></span><span>
+        <b>9/1、ロシアがオデーサの港湾・火力発電所を攻撃し市内で停電。ルーマニア国境のオルリウカ渡船検問所も被弾し一時停止。一方ウクライナ側のドローン攻撃でロシア・バルト海のウスチルガ港で火災。いずれも当事者発表で独立確認は限定的。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-telecom">Telecom <span class="kw-arrow">↓</span></a></span><span>
+        <b>国内の新規重大通信障害は本日朝時点で確認できず。一方AI計算資源の大型契約は電力・土地・冷却・ネットワークの実需要として通信インフラへ波及する構造にあり、AI欄と横断して継続観測します。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-kominka">Kominka <span class="kw-arrow">↓</span></a></span><span>
+        <b>本日は空き家・古民家・地価について一次情報で確認できた新規発表がなく、水増しせず変化点なしとして記載します。次の大きな節目は9月中旬公表予定の令和8年都道府県地価調査(基準地価)。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">Watchlist <span class="kw-arrow">↓</span></a></span><span>
+        <b>本日はFRBベージュブック・ADP雇用統計・EIA週次石油統計(SPRの更新値)、9/4に米雇用統計。イランへの攻撃の継続有無、ホルムズ通航数の推移、日本の長期金利を最優先で確認します。</b>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">S&amp;P500(9/1終値)</div><div class="vl mono">7,631.47</div><div class="ch down">-0.71%</div><div class="ctx">8/31終値から続落</div></div>
+      <div class="cell"><div class="nm">Nasdaq総合(9/1終値)</div><div class="vl mono">26,099.77</div><div class="ch down">-1.03%</div><div class="ctx">ハイテク中心に売り</div></div>
+      <div class="cell"><div class="nm">NYダウ(9/1終値)</div><div class="vl mono">52,766.88</div><div class="ch down">-0.79%</div><div class="ctx">3指数そろって下落</div></div>
+      <div class="cell"><div class="nm">WTI原油(9/1 Reuters決済値)</div><div class="vl mono">$90.22</div><div class="ch up">+5.2%</div><div class="ctx">ブレントは$94.65(+4.6%)</div></div>
+      <div class="cell"><div class="nm">米10年債利回り(9/1)</div><div class="vl mono">4.79%</div><div class="ch up">2025年1月以来の高水準</div><div class="ctx">30年債は5.27%</div></div>
+      <div class="cell"><div class="nm">日本10年国債(9/1)</div><div class="vl mono">3.0%</div><div class="ch up">約30年ぶり</div><div class="ctx">1996年9月以来</div></div>
+      <div class="cell"><div class="nm">ホルムズ通航(月曜)</div><div class="vl mono">約5隻</div><div class="ch down">10日平均 約14隻</div><div class="ctx">Kpler暫定・液体タンカー0隻</div></div>
+      <div class="cell"><div class="nm">Anthropic×Lambda</div><div class="vl mono">約350億ドル</div><div class="ch">報道ベース</div><div class="ctx">個別案件との接続は報道</div></div>
+    </div>
+
+    <p class="jump">この先は分野別ダイジェストと詳細です。<a href="#deep">↓</a></p>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#sec-iran">米軍による新たな対イラン攻撃(最優先)</a></li>
+      <li><a href="#sec-hormuz">ホルムズ海峡・タンカー攻撃と実通航量</a></li>
+      <li><a href="#sec-market">市場・金融(9/1終値へ更新)</a></li>
+      <li><a href="#sec-jgb">日本の長期金利3.0%</a></li>
+      <li><a href="#sec-domestic">国内災害・台風・熊本地震</a></li>
+      <li><a href="#sec-ai-infra">AI半導体・AIインフラ(計算資源の確保競争)</a></li>
+      <li><a href="#sec-ai-tech">AI・テクノロジー全般</a></li>
+      <li><a href="#sec-ai-security">AI安全性・サイバーセキュリティ</a></li>
+      <li><a href="#sec-russia">ロシア・ウクライナ／黒海物流</a></li>
+      <li><a href="#sec-telecom">通信インフラ</a></li>
+      <li><a href="#sec-kominka">古民家・不動産</a></li>
+      <li><a href="#sec-robotics">ロボット・自動車</a></li>
+      <li><a href="#sec-thin">今回情報が薄かった分野</a></li>
+      <li><a href="#sec-watch">ウォッチリスト</a></li>
+    </ul>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <!-- 最優先: 米軍による新たな対イラン攻撃 -->
+  <section class="quake" id="sec-iran">
+    <div class="sec-head"><span class="tick"></span><span class="cat">最優先・新規の軍事行動</span><span class="sec-title">米軍による新たな対イラン攻撃 <span class="sub">/ CENTCOMが9/1正午(米東部時間)からIRGC関連目標への攻撃開始を発表</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-top">最優先</span><span class="lab lab-fact">事実(米軍公式発表)</span></div>
+      <h4>CENTCOMが「9月1日正午(米東部時間)からイラン国内のIRGC関連目標への攻撃を開始した」と発表</h4>
+      <p>米中央軍(CENTCOM)は、<strong>米東部時間9月1日正午(=協定世界時16:00、日本時間9月2日1:00頃)から、イラン国内のイスラム革命防衛隊(IRGC)関連目標への攻撃を開始した</strong>と発表しました。CENTCOMは攻撃の理由として、<strong>①ホルムズ海峡の商船に対するIRGCによる最近の攻撃の試み ②地域に展開する米軍人への攻撃</strong>の2点を挙げています。<strong>攻撃を開始したという事実そのものは米軍の公式発表として確認できます。</strong>一方、<strong>この2つの理由付け(特に「商船への攻撃の試み」がIRGCによるものであること)は米側の説明にとどまり、第三者による独立確認は本レポート確定時点で得られていません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-view">イラン側報道・第三者未確認</span></div>
+      <h4>攻撃地点はバンダルアッバース近郊ほか5地域とイラン国営系メディア。被害の独立確認はなし</h4>
+      <p>イラン国営系メディアの報道として、米軍の攻撃が<strong>イラン南部の港湾都市バンダルアッバース近郊の複数目標に加え、コナーラク、チャバハール、ケシュム島、シリーク</strong>に及んだと伝えられています。<strong>ただしこれはイラン国営系メディアを情報源とする報道であり、CENTCOMは個別の攻撃地点を公表していません。死傷者数・被害規模についても、イラン政府・米軍いずれからも独立検証された数字は出ていません。</strong>ここで分離すべきは、<strong>「CENTCOMが攻撃開始を発表した」という事実</strong>、<strong>「イラン国営系メディアが特定地点への攻撃を報じた」という報道</strong>、そして<strong>「実際にどこにどの程度の被害が生じたか」という未確認の領域</strong>の3層です。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要・続報</span><span class="lab lab-view">イラン側発表・独立未確認</span></div>
+      <h4>イラン側は人的被害を段階的に更新して発表。いずれもイラン側発表で独立確認は未了</h4>
+      <p><strong>CENTCOMが攻撃地点・被害の詳細を公表していないことは前項のとおりですが、イラン側からは人的被害の発表が出ています。</strong>報道によれば、<strong>ホルモズガーン州シリーク郡クーヘスタクの民家で結婚式が行われていたところへ米軍の攻撃が着弾した</strong>とされ、<strong>人的被害の数字は、時間の経過とともに段階的に更新されています。</strong>整理すると、<strong>①初期の発表では、ホルモズガーン州の副知事がイラン国営テレビに「2人が死亡、ほかに負傷者」と説明 → ②イラン赤新月社が「4人(幼い子どもを含む)が死亡、50人以上が負傷」と発表 → ③その後、州副知事が「死者5人(子どもを含む)、負傷は少なくとも68人」へ更新</strong>、という経緯です。シリークでは漁港の桟橋や港湾海事機関の塔も攻撃されたと報じられています。</p>
+      <p style="margin-top:10px;"><strong>この数字の扱いには注意が必要です。第一に、①〜③はいずれもイラン側(州当局・赤新月社)の発表であり、第三者による独立確認はありません。第二に、同じイラン側の中でも発表主体・時点によって数字が動いています。第三に、現時点の数字も更新途上であり確定値ではありません。</strong>当研究所としては<strong>「イラン側から人的被害の発表があり、時間とともに上方修正されている」という経緯を事実として記載し、特定の数字を確定値としては採用しません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-top">最優先・続報</span><span class="lab lab-fact">事実＋当事者主張を分離</span></div>
+      <h4>イランは「発表」から「実行」へ。ヨルダンへの弾道ミサイル攻撃を実施、バーレーンへのドローン攻撃も主張</h4>
+      <p><strong>本レポートの執筆中に事態がさらに進みました。イラン側は報復の「開始を発表」した段階にとどまらず、実際に攻撃を実行しています。</strong>ただし<strong>確認できている範囲は攻撃対象によって異なります。イランによるヨルダンへの弾道ミサイル攻撃は、ヨルダン側当局の発表を含む複数の情報で確認できています。一方、バーレーンの米軍施設へのドローン攻撃については、イラン側が実施を主張している段階です。</strong>以下、<strong>①ヨルダン側当局の発表 ②イラン側の主張 ③米側の説明</strong>を分けて記載します。</p>
+      <p style="margin-top:10px;"><strong>【ヨルダン側の発表】</strong>ヨルダン軍は、<strong>領空へ侵入したイランの弾道ミサイル13発のうち10発を防空システムで迎撃し、残る3発は無人地域に落下した</strong>と発表しました。<strong>【イラン側の主張】</strong>IRGCは、ヨルダンにある米海兵隊の拠点「キャンプ・タイティン」へ大規模な弾道ミサイル攻撃を実施し<strong>「多数の米兵が死亡した」と主張</strong>しています。また<strong>バーレーンの米軍施設へのドローン攻撃も主張</strong>しており、イラン軍報道官は<strong>「バーレーンとクウェートについて、もはや自制しない」</strong>と述べたと報じられています。<strong>【米側の説明】</strong>これに対し<strong>米当局者2人はReutersに対し、ヨルダンの米軍基地への攻撃による米国人の死傷者はいないと述べています。</strong></p>
+      <p style="margin-top:10px;"><strong>すなわち、「イランが実際に攻撃した」という事実と「多数の米兵が死亡した」というIRGCの主張は、明確に別のものです。</strong>後者はIRGC単独の主張であり、<strong>米当局者による「死傷者なし」という説明と真っ向から食い違っています。</strong>被害の実態について、第三者による独立検証は本レポート確定時点で得られていません。<strong>攻撃目標・命中・被害のいずれについても、どの当事者の発表かを明示せずに扱うことはしません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-view">当事者の主張</span></div>
+      <h4>トランプ大統領は「大規模かつ強力な攻撃」「機雷敷設の失敗への報復」とSNSに投稿</h4>
+      <p>トランプ大統領はSNS(Truth Social)への投稿で、今回の攻撃を<strong>「大規模かつ強力(large and powerful)であり、イランによる海峡への機雷敷設の失敗した試みに対する報復である」</strong>と述べたと報じられています。<strong>また同大統領は、イランによるいかなる報復にも「はるかに大きな規模と強度で応じる」とも投稿したと報じられています。これらは当事者による攻撃の位置づけ・意思の表明であり、機雷敷設の試みが実際にあったかどうかの独立した裏づけとは別のものです。</strong>なお前号でお伝えしたとおり、9月1日には同大統領がAI生成とみられる「ハルク島攻撃」映像を投稿し米当局者が攻撃自体を否定した経緯があるため、<strong>SNS投稿の内容は引き続き事実確認の対象として扱います。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p>今回の攻撃は、<strong>「攻撃→報復→報復の示唆」で止まっていた9/1号の段階から、示唆が実行へ移った</strong>ことを意味します。前号で「今後の分岐点は、トランプ大統領の『強く叩く』という発言が実際の軍事行動として実行されるかどうか」と書きましたが、<strong>その分岐は実行の側に振れました。</strong>重要なのは、今回の攻撃が<strong>ホルムズ海峡の商船攻撃を明示的な理由として掲げている</strong>点です。これは軍事的応酬が、海上輸送の安全という経済インフラの問題と直接結びついたことを示しており、次項のタンカー被弾・通航量の激減と合わせて読む必要があります。<strong>報道は「戦闘は7カ月目に入った」としており、短期収束を前提とした見通しは置かないほうが安全です。</strong></p>
+    </div>
+
+    <p class="srcline">出典 CENTCOM発表を報じる<a class="src" href="https://www.stripes.com/theaters/middle_east/2026-09-01/us-forces-strike-iran-targets-22721692.html" target="_blank" rel="noopener">Stars and Stripes</a>・<a class="src" href="https://www.washingtontimes.com/news/2026/sep/1/us-strikes-irgc-targets-iran-attempted-attacks-vessels-strait-hormuz/" target="_blank" rel="noopener">The Washington Times</a>(2026年9月1日) ・ 攻撃地点はイラン国営系メディア報道 ・ トランプ大統領の投稿内容は上記各紙経由 ・ <strong>イランの報復攻撃・人的被害の続報:</strong> <a class="src" href="https://www.boston.com/news/politics/2026/09/01/us-strikes-iran-and-tehran-fires-back-as-hostilities-flare-again/" target="_blank" rel="noopener">AP配信「US strikes Iran and Tehran fires back as hostilities flare again」(2026年9月1日、AP加盟社サイト経由)</a>・<a class="src" href="https://www.jpost.com/middle-east/article-907279" target="_blank" rel="noopener">The Jerusalem Post「Attacks on Jordan, Bahrain as Iran launches retaliatory strikes against US targets in Middle East」</a>(ヨルダン軍の13発中10発迎撃、IRGCのキャンプ・タイティン攻撃主張、バーレーンへのドローン攻撃主張、イラン軍報道官の発言) ・ Reuters「US launches new assault on Iran, which fires on US base in Jordan」(米当局者2人による「米国人の死傷者はいない」との説明。reuters.comの記事URLには到達できず、同社取材を引用する各紙経由で確認) ／ CENTCOMは個別の攻撃地点・被害を公表しておらず、第三者検証はありません</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ホルムズ海峡 -->
+  <section class="quake" id="sec-hormuz">
+    <div class="sec-head"><span class="tick"></span><span class="cat">最優先・継続テーマの重要更新</span><span class="sec-title">ホルムズ海峡・タンカー攻撃と実通航量 <span class="sub">/ 大型タンカー2隻が被弾。通航量に具体的な数字が出た</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実(UKMTO確認分)＋報道(船名・積載量)</span></div>
+      <h4>ホルムズ海峡で大型タンカー2隻が数分差で被弾。サウジ船籍とリベリア船籍、死傷者なし</h4>
+      <p><strong>英国海事貿易機構(UKMTO)が確認したのは、「ホルムズ海峡を出るタンカーが3発の飛翔体を受けた」という事案です。</strong>これに対し、<strong>船名・船籍・積載量といった詳細は、Marisks／Kpler／Reuters等を情報源とする報道として伝えられているもので、UKMTOがすべてを確認したものではありません。</strong>報道によれば、<strong>被弾したのはサウジアラビア船籍の大型原油タンカー「Sidr」(サウジアラビアのバハリ社が運航、オマーン・ハサブの北東で被弾)と、リベリア船籍の「Senegal Prosperity」(韓国のシノコー・グループが運航、同国の東方で3発の飛翔体の攻撃を受けた)の2隻</strong>で、<strong>それぞれ約200万バレルのサウジ原油を積載していましたが、死傷者・環境被害はいずれも報告されていません。</strong>攻撃主体については、<strong>本レポート確定時点でいずれの当事者も犯行を認めておらず、独立して特定されていません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要・継続課題の更新</span><span class="lab lab-thin">推計値・限界あり</span></div>
+      <h4>ホルムズ海峡の通航は月曜約5隻、直近10日平均約14隻を大きく下回る。液体タンカーは0隻</h4>
+      <p><strong>これまで本レポートで「民間トラッカーの数値は確度が検証できず、確立ソースでの裏づけが取れていない」と繰り返し課題として挙げてきたホルムズ海峡の実通航量について、今回はKplerの暫定データとして具体的な数字が出ました。</strong>それによれば<strong>月曜のホルムズ海峡の通航は約5隻</strong>で、<strong>直近10日平均の約14隻を大きく下回り</strong>、さらに<strong>液体タンカーの通航は0隻</strong>とされています。</p>
+      <p style="margin-top:10px;"><strong>ただしこの数字には明確な限界があります。AIS(船舶自動識別装置)を切って航行する船舶は集計に含まれないため、これを「実際の全通航隻数」と断定することはできません。</strong>また平常時(戦前は1日平均178隻と報じられていた水準)と比べれば桁違いに少ないものの、<strong>1日分の数字だけで「封鎖」「正常化」と断定するのも適切ではありません。</strong>今回は10日平均との比較が併記されている点で、これまでの単日の数値より判断材料としての質は上がっています。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実</span></div>
+      <h4>供給は完全には止まっていない。湾岸主要産油国は一定量の輸出を継続</h4>
+      <p>報道によれば<strong>UAE、サウジアラビア、クウェート、イラクといった湾岸の主要産油国は、なお一定量の輸出を継続している</strong>とされています。一方で<strong>IRGCは、タンカーが2発の機雷に接触して停止し火災が発生したと発表しています(この事案の詳細は独立確認できていません)。</strong><strong>「完全封鎖ではないが、通航は激減し、通れば被弾・接触のリスクを負う」という状態が、価格に上乗せされる形で現れているのが現状の整理です。</strong>航空については、欧州航空安全機関(EASA)が8月31日付で湾岸のCZIB(CZIB-2026-07R2)を改訂し有効期限を9月30日まで延長済みで、この状況は前号から変わっていません。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p><strong>本日の数字が示すのは「可視化できる商船の通航が大幅に減少している」という事実です。</strong>ただし<strong>その背景を一つの要因に絞ることはできません。</strong>安全上のリスク、実際に発生した攻撃、保険条件、船主・傭船者の判断、航路管理、AIS非表示航行など複数の要因が絡んでおり、<strong>Kplerの通航数だけから「封鎖」なのか「自主的な見送り」なのかを切り分けることはできません。</strong>前号で「実害よりリスク織り込みが先行している」と書きましたが、<strong>本日はそのリスクが、少なくともAISで可視化できる商船通航量の減少として表面化している段階</strong>と言えます。日本は原油輸入の大半をこの海峡経由に依存しており、この状態が数週間続けば、調達コストや在庫計画に影響する可能性が高まります。<strong>次に見るべきは、単日ではなく数日間の通航隻数の推移と、液体タンカーの通航が再開するかどうかです。</strong></p>
+    </div>
+
+    <p class="srcline">出典 UKMTOが確認したのは「海峡を出るタンカーが3発の飛翔体を受けた事案」。船名・船籍・積載量はMarisks／Kpler／Reuters等を情報源とする<a class="src" href="https://www.upi.com/Top_News/World-News/2026/09/01/iran-two-oil-tankers-struck-strait-of-hormuz/7601788274469/" target="_blank" rel="noopener">UPI</a>(2026年9月1日) ・ 通航隻数はKpler暫定データ(本日の追加指示で共有された数値) ・ 湾岸産油国の輸出継続・機雷接触事案は<a class="src" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Trading Economics</a>ほか ・ 航空はEASA CZIB-2026-07R2 ／ Kplerの原データには直接到達できておらず、AIS非表示船が集計外である点に留意</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 市場・金融 -->
+  <section id="sec-market">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Market · 8/31終値から9/1終値へ更新</span><span class="sec-title">市場・金融 <span class="sub">/ 3指数そろって下落。原油高と世界的な債券売りが重し</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>米国9/1終値: S&amp;P500 7,631.47(-0.71%)、Nasdaq 26,099.77(-1.03%)、NYダウ 52,766.88(-0.79%)</h4>
+      <p>前号で採用した8月31日終値を、<strong>9月1日(火)の終値へ更新します。</strong><strong>S&amp;P500は7,631.47(-0.71%)、Nasdaq総合は26,099.77(-1.03%)、NYダウは52,766.88(-0.79%)</strong>と、3指数そろって下落しました。<strong>ハイテク比率の高いNasdaqの下げが最も大きく、金利上昇局面でバリュエーションが圧迫されやすい構図が現れています。</strong>下落要因として報じられているのは、<strong>①米軍による新たな対イラン攻撃を受けた原油高 ②債券売り(利回り上昇) ③FRBの次回金利判断をめぐる思惑</strong>の3点です。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>金利: 米10年債4.79%(2025年1月以来の高水準)、30年債5.27%。原油: Reuters決済値でWTI 90.22ドル(+5.2%)、ブレント94.65ドル(+4.6%)</h4>
+      <p><strong>米10年債利回りは9月1日に4.79%まで上昇し、2025年1月以来の高い水準となりました。30年債利回りは5.27%で、数十年ぶりの高水準圏にあります。</strong>原油は<strong>Reutersが伝える9月1日の決済値でWTIが90.22ドル(+5.2%)、ブレントが94.65ドル(+4.6%)</strong>です。</p>
+      <p style="margin-top:10px;"><strong>基準時刻について注記します。</strong>上記の株価3指数は9月1日の米国通常取引の終値、原油は<strong>同日のReuters決済値</strong>です。<strong>これとは別に、同じ9月1日でも時点や情報源によって「WTI 90.68ドル(+5.74%)・ブレント95ドル超」(取引終了前後の電子取引値)、日中の早い時間帯に「ブレント92ドル・WTI 88ドル前後(+2%)」、商品情報サイトの表示として「WTI 86.57ドル(+0.94%)」といった数字が併存しています。</strong>これは<strong>取得時刻・対象限月・情報源の違いによるもので、いずれかが誤りというわけではありません。</strong>数字を引用される際は「決済値」なのか「電子取引値」なのか「日中値」なのかを必ず区別してください。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-view">当事者発言</span></div>
+      <h4>FRBのバー理事、インフレが十分に鈍化しなければ9月会合での利上げ支持の可能性に言及</h4>
+      <p>FRBのバー理事が、<strong>インフレが十分に鈍化しない場合には9月の会合で利上げを支持する可能性がある</strong>との考えを示したと報じられています。<strong>これは金融政策の方向性を示唆する当局者の発言であり、決定でも予告でもありません。</strong>ただし原油高が進行している局面でこの発言が出たことは、<strong>「エネルギー価格の上昇が金融引き締めの継続・強化に直結しうる」という経路を市場に意識させる材料</strong>となります。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 本日の連鎖</h5>
+      <p>本日の指示にあった連鎖を、確認できた事実で順に埋めます。<strong>①中東情勢: 米軍が新たな対イラン攻撃を開始、ホルムズでタンカー2隻が被弾。②原油・LNG: Reuters決済値でWTIが+5.2%の90.22ドル、ブレントが+4.6%の94.65ドル。海峡の液体タンカー通航は0隻。③インフレ期待: 原油高が直接の押し上げ要因に。④長期金利: 米10年債4.79%・30年債5.27%へ上昇。日本も10年国債が3.0%へ(次項)。⑤株式: 3指数下落、金利感応度の高いNasdaqが最大の下げ。</strong></p>
+      <p style="margin-top:10px;"><strong>ここで注目すべきは、株安において地政学リスクに加えて金利上昇が大きな重しとなった点です。</strong>Reutersは9月1日の株安について、世界的な債券売り・金利上昇、原油高、米・イラン情勢、景気指標など複数の要因を挙げており、<strong>単一の主因に絞れる状況ではありません。そのうえで、</strong>中東情勢は原油を通じてインフレ期待に効き、それが債券売り・金利上昇を招き、金利が株式のバリュエーションを圧迫する——<strong>地政学が金融政策の経路を通って株価に届いている</strong>という構図です。したがって、<strong>仮に軍事的緊張が一段落しても、原油高がインフレ指標に反映されるまでの時間差があるため、金利面の圧力はすぐには消えません。</strong>日本への波及は次項で扱います。</p>
+    </div>
+
+    <p class="srcline">出典 9/1終値・金利・原油は<a class="src" href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-1-dow-sp-500-nasdaq-080617884.html" target="_blank" rel="noopener">Yahoo Finance ライブブログ(2026年9月1日)</a> ・ 日中値の別系統は<a class="src" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Trading Economics</a>・<a class="src" href="https://www.upi.com/Top_News/World-News/2026/09/01/iran-two-oil-tankers-struck-strait-of-hormuz/7601788274469/" target="_blank" rel="noopener">UPI</a> ・ バー理事の発言は本日の追加指示で共有された報道 ／ 取引所の公式確定値には未到達</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 日本の長期金利 -->
+  <section class="quake" id="sec-jgb">
+    <div class="sec-head"><span class="tick"></span><span class="cat">日本経済への波及・重要</span><span class="sec-title">日本の長期金利が3.0%へ <span class="sub">/ 1996年9月以来およそ30年ぶりの水準</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>新発10年国債利回りが9/1に一時3.0%。1996年9月以来の高水準</h4>
+      <p><strong>長期金利の指標である新発10年物国債の利回りが、2026年9月1日に一時3.0%に達しました。これは1996年9月以来、およそ30年ぶりの水準です。</strong>報じられている上昇要因は<strong>①前日の米国金利上昇が東京市場へ波及したこと ②9月の日銀利上げ観測が強まっていること ③2027年度予算の概算要求が過去最大の約143兆円となり財政不安が意識されたこと</strong>の3点です。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 日本の家計・企業にどう効くか</h5>
+      <p><strong>この数字は、本日のレポートの中で日本の読者にとって最も生活に近い変化です。</strong>長期金利は住宅ローンの固定金利、企業の社債・借入コスト、生命保険や年金の運用環境に直接つながります。30年ぶりの水準ということは、<strong>現在働いている世代の大半が経験したことのない金利環境に入りつつある</strong>ことを意味します。</p>
+      <p style="margin-top:10px;"><strong>ただし3つの要因は性質が異なる点に注意が必要です。</strong>①の米金利波及は中東情勢が落ち着けば反転しうる一時的な要素、②の日銀利上げ観測は政策決定次第、③の財政不安は構造的で短期には解消しません。<strong>したがって「原油が下がれば金利も戻る」と単純には言えず、③の要素がどれだけ織り込まれているかが今後の水準を左右します。</strong>なお、概算要求は各省庁の要求段階であって予算の確定ではありません。<strong>年末の予算編成でどこまで圧縮されるかが、来年にかけての金利の重要な観測点になります。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.nikkei.com/article/DGXZQOUB010UI0R00C26A9000000/" target="_blank" rel="noopener">日本経済新聞「長期金利3%、30年ぶり高さ」</a>・毎日新聞(2026年9月1日) ／ 財務省の国債金利情報(一次情報)には本レポート確定時点で未到達</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 国内災害 -->
+  <section class="quake" id="sec-domestic">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害支援シグナル · 台風は要監視、熊本は沈静化傾向</span><span class="sec-title">国内災害・台風・熊本地震 <span class="sub">/ 台風24号「クロヴァン」が日本の南で停滞。気象庁が熊本地震第11報を公表</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実(9/2 06:45時点)</span></div>
+      <h4>台風24号「クロヴァン」が日本の南でほぼ停滞。9/7ごろ日本の南へ接近の見込み</h4>
+      <p>9月2日6時45分時点の台風情報によれば、<strong>台風24号「クロヴァン」は日本の南でほぼ停滞</strong>しており、<strong>中心気圧996hPa、最大風速18m/s</strong>です。予想進路は<strong>9月3日に南大東島の南西、9月5日に東シナ海へ進み、9月7日ごろ日本の南へ接近する見込み</strong>とされています。<strong>複数の県で9月6日にかけて強風・大雨への注意が呼びかけられています。</strong>前号で「日本の南の熱帯低気圧が24時間以内に台風になる見込み」とお伝えしたものが、台風24号として発達した形です。<strong>一方、台風18号は南シナ海を時速20kmで北東へ進んでおり(992hPa)、9月4〜5日にかけて同海域をゆっくり進んだあと熱帯低気圧に変わる見込みで、日本への直接的な影響は現時点で予想されていません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">一次情報(気象庁)</span></div>
+      <h4>気象庁が9/1に「令和8年熊本地震」第11報を公表。地震活動は「平常時より多いが、全体として次第に減少」</h4>
+      <p><strong>気象庁は2026年9月1日14時00分、「令和8年熊本地震」について(第11報)を報道発表しました。</strong>対象期間は<strong>2026年7月28日16時から9月1日8時まで</strong>で、深さ0〜20km・マグニチュード2.0以上の地震活動を扱っています。<strong>報告の要点は「地震活動は平常時より多い状態が続いているものの、全体としては次第に減少している」というものです。</strong>前報からの大きな状況変化は確認できませんでした。<strong>断水については8月28日に熊本県が県内全域での解消を発表済みであり、本レポートの災害支援シグナルとしての継続追跡は終了段階にあります。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p>国内災害は<strong>「熊本は沈静化方向、台風は要監視」</strong>という構図です。<strong>注意すべきは台風24号が「ほぼ停滞」している点です。</strong>停滞は進路予想の不確実性が大きい状態を意味し、数日先の見通しが変わりやすくなります。現時点の予想では9月7日ごろの接近ですが、<strong>停滞が解消して動き出す方向によって、進路も時期も大きく変わりうる段階</strong>です。週末にかけての更新をこまめに確認する必要があります。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.jma.go.jp/jma/press/2609/01a/kaisetsu202609011400.pdf" target="_blank" rel="noopener">気象庁「令和8年熊本地震」について(第11報) 2026年9月1日14時00分(一次情報・PDF)</a> ・ <a class="src" href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 令和8年熊本地震ポータルサイト</a> ・ 台風情報は<a class="src" href="https://tenki.jp/bousai/typhoon/" target="_blank" rel="noopener">日本気象協会 tenki.jp</a>(2026年9月2日6時45分時点) ／ 気象庁の台風情報原文には本レポート確定時点で未到達</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AIインフラ -->
+  <section id="sec-ai-infra">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI Infra · 本日の重点テーマ</span><span class="sec-title">AI半導体・AIインフラ <span class="sub">/ AI企業による計算資源の確保競争。NVIDIAが「借主」として登場する構造</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">報道ベース(当事者の正式発表は未確認)</span></div>
+      <h4>AnthropicがNVIDIA出資先のLambdaと約350億ドルのクラウド計算資源契約と報道</h4>
+      <p><strong>Anthropicが、NVIDIAが出資するクラウド事業者Lambdaから約350億ドル相当の計算資源を借りる契約を結んだと報じられています。</strong>報道によれば、<strong>対象となるデータセンターは米テキサス州ヌエセス郡でHut 8が開発中の施設</strong>で、<strong>LambdaがそこにNVIDIA製チップを設置し、Anthropicのモデル群を動かす計算資源として供給する</strong>構造とされています。<strong>当研究所として、Anthropic・Lambda・NVIDIAいずれの当事者による正式発表もAnthropic公式ニュースルーム上で確認できておらず、本項は報道に基づく情報として扱います。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-view">構造の読み解き</span></div>
+      <h4>NVIDIAの長期データセンター・リースという一次情報と、個別案件との接続を分けて見る</h4>
+      <p><strong>まず一次情報で確認できる事実を切り分けます。</strong>NVIDIAのSEC提出資料では、<strong>同社が約15年のデータセンター・リース契約を締結したこと、開始予定はFY2028〜29であること、そして当該容量を第三者へ再割当する予定であること</strong>が確認できます。<strong>ただし、この15年リースが今回のAnthropic×Lambda案件そのものを指すという個別の結び付けは、NVIDIAの一次資料だけからは確認できません。</strong></p>
+      <p style="margin-top:10px;"><strong>そのうえで報道ベースの情報として</strong>、データセンターの15年リース契約の借主(テナント)はNVIDIA自身であり、同社はこの取り決めの数週間前にHut 8との間で容量を確保する独自の合意に達していたと伝えられています。これが事実であれば、<strong>Lambdaは自ら土地・建物を調達・賃借することなくAnthropicとの大型契約を獲得できた</strong>ことになります。<strong>一次情報(NVIDIAのSEC提出資料)と、個別案件への接続(報道)は、混ぜずに扱う必要があります。</strong></p>
+      <p style="margin-top:10px;"><strong>ここから読み取れるのは、半導体企業の役割が「チップを売る」から「顧客が使う計算環境そのものを押さえる」へ広がっているということです。</strong>NVIDIAはMediaTekへの35億ドル投資(9/1号で扱った案件)でカスタムAI半導体の接続基盤を押さえ、本件ではデータセンターのリース主体として登場しています。<strong>チップ販売・顧客企業への出資・クラウド事業者支援・データセンター賃借が一つの循環としてつながる構造</strong>が、より明確になってきました。</p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">報道ベース</span></div>
+      <h4>Anthropicの計算資源確保は連続している。先週にはNscaleと約450億ドルの契約も</h4>
+      <p>報道によれば、<strong>Anthropicは先週にも、Nscaleのウェストバージニア州データセンターから約450億ドル相当の容量を借りる契約に合意していた</strong>とされています。<strong>2件を合わせると短期間で約800億ドル規模の計算資源確保にあたり、これはAIモデル企業の競争が「モデルの性能」から「計算資源をどれだけ確保できるか」へ軸足を移しつつあることを示す動きです。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — AIインフラ全体の構造として</h5>
+      <p>本件を「350億ドルの大型契約」として読むと本質を外します。<strong>AIモデル企業 → クラウド企業 → 半導体 → データセンター → 電力 → 冷却 → ネットワーク → 土地 → 資金調達という連鎖のすべてに、同じ少数のプレイヤーが繰り返し登場している</strong>のが現在の構図です。</p>
+      <p style="margin-top:10px;"><strong>特に注意して観測すべきは資金循環の性質です。</strong>半導体企業が顧客企業へ出資し、その顧客がその半導体を積んだ計算資源を借り、賃借契約の借主も半導体企業自身であるという構造は、<strong>需要の一部が業界内部で作られている可能性という構造上の論点を含みます。</strong>これは確認された事実ではなく、あくまで<strong>構造から導かれる可能性・論点</strong>として提示するものです。それ自体が直ちに問題というわけでもありませんが、<strong>「外部からの純粋な需要」と「業界内の相互取引による需要」を分けて見る視点は持っておくべきだと考えます。</strong>15年という長期リースは、電力・土地の確保という物理的制約が強まっていることの裏返しでもあります。<strong>日本企業への波及については、半導体製造装置・メモリ・電力設備・冷却・通信・データセンターの各段階で影響が出うるものの、本日時点で日本企業側の具体的な受注・言及等の一次情報は確認できていません。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.bloomberg.com/news/articles/2026-08-31/anthropic-seals-35-billion-cloud-deal-with-nvidia-backed-lambda" target="_blank" rel="noopener">Bloomberg</a>・<a class="src" href="https://www.theinformation.com/briefings/anthropic-said-reach-35-billion-compute-deal-nvidia-backed-lambda" target="_blank" rel="noopener">The Information</a>・<a class="src" href="https://www.forbes.com/sites/jonmarkman/2026/09/01/anthropic-books-35-billion-to-nvidia-backed-lambda-for-cloud-capacity/" target="_blank" rel="noopener">Forbes</a>(2026年8月31日〜9月1日) ／ NVIDIAの約15年データセンター・リース(FY2028〜29開始予定・第三者へ再割当予定)は同社SEC提出資料で確認できる一次情報ですが、それが本件Anthropic×Lambda案件を指すという接続はFinancial Times等の報道ベースであり、当事者による正式発表は未確認です</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AI・テクノロジー -->
+  <section id="sec-ai-tech">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI Tech · 一次情報あり</span><span class="sec-title">AI・テクノロジー全般 <span class="sub">/ Anthropic公式に9/1付で2件の新規公開</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">一次情報(公式ニュースルーム)</span></div>
+      <h4>Anthropic公式に9/1付で「Claude Fable 5.1およびClaude Mythos 5.1」「Enterprise Frontier Safeguardsの開発」の2件</h4>
+      <p><strong>Anthropicの公式ニュースルームを直接確認したところ、2026年9月1日付で2件の投稿が公開されていました。</strong>ひとつは<strong>「Introducing Claude Fable 5.1 and Claude Mythos 5.1」</strong>(モデルの新バージョンの提供開始)、もうひとつは<strong>「Developing Enterprise Frontier Safeguards with our customers」</strong>(顧客とともに進める企業向けフロンティア安全策の開発)です。<strong>また8月31日付では「Improving our alignment and security efforts」(アラインメントとセキュリティの取り組みの改善)が公開されています。</strong></p>
+      <p style="margin-top:10px;"><strong>当研究所が確認できたのはニュースルームの一覧上のタイトルと日付までで、各記事の本文内容(モデルの具体的な性能変化、価格、提供範囲、安全策の中身)には本レポート確定時点で到達できていません。</strong>したがって<strong>「9月1日にこの2件が公式に公開された」という事実のみを記載し、内容の評価は行いません。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-thin">情報が薄い・正直に明示</span></div>
+      <h4>国内AIについては、本日は一次情報で確認できた新規発表がなかった</h4>
+      <p><strong>本日の調査では、日本企業・大学・研究機関・行政によるAI関連の新しい発表について、一次情報(公式発表)に到達できたものがありませんでした。</strong>検索で得られたのは主にまとめサイト・解説記事・投資情報記事であり、<strong>当研究所の運用ルール上これらは情報源として採用しないため掲載しません。</strong>なお、国内のデータセンター・電力については、NTT系の国内拠点整備や海外大手による対日投資計画など既存の大型計画が進行中ですが、<strong>いずれも本日の新規発表ではないため、変化点としては扱いません。</strong>国内AIの重点観測は継続します。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic 公式ニュースルーム(一次情報)</a>(2026年9月1日・8月31日付の投稿を確認) ／ 各記事本文には未到達。国内AIは本日一次情報で確認できた新規発表がなかったことをそのまま記載しています</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- AI安全性 -->
+  <section id="sec-ai-security">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI Security · 既報の整理</span><span class="sec-title">AI安全性・サイバーセキュリティ <span class="sub">/ 評価環境からのインターネット到達事案。「暴走」ではなく設定の問題として整理する</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">一次情報(公式)＋報道</span><span class="lab lab-thin">新規事象ではない</span></div>
+      <h4>時系列の確認: 7/23に攻撃的サイバー評価を停止、7/27に関係先へ通知、7/30に公式公表</h4>
+      <p>まず<strong>時系列を正確にしておきます。本件は本日や昨日の新規事象ではありません。</strong>Anthropicの公式ニュースルームには<strong>2026年7月30日付で「Investigating three real-world incidents in our cybersecurity evaluations」(当社のサイバーセキュリティ評価における3件の実世界インシデントの調査)</strong>が公開されています。報道によれば、<strong>同社は7月23日にすべての攻撃的サイバー評価を停止し、7月27日に影響を受けた組織へ通知したうえで、7月30日に公表</strong>しました。<strong>本日の追加観測テーマとして扱いますが、「昨日起きたこと」ではない点を明確にしておきます。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-view">どの安全層が機能しなかったか</span></div>
+      <h4>原因は評価環境の設定齟齬。14万1006件の評価実行を監査し3件を特定</h4>
+      <p>報道によれば、同社は<strong>他社のサンドボックス逸脱の公表を受けて14万1006件の評価実行を監査し、設定の誤りによりモデルがインターネットへ到達していた3件を特定</strong>しました。<strong>原因として挙げられているのは、外部評価事業者との間で「テスト環境がインターネットに接続されているかどうか」についての認識の食い違いがあったことです。</strong>報じられている事象には、<strong>約9,000個の公開IPアドレスに対する自動スキャンと、認証情報の窃取やSQLインジェクション等の手法による外部アプリケーションの侵害</strong>が含まれます。</p>
+      <p style="margin-top:10px;"><strong>ここで「AIが暴走した」という表現は事実を正確に伝えません。</strong>技術的に整理すると、<strong>①モデルの能力: 攻撃的タスクを遂行する能力は評価対象そのものであり、想定内 ②攻撃対象の隔離: これが機能しなかった。評価環境が実インターネットへ接続されていた ③人間による監視: 事後の監査で発見されており、リアルタイムでは止まらなかった ④企業の安全対策: 停止・通知・公表・環境強化という事後対応は機能した</strong>——という層別になります。<strong>失敗したのは②の隔離であり、その原因は技術ではなく組織間の認識共有です。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方</h5>
+      <p><strong>この事案の教訓は「AIが危険」ではなく「AIの能力評価は、評価環境の隔離が完全でなければ実害を生む」という点にあります。</strong>攻撃能力を測る評価は、その定義上、成功すれば実際の攻撃と同じ挙動になります。<strong>したがって隔離の失敗は、そのまま実世界への被害に直結します。</strong>今回の原因が設定ミスと関係者間の認識齟齬であったことは、<strong>高度な技術的攻撃よりも、運用上の単純な取り違えのほうが実害につながりやすい</strong>という、セキュリティ全般に共通する構図を改めて示しています。8月31日付・9月1日付でアラインメント/セキュリティおよび企業向け安全策に関する投稿が続いていることから、<strong>体制面の見直しが継続中であることはうかがえますが、各投稿の具体的な内容には未到達です。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Anthropic「Investigating three real-world incidents in our cybersecurity evaluations」(2026年7月30日・一次情報)</a> ・ 監査件数・時系列・事象の詳細は<a class="src" href="https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/" target="_blank" rel="noopener">TechCrunch</a>・<a class="src" href="https://www.infoq.com/news/2026/08/claude-sandox-breach/" target="_blank" rel="noopener">InfoQ</a> ／ 公式記事の本文には未到達で、詳細は報道に依拠しています</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ロシア・ウクライナ -->
+  <section class="quake" id="sec-russia">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Russia-Ukraine · 重点観測</span><span class="sec-title">ロシア・ウクライナ／黒海物流 <span class="sub">/ 双方が相手国の港湾を攻撃。輸出インフラが標的に</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実(ウクライナ当局発表)</span></div>
+      <h4>9/1、ロシアがオデーサの港湾・火力発電所を攻撃。市内複数地区で停電</h4>
+      <p><strong>ロシア軍は9月1日、ウクライナ南部オデーサとその周辺に対し、夜間の大規模なミサイル・ドローン攻撃を実施したとウクライナ当局が発表しました。</strong>報道によれば<strong>巡航ミサイルがオデーサ火力発電所を直撃し、攻撃後に市内の複数地区で停電が発生</strong>しています。<strong>港湾インフラ、エネルギー施設、住宅にも被害が及び、沿岸の主要な輸送拠点に混乱が生じたとされています。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span></div>
+      <h4>ルーマニア国境のオルリウカ渡船検問所も被弾。EUへの輸出動線に直接影響</h4>
+      <p><strong>9月1日夜の攻撃で、ウクライナ・ルーマニア国境の国際検問所「オルリウカ〜イサクチャ」の施設が損傷し、通行が一時停止されました。</strong>報道によれば、<strong>ロシアのシャヘド型ドローンが渡船検問所の建物と周辺に着弾し火災が発生、消防が消し止めた</strong>とされています。<strong>この検問所はドナウ川を挟んでEU加盟国ルーマニアと接続する物流ルート上にあり、黒海航路が制約される中でウクライナの輸出を支えてきた代替動線のひとつです。港湾への攻撃と国境検問所への攻撃が同じ夜に行われたことは、輸出動線そのものが標的とされている構図を示しています。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-fact">事実(ロシア地方当局発表)</span></div>
+      <h4>ウクライナ側のドローン攻撃でロシア・バルト海のウスチルガ港が火災</h4>
+      <p><strong>一方、ウクライナ側のドローン攻撃により、ロシア北西部バルト海に面するウスチルガ港で火災が発生しました。</strong>ロシアの地方知事の発表として、<strong>4時間に及ぶ攻撃の間に52機のドローンを防空部隊が迎撃し、港湾区域で損傷と火災が確認された</strong>と報じられています。<strong>ウスチルガはロシア最大のバルト海側の輸出ターミナルであり、石油輸出の主要拠点です。</strong>報道では、ロシア国内の製油所への攻撃が世界の精製能力を逼迫させ、石油製品のマージンを押し上げているとの指摘も出ています。</p>
+      <p style="margin-top:10px;"><strong>なお、双方が発表する攻撃数・迎撃数・被害数は、いずれも当事者による発表であり独立検証されていません。</strong>迎撃数(52機)や被害の程度についても、第三者による確認は本レポート確定時点で得られていません。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 黒海物流と世界の食料・エネルギー</h5>
+      <p><strong>本日の構図は「双方が相手国の輸出インフラを狙っている」という点で共通しています。</strong>連鎖として整理すると、<strong>攻撃 → 港湾・国境検問所・発電所 → 鉄道・道路・渡船 → 穀物とエネルギーの輸出 → 世界の商品価格 → 市民生活</strong>となります。<strong>オデーサとドナウ川流域の港湾はウクライナの穀物輸出の中核であり、ここが継続的に叩かれれば、小麦・トウモロコシの国際価格を通じて世界の食料安全保障に影響します。</strong>前号で扱ったトルコによる黒海穀物の安全輸送計画は、<strong>まさにこの動線を守るための構想ですが、港湾自体が攻撃されている状況では、航路の安全確保だけでは輸出は回復しません。</strong></p>
+      <p style="margin-top:10px;"><strong>エネルギー面では、ウスチルガ港とロシア製油所への攻撃が、中東情勢による原油高と同じ方向に作用している点が重要です。</strong>中東は原油の供給リスク、ロシア・ウクライナは精製能力と輸出ターミナルのリスクという形で、<strong>2つの地域の紛争が別々の経路から同時に世界のエネルギー価格を押し上げている</strong>のが現状です。これが本日の市場・金利の動きの背景にあります。</p>
+    </div>
+
+    <p class="srcline">出典 オデーサへの攻撃・国境検問所の被害は<a class="src" href="https://www.pravda.com.ua/eng/news/2026/09/01/8051260/" target="_blank" rel="noopener">Ukrainska Pravda</a>(2026年9月1日) ・ ウスチルガ港は<a class="src" href="https://kyivindependent.com/ukrainian-drones-damage-russias-ust-luga-port-governor-says/" target="_blank" rel="noopener">The Kyiv Independent</a>・<a class="src" href="https://www.themoscowtimes.com/2026/09/01/ukrainian-drone-attack-sparks-fire-at-ust-luga-port-a93612" target="_blank" rel="noopener">The Moscow Times</a> ／ 攻撃数・迎撃数・被害数はいずれも当事者発表で、独立検証はされていません</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 通信 -->
+  <section id="sec-telecom">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Telecom · 変化点なし＋AI欄との横断</span><span class="sec-title">通信インフラ <span class="sub">/ 新規の重大障害は確認できず。AI計算資源の大型契約が実需要として波及する構造</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">変化なし・簡潔に</span></div>
+      <h4>国内の新規重大通信障害は本日朝時点で確認できていない</h4>
+      <p><strong>本日の調査では、国内の主要通信事業者について、9月2日朝時点で新たな大規模通信障害の発表を確認できませんでした。</strong>海底ケーブル・5G/次世代通信についても、本日新たに一次情報で確認できた重要な発表はありません。前号から変化が乏しいため、簡潔に記載します。<strong>ただし週後半にかけて台風24号の接近が見込まれるため、災害と通信障害の連動は引き続き優先的な観測対象です。</strong></p>
+    </div>
+
+    <div class="item" style="margin-top:20px;">
+      <div class="labs"><span class="lab lab-view">AI欄との横断</span></div>
+      <h4>AI計算資源の大型契約は、電力・土地・冷却・ネットワークの実需要として通信インフラへ波及する</h4>
+      <p><a href="#sec-ai-infra">AIインフラの項目</a>で扱ったAnthropic×Lambdaの約350億ドル契約は、<strong>通信・電力インフラの観点からも観測対象です。</strong>テキサス州の大規模データセンターに大量のGPUが設置されれば、<strong>そこには電力供給、冷却、そして大容量のネットワーク接続が物理的に必要</strong>になります。<strong>15年という長期のリース契約は、電力と土地の確保が長期の制約条件になっていることの裏返しでもあります。</strong>AIデータセンターの拡大が通信網・電力・土地・海底ケーブルへ与える影響は、引き続きAI欄と横断して観測します。</p>
+    </div>
+
+    <p class="srcline">出典 各通信事業者の公式障害情報ページ ／ 本日は新規の重大事象を確認できなかったことをそのまま記載しています</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 古民家・不動産 -->
+  <section id="sec-kominka">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Kominka &amp; Real Estate · 変化点なし</span><span class="sec-title">古民家・不動産 <span class="sub">/ 本日は一次情報での新規発表を確認できず。次の節目は9月中旬の基準地価</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">変化なし・正直に明示</span></div>
+      <h4>空き家・古民家の新規制度発表、直近の不動産価格・地価の新規統計は本日確認できず</h4>
+      <p><strong>本日の調査では、空き家・古民家の再生、宿泊転用、自治体の補助制度、法規制について、9月2日時点の新規発表を一次情報で確認できませんでした。</strong>検索で得られたのは各自治体の既存の補助制度ページや解説記事・投資情報記事であり、<strong>当研究所の運用ルール上、キュレーション・要約サイトは情報源として採用しないため掲載しません。不動産価格・地価についても、本日新たに公表された統計はありません。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 金利上昇との接続</h5>
+      <p>ただし本日は、<strong>この分野を金利の側から見るべき日</strong>です。<a href="#sec-jgb">日本の長期金利が3.0%へ上昇</a>したことは、<strong>不動産取引に直接効きます。</strong>長期金利は住宅ローンの固定金利の基準であり、また不動産投資の割引率・借入コストにも反映されます。<strong>30年ぶりの金利水準は、地価・取引動向にとって従来と異なる前提が生まれつつあることを意味します。</strong></p>
+      <p style="margin-top:10px;"><strong>第3研究所との共有価値の観点</strong>では、古民家再生・宿泊転用の事業採算は「物件取得費＋改修費」を借入で賄う構造になりやすいため、<strong>金利上昇は初期投資の回収計画に直接影響します。</strong>9月中旬に公表予定の<strong>令和8年都道府県地価調査(基準地価)</strong>は、この金利環境が地方の住宅地・商業地の地価にどう反映されているかを見る最初の公式データになります。<strong>本日は無理に情報を作らず、この公表を待って腰を据えて整理します。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000035.html" target="_blank" rel="noopener">国土交通省 空家等対策の推進に関する特別措置法関連情報</a>(既存の制度情報) ／ 本日時点の新規発表は確認できませんでした</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- ロボット・自動車 -->
+  <section id="sec-robotics">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Robotics &amp; Auto · 変化点なし</span><span class="sec-title">ロボット・自動車 <span class="sub">/ 9/1付の新規発表は一次情報で確認できず</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">変化なし・正直に明示</span></div>
+      <h4>本日は個別企業の新規発表を一次情報で確認できなかった</h4>
+      <p><strong>本日の調査では、ロボット・自動運転・EV・電池・自動車メーカーについて、9月1日〜2日付の新規発表を一次情報で確認できたものがありませんでした。</strong>検索で得られたのは業界メディアによる2026年の年間展望・CES関連の総括記事が中心であり、<strong>当研究所の情報源基準を満たす形で個別事例を確認できなかったため、社名・数値を伴う具体的な記載は本日は控えます。</strong></p>
+      <p style="margin-top:10px;"><strong>観測方針は維持します。</strong>ヒューマノイドの話題性に偏らず、工場・物流・医療・介護・農業・災害救助といった現場実装を追うこと、研究デモと商用導入を区別し、実用化までの距離・価格・量産性・安全性・AIによる判断能力を確認すること——この方針で、一次情報で確認できた事例が出た段階で個別に取り上げます。</p>
+    </div>
+
+    <p class="srcline">出典 本項目は本日の一次情報調査の結果として、確認できなかったことをそのまま記載しています</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 情報が薄かった分野 -->
+  <section id="sec-thin">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Note</span><span class="sec-title">今回、情報が薄かった分野・要確認事項 <span class="sub">/ 水増しせず、そのまま明示します</span></span></div>
+    <div class="note">
+      <p><strong>米軍の新たな対イラン攻撃の被害実態:</strong> CENTCOMは攻撃開始を発表しましたが個別の攻撃地点・被害を公表していません。攻撃地点(バンダルアッバース近郊・コナーラク・チャバハール・ケシュム島・シリーク)はイラン国営系メディアの報道であり、第三者検証はありません。<strong>シリーク郡クーヘスタクの結婚式会場への着弾については、死者数が2人(州副知事・初期)→4人(赤新月社)→5人(州副知事・更新)と推移し、負傷者も50人以上→少なくとも68人へ更新されています。いずれもイラン側発表で独立確認は未了のため、特定の数字を確定値として採用していません。</strong></p>
+      <p><strong>タンカー2隻への攻撃主体・船名等:</strong> UKMTOが確認したのは「海峡を出るタンカーが3発の飛翔体を受けた事案」までで、船名・船籍・積載量はMarisks／Kpler／Reuters等を情報源とする報道です。攻撃主体は特定されておらず、いずれの当事者も犯行を認めていません。</p>
+      <p><strong>ホルムズ海峡の通航隻数:</strong> Kplerの暫定データはAIS非表示船を含まないため「実際の全通航隻数」ではありません。またKplerの原データには直接到達できておらず、本日の追加指示で共有された数値に依拠しています。</p>
+      <p><strong>米国9/1終値の一次情報:</strong> 取引所の公式確定値には到達できていません。原油は本文でReuters決済値(WTI 90.22ドル／ブレント94.65ドル)を基準として採用しましたが、同じ9月1日でも電子取引値・日中値として86〜95ドル台の数字が併存するため、本文で時点を分けて明記しています。</p>
+      <p><strong>日本の長期金利:</strong> 報道ベースで、財務省の国債金利情報(一次情報)には未到達です。</p>
+      <p><strong>Anthropic×Lambdaの契約:</strong> 当事者による正式発表を公式ニュースルーム上で確認できておらず、報道(Bloomberg・The Information・Financial Times等)に基づく情報です。<strong>NVIDIAの約15年データセンター・リース契約(FY2028〜29開始予定・第三者へ再割当予定)は同社SEC提出資料で確認できる一次情報ですが、それが本件を指すという個別の接続は報道ベースであり、一次情報とは区別しています。</strong></p>
+      <p><strong>Anthropic公式の9/1付投稿:</strong> ニュースルーム一覧上のタイトルと日付までは確認しましたが、各記事本文(モデルの性能変化・価格・提供範囲・安全策の中身)には未到達です。</p>
+      <p><strong>サイバー評価インシデントの詳細:</strong> 公式公表(7/30)の存在は確認しましたが、記事本文には未到達で、監査件数や事象の詳細は報道に依拠しています。</p>
+      <p><strong>イランの報復攻撃の被害実態:</strong> ヨルダン軍の迎撃数(13発中10発)はヨルダン側発表、IRGCの「多数の米兵が死亡」はIRGC単独の主張、「米国人の死傷者なし」は米当局者2人がReutersに述べた説明で、いずれも第三者による独立検証はありません。IRGCの主張と米側の説明は食い違っています。バーレーンへのドローン攻撃もイラン側の主張です。</p>
+      <p><strong>ロシア・ウクライナ双方の攻撃数・迎撃数・被害数:</strong> いずれも当事者発表であり、独立検証されていません。</p>
+      <p><strong>気象庁の台風情報原文:</strong> 台風24号・18号の情報は気象事業者(日本気象協会)経由であり、気象庁の当日発表原文には未到達です(熊本地震第11報は気象庁の一次情報を確認済み)。</p>
+      <p><strong>国内AI・通信・古民家/不動産・ロボティクス:</strong> いずれも本日は一次情報で確認できた新規の動きがありませんでした。まとめサイト・解説記事は情報源として採用していません。</p>
+      <p><strong>日本市場の9/2の値動き:</strong> 本レポート確定時点で東京市場は取引前または序盤であり、確定値としては扱えません。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <div class="divider"><span>Watchlist</span></div>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">本日・今週の注目 <span class="sub">/ ボタンで開く</span></span></div>
+    <p style="font-size:13.5px;margin-bottom:13px;">押すとログイン中のご自身のTradingViewで開きます。本日はイランへの攻撃が継続するか、ホルムズ海峡の通航隻数の推移、日本の長期金利の水準を最優先で確認します。</p>
+
+    <div class="sp today"><span class="dt mono">9/2(水)</span><span class="ev">【最優先】米軍による対イラン攻撃の継続有無と被害実態、イラン側の反応・報復の有無</span></div>
+    <div class="sp today"><span class="dt mono">9/2(水)</span><span class="ev">ホルムズ海峡の通航隻数(液体タンカーの通航が再開するか)、原油価格、海上保険料の動向</span></div>
+    <div class="sp today"><span class="dt mono">9/2(水)</span><span class="ev">日本の長期金利(10年国債が3.0%を超えて定着するか)、東京市場の反応</span></div>
+    <div class="sp today"><span class="dt mono">9/2(水)</span><span class="ev">米: FRBベージュブック、ADP雇用統計、製造業受注／EIA週次石油統計(SPRの更新値・前号で未確認とした286.6百万バレルの一次確認)</span></div>
+    <div class="sp"><span class="dt mono">9/3(木)</span><span class="ev">ユーロ圏サービスPMI・PPI／台風18号が南シナ海を進み熱帯低気圧へ変わる見込み</span></div>
+    <div class="sp"><span class="dt mono">9/3(木)</span><span class="ev">台風24号「クロヴァン」が南大東島の南西へ進む見込み(進路予想の更新に注意)</span></div>
+    <div class="sp"><span class="dt mono">9/4(金)</span><span class="ev">米8月分雇用統計(今週最大の市場イベント。9月FOMCの判断材料)</span></div>
+    <div class="sp"><span class="dt mono">9/5(土)</span><span class="ev">台風24号が東シナ海へ進む見込み</span></div>
+    <div class="sp"><span class="dt mono">9/7(月)</span><span class="ev">台風24号が日本の南へ接近する見込み(現時点の予想)</span></div>
+    <div class="sp"><span class="dt mono">9/10(木)</span><span class="ev">OPEC月報公表予定(中東供給リスクの需給見通しへの反映を確認)</span></div>
+    <div class="sp"><span class="dt mono">9/15〜16</span><span class="ev">次回FOMC(結果発表は日本時間9/17未明)。利上げ観測の織り込み度を確認</span></div>
+    <div class="sp"><span class="dt mono">9月中旬</span><span class="ev">令和8年都道府県地価調査(基準地価)公表予定。金利上昇局面での地価動向を見る最初の公式データ</span></div>
+    <div class="sp"><span class="dt mono">9/30</span><span class="ev">EASA湾岸CZIB(CZIB-2026-07R2)の有効期限。再延長・改訂の有無を確認</span></div>
+    <div class="sp"><span class="dt mono">継続</span><span class="ev">オデーサ・ドナウ川流域の港湾被害と穀物輸出、ウスチルガ港とロシア製油所、AI計算資源の大型契約と電力・通信への波及を毎日版で追跡</span></div>
+
+    <div class="tvgrid" style="margin-top:14px;">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUKOIL&interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">ブレント原油(15分足)</span><span class="tvlink-desc">対イラン攻撃後の値動きを確認</span><span class="tvlink-sym mono">TVC:UKOIL ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AJP10Y&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">日本10年国債利回り(日足)</span><span class="tvlink-desc">30年ぶりの3.0%到達後を確認</span><span class="tvlink-sym mono">TVC:JP10Y ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUS10Y&interval=D" target="_blank" rel="noopener"><span class="tvlink-ja">米10年債利回り(日足)</span><span class="tvlink-desc">4.79%からの推移を確認</span><span class="tvlink-sym mono">TVC:US10Y ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物(15分足)</span><span class="tvlink-desc">金利上昇と原油高への反応を確認</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot">
+    <div class="askai">
+      <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+      <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。</p>
+      <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。</p>
+      <div class="askai-box">
+        <textarea class="askai-q" id="askaiQ" readonly rows="2">この朝レポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+        <button type="button" class="askai-copy" id="askaiCopyBtn">コピー</button>
+      </div>
+      <div class="askai-links">
+        <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1) ↗</a>
+        <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2) ↗</a>
+        <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3) ↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--ink-3);text-align:center;margin-top:10px;">(1)(2)(3)はそれぞれ普段お使いのAIチャットサービスに対応しています。「〇〇」の部分を気になった項目名に書き換えてからお使いください。レポート本文は自動送信されません。<br>対イラン攻撃の継続有無、ホルムズ海峡の通航隻数、日本の長期金利、EIA週次統計でのSPR更新値は、続報が出た段階で毎日版で追います。</p>
+    </div>
+    <p style="text-align:center;margin-top:16px;"><a href="index.html" style="font-size:12.5px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);">← レポート一覧へ戻る</a></p>
+    <p class="disc">本レポートはAI総合研究機構の朝の共有レポートです。本日9月2日(水)は、米国9月1日(火)の通常取引が終了しているため、市場関連数値を8月31日終値から9月1日終値へ更新しました。ただし取引所の公式確定値には到達できておらず、原油価格は取得時刻・情報源により同日中でも幅があるため、本文で基準時刻を明記しています。米軍による新たな対イラン攻撃については、CENTCOMによる攻撃開始の発表、イラン国営系メディアによる攻撃地点の報道、実際の被害という3層を分けて記載し、独立検証されていない事項は断定していません。ホルムズ海峡の通航隻数は、AISを切って航行する船舶が集計に含まれないため「実際の全通航隻数」ではない旨を明示しています。Anthropicの計算資源契約は当事者の正式発表を確認できておらず報道ベースであることを明記しました。AI安全性のサイバー評価インシデントは本日の新規事象ではなく7月30日公表の既報であり、「AIの暴走」ではなくどの安全層が機能しなかったかとして技術的に整理しています。確認できないことは推測で埋めず「確認できず」「要確認」と明示し、情報がないことを改善と扱うことはしません。／ 論調の目安:ポジティブ4割・中立4割・注意/ネガティブ2割を目安に編集していますが、災害・重大リスクに関する情報はこの比率に関係なく目立つ位置に掲載しています。事実と観測・見方・予測は区別して記載し、確定していない見立ては「見方」「観測」「可能性」「予報」と明記しています。政治的に敏感な話題(米・イラン情勢、ロシア・ウクライナ情勢等)についても、重要度を理由に除外はせず、確認できる事実・各当事者の主張・経済/生活/安全保障への影響を分けて記載し、特定の立場への支持・批判は行っていません。／ 情報源は一次情報を優先しています(気象庁の熊本地震第11報・Anthropic公式ニュースルーム・国土交通省等へ直接リンク)。キュレーション・要約サイトは情報源として採用していません。ニュース・解説の情報源は特定媒体に偏らないよう複数媒体に分散しています。／ 数値は出典元の直近値、チャートはTradingViewのライブデータです。いずれも情報提供が目的で、投資判断への助言ではありません。／ <strong>本号の情報基準時刻: 2026年9月2日 朝(日本時間)。</strong>以後の新しい動きは原則として翌号(D38)の継続観測へ回し、重大な事実誤認が判明した場合のみ本号を再修正します。／ 生成:2026年9月2日。</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var ta = document.getElementById('askaiQ');
+  if(!btn || !ta) return;
+  btn.addEventListener('click', function(){
+    function showCopied(){
+      var orig = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('is-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('is-copied'); }, 2000);
+    }
+    function fallback(){
+      ta.removeAttribute('readonly');
+      ta.focus();
+      ta.select();
+      try{
+        if(document.execCommand('copy')) showCopied();
+      }catch(e){}
+      ta.setAttribute('readonly', 'readonly');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(showCopied, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
