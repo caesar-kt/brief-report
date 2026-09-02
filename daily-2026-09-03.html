@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 朝の一日レポート — 2026年9月3日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年9月3日（木）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝の要点は11件です。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の共有レポートです。<strong>最優先: 米中央軍(CENTCOM)は9月2日、3日間で2回目となる対イラン攻撃を実施したと発表しました。標的はイラン南岸のレーダー系統と機雷敷設能力とされています。</strong>これは9/2号で扱った9/1のIRGC関連目標への攻撃に続く<strong>新しい軍事行動</strong>です。<strong>一方でイラン国営系メディアは「米軍が結婚式を攻撃し民間人が死亡した」と報じましたが、CENTCOMはこれを否定しています。イラン側はバーレーン・ヨルダン・クウェート・イラクの米関連施設を攻撃したと主張し、ヨルダンでは多数の米兵が死亡したとしていますが、米当局者は死傷者はいないとしています。双方の説明は依然として食い違っており、第三者による確認は取れていません。</strong>ホルムズ海峡では<strong>9月2日の商品輸送船の通航が4隻となり、直近10日平均の約13隻を大きく下回りました(Kpler)。前日の10隻からさらに減少しており、週末には1日約5隻まで落ちていました。</strong>市場は<strong>9/2の米国市場が3指数そろって反発し、NYダウ 53,061.95(+295ポイント、+0.56%)・S&amp;P500 7,666.60(+0.46%)・Nasdaq 26,217.83(+0.45%)。前日までの米国債利回り上昇が一服したことが支えになりました。</strong>ただし<strong>東京市場は9/2に日経平均が3日続落し、終値 64,325.64円(前日比-1,889.70円、-2.85%)。東証33業種すべてが下落し、TOPIXも9日続伸が止まりました。原油高と日米の金利上昇が同時に効いた形です。</strong>AIでは<strong>OpenAIが9月1日、次期モデル「Astra」が同社Preparedness Frameworkのサイバー能力で初めて「Critical(重大)」の閾値を超えたと公表しました。</strong>提供は行う方針ながら、サイバー能力へのアクセスはより限定するとしています。国内は<strong>9月2日未明に青森県で線状降水帯が発生し、鰺ケ沢で6時間降水量213.5mm、五所川原で123.5mmといずれも観測史上1位を更新しました(気象庁)。</strong>加えて<strong>台風24号「クロヴァン」が3日から沖縄・奄美に接近し、前線の影響とあわせて3日〜5日ごろに関東から四国を中心に広い範囲で大雨のおそれ</strong>です。海外では<strong>8月26日の氷河崩壊を起点としたネパールの大規模洪水について、9月2日中も発表主体・集計時刻・報道によって数値が大きく変動しています。ネパール側の死者は1,114人〜1,204人、行方不明者は2,916人〜4,200人超と幅があり、中国側も更新が続いているため、本号では確定値として扱いません。</strong></p>
+
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-iran">2nd Strike in 3 Days <span class="kw-arrow">↓</span></a></span><span>
+        <b>【最優先】CENTCOMが9/2、3日間で2回目の対イラン攻撃を実施と発表。標的はイラン南岸のレーダー系統と機雷敷設能力。イラン国営系メディアは「結婚式への攻撃で民間人死亡」と報道するがCENTCOMは否定。イランはバーレーン・ヨルダン・クウェート・イラクの米関連施設への攻撃を主張し「ヨルダンで多数の米兵死亡」とするが、米当局者は死傷者なしと説明。いずれも第三者確認は取れていない。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-hormuz">4 Vessels <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡の9/2の商品輸送船の通航は4隻。直近10日平均の約13隻を大きく下回り、前日の10隻からも減少(Kpler)。週末は1日約5隻。EIAは第2四半期の原油・石油液体の通過量を日量490万バレルとし、紛争前の2025年第4四半期の日量2,160万バレルから大幅に減ったとしている。AIS非表示船は集計外。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">US Rebound <span class="kw-arrow">↓</span></a></span><span>
+        <b>9/2の米国市場は3指数そろって反発。ダウ 53,061.95(+0.56%)・S&amp;P500 7,666.60(+0.46%)・Nasdaq 26,217.83(+0.45%)。米国債利回りの上昇一服が支え。S&amp;P500の11セクター中9セクターが上昇。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-jp">Nikkei -1,889 <span class="kw-arrow">↓</span></a></span><span>
+        <b>東京市場は9/2に日経平均が3日続落、終値 64,325.64円(-1,889.70円、-2.85%)。東証33業種すべて下落、TOPIXは9日続伸が止まり10日ぶり反落。ソフトバンクG1銘柄で約248円分の押し下げ。日本の10年国債利回りは9/2に3.02%。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-domestic">Typhoon &amp; Front <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風24号「クロヴァン」(9/1発生・996hPa)が3日から沖縄・奄美へ接近。3日21時に奄美市の南西約120km。前線の南下とあわせて3日〜5日ごろ関東〜四国で広く大雨のおそれ。北陸は3〜4日に警報級の大雨の可能性。台風18号は南シナ海で熱帯低気圧に変わる見込み。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-domestic">Aomori Record Rain <span class="kw-arrow">↓</span></a></span><span>
+        <b>9/2未明に青森県で線状降水帯。気象庁の観測史上1位更新として、鰺ケ沢の6時間降水量213.5mm(従前114.0mm)・12時間225.0mm・24時間246.0mm、五所川原の6時間123.5mm(従前98.0mm)を確認(統計開始1976年)。鰺ケ沢町付近・深浦町付近で1時間約90mm、記録的短時間大雨情報。4市の約2万2,200世帯へ一時避難指示、最大97人避難、建物被害69棟(報道)。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-domestic">Nepal Glacier Flood <span class="kw-arrow">↓</span></a></span><span>
+        <b>8/26の氷河崩壊を起点とする大規模洪水。9月2日中も発表主体・集計時刻・報道によって数値が大きく変動しており、ネパール側の死者は1,114人〜1,204人、行方不明者は2,916人〜4,200人超と幅がある。中国側も16人死亡・546人不明と21人死亡・541人不明の両方が流通し更新が続いているため、本号では確定値として扱わない。救助はネパール側で1万人以上。氷河下の岩盤破壊がM5.2相当として観測され、トリスリ川沿い約72kmの集落を襲った。約900人がダム事業の現場に取り残されているとされる。数字は当局発表で更新幅が大きい。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-security">"Critical" Cyber <span class="kw-arrow">↓</span></a></span><span>
+        <b>OpenAIが9/1、次期モデル「Astra」が自社Preparedness Frameworkのサイバー能力で初めて「Critical」閾値を超えたと公表。Criticalは「堅牢化された実システムに対し人手を介さずゼロデイを発見・実装できる」等の水準。提供は行うがサイバー能力へのアクセスは限定するとしている。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai-infra">474 GW Queue <span class="kw-arrow">↓</span></a></span><span>
+        <b>テキサス州では8/3の知事指示でERCOTがデータセンターの系統接続手続きを一時停止し、全案件の監査に入っている。接続要求は約474GWで同州の記録的ピーク需要の5倍超、うち約9割がデータセンター。AIの計算資源確保が「土地・電力・系統」の制約に直面している。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-russia">Diesel Ban Extended <span class="kw-arrow">↓</span></a></span><span>
+        <b>ロシアはディーゼル・暖房用油・舶用燃料の輸出禁止を9月30日まで延長。ガソリンの輸出禁止は2027年1月31日まで。ウクライナは8月に露製油所を21回以上攻撃し、全面侵攻以降の月間最多となった。黒海ではノヴォロシースクの穀物3ターミナル(合計年約2,500万トン)が8月半ばまでに停止し、小麦先物は3年ぶりの高値圏。</b>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">Jobs Report 9/4 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米8月雇用統計は9月4日(金)8:30 ET＝日本時間21:30。非農業部門雇用者数の市場予想は+5.5万人(前回-2.3万人)、失業率4.1%、平均時給前年比+3.0%。原油高によるインフレ再燃と雇用の弱さが同時に意識されているため、今週最大の分岐点になる。</b>
+      </span></li>
+    </ul>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-iran">米軍による2回目の対イラン攻撃(最優先)</a></li>
+      <li><a href="#sec-hormuz">ホルムズ海峡の実通航量と原油</a></li>
+      <li><a href="#sec-market">市場・金融(9/2終値へ更新)</a></li>
+      <li><a href="#sec-jp">日本市場 — 日経平均1,889円安と長期金利3%台</a></li>
+      <li><a href="#sec-domestic">災害 — 青森の記録的大雨・台風24号・ネパールの氷河崩壊洪水</a></li>
+      <li><a href="#sec-ai-security">AI安全性 — OpenAIが初の「Critical」判定</a></li>
+      <li><a href="#sec-ai-infra">AI半導体・AIインフラ(電力と系統の制約)</a></li>
+      <li><a href="#sec-ai-tech">AI・テクノロジー全般</a></li>
+      <li><a href="#sec-russia">ロシア・ウクライナ／黒海物流・燃料</a></li>
+      <li><a href="#sec-telecom">通信インフラ・海底ケーブル</a></li>
+      <li><a href="#sec-kominka">古民家・不動産</a></li>
+      <li><a href="#sec-robotics">ロボット・自動車</a></li>
+      <li><a href="#sec-thin">今回情報が薄かった分野</a></li>
+      <li><a href="#sec-watch">ウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. 中東 -->
+  <section class="quake" id="sec-iran">
+    <div class="sec-head"><span class="tick"></span><span class="cat">最優先・安全保障</span><span class="sec-title">米軍による2回目の対イラン攻撃 <span class="sub">/ 3日間で2回、標的はレーダーと機雷敷設能力</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最優先</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>CENTCOMが9/2に2回目の攻撃を発表。標的はイラン南岸のレーダーと機雷敷設能力</h4>
+      <p><strong>米中央軍(CENTCOM)は9月2日、3日間で2回目となる対イラン攻撃を実施したと発表しました。標的として挙げられているのは、イラン南岸のレーダー系統と機雷敷設能力です。</strong>9/2号で扱った9月1日のIRGC関連目標への攻撃に続く動きで、<strong>「単発の報復」ではなく複数回にわたる作戦として継続している</strong>ことが確認できます。</p>
+      <p style="margin-top:10px;">今回発表された標的のうち、<strong>レーダー系統と機雷敷設能力は、いずれもホルムズ海峡の航行を妨害しうる能力にあたります。今回の攻撃では、こうした<strong>航行を妨害する能力も標的に含まれた</strong>ことになります。</strong>ただし一連の攻撃では防空・海上アセット・通信施設なども対象に含まれており、<strong>標的が海峡関連に限定されたわけではありません。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">当事者の主張・未確認</span></div>
+      <h4>民間人被害と米兵死傷をめぐり、双方の説明が食い違っている</h4>
+      <p><strong>イラン国営系メディアは「米軍が結婚式を攻撃し、複数の民間人が死亡した」と報じましたが、CENTCOMはこれを否定しています。</strong>現時点で<strong>第三者による独立確認は取れていません。</strong></p>
+      <p style="margin-top:10px;"><strong>イラン側は、バーレーン・ヨルダン・クウェート・イラクにある米関連施設を攻撃し、ヨルダンでは多数の米軍要員が死亡したと主張しています。一方、米当局者は死傷者はいないとしています。</strong>報復はドローンとミサイルによる波状攻撃として実施されたと伝えられていますが、<strong>被害の規模について双方の説明は一致していません。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 「発表」「主張」「確認できた事実」を分けて読む</h5>
+      <p>この局面では、<strong>①CENTCOMが自ら発表したこと ②イラン側が主張していること ③第三者が確認できたこと</strong>の3層が、いずれも一致していません。とくに死傷者数は、<strong>双方にとって発表内容が自国世論と交渉力に直結するため、独立確認が取れるまでは数字として扱わないのが妥当</strong>だと考えています。</p>
+      <p style="margin-top:10px;"><strong>読者にとって実際に効いてくるのは、死傷者数そのものよりも「海峡が通れるかどうか」です。</strong>航行を妨害しうる能力が標的に含まれたことは、<strong>海峡の通航環境に関わる要素が作戦の対象範囲に入っている</strong>ことを示しますが、<strong>米側の作戦目標が何であるかは公表されておらず、ここから目的を読み取ることはできません。</strong>実際に通航量が回復するかどうかは、次章の数字で確認します。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.justsecurity.org/155980/early-edition-september-2-2026/" target="_blank" rel="noopener">Just Security "Early Edition: September 2, 2026"</a> ・ <a class="src" href="https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582" target="_blank" rel="noopener">ABC News ライブ更新</a> ／ CENTCOMの公式リリース原文には本レポート確定時点で未到達。被害の第三者確認は取れていません。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 2. ホルムズ -->
+  <section class="quake" id="sec-hormuz">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・物流</span><span class="sec-title">ホルムズ海峡の実通航量 <span class="sub">/ 9月2日は4隻、10日平均の約13隻を大きく下回る</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>通航量は回復せず、むしろ前日から減少した</h4>
+      <p><strong>船舶追跡会社Kplerによると、9月2日にホルムズ海峡を通過した商品輸送船は4隻でした。直近10日平均の約13隻を大きく下回っています。</strong>前日の9月1日(火)は10隻で、<strong>いったん戻りかけた通航量が再び落ちた形</strong>です。週末(8月末〜9月初)は1日あたり約5隻でした。</p>
+      <p style="margin-top:10px;">数日の推移としては<strong>「週末 約5隻 → 9/1(火) 10隻 → 9/2(水) 4隻」</strong>という動きになります。<strong>1日の数字だけでは正常化とも悪化とも判断できませんが、10日平均の約13隻を下回る状態が続いていること自体は共通しています。</strong>なお平常時(紛争前)の通航はこれよりはるかに多く、この水準は依然として大きく落ち込んだままです。</p>
+      <p style="margin-top:10px;"><strong>AIS(船舶自動識別装置)を切って航行する船は集計に含まれないため、この数字は「実際の全通航隻数」ではありません。</strong>リスク回避のためAISを停止する船が増えている可能性があり、実数はこれより多い場合があります。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>EIAの統計では、通過量は紛争前の4分の1以下に落ちている</h4>
+      <p>米エネルギー情報局(EIA)の短期エネルギー見通しによると、<strong>ホルムズ海峡を通過した原油・石油液体は2026年第2四半期に日量490万バレルで、紛争開始前の2025年第4四半期の日量2,160万バレルから大幅に減少しました。</strong>四半期平均という粗い単位ですが、<strong>日々の隻数の振れとは別に、構造として大きく落ち込んだままであることが確認できます。</strong></p>
+      <p style="margin-top:10px;">EIAは<strong>通航が徐々に増え、停止していた生産が再開すれば、原油価格は2026年第4四半期に平均1バレル78ドルへ下がる</strong>と見通す一方、<strong>中東の産油量が紛争前の水準近くまで戻るのは2027年初頭以降</strong>としています。これはEIAの見通しであって確定した将来ではありません。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 日本のエネルギー調達への効き方</h5>
+      <p>日本は原油の大半を中東に依存しており、<strong>ホルムズ海峡の通航量は「輸入できる量」そのものではなく、まず「保険料と運賃」を通じて効いてきます。</strong>通航が細るほど、通れる船の傭船料と戦争リスク保険料が上がり、<strong>同じ量を運ぶための費用が増えます。</strong>これが数か月遅れで電気・ガス料金や物流費に乗ります。</p>
+      <p style="margin-top:10px;"><strong>今朝の時点で「日本の供給が止まる」という段階ではありません。</strong>ただし<strong>通航量が10日平均を下回り続けていること、EIAが産油量の本格回復を2027年初頭以降と見ていること</strong>の2点は、<strong>短期の反発ではなく年単位の調整として見ておく必要がある</strong>ことを示しています。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.middleeastmonitor.com/20260901-ship-traffic-through-strait-of-hormuz-falls-to-around-five-vessels-per-day/" target="_blank" rel="noopener">Middle East Monitor(Kplerデータ)</a> ・ <a class="src" href="https://www.eia.gov/outlooks/steo/report/global_oil.php" target="_blank" rel="noopener">EIA Short-Term Energy Outlook(一次情報)</a> ／ 隻数はKplerの暫定集計で、AIS非表示船は含まれません。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 3. 市場 -->
+  <section class="quake" id="sec-market">
+    <div class="sec-head"><span class="tick"></span><span class="cat">市場・金融</span><span class="sec-title">米国市場は9/2に反発 <span class="sub">/ 金利上昇の一服が支え</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>9月2日(米国時間)の終値 — 3指数そろって上昇</h4>
+      <p><strong>NYダウ 53,061.95(前日比 約+295ポイント、+0.56%)、S&amp;P500 7,666.60(+0.46%)、Nasdaq総合 26,217.83(+0.45%)。</strong>S&amp;P500の11セクターのうち9セクターが上昇し、構成銘柄のおよそ6割が値上がりしました。<strong>直前まで続いていた米国債利回りの上昇が一服したことが、株価の支えになったと伝えられています。</strong></p>
+      <p style="margin-top:10px;">前日9/1は3指数そろって下落していたため、<strong>2日続けた下げからの反発</strong>という位置づけになります。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span><span class="lab lab-warn">基準時刻に幅あり</span></div>
+      <h4>金利・原油・為替 — 数字の基準時刻に注意</h4>
+      <p><strong>米10年債利回りは9月に入って4.8%を超え、2023年10月以来の高水準となりました。9月1日時点で4.81%です。</strong>9/2はこの上昇が一服しました。</p>
+      <p style="margin-top:10px;"><strong>原油は、ブレントがTradingEconomicsの集計で9月2日に94.86ドル(前日比+0.23%)。</strong>WTIは同日の始値が90.72ドル、別の時点の集計では89.58ドル(前日終値比-1.26%)と、<strong>取得時刻と情報源によって同じ日でも幅があります。</strong>ブレントは9月1日(火)に約5%上昇して95ドル近辺まで上げ、7月下旬以来の高値をつけていました。</p>
+      <p style="margin-top:10px;"><strong>ドル円は9月2日(水)に160.25近辺で推移し、7月下旬以来の高値圏</strong>にあります。日本の10年国債利回りは<strong>9月2日に3.02%(前日比+0.02ポイント)</strong>です。</p>
+      <p style="margin-top:10px;">これらは取引所の公式確定値ではなく、<strong>集計サービスの値と報道の値が混在しています。</strong>同一の基準時刻に揃った数字ではない点にご注意ください。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 何が動いたか → なぜか → 日本へどう来るか → 次に何を見るか</h5>
+      <p><strong>何が動いたか:</strong> 米国株は9/2に反発、米金利は上昇一服、原油は高値圏で横ばい。<strong>なぜか:</strong> 直前2日間の下げが、原油高によるインフレ懸念と世界的な債券売りによるものだったため、<strong>金利の上昇が止まった時点で株が戻る構図</strong>です。つまり<strong>今の株価は原油と金利に従属しており、企業業績が主役ではありません。</strong></p>
+      <p style="margin-top:10px;"><strong>日本へどう来るか:</strong> 東京市場は9/2に大きく下げましたが、これは<strong>9/1の米国の下げを引き継いだもの</strong>です。9/2に米国が反発したため、<strong>9/3の東京市場は反発方向の材料を受け取っている</strong>ことになります。ただし日本側には米国にない要因(長期金利3%台、日銀の利上げ観測、財政)が乗っているため、<strong>米国と同じ幅で戻るとは限りません。</strong>これは予測ではなく、材料の並びの整理です。</p>
+      <p style="margin-top:10px;"><strong>次に何を見るか:</strong> ①ホルムズの通航隻数(原油の起点) ②米10年債利回りが4.8%台に定着するか ③9/4の米雇用統計。<strong>とくに③は、雇用が弱ければ利下げ観測で金利低下・株高、強ければインフレ警戒で金利上昇・株安という、方向が反転しうる分岐点</strong>です。</p>
+    </div>
+
+    <div class="tvgrid">
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUSOIL&amp;interval=60" target="_blank" rel="noopener"><span class="tvlink-ja">WTI原油(60分足)</span><span class="tvlink-desc">ホルムズ情勢への反応を確認</span><span class="tvlink-sym mono">TVC:USOIL ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=TVC%3AUS10Y&amp;interval=60" target="_blank" rel="noopener"><span class="tvlink-ja">米10年債利回り(60分足)</span><span class="tvlink-desc">4.8%台に定着するかを確認</span><span class="tvlink-sym mono">TVC:US10Y ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=FX%3AUSDJPY&amp;interval=60" target="_blank" rel="noopener"><span class="tvlink-ja">ドル円(60分足)</span><span class="tvlink-desc">160円台の推移を確認</span><span class="tvlink-sym mono">FX:USDJPY ↗</span></a>
+      <a class="tvlink" href="https://www.tradingview.com/chart/?symbol=OSE%3ANK2251!&amp;interval=15" target="_blank" rel="noopener"><span class="tvlink-ja">日経225先物(15分足)</span><span class="tvlink-desc">米国の反発を引き継ぐかを確認</span><span class="tvlink-sym mono">OSE:NK2251! ↗</span></a>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-2-134032621.html" target="_blank" rel="noopener">Yahoo Finance(2026年9月2日)</a> ・ <a class="src" href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">TradingEconomics ブレント原油</a> ・ <a class="src" href="https://tradingeconomics.com/united-states/government-bond-yield" target="_blank" rel="noopener">TradingEconomics 米10年債</a> ／ 取引所の公式確定値には未到達。原油・為替は取得時刻により同日中でも幅があります。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 4. 日本市場 -->
+  <section class="quake" id="sec-jp">
+    <div class="sec-head"><span class="tick"></span><span class="cat">日本経済への波及・重要</span><span class="sec-title">日経平均が1,889円安 <span class="sub">/ 33業種すべて下落、長期金利は3.02%</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>9月2日の東京市場 — 3日続落、東証33業種すべて下落</h4>
+      <p><strong>9月2日の東京株式市場で日経平均株価は大幅に3日続落し、終値は前日比1,889円70銭(2.85%)安の6万4,325円64銭となりました。</strong>東証33業種はすべて下落し、<strong>TOPIXも9日続伸が止まって10日ぶりの反落</strong>となりました。ソフトバンクグループ1銘柄で日経平均を約248円分押し下げたと伝えられています。</p>
+      <p style="margin-top:10px;">下落要因として挙げられているのは、<strong>①原油高 ②日米の金利上昇が同時に効いたこと ③インフレ加速と財政拡大への懸念から世界的に金利の先高観が強まり、アジア株が軒並み安となったこと</strong>です。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>長期金利は3%台で推移。9月2日は3.02%</h4>
+      <p><strong>日本の10年国債利回りは9月2日に3.02%となり、前日比0.02ポイントの上昇です。</strong>9/2号でお伝えした「9月1日に一時3.0%到達(1996年9月以来およそ30年ぶり)」という水準から、<strong>3%を割り込まずに推移している</strong>ことになります。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 「金利のある世界」が日常になりつつある</h5>
+      <p><strong>9/1の「30年ぶりに3.0%到達」は節目のニュースでしたが、より重要なのは翌日も3%台にとどまったことです。</strong>一時的な行き過ぎであれば戻りますが、<strong>2日続けて3%台ということは、市場がこの水準を受け入れつつある</strong>ことを示します。</p>
+      <p style="margin-top:10px;">生活面では、<strong>住宅ローンの固定金利、企業の借入・社債コスト、保険・年金の運用環境</strong>が順に影響を受けます。<strong>ただし変動金利型の住宅ローンは短期金利に連動するため、長期金利3%が直ちに毎月の返済額を押し上げるわけではありません。</strong>この区別は、家計に説明するうえで重要です。</p>
+      <p style="margin-top:10px;"><strong>株価の1,889円安は数字としては大きいものの、水準としては6万4,000円台です。</strong>下落率は2.85%であり、<strong>指数の絶対値が大きくなったぶん、同じ下落率でも「円」で見た変動幅が過去より大きく見える</strong>点にも留意が必要です。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.nikkei.com/article/DGXZQOFL020ROTS6A900C2000000/" target="_blank" rel="noopener">日本経済新聞「日経平均、終値1889円安」</a> ・ <a class="src" href="https://www.zaikei.co.jp/article/20260902/868309.html" target="_blank" rel="noopener">財経新聞</a> ・ <a class="src" href="https://tradingeconomics.com/japan/government-bond-yield" target="_blank" rel="noopener">TradingEconomics 日本10年債</a> ／ 東証の公式確定値には未到達です。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 5. 国内災害 -->
+  <section class="quake" id="sec-domestic">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害支援シグナル</span><span class="sec-title">青森の記録的大雨・台風24号・ネパールの氷河崩壊洪水 <span class="sub">/ 観測史上1位を更新、ネパールの死者は1,100人超</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最優先・国内</span><span class="lab lab-fact">気象庁の一次情報で確認</span></div>
+      <h4>青森県で線状降水帯。鰺ケ沢・五所川原で6時間降水量が観測史上1位を更新</h4>
+      <p><strong>9月2日未明、青森県で線状降水帯が発生しました。気象庁の「観測史上1位の値 更新状況」で確認できた記録は次のとおりです(統計開始はいずれも1976年)。</strong></p>
+      <p style="margin-top:10px;"><strong>鰺ケ沢 — 6時間降水量の日最大値 213.5mm(従前の1位 114.0mm)、12時間降水量 225.0mm(従前 158.0mm)、24時間降水量 246.0mm(従前 202.5mm)。3つの指標すべてで観測史上1位を更新しました。</strong>従前の1位を6時間で約1.9倍、24時間で約1.2倍上回っています。</p>
+      <p style="margin-top:10px;"><strong>五所川原 — 6時間降水量の日最大値 123.5mm(従前の1位 98.0mm)。こちらも観測史上1位の更新です。</strong></p>
+      <p style="margin-top:10px;">2日3時20分までの1時間に、<strong>鰺ケ沢町付近と深浦町付近で1時間に約90mmの猛烈な雨が降ったとみられ、記録的短時間大雨情報が発表されました。</strong></p>
+      <p style="margin-top:10px;">被害と避難の状況は、<strong>青森市・弘前市・五所川原市・つがる市の4市で合わせておよそ2万2,200世帯に一時避難指示が出され、最大97人が避難(その後すべて解除)。建物被害は住家45棟・非住家24棟の計69棟</strong>と報じられています。<strong>鰺ケ沢町では町内10か所以上で土砂災害が発生し、道路の通行止めも生じました。</strong>これらは報道による数字で、確定値ではありません。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">本日の生活直結</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>台風24号「クロヴァン」が沖縄・奄美へ接近。本州は前線の大雨に警戒</h4>
+      <p><strong>台風24号「クロヴァン」は9月1日午前9時に日本の南で発生しました。発生時点で中心気圧996hPa、中心付近の最大風速18m/s、最大瞬間風速25m/sで、ほとんど停滞していました。</strong>その後、<strong>3日(木)から沖縄・奄美へ接近し、3日21時には奄美市の南西約120kmに達する見込み</strong>です。</p>
+      <p style="margin-top:10px;"><strong>本州側で注意が必要なのは、台風本体ではなく前線です。</strong>台風周辺の水蒸気を多く含んだ空気が前線に向かって流れ込むことで雨雲が発達し、<strong>3日(木)から5日(土)ごろにかけて、関東から四国を中心に広い範囲で大雨となるおそれ</strong>があります。<strong>北陸では3日から4日にかけて警報級の大雨</strong>となる可能性が指摘されています。</p>
+      <p style="margin-top:10px;">台風18号は9月2日15時時点で南シナ海にあり、中心気圧992hPa・最大風速18m/s。<strong>この後は熱帯低気圧に変わり、4日15時には華南に達する見込み</strong>で、日本への直接的な影響は見込まれていません。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要・海外</span><span class="lab lab-fact">当局発表</span></div>
+      <h4>ネパール — 氷河崩壊を起点とした大規模洪水。死者は1,100人を超えるが、数値は変動中</h4>
+      <p><strong>8月26日朝、ヒマラヤのランタン・リルン周辺で氷河が崩壊し、岩・氷・融解水が谷へ流れ込んだことを起点として、大規模な洪水が発生しました。これは単なる豪雨災害ではなく、氷河崩壊を起点とする連鎖的な災害です。</strong>科学者によれば<strong>氷河下の岩盤の破壊が関わっており、その規模は地震計でM5.2相当として世界各地で観測されました。</strong>洪水は中国・ネパール国境の吉隆(ギロン)検問所を破壊し、<strong>ネパール側ではトリスリ川沿い約72kmにわたって多数の集落を襲いました。</strong></p>
+      <p style="margin-top:10px;"><strong>【人的被害は本号では確定値として扱いません】9月2日中も、発表主体・集計時刻・報道によって数値が大きく変動しています。</strong></p>
+      <p style="margin-top:10px;"><strong>ネパール側の死者は1,114人〜1,204人、行方不明者は2,916人〜4,200人超と、いずれも幅があります。</strong>同じ9月2日付の報道でも、<strong>「死者1,114人・行方不明2,916人」とするもの、「死者1,114人・行方不明3,916人」とするもの、「死者1,204人・行方不明4,200人超」とするもの</strong>が並存しています。</p>
+      <p style="margin-top:10px;"><strong>中国側も更新が続いており、「死者16人・行方不明546人」と「死者21人・行方不明541人」の両方が流通しています。</strong></p>
+      <p style="margin-top:10px;"><strong>したがって本号では、これらを一本の確定値として提示しません。</strong>確実に言えるのは、<strong>ネパール側の死者が1,100人を超え、行方不明者が数千人規模で残っている</strong>ということまでです。<strong>行方不明者のうち9月1日時点で38か国583人の外国人が含まれる</strong>とされています。<strong>救助はネパール側で1万人以上</strong>と報じられていますが、これも更新時点によって数字が異なります。<strong>正確な人数の把握には、捜索が一段落したあとの当局の確定発表を待つ必要があります。</strong></p>
+      <p style="margin-top:10px;">参考として、<strong>9月1日時点ではネパール側の死者1,003人・行方不明3,916人(うち外国人583人)、中国側の死者16人・行方不明546人(うち外国人261人)</strong>と報じられていました。<strong>これらの数字はいずれも当局発表または報道であり、独立確認は取れていません。本レポートの情報基準時刻は2026年9月3日 朝(日本時間)ですが、この時点でも数値は収束していないため、上記の幅のまま記載しています。</strong></p>
+      <p style="margin-top:10px;">被害の特徴として、<strong>ネパール国内では約900人がダム関連事業の現場に取り残されているとされ、うち相当数がトンネル内にいると見られています。</strong>土砂崩れと道路の寸断で遠隔地が孤立しており、<strong>捜索が進むにつれて死者数が増える可能性</strong>が指摘されています。犠牲者の一部の遺体は<strong>240km離れた隣国インドまで流された</strong>と報じられています。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">前日から変化なし</span></div>
+      <h4>令和8年熊本地震 — 新しい報の発表はなし</h4>
+      <p><strong>気象庁の情報は9月1日発表の第11報が最新で、本レポート確定時点で新しい報は出ていません。</strong>内容は<strong>「地震の発生数は平常時と比べて多い状態が継続しているが、大局的には緩やかに減少している」</strong>、および<strong>揺れの強かった地域では今後3〜4週間程度、最大震度5弱程度以上の地震に注意</strong>という呼びかけです。</p>
+      <p style="margin-top:10px;">人的被害は、<strong>8月15日午後2時時点で災害関連死の疑いを含め39人が死亡</strong>と報じられています(NHK)。国土交通省の被害・対応報告は8月31日時点の第51報まで公表されています。<strong>これらは公表時点の値であり、本日時点の最新値ではありません。</strong></p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 雨と地震が重なる時期の注意点</h5>
+      <p><strong>今回の大雨で最も注意が必要なのは、熊本地震で揺れた地域と大雨のエリアが重なる場合です。</strong>地震で緩んだ斜面は、平常時より少ない雨量で崩れることがあります。気象庁も第11報で<strong>「復旧活動を行う際は今後の地震活動や気象の状況に十分注意」</strong>と呼びかけています。</p>
+      <p style="margin-top:10px;"><strong>本州側では「台風が来ないから大丈夫」という受け取り方が最も危険です。</strong>今回の大雨は台風本体ではなく前線によるもので、<strong>台風の進路予想図の外側でも強い雨が降りえます。青森の記録的大雨は、まさに台風の進路から離れた場所で起きています。</strong>お出かけ・移動の予定がある方は、進路図ではなく<strong>お住まいの地域の警報・注意報と雨雲レーダー</strong>をご確認ください。</p>
+      <p style="margin-top:10px;"><strong>青森の記録について、注目すべきは「1位を更新した」ことよりも「従前の1位をどれだけ上回ったか」です。</strong>鰺ケ沢の6時間降水量は従前記録の約1.9倍にあたります。<strong>統計開始から50年分の記録を大きく引き離す量であり、既存の排水能力や避難計画が想定してきた範囲を超えている可能性があります。</strong>幸い避難者は最大97人にとどまりましたが、<strong>これは深夜帯の豪雨としては結果的に被害が限定された事例であり、同じ降り方が人口密集地で起きた場合に同じ結果になるとは限りません。</strong></p>
+      <p style="margin-top:10px;"><strong>ネパールの災害は、日本の読者にとっても他人事ではない論点を含みます。</strong>起点が豪雨ではなく<strong>氷河の崩壊</strong>であったこと、そして<strong>地震計でM5.2相当として観測されるほどの規模だった</strong>ことは、<strong>「気象の警報では捉えきれない災害が存在する」</strong>ことを示しています。日本にも土砂ダムの決壊や大規模な深層崩壊といった類似の現象があり、<strong>降水量の予報だけでは前兆を掴めない種類のリスク</strong>という点で共通します。ただしこれは<strong>構造の類似性についての見方であって、日本で同じことが起きるという予測ではありません。</strong></p>
+      <p style="margin-top:10px;"><strong>数値の扱いについても一言添えます。</strong>この規模の災害では、<strong>発表主体(災害当局・国連機関・各国政府)と集計時刻の違いだけで、死者数が百人単位、行方不明者数が千人単位で食い違います。</strong>これは誰かが誤っているというより、<strong>捜索中の災害では確定値が存在しない</strong>ためです。<strong>本号が幅で示しているのはそのためであり、数字が一つに定まらないこと自体を、この災害の現在地として読んでいただければと思います。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.data.jma.go.jp/stats/data/mdrr/rank_update/r0902.html" target="_blank" rel="noopener">気象庁「観測史上1位の値 更新状況(降水量)9月2日」(一次情報)</a> ・ <a class="src" href="https://tenki.jp/forecaster/deskpart/2026/09/02/40408.html" target="_blank" rel="noopener">tenki.jp(記録的短時間大雨情報)</a> ・ <a class="src" href="https://www.aba-net.com/news/news-196749.html" target="_blank" rel="noopener">ABA青森朝日放送(被害・避難)</a> ・ <a class="src" href="https://www.pbs.org/newshour/world/nepals-death-toll-from-glacier-collapse-and-flood-exceeds-1000" target="_blank" rel="noopener">PBS NewsHour(ネパール・9月1日時点)</a> ・ <a class="src" href="https://www.upi.com/Top_News/World-News/2026/09/02/nepal-death-toll-1114-3916-missing/8901788365538" target="_blank" rel="noopener">UPI(9月2日／死者1,114人・不明3,916人)</a> ・ <a class="src" href="https://abcnews.com/International/nepal-tibet-flood-death-toll-tops-1100-tens/story?id=136136947" target="_blank" rel="noopener">ABC News(9月2日／死者1,100人超)</a> ・ <a class="src" href="https://news.un.org/en/story/2026/08/1168233" target="_blank" rel="noopener">UN News(行方不明4,200人超)</a> ・ <a class="src" href="https://news.un.org/en/story/2026/08/1168233" target="_blank" rel="noopener">UN News</a> ・ <a class="src" href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 令和8年熊本地震ポータルサイト(一次情報)</a> ・ <a class="src" href="https://www.jma.go.jp/bosai/typhoon/" target="_blank" rel="noopener">気象庁 台風情報(一次情報)</a> ・ <a class="src" href="https://tenki.jp/lite/forecaster/deskpart/2026/09/01/40396.html" target="_blank" rel="noopener">日本気象協会 tenki.jp(台風24号発生)</a> ・ <a class="src" href="https://tenki.jp/forecaster/h_aoym/2026/09/02/40414.html" target="_blank" rel="noopener">tenki.jp(北陸 3〜4日の大雨)</a> ・ <a class="src" href="https://www.mlit.go.jp/saigai/saigai_260728.html" target="_blank" rel="noopener">国土交通省 被害と対応(一次情報)</a> ／ 気象庁の台風情報ページは動的表示のため、本文の台風諸元は日本気象協会の記載に基づいています。避難判断は必ず気象庁と自治体の最新発表をご確認ください。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 6. AI安全性 -->
+  <section class="quake" id="sec-ai-security">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI安全性・サイバーセキュリティ</span><span class="sec-title">OpenAIが初の「Critical」判定 <span class="sub">/ 次期モデルAstraのサイバー能力</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要・新規</span><span class="lab lab-fact">当事者の公式発表</span></div>
+      <h4>Preparedness Frameworkのサイバー能力で、初めて「Critical」閾値を超えた</h4>
+      <p><strong>OpenAIは9月1日(火)、次期モデル「Astra」が自社のPreparedness Frameworkにおけるサイバーセキュリティ能力で、初めて「Critical(重大)」の閾値を超えたと公表しました。</strong>これは<strong>同社が自ら設けた基準に対する自己評価であり、外部機関による認定ではありません。</strong></p>
+      <p style="margin-top:10px;">同フレームワークで「Critical」とされるのは、<strong>①堅牢化された多くの実世界の重要システムに対し、人間の介入なしにあらゆる深刻度の実働ゼロデイ攻撃を発見・開発できる、または ②高レベルの目標を与えられただけで、堅牢化された標的に対する新規の攻撃戦略を端から端まで立案・実行できる</strong>水準です。</p>
+      <p style="margin-top:10px;">Preparedness Frameworkは2023年に導入されたもので、<strong>「High」が既存の被害経路を増幅しうる水準、「Critical」が前例のない新しい被害経路を生みうる水準</strong>と定義されています。</p>
+      <p style="margin-top:10px;"><strong>公開前確認の段階で、OpenAIの公式ブログ記事「Responding to the next frontier of critical cyber capabilities」および関連記事「Path to Astra: critical capabilities and frontier safeguards」の存在を確認しました。</strong>報じられている具体的な内容として、<strong>評価の過程でAstraが未知の脆弱性2件を発見して連鎖させ、OpenAIはこの2件を該当ソフトウェアの管理者へ開示する手続きを進めているとされています。</strong>また<strong>Astraへの追加の安全対策は、悪意ある利用者による濫用と、モデルが自ら許可のない行動をとることの両方を防ぐ目的で設計されたとしています。</strong>提供は「まもなく」行う方針を維持しつつ、<strong>サイバー能力へのアクセスは限定する</strong>としています。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 「AIが攻撃した」ではなく「事前に自己申告した」事案</h5>
+      <p><strong>この件を「AIが暴走した」「AIが攻撃した」と読むのは誤りです。実際に起きたのは、提供前の評価で自社基準の最高段階に該当したことを、企業が自ら公表したという出来事です。</strong>攻撃が発生したという報告ではありません。</p>
+      <p style="margin-top:10px;">評価すべき点と、注意すべき点の両方があります。<strong>評価できるのは、閾値を事前に文書で定義し、それに該当したことを提供前に開示した点です。</strong>能力を隠して提供する選択肢もあるなかで、<strong>安全層(事前評価と開示)が機能したと言えます。</strong></p>
+      <p style="margin-top:10px;"><strong>一方で注意すべきなのは、基準も評価も同じ企業が行っている点です。</strong>「Critical」と判定したうえで提供を続ける判断も同社が行っています。<strong>ここには第三者の検証が入っていません。</strong>また「アクセスをより限定する」の具体的な方法(利用者審査の基準、監査の有無、悪用検知の仕組み)は、本レポート確定時点で公開情報からは確認できていません。</p>
+      <p style="margin-top:10px;"><strong>今後の観測点は、①提供開始後にアクセス制限が実際にどう運用されるか ②他社が同種の閾値を設けて同じように開示するか ③各国の規制当局がこの自己申告をどう扱うか</strong>の3点です。とくに③は、<strong>企業の自主的な開示を制度としてどう位置づけるかという、より大きな論点につながります。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://openai.com/index/path-to-astra/" target="_blank" rel="noopener">OpenAI公式「Path to Astra: critical capabilities and frontier safeguards」(一次情報)</a> ・ <a class="src" href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI公式ブログ「Responding to the next frontier of critical cyber capabilities」(一次情報)</a> ・ <a class="src" href="https://openai.com/index/pacing-model-development-cyber-capabilities/" target="_blank" rel="noopener">OpenAI公式ブログ「Pacing model development in an era of cyber-critical capabilities」(一次情報)</a> ・ <a class="src" href="https://www.cnbc.com/2026/09/01/open-ai-astra-cyber-model.html" target="_blank" rel="noopener">CNBC(2026年9月1日)</a> ・ <a class="src" href="https://www.axios.com/2026/09/01/openai-astras-cyber-critical" target="_blank" rel="noopener">Axios(アクセス制限)</a> ・ <a class="src" href="https://www.securityweek.com/openais-astra-becomes-first-model-to-cross-critical-cybersecurity-threshold/" target="_blank" rel="noopener">SecurityWeek(ゼロデイ2件の連鎖)</a> ／ <strong>OpenAI公式「Path to Astra」の所在(openai.com/index/path-to-astra/)を確認し、出典の先頭に置きました。</strong>ただし<strong>当方の自動取得はいずれの公式ページもHTTP 403で本文まで到達できていません。</strong>本文の細部(ゼロデイ2件の開示手続き、追加の安全対策の目的)は上記の報道による記載です。閾値の定義文はOpenAIのPreparedness Frameworkの引用です。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 7. AIインフラ -->
+  <section class="quake" id="sec-ai-infra">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI半導体・AIインフラ</span><span class="sec-title">計算資源の制約は「電力と系統」へ <span class="sub">/ テキサス州の接続要求は約474GW</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>テキサス州がデータセンターの系統接続を一時停止し、全案件を監査中</h4>
+      <p><strong>2026年8月3日、テキサス州のアボット知事が州公益事業委員会(PUC)とERCOT(テキサス電力信頼度協議会)に対し、系統接続手続きを進めている全データセンターの包括的な検証・監査を指示しました。ERCOTは同日、これに従って接続手続きを停止しています。</strong></p>
+      <p style="margin-top:10px;"><strong>ERCOTが受けている接続要求は合計で約474ギガワット。これは同州の記録的なピーク需要の5倍を超える規模で、そのうち約9割がデータセンターです。</strong>監査では、案件ごとの<strong>電力需要と発電計画、水の使用、公的インセンティブ、地域への影響、所有者</strong>が調べられます。知事は<strong>基準を満たさない案件は接続を認めるべきでないとしています。</strong></p>
+      <p style="margin-top:10px;">これは本日の新規事象ではなく8月上旬の措置ですが、<strong>AIの計算資源をめぐる制約が「GPUの調達」から「電力と系統への接続」へ移りつつあることを示す事例</strong>として、継続観測の対象に加えます。</p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>半導体企業が「チップを売る側」から「資金を出す側」へ広がっている</h4>
+      <p>8月の動きとして、<strong>NVIDIAがオハイオ州のOpenAI向けデータセンターに対し最大1,050億ドルの資金供与を行うと報じられています。初期4.25ギガワット分の計算能力を支え、追加で3.75ギガワットの選択権があり、稼働は2028年に段階的とされています。</strong>また<strong>NVIDIAと6社の金融パートナーが、顧客(フロンティアAI研究所、AIクラウド、企業)が同社のチップを与信で購入できるようにするための5,000億ドル規模の投資プールを組成</strong>したとされています。</p>
+      <p style="margin-top:10px;"><strong>これらは報道ベースであり、当事者の正式リリース原文には本レポート確定時点で到達できていません。</strong>金額の大きさに対して確認の度合いが追いついていない点に留意が必要です。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 制約は「土地・電力・系統」へ移った</h5>
+      <p><strong>474GWという数字は、AIデータセンターの計画が電力系統の物理的な容量を大きく超えて積み上がっていることを端的に示しています。</strong>接続要求は「建てる」という意思表示にすぎず、すべてが実現するわけではありません。<strong>むしろ実現しない前提の重複申請が含まれている可能性が高く、州が監査に入ったのはそのためだと考えられます。</strong></p>
+      <p style="margin-top:10px;"><strong>ここから読み取れるのは、AI投資のボトルネックがGPUの供給から電力と用地へ移りつつあるということです。</strong>そしてこの制約は、<strong>半導体企業が資金まで供給する構造と組み合わさると、需要の実在性が見えにくくなります。</strong>チップを売る側が買う側に与信を出し、その買い手が電力の当てのないまま接続を申請する——という連鎖が、どこまで実需に裏付けられているかは<strong>現時点で外部から検証できません。</strong>これは断定ではなく、注視すべき構造上の論点として提示します。</p>
+      <p style="margin-top:10px;"><strong>日本への波及としては、電力設備・受変電・冷却・光ファイバー・コンデンサといった周辺分野が、GPUそのものより先に恩恵と制約の両方を受けます。</strong>国内では、キオクシアが2025年9月に北上工場(岩手県)第2製造棟を稼働させ、2026年前半に本格出荷を予定していると伝えられています。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.utilitydive.com/news/texas-hits-pause-data-center-interconnections/827046/" target="_blank" rel="noopener">Utility Dive</a> ・ <a class="src" href="https://www.hklaw.com/en/insights/publications/2026/08/texas-gov-abbott-directs-data-center-audit" target="_blank" rel="noopener">Holland &amp; Knight(法律事務所の解説)</a> ・ <a class="src" href="https://www.texastribune.org/2026/08/03/texas-data-center-project-audit-greg-abbott/" target="_blank" rel="noopener">The Texas Tribune</a> ・ <a class="src" href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener">CNBC(NVIDIAの資金供与)</a> ／ NVIDIA・OpenAIの正式リリース原文には未到達で、金額は報道ベースです。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 8. AI全般 -->
+  <section class="quake" id="sec-ai-tech">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI・テクノロジー</span><span class="sec-title">モデル更新と国内の動き <span class="sub">/ 大型発表以外も拾う</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>9月2日のモデル更新 — Gemini 3.8 Flash、Qwen3.8-Max-0902</h4>
+      <p><strong>Googleは9月2日に「Gemini 3.8 Flash」を公開しました。Google公式ブログ「Introducing Gemini 3.8 Flash and 3.8 Flash Cyber」で発表が確認できます。</strong>価格は<strong>入力100万トークンあたり0.75ドル、出力100万トークンあたり3.75ドル</strong>で、これは<strong>2026年12月31日までの導入価格であり、2027年1月1日からそれぞれ1.50ドル・7.50ドルへ倍増する</strong>とされています。ソフトウェア開発、自律エージェント、複数段階の推論に推奨するモデルという位置づけです。</p>
+      <p style="margin-top:10px;"><strong>同時に「Gemini 3.8 Flash Cyber」という派生モデルも発表されています。脆弱性の検出と自動修正に特化したもので、Googleは新設の「Fairwind Program」を通じて、信頼できる政府当局・重要インフラ事業者・ソフトウェア保守者に優先的なアクセスを提供するとしています。</strong>本日のAI安全性セクションで扱ったOpenAIの動きと<strong>同じ日に、サイバー能力を持つモデルへのアクセスを限定するという同種の対応が別の企業からも出てきた</strong>ことになります。</p>
+      <p style="margin-top:10px;"><strong>Alibabaは9月2日、「Qwen3.8-Max-0902」(別名 qwen3.8-max-2026-09-02)を公開しました。Alibaba Cloud Model Studioの公式ドキュメントに掲載されています。</strong>既存のQwen3.8-Max基盤モデルの更新スナップショットで、<strong>コーディング能力の向上、マルチツール連携を含むエージェント性能の強化、図表推論や文書解析といった視覚理解の改善</strong>が挙げられており、<strong>100万トークンのコンテキスト長と思考モード、ツール群は維持</strong>されています。<strong>Alibabaは、フロントエンドのCodeArenaのスコアが22ポイント上昇して1,691となり首位になったとしています(同社の主張)。</strong>Qwen3.8-Max本体は8月3日に公開されたもので、<strong>総パラメータ2.4兆・推論時の活性化950億のSparse MoE構成、コンテキスト長は最大100万トークン</strong>と伝えられています。</p>
+      <p style="margin-top:10px;">この2件は<strong>フラッグシップの世代交代ではなく、既存系列の更新</strong>にあたります。ただし<strong>Flash系・Max系はいずれも価格性能比を狙う位置づけであり、企業がAPIを実務に組み込む際のコストに直結します。</strong>大型モデルの性能競争より、こうした更新のほうが実務への影響が早く出ます。<strong>とくにGemini 3.8 Flashの価格は2027年1月に倍増する予定と伝えられているため、導入の採算計算は「いつまでの価格か」を確認する必要があります。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>国内 — GENIACが9月9日に事業計画発表会・中間報告会・成果報告会</h4>
+      <p>経済産業省のGENIAC(生成AI基盤モデル開発支援)について、<strong>9月9日(水)に採択事業者による事業計画発表会(キックオフ)・中間報告会・成果報告会が開催される予定</strong>です。<strong>採択された国内事業者が、どの規模の計算資源で何を作っているのかが、まとまって公開される機会になります。</strong></p>
+      <p style="margin-top:10px;">制度面では、<strong>2026年7月14日に人工知能基本計画(第Ⅱ期)が閣議決定されています。</strong>国内の生成AI活用については、社内ナレッジ検索・議事録作成・提案資料の自動生成といった業務効率化用途を中心に普及が進み、<strong>競争の軸が「導入するかどうか」から「効果を出せるかどうか」へ移ったとする調査</strong>が出ています。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 海外の大型発表に偏らないための見方</h5>
+      <p><strong>海外の大型契約は金額が大きいぶん目に付きますが、日本の実務に先に効いてくるのは、むしろ小刻みなモデル更新と料金改定です。</strong>Flash系・Max系のような効率重視モデルが更新されると、<strong>同じ処理をより安く回せるようになり、これまで採算が合わなかった用途が動き出します。</strong></p>
+      <p style="margin-top:10px;"><strong>GENIACの9月9日は、国内勢の現在地を一次情報でまとめて確認できる数少ない機会です。</strong>海外大手の発表と比べて報道量は少なくなりますが、<strong>国内の計算資源がどこにどれだけ配分されているかを知るうえでは、報道の量と重要度は一致しません。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.meti.go.jp/policy/mono_info_service/geniac/index.html" target="_blank" rel="noopener">経済産業省 GENIAC(一次情報)</a> ・ <a class="src" href="https://www8.cao.go.jp/cstp/ai/index.html" target="_blank" rel="noopener">内閣府 AI戦略(一次情報)</a> ・ <a class="src" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank" rel="noopener">Google公式ブログ「Introducing Gemini 3.8 Flash and 3.8 Flash Cyber」(一次情報)</a> ・ <a class="src" href="https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max" target="_blank" rel="noopener">Alibaba Cloud Model Studio 公式ドキュメント「qwen3.8-max」(一次情報)</a> ・ <a class="src" href="https://www.neowin.net/news/google-launches-gemini-38-flash-with-frontier-level-performance-at-a-fraction-of-the-price/" target="_blank" rel="noopener">Neowin(補足)</a> ・ <a class="src" href="https://www.androidheadlines.com/2026/09/google-debuts-gemini-3-8-flash-cyber-variants.html" target="_blank" rel="noopener">Android Headlines(補足)</a> ・ <a class="src" href="https://technode.com/2026/09/02/alibaba-upgrades-qwen38-max-with-new-0902-snapshot/" target="_blank" rel="noopener">TechNode(補足)</a> ／ <strong>Gemini 3.8 Flash / 3.8 Flash Cyber はGoogle公式ブログ、Qwen3.8-Max-0902 はAlibaba Cloud Model Studioの公式ドキュメントを一次情報として出典の先頭に置きました。</strong>価格・ベンチマーク値は提供元の公表値および同社の主張です。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 9. ロシア・ウクライナ -->
+  <section class="quake" id="sec-russia">
+    <div class="sec-head"><span class="tick"></span><span class="cat">ロシア・ウクライナ／物流</span><span class="sec-title">燃料輸出禁止の延長と黒海の穀物 <span class="sub">/ 小麦は3年ぶり高値圏</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>ロシアがディーゼル等の輸出禁止を9月30日まで延長</h4>
+      <p><strong>ロシア政府は、ディーゼル燃料・暖房用油・舶用燃料の輸出禁止を9月30日まで延長しました。ガソリンの輸出禁止は2027年1月31日までとされています。</strong>ジェット燃料の輸出にも制限が設けられています。</p>
+      <p style="margin-top:10px;">背景として、<strong>ウクライナは8月に入ってからロシアの製油所を少なくとも21回攻撃しており、これは全面侵攻開始以降で単月として最多</strong>と伝えられています。攻撃により<strong>ロシア国内でガソリン不足が各地に広がっている</strong>とされます。<strong>ロシアは世界のディーゼル供給の約1割を占めていたため、輸出禁止は国際的な燃料需給にも影響します。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">食料安全保障</span><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>黒海・アゾフ海の相互攻撃で、小麦先物が3年ぶりの高値圏</h4>
+      <p><strong>ロシアとウクライナによる相互の商船・港湾攻撃が黒海とアゾフ海でおよそ2か月続き、双方の穀物輸出が細っています。この結果、小麦先物は3年ぶりの高値水準に達し、世界の食料供給への懸念が高まっています。</strong></p>
+      <p style="margin-top:10px;">具体的には、<strong>ロシア南部ノヴォロシースク港の主要な穀物ターミナル3か所(合計で年間およそ2,500万トンを扱う)が、8月半ばまでにすべて稼働停止となりました。</strong>また<strong>夏のある時点では、アゾフ・黒海経由のロシアの穀物輸出能力の9割超が停止した</strong>とされています。<strong>ロシアは世界最大の小麦輸出国です。</strong></p>
+      <p style="margin-top:10px;">ウクライナ側のノヴォロシースク攻撃(8月12日)では、<strong>8歳の子どもを含む3人が死亡し、24人が負傷したと報じられています。</strong>これは報道による数字であり、独立確認は取れていません。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 食料と燃料が同時に細る局面</h5>
+      <p><strong>いま起きているのは、中東でエネルギーが、黒海で食料と燃料が、それぞれ同時に細るという状況です。</strong>日本の消費者物価にとって、この2つは別々の経路で効いてきます。<strong>小麦はパン・麺・菓子へ、ディーゼルは物流コストを通じてほぼすべての品目へ</strong>波及します。</p>
+      <p style="margin-top:10px;"><strong>日本は小麦の大半を米国・カナダ・オーストラリアから輸入しており、黒海産に直接依存しているわけではありません。</strong>しかし<strong>国際価格は連動するため、産地が違っても価格の影響は受けます。</strong>ここは誤解されやすい点なので明示しておきます。</p>
+      <p style="margin-top:10px;"><strong>停戦・和平については、本レポート確定時点で「協議」「提案」「交渉開始」「合意」「停戦実施」のいずれの段階についても、新しい確認できる進展はありません。</strong>攻撃の応酬が続いている状態です。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.pravda.com.ua/eng/news/2026/08/29/8050963/index.amp" target="_blank" rel="noopener">Ukrainska Pravda(輸出禁止延長)</a> ・ <a class="src" href="https://www.cnbc.com/2026/08/13/ukraine-russia-novorossiysk-grain.html" target="_blank" rel="noopener">CNBC(ノヴォロシースク攻撃)</a> ・ <a class="src" href="https://www.aljazeera.com/news/2026/8/12/three-killed-in-overnight-attacks-on-russian-ukrainian-port" target="_blank" rel="noopener">Al Jazeera</a> ／ 攻撃回数・被害者数は当事者発表または報道であり、独立確認は取れていません。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 10. 通信 -->
+  <section class="quake" id="sec-telecom">
+    <div class="sec-head"><span class="tick"></span><span class="cat">通信インフラ</span><span class="sec-title">海底ケーブル投資が2000年以来の水準 <span class="sub">/ AIデータセンターが牽引</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>2026〜2029年に就航予定の海底ケーブルは160億ドル超</h4>
+      <p><strong>2026年から2029年にかけて就航が予定されている新規海底ケーブルの総額は160億ドルを超えます。これは2000〜2001年以来の投資水準です。</strong>大洋横断ケーブル1本の建設費は2億5,000万〜5億ドル、調査から運用開始まで2.5〜3.5年かかります。</p>
+      <p style="margin-top:10px;">過去3年では<strong>アジアが20億ドルで投資額の首位、太平洋横断ルートが17億ドルで続いています。</strong>また<strong>ハイパースケーラー(Google・Meta・Microsoft・Amazon)が世界の点灯容量の71%を占める</strong>とされています。</p>
+      <p style="margin-top:10px;">2026年に敷設予定のものとして、<strong>バヌアツ〜ニューカレドニア間の450kmのTamtamケーブル、ポルトガル沖の3,700kmのAtlantic CAMリング</strong>という2つのSMART(センサー搭載)システムが挙げられています。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 通信が「AIインフラの一部」になった</h5>
+      <p><strong>海底ケーブルの投資が2000年のITバブル期以来の水準に戻ったという事実は、通信インフラの位置づけが変わったことを示しています。</strong>かつては人が使うインターネットのための設備でしたが、<strong>いまはデータセンター同士をつなぐための設備という性格が強まっています。</strong>ハイパースケーラーが容量の71%を占めるという数字が、それを端的に表しています。</p>
+      <p style="margin-top:10px;"><strong>ここには集中リスクがあります。</strong>4社が容量の大半を握るということは、<strong>その4社の投資判断が各国の国際通信の可用性を左右する</strong>ということでもあります。またSMARTケーブルのようにセンサーを搭載する動きは、<strong>ケーブルが通信だけでなく海底の観測インフラも兼ねる</strong>方向を示しており、防災の観点からも継続観測の価値があります。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://resources.telegeography.com/building-tomorrows-internet-an-update-on-new-cable-investment" target="_blank" rel="noopener">TeleGeography(ケーブル投資)</a> ・ <a class="src" href="https://www.submarinenetworks.com/en/nv/insights/world-telecommunication-day-2026-special-issue-strengthening-the-digital-lifeline" target="_blank" rel="noopener">Submarine Networks</a> ／ 国内の大規模通信障害は、本レポート確定時点で新しい発生を確認していません。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 11. 古民家・不動産 -->
+  <section class="quake" id="sec-kominka">
+    <div class="sec-head"><span class="tick"></span><span class="cat">古民家・不動産</span><span class="sec-title">2026年度から住宅リフォーム減税の床面積要件が変更 <span class="sub">/ 第3研究所にも関係</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">一次情報で確認</span><span class="lab lab-imp">第3研究所へ共有</span></div>
+      <h4>リフォーム促進税制は制度ごとに条件が異なる。床面積要件は制度によって扱いが違う</h4>
+      <p><strong>「リフォーム減税」は単一の制度ではなく、対象工事の種類ごとに、税目・要件・期限が別々に定められています。</strong>国土交通省のリフォーム促進税制のページで確認できる範囲を、制度ごとに分けて整理します。</p>
+      <p style="margin-top:10px;"><strong>【所得税の税額控除】</strong>対象は<strong>耐震・バリアフリー・省エネ・同居対応・長期優良住宅化・子育て対応</strong>の各リフォームで、<strong>適用期限はいずれも令和10年12月31日</strong>です。<strong>子育て対応リフォームは令和6年度税制改正で創設され、その後延長されています。</strong><strong>床面積要件については、耐震リフォームは床面積の制限がない</strong>一方、<strong>バリアフリー・省エネ・長期優良住宅化については令和8年度改正で床面積要件が変更された</strong>と記載されています。</p>
+      <p style="margin-top:10px;"><strong>【固定資産税の減額】</strong>こちらは所得税とは別の制度で、対象は<strong>耐震(昭和57年以前の家屋)・バリアフリー(築10年以上)・省エネ(平成26年4月1日以前の家屋)・長期優良住宅化(認定取得が条件)</strong>。<strong>適用期限はいずれも令和13年3月31日</strong>です。<strong>建物の建築時期や築年数が条件になる点が、所得税の控除とは異なります。</strong></p>
+      <p style="margin-top:10px;"><strong>【令和8年度改正後の床面積要件】所得税の措置と固定資産税の措置で条件が異なります。</strong></p>
+      <p style="margin-top:10px;"><strong>所得税の措置 — 令和8年1月1日以降に居住を開始した場合、改修後の家屋の床面積は原則40㎡以上。ただし合計所得金額が1,000万円を超える方は50㎡以上です。</strong>従来は50㎡以上が原則だったため、<strong>所得1,000万円以下の方については要件が緩和された</strong>ことになります。</p>
+      <p style="margin-top:10px;"><strong>固定資産税の措置 — 令和8年4月1日以降に工事が完了した場合、床面積は40㎡以上240㎡未満です。</strong>こちらは<strong>下限の緩和と同時に240㎡未満という上限が設けられている</strong>点が、所得税の措置と異なります。</p>
+      <p style="margin-top:10px;"><strong>つまり「40㎡以上240㎡未満」という条件は固定資産税の措置のものであり、所得税の措置と同一ではありません。</strong>また<strong>所得税は「居住を開始した日」、固定資産税は「工事が完了した日」で適用時期が決まる</strong>という違いもあります。</p>
+      <p style="margin-top:10px;"><strong>古民家の再生・宿泊転用では、延床面積が240㎡を超える大型物件ほど、どちらの措置を使うかで結論が変わりえます。</strong></p>
+      <p style="margin-top:10px;">なお<strong>国税庁のタックスアンサー「No.1220 バリアフリー改修工事をした場合(住宅特定改修特別税額控除)」は、本レポート確定時点では「床面積が50平方メートル以上」「令和7年12月31日まで」という改正前の内容のままでした。</strong>個別の申告にあたっては、<strong>改正後の内容が反映された資料で確認されることをおすすめします。</strong></p>
+      <p style="margin-top:10px;">空き家の解体補助については、<strong>自治体単位の制度で、事前の現地調査や「特定空家」認定が要件になる例が多く、申請から交付決定まで標準的に3か月〜半年</strong>かかるとされています。また<strong>自治体によっては、補助を受けた後の一定期間、売却や建築等に条件を設ける例があります。</strong>これは<strong>全国共通のルールではなく、制度を設けている自治体ごとに内容が異なります。</strong>利用前に該当自治体の要綱をご確認ください。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 制度は「全国一律」ではない</h5>
+      <p><strong>古民家再生と空き家対策は、国の制度と自治体の制度が二層になっており、実際に使えるかどうかは自治体ごとに異なります。</strong>全国ニュースでは「補助金が使える」と報じられても、<strong>対象地域・要件・受付時期が合わなければ使えません。</strong></p>
+      <p style="margin-top:10px;"><strong>床面積要件の変更は、金額の大小ではなく「対象になるかならないか」を分ける条件の変更であるため、影響が大きい</strong>と考えています。とくに<strong>固定資産税の措置にある240㎡未満という上限は、古民家では現実に触れうる水準です。</strong>第3研究所の宿泊事業においても、<strong>改修計画を立てる段階で延床面積を確認しておく価値があります。</strong></p>
+      <p style="margin-top:10px;"><strong>あわせて注意したいのは、所得税の控除と固定資産税の減額が別制度であり、期限も要件も異なる点です。</strong>所得税側は令和10年12月31日まで、固定資産税側は令和13年3月31日まで。<strong>固定資産税側は建物の建築時期や築年数が条件になるため、古民家では「築年数が古すぎて対象外」ではなく、むしろ条件を満たしやすい場合があります。</strong>なお本項は制度の存在と枠組みの確認であり、<strong>個別案件が対象になるかの判断は、所管の税務署・自治体の担当課への確認が必要です。</strong></p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000248.html" target="_blank" rel="noopener">国土交通省 リフォーム促進税制(所得税・固定資産税)(一次情報)</a> ・ <a class="src" href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk4_000251.html" target="_blank" rel="noopener">国土交通省 住宅をリフォームした場合に使える減税制度(一次情報)</a> ・ <a class="src" href="https://www.mlit.go.jp/page/kanbo01_hy_010408.html" target="_blank" rel="noopener">国土交通省 令和8年度税制改正(一次情報)</a> ・ <a class="src" href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1220.htm" target="_blank" rel="noopener">国税庁 No.1220 バリアフリー改修工事をした場合(一次情報)</a> ・ <a class="src" href="https://www.mlit.go.jp/jutakukentiku/house/content/001423378.pdf" target="_blank" rel="noopener">国土交通省 空き家対策支援メニュー(一次情報・PDF)</a> ・ <a class="src" href="https://www.j-reform.com/zeisei/" target="_blank" rel="noopener">住宅リフォーム推進協議会</a> ／ <strong>令和8年度改正後の床面積要件(所得税=原則40㎡以上・合計所得金額1,000万円超は50㎡以上／固定資産税=40㎡以上240㎡未満)は、国土交通省の資料で確認しています。</strong>適用開始日(所得税=令和8年1月1日以降の居住開始、固定資産税=令和8年4月1日以降の工事完了)と適用期限(所得税=令和10年12月31日、固定資産税=令和13年3月31日)は国土交通省のページで確認しました。<strong>なお国土交通省ページからリンクされている要件詳細のPDFは、当方の自動取得ではHTTP 404で到達できていません。</strong>国税庁のタックスアンサーは確認時点で改正前(50㎡以上・令和7年12月31日まで)の内容でした。適用の可否は必ず所管の税務署・自治体にご確認ください。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 12. ロボット・自動車 -->
+  <section class="quake" id="sec-robotics">
+    <div class="sec-head"><span class="tick"></span><span class="cat">ロボット・自動車</span><span class="sec-title">自動運転は「実証」から「事業化」へ <span class="sub">/ 先行的事業化地域13地域、2027年度めど</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認できた事実</span></div>
+      <h4>2026年3月に全国13地域が「先行的事業化地域」に選定</h4>
+      <p><strong>2026年3月、自動運転の先行的事業化地域として全国13地域が選定されました。2027年度を目途とした事業化が目標として課されています。</strong>内容は<strong>自動運転タクシーの活用を目指す「最新技術活用型」から、凍結路面や電波の届かない区間といった課題に取り組む「技術的課題解決型」まで</strong>幅があります。</p>
+      <p style="margin-top:10px;">個別の動きとしては、<strong>日産自動車が横浜のみなとみらい・桜木町・関内エリアで2025年度から2026年度にかけて最大20台規模のサービス実証を実施</strong>しており、<strong>Waymoは2025年4月から東京都心7区で公道走行テストを開始</strong>しています。</p>
+    </div>
+
+    <div class="why">
+      <h5>研究所としての見方 — 「デモ」と「事業」を分ける指標</h5>
+      <p><strong>自動運転の記事を読むときに区別すべきなのは、走行できたかどうかではなく、①遠隔監視者1人あたり何台を見ているか ②有償運行か無償実証か ③運行設計領域(走ってよい範囲・天候・時間帯)がどこまで広いか</strong>の3点です。<strong>この3つが公開されていない発表は、技術デモとして読むのが安全です。</strong></p>
+      <p style="margin-top:10px;"><strong>「技術的課題解決型」という区分が置かれている点は、日本の実情に即していると評価できます。</strong>凍結路面や電波不感地は、晴天の都市部でのデモでは表面化しない一方、<strong>実際に自動運転が必要とされる地方の交通空白地では避けて通れない条件</strong>だからです。<strong>2027年度という期限が置かれていることで、成果が出たか出なかったかが判定できる形になっています。</strong></p>
+      <p style="margin-top:10px;">なお本項は<strong>2026年3月の選定という既報の整理であり、本日時点の新規発表ではありません。</strong>ヒューマノイド以外の現場実装(工場・物流・医療・介護・農業・災害救助)については、本レポート確定時点で新しい国内事例を確認できていません。</p>
+    </div>
+
+    <p class="srcline">出典 <a class="src" href="https://www.dir.co.jp/report/column/20260326_012403.html" target="_blank" rel="noopener">大和総研(2026年3月26日)</a> ・ <a class="src" href="https://special.nikkeibp.co.jp/atclh/ONB/26/mufg0325/" target="_blank" rel="noopener">日経ビジネス電子版 自動運転フォーラム2026</a> ／ 選定地域の一覧など一次情報(国土交通省・経済産業省の発表)には本レポート確定時点で未到達です。</p>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 13. 情報が薄かった分野 -->
+  <section class="quake" id="sec-thin">
+    <div class="sec-head"><span class="tick"></span><span class="cat">確認できなかったこと</span><span class="sec-title">今回情報が薄かった分野 <span class="sub">/ 情報がないことを改善と扱わない</span></span></div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">確認できず</span></div>
+      <h4>本日確認できなかった、または新しい動きがなかった項目</h4>
+      <p><strong>① 国内の大規模通信障害</strong> — 新しい発生を確認していません。<strong>② ヒューマノイド以外のロボット実装の新規国内事例</strong> — 工場・物流・医療・介護・農業・災害救助の分野で、本日時点の新規発表を確認できませんでした。<strong>③ 不動産価格・地価の新しい統計</strong> — 本日時点で新規公表を確認していません。<strong>④ 暗号資産</strong> — 本日のレポートに載せるべき重要な変化を確認できませんでした。<strong>⑤ ロシア・ウクライナの停戦協議</strong> — 「協議」「提案」「交渉開始」「合意」「停戦実施」のいずれについても新しい進展を確認していません。</p>
+      <p style="margin-top:10px;"><strong>⑥ 中東情勢の被害の第三者確認</strong> — 米・イラン双方の発表について、独立した検証機関による確認は取れていません。<strong>⑦ AI生成画像・動画の戦争/災害情報への混入</strong> — 本日確認した範囲では、今回引用した情報に画像・動画由来のものは含まれていません。</p>
+      <p style="margin-top:10px;"><strong>これらは「問題がない」という意味ではなく、「本日は確認できなかった」という意味です。</strong>情報がないことを改善と扱わず、翌号以降の継続観測に回します。</p>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <!-- 14. ウォッチリスト -->
+  <section class="quake" id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">今後の予定</span><span class="sec-title">ウォッチリスト <span class="sub">/ 日本時間</span></span></div>
+
+    <div class="item">
+      <div class="sp today"><span class="dt mono">9/3(木)</span><span class="ev"><b>台風24号が沖縄・奄美へ接近</b>。21時に奄美市の南西約120kmの見込み。前線による大雨は関東〜四国、北陸は警報級の可能性。</span></div>
+      <div class="sp today"><span class="dt mono">9/3(木)</span><span class="ev"><b>東京市場</b> — 9/2の米国市場の反発を引き継ぐか。長期金利が3%台にとどまるか。</span></div>
+      <div class="sp"><span class="dt mono">9/4(金)</span><span class="ev"><b>米8月雇用統計</b> 8:30 ET＝<b>日本時間21:30</b>。非農業部門雇用者数の予想+5.5万人(前回-2.3万人)、失業率4.1%(前回4.1%)、平均時給前年比+3.0%(前回+3.2%)。<b>今週最大の分岐点。</b></span></div>
+      <div class="sp"><span class="dt mono">9/4〜5</span><span class="ev"><b>大雨の継続</b> — 前線と台風周辺の湿った空気により、関東〜四国で大雨のおそれが続く見込み。</span></div>
+      <div class="sp"><span class="dt mono">9/4(金)</span><span class="ev"><b>台風18号</b>が熱帯低気圧に変わり華南へ達する見込み(4日15時)。</span></div>
+      <div class="sp"><span class="dt mono">9/9(水)</span><span class="ev"><b>経済産業省GENIAC</b> 事業計画発表会(キックオフ)・中間報告会・成果報告会。国内AI基盤モデル開発の現在地が一次情報でまとまる機会。</span></div>
+      <div class="sp"><span class="dt mono">9/30まで</span><span class="ev"><b>ロシアのディーゼル等輸出禁止</b>の期限。延長・解除の判断が国際的な燃料需給に影響。</span></div>
+      <div class="sp"><span class="dt mono">継続</span><span class="ev"><b>ホルムズ海峡の通航隻数</b>(Kpler)・<b>米10年債利回りが4.8%台に定着するか</b>・<b>OpenAI Astraの提供開始とアクセス制限の運用</b>・<b>熊本地震の第12報</b>。</span></div>
+    </div>
+    <div class="backtop"><a href="#top">↑ 上へ戻る</a></div>
+  </section>
+
+  <footer class="foot">
+    <div class="askai">
+      <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+      <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。</p>
+      <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。</p>
+      <div class="askai-box">
+        <textarea class="askai-q" id="askaiQ" readonly rows="2">この朝レポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+        <button type="button" class="askai-copy" id="askaiCopyBtn">コピー</button>
+      </div>
+      <div class="askai-links">
+        <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1) ↗</a>
+        <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2) ↗</a>
+        <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3) ↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--ink-3);text-align:center;margin-top:10px;">(1)(2)(3)はそれぞれ普段お使いのAIチャットサービスに対応しています。「〇〇」の部分を気になった項目名に書き換えてからお使いください。レポート本文は自動送信されません。<br>対イラン攻撃の継続有無、ホルムズ海峡の通航隻数、日本の長期金利、OpenAI Astraの提供状況は、続報が出た段階で毎日版で追います。</p>
+    </div>
+    <p style="text-align:center;margin-top:16px;"><a href="index.html" style="font-size:12.5px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);">← レポート一覧へ戻る</a></p>
+    <p class="disc">本レポートはAI総合研究機構の朝の共有レポートです。本日9月3日(木)は、米国9月2日(水)の通常取引が終了しているため、市場関連数値を9月1日終値から9月2日終値へ更新しました。ただし取引所の公式確定値には到達できておらず、原油・為替は取得時刻・情報源により同日中でも幅があるため、本文で基準時刻と情報源を明記しています。米軍による2回目の対イラン攻撃については、CENTCOMの発表、イラン国営系メディアの報道、イラン側の主張、米当局者の説明という層を分けて記載し、独立検証されていない事項は断定していません。とくに民間人被害と米兵の死傷については双方の説明が食い違っており、第三者確認が取れていない旨を明示しています。ホルムズ海峡の通航隻数は、AISを切って航行する船舶が集計に含まれないため「実際の全通航隻数」ではない旨を明示し、1日の数字だけで正常化・悪化と断定せず数日間の推移とEIAの四半期統計を併記しています。OpenAIのサイバー能力「Critical」判定は同社の自己評価であって外部認定ではないこと、「AIが攻撃した」事案ではないことを明記しました。青森県の記録的大雨は、気象庁「観測史上1位の値 更新状況」の一次情報で観測値・従前記録・統計開始年を確認し、被害・避難の数字は報道による暫定値である旨を分けて記載しています。ネパールの災害は「豪雨災害」ではなく氷河崩壊を起点とする連鎖的な災害として整理し、死者・行方不明者は当局発表であること、捜索の進展にともなって更新幅が大きいこと、確認時点を明記しています。リフォーム促進税制は所得税の控除と固定資産税の減額を分け、制度ごとに税目・対象・期限・床面積の扱いを整理しました。令和8年度改正後の床面積要件は、所得税の措置が原則40㎡以上(合計所得金額1,000万円超は50㎡以上)、固定資産税の措置が40㎡以上240㎡未満であり、「40㎡以上240㎡未満」は固定資産税の措置の条件であって所得税の措置と同一ではない旨を明記しました。適用開始日も所得税は居住開始日(令和8年1月1日以降)、固定資産税は工事完了日(令和8年4月1日以降)と異なります。国税庁のタックスアンサーは確認時点で改正前の内容のままであったため、その旨も併記しています。ネパールの人的被害は、9月2日中でも発表主体・集計時刻・報道によって死者1,114人〜1,204人、行方不明2,916人〜4,200人超と大きく変動し、中国側も更新が続いているため、本号では確定値として扱わず幅のまま記載しています。捜索中の災害では確定値が存在しないという性質そのものも本文で説明しました。AI関連は、OpenAI「Path to Astra」、Google公式ブログ「Introducing Gemini 3.8 Flash and 3.8 Flash Cyber」、Alibaba Cloud Model Studioの公式ドキュメントを一次情報として出典の先頭に置きました。自治体の解体補助における売却・建築の条件は、全国共通ルールではなく自治体ごとに異なる旨へ表現を改めました。テキサス州のデータセンター系統接続の停止、NVIDIAの資金供与、自動運転の先行的事業化地域は、いずれも本日の新規事象ではなく既報の整理である旨を本文に記載しています。確認できないことは推測で埋めず「確認できず」「未到達」と明示し、情報がないことを改善と扱うことはしません。／ 論調の目安:ポジティブ4割・中立4割・注意/ネガティブ2割を目安に編集していますが、災害・重大リスクに関する情報はこの比率に関係なく目立つ位置に掲載しています。事実と観測・見方・予測は区別して記載し、確定していない見立ては「見方」「観測」「可能性」「予報」と明記しています。政治的に敏感な話題(米・イラン情勢、ロシア・ウクライナ情勢等)についても、重要度を理由に除外はせず、確認できる事実・各当事者の主張・経済/生活/安全保障への影響を分けて記載し、特定の立場への支持・批判は行っていません。／ 情報源は一次情報を優先しています(気象庁の熊本地震ポータル・気象庁台風情報・EIA短期エネルギー見通し・国土交通省・経済産業省GENIAC・内閣府AI戦略へ直接リンク)。モデル公開情報など一次情報に到達できなかったものは、その旨を出典欄に明記しています。ニュース・解説の情報源は特定媒体に偏らないよう複数媒体に分散しています。／ 数値は出典元の直近値、チャートはTradingViewのライブデータです。いずれも情報提供が目的で、投資判断への助言ではありません。／ <strong>本号の情報基準時刻: 2026年9月3日 朝(日本時間)。</strong>以後の新しい動きは原則として翌号(D39)の継続観測へ回し、重大な事実誤認が判明した場合のみ本号を再修正します。／ 生成:2026年9月3日。</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var ta = document.getElementById('askaiQ');
+  if(!btn || !ta) return;
+  btn.addEventListener('click', function(){
+    function showCopied(){
+      var orig = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('is-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('is-copied'); }, 2000);
+    }
+    function fallback(){
+      ta.removeAttribute('readonly');
+      ta.focus();
+      ta.select();
+      try{
+        if(document.execCommand('copy')) showCopied();
+      }catch(e){}
+      ta.setAttribute('readonly', 'readonly');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(showCopied, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
