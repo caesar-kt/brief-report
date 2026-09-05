@@ -264,6 +264,102 @@
   .dmg .v{font-size:19px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
   .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
   @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  /* ===== 3段階構造の見出し ===== */
+  .tier{display:flex;align-items:flex-start;gap:15px;margin:42px 0 6px;padding:20px 20px 18px;
+    border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh-2);}
+  .tier-no{flex:none;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;
+    justify-content:center;font-size:19px;font-weight:800;color:#fff;letter-spacing:-.02em;}
+  .tier.t1 .tier-no{background:linear-gradient(160deg,var(--brand),var(--brand-2));}
+  .tier.t2 .tier-no{background:linear-gradient(160deg,#0E9F6E,#4BC49A);}
+  .tier.t3 .tier-no{background:linear-gradient(160deg,var(--slate),#7A8BA6);}
+  .tier-name{font-size:19px;font-weight:800;letter-spacing:-.015em;line-height:1.35;}
+  .tier-desc{font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-top:5px;}
+
+  /* ===== 第1段階：今日いちばん重要なこと ===== */
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+
+  /* ===== 第1段階：分野ひとこと ===== */
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+
+  /* ===== 第2段階：分野別ダイジェスト ===== */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .tier{gap:12px;padding:16px 15px;} .tier-no{width:38px;height:38px;font-size:16px;}
+    .tier-name{font-size:16.5px;} .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  /* 第3段階：分野ごとの詳細を折りたたむ（内容は削らず、閉じているだけ） */
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
 </style>
 </head>
 <body>
@@ -311,7 +407,18 @@
     </ol>
   </nav>
 
-  <!-- 1. 30秒 -->
+  <div class="tier t1">
+    <div class="tier-no">1</div>
+    <div>
+      <div class="tier-name">3分でわかるこの2週間</div>
+      <div class="tier-desc">数字と一行の要点だけを置いています。ここだけで全体像がつかめます。詳しい根拠は第3段階にすべて残してあります。</div>
+    </div>
+  </div>
+
+  <div class="kbox">
+    <div class="kbox-lab">この2週間でいちばん大きく変わったこと</div>
+    <p><strong>中東が「制裁の話」から「実弾の応酬」へ変わり、それが原油・物価を通じて世界の債券市場まで届きました。</strong>8/24の対イラン制裁発表では<strong>原油はむしろ下落</strong>し、8/30の米軍によるララク島攻撃から局面が変わりました。同じ2週間に<strong>日本の10年国債利回りが9/1に1996年以来の3%</strong>へ達し、<strong>9/4の米8月雇用統計は+162,000人</strong>で予想の約3倍でした。<strong>いま議論されているのは利下げではなく利上げです。</strong></p>
+  </div>
   <section id="sec-30sec">
     <div class="sec-head"><span class="tick"></span><span class="cat">Summary</span><span class="sec-title">30秒で見るこの2週間 <span class="sub">/ 数字だけを並べます</span></span></div>
 
@@ -338,10 +445,176 @@
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
   </section>
-  <!-- 2. 結論 -->
-  <section id="sec-conclusion">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Conclusion</span><span class="sec-title">今回の結論 <span class="sub">/ 2週間で前提がどう変わったか</span></span></div>
 
+  <div class="glance">
+    <div class="gl"><span class="gl-k">結論1</span><span class="gl-t">中東が<b>制裁の話から実弾の応酬</b>へ。それが原油を通じて<b>金利まで届いた</b></span></div>
+    <div class="gl"><span class="gl-k">結論2</span><span class="gl-t">世界の金利上昇は<b>「日本発」の側面</b>を持つ。これはレジームの変化にあたる</span></div>
+    <div class="gl"><span class="gl-k">結論3</span><span class="gl-t"><b>1日の動きと最終週の動きは逆を向く</b>ことがある。終値・高値・期間変化率は混ぜない</span></div>
+    <div class="gl"><span class="gl-k">ドル</span><span class="gl-t">9月FOMCの利上げ織り込みは2週間で<b>35→57→63.2→50.4→54→約60%</b>と往復。<b>方向はまだ定まっていない</b></span></div>
+    <div class="gl"><span class="gl-k">金利</span><span class="gl-t">日本10年が<b>3.0%（1996年以来）</b>、30年は過去最高。英は2008年以来、独は2011年以来</span></div>
+    <div class="gl"><span class="gl-k">エネルギー</span><span class="gl-t">ブレント<b>92.68ドル（週間+7.6%）</b>・WTI<b>91.48ドル（週間ほぼ+10%）</b>。米小売ディーゼルは過去最高値</span></div>
+    <div class="gl"><span class="gl-k">ホルムズ</span><span class="gl-t">通航は9/3（木）に<b>4隻</b>（10日平均 約15隻、平時は大型商船 約125隻/日）</span></div>
+    <div class="gl"><span class="gl-k">災害</span><span class="gl-t">台風は18号と24号が日本に影響。<b>ネパール洪水の数字はいまも確定していない</b></span></div>
+    <div class="gl"><span class="gl-k">AI・半導体</span><span class="gl-t">NVIDIA×Hugging Faceが9/3に正式発表。論点は金額より<b>流通層を誰が持つか</b></span></div>
+    <div class="gl"><span class="gl-k">AI安全性</span><span class="gl-t">2週間で<b>性質の違う2件</b>のエージェント事案。能力の閾値・訴訟・投資も動いた</span></div>
+    <div class="gl"><span class="gl-k">通信</span><span class="gl-t">通信会社が<b>電力と冷却の会社</b>になりつつある。設備計画の語彙が発電所側へ寄った</span></div>
+    <div class="gl"><span class="gl-k">古民家</span><span class="gl-t">最大の変化は<b>制度ではなく金利</b>。3%台が資金計画の前提を変える</span></div>
+    <div class="gl"><span class="gl-k">答え合わせ</span><span class="gl-t">12件。<b>当たり5・外れ1・保留2・前提変更4</b>。外した1件も理由を残す</span></div>
+    <div class="gl"><span class="gl-k">来週</span><span class="gl-t">9/8 日本GDP改定値／9/10 ECB・米PPI／9/11 米CPI／9/15〜16 FOMC（SEP付き）</span></div>
+  </div>
+
+  <div class="divider"><span>Charts — 期間の値動きを図で見る</span></div>
+
+  <p class="note"><strong>下のチャートは外部サービス（TradingView）を読み込んで表示しています。</strong>読み込めない環境でも、本文の数値・出典・時点はすべてHTML内に書いてあるため、<strong>チャートが表示されなくても本号は最後まで読めます。</strong>表示は日本時間（Asia/Tokyo）です。<strong>本号の記載値は本文に書いた時点の確定値であり、チャートは常に最新値を表示するため一致しないことがあります。</strong></p>
+
+  <div class="cw">
+    <div class="cw-head"><span class="cw-name">USD/JPY <span class="sub">/ ドル円</span></span>
+      <span class="tfs"><button class="tf" data-i="60">1時間</button><button class="tf" data-i="D" aria-pressed="true">日足</button><button class="tf" data-i="W">週足</button></span></div>
+    <div class="chost" data-sym="FX:USDJPY" data-i="D"></div>
+    <div class="cw-foot">本号の記載：週初<strong>160.39円</strong>／9/4安値<strong>155.25円</strong>／NY終盤<strong>156.19円前後</strong>。最終週で円は約2.5%上昇しました。</div>
+  </div>
+
+  <div class="cw">
+    <div class="cw-head"><span class="cw-name">ブレント原油 <span class="sub">/ 制裁発表時は下落、実弾で上昇</span></span>
+      <span class="tfs"><button class="tf" data-i="60">1時間</button><button class="tf" data-i="D" aria-pressed="true">日足</button><button class="tf" data-i="W">週足</button></span></div>
+    <div class="chost" data-sym="TVC:UKOIL" data-i="D"></div>
+    <div class="cw-foot">本号の記載：<strong>9/4清算値 92.68ドル（週間+7.6%）</strong>。8/24の制裁発表時はむしろ下落していました。WTIは<strong>91.48ドル（週間ほぼ+10%）</strong>です。</div>
+  </div>
+
+  <div class="cw">
+    <div class="cw-head"><span class="cw-name">米2年国債利回り <span class="sub">/ FOMC観測がいちばん出る年限</span></span>
+      <span class="tfs"><button class="tf" data-i="60">1時間</button><button class="tf" data-i="D" aria-pressed="true">日足</button><button class="tf" data-i="W">週足</button></span></div>
+    <div class="chost" data-sym="TVC:US02Y" data-i="D"></div>
+    <div class="cw-foot">本号の記載：<strong>9/4は4.39%（+5.3bp）</strong>、雇用統計後に一時+8bpまで上昇。米10年は<strong>4.782%（+1.8bp）</strong>、30年は<strong>5.27%</strong>です。</div>
+  </div>
+
+  <div class="cw">
+    <div class="cw-head"><span class="cw-name">日経225先物 <span class="sub">/ 2週間でマイナスに終わった唯一の主要指数</span></span>
+      <span class="tfs"><button class="tf" data-i="60">1時間</button><button class="tf" data-i="D" aria-pressed="true">日足</button><button class="tf" data-i="W">週足</button></span></div>
+    <div class="chost" data-sym="OSE:NK2251!" data-i="D"></div>
+    <div class="cw-foot">本号の記載：日経平均は<strong>66,016.36 → 65,020.94（-995・-1.51%）</strong>。9/2に<strong>-1,889.70円（-2.85%）</strong>と急落し、9/4に<strong>+806.46円（+1.26%）</strong>戻しました。<strong>先物と現物指数は値が異なります。</strong></div>
+  </div>
+
+  <p class="note"><strong>DXYのチャートは表示検証が十分でないため、本号では掲載していません。</strong>最終週の変化は本文の数値で記録しています。</p>
+
+
+  <div class="tier t2">
+    <div class="tier-no">2</div>
+    <div>
+      <div class="tier-name">分野別ダイジェスト</div>
+      <div class="tier-desc">分野ごとに「何が起きた」「2週間で何が変わった」「次に何を見る」の3点だけを置いています。詳しい根拠・一次情報・当事者の主張は第3段階で開けます。</div>
+    </div>
+  </div>
+
+  <div class="dgrid">
+
+    <div class="dg">
+      <div class="dg-h"><em>結論</em>前提がどう変わったか</div>
+      <div class="dg-r"><span>何が起きた</span><span>結論は3つ。①中東が制裁の話から実弾の応酬へ変わり<b>金利まで届いた</b>、②世界の金利上昇は<b>「日本発」の側面</b>を持つ、③1日の動きと最終週の動きは逆を向くことがある</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>②は<b>レジームの変化</b>にあたります。これまで日本は世界の金利を抑える側にいました</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>終値・高値・安値・期間変化率を<b>混ぜないこと</b>。混ぜると逆の結論になります</span></div>
+      <div class="dg-go"><a href="#sec-conclusion">結論3件の全文を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>市場・ドル</em>何がドルを動かしたか</div>
+      <div class="dg-r"><span>何が起きた</span><span>9/4の米8月雇用統計が<b>+162,000人</b>（予想+53,000人の約3倍）。米2年債は<b>4.39%</b>へ上昇し、利上げ織り込みは前日の54%から<b>約60〜61%</b>へ</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>2週間の織り込みは<b>35→57→63.2→50.4→54→約60%</b>と往復。<b>方向はまだ定まっていません</b></span></div>
+      <div class="dg-r w"><span>次に見る</span><span>米経済指標→米2年債→FOMC織り込み→DXY→USD/JPY という順番。<b>米国側の要因と日本側の要因は分けて読みます</b></span></div>
+      <div class="dg-go"><a href="#sec-market">為替・金利・株式の全文を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>災害</em>発生・拡大・復旧・継続警戒</div>
+      <div class="dg-r"><span>何が起きた</span><span>茨城県南部<b>M5.9</b>・浦河沖<b>M6.0</b>、北陸の記録的大雨（羽咋市で<b>6時間237.5mm</b>）、福井市が<b>38,977世帯95,161人</b>に警戒レベル5、青森で観測史上1位の線状降水帯</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>熊本地震の断水は<b>8/28に県内全域で解消</b>。台風は多く発生しましたが、日本に影響したのは<b>18号と24号</b>です</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>台風24号の実被害と鹿児島県の警報状況。<b>ネパール洪水の数字はいまも確定していません</b></span></div>
+      <div class="dg-go"><a href="#sec-disaster">時間軸で並べた全記録を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>エネルギー</em>制裁から実弾、そして価格へ</div>
+      <div class="dg-r"><span>何が起きた</span><span>8/24の制裁発表では<b>原油はむしろ下落</b>。8/30の米軍によるララク島攻撃から局面が変わり、9/1・9/2と攻撃が続きました</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>ブレント<b>92.68ドル（週間+7.6%）</b>、WTI<b>91.48ドル（週間ほぼ+10%）</b>。<b>米国の小売ディーゼルは過去最高値</b>を更新</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>ホルムズ通航は9/3に<b>4隻</b>（10日平均 約15隻）。<b>AISを切る船は含まれず、集計主体で値が食い違います</b></span></div>
+      <div class="dg-go"><a href="#sec-energy">2週間の流れと価格を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>AI・半導体</em>流通層の所有と制御</div>
+      <div class="dg-r"><span>何が起きた</span><span>NVIDIA×Hugging Faceが9/3に正式発表。<b>129億3,030万ドル</b>、開発者<b>1,800万人以上</b>の配布基盤。NVIDIA過去最大で、Mellanoxの約2倍</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>8/30時点では<b>報道段階</b>として扱っていたものが正式発表に。論点は金額から<b>「流通層を誰が持つか」</b>へ移りました</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>エージェント事案は<b>性質の違う2件</b>（企業自身の報告と研究者の分析）。<b>「承認されるか」ではなく「どんな条件が付くか」</b></span></div>
+      <div class="dg-go"><a href="#sec-ai">事実・企業側の主張・批判側の見方を読む →</a></div>
+    </div>
+
+  </div>
+  <div class="dgrid">
+
+    <div class="dg">
+      <div class="dg-h"><em>通信</em>電力と冷却の会社へ</div>
+      <div class="dg-r"><span>何が起きた</span><span>NTTが<b>192コアの海底ケーブル</b>（伝送容量4倍）を開発し、受電容量を2033年度までに<b>1ギガワット</b>へ。KDDIは3か年<b>1.2兆円</b>の「Digital Belt」</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>8/25、<b>米テキサス州でAIデータセンターの電力接続申請が事実上凍結</b>。AI需要が電力・土地・水という物理の制約に突き当たり始めました</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>2029年開設予定の品川（液冷）と福岡（海底ケーブル直結）。<b>この2週間、国内の全国規模の重大な通信障害は確認していません</b></span></div>
+      <div class="dg-go"><a href="#sec-telecom">各社の計画と電力制約を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>ロボット</em>走れることと働けること</div>
+      <div class="dg-r"><span>何が起きた</span><span>北京の世界人型ロボット競技大会が8/26閉幕。100m走はTiangong Ultraが決勝<b>8.64秒</b>（9.39秒→8.86秒→8.64秒と推移）で、人間の世界記録9.58秒を約1秒上回りました</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>同時に<b>発火事故</b>も報告され、制動・精密作業の課題が確認されました。「走る・格闘する」能力と「工場で仕事をする」能力には大きなギャップがあります</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>Digitは9拠点で累計<b>65,000時間超</b>。ただし<b>汎用エージェントがロボットの行動計画を直接生成する商用事例には到達していません</b></span></div>
+      <div class="dg-go"><a href="#sec-robot">大会結果と研究所の見方を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>古民家・不動産</em>金利3%台の意味</div>
+      <div class="dg-r"><span>何が起きた</span><span>2026年度より、バリアフリー・省エネ・長期優良住宅化リフォームの税制優遇の床面積要件が<b>40㎡以上240㎡未満</b>へ変更されています</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>この2週間の最大の変化は<b>制度ではなく金利</b>でした。全国規模の新しい制度発表は確認できていません</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>①固定金利の前提が変わった ②変動金利は日銀会合で別経路で上がり得る ③円高は輸入コストを下げる。<b>方向が逆の力が同時に働いています</b></span></div>
+      <div class="dg-go"><a href="#sec-house">制度3種と資金計画の論点を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>答え合わせ</em>外した分も載せる</div>
+      <div class="dg-r"><span>何が起きた</span><span>2週間で<b>12件</b>を検証しました。<b>当たり5件・外れ1件・保留2件・前提変更4件</b>です</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>「雇用は失速している」という前提そのものが崩れ、日銀は0.50%説から0.25%へ、台風24号は接近時期も向きも変わり、ホルムズ通航は<b>数字そのものが繰り返し改定</b>されました</span></div>
+      <div class="dg-r w"><span>次に見る</span><span><b>大事なのは数ではありません。</b>外れた1件も前提が変わった4件も、なぜそうなったかを残すことに意味があります</span></div>
+      <div class="dg-go"><a href="#sec-check">12件すべての検証を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>来週</em>3つの数字が同じ方向を向くか</div>
+      <div class="dg-r"><span>何が起きた</span><span>9/7（月）米Labor Dayで休場／9/8（火）日本GDP改定値・5年国債入札／9/10（木）21:15 ECB・21:30 米PPI／9/11（金）21:30 米CPI</span></div>
+      <div class="dg-r"><span>何が変わった</span><span><b>9/5からFRBはブラックアウト</b>。強い雇用統計に対する当局者の反応を、FOMCまで聞くことはできません</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>ECBの0.25%利上げ確率は最新のロイター報道で<b>約99%</b>。<b>いま議論されているのは、どこも利下げではなく利上げです</b></span></div>
+      <div class="dg-go"><a href="#sec-next">日程と継続観測項目を読む →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>編集方針</em>推測で埋めていない項目</div>
+      <div class="dg-r"><span>何が起きた</span><span>本号で確認できなかった項目を明示しています。鹿児島県の警報段階、ネパール洪水の確定値、2週間全体のDXY変化率などです</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>異なる時刻・異なる発表主体の数字は<b>合算していません</b>。事実／当事者の主張／研究所の見方／予測を分けています</span></div>
+      <div class="dg-r w"><span>次に見る</span><span><b>「確認できていない」は「問題がない」ではありません。</b>推測で埋めた箇所はありません</span></div>
+      <div class="dg-go"><a href="#sec-policy">編集方針の全文を読む →</a></div>
+    </div>
+
+  </div>
+
+  <div class="tier t3">
+    <div class="tier-no">3</div>
+    <div>
+      <div class="tier-name">詳細・根拠・検証</div>
+      <div class="tier-desc">ここに一次情報・数値・時系列・当事者の主張・答え合わせ12件・未確認事項をすべて残しています。<strong>見出しを開くと、一次情報・数値・時系列・当事者の主張・答え合わせ12件・未確認事項まで詳しく読めます。</strong></div>
+    </div>
+  </div>
+
+  <!-- 2. 結論 -->
+  <section id="sec-conclusion"><div class="sec-head"><span class="tick"></span><span class="cat">Conclusion</span><span class="sec-title">今回の結論 <span class="sub">/ 2週間で前提がどう変わったか</span></span></div>
+
+    <details class="dd sec-dd">
+      <summary>今回の結論 — 3つの結論の全文と根拠を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">最重要</span></div>
       <h4>結論1：中東が「制裁の話」から「実弾の応酬」へ変わり、それが金利まで届いた</h4>
@@ -372,12 +645,16 @@
       <p style="margin-top:10px;"><strong>つまり「金曜はドル高だった一方、最終週ではDXYが約0.7%下落し、円は約2.5%上昇した」ということです。なお2週間全体のDXY変化率は、起点の水準を確認できていないため算出していません。</strong>1日の値動きを期間の傾向として書くと、逆の結論になります。<strong>終値・高値・安値・期間変化率を必ず分けてください。</strong></p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
 
   <!-- 3. 市場・ドル・FOMC -->
-  <section id="sec-market">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Market</span><span class="sec-title">市場・ドル・FOMC・金利 <span class="sub">/ 何がドルを動かしたのかを順に追う</span></span></div>
+  <section id="sec-market"><div class="sec-head"><span class="tick"></span><span class="cat">Market</span><span class="sec-title">市場・ドル・FOMC・金利 <span class="sub">/ 何がドルを動かしたのかを順に追う</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>市場・ドル・FOMC・金利 — 為替・金利・株式の全文を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">今回の最重点</span><span class="lab lab-fact">BLS一次情報を含む</span></div>
       <h4>米経済指標 → 米2年債 → FOMC織り込み → DXY → USD/JPY</h4>
@@ -415,11 +692,15 @@
       <p style="margin-top:10px;"><strong>【FOMC観測が主因の日】</strong>9/3（ウォーラー発言で3指数そろって1%超上昇）と9/4（雇用統計で3指数そろって下落）。<strong>わずか1営業日で方向が反転しており、いまの株価は企業業績よりも「次のFOMCで利上げがあるか」に強く反応する状態</strong>にあります。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 4. 災害 -->
-  <section id="sec-disaster">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Disaster</span><span class="sec-title">災害 <span class="sub">/ 発生・被害拡大・復旧・継続警戒を時間軸で</span></span></div>
+  <section id="sec-disaster"><div class="sec-head"><span class="tick"></span><span class="cat">Disaster</span><span class="sec-title">災害 <span class="sub">/ 発生・被害拡大・復旧・継続警戒を時間軸で</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>災害 — 発生・被害拡大・復旧・継続警戒の全記録を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-fact">各機関の公式発表</span><span class="lab lab-warn">異なる時刻の数字は合算しない</span></div>
       <h4>国内：この2週間に起きたこと</h4>
@@ -451,11 +732,15 @@
       <p style="margin-top:10px;"><strong>ここで一つ、記録として残します。</strong>期間中に「台風19号を最重点で」という指示を受けた日がありましたが、<strong>実際の19号は発達の弱い台風で日本への影響がありませんでした。</strong>当研究所はそのまま重点扱いにせず、<strong>実際の勢力と進路に基づいて扱いを決めています。</strong>指示と実態が食い違うときは実態を優先する——この判断は今後も維持します。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 5. 中東・エネルギー -->
-  <section id="sec-energy">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Energy</span><span class="sec-title">中東・ホルムズ・エネルギー <span class="sub">/ 制裁から実弾へ、そして価格へ</span></span></div>
+  <section id="sec-energy"><div class="sec-head"><span class="tick"></span><span class="cat">Energy</span><span class="sec-title">中東・ホルムズ・エネルギー <span class="sub">/ 制裁から実弾へ、そして価格へ</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>中東・ホルムズ・エネルギー — 2週間の流れと価格の全文を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">今回の主要テーマ</span><span class="lab lab-warn">双方の主張は独立確認できていない</span></div>
       <h4>2週間の流れを一本で追う</h4>
@@ -490,11 +775,15 @@
       <p style="margin-top:10px;"><strong>【日本への影響】</strong>日本は原油のほぼ全量を輸入し、その多くが中東からです。<strong>ただし最終週は円が約2.5%上昇しており、円高は輸入価格を押し下げる方向に働きます。原油高と円高が同時に起きているため、円建ての輸入コストへの影響は、ドル建ての上昇率ほど単純ではありません。</strong>海運では商船三井が、混乱は従来想定より長引き年内の正常化はないとの見通しを示したと報じられています（同社の見通しであり確定した事実ではありません）。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 6. AI・半導体 -->
-  <section id="sec-ai">
-    <div class="sec-head"><span class="tick"></span><span class="cat">AI</span><span class="sec-title">AI・半導体 <span class="sub">/ 流通層の所有と、エージェントの制御</span></span></div>
+  <section id="sec-ai"><div class="sec-head"><span class="tick"></span><span class="cat">AI</span><span class="sec-title">AI・半導体 <span class="sub">/ 流通層の所有と、エージェントの制御</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>AI・半導体 — 事実・企業側の主張・批判側の見方を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">週刊の論点</span></div>
       <h4>NVIDIA × Hugging Face：金額より「流通層を誰が持つか」</h4>
@@ -528,11 +817,15 @@
       <p style="margin-top:10px;"><strong>資金面の観測</strong>：ハイパースケーラーの社債発行額は2026年にこれまでで<strong>約2,200億ドル</strong>に達し、投資適格社債の発行全体（約1.68兆ドル）との対比や、<strong>国債市場との資金競合</strong>が観測テーマとして浮上しています。<strong>金利が上がっている局面で、AI投資の資金調達コストも上がる——この2つは無関係ではありません。</strong></p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 7. 通信 -->
-  <section id="sec-telecom">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Telecom</span><span class="sec-title">通信・データセンター <span class="sub">/ 通信会社が電力と冷却の会社になりつつある</span></span></div>
+  <section id="sec-telecom"><div class="sec-head"><span class="tick"></span><span class="cat">Telecom</span><span class="sec-title">通信・データセンター <span class="sub">/ 通信会社が電力と冷却の会社になりつつある</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>通信・データセンター — 各社の計画と電力制約を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-fact">各社発表</span></div>
       <h4>この2週間で確認できたこと</h4>
@@ -543,12 +836,16 @@
       <p style="margin-top:10px;"><strong>この節は新情報が限られるため、これ以上は広げません。</strong></p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
 
   <!-- 8. ロボット -->
-  <section id="sec-robot">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Robot</span><span class="sec-title">ロボット・自動車 <span class="sub">/ 詳細は日曜特集S2で深掘り済み</span></span></div>
+  <section id="sec-robot"><div class="sec-head"><span class="tick"></span><span class="cat">Robot</span><span class="sec-title">ロボット・自動車 <span class="sub">/ 詳細は日曜特集S2で深掘り済み</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>ロボット・自動車 — 大会結果と研究所の見方を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-fact">大会公式・報道</span></div>
       <h4>この2週間の変化だけを拾います</h4>
@@ -559,12 +856,16 @@
       <p style="margin-top:10px;"><strong>【研究所としての見方】</strong>AIエージェントの逸脱事案（AI章）と、物理ロボットの現場投入は、本来つながる話です。<strong>DseWikiで起きたのは「ソフトウェア上のエージェントが想定外の場所に情報を残した」ことで、被害はページ削除の作業で済みました。同じ性質の逸脱が物理的に動くロボットの制御側で起きた場合、結果は同じでは済みません。</strong>現時点で倉庫のヒューマノイドはタスクが限定され動作範囲も物理的に区切られており、<strong>汎用エージェントがロボットの行動計画を直接生成する構成が商用で走っている事例には到達していません。</strong>この接続点に関する新しい研究・実装も、本期間中には確認できませんでした。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
 
   <!-- 9. 古民家・不動産 -->
-  <section id="sec-house">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Property</span><span class="sec-title">古民家・不動産 <span class="sub">/ 金利3%台が意味すること</span></span></div>
+  <section id="sec-house"><div class="sec-head"><span class="tick"></span><span class="cat">Property</span><span class="sec-title">古民家・不動産 <span class="sub">/ 金利3%台が意味すること</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>古民家・不動産 — 制度と資金計画の論点を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">第2・第3研究所の横断テーマ</span></div>
       <h4>この2週間で最も大きな変化は、制度ではなく金利でした</h4>
@@ -578,11 +879,15 @@
       <p style="margin-top:10px;"><strong>制度・補助金の話と同じくらい、調達コストの前提を更新することが重要な局面です。</strong>これは第3研究所の宿泊プラットフォーム設計にも直接関わります。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 10. 答え合わせ -->
-  <section id="sec-check">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Check</span><span class="sec-title">答え合わせ <span class="sub">/ 外した分・前提が変わった分も載せます</span></span></div>
+  <section id="sec-check"><div class="sec-head"><span class="tick"></span><span class="cat">Check</span><span class="sec-title">答え合わせ <span class="sub">/ 外した分・前提が変わった分も載せます</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>答え合わせ12件 — 当たり5・外れ1・保留2・前提変更4の全文を開く</summary>
+      <div class="ddbody">
     <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:6px;">対象期間の毎日版（D27〜D40）で「次に確認する」「継続観測」「可能性」「市場が織り込む」「未確認」「次号へ持ち越し」としていた項目を拾い、<strong>当たり／外れ／保留／前提変更</strong>で検証します。<strong>当たった数ではなく、なぜそうなったかを残すことが目的です。</strong></p>
 
     <div class="item">
@@ -662,11 +967,15 @@
       <p><strong>当たり5件・外れ1件・保留2件・前提変更4件——ですが、この比率をもって精度が高いとは言えません。</strong>「当たり」に分類した5件は<strong>いずれも「断定しなかった」ことが正しかった</strong>というもので、<strong>積極的な予測を当てたものではありません。</strong>当研究所は<strong>方向を当てにいくのではなく、確定していないものを確定として書かないこと</strong>を主眼に置いています。<strong>その意味で、この5件は「予測の的中」ではなく「誤報の回避」です。</strong>一方で⑥の外れは、<strong>渡された前提を検証せずに受け取りかけた</strong>という、性質の違う失敗でした。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
   <!-- 11. 次の1週間 -->
-  <section id="sec-next">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Next</span><span class="sec-title">次の1週間で見るもの <span class="sub">/ 日付・曜日・日本時間で確認済み</span></span></div>
+  <section id="sec-next"><div class="sec-head"><span class="tick"></span><span class="cat">Next</span><span class="sec-title">次の1週間で見るもの <span class="sub">/ 日付・曜日・日本時間で確認済み</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>次の1週間で見るもの — 日程と継続観測項目を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-imp">来週の日程</span></div>
       <h4>確定している予定</h4>
@@ -700,12 +1009,16 @@
       <p style="margin-top:10px;"><strong>為替</strong>：財務省の月次介入実績（月末公表）。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
 
   <!-- 12. 編集方針 -->
-  <section id="sec-policy">
-    <div class="sec-head"><span class="tick"></span><span class="cat">Policy</span><span class="sec-title">編集方針・確認できなかったこと <span class="sub">/ 推測で埋めていない項目</span></span></div>
+  <section id="sec-policy"><div class="sec-head"><span class="tick"></span><span class="cat">Policy</span><span class="sec-title">編集方針・確認できなかったこと <span class="sub">/ 推測で埋めていない項目</span></span></div>
 
+    <details class="dd sec-dd">
+      <summary>編集方針・確認できなかったこと — 全文を開く</summary>
+      <div class="ddbody">
     <div class="item">
       <div class="labs"><span class="lab lab-warn">未確認</span></div>
       <h4>本号で確認できなかったこと</h4>
@@ -735,9 +1048,67 @@
       <p style="margin-top:10px;"><strong>本号の情報基準時刻: 2026年9月5日 朝（日本時間）。</strong>以後の新しい動きは翌号の継続観測へ回し、重大な事実誤認が判明した場合のみ本号を再修正します。<strong>数値は情報提供が目的で、投資判断への助言ではありません。</strong>／ 生成:2026年9月5日。</p>
     </div>
     <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
   </section>
+
 
   <div style="height:100vh" aria-hidden="true"></div>
 </div>
+
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
 </body>
 </html>
