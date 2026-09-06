@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年9月6日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  /* ===== 3段階構造の見出し ===== */
+  .tier{display:flex;align-items:flex-start;gap:15px;margin:42px 0 6px;padding:20px 20px 18px;
+    border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh-2);}
+  .tier-no{flex:none;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;
+    justify-content:center;font-size:19px;font-weight:800;color:#fff;letter-spacing:-.02em;}
+  .tier.t1 .tier-no{background:linear-gradient(160deg,var(--brand),var(--brand-2));}
+  .tier.t2 .tier-no{background:linear-gradient(160deg,#0E9F6E,#4BC49A);}
+  .tier.t3 .tier-no{background:linear-gradient(160deg,var(--slate),#7A8BA6);}
+  .tier-name{font-size:19px;font-weight:800;letter-spacing:-.015em;line-height:1.35;}
+  .tier-desc{font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-top:5px;}
+
+  /* ===== 第1段階：今日いちばん重要なこと ===== */
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+
+  /* ===== 第1段階：分野ひとこと ===== */
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+
+  /* ===== 第2段階：分野別ダイジェスト ===== */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .tier{gap:12px;padding:16px 15px;} .tier-no{width:38px;height:38px;font-size:16px;}
+    .tier-name{font-size:16.5px;} .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+
+  /* 第3段階：分野ごとの詳細を折りたたむ（内容は削らず、閉じているだけ） */
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年9月6日（日）</span>
+    </div>
+    <h1 class="hello">こんばんは。<br>本日の要点は11件です。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の一日レポートです。<strong>下に3段階で並べています。第1段階だけなら3分、第2段階まで読めば全体像、第3段階に根拠と一次情報があります。</strong>　<strong>本号は運用再開のため、朝ではなく本日18時45分ごろから作成しました。</strong>そのため「今朝」ではなく<strong>「2026年9月6日 時点」</strong>のレポートとして、作成開始時点までに確認できた最新情報を使用しています。市場は土日で閉じているため、価格の数値は原則として<strong>9月4日（金）の終値・清算値</strong>です。</p>
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-hormuz">米イラン「タンカー対タンカー」 <span class="kw-arrow">→</span></a></span>9月5日、米軍がIRGCの原油タンカー3隻を攻撃。<strong>米軍がイランのタンカーを直接攻撃したのは初</strong>。6日にイランが報復を表明。<strong>市場が閉じている週末に起きたため、価格に織り込まれるのは9月7日（月）から</strong>です。</li>
+      <li><span class="kw"><a class="kw-link" href="#sec-disaster">屋久島で観測史上最多の雨 <span class="kw-arrow">→</span></a></span>屋久島町・尾之間で24時間雨量<strong>490.5mm</strong>、統計史上最多を更新。一時<strong>土砂災害特別警報（警戒レベル5）</strong>。<strong>前号D40で裏付けが取れず採用を見送った項目が、今号で確認できました。</strong></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-life">9月の値上げは4,531品目 <span class="kw-arrow">→</span></a></span>単月で4,000品目を超えるのは2023年10月以来。しょうゆ・冷凍食品・乳製品など。<strong>電気・ガスの補助も9月使用分で終了見込み</strong>で、負担増が重なります。</li>
+    </ul>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-disaster">災害支援シグナル(台風24号・屋久島・熊本)</a></li>
+      <li><a href="#sec-hormuz">中東：タンカー対タンカーという新段階</a></li>
+      <li><a href="#sec-market">週明けの市場：まだ織り込まれていないもの</a></li>
+      <li><a href="#sec-fx">為替：多通貨スキャン</a></li>
+      <li><a href="#sec-rates">金利・中央銀行：向こう2週間で4中銀</a></li>
+      <li><a href="#sec-life">暮らしの経済：9月の値上げ</a></li>
+      <li><a href="#sec-ai">AI・技術</a></li>
+      <li><a href="#sec-telecom">通信・宇宙・衛星</a></li>
+      <li><a href="#sec-robot">ロボット・自動車</a></li>
+      <li><a href="#sec-house">住まい・地域・民泊</a></li>
+      <li><a href="#sec-culture">社会・文化・ニッチ発見</a></li>
+      <li><a href="#sec-check">前号D40の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">今週の予定(ウォッチリスト)</a></li>
+    </ol>
+  </nav>
+
+
+  <div class="tier t1">
+    <div class="tier-no">1</div>
+    <div>
+      <div class="tier-name">3分でわかる今日</div>
+      <div class="tier-desc">今日いちばん重要なこと、主要な数字、分野ごとのひとこと。ここだけで今日の位置がつかめます。</div>
+    </div>
+  </div>
+
+  <div class="kbox">
+    <div class="kbox-lab">今日いちばん重要なこと</div>
+    <h3>米軍がイランの原油タンカーを初めて直接攻撃し、イランが即日報復しました。市場が閉じている週末に起きています。</h3>
+    <p>9月5日、イラン革命防衛隊（IRGC）が<strong>米空母とミサイル駆逐艦の2隻</strong>に向けて弾道ミサイルを発射しました。<strong>いずれも命中せず、米兵に負傷者は出ていません。</strong>これに対して米軍は、IRGCが保有する原油タンカー3隻を攻撃しました。<strong>ハーグ島沖の M/T Downy とジャースク付近の M/T Stark 1 を「永久に航行不能」にし、空荷の M/T Kylo を「完全に破壊」した</strong>と米中央軍（CENTCOM）が発表しています。米中央軍司令官ブラッド・クーパー海軍大将は「<strong>我々の艦2隻を撃つなら、より高い経済的コストを課す。そちらの3隻を取り除く</strong>」と述べました。<strong>米軍がイランのタンカーを直接攻撃したのは、今回が初めてです。</strong>これはトランプ大統領が承認した「<strong>タンカーにはタンカーを（tanker for tanker）</strong>」という新方針の一環と報じられています。<br><br>翌6日、<strong>イランは報復を表明しました。</strong>「許可されていないルートでホルムズ海峡を通過した原油タンカー3隻」と、複数の米国関連船舶を標的にしたとしています。IRGCは、海峡に進入しようとした<strong>米海軍の無人機と無人水上艇</strong>も攻撃したと主張しています。<br><br><strong>ここが重要です。この一連の出来事は、金曜の市場が閉じたあとに起きました。</strong>9月4日（金）のブレント清算値は1バレル92.68ドル、WTIは91.48ドルで、週間ではそれぞれ+7.6%、ほぼ+10%の上昇でした。<strong>その終値には、週末のタンカー相互攻撃はまだ入っていません。</strong>市場がこれをどう評価するかは、<strong>9月7日（月）の取引開始から</strong>始まります。</p>
+  </div>
+
+  <div class="strip">
+    <div class="cell"><div class="nm">米軍が攻撃したイランのタンカー</div><div class="vl mono">3隻</div><div class="ch down">9月5日・米中央軍発表</div><div class="ctx">米軍によるイラン籍タンカー攻撃は初</div></div>
+    <div class="cell"><div class="nm">IRGCが撃った米艦</div><div class="vl mono">2隻</div><div class="ch">空母・ミサイル駆逐艦</div><div class="ctx">命中せず・米兵の負傷なし</div></div>
+    <div class="cell"><div class="nm">イランが標的と表明</div><div class="vl mono">3隻+</div><div class="ch down">9月6日・イラン発表</div><div class="ctx">米関連船舶・無人機・無人水上艇も</div></div>
+    <div class="cell"><div class="nm">ブレント 9/4清算値</div><div class="vl mono">92.68</div><div class="ch up">週間 +7.6%</div><div class="ctx">週末の攻撃は未反映</div></div>
+    <div class="cell"><div class="nm">WTI 9/4清算値</div><div class="vl mono">91.48</div><div class="ch up">週間 ほぼ+10%</div><div class="ctx">週末の攻撃は未反映</div></div>
+    <div class="cell"><div class="nm">屋久島町・尾之間 24時間雨量</div><div class="vl mono">490.5mm</div><div class="ch down">統計史上最多を更新</div><div class="ctx">一時 土砂災害特別警報(レベル5)</div></div>
+    <div class="cell"><div class="nm">台風24号 中心気圧</div><div class="vl mono">992hPa</div><div class="ch">南大東島の西 約100km</div><div class="ctx">6日15時・最大風速18m/s</div></div>
+    <div class="cell"><div class="nm">7日18時までの予想雨量(東海)</div><div class="vl mono">300mm</div><div class="ch down">東北・関東甲信・近畿・四国 200mm</div><div class="ctx">気象庁・9月5日時点</div></div>
+    <div class="cell"><div class="nm">9月の食品値上げ</div><div class="vl mono">4,531品目</div><div class="ch down">単月4,000超は2023年10月以来</div><div class="ctx">電気・ガス補助も9月使用分で終了見込み</div></div>
+    <div class="cell"><div class="nm">USD/JPY 週末終値</div><div class="vl mono">156.19</div><div class="ch">週初 160.39 → 金曜安値 155.25</div><div class="ctx">週間では円が約2.5%上昇</div></div>
+    <div class="cell"><div class="nm">NYダウ 9/4終値</div><div class="vl mono">53,414.25</div><div class="ch down">−0.51%</div><div class="ctx">S&amp;P500 −0.38% / Nasdaq −0.29%</div></div>
+    <div class="cell"><div class="nm">熊本地震 被害状況報</div><div class="vl mono">第51報</div><div class="ch">8月31日 17時現在</div><div class="ctx">断水復旧は長期化・継続追跡中</div></div>
+  </div>
+
+  <div class="glance">
+    <div class="gl"><span class="gl-k">災害</span><span class="gl-t">屋久島町・尾之間で24時間雨量<b>490.5mm</b>、<b>統計史上最多</b>。5日20時ごろ<b>奄美地方で線状降水帯</b>。台風24号は6日15時に<b>南大東島の西約100km</b>、7日15時ごろ<b>日本の南で熱帯低気圧</b>へ。<b>雨のピークは台風本体ではなく、刺激された秋雨前線側</b>に移っています。</span></div>
+    <div class="gl"><span class="gl-k">中東</span><span class="gl-t"><b>米軍がイランの原油タンカー3隻を初めて直接攻撃</b>（9/5）。イランが<b>即日報復を表明</b>（9/6）。<b>「タンカー対タンカー」</b>という新しい応酬の型に入りました。<b>市場が閉じている間の出来事</b>です。</span></div>
+    <div class="gl"><span class="gl-k">市場</span><span class="gl-t"><b>土日で休場。新しい価格はありません。</b>数値はすべて9月4日（金）のもの。<b>今号の要点は「金曜の終値に何が入っていないか」</b>です。週末の攻撃、イランの報復表明のいずれも未反映です。</span></div>
+    <div class="gl"><span class="gl-k">ドル・金利</span><span class="gl-t">米8月雇用統計（+162,000人）で<b>利上げ</b>観測が強まった直後の週末。<b>FRBは9月5日からブラックアウト期間</b>で、当局者の反応はFOMCまで聞けません。主要な物価材料は<b>10日のPPIと11日のCPI</b>。<b>中銀は今週ECB、来週FOMC・BOE・日銀</b>です。</span></div>
+    <div class="gl"><span class="gl-k">為替</span><span class="gl-t">USD/JPYは<b>156.10〜156.19円</b>で週を終えました。週間では<b>円が約2.5%上昇</b>。主役は米国側ではなく<b>日本側（日銀の利上げ観測）</b>でした。ユーロ円は185円台→181円台、ポンド円は216円台→211円台。</span></div>
+    <div class="gl"><span class="gl-k">暮らし</span><span class="gl-t">9月の食品値上げは<b>4,531品目</b>。しょうゆ・つゆ、冷凍食品、練り製品、乳製品、菓子、飲料。<b>電気・ガスの補助が9月使用分で終了見込み</b>。原油高がここに効いてきます。</span></div>
+    <div class="gl"><span class="gl-k">AI</span><span class="gl-t"><b>9月1日Anthropic（Fable 5.1／Mythos 5.1）、2日Google（Gemini 3.8 Flash／3.8 Flash Cyber）、3日OpenAI（GPT-6 Astra）と3日連続の新モデル。</b>3社とも<b>一般提供版と、審査済み組織にだけ渡す制限版を分ける</b>同じ設計で、<b>分岐点はいずれもサイバーセキュリティ</b>です。</span></div>
+    <div class="gl"><span class="gl-k">宇宙</span><span class="gl-t">8月30日に<b>NASAのナンシー・グレース・ローマン宇宙望遠鏡</b>がFalcon Heavyで打ち上げ。9月2日にStarlink 27機。JAXAは8月11日にH3 9号機で<b>みちびき7号機</b>を軌道投入済み。</span></div>
+    <div class="gl"><span class="gl-k">暮らしの技術</span><span class="gl-t">Appleは<b>Special Event「Surprise and shine」を日本時間9月10日2:00</b>（米国時間9月9日10:00 PT）に開催すると公式発表。<b>iPhone 18シリーズの発表が予想されていますが、製品はApple公式には未確定です。</b>Pixel 11シリーズは8月20日発売済み。国内キャリアの秋冬モデルは例年9月下旬〜10月。</span></div>
+    <div class="gl"><span class="gl-k">確認できず</span><span class="gl-t">国交省<b>台風24号 第4報（9/6 10時時点）</b>の具体的な被害数値、国内通信キャリアの本日の障害有無、DXY・EUR/USD・GBP/USDの金曜終値。<b>推測で埋めず、そのまま残します（8項目）。</b></span></div>
+  </div>
+
+
+  <div class="tier t2">
+    <div class="tier-no">2</div>
+    <div>
+      <div class="tier-name">分野別ダイジェスト</div>
+      <div class="tier-desc">分野ごとに「何が起きた」「前号から何が変わった」「次に何を見る」の3点だけを置いています。詳しい根拠は第3段階にあります。</div>
+    </div>
+  </div>
+
+
+  <div class="dgrid">
+
+    <div class="dg">
+      <div class="dg-h"><em>災害</em>屋久島・台風24号・熊本</div>
+      <div class="dg-r"><span>何が起きた</span><span>屋久島町・尾之間で24時間雨量<b>490.5mm</b>、<b>統計史上最多を更新</b>。屋久島町に一時<b>土砂災害特別警報（レベル5）</b>。5日20時ごろ<b>奄美地方で線状降水帯</b>が発生</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>前号D40では、鹿児島県の警報の段階を<b>一次情報で確定できず採用を見送っていました</b>。今号で<b>裏付けが取れました</b>。台風は北西進から南下を経て東北東進へ変わり、<b>予報より早く熱帯低気圧へ</b>変わる見込みです</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>7日18時までの予想雨量（東海300mm）。<b>伊豆諸島の線状降水帯</b>。国交省<b>第4報以降</b>の被害数値。熊本地震の断水復旧（<b>第51報</b>まで継続中）</span></div>
+      <div class="dg-go"><a href="#sec-disaster">詳細と一次情報を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>中東</em>タンカー対タンカー</div>
+      <div class="dg-r"><span>何が起きた</span><span>9/5、IRGCが米空母・駆逐艦にミサイル→命中せず。米軍がIRGCのタンカー<b>3隻</b>を攻撃（<b>M/T Downy・M/T Stark 1</b>を航行不能、<b>M/T Kylo</b>を破壊）。9/6、<b>イランが報復を表明</b></span></div>
+      <div class="dg-r"><span>何が変わった</span><span>これまでは「イランが商船を攻撃 → 米国が軍事施設を空爆」でした。今回<b>米国が攻撃対象を『イランの経済資産＝タンカー』へ移しました</b>。応酬の性質が<b>軍事から経済へ拡張</b>しています</span></div>
+      <div class="dg-r w"><span>次に見る</span><span><b>9月7日（月）の原油の寄り付き</b>。ホルムズ海峡の通航隻数（前号時点で9/3は4隻、平時の約3%）。船舶保険料率。<b>イランの報復が実害を伴ったかどうか</b></span></div>
+      <div class="dg-go"><a href="#sec-hormuz">詳細と時系列を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>市場</em>週末に何が入っていないか</div>
+      <div class="dg-r"><span>何が起きた</span><span>9/4終値：NYダウ<b>53,414.25</b>（−0.51%）、S&amp;P500<b>7,718.60</b>（−0.38%）、Nasdaq<b>26,506.99</b>（−0.29%）。日経平均は同日<b>806円高</b>で5日ぶり反発</span></div>
+      <div class="dg-r"><span>何が変わった</span><span><b>土日は休場のため、価格の変化はありません。</b>変わったのは価格ではなく<b>前提</b>です。金曜の終値は「タンカー相互攻撃の前」の値段です</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>月曜の寄り付きでの<b>原油・防衛関連・海運・航空</b>の反応。日経平均が金曜の806円高をどこまで維持するか。<b>ギャップアップ／ダウンの有無</b></span></div>
+      <div class="dg-go"><a href="#sec-market">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>為替</em>多通貨スキャン</div>
+      <div class="dg-r"><span>何が起きた</span><span>USD/JPYは週末<b>156.10〜156.19円</b>。週初160.39円→9/3に155円台→156円台で終了。ユーロ円<b>185→181円台</b>、ポンド円<b>216→211円台</b>。CNY/JPYは9/4に<b>23.28円</b>（+0.38%）</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>週の主役が<b>米国側から日本側へ移りました</b>。日銀・高田審議委員の「機動的利上げの新局面」発言（9/2）が円買いの起点です。<b>クロス円が総じて円高方向</b>で、これはドル要因ではありません</span></div>
+      <div class="dg-r w"><span>次に見る</span><span><b>158.00〜158.76円</b>が戻りの壁、<b>155.20〜155.00円</b>が下値の分岐（外為どっとコム）。TRY/JPYは<b>3.28円割れ</b>が警戒線。9/17-18の日銀会合</span></div>
+      <div class="dg-go"><a href="#sec-fx">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>金利</em>向こう2週間で4中銀</div>
+      <div class="dg-r"><span>何が起きた</span><span>9月FOMCの利上げ織り込みは、雇用統計後に<b>約60%</b>（CME FedWatch・9/4 CNBC報道時点）。ただし同日付で<b>48.4%</b>、<b>49.8%</b>とする集計もあり、<b>出所と時刻で数字が違います</b></span></div>
+      <div class="dg-r"><span>何が変わった</span><span><b>9月5日からFRBはブラックアウト期間</b>に入りました。強い雇用統計に対するFRB当局者の反応を、FOMCまで聞くことはできません</span></div>
+      <div class="dg-r w"><span>次に見る</span><span><b>今週</b>＝9/9-10 ECB理事会（決定は10日）・9/10 米PPI・9/11 米CPI。<b>来週</b>＝9/15-16 FOMC（SEP付き）・9/17 BOE・9/17-18 日銀。<b>日本10年国債は9/1に3.005%へ達し、1996年9月以来30年ぶりに3%を突破</b>しました</span></div>
+      <div class="dg-go"><a href="#sec-rates">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>暮らし</em>9月の値上げと補助終了</div>
+      <div class="dg-r"><span>何が起きた</span><span>9月の飲食料品値上げは<b>4,531品目</b>。しょうゆ・つゆ、冷凍食品、練り製品、乳製品、菓子、飲料。<b>単月4,000品目超は2023年10月以来</b></span></div>
+      <div class="dg-r"><span>何が変わった</span><span><b>電気・ガスの補助が9月使用分で終了する見込み</b>です。食品と光熱費の負担増が同じ月に重なります。ここに<b>原油高</b>が時間差で効いてきます</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>10月以降の値上げ品目数。<b>ホルムズ海峡の混乱がガソリン・灯油・電気料金に届くまでの時間差</b>。9/11の米CPI（日本の物価の先行指標ではないが、原油転嫁の速度が見えます）</span></div>
+      <div class="dg-go"><a href="#sec-life">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>AI</em>3日連続の新モデルと二層構造</div>
+      <div class="dg-r"><span>何が起きた</span><span><b>9/1 Anthropic（Fable 5.1／Mythos 5.1）、9/2 Google（Gemini 3.8 Flash／3.8 Flash Cyber）、9/3 OpenAI（GPT-6 Astra）</b>が3日連続で公開。GPT-6 Astraは<b>OpenAIのPreparedness Frameworkで初めてサイバー能力が「Critical」</b>に到達</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>3社とも<b>一般提供版と、審査を通した組織にだけ渡す制限版を分ける</b>同じ設計を採りました（Mythos／Flash Cyber＋Fairwind／Daybreak）。<b>分岐点はいずれもサイバーセキュリティ</b>です</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>「審査済み組織のみ」という運用が<b>実際に機能するか</b>（基準・監査・漏洩時の対応は未公開）。GPT-6 Astraの<b>第三者検証</b>と「開発停止」の対象・範囲。ウォーターマークの<b>回避耐性</b></span></div>
+      <div class="dg-go"><a href="#sec-ai">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>通信・宇宙</em>打ち上げ続く</div>
+      <div class="dg-r"><span>何が起きた</span><span>8/30に<b>NASAナンシー・グレース・ローマン宇宙望遠鏡</b>をFalcon Heavyで打ち上げ。9/2にStarlink 27機。JAXAは8/11にH3 9号機で<b>みちびき7号機</b>を軌道投入</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>国内の測位衛星「みちびき」が<b>7号機まで</b>到達しました。GPSに依存しない測位の基盤が積み上がっています</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>ローマン宇宙望遠鏡の初期観測。<b>本日の国内通信障害の有無は確認できていません</b>（第13章）。日本のデータセンターは<b>約6割が首都圏に集中</b>、海底ケーブルは日本海側が未整備</span></div>
+      <div class="dg-go"><a href="#sec-telecom">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>ロボット・自動車</em>異業種の接近</div>
+      <div class="dg-r"><span>何が起きた</span><span>三菱自動車が東大発スタートアップ<b>Highlanders</b>とヒト型ロボットを共同開発すると発表（7/9）。Googleはロボット向けAI<b>Gemini Robotics 2</b>を発表</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>ヒューマノイドは<b>工場・物流・研究用途での限定導入と量産準備</b>の段階にあります。<b>自動車メーカーがロボットへ出てくる</b>動きが続いています</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>国内メーカーの新型EV発表（2026年後半に集中）。<b>週末の原油急騰がEV需要の議論に与える影響</b>。ヒューマノイドの量産計画の具体化</span></div>
+      <div class="dg-go"><a href="#sec-robot">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>住まい</em>金利と空き家と民泊</div>
+      <div class="dg-r"><span>何が起きた</span><span>住宅ローン変動金利は<b>緩やかに上昇</b>。空き家は総住宅数約6,500万戸のうち<b>約900万戸</b>（2023年10月時点）。大阪市は<b>特区民泊の新規受付を5/29で終了</b></span></div>
+      <div class="dg-r"><span>何が変わった</span><span>日銀の利上げ観測が<b>住宅ローンに直結</b>する局面です。2026年の税制改正で<b>中古住宅の住宅ローン減税が10年→13年</b>へ拡充される見通し</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>9/17-18の日銀会合と変動金利。<b>古民家・一棟貸しの需要</b>（インバウンドの地方分散とOTAの農村カテゴリ強化）。自治体ごとの移住・リフォーム補助</span></div>
+      <div class="dg-go"><a href="#sec-house">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>社会・ニッチ</em>週末の話題と発見</div>
+      <div class="dg-r"><span>何が起きた</span><span>9/5のプロ野球は広島−巨人が<b>巨人10−5</b>。プレミアリーグで<b>鈴木彩艶が日本人GK初のクリーンシート</b>を達成。「発掘された日本列島2026」に<b>全国3例目の木製仮面</b></span></div>
+      <div class="dg-r"><span>何が変わった</span><span>40年間「エビの子ども」とされていた化石が<b>24本脚の昆虫</b>と判明。スペインで1億2500万年前のワニ類化石に<b>明暗の縞模様</b>——ワニ類で体の模様が残った<b>最古の例</b></span></div>
+      <div class="dg-r w"><span>次に見る</span><span>「発掘された日本列島2026」の巡回。木製仮面の年代・用途の解釈。<b>普段は見ない分野を毎回1つは残す</b>という運用を続けます</span></div>
+      <div class="dg-go"><a href="#sec-culture">詳細を見る →</a></div>
+    </div>
+
+    <div class="dg">
+      <div class="dg-h"><em>検証</em>前号D40の答え合わせ</div>
+      <div class="dg-r"><span>何が起きた</span><span>D40で「確認できなかったこと」として残した10項目のうち、<b>①鹿児島県の警報の段階</b>と<b>②台風24号の被害</b>の一部が確認できました</span></div>
+      <div class="dg-r"><span>何が変わった</span><span>D40の台風進路見通し（<b>9日ごろ四国の南で熱帯低気圧</b>）は、実際には<b>7日15時ごろ日本の南</b>へ<b>前倒し</b>されました。見立ては上書きせず、経過として残します</span></div>
+      <div class="dg-r w"><span>次に見る</span><span>残る8項目の未確認事項。<b>「情報がないこと」を「問題がないこと」として扱わない</b>方針を維持します</span></div>
+      <div class="dg-go"><a href="#sec-check">詳細を見る →</a></div>
+    </div>
+
+  </div>
+
+  <div class="tier t3">
+    <div class="tier-no">3</div>
+    <div>
+      <div class="tier-name">詳細・根拠・検証</div>
+      <div class="tier-desc">分野ごとの全文です。各セクションは閉じた状態で置いてありますが、内容は削っていません。開くと事実・数字・一次情報・見方・未確定点まで入っています。</div>
+    </div>
+  </div>
+
+
+  <section class="quake" id="sec-disaster">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害支援シグナル</span><span class="sec-title">屋久島で観測史上最多の雨 <span class="sub">/ 台風24号・熊本地震の継続追跡</span></span></div>
+
+    <p><strong>屋久島町・尾之間で24時間雨量490.5mm。この地点の統計史上最多を更新しました。</strong>屋久島町には一時、警戒レベル5の土砂災害特別警報が発表されています。前号D40では、鹿児島県の警報の段階を一次情報で確定できず、民間サイトの記載を採用しませんでした。<strong>今号でその裏付けが取れました。</strong></p>
+
+    <details class="dd sec-dd">
+      <summary>災害支援シグナル — 屋久島・台風24号・熊本地震の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最重要</span><span class="lab lab-fact">気象庁発表・報道で確認</span></div>
+      <h4>屋久島町・尾之間の24時間雨量490.5mmは、この地点の統計史上最多です</h4>
+      <p><strong>屋久島町・尾之間では、24時間雨量が490.5mmに達し、この地点の統計史上最多記録を更新しました。</strong>屋久島町には一時、<strong>警戒レベル5の土砂災害特別警報</strong>が発表されています。</p>
+      <p style="margin-top:10px;">また、<strong>9月5日午後8時ごろ、鹿児島県奄美地方で線状降水帯が発生した</strong>と気象庁が発表しました。9月4日0時28分には、同地方に「今後3時間以内に線状降水帯発生の恐れ」が発表されていました。</p>
+      <p style="margin-top:10px;"><strong>数字の意味を書きます。</strong>「統計史上最多」は、その地点で観測を始めてから最も多い、という意味です。屋久島は日本でも有数の多雨地域で、もともと雨量の絶対値が大きい場所です。<strong>その屋久島の記録を更新したという点に、今回の雨の強さが表れています。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://sp.m.jiji.com/article/show/3860292?free=1" target="_blank" rel="noopener">時事通信「屋久島に一時土砂災害特別警報＝台風など影響、太平洋側大雨に警戒―気象庁」</a>／<a class="src" href="https://tenki.jp/forecaster/deskpart/2026/09/04/40445.html" target="_blank" rel="noopener">日本気象協会 tenki.jp「鹿児島県奄美地方 今後3時間以内に線状降水帯発生の恐れ（9月4日0時28分発表）」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">複数媒体で照合</span></div>
+      <h4>台風24号は南大東島の西へ。雨のピークは台風本体ではなく、刺激された前線側に移りました</h4>
+      <p><strong>台風24号（クロヴァン）は、9月6日15時現在、南大東島の西約100kmにあって、東北東へ毎時15kmで進んでいます。中心気圧は992hPa、中心付近の最大風速は18m/s。</strong>7日3時には南大東島の北北東約60kmを東北東へ進む見込みで、<strong>その後、熱帯低気圧に変わり、7日15時には日本の南に達する</strong>と予想されています。</p>
+      <p style="margin-top:10px;">9月5日18時時点では、台風24号は<strong>那覇市付近の海上を時速20kmで南南東へ</strong>進んでいました。同じ台風が、南下したのち東北東へ転じています。</p>
+      <p style="margin-top:10px;"><strong>ここが重要です。台風が弱まって熱帯低気圧に変わっても、雨は終わりません。</strong>台風24号と熱帯低気圧が<strong>秋雨前線を刺激</strong>しており、雨の中心は台風本体から前線側へ移っています。前線は6日にかけてほぼ停滞したあと、次第に北上する見込みです。</p>
+      <p style="margin-top:10px;"><strong>予想雨量（気象庁・9月5日時点）：</strong>6日18時までは東海200mm、九州南部180mm、関東甲信・近畿・沖縄150mm。<strong>7日18時までは東海300mm、東北・関東甲信・近畿・四国200mm。</strong>また7日午前6時までの24時間降水量は、多い所で東海300mm、関東甲信250mm、近畿200mm、九州南部と四国150mmと予想されています。</p>
+      <p style="margin-top:10px;"><strong>伊豆諸島では、6日昼前から7日明け方にかけて線状降水帯が発生し、大雨災害発生の危険度が急激に高まる可能性がある</strong>と伝えられています。</p>
+      <div class="srcline">出典：<a class="src" href="https://tenki.jp/bousai/typhoon/2624/" target="_blank" rel="noopener">日本気象協会 tenki.jp「台風24号（2026年）最新位置・進路予想」</a>／<a class="src" href="https://tenki.jp/forecaster/deskpart/2026/09/06/40477.html" target="_blank" rel="noopener">同「大雨エリア東へ 東海や関東で滝のような雨も（9月6日）」</a>／<a class="src" href="https://weathernews.jp/news/202609/060071/" target="_blank" rel="noopener">ウェザーニュース「台風24号（クロヴァン）は沖縄の東へ 秋雨前線を刺激し西・東日本で大雨のおそれ」</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20260905de48255" target="_blank" rel="noopener">NHK「台風24号 秋雨前線 熱帯低気圧 大雨続くおそれ」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">未確認を明示</span></div>
+      <h4>国交省は第4報まで出していますが、本号では具体的な被害数値を確認できていません</h4>
+      <p><strong>国土交通省は「令和8年台風第24号及び前線による大雨による被害状況等について」を第4報（2026年9月6日 10時00分時点）まで公表しています。</strong>第1報は9月3日9時、第2報は9月4日7時、第3報は9月5日10時の各時点です。</p>
+      <p style="margin-top:10px;"><strong>ただし本号では、第4報の本文（PDF）に到達できず、人的被害・住家被害・河川・道路・鉄道の具体的な数値を確認できていません。</strong>推測で埋めることはしません。第13章「確認できなかったこと」にも記載します。</p>
+      <p style="margin-top:10px;"><strong>あわせて確認できたこととして、国交省は現在、複数の災害を同時に扱っています。</strong>令和8年8月27日からの大雨（第11報・9月6日10時現在）、令和8年8月千葉豪雨（第14報・8月31日17時現在）、<strong>令和8年熊本地震（第51報・8月31日17時現在）</strong>、令和8年台風第18号（第2報・8月27日9時現在）。<strong>台風24号は「単独の災害」ではなく、複数の災害対応が重なっている状況で起きています。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.mlit.go.jp/saigai/saigai_260903.html" target="_blank" rel="noopener">国土交通省「令和8年台風第24号及び前線による大雨による被害状況等について」</a>／<a class="src" href="https://www.mlit.go.jp/saigai/" target="_blank" rel="noopener">国土交通省 災害・防災情報</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">継続追跡</span></div>
+      <h4>熊本地震の断水は復旧が長期化しています（災害支援シグナルの継続案件）</h4>
+      <p><strong>令和8年熊本地震について、国交省の被害状況報は第51報（8月31日17時現在）まで続いています。</strong>本機構の災害支援シグナル（DEC-020・021）の継続案件です。</p>
+      <p style="margin-top:10px;"><strong>断水の状況として確認できたこと：</strong>八代市とその周辺で約28,500戸、震度7を観測した宇城市で約14,000戸が断水しました。8月10日時点の復旧率は<strong>八代市が7.8%、宇城市が52.9%、氷川町が29.8%</strong>と、<strong>自治体によって大きな差</strong>があります。8月31日時点では熊本県内で約79,100戸が断水していました。</p>
+      <p style="margin-top:10px;"><strong>復旧が長期化している理由は、地震で動いた断層沿いの主要な水道管が損傷したためと報じられています。</strong>政府は8月4日に「8月末までに断水を解消する」方針を示しましたが、被災地では戸惑いもあり、被害の全容をつかめていない自治体もあると報じられました。</p>
+      <p style="margin-top:10px;"><strong>シグナル判定：⚪未確認。</strong>9月6日時点の断水戸数・給水所の設置状況・復旧率を本号では確認できていません。<strong>「8月末解消」という方針が実際に達成されたかどうかを確認できていないため、🟢にはしません。</strong>次号以降で更新します。</p>
+      <div class="srcline">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20260812de43486" target="_blank" rel="noopener">NHK「熊本地震被災地 断水の復旧長期化 断層沿いの主要な水道管の被害が要因か」</a>／<a class="src" href="https://news.web.nhk/newsweb/na/na-k10015191451000" target="_blank" rel="noopener">NHK「熊本県内 約7万9100戸が断水 給水所設置状況（8月31日）」</a>／<a class="src" href="https://www.pref.kumamoto.jp/soshiki/1/274517.html" target="_blank" rel="noopener">熊本県「令和8年熊本地震に関する情報」</a>／<a class="src" href="https://kumanichi.com/articles/2021936" target="_blank" rel="noopener">熊本日日新聞「『8月末まで』断水解消…政府方針に戸惑いも」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">海外・確認は浅い</span></div>
+      <h4>海外の災害：9月5日未明にインドネシア付近（スンダ海峡）で地震</h4>
+      <p><strong>2026年9月5日2時50分ごろ、インドネシア付近（スンダ海峡）を震源とする地震が発生しました。</strong>本号では規模（マグニチュード）・深さ・被害の有無を確認できていません。</p>
+      <p style="margin-top:10px;">8月には、ベトナムの洪水・土砂災害、ミャンマーの洪水、インドネシアの地震が記録されています。<strong>海外の災害については、本号の確認は「見出しレベルの一巡」にとどまります。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://earthquake.tenki.jp/bousai/earthquake/detail/2026/09/05/2026-09-05-02-50-00.html" target="_blank" rel="noopener">日本気象協会 tenki.jp「地震情報 2026年09月05日 02時50分頃発生 震源地：インドネシア付近（スンダ海峡）」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-hormuz">
+    <div class="sec-head"><span class="tick"></span><span class="cat">中東・エネルギー</span><span class="sec-title">「タンカーにはタンカーを」 <span class="sub">/ 応酬が軍事から経済資産へ移りました</span></span></div>
+
+    <p><strong>9月5日、米軍がイラン革命防衛隊（IRGC）の原油タンカー3隻を攻撃しました。米軍がイランのタンカーを直接攻撃したのは、これが初めてです。</strong>翌6日、イランは報復として原油タンカー3隻と複数の米国関連船舶を標的にしたと表明しました。<strong>これらはすべて、市場が閉じている週末に起きています。</strong></p>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">ブレント原油 <span>週末の攻撃がまだ入っていない値段</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="false">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="true">4時間<small>数か月</small></button>
+          <button class="tf" data-i="D" aria-pressed="false">日足<small>数年</small></button>
+          <button class="tf" data-i="W" aria-pressed="false">週足<small>長期</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="TVC:UKOIL" data-i="240"></div>
+      <div class="cw-foot"><span>9月4日（金）の清算値は92.68ドル（週間+7.6%）。<strong>右端が動き出すのは9月7日（月）の取引開始からです</strong>。このチャートは「週末の出来事が価格に入る前」を確認するために置いています</span> <a class="tvopen" href="#" target="_blank" rel="noopener">TradingViewで開く</a></div>
+    </div>
+
+    <details class="dd sec-dd">
+      <summary>中東・エネルギー — 時系列・当事者の主張・価格への波及の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最重要・新規</span><span class="lab lab-fact">米中央軍発表／複数媒体で照合</span></div>
+      <h4>9月5日：IRGCが米艦2隻にミサイル、米軍がタンカー3隻で報復しました</h4>
+      <p><strong>何が起きたか。</strong>イラン革命防衛隊（IRGC）が、この海域を航行していた<strong>米海軍の空母1隻とミサイル駆逐艦1隻</strong>に向けて弾道ミサイルを発射しました。<strong>いずれの艦にも命中せず、米兵に負傷者は出ていません。</strong></p>
+      <p style="margin-top:10px;"><strong>米軍の対応。</strong>米中央軍（CENTCOM）は、IRGCが保有する原油タンカー3隻を攻撃したと発表しました。内訳は次のとおりです。</p>
+      <p style="margin-top:10px;">・<strong>M/T Downy</strong>（ハーグ島沖）— 「永久に航行不能（permanently disabled）」<br>・<strong>M/T Stark 1</strong>（ジャースク付近）— 「永久に航行不能」<br>・<strong>M/T Kylo</strong>（別名 Noxen・空荷）— <strong>オマーン湾で、乗組員に退船を指示したうえで</strong>「完全に破壊（completely destroyed）／航行不能化（rendered inoperable）」</p>
+      <p style="margin-top:10px;"><strong>CENTCOM公式リリース（9月5日）で確認しました。</strong>3隻目のM/T Kyloについては、<strong>乗組員に退船を指示したのちに航行不能化した</strong>と記載されています。<strong>クーパー司令官の発言は、CENTCOM司令官のX（旧Twitter）投稿によるものです。</strong></p>
+      <p style="margin-top:10px;"><strong>米側の説明。</strong>CENTCOMは、これらの船が「<strong>IRGCとその地域の代理勢力に資金を供給する、数十億ドル規模のシャドーネットワークの一部</strong>」だとしています。中央軍司令官のブラッド・クーパー海軍大将は「<strong>IRGCへのメッセージを明確にする。我々の艦2隻を撃つなら、より高い経済的コストを課す——そちらの3隻を取り除く</strong>」と述べました。</p>
+      <p style="margin-top:10px;"><strong>これは新しい方針の適用です。</strong>米軍がイランのタンカーを攻撃したのは<strong>これが初めて</strong>で、海峡でのイランによる船舶攻撃を抑止するために<strong>トランプ大統領が承認した「タンカーにはタンカーを（tanker for tanker）」という方針</strong>の一環と報じられています。</p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4591744/centcom-destroys-3-irgc-oil-tankers-after-iran-targets-2-us-navy-warships/" target="_blank" rel="noopener">U.S. Central Command 公式リリース「CENTCOM Destroys 3 IRGC Oil Tankers After Iran Targets 2 U.S. Navy Warships」（2026年9月5日）</a>　／　出典：<a class="src" href="https://www.cnn.com/2026/09/05/middleeast/iran-us-tanker-kharg-intl" target="_blank" rel="noopener">CNN「US military strikes three Iranian tankers in retaliation for missile attacks」</a>／<a class="src" href="https://www.cnbc.com/2026/09/05/us-iran-oil-tankers-navy-missile-attack.html" target="_blank" rel="noopener">CNBC「U.S. strikes 3 Iranian oil tankers after missile attacks on Navy ships」</a>／<a class="src" href="https://www.aljazeera.com/news/2026/9/5/us-says-it-hit-iran-oil-tankers-helping-finance-regional-proxies" target="_blank" rel="noopener">Al Jazeera「US says it hit Iran oil tankers accused of helping 'regional proxies'」</a>／<a class="src" href="https://www.axios.com/2026/09/02/iran-tankers-hormuz-attacks-oil" target="_blank" rel="noopener">Axios「U.S. strikes Iran oil tankers for first time in retaliation for Hormuz strikes」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最新・9月6日</span><span class="lab lab-warn">当事者の主張</span></div>
+      <h4>9月6日：イランが報復を表明しました</h4>
+      <p><strong>イランは、週末の米国によるイラン籍タンカーへの攻撃に対する報復として、次を標的にしたと表明しました。</strong></p>
+      <p style="margin-top:10px;">・<strong>「許可されていないルートでホルムズ海峡を通過した」原油タンカー3隻</strong><br>・複数の<strong>米国関連船舶</strong><br>・IRGCは、海峡に進入しようとした<strong>米海軍の無人機と、米軍の無人水上艇</strong>も攻撃したとしている</p>
+      <p style="margin-top:10px;"><strong>これはイラン側の発表です。</strong>本号執筆時点で、攻撃の成否、被害の有無、船名、死傷者の有無について、独立した確認は取れていません。<strong>「イランが標的にしたと表明した」という事実と、「実際に何が起きたか」は区別して記載します。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.bloomberg.com/news/articles/2026-09-06/iran-says-it-targeted-oil-tankers-in-response-to-us-strikes" target="_blank" rel="noopener">Bloomberg「Iran Targets Oil Tankers in Response to US Strikes」</a>／<a class="src" href="https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582" target="_blank" rel="noopener">ABC News「Iran live updates: US strikes oil tankers, Tehran claims attacks on US-linked vessels」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-view">研究所としての見方</span></div>
+      <h4>何が変わったのか：応酬の対象が「軍事目標」から「経済資産」へ移りました</h4>
+      <div class="why">
+        <h5>なぜこれが重要か</h5>
+        <p><strong>これまでの型は「イランが商船を攻撃する → 米国がイランの軍事施設・関連拠点を空爆する」でした。</strong>今回、<strong>米国は攻撃対象を『イランの経済資産＝原油タンカー』へ移しました。</strong>CENTCOM司令官の発言（「より高い経済的コストを課す」）は、これが偶発ではなく<strong>方針であること</strong>を明示しています。</p>
+      </div>
+      <p style="margin-top:10px;"><strong>3つの点で性質が変わります。</strong></p>
+      <p style="margin-top:10px;"><strong>① 対象が増える。</strong>軍事施設は数が限られますが、タンカーは動く資産で、数も多い。応酬の「弾」が増えることを意味します。</p>
+      <p style="margin-top:10px;"><strong>② 原油そのものが標的になる。</strong>これまでの海峡の混乱は「通れない」ことによる供給制約でした。今回は<strong>積荷や輸送手段そのものが破壊される</strong>という別の経路が加わります。</p>
+      <p style="margin-top:10px;"><strong>③ 民間船舶への波及の判断が難しくなる。</strong>イランは今回「<strong>許可されていないルートを通過した</strong>」タンカーを標的にしたとしています。<strong>これは、イラン側が独自に「通ってよいルート」を定義しようとしていることを意味します。</strong>民間の商船・保険会社にとっては、リスクの見積もりが一段と難しくなります。</p>
+      <div class="counter">
+        <h5>反対の見方も置きます</h5>
+        <p><strong>「エスカレーション」と決めつけないほうがよい材料もあります。</strong>IRGCのミサイルは米艦に命中せず、米側に人的被害はありませんでした。米側の報復も<strong>無人のタンカー（うち1隻は空荷）</strong>に限定され、人的被害の報告はありません。<strong>双方が「人を殺さない範囲での経済的応酬」に留めようとしている、という読み方も成り立ちます。</strong>どちらの読み方が正しいかは、今後の実害の有無で判断すべきで、現時点で断定はしません。</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">清算値・複数媒体で照合</span></div>
+      <h4>価格の現在地：金曜の終値には、週末の出来事が入っていません</h4>
+      <p><strong>9月4日（金）の清算値は、ブレントが1バレル92.68ドル、WTIが91.48ドルでした。週間ではブレントが+7.6%、WTIがほぼ+10%の上昇です。</strong></p>
+      <p style="margin-top:10px;"><strong>週内の推移も記録しておきます。</strong>9月2日10時03分（日本時間）時点で、ブレント11月限は94.48ドル（−0.2%）、一時97.04ドルまで上昇。WTIは89.49ドル（−0.8%）。前日に約5%急騰し、約5週間ぶりの高値を記録していました。9月4日10時32分（日本時間）時点では、ブレント11月限95.15ドル（−0.4%）、WTI 90.77ドル（−0.6%）。<strong>つまり金曜は、95ドル前後から92.68ドルの清算値へ、日中に水準を下げて終えています。</strong></p>
+      <p style="margin-top:10px;"><strong>取引時間中の水準と清算値は別のものです。</strong>本号では清算値（92.68ドル・91.48ドル）を採用し、取引途中の97.04ドル・95.15ドルは「その時点の値」として区別しています。</p>
+      <div class="note">
+        <h5>今週の起点</h5>
+        <p>この価格上昇の直接の起点は、<strong>月曜にサウジアラビアの超大型タンカー2隻がホルムズ海峡で攻撃された</strong>ことでした。その後、米国がホルムズ海峡付近の軍事施設を含むイランの標的を攻撃し、イランがクウェート・バーレーン・ヨルダンなど湾岸地域の米国および同盟国の拠点にミサイル・ドローン攻撃を行いました。<strong>この過程で、イラン南部の結婚式が行われていた地域に着弾し、民間人が死亡したと報じられています。</strong>米副大統領は「<strong>イランがホルムズ海峡での商業船舶への攻撃を停止しない限り、米国はイランとの協議を行う予定はない</strong>」と述べています。</p>
+      </div>
+      <div class="srcline">出典：<a class="src" href="https://jp.investing.com/news/commodities-news/article-1670287" target="_blank" rel="noopener">Investing.com「原油価格、米イラン緊張激化で週間急騰へ（2026年9月4日10:32）」</a>／<a class="src" href="https://jp.investing.com/news/commodities-news/article-1667556" target="_blank" rel="noopener">Investing.com「原油3日続伸、ブレント原油が96ドル超え（2026年9月2日10:03）」</a>／<a class="src" href="https://www.oanda.jp/lab-education/market_news/2026_09_04_wtioil/" target="_blank" rel="noopener">OANDA「WTI原油見通し：中東情勢の悪化によるホルムズ海峡の封鎖継続懸念（2026年9月4日）」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-pred">次に見る点</span></div>
+      <h4>9月7日（月）に確認すること</h4>
+      <p><strong>① 原油の寄り付き。</strong>週末の出来事が、どの程度の幅で価格に入るか。ギャップアップの大きさが、市場の評価そのものです。</p>
+      <p style="margin-top:10px;"><strong>② ホルムズ海峡の通航隻数。</strong>前号D40の時点では、Kplerの集計で9月3日（木）が4隻、前日水曜が9隻、直近10日平均が約15隻でした。<strong>危機前の平時は大型商船が1日約125隻</strong>で、いま通っているのはその3%程度です。<strong>今回のタンカー相互攻撃が、この数字をさらに下げるかどうか。</strong></p>
+      <p style="margin-top:10px;"><strong>③ 船舶保険料率。</strong>3月時点では前週比4〜6倍まで上昇した局面がありました。今回の「タンカーが直接の標的になる」局面で、保険が付くのかどうか。<strong>保険が付かなければ、価格以前に船が動きません。</strong></p>
+      <p style="margin-top:10px;"><strong>④ イランの報復に実害があったか。</strong>本号時点では、イラン側の表明のみで独立確認が取れていません。</p>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-market">
+    <div class="sec-head"><span class="tick"></span><span class="cat">市場</span><span class="sec-title">週明けの市場：まだ織り込まれていないもの <span class="sub">/ 数値はすべて9月4日（金）のものです</span></span></div>
+
+    <p><strong>本日は日曜日です。市場は閉じており、新しい価格はありません。</strong>したがって本章の役割は「今日の値動き」ではなく、<strong>「金曜の終値に何が入っていて、何が入っていないか」を整理すること</strong>です。</p>
+
+    <details class="dd sec-dd">
+      <summary>市場 — 9月4日終値の内訳と、週明けの論点の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">終値・複数媒体で照合</span></div>
+      <h4>9月4日（金）の米国株は3日ぶりに反落しました</h4>
+      <p><strong>NYダウは53,414.25ドル（−271.86ドル、−0.51%）で、3日ぶりの反落。S&amp;P500は7,718.60（−29.11、−0.38%）、ナスダック総合は26,506.99（−77.07、−0.29%）でした。</strong></p>
+      <p style="margin-top:10px;"><strong>下げた理由は「景気が悪いから」ではありません。逆です。</strong>米8月雇用統計が市場予想を大きく上回ったため、<strong>FRBが9月のFOMCで利上げに動くという観測が強まった</strong>ことが下げの主因と報じられています。</p>
+      <p style="margin-top:10px;"><strong>ここは読み違えやすい場面です。</strong>「雇用が強い＝景気が良い＝株高」とはならず、<strong>「雇用が強い＝利上げが近い＝株安」</strong>という反応でした。いまの局面では、<strong>金利のほうが業績より先に株価を決めています。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://kabutan.jp/news/marketnews/?b=n202609050090" target="_blank" rel="noopener">株探「米国市場データ ＮＹダウは271ドル安と3日ぶりに反落（9月4日）」</a>／<a class="src" href="https://www.bloomberg.com/jp/news/articles/2026-09-04/TKUCISKK3NY900" target="_blank" rel="noopener">Bloomberg「S&amp;P500種下落、9月の米利上げ観測強まる－雇用統計の上振れ受け」</a>／<a class="src" href="https://www.oanda.jp/lab-education/market_news/2026_09_04_us30/" target="_blank" rel="noopener">OANDA「NYダウの振り返りと見通し（2026年9月4日）」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認済み</span></div>
+      <h4>日本株は9月4日に5日ぶり反発。米国とは逆を向きました</h4>
+      <p><strong>9月4日（金）の日経平均株価は806円高で、5日ぶりの反発。TOPIXは小幅高でした。</strong>前日の米株高を受けてAI・半導体関連を中心に買いが入っています。9月3日（木）は4日続落で111円安でした。</p>
+      <p style="margin-top:10px;"><strong>日米で向きが違う点に注意が必要です。</strong>日経平均の806円高は<strong>米雇用統計の発表前</strong>の取引によるものです。米国株が雇用統計を受けて下げたのは、その後の米国時間でした。<strong>したがって「日本株が強い」と読むのは早く、月曜の日本市場が金曜の米国株の下げと週末の中東情勢をどう消化するかを見る必要があります。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.oanda.jp/lab-education/market_news/2026_09_04_us30/" target="_blank" rel="noopener">OANDA「NYダウの振り返りと見通し（2026年9月4日）」</a>／<a class="src" href="https://finance.yahoo.co.jp/quote/998407.O/history" target="_blank" rel="noopener">Yahoo!ファイナンス「日経平均株価 時系列・推移」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-pred">次に見る点</span></div>
+      <h4>月曜に確認する3つのこと</h4>
+      <p><strong>① 週末要因のギャップ。</strong>原油、防衛関連、海運、航空。とくに<strong>海運と航空は燃料コストとリスク料率の両方を受ける</strong>ため、反応が出やすい業種です。</p>
+      <p style="margin-top:10px;"><strong>② 日経平均が金曜の806円高を維持できるか。</strong>金曜の日本株の強さは米雇用統計より前のものです。</p>
+      <p style="margin-top:10px;"><strong>③ 金利と株の関係が続くか。</strong>「強い経済指標 → 利上げ観測 → 株安」という反応が続くなら、10日のPPI・11日のCPIも同じ経路で効きます。</p>
+      <div class="note">
+        <h5>数値の性質について</h5>
+        <p>本章の数値はすべて<strong>2026年9月4日（金）の終値</strong>であり、本日（9月6日）の値動きではありません。数値は情報提供を目的としたもので、投資判断への助言ではありません。</p>
+      </div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-fx">
+    <div class="sec-head"><span class="tick"></span><span class="cat">為替</span><span class="sec-title">今週の主役は日本側でした <span class="sub">/ 主要3通貨以外もスキャンしています</span></span></div>
+
+    <p><strong>USD/JPYは156.10〜156.19円で週を終えました。</strong>週初は160.39円、9月3日には155円台まで下げ、156円台で落ち着いています。<strong>週間では円が約2.5%上昇しました。</strong>そしてこの円高は、ドルが弱かったからではありません。<strong>ユーロ円もポンド円も下げており、主役は日本側です。</strong></p>
+
+    <div class="cw">
+      <div class="cw-head">
+        <div class="cw-name">USD/JPY <span>週内で5円動いた局面を確認</span></div>
+        <div class="tfs" role="group" aria-label="時間足の切り替え">
+          <button class="tf" data-i="15" aria-pressed="false">15分<small>1週間</small></button>
+          <button class="tf" data-i="30" aria-pressed="false">30分<small>2週間</small></button>
+          <button class="tf" data-i="60" aria-pressed="true">1時間<small>1か月</small></button>
+          <button class="tf" data-i="240" aria-pressed="false">4時間<small>数か月</small></button>
+          <button class="tf" data-i="D" aria-pressed="false">日足<small>数年</small></button>
+        </div>
+      </div>
+      <div class="chost" data-sym="FX:USDJPY" data-i="60"></div>
+      <div class="cw-foot"><span>1時間足で、週初160.39円 → 9月3日の155円台 → 週末156円台という<strong>1週間で約5円の往復</strong>が確認できます。<strong>9月17〜18日の日銀会合を前に、この幅が続くかどうかが今後の焦点です</strong></span> <a class="tvopen" href="#" target="_blank" rel="noopener">TradingViewで開く</a></div>
+    </div>
+
+    <details class="dd sec-dd">
+      <summary>為替 — 円の要因分解と、主要3通貨以外の多通貨スキャンの全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">要因分解</span><span class="lab lab-fact">複数媒体で照合</span></div>
+      <h4>週の値動きを、米国側と日本側に分けます</h4>
+      <p><strong>時系列で整理します。</strong></p>
+      <p style="margin-top:10px;"><strong>9月2日：160.39円まで上昇。</strong>中東のリスクプレミアムが理由とされています。しかし同日、<strong>日銀の高田創審議委員が札幌市内で講演し</strong>、円買いが入って159円台へ急落しました。</p>
+      <p style="margin-top:10px;"><strong>9月3日：155円台まで下落。</strong>日銀の利上げ観測が強まったことによる円買いです。</p>
+      <p style="margin-top:10px;"><strong>9月4日〜5日：156円台で落ち着く。</strong>金曜の安値は155.25円、週末は156.10〜156.19円。週末を前に様子見となりました。</p>
+      <p style="margin-top:10px;"><strong>ここが要点です。ユーロ円は185円台から181円台へ、ポンド円は216円台から211円台へ水準を切り下げました。</strong>ユーロやポンドが対ドルで大きく崩れたわけではありません。<strong>日銀の9月利上げ幅が拡大するとの思惑と、その後の利上げペース加速を織り込む円買いが主因</strong>です。<strong>つまり今週の為替は、ドル要因ではなく円要因で動きました。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://fx.minkabu.jp/news/378253" target="_blank" rel="noopener">みんかぶFX「為替相場まとめ 8月31日から9月4日の週」</a>／<a class="src" href="https://fx.minkabu.jp/news/378229" target="_blank" rel="noopener">みんかぶFX「ドル円 週末を前に動き落ち着く＝NY為替（9月5日3:11）」</a>／<a class="src" href="https://www.gaitame.com/media/entry/2026/09/05/060400" target="_blank" rel="noopener">外為どっとコム「来週の為替予想（ユーロ/円 ポンド/円）日銀利上げ観測で急落」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-pred">来週の見方（他社見通し）</span></div>
+      <h4>158円が戻りの壁、155円が下値の分岐とされています</h4>
+      <p><strong>外為どっとコムの来週見通しでは、158円が戻りの壁と位置づけられています。</strong>テクニカルには<strong>158.00〜158.76円</strong>が上値の重要ゾーン、<strong>155.20〜155.00円</strong>が重要なサポートで、これを下回ると154.00円が視野に入るとされています。</p>
+      <p style="margin-top:10px;"><strong>これは他社の見通しであり、本機構の予測ではありません。</strong>本機構としては、<strong>「日銀とFRBのどちらの利上げ観測が主導するか」で方向が決まる</strong>という構図に注目します。9月15〜16日にFOMC、9月17〜18日に日銀会合があり、<strong>2つの中央銀行の決定が2営業日以内に連続します。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.gaitame.com/media/entry/2026/09/05/060200" target="_blank" rel="noopener">外為どっとコム「来週の為替予想（米ドル/円）158円が戻りの壁、日銀とFRBどちらの利上げ観測が主導するか」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">多通貨スキャン（毎朝必須の独立工程）</span></div>
+      <h4>主要3通貨以外のスキャン結果</h4>
+      <p><strong>本機構の正式ルール（v1.2 6-2節）では、USD・JPY・EUR以外の通貨を毎回スキャンすることを独立した工程として定めています。</strong>「いつもの主要3通貨に大きな動きがないから為替材料なし」という判断はしません。本号のスキャン結果は次のとおりです。</p>
+      <p style="margin-top:10px;"><strong>◆ アジア：CNY/JPYは9月4日時点で23.276〜23.282円、前日比+0.0890円（+0.38%）。</strong>8月の平均は約23.5645円で、<strong>8月平均より円高・人民元安の水準</strong>にあります。中国の実体経済側では、1〜2月の工業生産が前年同期比+6.3%（3Dプリンター+54.1%、リチウムイオン電池+42.6%、産業用ロボット+31.1%）と伸びる一方、<strong>不動産開発投資は−11.1%とマイナスが継続</strong>しています。</p>
+      <p style="margin-top:10px;"><strong>◆ 新興国：TRY/JPYは9月1日時点で3.30〜3.31円付近。</strong>右肩下がりの推移が続き、少しずつ安値を更新しています。直上の3.40円には売り注文が意識され、<strong>3.28円割れが警戒線</strong>とされています。MXN/JPY・ZAR/JPYについては、2026年の想定レンジ（メキシコペソ6.5〜9円、南アフリカランド7〜9.5円）は確認できましたが、<strong>9月4〜5日時点の水準は確認できていません。</strong></p>
+      <p style="margin-top:10px;"><strong>◆ 先進国：GBP/AUD/NZD/CAD/CHF/NOK/SEKについては、対円ではポンド円の下落（216→211円台）を確認しました。</strong>対ドルの個別水準（EUR/USD・GBP/USD）は本号では確認できていません。<strong>資源国通貨（CAD・NOK）は、週間で+7〜10%の原油高に対して素直に反応したかどうかを確認できていません。</strong>これは本来、今週いちばん見るべき組み合わせでした。第13章に未確認として記載します。</p>
+      <div class="note">
+        <h5>集計上の注意（v1.2 6-5節）</h5>
+        <p>通貨名の単純な語句一致は誤検出が多く、「ランド」はエルグランド・クリーブランド・イングランド銀行に、「ウォン」は「兆ウォン」という金額単位に一致します。<strong>本号でも、通貨ペア表記や中央銀行名と併せて判定しています。</strong></p>
+      </div>
+      <div class="srcline">出典：<a class="src" href="https://finance.matsui.co.jp/fx/CNHJPY=X/daily-bar/index" target="_blank" rel="noopener">松井証券「人民元/円 時系列データ」</a>／<a class="src" href="https://www.gaitame.com/media/entry/2026/09/01/130122" target="_blank" rel="noopener">外為どっとコム「トルコリラ/円見通し｜3.28円割れを警戒したいリラ円（2026年9月1日）」</a>／<a class="src" href="https://www.jetro.go.jp/biznews/2026/03/84786988b594c246.html" target="_blank" rel="noopener">ジェトロ「中国、1〜2月の主要経済指標は一部減速も堅調な推移」</a>／<a class="src" href="https://diamond.jp/articles/-/380166" target="_blank" rel="noopener">ダイヤモンド「メキシコペソ・南アランド・トルコリラ…26年の新興国通貨『二極化』相場の行方」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-rates">
+    <div class="sec-head"><span class="tick"></span><span class="cat">金利・中央銀行</span><span class="sec-title">向こう2週間で欧米日英の4中銀が動きます <span class="sub">/ 今週はECB、来週にFOMC・BOE・日銀</span></span></div>
+
+    <p><strong>中央銀行の決定は、今週と来週に分かれます。今週は9月9〜10日のECB理事会（決定は10日）。来週は9月15〜16日のFOMC、17日のBOE、17〜18日の日銀です。</strong>また<strong>9月5日からFRBはFOMC前のブラックアウト期間に入りました。</strong>強い雇用統計に対するFRB当局者の反応を、FOMCまで聞くことはできません。<strong>FOMC前の主要な物価材料は、9月10日のPPIと11日のCPIです。</strong></p>
+
+    <details class="dd sec-dd">
+      <summary>金利・中央銀行 — 織り込みの数字の扱いと、日欧英の現在地の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">出所と時刻で数字が違います</span></div>
+      <h4>9月FOMCの利上げ織り込みは、集計によって48%〜60%に分かれています</h4>
+      <p><strong>本機構の正式ルール（v1.2 第7章）では、FOMCの織り込みについて「情報源と取得時刻を必ず併記する」ことを定めています。</strong>今回はその必要性がはっきり出た局面なので、確認できた数字をすべて並べます。</p>
+      <p style="margin-top:10px;">・<strong>約60%</strong>（CME FedWatch・9月4日 CNBC報道時点）— 前号D40で採用した値。前日は54%<br>・<strong>61%</strong>（Prime Terminal・9月4日19:52 GMT時点）— 前号D40が併記した値<br>・<strong>利上げ48.4% / 据え置き51.6%</strong>（CME FedWatch・9月4日時点とする集計）<br>・<strong>利上げ49.8% / 据え置き50.2%</strong>（CME FedWatch・9月4日時点とする別集計。前日は63.2%）<br>・<strong>0.25%利上げ60.4% / 据え置き39.6%</strong>（トレーダーズ・ウェブ。日付は確認できず）</p>
+      <p style="margin-top:10px;"><strong>本号では、どれか1つを「正しい数字」として採用しません。</strong>雇用統計の発表当日は、時間帯によって織り込みが大きく振れます。<strong>言えるのは「9月FOMCの利上げは、市場でほぼ五分から6割程度まで意識されている」という幅であって、小数点以下の水準ではありません。</strong>この点を曖昧にしたまま1つの数字だけを載せることは、v1.2の趣旨に反すると考えます。</p>
+      <p style="margin-top:10px;">なお、雇用統計前の8月末時点では、日本経済新聞が「<strong>米年内利上げ観測は1.5回へ急回復、9月は6割</strong>」と報じていました。</p>
+      <div class="srcline">出典：<a class="src" href="https://finance.yahoo.co.jp/news/detail/eadaa51e3e937a2345140308cd5faa5af2e03589" target="_blank" rel="noopener">トレーダーズ・ウェブ「9月FOMCでの0.25％利上げ確率、60.4％に上昇 据え置き39.6％に低下」</a>／<a class="src" href="https://www.nikkei.com/article/DGXZQOFL290DSTZ20C26A8000000/" target="_blank" rel="noopener">日本経済新聞「米年内利上げ観測『1.5回』へ急回復 9月は6割に」</a>／<a class="src" href="https://www.ebc.com/jp/forex/310959.html" target="_blank" rel="noopener">EBC「9月FOMC、利上げの確率は50%前後?」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">BLS発表・複数媒体で照合</span></div>
+      <h4>その前提となった米8月雇用統計（前号D40の継続）</h4>
+      <p><strong>米労働統計局（BLS）の一次資料で確認しました。2026年9月4日（金）午前8時30分（米東部時間）発表、2026年8月分です。</strong></p>
+      <p style="margin-top:10px;">・<strong>非農業部門雇用者数：前月比 +162,000人</strong>（市場予想 +53,000人を3倍以上上回る）。<strong>過去12か月の平均月間増加は +31,000人</strong>で、8月はこれを大きく上回りました<br>・<strong>失業率：4.1%。前月から横ばい</strong><br>・<strong>平均時給：37.75ドル</strong>（前月比 +0.10ドル、+0.3%）<br>・<strong>労働参加率：61.6%</strong>（小幅上昇）<br>・<strong>失業者数：700万人</strong>でほぼ変わらず。<strong>27週以上の長期失業者は190万人</strong>で、全失業者の27.0%<br>・<strong>過去月の改定：6月 +11,000人、7月 +44,000人の上方修正</strong>（合計 +55,000人）</p>
+      <p style="margin-top:10px;"><strong>失業率について、初稿の記述を訂正します。</strong>二次媒体で「4.2%から改善」とする記述と「横ばい」とする記述が併存していたため、初稿では方向を断定していませんでした。<strong>BLSの一次資料により「4.1%・前月から横ばい」で確定したため、本号ではこれを採用し、未確認項目からも外しました。</strong></p>
+      <p style="margin-top:10px;"><strong>意味するところ。</strong>それまで市場が持っていた「米国の労働市場は急速に減速している」という前提が、<strong>今回の実績と過去分の上方修正によって書き換わりました。</strong>利上げ観測が一気に強まったのはこのためです。</p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics「The Employment Situation — August 2026」（2026年9月4日 8:30 ET発表）</a>　／　出典：<a class="src" href="https://www.bloomberg.com/jp/news/articles/2026-09-04/TKUAV2T96OSG00" target="_blank" rel="noopener">Bloomberg「米雇用統計、8月の雇用者数は16.2万人増－失業率は4.1%で横ばい」</a>／<a class="src" href="https://www.zaikei.co.jp/article/20260905/868750.html" target="_blank" rel="noopener">財経新聞「4日の米国株式市場は反落―予想上回る米雇用統計で利上げ観測強まる」</a>／<a class="src" href="https://blog.sonybank.jp/ces.html" target="_blank" rel="noopener">ソニー銀行「米雇用統計・今月の注目ポイント（2026年9月4日発表分）」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">日本</span><span class="lab lab-fact">日銀審議委員の講演・記者会見</span></div>
+      <h4>日銀・高田審議委員「機動的に利上げを行う新たな局面」</h4>
+      <p><strong>日本銀行の高田創審議委員は9月2日、札幌市内での講演で「2026年以降は一定のペースにとらわれず、機動的に利上げを行う新たな局面」と述べました。</strong>同日の記者会見では、2024年3月以降おおむね半年ごとに決めてきた利上げについて「<strong>連続になることも一般論としてあり得る</strong>」と述べています。</p>
+      <p style="margin-top:10px;"><strong>理由として挙げられたのは、中東情勢を受けた物価上昇圧力です。</strong>日銀が重視する基調的な物価上昇率が目標の2%を超えていくリスクを指摘し、海外が2024〜25年の利下げ局面から利上げ方向へ転換しつつあり、<strong>円安圧力が働きやすい状況</strong>だとしています。</p>
+      <p style="margin-top:10px;"><strong>この発言の直後、利上げ観測の高まりで長期金利が上昇し、円・債券・株価の「トリプル安」が意識される局面がありました。</strong>高田氏はエコノミスト出身で利上げに積極的な立場とされ、<strong>7月会合では1.25%程度への利上げを提案しましたが、反対多数で否決されています。</strong></p>
+      <div class="note">
+        <h5>数字の扱いについて</h5>
+        <p>一部の報道要約に「高田氏が0.5%への利上げを示唆した」という趣旨の記述がありましたが、<strong>本号では採用しません。</strong>確認できたのは「7月会合で1.25%程度への利上げを提案し否決された」という事実と、9月2日の「機動的」「連続もあり得る」という発言です。<strong>0.5%という数字の出どころを特定できていないため、断定を避けます。</strong></p>
+      </div>
+      <p style="margin-top:10px;"><strong>次回の金融政策決定会合は9月17〜18日です。</strong>市場が織り込む利上げ確率は<strong>97%</strong>とする集計がありますが、これは本機構が一次で確認したものではなく、二次情報として記載します。</p>
+      <div class="srcline">出典：<a class="src" href="https://www.nikkei.com/article/DGXZQOUB0246R0S6A900C2000000/" target="_blank" rel="noopener">日本経済新聞「日銀の高田審議委員『連続利上げあり得る』 海外発で局面変化を指摘」</a>／<a class="src" href="https://www.nikkei.com/article/DGXZQOUB020E30S6A900C2000000/" target="_blank" rel="noopener">日本経済新聞「日銀の高田審議委員『機動的利上げの新局面に』 海外発のインフレ懸念」</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20260902de47789" target="_blank" rel="noopener">NHK「日銀 高田審議委員 “機動的に利上げを進めるべき”」</a>／<a class="src" href="https://www.boj.or.jp/about/calendar/index.htm" target="_blank" rel="noopener">日本銀行「公表予定」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認済み</span></div>
+      <h4>日本の長期金利は1996年以来の水準にあります</h4>
+      <p><strong>誤解が出ないよう、時系列で整理します。</strong></p>
+      <p style="margin-top:10px;">・<strong>7月</strong>：新発10年物国債の利回りが一時 <strong>2.93%</strong>。当時「30年ぶり高水準」と報じられました<br>・<strong>8月中旬</strong>：一時 <strong>2.945%</strong>。財政懸念と日銀利上げ観測で上昇<br>・<strong>9月1日（火）</strong>：<strong>夕方の取引で 3.005% に達し、3%を突破。1996年9月以来、約30年ぶりの水準です</strong><br>・<strong>9月5日（前号D40の時点）</strong>：「日本10年が1996年以来の3%」として報告。<strong>30年物は過去最高、20年物は1999年以来の水準</strong></p>
+      <p style="margin-top:10px;"><strong>つまり「2.945%」と「3%」は矛盾する数字ではなく、8月中旬から9月1日にかけて段階的に上昇した過程の、別々の時点の値です。</strong>初稿ではこの2つを並べて記載しており、同一時点の数字と読める書き方になっていたため、本節で時系列へ整理しました。</p>
+      <p style="margin-top:10px;"><strong>背景として挙げられている要因は複数あります。</strong>日銀の早期利上げ観測、7月31日の日米協調介入以降に強まった利上げ観測とターミナルレート（利上げの最終到達点）引き上げ観測、中東情勢に由来する原油高、そして<strong>市場が指摘する財政拡張への懸念</strong>です。日銀の政策変更により、3年物が約2%、10年物が約3%という水準まで上昇しています。</p>
+      <p style="margin-top:10px;"><strong>本号でも、9月4日（金）時点の確定値（小数点以下）は確認できていません。</strong>前号D40で未確認として残した項目⑩は、今号でも解消していません。</p>
+      <div class="srcline">出典：<a class="src" href="https://www.nikkei.com/article/DGXZQOUB010UI0R00C26A9000000/" target="_blank" rel="noopener">日本経済新聞「長期金利3%、30年ぶり高さ 日米利上げ観測・財政不安で上昇」（9月1日）</a>／<a class="src" href="https://www.bloomberg.com/jp/news/articles/2026-09-01/TJXWKVT96OSP00" target="_blank" rel="noopener">Bloomberg「長期金利が一時3%に上昇、30年ぶり高水準更新－利上げ観測や財政拡張」</a>／<a class="src" href="https://www.smd-am.co.jp/market/ichikawa/2026/09/irepo260902/" target="_blank" rel="noopener">三井住友DSアセットマネジメント「30年ぶりにつけた長期金利の3％という水準は単なる通過点か」</a>／<a class="src" href="https://www.nikkei.com/article/DGXZQOUB1747W0X10C26A8000000/" target="_blank" rel="noopener">日本経済新聞「長期金利上昇、一時2.945% 財政懸念や日銀利上げ観測で」</a>／<a class="src" href="https://www.nikkei.com/article/DGXZQOUB097Y20Z00C26A7000000/" target="_blank" rel="noopener">日本経済新聞「長期金利一時2.93%、30年ぶり高水準 日銀の早期利上げ観測」</a>／<a class="src" href="https://www.bb.jbts.co.jp/ja/historical/main_rate.html" target="_blank" rel="noopener">日本相互証券「主要年限レート（長期金利等）ヒストリカルデータ」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">中央銀行の公表資料</span></div>
+      <h4>欧州と英国：どちらも「利下げ」ではなく「利上げ」側の議論です</h4>
+      <p><strong>ECB（欧州中央銀行）は、7月23日の理事会で3つの主要金利を据え置きました。</strong>7月13日時点で、預金ファシリティ金利2.25%、主要リファイナンス金利2.4%、限界貸付金利2.65%です。<strong>6月には25ベーシスポイントの利上げを実施しています。</strong>ユーロシステムのスタッフ見通しでは、総合インフレ率は2026年平均3.0%、2027年2.3%、2028年2.0%とされています。</p>
+      <p style="margin-top:10px;"><strong>BOE（イングランド銀行）は、7月30日にBank Rateを3.75%で据え置きました。今年5回連続の据え置きで、採決は6対3、3名は4%への引き上げに投票しています。</strong>主要なリスクとして<strong>「変動するエネルギー価格と、継続する中東の紛争によって押し上げられるインフレ」</strong>が挙げられています。次回の決定は<strong>9月17日</strong>です。</p>
+      <p style="margin-top:10px;"><strong>ここが今の世界の局面を示しています。</strong>日本・米国・欧州・英国のいずれも、<strong>議論の方向は「利下げ」ではなく「据え置きか、利上げか」</strong>です。前号D40で扱った世界同時の金利上昇は、この文脈の中にあります。</p>
+      <div class="srcline">出典：<a class="src" href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html" target="_blank" rel="noopener">European Central Bank「Monetary policy decisions」</a>／<a class="src" href="https://www.ecb.europa.eu/press/economic-bulletin/html/eb202605.en.html" target="_blank" rel="noopener">ECB「Economic Bulletin Issue 5, 2026」</a>／<a class="src" href="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" target="_blank" rel="noopener">Bank of England「Interest rates and Bank Rate: our latest decision」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-life">
+    <div class="sec-head"><span class="tick"></span><span class="cat">暮らしの経済</span><span class="sec-title">9月は値上げと補助終了が重なります <span class="sub">/ 4,531品目、単月では2023年10月以来の水準</span></span></div>
+
+    <p><strong>9月の飲食料品の値上げは4,531品目。単月で4,000品目を超えるのは2023年10月以来です。</strong>しょうゆ・つゆ、冷凍食品、練り製品、乳製品、菓子、飲料など、毎日の食卓に関わる商品が広く対象になっています。<strong>加えて、電気・ガスの補助が9月使用分で終了する見込みです。</strong></p>
+
+    <details class="dd sec-dd">
+      <summary>暮らしの経済 — 値上げの内訳と、原油高が家計に届くまでの経路の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">生活に直結</span></div>
+      <h4>食品と光熱費の負担増が、同じ月に重なります</h4>
+      <p><strong>9月の値上げ品目は4,531品目です。</strong>背景には、春以降の原材料高、包装資材費、物流費、人件費、エネルギー費の上昇を、<strong>秋冬商戦の前に価格へ反映するというメーカー側の事情</strong>があると説明されています。</p>
+      <p style="margin-top:10px;"><strong>同時に、電気・ガスの補助が9月使用分で終わる見込みです。</strong>ある試算では、9月は秋の食品値上げ第一波にガス代の上昇が加わり、さらに2学期の学用品・給食費が重なることで、<strong>4人家族で前年同月比1〜1.7万円程度の負担増</strong>が見込まれるとされています。</p>
+      <p style="margin-top:10px;"><strong>この試算は民間メディアによるもので、条件によって幅があります。</strong>本機構としては金額そのものより、<strong>「食品」「光熱費」「教育関連」という性質の違う3つが同じ月に重なる構造</strong>に注目します。<strong>1つひとつは小さくても、同時に来ると家計の調整余地がなくなります。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://price-log.com/price/price-hike-2026-09/" target="_blank" rel="noopener">家計レーダー「2026年9月の値上げ一覧｜しょうゆ・コーラ・冷凍食品など4531品目」</a>／<a class="src" href="https://nics-gp.co.jp/media/money/price-increase-september-2026/" target="_blank" rel="noopener">くらしのコンパス「【2026年9月最新】食品値上げ一覧｜4,531品目で年内最多」</a>／<a class="src" href="https://h-bid.jp/september-2026-price-increase-list/" target="_blank" rel="noopener">暮らしの設備ガイド「2026年9月値上げ一覧｜食品4531品目・電気代まで」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-view">研究所としての見方</span></div>
+      <h4>ホルムズ海峡の混乱が家計に届くまでには、時間差があります</h4>
+      <div class="why">
+        <h5>なぜ今この話を並べるか</h5>
+        <p><strong>本号の第2章（中東）と本章（暮らし）は、別の話ではありません。同じ話の入口と出口です。</strong>原油高 → 燃料・電力・物流コスト → 食品や日用品の価格、という順に伝わります。<strong>ただし、この伝播には数か月の時間差があります。</strong></p>
+      </div>
+      <p style="margin-top:10px;"><strong>いま起きている9月の値上げは、春以降のコスト上昇を反映したものです。</strong>つまり<strong>今回の中東情勢による原油高（週間+7〜10%）は、まだ入っていません。</strong>それが価格に出てくるのは、早くても数か月先です。</p>
+      <p style="margin-top:10px;"><strong>先に効くのは、ガソリン・灯油・電気料金です。</strong>これらは原油価格との連動が速く、しかも<strong>電気・ガスの補助が9月で終わる</strong>タイミングと重なります。<strong>「補助が切れる」と「原油が上がる」が同時に来ると、体感の負担増は補助終了分だけでは説明できない大きさになります。</strong></p>
+      <p style="margin-top:10px;"><strong>これは予測ではなく、どこを見れば判断できるかの整理です。</strong>灯油需要が立ち上がる10〜11月にかけて、実際にどう出るかを本レポートで追います。</p>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-ai">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI・技術</span><span class="sec-title">9月1〜3日に主要3社が連続して新モデルを出しました <span class="sub">/ 能力の発表と、制約の発表が同時に出ています</span></span></div>
+
+    <p><strong>2026年9月1日から3日にかけて、Anthropic・Google・OpenAIが3日連続で新モデルを公開しました。</strong>いずれも<strong>サイバーセキュリティ能力が中心的な論点</strong>で、<strong>一般提供版と、審査を通した組織にだけ渡す制限版を分ける</strong>という同じ設計が3社に共通して現れています。本節は各社の一次資料で再確認しました。</p>
+
+    <details class="dd sec-dd">
+      <summary>AI・技術 — 9月1〜3日の3社連続リリースと、安全側の動きの全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">最重要・一次情報で再確認</span></div>
+      <h4>9月1日・2日・3日——3日連続で、主要3社が新モデルを公開しました</h4>
+      <p><strong>日付順に並べます。いずれも各社の公式資料で確認しました。</strong></p>
+      <div class="dgrid" style="margin:14px 0;">
+        <div class="dg">
+          <div class="dg-h"><em>9月1日</em>Anthropic</div>
+          <div class="dg-r"><span>公開したもの</span><span><b>Claude Fable 5.1</b> と <b>Claude Mythos 5.1</b>（Fable 5 から3か月）</span></div>
+          <div class="dg-r"><span>設計</span><span><b>2つは同じ基盤モデル</b>。Fable 5.1＝本番の安全策を有効にした一般提供版、<b>Mythos 5.1＝審査を通したサイバーセキュリティ・生命科学の組織にだけ渡す制限付きアクセス版</b></span></div>
+          <div class="dg-r w"><span>価格・性能</span><span>100万トークンあたり入力10ドル／出力50ドルで据え置き、<b>キャッシュ読み取りは75%引き下げ</b>。エージェント型の科学研究でFable 5の2倍超</span></div>
+        </div>
+        <div class="dg">
+          <div class="dg-h"><em>9月2日</em>Google</div>
+          <div class="dg-r"><span>公開したもの</span><span><b>Gemini 3.8 Flash</b> と <b>Gemini 3.8 Flash Cyber</b>（6週間で3度目のFlashリリース）</span></div>
+          <div class="dg-r"><span>設計</span><span>3.8 Flashはエージェント・長時間のコーディング向け（<b>100万トークンの文脈、出力6.4万</b>）。<b>Cyberは防御側の作業のために緩和を意図的に緩めた版</b>で、<b>Fairwind Programを通じて政府機関・重要インフラ事業者・ソフトウェア保守者に優先提供</b></span></div>
+          <div class="dg-r w"><span>正直な注記</span><span>Googleは<b>「3.8は3.7 Flashを基盤にしており、思考トークンを多く使う。効率優先なら3.7に留まってよい」と自ら明示</b>。価格は3.7と同じ（入力0.75ドル／出力3.75ドル）で、<b>2027年1月1日に倍</b>になります</span></div>
+        </div>
+        <div class="dg">
+          <div class="dg-h"><em>9月3日</em>OpenAI</div>
+          <div class="dg-r"><span>公開したもの</span><span><b>GPT-6 Astra</b>。「これまでに広く展開した中で最も高性能なモデル」とされ、まず信頼できるパートナー向けの限定プレビュー</span></div>
+          <div class="dg-r"><span>設計</span><span><b>OpenAIのPreparedness Frameworkで、サイバーセキュリティ能力が初めて「Critical」水準に達した</b>モデル。段階的な展開で、<b>審査制のサイバーセキュリティ計画 Daybreak</b> の参加企業が先行</span></div>
+          <div class="dg-r w"><span>安全側</span><span>新しい堅牢性の訓練手法により<b>GPT-5.6 Sol よりジェイルブレイク耐性が大きく向上</b>。<b>誤用・不整合いずれの場合でも、有害なサイバー行動を取らないための保護を大幅に強化した</b>としています</span></div>
+        </div>
+      </div>
+      <div class="why">
+        <h5>3社に共通して現れた設計</h5>
+        <p><strong>「一般提供版」と「審査済み組織にだけ渡す制限版」を分ける、という同じ形が3社すべてに出ています。</strong>Anthropicは Fable 5.1／Mythos 5.1、Googleは 3.8 Flash／3.8 Flash Cyber（Fairwind Program）、OpenAIは 一般展開／Daybreak。<strong>いずれもサイバーセキュリティが分岐点です。</strong></p>
+      </div>
+      <p style="margin-top:10px;"><strong>これは偶然の一致ではないと考えます。</strong>脆弱性を自動で発見する能力は、<strong>防御側にとっても攻撃側にとっても同じ価値を持ちます。</strong>3社が同じ週に、同じ「二層構造」で答えを出したことは、<strong>この分野で能力を単純に一般公開できない段階に入ったことを示しています。</strong></p>
+      <p style="margin-top:10px;"><strong>ただし留保します。「審査を通した組織にだけ渡す」という運用が実際に機能するかどうかは、審査基準・監査・漏洩時の対応が公開されない限り外部から検証できません。</strong>本号では、各社がそう設計したという事実までを記録します。</p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&amp;%20Claude%20Mythos%205.1%20System%20Card.pdf" target="_blank" rel="noopener">Anthropic「System Card: Claude Fable 5.1 &amp; Claude Mythos 5.1」（2026年9月1日）</a>／<a class="src" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank" rel="noopener">Google 公式ブログ「Introducing Gemini 3.8 Flash and 3.8 Flash Cyber」（2026年9月2日）</a>／<a class="src" href="https://openai.com/index/safety-overview-gpt-6-astra/" target="_blank" rel="noopener">OpenAI「Safety overview: GPT-6 Astra」</a>／<a class="src" href="https://deploymentsafety.openai.com/gpt-6-astra" target="_blank" rel="noopener">OpenAI Deployment Safety Hub「GPT-6 Astra System Card」</a>　／　出典：<a class="src" href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads" target="_blank" rel="noopener">VentureBeat（Anthropic）</a>／<a class="src" href="https://venturebeat.com/security/googles-gemini-3-8-flash-is-built-for-agents-while-its-cyber-twin-hunts-vulnerabilities" target="_blank" rel="noopener">VentureBeat（Google）</a>／<a class="src" href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html" target="_blank" rel="noopener">CNBC「OpenAI announces rollout of GPT-6 Astra model」</a>／<a class="src" href="https://9to5google.com/2026/09/02/gemini-3-8-flash-launch/" target="_blank" rel="noopener">9to5Google</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">注目</span><span class="lab lab-warn">企業発表・第三者検証は未確認</span></div>
+      <h4>OpenAI「GPT-6 Astra」——能力の主張と、開発停止の公表が同じ発表に入っています</h4>
+      <p><strong>OpenAIは9月3日、次世代モデル「GPT-6 Astra」を発表しました。</strong>Sam Altman CEOの「2026年末までに社内でAGIを達成する」という発言を裏付ける位置づけとされています。<strong>Astraは未解決の数学問題を複数解決したと発表された一方、サイバー能力への懸念から一部の開発を停止したことも公表されました。</strong></p>
+      <p style="margin-top:10px;"><strong>ここは慎重に扱います。</strong>「未解決の数学問題を解決した」という主張は<strong>企業側の発表であり、第三者による検証を本号では確認できていません。</strong>数学における「未解決問題」は定義と難易度の幅が非常に広く、<strong>どの問題を、どの水準で解いたのかが分からない限り、意味は評価できません。</strong></p>
+      <p style="margin-top:10px;"><strong>むしろ本機構が注目するのは後半です。</strong>「サイバー能力への懸念から一部開発を停止した」という公表は、<strong>能力の宣伝と同時に、自社が危険と判断した領域を明示している</strong>という点で性質が違います。</p>
+      <p style="margin-top:10px;"><strong>OpenAIの公式資料で確認できたのは、次の点です。</strong>GPT-6 Astraは<strong>OpenAIのPreparedness Frameworkにおいて、サイバーセキュリティ能力が初めて「Critical」水準に達したモデル</strong>とされています。公式には<strong>「適切なツールとアクセスがあれば、人が一手ずつ導かなくても、十分に防御された多くのシステムに対して未知の脆弱性を発見し、新たな攻撃手法を作り出しうる」</strong>と記載されています。これに対し、<strong>誤用によるものか、不整合（misalignment）によるものかを問わず、有害なサイバー行動を取らないための保護を大幅に強化したとしています。</strong>また新しい堅牢性訓練により、<strong>GPT-5.6 Sol よりジェイルブレイク耐性が大きく向上した</strong>とされています。</p>
+      <p style="margin-top:10px;"><strong>展開は段階的です。</strong>Astraは<strong>限定された組織およびAPIから段階展開が始まり、ChatGPTの各対象プラン・Work・Codex等へ順次拡大しています。</strong>審査制のサイバーセキュリティ計画<strong>「Daybreak」</strong>では、<strong>高度な防御用途へのアクセス拡大が予定されています。</strong>提供範囲はプランや製品によって異なり、本号執筆時点で細かな順序・対象プランを確定的に記載できる段階にはありません。</p>
+      <p style="margin-top:10px;"><strong>それでも確認できていないことがあります。「一部開発を停止した」という記述について、停止した対象・範囲・判断基準は本号では特定できていません。</strong>また「未解決の数学問題を解決した」という主張の第三者検証にも到達していません。</p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://openai.com/index/safety-overview-gpt-6-astra/" target="_blank" rel="noopener">OpenAI「Safety overview: GPT-6 Astra」（公式）</a>／<a class="src" href="https://deploymentsafety.openai.com/gpt-6-astra" target="_blank" rel="noopener">OpenAI Deployment Safety Hub「GPT-6 Astra System Card」（公式）</a>　／　出典：<a class="src" href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html" target="_blank" rel="noopener">CNBC「OpenAI announces rollout of GPT-6 Astra model」</a>／<a class="src" href="https://www.aljazeera.com/economy/2026/9/4/openai-unveils-gpt-6-astra-amid-rising-scrutiny-and-safety" target="_blank" rel="noopener">Al Jazeera「OpenAI unveils GPT-6 Astra amid rising scrutiny and safety concerns」</a>／<a class="src" href="https://note.com/eshimi/n/nbad3dadbe1a1" target="_blank" rel="noopener">「OpenAI GPT-6 Astra発表、他2026年9月4日AIニュースまとめ」</a>／<a class="src" href="https://qiita.com/mt_caddi/items/0aa540a9016e8d686fc6" target="_blank" rel="noopener">Qiita「2026年9月最新版｜AIトレンド総まとめ：値下げ合戦からエージェント本番運用、規制強化まで」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">複数媒体で確認</span></div>
+      <h4>Google：エージェントとロボットへ。Anthropic：ウォーターマークと防御基金へ</h4>
+      <p><strong>ここは9月1〜3日の最新リリースの「直前まで」の流れです。上の節と合わせて読むと、この数週間の動きが1本につながります。</strong></p>
+      <p style="margin-top:10px;"><strong>Googleは、音声会話機能「Gemini Live」に自律型エージェント「Gemini Spark」を統合しました。</strong>8月以降、「Gemini 3.6 Flash」「Gemini 3.7 Flash」、最長40秒の動画生成AI「Gemini Omni 1.1 Flash」、パーソナルAI「Gemini Spark」の日本提供、<strong>ロボット向けAI「Gemini Robotics 2」</strong>を相次いで発表しています。<strong>そして9月2日の 3.8 Flash / 3.8 Flash Cyber により、Flash系列は6週間で3度目の更新となりました。</strong></p>
+      <p style="margin-top:10px;"><strong>Anthropicは、生成テキストへ不可視のウォーターマークを導入しました。</strong>また「Claude Mythos 5」のサイバーセキュリティ機能をClaude Enterpriseに開放し、<strong>3,500万ドル規模の防御基金を設立</strong>しています。<strong>その延長として、9月1日に Claude Fable 5.1 / Claude Mythos 5.1 が公開されました。</strong></p>
+      <p style="margin-top:10px;"><strong>3社に共通する構図があります。</strong>OpenAIは「開発停止」、Anthropicは「ウォーターマークと防御基金」、Googleは「エージェントとロボットへの実装」。<strong>能力の発表と、その能力を制御する仕組みの発表が、同じ時期に並んで出ています。</strong>これは<strong>各社が外部からの規制を待たずに自主的な制約を先に示している</strong>と読むこともできますし、<strong>能力の伸びに対して制御が追いついていないことの裏返し</strong>と読むこともできます。<strong>現時点でどちらとも断定しません。</strong></p>
+      <p style="margin-top:10px;">なお8月には、NVIDIAの5,000億ドル規模の案件と、<strong>Anthropicの初黒字</strong>が報じられています。</p>
+      <div class="srcline">出典：<a class="src" href="https://www.businessinsider.jp/article/2609-how-much-did-major-generative-ai-service-fees/" target="_blank" rel="noopener">Business Insider Japan「【2026年9月版】生成AI主要8サービス料金早見表」</a>／<a class="src" href="https://www.11consul.com/2026/08/17/ainews202608vol2/" target="_blank" rel="noopener">「【2026年8月第2週】今週のAIニュース｜NVIDIA 5,000億ドル・Anthropic初黒字」</a>／<a class="src" href="https://www.fidx.co.jp/ai-model-comparison-2026/" target="_blank" rel="noopener">フィデックス「2026年最新AIモデル動向まとめ」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-telecom">
+    <div class="sec-head"><span class="tick"></span><span class="cat">通信・宇宙・衛星</span><span class="sec-title">打ち上げは続き、地上の集中は残ります <span class="sub">/ みちびき7号機・ローマン宇宙望遠鏡</span></span></div>
+
+    <p><strong>8月30日にNASAのナンシー・グレース・ローマン宇宙望遠鏡がFalcon Heavyで打ち上げられ、9月2日（日本時間）にはStarlink衛星27機が軌道投入されました。</strong>JAXAは8月11日にH3ロケット9号機で<strong>「みちびき」7号機</strong>の軌道投入に成功しています。</p>
+
+    <details class="dd sec-dd">
+      <summary>通信・宇宙・衛星 — 打ち上げ状況と、地上インフラの構造的な課題の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認済み</span></div>
+      <h4>宇宙：望遠鏡・測位・通信の3方向で進んでいます</h4>
+      <p><strong>① 観測：</strong>NASAのナンシー・グレース・ローマン宇宙望遠鏡が、<strong>2026年8月30日 午前7時26分（米東部夏時間）、フロリダのケネディ宇宙センター 発射施設39A から SpaceXのファルコンヘビーで打ち上げられました。</strong>約10分後に軌道へ到達しています。</p>
+      <p style="margin-top:10px;"><strong>NASAの一次情報で確認しました。</strong>ローマン宇宙望遠鏡は、NASA初の主任天文学者の名を冠したもので、<strong>ハッブルよりはるかに広い視野で数十億の恒星と銀河を探査し、ダークエネルギー・系外惑星・宇宙の進化の研究に用いられます。</strong>現在は<strong>最終軌道に向けた3か月・約100万マイルの行程</strong>にあり、<strong>NASAは最初の画像の公開を2027年初頭と見込んでいます。</strong></p>
+      <p style="margin-top:10px;"><strong>② 通信：</strong>SpaceXは日本時間2026年9月2日、ヴァンデンバーグ宇宙軍基地からFalcon 9を打ち上げ、Starlink衛星27機を軌道へ投入しました。</p>
+      <p style="margin-top:10px;"><strong>③ 測位：</strong>JAXAは2026年8月11日、H3ロケット9号機で「<strong>みちびき」7号機の軌道投入に成功</strong>しました。6月12日にはH3ロケット6号機を打ち上げ、2段目の軌道投入を達成しています。</p>
+      <p style="margin-top:10px;"><strong>「みちびき」が7号機まで到達した意味を書きます。</strong>準天頂衛星システムは、日本上空に長く留まる軌道を使うことで、<strong>都市部のビル陰や山間部でも測位を安定させる</strong>ことを目的としています。<strong>これは「便利になる」話であると同時に、GPS（米国）だけに依存しない測位基盤を持つという安全保障の話でもあります。</strong>災害時の位置情報、自動運転、ドローン、農業機械の自動化は、いずれもこの精度に依存します。</p>
+      <p style="margin-top:10px;">なお、JAXAの小惑星探査機「はやぶさ2」によるトリフネのフライバイ成功を記念したコンサートが、9月5日に山梨で開催されています。</p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/" target="_blank" rel="noopener">NASA Science「NASA's Roman Space Telescope Launches」（2026年8月30日）</a>／<a class="src" href="https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/" target="_blank" rel="noopener">NASA ニュースリリース「NASA's Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches」</a>／<a class="src" href="https://www.jaxa.jp/topics/2026/index_j.html" target="_blank" rel="noopener">JAXA トピックス（2026年）</a>　／　出典：<a class="src" href="https://sorae.info/ssn/20260811-h3f9.html" target="_blank" rel="noopener">sorae「JAXAが『H3』ロケット9号機を打ち上げ 『みちびき』7号機の軌道投入に成功」</a>／<a class="src" href="https://sorae.info/ssn/20260612-h3f6.html" target="_blank" rel="noopener">sorae「JAXAが『H3』ロケット6号機を打ち上げ 2段目の軌道投入を達成」</a>／<a class="src" href="https://xn--29sob207cg49a.com/calendar/space-news-weekly-aug30-sep5-2026/" target="_blank" rel="noopener">宇宙旅行.com「宇宙ニュース週報 8/30〜9/5｜ローマン打ち上げ成功」</a>／<a class="src" href="https://www.jaxa.jp/topics/2026/index_j.html" target="_blank" rel="noopener">JAXA トピックス（2026年）</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">構造的な課題</span><span class="lab lab-thin">本日の新規材料は確認できず</span></div>
+      <h4>通信：本日の障害情報は確認できていません。構造の話を残します</h4>
+      <p><strong>本号では、9月6日時点の国内大手キャリア（NTTドコモ・KDDI・ソフトバンク・楽天モバイル）の通信障害の有無を確認できていません。</strong>検索では8月27日からの大雨に伴う障害情報など、それ以前の情報しか到達できませんでした。<strong>「障害がなかった」とは書きません。「確認できなかった」と記録します。</strong></p>
+      <p style="margin-top:10px;"><strong>本日は新規材料が確認できなかったため、構造的な論点を1つ残します。</strong>日本のデータセンターは<strong>約6割が首都圏に集中</strong>しており、国内の海底ケーブルは主に太平洋側に敷設され、<strong>日本海側が未整備</strong>です。東日本大震災では、KDDIの太平洋側（茨城県沖・千葉銚子沖など）で海底ケーブル10か所に障害が発生し、<strong>完全復旧までに半年を要しました。</strong></p>
+      <p style="margin-top:10px;"><strong>この構造は、本号の第1章（災害）と直接つながっています。</strong>台風や地震が太平洋側を襲うとき、そこには通信インフラも集中しています。<strong>能登半島地震では、可搬型衛星アンテナが搬入され、Starlinkが避難所等へ660台提供されました。</strong>衛星通信が海底ケーブルの代替・補完として機能した実例です。</p>
+      <p style="margin-top:10px;">なお、世界のデータセンター市場は2025年の1,192億ドルから<strong>2030年に3,087億ドル</strong>へ拡大する予測で、AI用データセンターが成長を牽引するとされています。<strong>電力需要の増加は、本号の第6章（電気料金）とも接続します。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r05/html/nd132130.html" target="_blank" rel="noopener">総務省 令和5年版 情報通信白書「データセンター、海底ケーブルの機能及び安全対策の強化」</a>／<a class="src" href="https://www.soumu.go.jp/main_content/001053461.pdf" target="_blank" rel="noopener">総務省「情報通信に関する現状と動向（令和8年1月）」</a>／<a class="src" href="https://www.docomo.ne.jp/info/network/" target="_blank" rel="noopener">NTTドコモ「重要なお知らせ（通信障害等）」</a>／<a class="src" href="https://www.kddi.com/personal/notice/" target="_blank" rel="noopener">KDDI「障害・メンテナンス情報」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-robot">
+    <div class="sec-head"><span class="tick"></span><span class="cat">ロボット・自動車</span><span class="sec-title">自動車メーカーがロボットへ出てきています <span class="sub">/ 量産はまだ先ですが、準備段階に入りました</span></span></div>
+
+    <p><strong>三菱自動車は、東京大学発のスタートアップ「Highlanders」とヒト型ロボットを共同開発すると2026年7月9日に発表しました。</strong>ヒューマノイドは現在、<strong>工場・物流・家庭先行層・研究用途での限定導入と量産準備</strong>の段階にあります。</p>
+
+    <details class="dd sec-dd">
+      <summary>ロボット・自動車 — ヒューマノイドとEVの現在地の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">企業発表</span></div>
+      <h4>ヒューマノイド：「実験」から「量産準備」へ言葉が変わりました</h4>
+      <p><strong>三菱自動車と東京大学発スタートアップ「Highlanders」によるヒト型ロボットの共同開発（2026年7月9日発表）は、自動車メーカーがロボット領域へ出てくる動きの一例です。</strong></p>
+      <p style="margin-top:10px;"><strong>なぜ自動車メーカーなのか。</strong>ヒューマノイドに必要な要素——モーター、減速機、バッテリー、センサー、制御、そして<strong>量産のためのサプライチェーンと品質管理</strong>——は、自動車産業がすでに持っているものと大きく重なります。<strong>技術的なブレークスルーより、「作れる体制があるかどうか」が次の勝負どころになりつつあります。</strong></p>
+      <p style="margin-top:10px;">Googleは<strong>ロボット向けAI「Gemini Robotics 2」</strong>を発表しており、頭脳側も並行して進んでいます。</p>
+      <div class="srcline">出典：<a class="src" href="https://jet-mfg.com/category/robot-related/other-robots/humanoid/" target="_blank" rel="noopener">JET-Robotics「【2026年版】ヒューマノイドロボットとは？ AI搭載の最新事例や課題」</a>／<a class="src" href="https://arpable.com/artificial-intelligence/robot/humanoid-robot-mass-production-2025/" target="_blank" rel="noopener">「ヒューマノイドロボット最新動向2026｜量産・導入・収益化の現実」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">継続観測</span></div>
+      <h4>自動車：2026年後半は国内メーカーのEV新型車が集中します</h4>
+      <p><strong>2026年は国内メーカーから新型EVの発表が続く見通しで、日本のEV市場の「第二フェーズ」と位置づける見方があります。</strong>海外では、フォルクスワーゲンが2025年9月に公開した「ID. CROSS Concept」（コンパクトSUV、航続最大420km）の欧州発表が2026年夏に予定されていました。</p>
+      <p style="margin-top:10px;"><strong>本号としては、ここに1つ観測点を置きます。</strong>週末の中東情勢で原油が上がり続けた場合、<strong>ガソリン価格の上昇はEVにとって追い風</strong>になります。一方で、<strong>電気料金の上昇と補助終了はEVの運用コストを押し上げます。</strong>この2つは逆方向に働きます。<strong>「原油高＝EV有利」と単純化せず、電力価格とセットで見る必要があります。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.ncsol.co.jp/column/c_039/" target="_blank" rel="noopener">日本カーソリューションズ「最新EVを徹底解説！2026年以降に登場する国内メーカー一覧」</a>／<a class="src" href="https://matome.response.jp/articles/6837" target="_blank" rel="noopener">カーナリズム「【2026〜2027年 新車情報】新型車とモデルチェンジ予定の車を総まとめ」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-house">
+    <div class="sec-head"><span class="tick"></span><span class="cat">住まい・地域</span><span class="sec-title">金利が住宅に届く局面です <span class="sub">/ 空き家900万戸・特区民泊の受付終了・減税の拡充</span></span></div>
+
+    <p><strong>住宅ローンの変動金利は緩やかに上昇しています。</strong>日銀の利上げ観測が住宅に直接届く局面です。一方で、2026年の税制改正により<strong>中古住宅の住宅ローン減税の控除期間が10年から13年へ拡大</strong>する見通しです。</p>
+
+    <details class="dd sec-dd">
+      <summary>住まい・地域 — 金利・空き家・民泊制度の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">金利と直結</span></div>
+      <h4>変動金利は上昇。ただし「変動が不利になった」とまでは言えません</h4>
+      <p><strong>住宅ローンの変動金利は緩やかに上昇していくものの、今後も優位と予想されています。</strong>日本銀行はマイナス金利政策の撤廃以降、複数回の政策金利引き上げを実施しており、9月には保有するETFおよびJ-REITについて市場への売却を行うことを決定しました。</p>
+      <p style="margin-top:10px;"><strong>不動産価格側は、高止まりする建築費が前提になっています。</strong>2026年も建築費の高止まりを前提とせざるを得ず、<strong>着工の動きは鈍い一年</strong>になるとの見方が示されています。</p>
+      <p style="margin-top:10px;"><strong>本機構としての観測点は、9月17〜18日の日銀会合です。</strong>ここで利上げが決まれば、変動金利の見直しは実際の返済額に反映されていきます。<strong>ただし「変動から固定へ」という判断は、金利水準だけでなく借入残高・残期間・収入の安定性で変わるため、一般論として推奨はしません。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://mogecheck.jp/articles/show/51rzNy7XEJ5o4mQ6ZkVv" target="_blank" rel="noopener">モゲチェック「住宅ローン金利2026年9月の最新動向【日銀利上げによる変動金利引き上げと今後の見通し】」</a>／<a class="src" href="https://magazine.zennichi.or.jp/commentary/23769" target="_blank" rel="noopener">全日本不動産協会「2026年の不動産市況の見通し」</a>／<a class="src" href="https://www.nomu.com/cre-navi/market/20260106.html" target="_blank" rel="noopener">野村不動産ソリューションズ「2026年の不動産市場」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">制度変更</span></div>
+      <h4>空き家・古民家・民泊：制度は「増やす」方向と「絞る」方向が同時に動いています</h4>
+      <p><strong>空き家は、2023年10月1日時点で総住宅数約6,500万戸のうち約900万戸です。</strong>改正空家等対策特別措置法（2023年12月施行）により、特定空家の認定や活用促進区域の設定等が行われています。</p>
+      <p style="margin-top:10px;"><strong>一方で、絞る動きもあります。大阪市は2026年5月29日をもって特区民泊の新規受付を終了しました。</strong>古民家で民泊・宿泊施設を開業する際の法的な選択肢は、<strong>住宅宿泊事業法・旅館業法（簡易宿所）・国家戦略特別区域法</strong>の3つです。特区民泊の受付終了は、この選択肢の1つが地域によって使えなくなることを意味します。</p>
+      <p style="margin-top:10px;"><strong>需要側は強い方向です。</strong>インバウンドの地方分散政策と、Airbnb等OTAの農村・古民家カテゴリ強化により、<strong>地方でも「一棟貸し」の宿が人気を集めている</strong>とされています。地方への移住・定住を促進するため、転入者の住宅リフォームに補助制度を設けている自治体もあります。</p>
+      <p style="margin-top:10px;"><strong>本機構の見方：需要は増え、制度は地域ごとに分岐しています。</strong>「民泊が緩和されている／規制されている」という一括りの理解は、いまの実態に合いません。<strong>物件がどの自治体にあるかで、使える制度がまったく違います。</strong>本レポートでは、全国一律の話ではなく<strong>自治体単位の差</strong>を追い続けます。</p>
+      <div class="srcline">出典：<a class="src" href="https://minpakugakko.com/minpaku-akiya-renovation-2026/" target="_blank" rel="noopener">民泊学校「民泊 空き家・古民家リノベーション開業 完全ガイド 2026年版」</a>／<a class="src" href="https://www.homes.co.jp/cont/town/town_00089/" target="_blank" rel="noopener">LIFULL HOME'S「【2026年最新版】空き家を民泊にする法律と基準を解説」</a>／<a class="src" href="https://tabilmo.com/tips/minpaku-kominka/" target="_blank" rel="noopener">「古民家で民泊を始めるには？許可・費用・補助金・成功のコツを完全解説【2026年】」</a>／<a class="src" href="https://www.reform-guide.jp/topics/kominka-reform-hojyokin/" target="_blank" rel="noopener">リフォームガイド「【2026年度版】古民家リフォームで活用できる補助金・助成金制度」</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-culture">
+    <div class="sec-head"><span class="tick"></span><span class="cat">社会・文化・ニッチ</span><span class="sec-title">週末の話題と、普段は見ない場所の発見 <span class="sub">/ 発見が0件の日があってよく、探索の省略は不可です</span></span></div>
+
+    <p><strong>本機構の正式ルール（v1.2 5-3節）では、スポーツ・エンタメ・SNS・ランダムな発見を収集対象としています。</strong>ただし<strong>「毎号必ず掲載する」という意味ではなく、収集したうえで、その日に掲載する意味があるものを選ぶ</strong>という位置づけです。</p>
+
+    <details class="dd sec-dd">
+      <summary>社会・文化・ニッチ — 週末のスポーツと、普段は見ない分野の発見の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">週末の話題</span></div>
+      <h4>スポーツ：9月5日の結果</h4>
+      <p><strong>プロ野球セ・リーグでは、広島−巨人で巨人が10−5で勝利。</strong>阪神−DeNAが甲子園球場で行われました。MLBでは9月5日にドジャース−ナショナルズがカリフォルニア州で行われています。</p>
+      <p style="margin-top:10px;"><strong>サッカーでは、プレミアリーグで鈴木彩艶が日本人GKとして史上初のクリーンシート（完封）を達成したと報じられました。</strong>テニスでは、世界ランク1位のアリーナ・サバレンカのアピールで試合が一時中断する場面がありました。</p>
+      <p style="margin-top:10px;"><strong>本号ではスコアと事実の記録に留めます。</strong>詳細な戦評は本レポートの役割ではありません。</p>
+      <div class="srcline">出典：<a class="src" href="https://news.livedoor.com/topics/category/sports/" target="_blank" rel="noopener">ライブドアニュース スポーツ</a>／<a class="src" href="https://www.walkerplus.com/event_list/weekend/eg0108/" target="_blank" rel="noopener">ウォーカープラス「全国のスポーツイベント（2026年9月5日〜6日）」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">ランダム・ニッチ発見</span></div>
+      <h4>40年間「エビの子ども」とされてきた化石が、24本脚の昆虫だと判明しました</h4>
+      <p><strong>40年間「エビの子ども」と思われていた化石の正体が、24本脚の昆虫だったことが判明しました。</strong></p>
+      <p style="margin-top:10px;"><strong>もう1つ。スペインの研究グループが、1億2500万年前のワニの仲間の化石から、尾に残された明暗の縞模様を発見しました。これはワニの仲間で体の模様が保存されていた例としては最も古いものです。</strong>化石は通常、骨や殻の形しか残しません。<strong>色や模様が残るのは例外的で、生きていたときの見た目に一歩近づく発見です。</strong></p>
+      <p style="margin-top:10px;">また、古代DNAの分析により、初期朝鮮の埋葬地における人身御供が<strong>生物学的に関連のある個人を含むことが多く、親族と社会階級に結びついた構造化された慣行</strong>を示していることが明らかになりました。</p>
+      <div class="why">
+        <h5>なぜこれを載せるか</h5>
+        <p><strong>本レポートは市場と災害だけの記録ではありません。</strong>「40年間、分類が間違っていた」という事実は、<strong>専門家が真剣に見ても長期間まちがったままになりうる</strong>ことを示しています。<strong>これは情報の扱い方そのものへの示唆で、本レポートが毎回「確認できなかったこと」を残している理由と同じ性質の話です。</strong></p>
+      </div>
+      <div class="srcline">出典：<a class="src" href="https://nazology.kusuguru.co.jp/archives/category/ancient" target="_blank" rel="noopener">ナゾロジー「古代」カテゴリ</a>／<a class="src" href="https://scienceportal.jst.go.jp/newsflash/" target="_blank" rel="noopener">科学技術振興機構 サイエンスポータル ニュース一覧</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-fact">確認済み</span></div>
+      <h4>「発掘された日本列島2026」——全国8,000件の発掘成果、全国3例目の木製仮面</h4>
+      <p><strong>文化庁の「発掘された日本列島2026」展では、全国の最新の発掘成果が紹介され、縄文土器や全国3例目となる木製仮面など、貴重な考古資料が並びました。</strong>全国8,000件の発掘成果が集結したと報じられています。</p>
+      <p style="margin-top:10px;"><strong>「全国3例目」という数字が重要です。</strong>木製品は土中で腐りやすく、残ること自体が例外的です。<strong>3例目ということは、これまでの解釈が2例だけを根拠にしていたということでもあります。</strong></p>
+      <div class="srcline">出典：<a class="src" href="https://www.bunka.go.jp/gyoji/94366201.html" target="_blank" rel="noopener">文化庁「『発掘された日本列島2026』展の開催のお知らせ」</a>／<a class="src" href="https://ovo.kyodo.co.jp/news/culture/a-2088485" target="_blank" rel="noopener">共同通信 OVO「全国8000件の発掘成果が集結『発掘された日本列島2026』開幕、3例目の木製仮面も」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">確認したが重要な新規情報なし</span></div>
+      <h4>消費者技術・エンタメ・SNS：確認しましたが、本号で扱う大きな新規材料はありません</h4>
+      <p><strong>消費者技術：Appleは、Special Event「Surprise and shine」を米国時間2026年9月9日（水）10:00（太平洋時間）＝日本時間9月10日（木）2:00 に開催すると公式に発表しています。</strong>会場はカリフォルニア州クパチーノのApple Parkで、Apple.comおよびApple TVアプリで配信されます。</p>
+      <p style="margin-top:10px;"><strong>ここは事実と予想を分けます。Apple公式に確定しているのは「開催日時・名称・配信方法」までで、発表される製品は公式には明らかにされていません。</strong>報道・観測では<strong>iPhone 18 Pro／iPhone 18 Pro Max、折りたたみiPhone（iPhone Ultraと呼ばれる可能性）、新型Apple Watch、iOS 27</strong>が予想されていますが、<strong>これらはいずれも公式発表ではありません。</strong>本レポートで「iPhone 18シリーズの発表が確定している」とは書きません。</p>
+      <p style="margin-top:10px;"><strong>あわせて、2026年9月1日にティム・クック氏からジョン・ターナス氏へCEOが交代しており、本イベントは新CEO体制下で最初の製品発表になります。</strong></p>
+      <p style="margin-top:10px;">Pixel 11 / 11 Pro / 11 Pro XL / 11 Pro Foldは2026年8月20日に発売済みです。ドコモ・au・ソフトバンクの2026年秋冬モデルは未発表で、例年どおり9月下旬から10月にかけての発表が見込まれます。<strong>イベントは本号の観測期間外のため、内容は次号以降で扱います。</strong></p>
+      <p style="margin-top:10px;"><strong>エンタメ・SNS：確認しましたが、本号で取り上げる重要な新規情報はありませんでした。</strong>映画の注目作としては『踊る大捜査線 N.E.W. メトロポリスを駆け抜けろ！』『オデュッセイア』『汝、星のごとく』などが挙がっています。<strong>本日のリアルタイムのSNSトレンドは確認できませんでした（第13章に記載）。</strong></p>
+      <div class="srcline"><strong>一次情報：</strong><a class="src" href="https://www.apple.com/apple-events/" target="_blank" rel="noopener">Apple「Apple Events」（Special Event 開催日時の公式告知）</a>　／　出典：<a class="src" href="https://www.macrumors.com/2026/08/26/apple-iphone-event-2026/" target="_blank" rel="noopener">MacRumors「Apple Event Announced for September 9: 'Surprise and Shine'」</a>／<a class="src" href="https://appleinsider.com/articles/26/08/26/what-to-expect-from-apples-surprise-and-shine-iphone-18-pro-event-on-september-9" target="_blank" rel="noopener">AppleInsider「What to expect from Apple's 'Surprise and shine' event」</a>／<a class="src" href="https://selectra.jp/telecom/news/iphone-smartphone-release-september-2026" target="_blank" rel="noopener">Selectra「2026年9月発売が期待されるiPhoneとスマホを総まとめ」</a>／<a class="src" href="https://press.moviewalker.jp/ranking/user_good/" target="_blank" rel="noopener">MOVIE WALKER PRESS 最新映画ランキング</a></div>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-check">
+    <div class="sec-head"><span class="tick"></span><span class="cat">検証</span><span class="sec-title">前号D40の答え合わせ <span class="sub">/ 過去の見立ては上書きせず、経過として残します</span></span></div>
+
+    <p><strong>本機構の正式ルール（v1.2 25章）では、過去の見立てを上書きせず、後から判明した情報を「後日追記」として保存することを定めています。</strong>前号D40（2026年9月5日）で残した項目を、本号で照合します。</p>
+
+    <details class="dd sec-dd">
+      <summary>前号D40の答え合わせ — 未確認10項目と進路予想の照合の全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">解決</span></div>
+      <h4>D40「確認できなかったこと①」——鹿児島県の警報の段階が確認できました</h4>
+      <p><strong>D40での記述：</strong>「鹿児島県の警報の段階。気象庁の警報配信データを直接取得しましたが、返ってきたのは5月27日付の古い内容で、今朝時点の警報状況を一次情報で確定できませんでした。<strong>民間サイトの『特別警報レベル5』という記載は裏付けが取れていないため、本号では採用していません。</strong>」</p>
+      <p style="margin-top:10px;"><strong>本号での結果：確認できました。屋久島町に一時、警戒レベル5の土砂災害特別警報が発表されていたことが、時事通信の報道（気象庁発表に基づく）で裏付けられました。</strong>屋久島町・尾之間の24時間雨量490.5mmという具体的な数値も併せて確認できています。</p>
+      <div class="note">
+        <h5>この件の扱いについて</h5>
+        <p><strong>D40の判断は「間違い」ではありませんでした。</strong>あの時点で一次情報の裏付けが取れていなかったのは事実であり、<strong>裏付けのない情報を採用しなかった判断そのものは正しかったと考えます。</strong>ただし結果として、<strong>実際に特別警報が出ていた事象を、前号では読者に伝えられませんでした。</strong>これは記録として残します。<strong>今後の課題は「一次情報が取れないとき、通信社の報道をどの段階で採用するか」の基準です。</strong>時事通信・共同通信・NHKのような、気象庁発表を直接引く報道機関の記事は、一次情報が取得できない場合の代替として扱ってよい、というのが本号での運用判断です。</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">一部解決</span></div>
+      <h4>D40「確認できなかったこと②」——台風24号の被害は、一部だけ確認できました</h4>
+      <p><strong>D40での記述：</strong>「台風24号による人的被害・避難・停電・断水・交通・通信への影響。執筆時点で確認できた情報がありません。」</p>
+      <p style="margin-top:10px;"><strong>本号での結果：一部のみ解決です。</strong>国交省が第4報（9月6日10時時点）まで公表していることは確認できましたが、<strong>その本文にある具体的な被害数値には到達できていません。</strong>屋久島町・尾之間の雨量490.5mmという観測値は確認できましたが、それによる人的・住家被害は不明のままです。<strong>引き続き未確認として第13章に残します。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-pred">見立ての経過</span></div>
+      <h4>D40の台風進路の見通しは、実際には前倒しになりました</h4>
+      <p><strong>D40での記述：</strong>「9月5日（土）〜6日（日）　台風24号は6日3時に久米島の南約120km、7日3時に南大東島の南南西約160kmへ進む見込み」「9月9日（水）　台風24号が四国の南で熱帯低気圧に変わる見込み（3時ごろ）」</p>
+      <p style="margin-top:10px;"><strong>実際：</strong>台風24号は9月5日18時に那覇市付近の海上を南南東へ、<strong>9月6日15時には南大東島の西約100kmを東北東へ</strong>進みました。<strong>そして熱帯低気圧に変わるのは9月9日ではなく、7日15時ごろに日本の南で、という予想へ前倒しされました。</strong></p>
+      <p style="margin-top:10px;"><strong>この差をどう扱うか。</strong>D40の記述は<strong>その時点の気象庁の予報を引いたもの</strong>で、誤りではありません。台風の進路予報は更新されるもので、<strong>2日先の予報が変わること自体は異常ではありません。</strong></p>
+      <p style="margin-top:10px;"><strong>ただし、読者にとっての意味は変わります。</strong>「9日まで台風が続く」と「7日には熱帯低気圧になる」では、備えの期間が違います。<strong>本レポートとして重要なのは、台風が早く弱まったからといって雨が終わるわけではない、という点を明示することです。</strong>実際、7日18時までの予想雨量は東海300mmで、<strong>台風が熱帯低気圧に変わったあとに、いちばん雨が降る見込みです。</strong></p>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">未解決のまま</span></div>
+      <h4>D40の残り8項目は、本号でも解消していません</h4>
+      <p><strong>③EUの企業結合審査の管轄基準、④ホルムズ海峡でAISを停止して航行している船の隻数、⑤イラクの原油輸出回復がホルムズ経由の減少分をどこまで埋めているか、⑥AIエージェント事案の詳細、⑦雇用統計発表「直前」の分単位の市場水準、⑧NVIDIAの競合ハードウェアへの中立性の具体的担保、⑨キーウ攻撃による電力・港湾・鉄道・製油所・燃料供給への影響、⑩日本の10年国債利回りの9月4日時点の確定値。</strong></p>
+      <p style="margin-top:10px;"><strong>これら8項目は、本号でも確認できていません。そのまま残します。</strong>とくに④と⑤は、本号の第2章（中東）で扱ったタンカー相互攻撃の影響を評価するうえで重要な数字です。<strong>週明けに優先して確認します。</strong></p>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-unknown">
+    <div class="sec-head"><span class="tick"></span><span class="cat">未確認</span><span class="sec-title">確認できなかったこと <span class="sub">/ 推測で補わずに残します</span></span></div>
+
+    <p><strong>本号で埋められなかった項目を、そのまま列挙します。「情報がない」ことを「問題がない」と扱いません。</strong></p>
+
+    <details class="dd sec-dd">
+      <summary>確認できなかったこと 8項目 — 全文を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-warn">未確認</span></div>
+      <h4>本号で確認できなかった8項目</h4>
+      <p><strong>① 国交省「台風24号及び前線による大雨」第4報（9月6日10時時点）の具体的な被害数値。</strong>第4報が存在することは確認できましたが、PDF本文に到達できず、人的被害・住家被害・河川・道路・鉄道の数値を確認できていません。</p>
+      <p style="margin-top:10px;"><strong>② 熊本地震の9月6日時点の断水戸数・復旧率・給水所の設置状況。</strong>政府が示した「8月末までに断水解消」という方針が達成されたかどうかを確認できていません。<strong>達成されたと仮定して🟢にすることはしません（⚪未確認）。</strong></p>
+      <p style="margin-top:10px;"><strong>③ イランが9月6日に「標的にした」と表明した船舶への実害。</strong>船名・被害の有無・死傷者の有無について、イラン側の発表以外の独立した確認が取れていません。</p>
+      <p style="margin-top:10px;"><strong>④ ホルムズ海峡の9月4〜6日の通航隻数と、船舶保険料率の現在値。</strong>本号ではD40時点のKpler集計（9月3日=4隻）以降の更新に到達していません。<strong>今回のタンカー相互攻撃を評価するうえで最も重要な数字です。</strong></p>
+      <p style="margin-top:10px;"><strong>⑤ DXY・EUR/USD・GBP/USDの9月4日終値。</strong>クロス円（ユーロ円・ポンド円）の水準は確認できましたが、対ドルの個別水準を確認できていません。<strong>そのため「ドル要因か円要因か」の分解は、クロス円の動きからの推論を含みます。</strong>その旨を第4章に明記しました。</p>
+      <p style="margin-top:10px;"><strong>⑥ 資源国通貨（CAD・NOK）の、週間+7〜10%の原油高に対する反応。</strong>本来、今週いちばん確認すべき組み合わせでしたが到達できていません。</p>
+      <p style="margin-top:10px;"><strong>⑦ 9月6日時点の国内大手キャリア（NTTドコモ・KDDI・ソフトバンク・楽天モバイル）の通信障害の有無。</strong>各社の障害情報ページに到達できていません。<strong>「障害なし」ではなく「未確認」です。</strong></p>
+      <p style="margin-top:10px;"><strong>⑧ 2026年9月6日のリアルタイムのSNSトレンド、および国内企業の当日の業績修正。</strong>いずれも日曜であることもあり、当日の具体的な材料に到達できていません。</p>
+      <div class="note">
+        <h5>本号の作成過程で解決した項目</h5>
+        <p><strong>初稿で「米8月雇用統計の失業率の前月比の方向が確定できない」としていた項目は、米労働統計局（BLS）の一次資料により「4.1%・前月から横ばい」で確定したため、未確認から外しました。</strong>第6章に一次情報へのリンクを付けています。<strong>二次媒体の記述が食い違うときは、一次資料に当たれば解決する場合がある、という運用上の教訓として記録します。</strong></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-thin">確認したが重要な新規情報なし（△）</span></div>
+      <h4>確認したうえで、本号に掲載しなかった領域</h4>
+      <p><strong>次の領域は確認しましたが、本号で掲載する意味のある新規材料がありませんでした。「見ていない」のではなく「見た結果、材料がなかった」ものです。</strong></p>
+      <p style="margin-top:10px;">・<strong>暗号資産</strong>：米国のビットコイン・イーサリアム現物ETFに資金が戻り始めているとされる一方、<strong>年初来では流出超過が続いており、本格的な資金回帰かどうかは判断できません。</strong>日本では令和8年度税制改正大綱に暗号資産ETFの国内解禁に向けた内容が記載されています。<strong>9月5〜6日の相場水準は確認できていません。</strong><br>・<strong>ゴールド</strong>：1オンス4,500ドル近辺との記述と、国内買取価格（9月4日時点 1g 24,449円）を確認しましたが、<strong>複数の記述間で水準に整合しない部分があり、本号では数値を断定しません。</strong><br>・<strong>国内企業決算</strong>：9月は決算の谷間で、当日の大きな材料は確認できませんでした。<br>・<strong>5G/6G</strong>：新規材料なし。<br>・<strong>山火事・猛暑・寒波・大規模停電（国内外）</strong>：新規材料なし。</p>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+
+  <section class="quake" id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">今後の予定</span><span class="sec-title">今週はECB、来週にFOMC・BOE・日銀 <span class="sub">/ 日本時間で表記します</span></span></div>
+
+    <p><strong>向こう2週間で、欧米日英の4つの中央銀行が動きます。今週（9/7〜9/13）はECB理事会（9/9〜10・決定は10日）と、米PPI（10日）・米CPI（11日）。来週（9/14〜9/20）はFOMC（15〜16日）、BOE（17日）、日銀（17〜18日）です。</strong>加えて、<strong>週明け7日（月）の市場が、週末のタンカー相互攻撃をどう評価するか</strong>が最初の観測点です。</p>
+
+    <details class="dd sec-dd">
+      <summary>今週・来週のウォッチリスト — 日付・時刻・注目点の一覧を開く</summary>
+      <div class="ddbody">
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">今週・来週の最重要</span></div>
+      <h4>日付と時刻（日本時間）／今週＝9/7〜9/13、来週＝9/14〜9/20</h4>
+      <p><strong>9月7日（月）　市場再開。</strong>週末のタンカー相互攻撃が、原油・防衛関連・海運・航空にどう出るか。<strong>本号でいちばん重要な観測点です。</strong>あわせて、台風24号から変わる熱帯低気圧と秋雨前線による大雨。<strong>7日午前6時までの24時間降水量は東海300mm、関東甲信250mm、近畿200mm、九州南部と四国150mmの予想</strong>で、伊豆諸島では線状降水帯の可能性があります。</p>
+      <p style="margin-top:10px;"><strong>9月8日（火）　日本 4-6月期GDP改定値／5年国債入札。</strong>10年国債が9月1日に3%を突破した直後の入札で、需要の強さが注目されます（D40から継続）。</p>
+      <p style="margin-top:10px;"><strong>9月10日（木）2:00　Apple Special Event「Surprise and shine」</strong>（米国時間9月9日 10:00 PT、カリフォルニア州クパチーノのApple Park）。<strong>Apple公式に確定しているのは開催日時と名称のみで、発表製品は公式には明らかにされていません。</strong>報道では<strong>iPhone 18 Pro / 18 Pro Max、折りたたみiPhone、新型Apple Watch、iOS 27</strong>が予想されています。<strong>なお、9月1日にティム・クック氏からジョン・ターナス氏へCEOが交代しており、新CEO体制下で最初の製品発表となります。</strong></p>
+      <p style="margin-top:10px;"><strong>9月9日（水）〜10日（木）　ECB政策理事会（今週）。金利決定は10日 21:15（現地14:15）、記者会見は21:45（現地14:45）。</strong>ECBの理事会は2日間で行われ、決定は2日目に公表されます。<strong>なお2026年の理事会のうち9月会合のみ、通常のフランクフルト（ユーロタワー）ではなくドイツ連邦銀行で開催されます。</strong>D40の時点で、市場が織り込む0.25%利上げの確率は約99%とするロイター報道が確認されていました。<strong>「利下げ」ではなく「利上げ」の議論である点が、いまの局面を示しています。</strong></p>
+      <p style="margin-top:10px;"><strong>9月10日（木）21:30　米8月生産者物価指数（PPI）。</strong>企業段階の物価で、<strong>原油高がどこまで転嫁され始めているか</strong>が見えます。</p>
+      <p style="margin-top:10px;"><strong>9月11日（金）21:30　米8月消費者物価指数（CPI）。FOMC前の最後の主要インフレ指標です。</strong>雇用統計が強く出た直後だけに、CPIが強ければ利上げ観測はさらに強まり、弱ければFRBは労働市場の強さを割り引く余地を得ます。</p>
+      <p style="margin-top:10px;"><strong>9月15日（火）〜16日（水）　FOMC（来週）。今回はSEP（経済見通し・ドットチャート）付きです。</strong></p>
+      <p style="margin-top:10px;"><strong>9月17日（木）21:00　BOE（イングランド銀行）金利決定（来週・現地12:00）。</strong>7月30日は6対3で3.75%据え置き、3名が4%への引き上げに投票しました。</p>
+      <p style="margin-top:10px;"><strong>9月17日（木）〜18日（金）　日銀 金融政策決定会合（来週）。</strong>FOMCの結果を受けた形で開かれます。<strong>市場では9月の利上げが強く意識されており、97%とする集計もあります（二次情報）。</strong></p>
+      <p style="margin-top:10px;"><strong>【継続】FRBは9月5日からブラックアウト期間に入っています。</strong>FOMC前の一定期間、FRB当局者は金融政策に関する発言を控えます。<strong>強い雇用統計に対するFRB当局者の反応を、FOMCまで聞くことはできません。</strong>市場は10日のPPIと11日のCPIを主要な手がかりとして、FOMCを待つことになります。</p>
+      <p style="margin-top:10px;"><strong>期日未定</strong>　国交省の台風24号 第5報以降／熊本地震の断水復旧状況／イランの報復の実害／ホルムズ海峡の通航隻数と保険料率／ドコモ・au・ソフトバンクの秋冬モデル発表（例年9月下旬〜10月）。</p>
+      <div class="srcline">出典：<a class="src" href="https://www.boj.or.jp/about/calendar/index.htm" target="_blank" rel="noopener">日本銀行「公表予定」</a>／<a class="src" href="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" target="_blank" rel="noopener">Bank of England「Interest rates and Bank Rate」</a>／<a class="src" href="https://tenki.jp/bousai/typhoon/2624/" target="_blank" rel="noopener">日本気象協会 tenki.jp「台風24号（2026年）」</a>／<a class="src" href="https://www.jpx.co.jp/listing/event-schedules/financial-announcement/" target="_blank" rel="noopener">日本取引所グループ「決算発表予定日」</a></div>
+    </div>
+
+    <div class="item">
+      <div class="labs"><span class="lab lab-imp">見方</span></div>
+      <h4>この2週間の読み方：「週末に起きたこと」と「統計」が同じ方向を向くか</h4>
+      <p><strong>先週の構図は「エネルギー → 物価 → 金利」でした。今週は、そこに『週末のタンカー相互攻撃』が加わります。</strong>そして中央銀行の決定は、<strong>今週のECBと、来週のFOMC・BOE・日銀に分かれています。</strong></p>
+      <p style="margin-top:10px;"><strong>順序が重要です。</strong>まず7日（月）に、市場が中東情勢をどう評価するかが出ます。<strong>ここで原油がさらに上がれば、10日のPPI・11日のCPIは「すでに古いデータ」になります。</strong>8月の物価統計には、9月に起きたことは入っていないからです。</p>
+      <p style="margin-top:10px;"><strong>つまり今週は、「過去を測る統計」と「いま起きている供給ショック」の2つが同時に市場へ入ってきます。</strong>この2つがずれた場合、<strong>統計が弱くても金利が下がらない</strong>という反応が起きえます。</p>
+      <p style="margin-top:10px;"><strong>逆に、週末の攻撃が単発で終わり、実害も限定的だった場合は、市場は7日に一度反応したあと統計へ関心を戻すはずです。</strong>その場合は先週と同じ「統計 → 金利」の経路に戻ります。</p>
+      <p style="margin-top:10px;"><strong>これは予測ではなく、今週どこを見れば判断できるかという観測点の整理です。結果が出た時点で、本レポートで答え合わせをします。</strong></p>
+    </div>
+
+    <div class="backtop"><a href="#top">↑ 目次へ戻る</a></div>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    <p><strong>本号(D41)の編集方針と情報の扱いについて。</strong>／<strong>本号は、運用再開のため通常の朝ではなく、2026年9月6日18時45分ごろから作成しました。</strong>「今朝」ではなく<strong>「2026年9月6日 時点」</strong>のレポートとして、作成開始時点までに確認できた最新情報を使用しています。本日は日曜日で市場が閉じているため、価格の数値はすべて<strong>9月4日（金）の終値・清算値</strong>であり、本日の値動きではありません。数値は情報提供が目的で、投資判断への助言ではありません。／<strong>本号は、brief-report 収集・執筆ルール 正式版 v1.2（2026-09-05確定）に基づく最初の実運用号です。</strong>重点項目だけを検索する方式ではなく、正式な広域収集対象（金融・市場／政治・世界情勢／災害・安全／AI・技術／通信／宇宙・衛星／ロボット・モビリティ／住まい・地域／暮らし／消費者技術／社会・文化／ランダム・ニッチ発見の12領域）を原則一巡したうえで、掲載情報を選別しました。<strong>収集した領域のうち、掲載する材料がなかったものは「確認したが重要な新規情報なし」として第13章に明示しています。</strong>／<strong>為替は、USD/JPYだけでなく主要3通貨以外の多通貨スキャンを独立した工程として実施しました</strong>（第4章）。CNY/JPY・TRY/JPY・ユーロ円・ポンド円の水準を確認し、<strong>対ドルの個別水準（DXY・EUR/USD・GBP/USD）と資源国通貨（CAD・NOK）の反応には到達できなかった旨を第13章に明記しています。</strong>／<strong>最重要テーマは、9月5日の米軍によるイラン原油タンカー3隻への攻撃と、9月6日のイランによる報復表明です。</strong>米側の発表はCENTCOM発表を引くCNN・CNBC・Al Jazeera・ABC Newsで、イラン側の表明はBloomberg・ABC Newsで照合しました。<strong>イラン側の表明については、船名・被害・死傷者の独立確認が取れていないため、「標的にしたと表明した」という事実と「実際に何が起きたか」を区別して記載しています。</strong>／原油価格は、<strong>取引途中の水準（97.04ドル・95.15ドル）と清算値（9月4日 ブレント92.68ドル・WTI91.48ドル）を区別</strong>し、清算値を採用しました。<strong>金曜の終値には週末の出来事が入っていないことを、本号の中心的な論点として明示しています。</strong>／<strong>災害情報は、屋久島町・尾之間の24時間雨量490.5mm（統計史上最多）と土砂災害特別警報を、気象庁発表に基づく時事通信の報道で確認しました。</strong>前号D40では一次情報の裏付けが取れず採用を見送った項目で、<strong>その経緯と、通信社報道を代替として扱う運用判断を第12章に記録しています。</strong>国交省の第4報は存在を確認しましたが本文の数値には到達できず、第13章に未確認として残しました。／<strong>FOMCの利上げ織り込みは、情報源と取得時刻によって48.4%〜61%まで数字が分かれたため、いずれか1つを採用せず、確認できた値をすべて併記しました。</strong>「ほぼ五分から6割程度」という幅で記述し、小数点以下の断定は避けています。／<strong>日銀・高田審議委員の発言について、一部の要約に見られた「0.5%への利上げ示唆」という記述は、出どころを特定できなかったため採用していません。</strong>確認できた「7月会合で1.25%程度への利上げを提案し否決された」という事実と、9月2日の発言内容のみを記載しています。／<strong>米8月雇用統計の失業率は、米労働統計局（BLS）の一次資料により「4.1%・前月から横ばい」と確認しました。初稿では二次媒体の記述が食い違ったため未確認として扱っていましたが、本稿でこれを訂正し、未確認項目からも外しています。</strong>／<strong>災害支援シグナルは、熊本地震を継続案件として扱い、9月6日時点の断水状況を確認できなかったため⚪未確認としました。「8月末解消」という政府方針の達成を前提に🟢とすることはしていません。</strong>／<strong>チャートは2枚です。</strong>枚数を埋めるためではなく、<strong>「週末の出来事がまだ価格に入っていないこと」を確認するためにブレント原油を、「週内で約5円動いた局面」を確認するためにUSD/JPYを採用しました。</strong>株価指数は週末休場で新規材料がないため掲載していません。／<strong>本号は、事実・当事者の主張・研究所としての見方・今後の観測点を区別して記載しています。</strong>米イラン双方の主張は、どちらか一方を支持する形では扱っていません。中東情勢については「エスカレーション」と決めつけない反対の見方も併記しました。／<strong>重要な事実・数字には外部の出典リンクを付けています。</strong>Wikipediaは出典として使用していません。／<strong>本号の情報基準時刻: 2026年9月6日 19時ごろ（日本時間）。</strong>以後の新しい動きは原則として翌号(D42)の継続観測へ回し、重大な事実誤認が判明した場合のみ本号を再修正します。／<strong>本号は、公開前確認での指摘を受けて7点を修正した第2稿です。</strong>①中央銀行の日程を「今週はECB（9/9-10）、来週にFOMC（9/15-16）・BOE（9/17）・日銀（9/17-18）」と、日付関係が正確に分かる形へ修正。②米8月雇用統計の失業率を<strong>米労働統計局（BLS）の一次資料</strong>で「4.1%・前月から横ばい」と確定させ、未確認項目から外したうえで公式リンクを追加。あわせて平均時給・労働参加率・失業者数・改定幅もBLSの記載へ置き換えました。③AI章に<strong>9月1〜3日の3社連続リリース（Claude Fable 5.1／Mythos 5.1、Gemini 3.8 Flash／3.8 Flash Cyber、GPT-6 Astra）を、Anthropicのシステムカード・Googleの公式ブログ・OpenAIのSafety overviewおよびDeployment Safety Hubという一次資料で追加</strong>しました。既存の記事は削らず、上乗せしています。④Appleについて「iPhone 18シリーズが9月9日に発表予定」という書き方を改め、<strong>公式に確定しているのはSpecial Event「Surprise and shine」の開催日時（日本時間9月10日2:00／米国時間9月9日10:00 PT）までであり、発表製品は予想である</strong>ことを、第1段階・第2段階・第3段階・ウォッチリストのすべてで同期して分離しました。⑤本号最重要テーマについて<strong>CENTCOM公式リリース（9月5日）</strong>を、宇宙分野について<strong>NASA公式</strong>を一次情報として追加しました。⑥日本の10年国債利回りについて「一時2.945%」と「3%到達」が同一号にあり同一時点と読める書き方だったため、<strong>7月2.93%→8月中旬2.945%→9月1日3.005%（1996年9月以来）</strong>という時系列へ整理しました。⑦「市場の手がかりはPPIとCPIに限られます」という断定を「<strong>FOMC前の主要な物価材料はPPIとCPIです</strong>」へ改めました。<strong>いずれも構造・情報量を削る修正ではなく、事実・鮮度・一次情報の修正です。</strong>／ 生成:2026年9月6日（第2稿）。</p>
+  </footer>
+
+  <div style="height:100vh" aria-hidden="true"></div>
+</div>
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
+</body>
+</html>
