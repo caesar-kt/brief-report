@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人は、どうやって遠くの世界とつながってきたのか</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集第4号：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap" id="top">
+
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special</span>
+    <span class="date">2026年9月13日（日）／ 日曜特集 第4号</span>
+  </div>
+  <h1 class="hello">人は、どうやって遠くの世界とつながってきたのか</h1>
+  <p class="sub-hello sun-sub">通信と端末の歴史、AI時代の“次の入口”、そして切れたときに残るもの</p>
+  <p class="sun-lead">長い特集です。<strong>上から順に読めば、人が情報を自分の足で運んでいた時代から、2026年の衛星とグラスとAIまでが一本の流れとして分かるように書きました。</strong>目次から気になる部や章へ飛んでいただいても、必要なところだけ深く読んでいただいても構いません。数字には、確認できた事実・当事者の説明・報道・予測のどれにあたるかを添えています。</p>
+</header>
+<div class="nowbar" id="nowbar" aria-live="polite"><span class="nb-name">いま読んでいる部：<b id="nbPart">序章</b><span id="nbName"></span></span><a href="#toc">目次へ ↑</a></div><nav class="toc" id="toc" aria-label="目次"><div class="toc-title">目次</div>
+<p class="toc-lead">十の部で構成しています。部の見出しを開くと、その中の章へ移動できます。上から順に読んでも、気になる部から読んでも構いません。</p>
+<ol class="toc-top">
+<li class="toc-solo"><a href="#ch-0">序章　宇宙から届いたのは、最先端の映像ではなく「短い文字」だった</a></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第一部</span><span class="tp-name">人類は「距離」とどう戦ってきたのか</span></summary><ul>
+<li class="tp-head"><a href="#part-1">▶ 第一部のはじめへ</a></li>
+<li><a href="#ch-1">第1章　人が情報を運んでいた時代</a></li>
+<li><a href="#ch-2">第2章　情報が人間より速くなった</a></li>
+<li><a href="#ch-3">第3章　声が距離を越えた</a></li>
+<li><a href="#ch-4">第4章　線を捨て、空間へ飛び出した</a></li>
+<li><a href="#ch-5">第5章　計算機が通信へ入った</a></li>
+<li><a href="#ch-6">第6章　地球の底に光を通した</a></li>
+<li><a href="#ch-7">第7章　電話番号が「場所」から「人」へ移った</a></li>
+<li><a href="#ch-1sum">まとめ　二本の線を、同じ時間軸に並べる</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第二部</span><span class="tp-name">世界が一枚のガラス板に入った</span></summary><ul>
+<li class="tp-head"><a href="#part-2">▶ 第二部のはじめへ</a></li>
+<li><a href="#ch-8">第8章　スマートフォンは何を統合したのか</a></li>
+<li><a href="#ch-9">第9章　端末の歴史を、人間の身体から見る</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第三部</span><span class="tp-name">2026年、いま何が起きているのか</span></summary><ul>
+<li class="tp-head"><a href="#part-3">▶ 第三部のはじめへ</a></li>
+<li><a href="#ch-10">第10章　通信の現在地</a></li>
+<li><a href="#ch-11">第11章　端末の現在地</a></li>
+<li><a href="#ch-12">第12章　AIが端末を賢くし、同時に端末を高くする</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第四部</span><span class="tp-name">「次の入口」は何なのか</span></summary><ul>
+<li class="tp-head"><a href="#part-4">▶ 第四部のはじめへ</a></li>
+<li><a href="#ch-13">第13章　画面は消えるのか</a></li>
+<li><a href="#ch-14">第14章　目、耳、身体、空間へ入口が散っていく</a></li>
+<li><a href="#ch-15">第15章　何が全部を一つにつなぐのか</a></li>
+<li><a href="#ch-16">第16章　言葉すら使わなくなるのか</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第五部</span><span class="tp-name">AIが考え、ロボットが動く</span></summary><ul>
+<li class="tp-head"><a href="#part-5">▶ 第五部のはじめへ</a></li>
+<li><a href="#ch-17">第17章　AIが頭脳、通信が神経――そして血流は誰が担うのか</a></li>
+<li><a href="#ch-18">第18章　ロボット、車、家は端末なのか</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第六部</span><span class="tp-name">そして災害がすべてを試す</span></summary><ul>
+<li class="tp-head"><a href="#part-6">▶ 第六部のはじめへ</a></li>
+<li><a href="#ch-19">第19章　通信が切れた瞬間、未来は逆向きになる</a></li>
+<li><a href="#ch-20">第20章　最後まで残る通信は何か</a></li>
+<li><a href="#ch-21">第21章　災害前に配備が終わっている通信だけが、災害時に使える</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第七部</span><span class="tp-name">通信は誰のものか</span></summary><ul>
+<li class="tp-head"><a href="#part-7">▶ 第七部のはじめへ</a></li>
+<li><a href="#ch-22">第22章　まだつながっていない世界</a></li>
+<li><a href="#ch-23">第23章　料金が通信を普及させてきた</a></li>
+<li><a href="#ch-24">第24章　「全員へ届ける」という思想</a></li>
+<li><a href="#ch-25">第25章　つながらない自由</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第八部</span><span class="tp-name">通信は国家と地球の物理から逃げられない</span></summary><ul>
+<li class="tp-head"><a href="#part-8">▶ 第八部のはじめへ</a></li>
+<li><a href="#ch-26">第26章　海底ケーブルという世界の急所</a></li>
+<li><a href="#ch-27">第27章　衛星・HAPS・周波数と国境</a></li>
+<li><a href="#ch-28">第28章　見ている側と、撮られる側</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第九部</span><span class="tp-name">日本はどこにいるのか</span></summary><ul>
+<li class="tp-head"><a href="#part-9">▶ 第九部のはじめへ</a></li>
+<li><a href="#ch-29">第29章　日本が失ったもの、まだ強いもの</a></li>
+</ul></details></li>
+<li class="toc-partli"><details class="toc-part"><summary><span class="tp-no">第十部</span><span class="tp-name">未来は予測できるのか</span></summary><ul>
+<li class="tp-head"><a href="#part-10">▶ 第十部のはじめへ</a></li>
+<li><a href="#ch-30">第30章　未来予測は、だいたい外れてきた</a></li>
+<li><a href="#ch-31">第31章　2030年前後――比較的確度が高いもの</a></li>
+<li><a href="#ch-32">第32章　2035年前後――可能性はあるが不確実なもの</a></li>
+<li><a href="#ch-33">第33章　2045年前後――予測ではなく仮説集</a></li>
+</ul></details></li>
+<li class="toc-solo"><a href="#ch-end">終章　つながる技術の価値は、切れそうな日に何が残るかで決まる</a></li>
+<li class="toc-solo"><a href="#how">本特集の作り方</a></li>
+<li class="toc-solo"><a href="#askai">気になった項目を、AIでもっと詳しく</a></li>
+<li class="toc-solo"><a href="#part-foot">一覧へ戻る・免責</a></li>
+<li class="toc-solo"><a href="#sources">出典</a></li>
+</ol></nav>
+<section class="part part-intro" id="part-0" data-part="序章" data-name="">
+<article class="ch intro" id="ch-0"><span class="ch-no">序章</span><h2>宇宙から届いたのは、最先端の映像ではなく「短い文字」だった</h2>
+<p>2026年の日本では、対応するスマートフォンが、地上の基地局を介さず衛星と直接つながるサービスが始まっています。</p>
+<p>KDDIが2025年4月に始め、2026年4月にはソフトバンクとNTTドコモも続きました。山の中でも、海の上でも、地上の基地局が届かない場所で、手元の端末が高度数百キロを飛ぶ衛星と直接やりとりをする。四社目の楽天モバイルも、2026年内の開始を目標に掲げています。</p>
+<p>ところが、その最先端のサービスで最初にできるようになったのは、動画でも音声通話でもありませんでした。<strong>短いテキストメッセージ</strong>です。</p>
+<p>KDDIのサービスは、開始から4か月あまり後の2025年8月にようやくデータ通信へ広がりましたが、それでも使えるのは対応アプリに限られます。ソフトバンクは「通話および緊急通報は利用不可」と明記しています。ドコモが対応したのも、SMS・RCS・iMessage、位置共有、緊急速報です。</p>
+<p>つまり、人類が2026年に手にした「宇宙からの通信」は、およそ180年前に電信が実現した「短い文字を遠くへ送る」という形と、驚くほど似ています。</p>
+<p>ここに、この特集の最初の問いがあります。</p>
+<p><strong>なぜ通信の条件が厳しくなると、より単純で軽い形式へ戻る場面が繰り返し見られるのか。</strong></p>
+<p>帯域が細くなれば、映像より音声、音声より文字が残ります。電力が乏しくなれば、常時接続より間欠接続が残ります。これは技術の後退ではなく、通信というものの本質です。「届く」ことがすべての前提であり、「豊かに届く」ことはその上に積み上がる贅沢だからです。</p>
+<p>この特集は、その本質を確かめるために、いったん歴史の最初まで戻ります。人が自分の足で情報を運んでいた時代から、電信、電話、無線、放送、コンピュータ、光、携帯電話、そしてスマートフォンへ。<strong>通信という「道」と、端末という「入口」の二本の線</strong>を同じ時間軸に並べて追い、2026年の現在地に立ち、そこから2030年、2035年、2045年を見ます。</p>
+<p>最後に、災害の話に戻ります。つながる技術の価値は、つながっているときだけで決まるものではないからです。</p>
+<p>長い特集になります。急がず、上から順に読んでいただければ、一本の流れとして分かるように書きました。目次から気になる章へ飛んでいただいても構いません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-1" data-part="第一部" data-name="人類は「距離」とどう戦ってきたのか">
+<header class="part-head"><span class="part-no">第一部<small>／十部</small></span><h1 class="part-name">人類は「距離」とどう戦ってきたのか</h1></header>
+<article class="ch " id="ch-1"><span class="ch-no">第1章</span><h2>人が情報を運んでいた時代</h2>
+<p>はじめに、通信の「速さ」が人間の移動速度と同じだった時代があります。</p>
+<p><strong>狼煙</strong>は、それを最初に超えようとした技術でした。古代中国の長城には烽火台が並び、日本の律令制にも「烽（とぶひ）」の制度が定められています。煙や火という単純な信号を、目に見える距離ごとに中継する。伝えられるのは「敵が来た」「来ない」程度の、ごく短い情報です。しかしその短さが、人の足より速く情報を運ぶことを可能にしました。</p>
+<p>アフリカのトーキングドラム、地中海の鏡による反射信号、18世紀末のフランスで実用化された<strong>腕木通信</strong>（シャップの光学式テレグラフ）も同じ系譜です。腕木通信はパリからリールまで約230kmを、条件が良ければ数分で結んだと記録されています。ただし夜間や霧の日は使えず、中継所ごとに人が張り付く必要がありました。</p>
+<p>一方で、<strong>内容の豊かな情報</strong>は、人が運ぶしかありませんでした。</p>
+<p>古代の伝令、中世の駅伝制、江戸時代の飛脚。江戸から京都まで、公用の継飛脚は数日で走り抜けたとされますが、それは人と馬を宿場ごとに乗り継ぐ、国家規模の中継制度があってのことです。手紙は個人の言葉を最も豊かに運ぶ手段でしたが、届くまでに日数がかかり、届くかどうかも確実ではありませんでした。</p>
+<p>この時代の構造を、あとの章でも使う3つの軸で見ておきます。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>軸</th><th>狼煙・腕木</th><th>手紙・飛脚</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong>（誰まで届いたか）</td><td data-label="狼煙・腕木">国家や軍が所有。個人は使えない</td><td data-label="手紙・飛脚">制度を使える身分と資力のある者</td></tr><tr><td data-label="軸"><strong>料金</strong>（いくらで届いたか）</td><td data-label="狼煙・腕木">個人には無縁</td><td data-label="手紙・飛脚">距離と重さで高額。庶民には贅沢品</td></tr><tr><td data-label="軸"><strong>冗長</strong>（切れたらどうしたか）</td><td data-label="狼煙・腕木">天候で途絶。代替は人の足</td><td data-label="手紙・飛脚">別の便、別の道。日数が延びる</td></tr></tbody></table></div>
+<p><strong>近代郵便</strong>がこれを変えました。1840年に英国で導入された均一料金の切手制度（ペニー・ブラック）は、「距離によらず、誰でも、同じ料金で」という考え方を初めて制度にしました。日本では1871（明治4）年、前島密の主導で郵便が創業します。</p>
+<p>郵便は、通信史のなかで見落とされがちな革命です。<strong>技術ではなく、料金と制度によって「範囲」を国民全体へ広げた</strong>最初の例だからです。これは、のちの電話やブロードバンドのユニバーサルサービスまで続く思想の原点になります（第24章）。</p>
+<p>そして、この時代の「端末」は、人間そのものでした。手紙を書く手、封を開ける手、声に出して読む口。情報の入口は、まだ身体から分かれていません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-2"><span class="ch-no">第2章</span><h2>情報が人間より速くなった</h2>
+<p>1844年5月24日、サミュエル・モースはワシントンからボルティモアへ、約60kmの電線を通して短い文を送りました。「What hath God wrought（神は何を成し給うたか）」。<strong>電信</strong>の商用化の始まりです。</p>
+<p>ここで初めて、情報が人間の移動速度から切り離されました。馬でも汽車でもなく、電気が運ぶ。距離が、時間とほとんど関係を持たなくなりました。</p>
+<p>ただし、送れるものは極端に単純です。モース符号は「短い電流」と「長い電流」の組み合わせで文字を表します。声も、絵も、送れません。<strong>最も豊かな情報ではなく、最も単純な形式が、最初に距離を越えた</strong>。序章で見た衛星D2Dの構図は、ここに原型があります。</p>
+<p>日本では1869（明治2）年、東京・横浜間で電信が始まりました。明治政府は電信を国家の神経として急速に張りめぐらせ、西南戦争（1877年）では軍の指揮に使われています。</p>
+<p>電信は、人間の側にも新しい役割を生みました。<strong>電信技手</strong>です。符号を打ち、符号を聞き取る専門職。情報の入口は、人間の身体から「機械を操作する専門家」へ移りました。個人が直接触れる端末ではなく、局へ行き、窓口で頼み、局から届く。この「局」という構造は、電話交換手の時代まで続きます。</p>
+<h3>海底電信ケーブル――地球の底を、初めて線が通った</h3>
+<p>1858年、大西洋を横断する最初の海底電信ケーブルが開通し、英国のヴィクトリア女王と米国のブキャナン大統領が祝電を交わしました。ただしこのケーブルは数週間で使えなくなります。安定して動く大西洋横断ケーブルが完成したのは1866年、当時世界最大の船「グレート・イースタン」による敷設でした。</p>
+<p>海底ケーブルは、この時点で「国際通信は海の底を通る」という構造を作りました。<strong>これは2026年の今も変わっていません</strong>（第26章）。</p>
+<p>日本の最初の国際回線も海底ケーブルです。1871（明治4）年、デンマークの大北電信会社が長崎と上海、長崎とウラジオストクを結びました。日本の国際通信は、その始まりから外国企業の線を借りるところから出発しています。</p>
+<p>3軸で見ておきます。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>電信</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="電信">局のある都市に限られる。個人は局へ出向く</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="電信">字数課金。長文は高額。要件を最短で書く文化が生まれた</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="電信">線が切れれば途絶。海底ケーブルの修理には船が要る</td></tr></tbody></table></div>
+<p>「字数で課金される」という料金構造が、電報文の独特の簡潔さを生みました。<strong>料金が、言葉の形を変えた</strong>最初の例です。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-3"><span class="ch-no">第3章</span><h2>声が距離を越えた</h2>
+<p>1876年、アレクサンダー・グラハム・ベルが電話の特許を取得しました。電信が「符号」を運んだのに対し、電話は<strong>声そのもの</strong>を運びます。専門家が符号を打つ必要はなくなり、話せる人なら誰でも使える。情報の入口が、専門家の手から、ふたたび普通の人の口と耳へ戻りました。</p>
+<p>日本では1890（明治23）年、東京・横浜間で電話交換業務が始まります。加入者は数百名。電話は長く、企業と一部の富裕層のものでした。</p>
+<h3>交換手という「人間の中継器」</h3>
+<p>初期の電話には、番号をダイヤルする仕組みがありません。受話器を上げると交換手が出て、相手の名前や番号を告げ、交換手が手作業で回線をつなぎました。<strong>通信網の中に、人間が組み込まれていた</strong>時代です。</p>
+<p>米国では1891年にストロージャーが自動交換機を発明します。伝えられるところでは、葬儀屋だった彼は、交換手が競合他社へ電話をつないでいるのではないかと疑い、人を介さない仕組みを作ろうとしました。真偽はともかく、「通信網から人間を外す」という方向が、ここで定まりました。</p>
+<p>日本の全国自動即時化（交換手を介さず全国どこへでも直接ダイヤルできる状態）が完成したのは1979年です。電話の登場から、ほぼ1世紀かかっています。</p>
+<h3>固定電話と「加入権」</h3>
+<p>日本の固定電話には、長く「電話加入権」という制度がありました。回線を引くために数万円の施設設置負担金を払う。これは1980年代まで7万2,000円で、家庭にとって大きな出費でした。<strong>電話は、買うものではなく、権利として取得するもの</strong>だった時代です。</p>
+<p>一方、公衆電話が街角に置かれ、加入していない人も10円で声を届けられるようになりました。公衆電話は、電話という技術を「範囲」の面で国民全体へ広げた重要な装置です。そして2026年の今も、災害時に最も頼りになる通信手段の一つとして残っています（第20章）。</p>
+<h3>ユニバーサルサービスという思想の始まり</h3>
+<p>電話は、郵便と同じ問いに直面しました。<strong>採算の取れない地域にも、同じ条件で届けるべきか</strong>。</p>
+<p>日本では、都市の収益で地方の赤字を支える構造が長く続き、電電公社の民営化（1985年）後、2002年にユニバーサルサービス基金制度が始まります。全国の通信事業者が費用を分担し、離島や山間部の電話を維持する仕組みです。この思想は2026年1月、ブロードバンドにまで拡張されました（第24章）。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>固定電話</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="固定電話">加入権のある家庭・企業。公衆電話が補う</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="固定電話">距離と時間による従量課金。遠距離は高額</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="固定電話">局が生きていれば、停電でも通じる（局給電）。この性質は後に失われる</td></tr></tbody></table></div>
+<p>最後の「局給電」は重要です。旧来の固定電話（メタル回線）は電話局から電気が供給されるため、家が停電しても通じました。光回線やIP電話に置き換わった今、この性質は基本的に失われています。<strong>便利になることと、切れにくくなることは、同じではない</strong>。第六部でもう一度戻ります。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-4"><span class="ch-no">第4章</span><h2>線を捨て、空間へ飛び出した</h2>
+<p>1895年ごろ、グリエルモ・マルコーニが無線電信の実験に成功し、1901年には大西洋を越えて信号を受信したと発表しました。<strong>通信が、初めて線から自由になった</strong>瞬間です。</p>
+<p>無線が最初に価値を証明したのは、海の上でした。線を引けない船と船、船と陸の間です。1912年のタイタニック号沈没では、無線で発せられた遭難信号を受けた船が救助に向かい、生存者を救いました。同時に、近くにいた船の無線係が眠っていて信号を受け取れなかったことも記録されています。<strong>通信は、装置があるだけでは足りず、受け取る側が起きていなければならない</strong>。この教訓は、のちの緊急速報の設計に生きています。</p>
+<h3>放送――一対多という新しい形</h3>
+<p>無線は、一対一の通信だけでなく、<strong>一対多の「放送」</strong>を生みました。</p>
+<p>1920年、米国ピッツバーグのKDKAが定時放送を始めます。日本では1925（大正14）年、東京放送局（JOAK）がラジオ放送を開始しました。</p>
+<p>テレビは、日本の高柳健次郎が1926年にブラウン管に「イ」の字を映したことで知られます。日本の本放送は1953年、NHKが開始しました。</p>
+<p>放送は、通信史のなかで独特の位置にあります。<strong>受け取る側は、送ることができません</strong>。ラジオもテレビも、一方向です。しかしその一方向性ゆえに、装置は安く、受信機さえあれば誰でも同じ情報を同時に得られました。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>ラジオ・テレビ</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="ラジオ・テレビ">受信機を買えば誰でも。電波の届く範囲すべて</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="ラジオ・テレビ">受信機の購入費と受信料。通信量による課金がない</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="ラジオ・テレビ">送信所が生きていれば届く。受信機は電池で動く</td></tr></tbody></table></div>
+<p>「通信量による課金がない」ことと「電池で動く」ことは、災害時に決定的な意味を持ちます。<strong>ラジオは2026年の今も、最後まで残る情報手段の一つです</strong>（第20章）。</p>
+<h3>端末が「身体の一部」を担い始めた</h3>
+<p>ここで、端末の側を見ておきます。</p>
+<p>電話は「声」を、ラジオは「耳」を、テレビは「目」を、身体の外へ延ばしました。この特集の第9章で改めて整理しますが、<strong>端末の歴史は、人間の感覚を一つずつ外部化してきた歴史</strong>でもあります。</p>
+<h3>災害・戦争・検閲――無線は、誰のものか</h3>
+<p>無線と放送は、その広がりゆえに、国家の管理対象になりました。</p>
+<p>戦争中、各国は放送を宣伝に使い、敵国の放送を聴くことを禁じました。日本でも戦時中、短波受信機の所持が制限されています。電波は空間を自由に飛びますが、<strong>電波を出す権利は、国家が周波数として管理する</strong>。この構造は2026年も変わっておらず、衛星やHAPSの周波数をめぐる国際調整の根っこになっています（第27章）。</p>
+<p>一方で、災害時には放送が命綱になりました。1995年の阪神・淡路大震災、2011年の東日本大震災で、電話がつながらないなか、ラジオが安否情報や避難所の情報を伝え続けたことは、多くの記録に残っています。</p>
+<p><strong>空間へ飛び出した通信は、自由と管理の両方を抱えたまま、次の時代へ進みます。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-5"><span class="ch-no">第5章</span><h2>計算機が通信へ入った</h2>
+<p>1960年代、通信に新しい考え方が持ち込まれます。<strong>パケット通信</strong>です。</p>
+<p>それまでの電話は、通話の間ずっと一本の回線を占有していました。パケット通信は、情報を小さな束（パケット）に分け、束ごとに宛先を付けて、空いている経路を通して送り、受け取った側で組み立て直します。回線を占有しないので、多くの利用者が同じ線を分け合えます。<strong>何かの経路が切れても、別の経路を通れる</strong>。この設計思想は、冷戦下で「部分的に破壊されても機能する通信網」を求めた研究から生まれたとされます。</p>
+<p>1969年10月29日、米国のARPANETで、UCLAからスタンフォード研究所へ最初のメッセージが送られました。送ろうとした「LOGIN」の「LO」まで届いたところでシステムが落ちた、という逸話が残っています。</p>
+<p>1983年、ARPANETはTCP/IPという共通の規約へ移行しました。異なる組織の異なるコンピュータ網を、同じ規約でつなぐ。<strong>「インターネット」</strong>とは、この「網と網をつなぐ」という意味です。日本では1984年にJUNETが大学間を結び、1990年代に商用接続が広がりました。</p>
+<h3>WWW――誰でも読める、誰でも書ける</h3>
+<p>1989年、欧州原子核研究機構（CERN）のティム・バーナーズ＝リーが、文書どうしをリンクでつなぐ仕組みを提案しました。<strong>World Wide Web</strong>です。1991年に一般へ公開され、1993年にブラウザ「Mosaic」が登場すると、画像と文字が混ざった「ページ」を誰でも見られるようになりました。</p>
+<p>インターネットはそれ以前から研究者の間で使われていましたが、WWWとブラウザが、それを「普通の人が見るもの」に変えました。</p>
+<h3>PC――計算し、記憶し、つながる端末</h3>
+<p>端末の側では、1970年代後半から<strong>パーソナルコンピュータ</strong>が家庭へ入ります。Apple II（1977年）、IBM PC（1981年）、日本ではNECのPC-9801（1982年）。当初は「計算する機械」「文書を書く機械」でしたが、モデムを通して電話回線につなぐことで、通信端末にもなりました。</p>
+<p>1995年11月、Windows 95が日本で発売されます。インターネット接続の機能を標準で備えたこのOSの登場は、日本で「インターネット元年」と呼ばれる契機の一つになりました。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>ダイヤルアップ時代のインターネット</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="ダイヤルアップ時代のインターネット">PCと電話回線を持つ家庭。まだ少数</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="ダイヤルアップ時代のインターネット">電話の従量課金＋プロバイダ料金。「テレホーダイ」（1995年〜）が夜間定額化</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="ダイヤルアップ時代のインターネット">経路が自動で迂回する設計。ただし家の電話線が切れれば終わり</td></tr></tbody></table></div>
+<p><strong>「テレホーダイ」</strong>は、NTTが夜11時から朝8時までの通話を定額にした割引制度で、日本のインターネット利用が深夜に集中する文化を生みました。<strong>料金が、人の行動の時間帯まで変えた</strong>例です。</p>
+<p>PCは「計算・記憶」を身体の外へ出しました。しかし、まだ机の上に固定されています。持ち歩ける端末が、次の主役になります。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-6"><span class="ch-no">第6章</span><h2>地球の底に光を通した</h2>
+<p>通信の容量を桁違いに増やしたのは、電気ではなく<strong>光</strong>でした。</p>
+<p>1966年、香港出身の物理学者チャールズ・カオが、ガラスの純度を高めれば光で長距離通信ができると理論的に示しました（2009年ノーベル物理学賞）。1970年、米コーニング社が実用的な低損失の光ファイバーを開発します。</p>
+<p>光ファイバーは、髪の毛ほどの太さのガラスの中を光が進みます。電気信号と違って減衰が少なく、電磁ノイズの影響を受けず、一本で膨大な情報を運べます。<strong>現在のインターネットの幹線は、ほぼすべて光です。</strong></p>
+<h3>海底光ケーブル</h3>
+<p>1988年、最初の大西洋横断光ケーブル TAT-8 が開通しました。日本では1989年、太平洋を横断するTPC-3が日米間を結びます。</p>
+<p>2026年の今、世界の海底ケーブルは数百本に及び、総延長は地球を何十周も回る長さになっています。そして<strong>国際通信のほぼすべてが、衛星ではなく海底ケーブルを通っています</strong>。</p>
+<p>ここで、この特集が扱う一つの数字を確認しておきます。「海底ケーブルは国際通信の99％を運ぶ」という表現が広く使われますが、その根拠をたどると、米連邦通信委員会（FCC）の統計で衛星が米国の国際容量の0.37％に過ぎないというデータに行き着きます。海底ケーブル調査で知られるTeleGeography社自身が、この数字を「確かに真実だが、衛星側の統計が乏しく厳密な計算はできない」と説明しています。<strong>つまり99％は、世界全体の実測値というより、米国の国際容量に基づく妥当な推定です。</strong> 日本についても「国際通信の99％が海底ケーブル」と報じられていますが、本特集の作成時点で総務省の一次資料での数字の確認には至っていません。</p>
+<h3>データセンターとクラウドの「物理性」</h3>
+<p>光は、地球の底だけでなく、<strong>データセンターの中</strong>にも通っています。</p>
+<p>「クラウド」という言葉は、データがどこか雲の上にあるような印象を与えます。しかし実際には、巨大な建物の中に何万台ものサーバーが並び、それらが光ファイバーで結ばれ、大量の電力を消費し、大量の熱を出しています。2026年、AI向けのデータセンターでは、演算そのものより「サーバー間でデータを運ぶ光の配線」がボトルネックになりつつあります（第12章）。</p>
+<p>クラウドは雲ではありません。<strong>土地と電力と冷却と光ケーブルの上に建った、極めて物理的な施設</strong>です。この物理性は、2026年に「データセンターを物理的にどう守るか」という安全保障の問いへ直結しています。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>光ファイバー・海底光ケーブル</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="光ファイバー・海底光ケーブル">幹線としては世界を覆う。家庭への引き込み（FTTH）は国により差</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="光ファイバー・海底光ケーブル">容量あたりの単価が劇的に低下。定額制を可能にした</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="光ファイバー・海底光ケーブル">複数ルートで迂回する設計。ただし陸揚げ地点が集中すると弱点になる（第26章）</td></tr></tbody></table></div>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-7"><span class="ch-no">第7章</span><h2>電話番号が「場所」から「人」へ移った</h2>
+<p>ここまで、電話番号は「家」や「会社」という場所に付いていました。それが「人」に付くようになったのが、移動通信の歴史です。</p>
+<h3>1979年、東京――世界初の商用セルラー</h3>
+<p>1979（昭和54）年12月3日、日本電信電話公社（電電公社、現NTT）が東京23区で<strong>自動車電話</strong>サービスを始めました。総務省の情報通信白書は、これを「世界初の商用のセルラー方式による自動車電話サービス」と位置づけています。北欧のNMTが1981年、米国のAMPSが1983年ですから、日本が先行しました。</p>
+<p>「セルラー」とは、地域を細かい区画（セル）に分け、それぞれに基地局を置いて、移動しながら基地局を切り替える方式です。この方式が、限られた周波数で多くの人が同時に通話できる基盤になりました。<strong>2026年の5Gも、衛星D2Dも、この「セル」の考え方の延長にあります</strong>。</p>
+<p>ただし当時の自動車電話は、車に据え付ける重い装置で、保証金20万円、月額基本料3万円、通話料は6秒10円だったと伝えられています。<strong>範囲は、それを払える一部の企業と富裕層</strong>でした。</p>
+<h3>肩掛けから、手のひらへ</h3>
+<p>1985年の「ショルダーホン」（約3kg）、1987年の携帯電話「TZ-802型」（約900g）を経て、端末は小さくなり続けます。1993年のデジタル方式（PDC）への移行、1994年の端末売り切り制（それまでレンタルだった端末を買えるようになった）、1995年のPHS開始と続き、1990年代後半に携帯電話は急速に普及しました。</p>
+<h3>iモード――電話が「インターネットの入口」になった</h3>
+<p>1999年2月22日、NTTドコモが<strong>iモード</strong>を始めました。携帯電話の小さな画面で、メールを送り、ニュースを読み、着信メロディを買う。<strong>PCを持たない人が、電話機からインターネットへ入る</strong>という経験は、日本で世界に先駆けて大衆化しました。</p>
+<p>iモードは「端末」の歴史における転換点です。電話機が、声を運ぶ道具から、情報を読み書きする入口へ変わりました。第8章で見るスマートフォンの統合は、ここから始まっています。</p>
+<h3>3G、4G、そして定額へ</h3>
+<p>2001年10月1日、ドコモが世界初のW-CDMA方式の3Gサービス「FOMA」を始めました。2010年にはLTE（4G）が始まり、動画が携帯で当たり前に見られるようになります。</p>
+<p>しかし、携帯を「常につながっている端末」に変えたのは、通信速度より<strong>料金体系</strong>でした。</p>
+<p>2004年、ドコモの「パケ・ホーダイ」を皮切りに、パケット通信の定額制が広がります。それまで、携帯でウェブを見るたびに「パケット代がいくらかかるか」を気にしなければならなかったのが、定額になったことで、人は残量を気にせず端末を開くようになりました。</p>
+<p><strong>定額化は、通信を「使う」ものから「つながっている」ものへ変えました。</strong> 2007年（日本では2008年）のiPhoneが受け入れられる土壌は、この定額制がなければ生まれなかったといえます。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>携帯電話（〜4G）</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="携帯電話（〜4G）">自動車電話は富裕層 → 1990年代に大衆化 → 2000年代に「一人一台」</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="携帯電話（〜4G）">高額な従量課金 → パケット定額 → 通話定額へ</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="携帯電話（〜4G）">基地局と伝送路と電源のどれかが切れると止まる。この弱さが第六部の主題</td></tr></tbody></table></div>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch sum" id="ch-1sum"><span class="ch-no">第一部のまとめ</span><h2>二本の線を、同じ時間軸に並べる</h2>
+<p>ここまでの歴史を、<strong>通信という「道」</strong>と、<strong>人が世界に触れる「入口」</strong>の二本の線として並べておきます。片方をもう片方に吸収しません。同じ時代に、どんな道が生まれ、そのとき人はどんな入口から世界に触れたか、を見るためです。</p>
+<div class="tscroll"><table class="tbl tl wide"><thead><tr><th>時代</th><th>通信の道</th><th>人の入口</th><th>範囲</th><th>料金</th><th>切れたら</th></tr></thead><tbody><tr><td data-label="時代">古代〜近世</td><td data-label="通信の道">狼煙・伝令・飛脚</td><td data-label="人の入口">人の身体・手紙</td><td data-label="範囲">国家と一部の者</td><td data-label="料金">高額</td><td data-label="切れたら">別の便を待つ</td></tr><tr><td data-label="時代">1840年代</td><td data-label="通信の道">近代郵便・電信</td><td data-label="人の入口">手紙・電信局</td><td data-label="範囲">都市の局まで</td><td data-label="料金">字数課金</td><td data-label="切れたら">線の修理</td></tr><tr><td data-label="時代">1870年代〜</td><td data-label="通信の道">電話網・海底電信</td><td data-label="人の入口">電話機・交換手</td><td data-label="範囲">加入者</td><td data-label="料金">距離と時間で従量</td><td data-label="切れたら">局が生きていれば通じる</td></tr><tr><td data-label="時代">1900〜20年代</td><td data-label="通信の道">無線・ラジオ</td><td data-label="人の入口">ラジオ受信機</td><td data-label="範囲">受信機を持つ者</td><td data-label="料金">受信料</td><td data-label="切れたら">電池で動く</td></tr><tr><td data-label="時代">1950年代</td><td data-label="通信の道">テレビ放送・衛星</td><td data-label="人の入口">テレビ受像機</td><td data-label="範囲">ほぼ全世帯へ</td><td data-label="料金">受信料</td><td data-label="切れたら">送信所次第</td></tr><tr><td data-label="時代">1960〜80年代</td><td data-label="通信の道">パケット・インターネット</td><td data-label="人の入口">PC・モデム</td><td data-label="範囲">研究者→家庭</td><td data-label="料金">電話従量＋接続料</td><td data-label="切れたら">経路が迂回</td></tr><tr><td data-label="時代">1980〜90年代</td><td data-label="通信の道">光ファイバー・海底光</td><td data-label="人の入口">PC・携帯電話</td><td data-label="範囲">幹線は世界</td><td data-label="料金">容量単価が急落</td><td data-label="切れたら">複数ルート</td></tr><tr><td data-label="時代">1999〜2000年代</td><td data-label="通信の道">携帯網（iモード・3G）</td><td data-label="人の入口">携帯電話</td><td data-label="範囲">一人一台</td><td data-label="料金">パケット定額</td><td data-label="切れたら">基地局次第</td></tr><tr><td data-label="時代">2010年代</td><td data-label="通信の道">4G・Wi-Fi・クラウド</td><td data-label="人の入口">スマートフォン</td><td data-label="範囲">世界人口の過半</td><td data-label="料金">定額が標準</td><td data-label="切れたら">電池と基地局</td></tr><tr><td data-label="時代">2020年代</td><td data-label="通信の道">5G・衛星D2D・HAPS</td><td data-label="人の入口">スマホ・時計・イヤホン・グラス</td><td data-label="範囲">空が見えれば</td><td data-label="料金">基本料に含む例も</td><td data-label="切れたら">多重化が課題</td></tr><tr><td data-label="時代">これから</td><td data-label="通信の道">6G・光電融合</td><td data-label="人の入口">車・家・ロボット</td><td data-label="範囲">未定</td><td data-label="料金">未定</td><td data-label="切れたら">未定</td></tr></tbody></table></div>
+<p>この表の右3列は、第三部以降で繰り返し戻ってくる問いです。<strong>新しい技術が出るたびに、範囲は広がり、料金は下がり、しかし「切れたらどうなるか」の答えは、そのつど作り直されてきました。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-2" data-part="第二部" data-name="世界が一枚のガラス板に入った">
+<header class="part-head"><span class="part-no">第二部<small>／十部</small></span><h1 class="part-name">世界が一枚のガラス板に入った</h1></header>
+<article class="ch " id="ch-8"><span class="ch-no">第8章</span><h2>スマートフォンは何を統合したのか</h2>
+<p>2007年に米国で、2008年に日本で発売されたiPhoneは、それまで別々の機械だったものを一枚のガラス板の中に入れました。ただし、統合されたものの一覧を見ると、<strong>「便利になった」以上のことが起きている</strong>と分かります。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>統合されたもの</th><th>それまでの姿</th><th>スマホに入って何が変わったか</th></tr></thead><tbody><tr><td data-label="統合されたもの">電話</td><td data-label="それまでの姿">固定電話・携帯電話</td><td data-label="スマホに入って何が変わったか">通話は数ある機能の一つになった</td></tr><tr><td data-label="統合されたもの">カメラ</td><td data-label="それまでの姿">フィルムカメラ・デジカメ</td><td data-label="スマホに入って何が変わったか">撮った瞬間に送れる。撮影と通信が一体化</td></tr><tr><td data-label="統合されたもの">地図</td><td data-label="それまでの姿">紙の地図・カーナビ</td><td data-label="スマホに入って何が変わったか">自分の位置と重なる。道に迷う経験が減った</td></tr><tr><td data-label="統合されたもの">音楽・動画</td><td data-label="それまでの姿">ウォークマン・テレビ</td><td data-label="スマホに入って何が変わったか">端末にためるのではなく、通信で流す</td></tr><tr><td data-label="統合されたもの">検索</td><td data-label="それまでの姿">PCの前に座る</td><td data-label="スマホに入って何が変わったか">立ったまま、歩きながら調べる</td></tr><tr><td data-label="統合されたもの">SNS・メール</td><td data-label="それまでの姿">PC</td><td data-label="スマホに入って何が変わったか">常に「誰かとつながっている」状態</td></tr><tr><td data-label="統合されたもの">財布</td><td data-label="それまでの姿">現金・カード</td><td data-label="スマホに入って何が変わったか">決済とポイントと乗車券が一つに</td></tr><tr><td data-label="統合されたもの">鍵</td><td data-label="それまでの姿">金属の鍵</td><td data-label="スマホに入って何が変わったか">家・車・ホテルの鍵がアプリになる例が増えた</td></tr><tr><td data-label="統合されたもの">仕事</td><td data-label="それまでの姿">オフィスのPC</td><td data-label="スマホに入って何が変わったか">通勤中も休日も、仕事が手元にある</td></tr><tr><td data-label="統合されたもの"><strong>認証</strong></td><td data-label="それまでの姿"><strong>印鑑・身分証・パスワード</strong></td><td data-label="スマホに入って何が変わったか"><strong>「本人であること」を証明する装置になった</strong></td></tr></tbody></table></div>
+<p>この表の最後の行に、この章の核心があります。</p>
+<h3>「スマホはカメラになっただけではなく、身分証になった」</h3>
+<p>この視点を検証します。</p>
+<p>日本では、マイナンバーカードの機能をスマートフォンに搭載する「スマホ用電子証明書」が2023年にAndroid向けに始まり、iPhoneにも広がりました。銀行の振込、証券口座の開設、行政手続きの多くが、スマホを本人確認の起点にしています。二段階認証のコードはスマホに届き、生体認証（指紋・顔）はスマホの上で行われます。</p>
+<p>つまり2026年のスマートフォンは、<strong>「あなたが誰であるか」を社会に対して証明する装置</strong>になっています。財布を落とすより、スマホを落とすほうが困る。それは中身の情報だけでなく、<strong>自分を証明する手段そのものを失う</strong>からです。</p>
+<p>この「認証」という論点は、第15章「何が全部を一つにつなぐのか」の伏線でもあります。次の端末が何であれ、<strong>認証の役割を引き継げない端末は、スマホを置き換えられない</strong>。</p>
+<h3>統合は、何を失わせたか</h3>
+<p>統合には裏面があります。</p>
+<p>一つは、<strong>依存の集中</strong>です。電話・財布・鍵・身分証が一台に入っているということは、その一台が壊れたとき、あるいは電池が切れたとき、あるいは通信が途絶えたとき、すべてを同時に失うということです。第六部で見る災害の場面で、これは深刻な問題になります。</p>
+<p>もう一つは、<strong>「切る」ことの難しさ</strong>です。電話は切れます。テレビは消せます。しかしスマホは、電話でもあり財布でもあるため、「切る」ことがそのまま社会生活の停止を意味します。第25章「つながらない自由」の問いは、ここから生まれます。</p>
+<div class="tscroll"><table class="tbl axis"><thead><tr><th>軸</th><th>スマートフォン</th></tr></thead><tbody><tr><td data-label="軸"><strong>範囲</strong></td><td data-label="スマートフォン">世界の携帯契約の大多数がスマホ。ただし低所得国では価格が壁</td></tr><tr><td data-label="軸"><strong>料金</strong></td><td data-label="スマートフォン">通信は定額が標準。端末価格は上昇中（第12章）</td></tr><tr><td data-label="軸"><strong>冗長</strong></td><td data-label="スマートフォン">一台に集中しているため、失ったときの影響が大きい</td></tr></tbody></table></div>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-9"><span class="ch-no">第9章</span><h2>端末の歴史を、人間の身体から見る</h2>
+<p>ここで、端末の側の歴史を、別の角度から見直します。<strong>人間の身体のどの機能を、外へ延ばしてきたか</strong>という見方です。この特集では、この視点を軸の一つとして採用しています。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>端末</th><th>外へ延ばした身体の機能</th><th>何が起きたか</th></tr></thead><tbody><tr><td data-label="端末">電話</td><td data-label="外へ延ばした身体の機能">声</td><td data-label="何が起きたか">声が距離を越えた。ただし相手も同じ装置を持つ必要がある</td></tr><tr><td data-label="端末">ラジオ</td><td data-label="外へ延ばした身体の機能">耳</td><td data-label="何が起きたか">遠くの声を、一方向に、同時に大勢が聞く</td></tr><tr><td data-label="端末">テレビ</td><td data-label="外へ延ばした身体の機能">目</td><td data-label="何が起きたか">遠くの光景を、一方向に、同時に大勢が見る</td></tr><tr><td data-label="端末">PC</td><td data-label="外へ延ばした身体の機能">計算・記憶</td><td data-label="何が起きたか">頭の中の作業を、机の上の機械へ移した</td></tr><tr><td data-label="端末">携帯電話</td><td data-label="外へ延ばした身体の機能">声＋移動</td><td data-label="何が起きたか">「どこにいても」声が届く</td></tr><tr><td data-label="端末">スマートフォン</td><td data-label="外へ延ばした身体の機能"><strong>社会活動そのもの</strong></td><td data-label="何が起きたか">買う・払う・証明する・働く・遊ぶ・つながるが一つに</td></tr><tr><td data-label="端末">スマートウォッチ</td><td data-label="外へ延ばした身体の機能">脈・体温・動き</td><td data-label="何が起きたか">身体の内側の情報が、外へ出るようになった</td></tr><tr><td data-label="端末">イヤホン</td><td data-label="外へ延ばした身体の機能">聴覚（常時）</td><td data-label="何が起きたか">耳に常に何かが入っている状態</td></tr><tr><td data-label="端末">スマートグラス</td><td data-label="外へ延ばした身体の機能">視覚（常時）</td><td data-label="何が起きたか">見ているものに、情報が重なる</td></tr><tr><td data-label="端末">ロボット</td><td data-label="外へ延ばした身体の機能">物理的な行動</td><td data-label="何が起きたか">自分の身体がない場所で、何かを動かす</td></tr></tbody></table></div>
+<p>この表を上から下へ読むと、一つの傾向が見えます。</p>
+<p><strong>最初は「一つの感覚を、必要なときだけ延ばす」ものでした。それが「複数の感覚を、常に延ばしている」ものへ変わってきています。</strong></p>
+<p>電話は、かけたいときにかけ、終われば切ります。ラジオもテレビも、見終われば消します。しかしイヤホンは耳に入ったままになり、スマートウォッチは眠っている間も脈を測り、スマートグラスは見ているものすべてを記録できます。</p>
+<p>これを「アンビエント化（環境化）」と呼ぶ見方があります。端末が「使う道具」から「そこにある環境」へ変わる、という意味です。</p>
+<h3>反対側から見る――外部化は、内部を弱らせるか</h3>
+<p>この視点には、当然の反論があります。<strong>身体の外へ延ばした機能は、身体の内側で衰えるのではないか</strong>。</p>
+<p>地図アプリがあれば道を覚えなくなる、検索があれば記憶しなくなる、という指摘は、スマホ登場の当初から繰り返されてきました。ただし、これは電話や文字についても言われたことです。ソクラテスが「文字は記憶を衰えさせる」と論じたことは有名です。<strong>技術による外部化への懸念は、技術そのものと同じくらい古い</strong>。</p>
+<p>本特集は、この論争のどちらかに立ちません。確認できるのは、外部化の範囲が「必要なときだけ」から「常時」へ移りつつあるという事実と、その常時性が第25章の「つながらない自由」という新しい問いを生んでいるという構造です。</p>
+<p><strong>身体の外へ延ばしてきた歴史の先に、「延ばしたものを、いつ引っ込めるか」という選択が現れています。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-3" data-part="第三部" data-name="2026年、いま何が起きているのか">
+<header class="part-head"><span class="part-no">第三部<small>／十部</small></span><h1 class="part-name">2026年、いま何が起きているのか</h1></header>
+<article class="ch " id="ch-10"><span class="ch-no">第10章</span><h2>通信の現在地</h2>
+
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">一次情報</span><div class="kn-t">衛星D2Dは日本の3社で提供中、4社目は2026年内目標</div><div class="kn-d">KDDI 2025年4月10日（SMS）→8月28日（データ）／ソフトバンク 2026年4月10日／ドコモ 2026年4月27日／楽天 2026年第4四半期目標。<b>送れるものはテキストと軽いデータが中心。</b></div></aside>
+ <aside class="kn kn-claim"><span class="chip">当事者の説明</span><div class="kn-t">auの地上網の<b>面積カバー率は約60％</b></div><div class="kn-d">KDDIの説明。人口カバー率は99.9％以上。<b>auの地上網についての数字であり、全事業者の圏外面積ではない。</b>衛星で残る約40％を含む日本全土を目指すとしている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">標準化の現在地</span><div class="kn-t">6Gは、2026年時点では<b>仕様を書き始めた段階</b></div><div class="kn-d">2026年6月の3GPP総会で最初の6GリリースのRelease 21の日程が決定。最初の仕様完成は<b>2029年3月の計画</b>（会員企業クアルコムの説明）。商用サービスはその先。</div></aside>
+</div>
+
+<p>2026年9月時点の通信を、地上・光・空・宇宙の順に見ます。</p>
+<h3>地上：5Gの次は、まだ「5G」</h3>
+<p>日本の5Gは2020年3月に始まりました。6年が経ち、都市部では当たり前になりましたが、世界全体で見ると、国際電気通信連合（ITU）の2025年版統計で<strong>5Gの人口カバー率は世界で55％</strong>。高所得国では84％に達する一方、<strong>低所得国では4％</strong>にとどまります。</p>
+<p>その先の規格は、2つの層で進んでいます。</p>
+<p><strong>5G Advanced</strong>（3GPP Release 18〜20）は、5Gの延長線で性能を高めるものです。標準化団体3GPPの計画では、Release 20の5G Advanced部分は2026年9月に仕様が凍結される見込みです。</p>
+<p><strong>6G</strong>は、2026年6月の3GPP総会で、最初の規範リリースとなる<strong>Release 21</strong>のスケジュールが決まりました。3GPPの会員企業であるクアルコムの説明によれば、2027年3月に6G無線の範囲を定める作業項目が承認され、2028年9月に物理層、同12月にプロトコル設計が凍結、<strong>2029年3月に最初の6G仕様が完成</strong>する計画です。</p>
+<p>つまり、<strong>2026年の時点で6Gは「仕様を書き始めた段階」</strong>であり、商用サービスはその先です。「6G」という言葉が報道に出ていても、それは規格の議論であって、使えるものではありません。なお本特集の作成時点で、3GPP自身のリリース解説ページへは技術的に到達できず、上記は会員企業の説明に基づいています。</p>
+<h3>Wi-Fi：8は「速さ」ではなく「途切れなさ」</h3>
+<p>家庭や職場の無線LANは、Wi-Fi 7が2024年から製品化され、次の<strong>Wi-Fi 8（IEEE 802.11bn）</strong>が策定中です。</p>
+<p>Wi-Fi 8の正式名称は「Ultra High Reliability（超高信頼）」。これまでの世代が速度を競ってきたのに対し、<strong>遅延とパケットロスを減らし、混雑した環境で途切れないこと</strong>を目標に掲げています。標準の承認は2028年前後、業界団体Wi-Fi Allianceの認証製品が出そろうのも2028年ごろと見込まれています。2026年に「Wi-Fi 8対応」をうたう製品が出ていても、それは草案段階の先行品です。</p>
+<p>「速さ」から「途切れなさ」へ。この方向転換は、この特集の主題そのものと重なります。</p>
+<h3>光：幹線は光、そして「光電融合」へ</h3>
+<p>幹線はすでに光です。次の段階は、<strong>データセンターの中や、半導体の中まで光を入れる</strong>ことです。</p>
+<p>NTTが掲げるIOWN構想では、電気信号を光に置き換えて電力消費を抑える「光電融合」デバイスの商用化が、2026年度に予定されています。これは第12章のAIデータセンターの電力問題と直結しています。</p>
+<h3>海底ケーブル：世界の急所</h3>
+<p>国際通信は海底ケーブルが担い、日本の陸揚げ地点は千葉県房総半島と三重県志摩市に集中していると報じられています。この構造は第26章で詳しく扱います。</p>
+<h3>空：衛星D2D、そしてHAPS</h3>
+<p>序章で見たとおり、2026年の日本では衛星とスマートフォンの直接通信（D2D：Direct to Device）が、3社で提供されています。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>事業者</th><th>開始</th><th>内容</th><th>料金</th><th>制約</th></tr></thead><tbody><tr><td data-label="事業者"><strong>KDDI（au Starlink Direct）</strong></td><td data-label="開始">2025年4月10日（SMS）／2025年8月28日（データ）</td><td data-label="内容">SMS、対応アプリのデータ通信</td><td data-label="料金">auプランに含まれる。他社ユーザーは月1,650円（初回3か月無料）</td><td data-label="制約">屋外で空が見えること</td></tr><tr><td data-label="事業者"><strong>ソフトバンク（SoftBank Starlink Direct）</strong></td><td data-label="開始">2026年4月10日</td><td data-label="内容">テキスト、緊急速報メールの一部、対象アプリのデータ通信</td><td data-label="料金">基本プランに含まれ追加料金なし</td><td data-label="制約">通話・緊急通報は不可。iOS 26.4以上／Android 15以上</td></tr><tr><td data-label="事業者"><strong>NTTドコモ（docomo Starlink Direct）</strong></td><td data-label="開始">2026年4月27日</td><td data-label="内容">SMS・RCS・iMessage、位置共有、ファイル転送、緊急速報</td><td data-label="料金">全プラン（ahamo含む）で当面無料</td><td data-label="制約">対応84機種。2か月で接続者500万人突破（7月10日発表）</td></tr><tr><td data-label="事業者"><strong>楽天モバイル（AST SpaceMobile）</strong></td><td data-label="開始">2026年第4四半期目標</td><td data-label="内容">2025年4月に市販スマホでビデオ通話試験に成功（福島–東京間）</td><td data-label="料金">未定</td><td data-label="制約">対応端末・周波数は「現時点で未定」</td></tr></tbody></table></div>
+<p>KDDIによれば、auの地上網は人口カバー率99.9％以上である一方、<strong>面積カバー率は約60％</strong>です。au Starlink Directは、<strong>残る約40％を含む日本全土への通信提供を目指している</strong>と同社は説明しています。この数字はauの地上網についてのものであり、全事業者の圏外面積を示すものではありません。</p>
+<p>そして、地上と衛星の間に<strong>HAPS（成層圏通信プラットフォーム）</strong>があります。高度約20kmの成層圏を飛ぶ無人機に基地局を載せ、一機で広い範囲を覆う構想です。</p>
+<p>2026年8月9日、米Sceye社の機体「ST1」がニューメキシコを出発し、成層圏を13日間かけて太平洋を横断して日本上空に到達しました。同社とソフトバンクの発表によれば、日本の領空内で7日以上飛行し、<strong>市販スマートフォンとの直接通信で、テキスト、緊急通報を含む音声通話、インターネット接続、動画ストリーミング、緊急速報メール</strong>を実証したとされます。これは当事者の発表であり、第三者による独立確認は本特集の時点ではありません。</p>
+<p>制度面では、<strong>2025年5月の電波法改正で、携帯基地局を置ける場所が「陸上」から「陸上等（地表または水面から50km以下の空域を含む）」へ拡張</strong>され、2025年11月の審議会答申を経て、HAPS用の「高高度基地局」を定義する省令改正が進んでいます。<strong>空飛ぶ基地局は、日本の法律上、すでに「置ける場所」になりました</strong>（第27章）。</p>
+<h3>通信の現在地を、一言で</h3>
+<p><strong>地上の5Gは成熟し、6Gは仕様の入口。Wi-Fiは速さから信頼性へ。光はデータセンターの中へ。そして空と宇宙が、地上の網が届かない場所を埋め始めた。</strong></p>
+<p>ただし、序章の問いをもう一度置きます。空と宇宙から届くものは、まだ「短い文字」が中心です。<strong>新しい道ほど細い</strong>。この事実は、第六部の災害の話で決定的な意味を持ちます。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-11"><span class="ch-no">第11章</span><h2>端末の現在地</h2>
+
+<div class="kn-grid">
+ <aside class="kn kn-fore"><span class="chip">予測（実績ではない）</span><div class="kn-t">2026年のスマホ出荷は<b>16.7％減・約10億台</b>、平均価格は<b>581ドル（+27.6％）</b></div><div class="kn-d">IDC 2026年8月の予測。3か月前の13.9％減からの下方修正。原因はAIデータセンター向けに振り向けられた<b>メモリの不足</b>。<b>次の四半期に数字が動く可能性がある。</b></div></aside>
+</div>
+
+<p>2026年の端末を、成功と失敗の両方から見ます。</p>
+<h3>スマートフォン：過去最大の年間減少予測</h3>
+<p>調査会社IDCは2026年8月、<strong>2026年の世界スマートフォン出荷台数が前年比16.7％減の約10億台</strong>になるという予測を出しました。IDC自身が「業界史上最も急な年間減少」と表現しています。3か月前の予測は13.9％減で、それをさらに下方修正した形です。</p>
+<p>理由は需要の減退ではありません。<strong>メモリの不足</strong>です。AIデータセンター向けにメモリの生産が振り向けられ、スマホ向けのDRAMとNANDの価格が前年比300％超上昇したとIDCは説明しています。</p>
+<p>同時に、<strong>平均販売価格は27.6％上昇して581ドル</strong>になるとIDCは予測しています。台数は減るのに、金額ベースの市場規模は6.3％増の6,130億ドルへ。<strong>「安いスマホの時代は終わった」</strong>と受け止める報道もあります。</p>
+<p>これは予測であり、実績ではありません。ただし、下半期の出荷が27.2％減と見込まれている点は、この文章を書いている2026年9月がその渦中にあることを意味します。</p>
+<h3>PC：同じ理由で縮む</h3>
+<p>PCも同じメモリ不足の影響を受け、IDCは2026年の出荷が減少し、平均価格が最大8％上昇すると予測しています。メモリを載せずに出荷するメーカーが出ている、という報道もあります。</p>
+<h3>時計・イヤホン：定着した「常時装着」</h3>
+<p>スマートウォッチ（Apple Watchは2015年）と完全ワイヤレスイヤホン（AirPodsは2016年）は、第9章で見た「常時装着」を最初に大衆化した端末です。脈拍、血中酸素、睡眠、転倒検知。<strong>身体の内側の情報が、初めて日常的に端末へ流れ出しました。</strong></p>
+<h3>スマートグラス：ついに「数字が動いた」年</h3>
+<p>2013年のGoogle Glassは、一般向けとしては定着せず、企業向けも2023年に終了しました。<strong>グラスは10年以上、「次に来る」と言われ続けて来なかった端末</strong>でした。</p>
+<p>2026年、状況が変わりました。IDCによれば、<strong>2026年第1四半期の世界スマートグラス出荷は前年同期比167％増の約225万台</strong>。第1四半期だけで2024年通年に匹敵するといいます。Meta社（Ray-Ban Metaシリーズ）が69.2％のシェアを占め、IDCは2026年通年で<strong>ディスプレイなしのスマートグラスが1,360万台</strong>に達すると予測しています。</p>
+<p>伸びているのは、画面を映すARグラスではなく、<strong>カメラとマイクとスピーカーだけを持つ「ディスプレイなし」のグラス</strong>です。ここにも「最も単純な形式が先に広がる」という構図があります。</p>
+<p>ただし制約もあります。Meta社の公式仕様では、Ray-Ban Meta（Gen 2）の駆動時間は<strong>通常使用で最大8時間</strong>、初代のほぼ2倍です。充電ケースで48時間分を補えます。<strong>一日中「目」として働くには、まだ足りません</strong>。2025年9月には画面付きの「Meta Ray-Ban Display」も発売されましたが、本特集ではその販売実績を確認できていません。</p>
+<h3>XR：高価格の壁</h3>
+<p>Apple Vision Pro（2024年）は、映像の質で高い評価を得た一方、価格と重さから普及には至っていません。XR（VR・AR）ヘッドセット全体としても、グラスのような急伸は起きていません。<strong>「没入」より「装着したまま日常を送れること」が先に選ばれた</strong>、と読めます。</p>
+<h3>AI専用端末：失敗が先に来た</h3>
+<p>2024年、「スマホの次」をうたうAI専用端末が相次いで登場しました。</p>
+<p><strong>Humane AI Pin</strong>は、胸に着ける699ドルの端末でした。2025年2月、開発元がHP社に1億1,600万ドルで資産を売却し、<strong>2025年2月28日に全機能が停止</strong>しました。サーバーに依存する機能（通話、メッセージ、AI応答、クラウド）がすべて使えなくなり、購入者の端末は事実上、文鎮になりました。報道によれば、販売目標10万台に対して実売は約1万台だったとされます。</p>
+<p><strong>Rabbit r1</strong>は199ドルで話題になりましたが、発売当初の機能不足が厳しく批判されました。</p>
+<p>この失敗は、単に製品が悪かったという話ではありません。<strong>「常にサーバーとつながっていることを前提に設計された端末は、会社がサーバーを止めた瞬間に消える」</strong>という構造の問題です。第15章と第19章で、この論点に戻ります。</p>
+<h3>端末の現在地を、一言で</h3>
+<p><strong>スマホは高くなり、台数は減り、しかし社会の中心であり続けている。時計とイヤホンは身体に定着した。グラスは初めて数字が動いた。AI専用端末は、最初の一巡で「クラウド依存の脆さ」を教えた。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-12"><span class="ch-no">第12章</span><h2>AIが端末を賢くし、同時に端末を高くする</h2>
+<p>この章は、第10章と第11章をつなぐ「原因」の章です。</p>
+<h3>一つのメモリを、AIとスマホが奪い合っている</h3>
+<p>2026年、AIデータセンターの建設が世界で続いています。そこで使われる<strong>HBM（広帯域メモリ）</strong>は、GPUのそばに積み上げて高速にデータを出し入れするための部品で、その需要が急増しました。</p>
+<p>メモリメーカーは生産をHBMに振り向けます。すると、スマホやPCに使う通常のDRAMやNANDの供給が減り、価格が上がります。IDCが2026年のスマホ出荷16.7％減の主因に挙げたのが、この連鎖です。<strong>AIがデータセンターで賢くなるほど、手元のスマホは高くなる</strong>。これは比喩ではなく、部品の取り合いという物理的な現象です。</p>
+<p>2026年9月10日には、ロイターが「HBM不足で中国のAIチップ各社が値上げに踏み切った」と匿名筋の話として報じています。取り合いは、国境を越えて起きています。</p>
+<h3>演算より「つなぐ」ところが足りない</h3>
+<p>AIデータセンターのボトルネックも変わりつつあります。</p>
+<p>この20年で、チップの演算性能（TOPS）は約6万倍になりましたが、DRAMの帯域は約30倍、チップ間をつなぐ相互接続の帯域は約100倍にとどまります。Googleの研究者は、大規模言語モデルの推論における主要なボトルネックは演算ではなく<strong>メモリと相互接続</strong>だと指摘しています。</p>
+<p>つまり、AIを速くするには、計算するチップより<strong>「データを運ぶ配線」</strong>が要る。データセンターの中に光を入れる光電融合（第10章）が2026年度に商用化を目指しているのは、このためです。</p>
+<h3>電力と冷却――AIの「血流」</h3>
+<p>AIデータセンターは、演算のために電力を使い、その熱を冷やすためにまた電力を使います。第五部の第17章で「AI＝頭脳、通信＝神経、端末＝目耳、ロボット＝手足」という比喩を検討しますが、その比喩に欠けているものが<strong>電力＝血流</strong>です。</p>
+<p>2026年9月には、UAEの5ギガワット級AIデータセンター計画が、軍事攻撃を受けて分散化・地下化・防空を含む設計見直しに入ったとロイターが報じました（匿名筋。事業者側は「計画どおり進行中」と公式に述べており、食い違いがあります）。<strong>AIの計算は、物理的に守らなければならないものになりつつあります。</strong></p>
+<h3>スマホの価格・出荷への影響――実績と予測を分ける</h3>
+<p>この章で扱った数字のうち、<strong>実績</strong>と<strong>予測</strong>を分けておきます。</p>
+<div class="tscroll"><table class="tbl kind wide"><thead><tr><th>項目</th><th>区分</th><th>出典</th></tr></thead><tbody><tr><td data-label="項目">メモリ（DRAM・NAND）価格が前年比300％超上昇</td><td data-label="区分">IDCの説明（2026年8月時点）</td><td data-label="出典">IDC</td></tr><tr><td data-label="項目">2026年スマホ出荷16.7％減・約10億台</td><td data-label="区分"><strong>予測</strong></td><td data-label="出典">IDC（2026年8月）</td></tr><tr><td data-label="項目">2026年スマホ平均価格581ドル（27.6％上昇）</td><td data-label="区分"><strong>予測</strong></td><td data-label="出典">IDC（2026年8月）</td></tr><tr><td data-label="項目">2026年下半期の出荷27.2％減</td><td data-label="区分"><strong>予測</strong></td><td data-label="出典">IDC（2026年8月）</td></tr><tr><td data-label="項目">2026年第1四半期スマートグラス出荷225万台</td><td data-label="区分"><strong>実績</strong></td><td data-label="出典">IDC</td></tr><tr><td data-label="項目">2026年スマートグラス1,360万台</td><td data-label="区分"><strong>予測</strong></td><td data-label="出典">IDC</td></tr><tr><td data-label="項目">中国AIチップの値上げ</td><td data-label="区分"><strong>報道（匿名筋）</strong></td><td data-label="出典">ロイター 2026年9月10日</td></tr></tbody></table></div>
+<p><strong>IDCの予測は3か月で13.9％減から16.7％減へ動きました。次の四半期にまた動く可能性があります。</strong> この特集は、数字そのものより「AIと端末が同じ部品を奪い合っている」という構造を確認するものです。</p>
+<h3>第三部のまとめ</h3>
+<p>2026年の現在地を一言でまとめれば、こうなります。</p>
+<p><strong>通信は、地上で成熟し、空と宇宙へ広がった。端末は、身体に定着し、目（グラス）にまで達した。そしてAIが、その両方の部品と電力を、同じ供給源から奪い始めている。</strong></p>
+<p>次の部では、「ではスマホの次の入口は何か」という、この特集で最も答えの出しにくい問いに進みます。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-4" data-part="第四部" data-name="「次の入口」は何なのか">
+<header class="part-head"><span class="part-no">第四部<small>／十部</small></span><h1 class="part-name">「次の入口」は何なのか</h1></header>
+<article class="ch " id="ch-13"><span class="ch-no">第13章</span><h2>画面は消えるのか</h2>
+<p>「スマホの次」をめぐる議論で、最も多く語られるのが「画面は消える」という予測です。声で頼めばAIが答える、グラスが目の前に情報を出す、だから画面を見る必要がなくなる、と。</p>
+<p>この特集は、この予測を<strong>「完全に消える」とは断定しません</strong>。理由を3つに分けます。</p>
+<h3>理由1：「頼む」と「確かめる」は別の行為</h3>
+<p>声で「明日の東京の天気は」と頼めば、声で答えが返ります。これは画面が要りません。</p>
+<p>しかし「来週の出張の航空券を、朝の便で、通路側で、いちばん安いものを」と頼んだとき、返ってきた答えを<strong>確かめずに確定する人は少ない</strong>でしょう。便名、時刻、価格、座席、キャンセル条件を、一覧で見て、比べて、選びたい。<strong>比較・確認・編集・共有の場面では、画面のほうが圧倒的に速く、確実です。</strong></p>
+<p>「アクションの起点」としての画面は減るかもしれません。声やグラスが起点になる。しかし「確認の場」としての画面は残る可能性が高い、というのがこの特集の見立てです。</p>
+<h3>理由2：失敗した端末は、画面を消そうとした端末だった</h3>
+<p>第11章で見たHumane AI Pinは、画面を持たず、手のひらにレーザーで投影する方式でした。Rabbit r1は小さな画面を持ちましたが、操作の中心は声でした。<strong>両方とも、「画面を減らす」という思想を製品にして、市場に受け入れられませんでした。</strong></p>
+<p>一方、2026年に伸びているRay-Ban Metaのグラスは、ディスプレイなしの機種が主力です。画面を「消した」のではなく、<strong>「スマホの画面は残したまま、グラスは目と耳と口だけを担当する」という分業</strong>が選ばれています。</p>
+<h3>理由3：画面は「共有」の装置でもある</h3>
+<p>画面は、一人で見るものではありません。家族で地図を見る、店員に写真を見せる、会議で資料を映す。<strong>声とグラスは個人の中で閉じますが、画面は他人と共有できます。</strong> この機能を声やグラスは代替していません。</p>
+<h3>見方が分かれるところ</h3>
+<p>ただし、「どこまで残るか」については見方が分かれます。一方では、環境の側に情報が溶け込む「アンビエント化」が進めば、画面の役割は想定より早く縮むという見方があります。これに対して、認証と確認の場としての画面は当面代替できないとする、より慎重な見方もあります。</p>
+<p>本特集の立場は、<strong>「画面の役割は変わるが、消えない」</strong>です。何が起点になり、何が確認の場になるか。その分担の変化を、第14章以降で追います。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-14"><span class="ch-no">第14章</span><h2>目、耳、身体、空間へ入口が散っていく</h2>
+<p>スマートフォンが「一枚のガラス板に統合」したものが、2026年、少しずつ<strong>分散</strong>し始めています。ただし、分散先はどれも、まだスマホを必要としています。</p>
+<h3>目：グラス</h3>
+<p>Ray-Ban Metaは、カメラで見たものをAIに尋ねることができます。「これは何の花か」「この看板は何と書いてあるか」。目の前のものが、そのまま質問になる。<strong>入口が、手のひらから視線へ移る</strong>経験です。</p>
+<p>しかし現行の主力製品はスマホと組み合わせて使い、電池は通常使用で最大8時間（Meta社公表値）です。<strong>「一日中の目」にはまだなれません。</strong></p>
+<h3>耳：イヤホン</h3>
+<p>完全ワイヤレスイヤホンは、すでに多くの人の耳に一日中入っています。AIアシスタントとの会話、リアルタイム翻訳、周囲の音を聞きながらの通知。<strong>耳は、最も「常時」に近い入口</strong>になりました。ただし、耳だけでできることは、声で頼み、声で聞くことに限られます。</p>
+<h3>手首：時計</h3>
+<p>スマートウォッチは、決済（改札を通る、店で払う）、通知、健康計測を担います。<strong>「スマホを取り出さずに済む」場面を増やす</strong>という意味で、入口の分散を最も日常的に実現している端末です。</p>
+<h3>車</h3>
+<p>自動車は、通信端末になりました。地図の更新、音楽、通話、そして走行データの送信。テスラなど一部のメーカーは、ソフトウェアの更新を通信で行い、車の機能を購入後に変えます。<strong>車は「移動する端末」であり、同時に「移動するセンサー」</strong>です。</p>
+<h3>家</h3>
+<p>スマートスピーカー、スマートロック、スマートメーター。家の中にも入口が増えました。</p>
+<p>なかでも<strong>スマートメーター</strong>は、静かな巨大インフラです。日本では電力の検針が通信化され、2025年3月末時点で全国の設置率は99.9％、約8,150万台に達したとされます（本特集では業界資料に基づく二次情報として扱います。資源エネルギー庁の一次資料へは技術的に到達できませんでした）。<strong>家の電気の使い方が、30分ごとに通信で送られている</strong>。これは、ほとんどの人が意識していない「端末」です。</p>
+<h3>分散の先にある問い</h3>
+<p>入口が目・耳・手首・車・家に散っていくと、一つの問いが浮かびます。</p>
+<p><strong>「それらを、何がつないでいるのか」</strong></p>
+<p>グラスで見て、イヤホンで聞いて、時計で払って、車で移動して、家で電気を使う。この一連の経験を、バラバラの端末の寄せ集めではなく「一人の人間の生活」として成立させているものは何か。次の章で扱います。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-15"><span class="ch-no">第15章</span><h2>何が全部を一つにつなぐのか</h2>
+<p>スマートフォンは、ハードウェアとして統合を実現しました。しかし入口が分散する時代には、<strong>ハードウェアではないもの</strong>が統合の役割を担う可能性があります。</p>
+<p>その候補は、次の3つの重なりです。</p>
+<h3>① アカウント</h3>
+<p>Apple ID、Googleアカウント、LINE、決済サービス。<strong>「あなた」を識別する鍵</strong>です。グラスも時計も車も、同じアカウントにひもづくことで「一人の人間の端末」になります。第8章で見た「スマホは身分証になった」という話は、ここに接続します。<strong>次の入口が何であれ、アカウントによる認証を引き継げなければ、その入口は「あなたの入口」になれません。</strong></p>
+<h3>② 個人AI</h3>
+<p>2026年、AIアシスタントは複数の端末から同じように呼び出せるようになりつつあります。スマホで話しかけたAIと、グラスで話しかけたAIが、同じ「あなたの状況」を知っている。<strong>端末が変わっても、相手が同じ</strong>である状態です。</p>
+<h3>③ 継続する文脈</h3>
+<p>これが、この特集で最も重要な論点の一つです。</p>
+<p><strong>「次の一台ではなく、次の一つの文脈」</strong></p>
+<p>スマホの次に来るのは、新しい「一台」ではないかもしれない。来るのは、朝グラスで見たものを、昼イヤホンで聞き、夜スマホで確認し、翌日また続きから始められる、<strong>途切れない一つの文脈</strong>である。端末は入口に過ぎず、文脈が本体になる。</p>
+<p>この見方に立つと、第11章のHumane AI Pinの失敗が違って見えます。あの端末は「新しい一台」を作ろうとして、文脈をサーバーの中に閉じ込めました。サーバーが止まった瞬間、文脈ごと消えた。<strong>統合レイヤーがハードでもクラウドでもなく「文脈」だとすれば、その文脈をどこに、誰が持つかが、次の10年の最大の論点になります。</strong></p>
+<h3>反対側から見る――文脈を一社が持つということ</h3>
+<p>この統合には、はっきりした危うさがあります。</p>
+<p>アカウント＋個人AI＋文脈が一つの企業の中でつながるとき、<strong>その企業は、あなたが何を見て、何を聞き、どこへ行き、何を買い、誰と話したかを、一本の線として持つ</strong>ことになります。第25章「つながらない自由」、第28章「見ている側と撮られる側」の問いは、ここに根を持っています。</p>
+<p>そして、第19章で見る災害の場面では、<strong>文脈がクラウドにあるかぎり、通信が切れれば文脈も切れる</strong>。統合レイヤーをどこに置くかは、便利さの問題であると同時に、切れたときに何が残るかの問題です。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-16"><span class="ch-no">第16章</span><h2>言葉すら使わなくなるのか</h2>
+<p>この章は、<strong>未来仮説</strong>です。確認された事実ではなく、「そうなる可能性が議論されている」ことを整理します。</p>
+<h3>視線・表情・生体センサー</h3>
+<p>グラスが視線を追い、イヤホンが声の調子を拾い、時計が脈を測る。これらを合わせると、<strong>「何を見て、どう感じたか」を、言葉にする前にAIが推定する</strong>ことが技術的には可能になります。</p>
+<h3>ゼロクリック、ゼロプロンプト</h3>
+<p>2010年代、検索は「入力して結果を見る」ものでした。2020年代、AIは「頼めば答える」ものになりました。次に語られているのは、<strong>頼む前に、必要なものが出ている</strong>状態です。これを「ゼロプロンプト」と呼ぶ論者もいます。</p>
+<p>朝、家を出るとき、傘を持つかどうかを尋ねる前に、玄関で「今日は夕方から雨」と聞こえる。会議の前に、相手の名前を思い出そうとする前に、グラスに名前が出る。</p>
+<h3>見方は分かれる</h3>
+<p>この仮説については、見方が分かれます。</p>
+<p>一方では、身体機能の外部化の歴史（第9章）の延長として、言葉という入力手段そのものが「必要なときだけ使うもの」に変わる可能性を重く見る見方があります。</p>
+<p>これに対して、より慎重な見方もあります。<strong>「頼む前に出る」は、外れたときに「頼んでいないものが出る」と同じ</strong>であり、それが受け入れられるかどうかは技術ではなく人間の側の問題だ、というものです。また、認証（本人であることの証明）を言葉なしで行うことの安全性は、まだ確立されていません。</p>
+<p>さらに、第22章で扱う「まだつながっていない22億人」の視点から、この議論が世界の一部の人々の話であることを忘れてはならない、という指摘もあります。</p>
+<p>本特集は、この3つの見方を並べたまま残します。<strong>言葉を使わなくなる未来は、来るかもしれないし、来ないかもしれない。確かなのは、それが「便利さ」だけでなく「同意」の問題として議論されるべきだということです</strong>（第28章）。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-5" data-part="第五部" data-name="AIが考え、ロボットが動く">
+<header class="part-head"><span class="part-no">第五部<small>／十部</small></span><h1 class="part-name">AIが考え、ロボットが動く</h1></header>
+<article class="ch " id="ch-17"><span class="ch-no">第17章</span><h2>AIが頭脳、通信が神経――そして血流は誰が担うのか</h2>
+<p>AIと通信と端末とロボットの関係を、身体に例える説明があります。</p>
+<ul>
+<li><strong>AI＝頭脳</strong></li>
+<li><strong>通信＝神経</strong></li>
+<li><strong>端末＝目・耳</strong></li>
+<li><strong>ロボット＝手足</strong></li>
+</ul>
+<p>分かりやすい比喩です。この特集も、いったんこの比喩を提示します。そのうえで、<strong>この比喩が何を見落としているかを、必ず補正します。</strong></p>
+<h3>補正1：血流が抜けている</h3>
+<p>身体には、頭脳と神経と手足のほかに、<strong>血流</strong>があります。酸素と栄養を運び、熱を運び出す。これがなければ、頭脳も神経も動きません。</p>
+<p>AIの世界で血流にあたるのは<strong>電力と冷却</strong>です。第12章で見たとおり、AIデータセンターは大量の電力を消費し、大量の熱を出します。この比喩を使って未来を語る議論の多くが、電力を忘れています。<strong>電力が届かない場所に、AIの頭脳は存在しません。</strong> 災害時に最初に止まるのも、電力です（第19章）。</p>
+<h3>補正2：AIは中央の一つの脳ではない</h3>
+<p>比喩は、AIをどこか一か所にある巨大な脳のように描きます。しかし2026年の現実は違います。</p>
+<p>クラウドの大規模なモデルと、スマホやグラスの中で動く<strong>オンデバイスAI</strong>が並存しています。オンデバイスAIは小さく、できることは限られますが、通信なしで動き、即座に応答します。身体に例えれば、頭で考えるより先に手を引っ込める<strong>反射神経</strong>です。</p>
+<p><strong>AIは一つの脳ではなく、中央の大脳と、末端の反射神経の組み合わせ</strong>です。この区別は、第19章の「非常時に逆向きになる」という話の鍵になります。</p>
+<h3>補正3：ロボット自身が通信端末である</h3>
+<p>比喩はロボットを「手足」に置きます。しかし実際のロボットは、カメラ（目）、マイク（耳）、センサー（皮膚）、そして通信モジュールを内蔵しています。<strong>ロボットは手足であると同時に、それ自体が目であり耳であり、通信端末です。</strong></p>
+<p>これは安全保障上の意味を持ちます。2025年3月、セキュリティ研究者が中国Unitree社の四足歩行ロボット「Go1」に、購入者に知らされていない遠隔アクセスの経路（いわゆるバックドア）が組み込まれていることを公表し、CVE-2025-2894として登録されました。研究者によれば、この経路を通じてロボットの位置やカメラ映像に外部からアクセスできる状態だったとされ、米国の複数の大学が所有する機体も影響を受けた可能性が指摘されています。Unitree社は2025年3月にサーバー側でこの機能を停止しました。<strong>手足だと思って家に入れたものが、目と耳を持ち、外とつながっていた</strong>という事例です。2026年7月には米FCCが外国製の高度なロボット機器を規制対象リストに加えたと報じられていますが、本特集ではFCCの一次文書には到達していません。</p>
+<h3>補正4：神経は、切れる</h3>
+<p>身体の神経は、めったに切れません。しかし通信は切れます。この比喩の最大の問題は、<strong>「神経が切れたとき、頭脳と手足はどうなるか」を説明できない</strong>ことです。第六部は、その問いに費やします。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-18"><span class="ch-no">第18章</span><h2>ロボット、車、家は端末なのか</h2>
+<p>第14章で「入口の分散」を見ました。この章では、その分散が<strong>「情報を見る入口」から「物理的に動く出口」へ</strong>広がっている現状を見ます。</p>
+<h3>ヒューマノイド：研究デモから、倉庫へ</h3>
+<p>2026年、人型ロボットは「動いてみせる」段階から「働く」段階へ入りつつあります。米Agility Robotics社の「Digit」は、ジョージア州の物流倉庫で、自律搬送ロボットとコンベアの間で運搬箱を運ぶ作業に入り、サービスとして提供する契約形態（RaaS）で商用導入されたと報じられています。中国AgiBot社は累計1万5,000台、Figure社の第3世代機は生産段階とされます。</p>
+<p>ただし本特集は、<strong>価格、稼働率、1台あたりの処理量、人の作業との置き換え比率、安全上の扱い</strong>のいずれも数字で確認できていません。証券会社が「2026年に6万台超が新規稼働」と予測していますが、予測であって実績ではありません。</p>
+<h3>ドローン</h3>
+<p>ドローンは、カメラを載せて飛ぶ通信端末です。災害時には、上空から被災地を撮影し、さらに<strong>基地局そのものを載せて飛ぶ</strong>「ドローン基地局」として使われます（第21章）。</p>
+<h3>自動運転車</h3>
+<p>自動運転の車は、周囲を認識し、判断し、動きます。その多くの判断は車の中で行われますが、地図の更新や交通情報は通信に依存します。<strong>車は、オンデバイスAI（反射神経）とクラウドAI（大脳）を、最も早く両立させた端末</strong>です。</p>
+<h3>スマートホーム</h3>
+<p>第14章で見たスマートメーターは、家を端末に変えました。加えて、鍵、照明、空調、給湯が通信でつながる家が増えています。</p>
+<h3>「端末なのか」という問いへの答え</h3>
+<p>ロボット、車、家は端末か。<strong>この特集の答えは「端末であり、同時に端末の限界を超えるもの」です。</strong></p>
+<p>端末は、これまで「人が世界に触れる入口」でした。ロボットと車と家は、入口であると同時に、<strong>人がいなくても世界に作用する出口</strong>です。ここで初めて、通信の相手が「人」ではなく「物」になります。</p>
+<p>そしてそれは、次の問いを生みます。<strong>通信が切れたとき、物はどう動くのか</strong>。人であれば、通信が切れれば待ちます。ロボットは、待つのか、止まるのか、自分で判断して動くのか。<strong>この問いに答えを持たないまま、物を通信につないではいけない。</strong> 第六部の入口です。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-6" data-part="第六部" data-name="そして災害がすべてを試す">
+<header class="part-head"><span class="part-no">第六部<small>／十部</small></span><h1 class="part-name">そして災害がすべてを試す</h1></header>
+<article class="ch " id="ch-19"><span class="ch-no">第19章</span><h2>通信が切れた瞬間、未来は逆向きになる</h2>
+
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">一次情報・総務省</span><div class="kn-t">能登半島地震の基地局停波原因：<b>壊れたのは3.5％だけ</b></div><div class="kn-d"><b>停電38.8％／伝送路断28.0％／停電＋伝送路断29.7％／基地局損壊3.5％</b>。ピークは1月3日ごろに800局超。全国の基地局のうち<b>バッテリーで24時間以上もつのは10％</b>。</div></aside>
+</div>
+
+<p>ここまでの章で描いた未来は、すべて<strong>「つながっている」ことを前提</strong>にしています。グラスがAIに尋ねるのも、文脈がクラウドで続くのも、ロボットが判断を仰ぐのも、通信があってのことです。</p>
+<p>この章では、その前提を外します。</p>
+<h3>平常時の向き</h3>
+<p>平常時、情報はこう流れます。</p>
+<p><strong>AI（クラウド） → 通信 → 端末 → ロボット・人</strong></p>
+<p>クラウドの大脳が考え、通信という神経が運び、端末が受け取り、人やロボットが動く。中心から末端へ。</p>
+<h3>非常時の向き</h3>
+<p>2024年1月1日の能登半島地震で、何が起きたかを見ます。</p>
+<p>総務省の資料によれば、発災後、携帯電話基地局の停波はピークの1月3日ごろに大手各社合計で800局以上に達しました。停波の原因を総務省が分析したところ、<strong>停電が38.8％、伝送路（光ケーブル等）の断が28.0％、停電と伝送路断の両方が29.7％、基地局そのものの損壊は3.5％</strong>でした。</p>
+<p>この数字は重要です。<strong>基地局が壊れたのは3.5％に過ぎません。残りの96.5％は、電気が来なくなったか、線が切れたかです。</strong> 第17章の比喩に戻れば、頭脳（AI）も手足（端末）も無事なのに、血流（電力）と神経（伝送路）が止まった。</p>
+<p>しかも総務省は、全国の基地局のうち<strong>バッテリーで24時間以上持つものは10％</strong>に過ぎず、90％は24時間未満だと示しています。救助・救命活動で重要とされる「発災後72時間」に対して、<strong>基地局の多くは、1日ももたない</strong>設計になっています。</p>
+<p>このとき、情報の流れは逆向きになります。</p>
+<p><strong>その場の端末・ロボット → ローカル判断 → 細い通信 → 外部AI</strong></p>
+<p>クラウドの大脳には届かない。届くのは、あるとしても、衛星経由の細い線だけ。その細い線で送れるのは、序章で見たとおり「短い文字」です。判断は、その場にあるもの――手元のスマホの中のオンデバイスAI、車の中の自律機能、そして人間自身――が下すしかありません。</p>
+<p><strong>未来が「逆向き」になるとは、こういう意味です。</strong> 平常時に中心へ集めた知能が、非常時には末端へ戻らなければならない。</p>
+<h3>「切れたときに何が残るか」で設計されているか</h3>
+<p>この視点で、第三部・第四部の技術を見直します。</p>
+<div class="tscroll"><table class="tbl"><thead><tr><th>技術</th><th>通信が切れたとき</th></tr></thead><tbody><tr><td data-label="技術">クラウドAI</td><td data-label="通信が切れたとき">使えない</td></tr><tr><td data-label="技術">オンデバイスAI</td><td data-label="通信が切れたとき">使える（ただし電池のある間）</td></tr><tr><td data-label="技術">クラウドに文脈を持つ個人AI</td><td data-label="通信が切れたとき">文脈ごと失われる</td></tr><tr><td data-label="技術">端末に文脈を持つ個人AI</td><td data-label="通信が切れたとき">続けられる</td></tr><tr><td data-label="技術">Humane AI Pin型の端末</td><td data-label="通信が切れたとき">文鎮になる</td></tr><tr><td data-label="技術">スマホの地図（オフライン保存なし）</td><td data-label="通信が切れたとき">使えない</td></tr><tr><td data-label="技術">スマホの地図（オフライン保存あり）</td><td data-label="通信が切れたとき">使える</td></tr><tr><td data-label="技術">衛星D2D</td><td data-label="通信が切れたとき">空が見えれば、短い文字が送れる</td></tr><tr><td data-label="技術">ラジオ</td><td data-label="通信が切れたとき">電池があれば聞ける</td></tr><tr><td data-label="技術">公衆電話（メタル回線）</td><td data-label="通信が切れたとき">局が生きていれば通じる</td></tr></tbody></table></div>
+<p>この表は、<strong>便利さの順位と、切れたときの順位が、ほぼ逆</strong>であることを示しています。</p>
+<p>第15章で「統合レイヤーは文脈である」と書きました。その文脈をクラウドだけに置く設計は、災害時に文脈ごと消えます。<strong>「切れたとき、何が手元に残るように設計されているか」</strong>が、次の10年の端末とAIを評価する基準の一つになるべきだ、というのがこの特集の見方です。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-20"><span class="ch-no">第20章</span><h2>最後まで残る通信は何か</h2>
+<p>「災害に強い通信は何か」という問いに、一つの技術で答えることはできません。この章は、<strong>どれが最強かではなく、どれがどう切れ、どう残るか</strong>を見ます。</p>
+<h3>光ファイバー（有線）</h3>
+<p>容量は最大ですが、地震で切れ、土砂で埋まり、水没します。能登では伝送路断が停波原因の過半を占めました。<strong>復旧には物理的な工事が要り、時間がかかります。</strong></p>
+<h3>携帯基地局</h3>
+<p>基地局が無事でも、電源と伝送路のどちらかが切れれば止まります。バッテリーは多くが24時間未満。<strong>「基地局が生きている」と「つながる」は別です。</strong></p>
+<h3>Wi-Fi</h3>
+<p>家庭のWi-Fiは、家の光回線と電源に依存します。ただし避難所などで、衛星回線とWi-Fiを組み合わせて臨時の通信環境を作る運用が、能登で広く行われました。<strong>Wi-Fi自体は最後の数十メートルを担う技術であり、その先の線が生きているかどうかが問題です。</strong></p>
+<h3>無線（防災行政無線・アマチュア無線・簡易無線）</h3>
+<p>インフラに依存せず、電池で動き、相手と直接つながります。伝えられる情報は少なく、届く範囲も限られますが、<strong>最も依存の少ない通信</strong>です。</p>
+<h3>衛星</h3>
+<p>衛星は地上のインフラが壊れても届きます。能登では、KDDIがStarlinkのアンテナを基地局のバックホール（基地局と幹線をつなぐ回線）に159台、避難所に350台投入したと報じられ、その後KDDIは2026年3月末までにStarlinkを活用した車載・可搬・船舶型基地局とアンテナを全国で約330台に拡充すると発表しています。</p>
+<p>ただし衛星には制約があります。<strong>アンテナを設置する人と電源が要り、スマホ直接通信（D2D）は空が見える屋外で短い文字が中心</strong>です。</p>
+<h3>HAPS</h3>
+<p>成層圏から広い範囲を覆えるため、災害時の早期エリア化が期待されています。2026年8月のST1試験では緊急速報メールの動作も確認されたと発表されています。<strong>ただし2026年時点では試験段階であり、常時配備されている機体は日本にありません。</strong></p>
+<h3>メッシュ（端末同士の直接通信）</h3>
+<p>スマホ同士が基地局を介さずにつながる仕組みは、技術的には存在しますが、日本で災害時に広く使われる段階にはありません。</p>
+<h3>ラジオと公衆電話</h3>
+<p>第4章と第3章で見たとおり、ラジオは電池で動き、通信量課金がありません。公衆電話は、災害時に通話規制の対象外となり、旧来のメタル回線であれば停電でも通じます。<strong>最も古い技術が、最も残ります。</strong></p>
+<h3>答え：多重化と冗長化</h3>
+<p><strong>一つの最強の通信は存在しません。</strong> 光が切れたら衛星、衛星が使えなければ無線、それも無理なら人が歩く。それぞれが違う理由で切れ、違う条件で残るからこそ、<strong>重ねておくこと（多重化）</strong>と、<strong>一つが切れても別が動く設計（冗長化）</strong>が答えになります。</p>
+<p>これは、第5章で見たパケット通信の設計思想――「部分的に壊れても機能する網」――と同じ考え方です。<strong>通信は最初から、切れることを前提に設計されてきました。</strong> 問題は、その思想が末端の基地局や端末まで届いているかどうかです。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-21"><span class="ch-no">第21章</span><h2>災害前に配備が終わっている通信だけが、災害時に使える</h2>
+<p>この章の題は、そのまま結論です。</p>
+<h3>能登で動いた「移動する基地局」</h3>
+<p>2024年1月6日、NTTドコモとKDDIは、NTTグループの海底ケーブル敷設船「きずな」に両社の基地局設備を載せ、陸からの復旧が難しい輪島市沿岸へ<strong>船上基地局</strong>として運用しました。競合する2社が船を共有したのは、この災害が初めてです。</p>
+<p>同じ日、ソフトバンクは輪島市で<strong>ドローン基地局</strong>の運用を始めました。上空約100mにドローンを飛ばし、半径3〜5kmで通信を可能にしたと報じられています。地上から電源を供給し、長時間の飛行を可能にする方式でした。</p>
+<p>一方、<strong>大ゾーン基地局</strong>――平常時より広い範囲を一つで覆う災害用基地局――は、2018年の北海道胆振東部地震で釧路市の通信を維持した実績がありますが、<strong>人口の多い都市部に設置されているため、能登の被災地には存在せず、使えませんでした。</strong></p>
+<h3>技術性能ではなく、「どこにあるか」</h3>
+<p>船上基地局は、船が港にいて、設備が積める状態で、被災地まで行ける海路があって、初めて機能します。ドローン基地局は、機体と電源と操作要員が、被災地に到達できて初めて飛びます。大ゾーン基地局は、そこに建っていなければ何もできません。</p>
+<p><strong>災害時の通信を決めるのは、技術の性能ではなく、配置です。</strong> どこに、何台、どんな状態で置かれているか。発災後に取り寄せる時間はありません。</p>
+<p>KDDIが2026年3月末までにStarlink活用機材を約330台へ拡充する計画を発表したことは、この「配置」の問題への対応と読めます。総務省も2025年、災害時の基地局強靱化（大容量蓄電池、発電機、太陽光、衛星回線による冗長化）を国と自治体が「重点箇所に絞って」進める事業を打ち出しています。その資料は、携帯事業者にとって「72時間の機能維持」は必ずしも収益につながらず、事業者の自主的取り組みだけに期待するには限界がある、と率直に述べています。</p>
+<h3>見えてきた構造</h3>
+<p>第19章から第21章をまとめます。</p>
+<ol start="1">
+<li>通信が切れる原因の大半は、電源と伝送路である（能登：96.5％）</li>
+<li>基地局の90％は、バッテリーで24時間もたない</li>
+<li>一つの最強技術はなく、多重化と冗長化が答えである</li>
+<li>しかし多重化も冗長化も、<strong>災害前に配置が終わっていなければ意味がない</strong></li>
+<li>その配置は、収益にならないため、事業者だけでは進まない</li>
+</ol>
+<p><strong>「切れそうな日に何が残るか」は、技術ではなく、配置と、それを誰が負担するかという制度の問題です。</strong> 第七部は、その「制度」の側を見ます。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-7" data-part="第七部" data-name="通信は誰のものか">
+<header class="part-head"><span class="part-no">第七部<small>／十部</small></span><h1 class="part-name">通信は誰のものか</h1></header>
+<article class="ch " id="ch-22"><span class="ch-no">第22章</span><h2>まだつながっていない世界</h2>
+
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">一次情報・ITU 2025</span><div class="kn-t"><b>22億人</b>がまだオフライン。<b>その96％が低・中所得国</b></div><div class="kn-d">インターネット利用者は約60億人（世界人口の約4分の3）。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">一次情報・ITU 2025</span><div class="kn-t">5G人口カバー率：<b>高所得国84％、低所得国4％</b></div><div class="kn-d">世界全体では55％。都市85％・農村58％。低・中所得国の約60％で通信料金が「手ごろでない」。</div></aside>
+</div>
+
+<p>ここまで、通信の未来を語ってきました。しかしその未来は、<strong>世界の4分の1の人にとっては、まだ「現在」にすら届いていません。</strong></p>
+<h3>22億人</h3>
+<p>国際電気通信連合（ITU）が2025年11月に公表した統計によれば、2025年に<strong>インターネットを使っている人は約60億人</strong>、世界人口の約4分の3です。裏を返せば、<strong>約22億人がオフライン</strong>です（2024年の改定値は23億人）。</p>
+<p>そして、そのオフラインの人々の<strong>96％が、低・中所得国に住んでいます</strong>。</p>
+<div class="tscroll"><table class="tbl"><thead><tr><th>指標</th><th>数値（ITU 2025）</th></tr></thead><tbody><tr><td data-label="指標">インターネット利用者</td><td data-label="数値（ITU 2025）">約60億人</td></tr><tr><td data-label="指標">オフライン人口</td><td data-label="数値（ITU 2025）">約22億人</td></tr><tr><td data-label="指標">オフラインのうち低・中所得国</td><td data-label="数値（ITU 2025）">96％</td></tr><tr><td data-label="指標">5G人口カバー率：世界</td><td data-label="数値（ITU 2025）">55％</td></tr><tr><td data-label="指標">5G人口カバー率：高所得国</td><td data-label="数値（ITU 2025）">84％</td></tr><tr><td data-label="指標">5G人口カバー率：低所得国</td><td data-label="数値（ITU 2025）"><strong>4％</strong></td></tr><tr><td data-label="指標">都市部のインターネット利用率</td><td data-label="数値（ITU 2025）">85％</td></tr><tr><td data-label="指標">農村部のインターネット利用率</td><td data-label="数値（ITU 2025）">58％</td></tr><tr><td data-label="指標">通信料金が手ごろでない低・中所得国</td><td data-label="数値（ITU 2025）">約60％</td></tr></tbody></table></div>
+<p><strong>高所得国では5Gが84％の人に届き、低所得国では4％です。</strong> 6Gの仕様が議論されている同じ地球の上で、世界の一部は4Gにも届いていません。</p>
+<h3>「もっと速くつながる未来」と「初めてつながる未来」</h3>
+<p>これは、この特集が最も重く見る論点の一つです。</p>
+<p>この特集の第三部・第四部で描いた未来――グラス、文脈、ゼロプロンプト――は、<strong>「もっと速くつながる未来」</strong>です。それは主に高所得国の未来です。</p>
+<p>一方、22億人にとっての未来は、<strong>「初めてつながる未来」</strong>です。それは、5Gでも6Gでもなく、まず基地局が建つこと、端末が買える価格になること、電気が来ることです。</p>
+<p>この特集は、この2つの未来を同時に描きます。片方だけを「未来」と呼ぶことは、世界の4分の1を未来から外すことだからです。</p>
+<h3>衛星は、この差を埋めるか</h3>
+<p>衛星D2Dは、地上の基地局がない場所に、空から届きます。理屈のうえでは、22億人のオフライン人口を減らす技術です。</p>
+<p>ただし、2026年の衛星D2Dは、<strong>対応するスマートフォンと、通信事業者との契約と、料金を払える所得</strong>を前提にしています。日本の3社のサービスは基本料金に含まれる形が多いものの、それは日本の料金水準での話です。<strong>空から電波が届くことと、その電波を受け取れる端末と契約を持つことは、別の問題です。</strong></p>
+<p>この点については、「技術の側の目的と、人間の側の責任」を分けて考えるべきだという見方があります。技術は届く範囲を広げます。しかし、誰に、いくらで、何のために届けるかは、技術ではなく人間が決めることです。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-23"><span class="ch-no">第23章</span><h2>料金が通信を普及させてきた</h2>
+<p>第一部の各章で「料金」の軸を置いてきました。ここで、その線を一本にまとめます。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>時代</th><th>料金の形</th><th>何を可能にしたか</th></tr></thead><tbody><tr><td data-label="時代">郵便（1840年〜）</td><td data-label="料金の形">距離によらない均一料金</td><td data-label="何を可能にしたか">「誰でも同じ条件で」という思想の誕生</td></tr><tr><td data-label="時代">電信</td><td data-label="料金の形">字数課金</td><td data-label="何を可能にしたか">簡潔な電文文化。長文は富裕層のもの</td></tr><tr><td data-label="時代">電話</td><td data-label="料金の形">距離と時間の従量課金</td><td data-label="何を可能にしたか">遠距離は贅沢。「3分で切る」習慣</td></tr><tr><td data-label="時代">放送</td><td data-label="料金の形">受信料（通信量課金なし）</td><td data-label="何を可能にしたか">情報が「使えば使うほど高い」ものでなくなった</td></tr><tr><td data-label="時代">ダイヤルアップ</td><td data-label="料金の形">電話従量＋接続料 → 夜間定額（テレホーダイ）</td><td data-label="何を可能にしたか">深夜のインターネット文化</td></tr><tr><td data-label="時代">携帯</td><td data-label="料金の形">高額従量 → パケット定額（2004年〜）</td><td data-label="何を可能にしたか">「つながっている」状態の常態化</td></tr><tr><td data-label="時代">スマホ</td><td data-label="料金の形">通信定額が標準</td><td data-label="何を可能にしたか">通信量を気にしない行動</td></tr><tr><td data-label="時代">衛星D2D（2026年）</td><td data-label="料金の形">基本料に含む例が多い</td><td data-label="何を可能にしたか">「空が見えればつながる」が追加料金なしに</td></tr><tr><td data-label="時代">端末（2026年）</td><td data-label="料金の形"><strong>上昇へ転換</strong>（IDC予測：平均581ドル）</td><td data-label="何を可能にしたか">通信は安くなったが、入口が高くなり始めた</td></tr></tbody></table></div>
+<p>この表から見える構造は、<strong>「料金が下がるたびに、人の行動が変わった」</strong>ということです。字数課金が電文を短くし、夜間定額が深夜の利用を生み、パケット定額が常時接続を生みました。</p>
+<p>そして2026年、新しい転換が起きつつあります。<strong>通信料金は下がり続けたが、端末価格が上がり始めた。</strong> 第12章で見たメモリ不足による平均価格の上昇は、「通信の入口」そのものの価格を押し上げます。22億人のオフライン人口にとって、これは「初めてつながる未来」を遠ざける方向に働きます。</p>
+<p><strong>料金は、技術と同じくらい、通信の範囲を決めてきました。</strong> そしてこれからも決めます。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-24"><span class="ch-no">第24章</span><h2>「全員へ届ける」という思想</h2>
+<p>第1章の郵便から始まった「誰でも同じ条件で」という思想は、日本で制度として3段階に広がってきました。</p>
+<h3>郵便 → 電話 → ブロードバンド</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>段階</th><th>制度</th><th>仕組み</th></tr></thead><tbody><tr><td data-label="段階">郵便</td><td data-label="制度">郵便法（全国均一料金・全国配達）</td><td data-label="仕組み">都市の収益で地方を支える</td></tr><tr><td data-label="段階">電話</td><td data-label="制度">電話のユニバーサルサービス制度（2002年〜）</td><td data-label="仕組み">全事業者が費用を分担し、離島・山間部の電話を維持</td></tr><tr><td data-label="段階"><strong>ブロードバンド</strong></td><td data-label="制度"><strong>ブロードバンドユニバーサルサービス制度（2026年1月1日〜）</strong></td><td data-label="仕組み">固定・モバイル・衛星の事業者全体で不採算地域のブロードバンドを支える</td></tr></tbody></table></div>
+<h3>2026年から、あなたの請求書に載るもの</h3>
+<p>2026年1月1日、ブロードバンドがユニバーサルサービスの対象になりました。<strong>光回線やモバイル通信を「全国どこでも受けられるべきもの」と法律が位置づけた</strong>ということです。</p>
+<p>その費用は、通信事業者全体が回線数に応じて分担し、一般社団法人電気通信事業者協会（TCA）を通じて、不採算地域でサービスを提供する事業者に交付されます。</p>
+<p>利用者の側では、NTTドコモの案内によれば、<strong>対象サービスの利用回線1回線あたり月額2.2円</strong>が「ブロードバンドユニバーサルサービス料」として請求されます。2026年分は、<strong>2026年3月利用分（4月請求分）</strong>で請求され、対象は携帯電話、光回線（ドコモ光）、衛星回線、MVNOサービスなどです。</p>
+<p>月に2.2円。ほとんどの人が気づかない金額です。しかしこれは、<strong>「山間部や離島にも光を引く費用を、都市の利用者も少しずつ負担する」という思想が、請求書という形で全員に届いた</strong>ということです。</p>
+<h3>「届ける」思想の限界と、その先</h3>
+<p>ユニバーサルサービスは、国内の「範囲」を広げる制度です。第22章の22億人には届きません。国境を越えて「全員へ届ける」思想は、ITUの統計に「約60％の低・中所得国で通信料金が手ごろでない」と記録されている段階です。</p>
+<p>それでも、郵便から180年をかけて、日本では「全員へ届ける」という思想が、手紙から電話へ、電話からブロードバンドへ拡張されてきました。<strong>次の拡張が何になるか――衛星か、HAPSか、それとも端末そのものか――は、2026年の時点では決まっていません。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-25"><span class="ch-no">第25章</span><h2>つながらない自由</h2>
+<p>ここまで「つながる」ことの価値を追ってきました。この章は、その裏面を扱います。</p>
+<h3>常時接続・常時カメラ・常時マイク・常時AI</h3>
+<p>第9章で見たとおり、端末は「必要なときだけ使う」ものから「常にそこにある」ものへ変わりました。イヤホンは耳にあり、グラスはカメラを持ち、時計は脈を測り、個人AIは文脈を持ち続けます。</p>
+<p>これは便利です。同時に、<strong>「切る」という選択が難しくなった</strong>ことを意味します。</p>
+<p>電話を切ることはできました。テレビを消すこともできました。しかし、財布であり鍵であり身分証であるスマホを「切る」ことは、社会生活を止めることです（第8章）。文脈をクラウドに持つ個人AIを「切る」ことは、自分の記憶の一部を切ることに近い（第15章）。</p>
+<h3>つながる権利と、つながらない権利</h3>
+<p>この問題を「つながらない自由」と呼ぶことにします。</p>
+<p>第24章で見たユニバーサルサービスは、<strong>つながる権利</strong>を制度にしたものです。誰もが、どこにいても、通信を受けられるべきだ、と。</p>
+<p>その対極に、<strong>つながらない権利</strong>があります。休日に仕事の通知を受けない権利。外出中にカメラに撮られない権利。AIに自分の行動を記録されない権利。フランスなど一部の国では、勤務時間外に業務連絡に応じない「つながらない権利」が法制化されています。</p>
+<h3>見方は分かれる</h3>
+<p>この論点については、重心の異なる三つの見方があります。</p>
+<p>一方では、アンビエント化が進むほど「つながらない」ことの価値が上がり、それが制度と設計の両方で守られるべきだ、という見方があります。</p>
+<p>これに対して、22億人がまだ「つながる権利」すら持っていない現実を前に、「つながらない自由」は高所得国の贅沢な問いになりかねない、という留保もあります。</p>
+<p>さらに、両方の権利が同時に成立する条件として「文脈をどこに置くか」（第15章）を挙げ、<strong>端末側に文脈を置けば、切ることが可能になる</strong>という設計上の解を示す見方もあります。</p>
+<p>本特集は、この三つを並べます。<strong>つながる権利とつながらない権利は、対立するものではなく、同じ「通信は誰のものか」という問いの表と裏です。</strong> どちらか一方だけを制度にすることはできません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-8" data-part="第八部" data-name="通信は国家と地球の物理から逃げられない">
+<header class="part-head"><span class="part-no">第八部<small>／十部</small></span><h1 class="part-name">通信は国家と地球の物理から逃げられない</h1></header>
+<article class="ch " id="ch-26"><span class="ch-no">第26章</span><h2>海底ケーブルという世界の急所</h2>
+<p>「クラウド」も「衛星」も、言葉の印象とは裏腹に、国際通信のほぼすべては海の底を通っています。第6章で見たとおり、この構造は1866年の大西洋横断ケーブル以来、160年変わっていません。</p>
+<h3>切れる場所は、浅い海</h3>
+<p>海底ケーブルは、深海では比較的安全です。切断の多くは、船の錨や漁具が届く<strong>水深200m未満の浅い海域</strong>で起きるとされます。つまり、ケーブルが最も危ういのは、陸に近づく最後の区間――<strong>陸揚げ地点の周辺</strong>です。</p>
+<h3>日本の弱点：房総と志摩</h3>
+<p>日本の国際通信は、海底ケーブルに99％依存していると報じられています（第6章で述べたとおり、この数字の一次資料への到達は本特集では確認できていません。日経の報道による）。</p>
+<p>そして、そのケーブルが陸に上がる<strong>陸揚局は、千葉県房総半島と三重県志摩市に集中</strong>していると、複数の報道と総務省の政策文書が指摘しています。</p>
+<p>なぜ集中するのか。太平洋を渡ってきたケーブルを、東京・大阪という需要地に近く、かつ海底地形が敷設に適した場所へ上げると、自然に房総と志摩に集まる。<strong>経済合理性が、地理的な集中を生みました。</strong></p>
+<p>しかし集中は、弱点です。房総沖と志摩沖で同時に何かが起きれば――地震でも、船の錨でも、意図的な切断でも――日本の国際通信の大半が影響を受けます。</p>
+<h3>分散への動き</h3>
+<p>総務省は2023年の「デジタル田園都市国家インフラ整備計画（改訂版）」で国際海底ケーブルの多ルート化を打ち出し、2026年には陸揚局の防護基準（不正侵入対策、耐震、防水）の策定を進めていると報じられています。ソフトバンクは北海道苫小牧市と福岡県糸島市に新しい陸揚局を整備し、日本海側や北海道を経由するルートの構築を進めています。</p>
+<p><strong>「日本の弱点は房総と志摩に集中している」という指摘は、事実の記述です。「だから分散すべきだ」は、政策判断です。</strong>この特集は両方を区別して置きます。分散にはコストがかかり、そのコストは最終的に誰かが負担します（第24章の思想は、ここにも及びます）。</p>
+<h3>修理できるか、という問い</h3>
+<p>ケーブルは切れることを前提に設計されています（複数ルート）。しかし切れたケーブルを直せるのは、<strong>ケーブル敷設船</strong>だけです。世界の敷設船の数は限られ、日本が自国で確保できる船隊は十分ではないと指摘する専門家もいます。<strong>冗長化は「別のルートがある」だけでは足りず、「直せる」ことまで含みます。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-27"><span class="ch-no">第27章</span><h2>衛星・HAPS・周波数と国境</h2>
+<p>空と宇宙は自由に見えます。しかし電波は、国家が管理する資源です。第4章で見た「電波は誰のものか」という問いが、2026年、衛星とHAPSの登場で新しい形を取っています。</p>
+<h3>誰の衛星か</h3>
+<p>日本の3社が2026年に提供する衛星D2Dは、いずれも米SpaceX社のStarlink衛星を使っています。楽天モバイルは米AST SpaceMobile社の衛星です。<strong>日本のスマートフォンが空へ向けて送る信号は、外国企業の衛星が受け取っています。</strong></p>
+<p>これは技術的に自然な選択です。低軌道に何千機もの衛星を打ち上げ、維持するには、国家規模の投資が要ります。しかし通信の一部を外国企業の衛星に委ねることは、第26章の海底ケーブルと同じく、<strong>依存の構造</strong>を作ります。1871年、日本の最初の国際回線がデンマーク企業の海底ケーブルだったこと（第2章）を思い出せば、これは新しい問題ではなく、繰り返される問題です。</p>
+<h3>誰の空か</h3>
+<p>HAPSは高度約20kmの成層圏を飛びます。航空機が飛ぶ高度（約10km）より上で、衛星の軌道（数百km以上）より下です。<strong>この空域が誰の管理下にあるか</strong>は、国際法上も国内法上も、これまで明確ではありませんでした。</p>
+<p>日本では、2025年5月の電波法改正で、携帯基地局を開設できる場所を「陸上」から<strong>「陸上等（地表または水面から50km以下の高さの空域を含む）」</strong>に拡張しました。これは、<strong>日本の法律が初めて「空中に基地局を置く」ことを正面から認めた</strong>ということです。続いて2025年11月の情報通信審議会の一部答申を受け、「高高度基地局」という新しい局種を定め、HAPS用の周波数（38.0〜39.5GHz帯など）を定める省令改正が進んでいます。総務省の資料は、国際的にはHAPSが高度20〜50kmで運用されるものと定義されているが、日本国内では18kmからの運用を想定する、とも記しています。</p>
+<p><strong>空飛ぶ基地局は、日本では「置ける場所」になりました。</strong> ただし2026年8月のST1試験は、日本の領空内で7日以上飛行したと発表されているものの、常設の商用サービスはまだありません。</p>
+<h3>誰の周波数か</h3>
+<p>衛星もHAPSも、地上の携帯電話も、同じ電波を使います。周波数は有限で、国際電気通信連合（ITU）の世界無線通信会議で国際的に割り当てられ、各国がその範囲で国内の免許を出します。</p>
+<p>衛星D2Dは、地上の携帯電話と同じ周波数を、空から使います。これが地上の基地局と干渉しないよう調整することは、技術と制度の両方の課題です。<strong>「空が見えればつながる」という便利さの裏で、周波数の国際調整という、目に見えない交渉が続いています。</strong></p>
+<h3>国境を越える電波</h3>
+<p>衛星の電波は、国境で止まりません。KDDIは2026年3月、au Starlink Directの米国での国際ローミングを始めました。日本のスマホが、米国上空の同じ衛星群を使って通信する。<strong>通信事業者は国ごとに免許を持ちますが、衛星は一つの地球を回ります。</strong> この構造が、次の10年で国際的な制度をどう変えるかは、2026年の時点では見通せません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-28"><span class="ch-no">第28章</span><h2>見ている側と、撮られる側</h2>
+<p>第11章で、2026年にスマートグラスの出荷が急増したことを見ました。この章は、その裏側です。</p>
+<h3>装着者の便利さと、周囲の人の同意</h3>
+<p>Ray-Ban Metaのグラスにはカメラがあり、見たものを撮影し、AIに尋ねることができます。装着者にとっては、手を使わずに目の前のものを記録できる便利さです。</p>
+<p>しかし、<strong>撮られる側は、撮られていることを知りません。</strong> スマホなら、相手が構えれば分かります。グラスは、ただ見ているだけに見えます。Meta社の製品は撮影中にLEDが点灯する設計になっていますが、それに気づく人がどれだけいるかは別の問題です。</p>
+<p>2013年のGoogle Glassが一般向けに定着しなかった理由の一つとして、装着者が周囲から警戒されたこと（「グラスホール」という揶揄）がしばしば挙げられます。10年が経ち、技術は進みましたが、<strong>「撮られる側の同意」という問題は解決していません。</strong></p>
+<h3>個人AIが「見たものすべて」を持つということ</h3>
+<p>第15章の「継続する文脈」を、撮られる側から見直します。</p>
+<p>装着者の個人AIが、グラスで見たものを文脈として蓄積するとき、そこには<strong>装着者以外の人の顔、会話、行動</strong>が含まれます。装着者は自分の文脈のためにそれを保存しますが、映っている人はそれに同意していません。</p>
+<p>これは、スマホのカメラでも起きていた問題です。しかし「必要なときだけ撮る」スマホと、「常に見ている」グラスでは、量と質が違います。第9章の「常時性」は、ここで倫理の問題になります。</p>
+<h3>装着者の同意だけでは足りない――そして残る問い</h3>
+<p>この特集は、<strong>「装着者の同意だけでは足りない」</strong>という立場を取ります。グラスやAIの設計は、装着者の便利さだけでなく、周囲の人がどう扱われるかを含めて評価されるべきだ、と。</p>
+<p>ただし、それをどう制度にするかについて、確立した答えはありません。撮影中の表示を義務づけるのか、公共の場での使用を制限するのか、AIが他人の顔を記憶しないことを技術的に保証するのか。<strong>2026年は、この問いが「これから議論される」段階にあります。</strong></p>
+<p>第25章の「つながらない自由」は、装着者自身の権利でした。この章の問いは、<strong>装着者以外の人の権利</strong>です。次の入口が「目」になるなら、この問いを避けて通ることはできません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-9" data-part="第九部" data-name="日本はどこにいるのか">
+<header class="part-head"><span class="part-no">第九部<small>／十部</small></span><h1 class="part-name">日本はどこにいるのか</h1></header>
+<article class="ch " id="ch-29"><span class="ch-no">第29章</span><h2>日本が失ったもの、まだ強いもの</h2>
+<p>この章は、日本の位置を、<strong>一番奥（部品・素材）、真ん中（完成品・OS）、一番端（現場・災害）</strong>の3層で見ます。</p>
+<h3>一番奥：まだ強い</h3>
+<p><strong>イメージセンサー。</strong> スマートフォンのカメラの心臓部であるCMOSイメージセンサーで、ソニーは世界首位を維持しています。調査会社の集計として、2025年の世界市場は約253億ドルで、ソニーが約50％を占めると報じられています（EE Times Japan、調査会社の数字による）。第8章で見た「スマホはカメラになった」という変化の、その「目」を、日本企業が供給しています。</p>
+<p><strong>光通信部品。</strong> 光ファイバー、光トランシーバー、光電融合デバイス。NTTのIOWN構想は、2026年度に光電融合スイッチの商用化を目指しています。第12章で見た「AIのボトルネックは演算ではなく配線」という流れのなかで、光の技術は最も奥にある強みです。</p>
+<p><strong>電子部品。</strong> 積層セラミックコンデンサ、水晶デバイス、各種センサー。スマホ一台の中に、日本製の部品が数百点入っています。</p>
+<h3>真ん中：失ったもの</h3>
+<p><strong>スマートフォン完成品。</strong> 1999年のiモード、2001年の世界初3Gと、日本は携帯電話の入口で世界を先導しました。しかし2008年以降、スマートフォンの完成品市場で日本メーカーは存在感を失いました。</p>
+<p><strong>OS。</strong> スマホのOSは事実上、iOSとAndroidの二つです。第15章で見た「統合レイヤー」――アカウント、個人AI、文脈――は、このOSの上に築かれます。<strong>真ん中を持たない国は、統合レイヤーの設計に参加できません。</strong></p>
+<h3>一番端：まだ強い、あるいは必要に迫られている</h3>
+<p><strong>災害通信。</strong> 能登での船上基地局、ドローン基地局、衛星バックホールの投入、そして2026年の3社同時の衛星D2D開始、HAPSの法整備と試験。日本の災害通信は、<strong>必要に迫られて世界の先端を走っています。</strong> 地震と台風の国であることが、皮肉にも強みになっています。</p>
+<p><strong>HAPS。</strong> ソフトバンクは2025年にSceye社へ出資し、2026年8月の太平洋横断試験に参画しました。総務省は法整備を進めています。HAPSの商用化で日本が先行する可能性は、2026年の時点で開かれています。</p>
+<p><strong>海底ケーブル。</strong> 日本は太平洋の結節点であり、多くの国際ケーブルが陸揚げされます（第26章）。これは弱点であると同時に、地理的な資産です。</p>
+<h3>「一番奥と一番端に強く、真ん中が空洞」</h3>
+<p>この3層を並べると、<strong>「一番奥（部品）と一番端（現場）に強く、真ん中（完成品・OS・プラットフォーム）が空洞」</strong>という形が見えます。</p>
+<p>これは<strong>分析であって、事実の記述ではありません。</strong> どこを「奥」と呼び、どこを「真ん中」と呼ぶかは、見方によって変わります。また「空洞」という言葉は、日本企業がまったく存在しないという意味ではなく、世界の市場で主導的な位置にないという意味です。</p>
+<p>この分析が正しいとすれば、次の問いが生まれます。<strong>真ん中が空洞のまま、奥と端の強みは維持できるのか。</strong> イメージセンサーはスマホメーカーが買ってくれるから売れます。災害通信は衛星をSpaceX社から借りています。奥と端の強みは、真ん中を持つ他国の企業との関係のなかで成り立っています。</p>
+<p>本特集は、この問いに答えを出しません。答えを出すには、この特集の範囲を超える産業政策の議論が要ります。<strong>ただ、「日本はどこにいるのか」を問うとき、奥・真ん中・端の3層で見ることが、少なくとも見落としを減らす</strong>、というのがこの章の提案です。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part" id="part-10" data-part="第十部" data-name="未来は予測できるのか">
+<header class="part-head"><span class="part-no">第十部<small>／十部</small></span><h1 class="part-name">未来は予測できるのか</h1></header>
+<article class="ch " id="ch-30"><span class="ch-no">第30章</span><h2>未来予測は、だいたい外れてきた</h2>
+<p>第31章から第33章で未来を語る前に、この章で<strong>過去の未来予測がどうなったか</strong>を確かめます。未来を断定しないための章です。</p>
+<h3>残ったもの</h3>
+<ul>
+<li><strong>電話番号。</strong> 1876年の電話から150年、番号という識別子は残っています。メールアドレスもSNSのIDも生まれましたが、番号は消えませんでした。</li>
+<li><strong>ラジオ。</strong> テレビが登場したとき、ラジオは消えると言われました。消えませんでした。災害時に最も残る手段として、2026年も現役です。</li>
+<li><strong>手紙・郵便。</strong> 電子メールで郵便は消えると言われました。手紙は減りましたが、郵便は物を運ぶ網として残っています。</li>
+<li><strong>画面。</strong> 「画面は消える」という予測は、テレビからPC、PCからスマホへの移行のたびに語られましたが、画面は形を変えて残りました（第13章）。</li>
+</ul>
+<h3>消えたもの</h3>
+<ul>
+<li><strong>電報（日常用途）。</strong> 電話の普及で、電報は慶弔用に縮小しました。ただし制度としては残っています。</li>
+<li><strong>ポケットベル。</strong> 1990年代に一世を風靡し、携帯電話に置き換わりました。</li>
+<li><strong>PHS。</strong> 携帯電話に統合され、2020年代に終了しました。</li>
+<li><strong>iモード。</strong> 世界に先駆けた携帯インターネットの入口は、スマートフォンに置き換わり、2026年に終了しました。</li>
+<li><strong>Google Glass、Humane AI Pin。</strong> 「次の入口」として登場し、定着せずに消えました。</li>
+</ul>
+<h3>予測が外れたもの</h3>
+<ul>
+<li><strong>「テレビ電話が普及する」。</strong> 1960年代から繰り返し語られ、2000年代の3Gでも「目玉機能」とされましたが、普及したのは20年後、パンデミック下のビデオ会議としてでした。技術ではなく、必要が普及を決めました。</li>
+<li><strong>「衛星電話が携帯電話に置き換わる」。</strong> 1990年代のイリジウム計画は、地上の携帯電話網の急速な拡大に追いつけず、破綻しました。衛星が携帯電話の「補完」として戻ってきたのは、30年後の2020年代です。</li>
+<li><strong>「日本の携帯電話が世界を席巻する」。</strong> iモードと3Gの成功を受けて語られましたが、実現しませんでした（第29章）。</li>
+<li><strong>「5Gで社会が変わる」。</strong> 2020年の5G開始時に語られた「遠隔手術」「自動運転」の多くは、2026年時点で5Gを必須とする形では実現していません。5Gは静かに普及しましたが、語られた変化は起きていません。</li>
+</ul>
+<h3>予測から学べること</h3>
+<p>外れた予測には共通点があります。<strong>技術ができることを、人が必要とすることと混同した</strong>点です。テレビ電話は技術的に可能でしたが、必要になるまで20年かかりました。5Gは高速でしたが、その速さを必要とする用途は、まだ十分に現れていません。</p>
+<p>一方、残ったものにも共通点があります。<strong>最も単純で、最も依存の少ないもの</strong>です。番号、ラジオ、郵便、画面。</p>
+<p>序章の問い――なぜ通信の条件が厳しくなると、より単純で軽い形式へ戻る場面が繰り返し見られるのか――は、未来予測にも当てはまるように見えます。<strong>少なくとも今回見てきた事例では、単純なものが残り、複雑なものが消える傾向があり、予測する側はそれを過小評価しがちでした。</strong> これは普遍の法則ではなく、この特集で追った範囲から見える傾向です。</p>
+<p>以上を踏まえて、以下の3章は、確度の高い順に並べます。<strong>第31章は比較的確度が高いもの、第32章は可能性はあるが不確実なもの、第33章は予測ではなく仮説です。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-31"><span class="ch-no">第31章</span><h2>2030年前後――比較的確度が高いもの</h2>
+<p>以下は、2026年時点で仕様・計画・制度が公表されており、大きな変更がなければ実現する可能性が高いものです。ただし「確度が高い」は「確実」ではありません。</p>
+<p><strong>通信</strong></p>
+<ul>
+<li><strong>6Gの最初の仕様が完成する。</strong> 3GPPの計画では2029年3月。商用サービスはその後で、2030年時点では試験段階の可能性が高い。</li>
+<li><strong>Wi-Fi 8の認証製品が出そろう。</strong> 2028年前後。「途切れなさ」が家庭の無線の指標になる。</li>
+<li><strong>衛星D2Dが「あって当たり前」になる。</strong> 日本の4社が出そろい、対応機種が広がる。ただし送れるものは、2030年でも「短い文字と軽いデータ」が中心と見るのが妥当。</li>
+<li><strong>HAPSの商用サービスが始まる可能性。</strong> 日本の法整備と試験の進み方から、2020年代末の可能性はある。ただし本特集は事業者の公式な商用化時期を確認できていない。</li>
+<li><strong>光電融合デバイスがデータセンターに入る。</strong> NTTの計画では2026年度に商用化開始。2030年には普及段階。</li>
+</ul>
+<p><strong>端末</strong></p>
+<ul>
+<li><strong>スマートフォンの平均価格が高止まりする。</strong> IDCはメモリ価格の上昇が少なくとも2028年まで続くと見ている。「安いスマホの時代」は戻らない可能性が高い。</li>
+<li><strong>スマートグラスが年間数千万台規模になる。</strong> IDCは2030年に2,730万台と予測。ただしディスプレイなしが主力で、「画面の代替」にはならない。</li>
+<li><strong>時計とイヤホンは、さらに当たり前になる。</strong> 変化は小さい。</li>
+</ul>
+<p><strong>制度</strong></p>
+<ul>
+<li><strong>ブロードバンドユニバーサルサービス料が定着する。</strong> 2026年に始まった月2.2円は、対象と金額が見直されつつ続く。</li>
+<li><strong>海底ケーブルの陸揚局が分散し始める。</strong> 苫小牧、糸島などの新設が稼働する。ただし房総・志摩の集中が解消されるわけではない。</li>
+</ul>
+<p><strong>災害</strong></p>
+<ul>
+<li><strong>基地局の電源強靱化が「重点箇所」で進む。</strong> 総務省の事業として。ただし全国の基地局の90％が24時間未満というバッテリー水準が、2030年に大きく改善しているかは不明。</li>
+</ul>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-32"><span class="ch-no">第32章</span><h2>2035年前後――可能性はあるが不確実なもの</h2>
+<p>以下は、技術の方向は見えているが、実現するか、どの形で実現するかが不確実なものです。</p>
+<p><strong>通信</strong></p>
+<ul>
+<li><strong>6Gの商用サービス。</strong> 2030年代前半に始まる可能性はあるが、5Gが「語られた変化を起こさなかった」ことを踏まえれば、6Gも「静かに普及し、語られた変化は起きない」可能性がある。</li>
+<li><strong>地上・HAPS・衛星が一つの網として動く。</strong> どこにいても、最適な経路が自動で選ばれる状態。技術的には方向が見えるが、事業者と周波数と国境の調整が要る（第27章）。</li>
+<li><strong>「通信が切れる」ことが、多重化によって例外的な出来事になる。</strong> 可能性はあるが、能登の教訓（第19章）が示すとおり、多重化は配置と負担の問題であり、技術だけでは進まない。</li>
+</ul>
+<p><strong>端末</strong></p>
+<ul>
+<li><strong>画面付きグラスが日常品になる。</strong> 2025年のMeta Ray-Ban Display以降、価格・電池・重さが解決すれば。ただし第28章の「撮られる側の同意」が解決しなければ、公共の場での使用は制限される可能性がある。</li>
+<li><strong>個人AIが端末をまたいで「文脈」を持ち続ける。</strong> 第15章の統合レイヤー。技術的には2030年前後に実現しうるが、<strong>文脈をどこに置くか（クラウドか端末か）</strong>が、便利さと「切れたときに残るもの」と「つながらない自由」を同時に決める。</li>
+<li><strong>AI専用端末の再挑戦。</strong> Humane AI Pinの失敗（クラウド依存）を踏まえた設計が出てくるか。</li>
+</ul>
+<p><strong>社会</strong></p>
+<ul>
+<li><strong>オフライン人口が10億人を切る。</strong> ITUの統計で22億人（2025年）からの減少ペースが続けば可能性はあるが、端末価格の上昇（第23章）が逆風になる。</li>
+<li><strong>「つながらない権利」が日本で制度化される。</strong> 議論は始まっているが、2035年に法制化されているかは不明。</li>
+</ul>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+<article class="ch " id="ch-33"><span class="ch-no">第33章</span><h2>2045年前後――予測ではなく仮説集</h2>
+<p>以下は予測ではありません。<strong>「そうなるかもしれない」という仮説を、根拠と反証を添えて並べたもの</strong>です。20年先を予測することは、第30章で見たとおり、ほぼ確実に外れます。</p>
+<p><strong>仮説1：入口は身体に溶け、「端末」という言葉が古くなる</strong></p>
+<ul>
+<li>根拠：第9章の外部化の歴史。グラス・イヤホン・時計が定着し、次はさらに身体に近い形へ。</li>
+<li>反証：Google Glassから12年、「身体に近い」端末は繰り返し拒否されてきた。第28章の同意の問題は、技術では解決しない。</li>
+</ul>
+<p><strong>仮説2：言葉を使わない入口が生まれる</strong></p>
+<ul>
+<li>根拠：第16章。視線・表情・生体センサーとAIの組み合わせ。</li>
+<li>反証：第16章で見方が分かれた論点。「頼む前に出る」は「頼んでいないものが出る」と同じであり、受け入れられるかは技術ではなく人間の側の問題。</li>
+</ul>
+<p><strong>仮説3：通信の主役が「人」から「物」へ移る</strong></p>
+<ul>
+<li>根拠：第18章。ロボット、車、家が通信の相手になる。通信量の大半が人間以外のものになる可能性。</li>
+<li>反証：物が通信の主役になるとき、「切れたとき物はどう動くか」（第18章末）に答えが要る。その答えがなければ、物を通信に依存させる範囲は限定される。</li>
+</ul>
+<p><strong>仮説4：22億人が「初めてつながる」ことで、通信の重心が移る</strong></p>
+<ul>
+<li>根拠：第22章。衛星とHAPSが地上のインフラなしに届く。</li>
+<li>反証：端末価格の上昇（第23章）と、通信料金が手ごろでない国が60％という現実。「空から届く」ことと「受け取れる」ことは別。</li>
+</ul>
+<p><strong>仮説5：「切れたときに何が残るか」が、技術評価の第一基準になる</strong></p>
+<ul>
+<li>根拠：第六部全体。災害、電力、外国企業への依存。便利さの順位と切れたときの順位が逆であること（第19章）。</li>
+<li>反証：平常時の便利さは、非常時の備えより常に優先されてきた。総務省の資料が率直に述べるとおり、備えは収益にならない。</li>
+</ul>
+<p><strong>仮説6：文脈をどこに置くかが、企業ではなく制度で決められる</strong></p>
+<ul>
+<li>根拠：第15章と第25章。アカウント＋個人AI＋文脈の統合は、一社が持つには大きすぎる。</li>
+<li>反証：2026年の時点で、統合レイヤーは事実上、数社のOSとアカウントの上にある。制度が追いつく速さは、これまで技術より遅かった。</li>
+</ul>
+<p><strong>これらの仮説のどれを重く見るかは、見方によって分かれます。</strong> 身体と入口の変化（仮説1・2）を重く見る立場、まだつながっていない人々（仮説4）を重く見る立場、切れたときの備えと制度（仮説5・6）を重く見る立場。本特集は、どれか一つを「正しい未来」として選びません。</p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part part-end" id="part-end" data-part="終章" data-name="">
+<article class="ch end" id="ch-end"><span class="ch-no">終章</span><h2>つながる技術の価値は、切れそうな日に何が残るかで決まる</h2>
+<p>長い特集になりました。技術の話から、人間の話へ戻します。</p>
+<h3>ここまで来た</h3>
+<p>狼煙から始めて、飛脚、電信、電話、無線、放送、コンピュータ、光、携帯電話、スマートフォン、そして2026年の衛星とグラスとAIまで。</p>
+<p>人類は、情報を人の足で運んでいた時代から、およそ180年で、宇宙から手元の端末へ短い文字が届く時代に来ました。範囲は国家と富裕層から、世界人口の4分の3へ広がりました。料金は字数課金から定額へ、そして「基本料に含まれる」へ。<strong>人は、遠くの世界と、確かにつながってきました。</strong></p>
+<h3>いま、ここにいる</h3>
+<p>2026年の現在地には、三つの特徴があります。</p>
+<p>一つ、通信は成熟し、空と宇宙へ広がりました。しかし新しい道ほど細く、届くのはまだ「短い文字」です。</p>
+<p>二つ、端末は身体に定着し、目にまで達しました。しかしそれを支えるメモリと電力を、AIが同じ供給源から奪い始めています。</p>
+<p>三つ、世界の4分の1は、まだつながっていません。「もっと速くつながる未来」と「初めてつながる未来」が、同じ地球の上に同時にあります。</p>
+<h3>この先、どこへ向かうのか</h3>
+<p>第十部で見たとおり、この先は予測できません。予測できるのは、<strong>何が残るか</strong>の傾向だけです。</p>
+<p>この特集で追った範囲では、残ってきたのは、より単純で、依存の少ないものでした。番号、ラジオ、郵便、画面、そして短い文字。</p>
+<p>消えてきたのは、複雑で、何かに依存し、「切れたとき」を考えていないものでした。これは法則ではなく、事例から見える傾向です。</p>
+<h3>切れそうな日に、何が残るか</h3>
+<p>この特集の最後に、能登半島地震の一つの数字に戻ります。</p>
+<p>停波した基地局のうち、壊れたものは3.5％でした。残りは、電気が来なくなったか、線が切れたかです。<strong>技術は無事だった。つながらなかった。</strong></p>
+<p>それが、この特集が通信と端末の180年を追って辿り着いた場所です。</p>
+<p>つながる技術の価値は、つながっているときの速さや豊かさだけでは決まりません。<strong>切れそうな日に、何が手元に残るように作られているか。</strong> 電池が切れたとき、線が切れたとき、会社がサーバーを止めたとき、空が見えないとき。そのとき、ラジオが鳴るか、公衆電話が通じるか、端末の中の小さなAIが動くか、隣の人と話せるか。</p>
+<p><strong>人は、どうやって遠くの世界とつながってきたのか。</strong> その答えは、技術の一覧ではなく、切れるたびに、より単純なものへ戻り、また積み上げてきた繰り返しの歴史でした。</p>
+<p>そして次の入口が何であれ、それを評価する問いは変わりません。</p>
+<p><strong>それは、切れた日に、何を残してくれるのか。</strong></p>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+<section class="part part-how" id="part-how" data-part="本特集の作り方" data-name="">
+<article class="ch how" id="how"><h2>本特集の作り方</h2>
+<ul>
+<li>本特集は、AI総合研究機構の日曜特集です。ChatGPT・Gemini・Claudeがそれぞれ独立に同一テーマを調査し、その結果を一次情報で再確認したうえで、一本の読み物として統合しました。</li>
+<li>確認できた事実、当事者の主張、報道、専門家の見方、分析、将来予測、未確認事項を区別して記載しています。</li>
+<li>独立調査の間で見方が分かれた論点は、統一せず「見方は分かれる」として本文中に残しました。</li>
+<li>数字は可能なかぎり発表元（総務省、ITU、IDC、各事業者等）の一次資料で確認しました。一次資料に到達できなかったものは、その旨を本文中に明記しています。</li>
+<li>歴史部分の年代は、複数の標準的な資料で一致する史実に基づきます。</li>
+<li>未来に関する章（第31〜33章）は、確度の高い順に並べ、第33章は予測ではなく仮説として区別しています。</li>
+</ul>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></article>
+</section>
+
+<section class="part part-ask" id="part-ask" data-part="AIでもっと詳しく" data-name="">
+<div class="askai" id="askai">
+  <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+  <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった章や項目の名前に書き換えてからお使いください。</p>
+  <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予測」「仮説」などと明記しています。レポート本文は自動送信されません。</p>
+  <div class="askai-box">
+    <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの『〇〇』について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+    <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+  </div>
+  <div class="askai-links">
+    <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+    <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+    <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+  </div>
+</div>
+</section>
+
+<section class="part part-foot" id="part-foot" data-part="一覧・免責" data-name="">
+<p class="backlist"><a href="index.html">← 日曜特集／レポート一覧へ戻る</a></p>
+<footer class="foot">
+  <h2 class="foot-h">免責</h2>
+  <p>本特集は、AI総合研究機構が公開する日曜特集です。掲載内容は作成時点（2026年9月12日）で確認できた情報に基づきます。事実・当事者の主張・報道・分析・将来予測・未確認事項を区別して記載していますが、将来に関する記述はいずれも予測または仮説であり、その実現を保証するものではありません。本特集の内容を根拠とする投資・契約・防災その他の判断は、読者ご自身の責任で行ってください。各サービスの提供条件・料金・対応機種は変更されることがあります。最新の情報は各事業者・官公庁の発表をご確認ください。</p>
+  <p class="disc">情報基準日：2026年9月12日（土）。AI総合研究機構 日曜特集 第4号。</p>
+</footer>
+</section>
+<section class="part part-src" id="part-src" data-part="出典" data-name=""><article class="ch src" id="sources"><h2>出典</h2><p>［一次］は発表元そのもの、無印は報道・専門媒体です。<strong>本文で「一次資料に到達できていない」と記した項目（Wi-Fi 8の正式状態、日本の海底ケーブル依存率、スマートメーター設置率、米FCCの規制、3GPP本体の解説、イメージセンサーのシェア、Humane AI Pinの販売台数、大ゾーン・ドローン基地局の配置）は、下の報道・専門媒体の項に該当する出典があります。</strong>掲載した出典は、すべて実際に内容を取得できたものだけです。</p><h3>一次情報（発表元）</h3><ul class="srclist"><li><a class="src" href="https://www.soumu.go.jp/main_content/001019059.pdf" target="_blank" rel="noopener">［一次］総務省 災害時における携帯電話基地局等の強靱化対策事業（令和7年6月・PDF）— 能登半島地震の停波原因、基地局バッテリー</a></li><li><a class="src" href="https://www.soumu.go.jp/main_content/001053766.pdf" target="_blank" rel="noopener">［一次］総務省 高高度プラットフォーム（HAPS）の導入に係る省令改正資料（PDF）— 「陸上等（50km以下の空域）」への拡張、高高度基地局</a></li><li><a class="src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r02/html/nd111220.html" target="_blank" rel="noopener">［一次］総務省 令和2年版 情報通信白書 — 1979年の自動車電話（世界初の商用セルラー）</a></li><li><a class="src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r01/html/nd111110.html" target="_blank" rel="noopener">［一次］総務省 令和元年版 情報通信白書 — 携帯電話の登場・普及</a></li><li><a class="src" href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r06/html/nd112420.html" target="_blank" rel="noopener">［一次］総務省 令和6年版 情報通信白書 — 移動型基地局の活用</a></li><li><a class="src" href="https://www.soumu.go.jp/main_sosiki/joho_tsusin/universalservice/" target="_blank" rel="noopener">［一次］総務省 ユニバーサルサービス制度</a></li><li><a class="src" href="https://www.itu.int/en/mediacentre/Pages/PR-2025-11-17-Facts-and-Figures.aspx" target="_blank" rel="noopener">［一次］ITU Facts and Figures 2025（2025年11月17日）— オフライン人口22億人、5Gカバー率の所得差</a></li><li><a class="src" href="https://www.idc.com/resource-center/blog/smartphone-shipments-set-for-record-16-7-drop-in-2026-as-the-memory-crisis-hits-full-force/" target="_blank" rel="noopener">［一次］IDC — Smartphone Shipments Set for Record 16.7% Drop in 2026（2026年8月・予測）</a></li><li><a class="src" href="https://www.idc.com/resource-center/blog/smart-glasses-surge-the-xr-market-is-rewriting-its-own-rules/" target="_blank" rel="noopener">［一次］IDC — Smart Glasses Surge（2026年第1四半期実績と通年予測）</a></li><li><a class="src" href="https://newsroom.kddi.com/english/news/detail/kddi_nr-702_4082.html" target="_blank" rel="noopener">［一次］KDDI — au Starlink Direct データ通信開始（2025年8月28日）</a></li><li><a class="src" href="https://newsroom.kddi.com/english/news/detail/kddi_nr-943_4353.html" target="_blank" rel="noopener">［一次］KDDI — au Starlink Direct 国際ローミング（米国）</a></li><li><a class="src" href="https://newsroom.kddi.com/news/detail/kddi_nr-954_4362.html" target="_blank" rel="noopener">［一次］KDDI — Starlink活用機材の全国配備拡充（2026年3月末まで約330台）</a></li><li><a class="src" href="https://newsroom.kddi.com/news/detail/6.html" target="_blank" rel="noopener">［一次］KDDI — 令和6年能登半島地震に伴う「船上基地局」運用</a></li><li><a class="src" href="https://www.softbank.jp/sbnews/entry/20260410_01" target="_blank" rel="noopener">［一次］ソフトバンク — SoftBank Starlink Direct（2026年4月10日開始）</a></li><li><a class="src" href="https://www.docomo.ne.jp/info/news_release/2026/04/02_01.html" target="_blank" rel="noopener">［一次］NTTドコモ — docomo Starlink Direct 4月27日提供開始</a></li><li><a class="src" href="https://www.docomo.ne.jp/binary/pdf/info/news_release/topics_260710_e1.pdf" target="_blank" rel="noopener">［一次］NTTドコモ — docomo Starlink Direct 接続者数500万人突破（2026年7月10日・PDF）</a></li><li><a class="src" href="https://www.docomo.ne.jp/info/news_release/2025/12/17_00.html" target="_blank" rel="noopener">［一次］NTTドコモ — ブロードバンドユニバーサルサービス料のご負担について（2025年12月17日）</a></li><li><a class="src" href="https://corp.mobile.rakuten.co.jp/news/press/2025/0423_01/" target="_blank" rel="noopener">［一次］楽天モバイル — AST SpaceMobile衛星と市販スマートフォンでビデオ通話成功（2025年4月23日）</a></li><li><a class="src" href="https://kyodonewsprwire.jp/release/202609075393" target="_blank" rel="noopener">［一次］Sceye — 日本での成層圏接続性の実証実験を完了（2026年9月7日・共同通信PRワイヤー）</a></li><li><a class="src" href="https://www.qualcomm.com/news/onq/2026/06/6g-standardization-release-21-milestones" target="_blank" rel="noopener">［一次］Qualcomm — 3GPP Release 21：6G標準化のマイルストーン（2026年6月・会員企業の説明）</a></li><li><a class="src" href="https://resources.telegeography.com/2023-mythbusting-part-3" target="_blank" rel="noopener">［一次］TeleGeography — 海底ケーブルは大陸間データ通信の99％超を運ぶのか（数字の根拠）</a></li><li><a class="src" href="https://about.fb.com/news/2025/09/ray-ban-meta-gen-2-better-battery-life-video-capture/" target="_blank" rel="noopener">［一次］Meta — Ray-Ban Meta (Gen 2) 駆動時間（2025年9月）</a></li><li><a class="src" href="https://note.com/ntt_inc/n/n4319b9efc43a" target="_blank" rel="noopener">［一次］NTTドコモ — 世界初 自動車電話商業利用開始（企業note）</a></li></ul><h3>報道・専門媒体</h3><ul class="srclist"><li><a class="src" href="https://www.nikkei.com/prime/minutes/article/DGXZQOUA104XD0Q5A410C2000000" target="_blank" rel="noopener">日経 — 狙われる海底ケーブル、日本の国際通信99％依存</a></li><li><a class="src" href="https://www.nikkei.com/article/DGXZQOUA101WZ0Q6A610C2000000/" target="_blank" rel="noopener">日経 — 日本の海底ケーブル防護、監視体制など基準策定へ</a></li><li><a class="src" href="https://www.mri.co.jp/knowledge/column/20250922.html" target="_blank" rel="noopener">三菱総合研究所 — 国際間通信の強靭化に向けた海底ケーブルの敷設・保守戦略</a></li><li><a class="src" href="https://xtech.nikkei.com/atcl/nxt/column/18/00745/011500178/" target="_blank" rel="noopener">日経クロステック — 能登半島地震の携帯電話網復旧に船上基地局やドローンが活躍</a></li><li><a class="src" href="https://www.itmedia.co.jp/mobile/articles/2511/07/news115.html" target="_blank" rel="noopener">ITmedia — ブロードバンドの「ユニバーサルサービス料」が2026年1月にスタート</a></li><li><a class="src" href="https://eetimes.itmedia.co.jp/ee/articles/2608/26/news049.html" target="_blank" rel="noopener">EE Times Japan — 2025年のイメージセンサー市場は過去最高、ソニーはシェア5割（調査会社集計）</a></li><li><a class="src" href="https://internet.watch.impress.co.jp/docs/news/2053692.html" target="_blank" rel="noopener">INTERNET Watch — NTT「IOWN 2.0」、光電融合スイッチを2026年に製品化</a></li><li><a class="src" href="https://www.tomshardware.com/networking/next-gen-wi-fi-8-focuses-on-reliability-instead-of-speed-ultra-high-reliability-initiative-boosts-performance-lowers-latency-and-packet-loss-in-challenging-conditions" target="_blank" rel="noopener">Tom's Hardware — Wi-Fi 8は速度ではなく信頼性を重視（Ultra High Reliability）</a></li><li><a class="src" href="https://techcrunch.com/2025/02/18/humanes-ai-pin-is-dead-as-hp-buys-startups-assets-for-116m" target="_blank" rel="noopener">TechCrunch — Humane AI Pin終了、HPが資産を1億1,600万ドルで取得</a></li><li><a class="src" href="https://www.securityweek.com/undocumented-remote-access-backdoor-found-in-unitree-go1-robot-dog/" target="_blank" rel="noopener">SecurityWeek — Unitree Go1に未公開の遠隔アクセス経路（CVE-2025-2894）</a></li><li><a class="src" href="https://www.foxnews.com/tech/foreign-robot-ban-targets-china-security-fears" target="_blank" rel="noopener">Fox News — FCCが外国製ロボット機器を規制対象に（2026年7月・報道）</a></li><li><a class="src" href="https://www.al-monitor.com/originals/2026/09/exclusive-uae-revises-ai-data-center-plan-after-iranian-attacks-sources-say" target="_blank" rel="noopener">Al-Monitor（ロイター配信）— UAEのAIデータセンター計画見直し（匿名筋）</a></li><li><a class="src" href="https://www.freemalaysiatoday.com/category/business/2026/09/10/china-s-ai-chipmakers-raise-prices-as-high-bandwidth-memory-shortage-bites" target="_blank" rel="noopener">Free Malaysia Today（ロイター配信）— HBM不足で中国AIチップ各社が値上げ</a></li></ul><h3>歴史部分の参考資料</h3><ul class="srclist"><li><a class="src" href="https://www.soumu.go.jp/hakusho-kids/life/what/what_13.html" target="_blank" rel="noopener">［参考］総務省 情報通信白書 for Kids — 携帯電話の歴史</a></li><li><a class="src" href="https://www.nttdocomo.co.jp/corporate/about/history/" target="_blank" rel="noopener">［参考］NTTドコモ — 沿革（iモード・FOMA等）</a></li><li><a class="src" href="https://www.itu.int/en/history/Pages/ITUsHistory.aspx" target="_blank" rel="noopener">［参考］ITU — ITUの歴史（電信・電話・無線の国際標準）</a></li><li><a class="src" href="https://www.computerhistory.org/internethistory/1960s/" target="_blank" rel="noopener">［参考］Computer History Museum — インターネットの歴史（1960年代・ARPANET）</a></li><li><a class="src" href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noopener">［参考］Internet Society — A Brief History of the Internet</a></li><li><a class="src" href="https://www.nobelprize.org/prizes/physics/2009/summary/" target="_blank" rel="noopener">［参考］ノーベル財団 — 2009年ノーベル物理学賞（チャールズ・カオ、光ファイバー）</a></li></ul><p class="note">歴史部分の年代（1794年の腕木通信から2024年のVision Proまで）は、上記を含む複数の標準的な資料で一致する史実に基づいています。個別の年代については、必要に応じて追加確認します。</p><div class="backtop"><a href="#toc">↑ 目次へ</a></div></article></section></div>
+
+<script>
+(function(){
+  // 現在読んでいる「部」を上部に示す（最小限のスクリプト）
+  var parts = document.querySelectorAll('section.part');
+  var nbPart = document.getElementById('nbPart'), nbName = document.getElementById('nbName');
+  if ('IntersectionObserver' in window && nbPart) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          nbPart.textContent = e.target.getAttribute('data-part') || '';
+          var n = e.target.getAttribute('data-name') || '';
+          nbName.textContent = n ? '　' + n : '';
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    Array.prototype.forEach.call(parts, function(p){ obs.observe(p); });
+  }
+  // AI質問文のコピー
+  var btn = document.getElementById('askaiCopyBtn'), q = document.getElementById('askaiQ');
+  if (btn && q) {
+    btn.addEventListener('click', function(){
+      var t = q.value;
+      function done(){ btn.classList.add('is-copied'); btn.textContent = 'コピーしました';
+        setTimeout(function(){ btn.classList.remove('is-copied'); btn.textContent = '質問文をコピー'; }, 1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, function(){ q.select(); document.execCommand('copy'); done(); });
+      } else { q.select(); document.execCommand('copy'); done(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
