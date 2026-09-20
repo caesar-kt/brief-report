@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電気は、どこから来て、なぜ届かなくなるのか。</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special</span>
+    <span class="date">2026年9月20日（日）／ 日曜特集 第5号</span>
+  </div>
+  <h1 class="hello">電気は、どこから来て、なぜ届かなくなるのか。</h1>
+  <p class="sub-hello sun-sub">電気をつくる歴史から、燃料・経済・災害・AI時代の地域まで</p>
+  <p class="sun-lead">長い特集です。<strong>上から順に読めば、電気が遠くへ運べるようになった時代から、2026年の燃料・停電・電気代・AIまでが一本の流れとして分かるように書きました。</strong>目次から気になる章へ飛んでいただいても、必要なところだけ深く読んでいただいても構いません。<strong>数字には、確認できた実績・見通し・推計・将来予測のどれにあたるかを添えています。</strong>情報基準日は2026年9月20日です。</p>
+</header>
+<div class="nowbar" id="nowbar" aria-live="polite"><span class="nb-name">いま読んでいる章：<b id="nbPart">導入</b><span id="nbName"></span></span><a href="#toc">目次へ ↑</a></div>
+<nav class="toc" id="toc" aria-label="目次"><div class="toc-title">目次</div>
+<p class="toc-lead">導入と9つの章、そして出典一覧で構成しています。上から順に読んでも、気になる章から読んでも構いません。</p>
+<ol class="toc-top">
+<li class="toc-solo"><a href="#part-0">導入　コンセントの向こうにあるもの</a></li>
+<li class="toc-solo"><a href="#part-1">第1章　燃料の輸送が混乱しても、電力の需給見通しが直ちに崩れなかったのはなぜか</a></li>
+<li class="toc-solo"><a href="#part-2">第2章　電気を遠くへ送れるようになって、暮らしと産業は変わった</a></li>
+<li class="toc-solo"><a href="#part-3">第3章　「つくる量」「運べる量」「その時刻に使える量」は違う</a></li>
+<li class="toc-solo"><a href="#part-4">第4章　停電には、異なる原因がある</a></li>
+<li class="toc-solo"><a href="#part-5">第5章　電気が止まると、電気以外のものも止まり始める</a></li>
+<li class="toc-solo"><a href="#part-6">第6章　電気代は、世界の出来事を地域へ伝える</a></li>
+<li class="toc-solo"><a href="#part-7">第7章　AI時代には、電気を使う速度と設備を増やす速度が違う</a></li>
+<li class="toc-solo"><a href="#part-8">第8章　未来の技術にも、それぞれ役割と限界がある</a></li>
+<li class="toc-solo"><a href="#part-9">第9章　冒頭の問いに戻る</a></li>
+<li class="toc-solo"><a href="#part-src">資料　この特集で使った出典</a></li>
+</ol>
+<div class="toc-note"><strong>数字の読み方について。</strong>本文では <b>kW</b>（ある時点の電力の大きさ）と <b>kWh</b>（一定時間に使った電力量）を区別しています。また<strong>実績</strong>（すでに集計された数値）、<strong>見通し</strong>（前提を置いた将来の想定）、<strong>推計</strong>（観測できない部分を計算で補った数値）、<strong>将来予測</strong>（シナリオに基づく見込み）を、それぞれ言葉で書き分けています。</div>
+</nav>
+
+<section class="part" id="part-0" data-part="導入" data-name="コンセントの向こうにあるもの">
+<header class="part-head"><span class="part-no">導入<small>／九章</small></span><h1 class="part-name">コンセントの向こうにあるもの</h1></header>
+<article class="ch " id="ch-0"><span class="ch-no">導入</span><h2>コンセントの向こうにあるもの</h2>
+<p>朝、目覚ましを止める。明かりをつけ、冷蔵庫を開け、スマートフォンで連絡を確かめる。</p>
+<p>何気ない朝の一つひとつが、電気の上に成り立っている。</p>
+<p>けれども、コンセントの向こうにあるものは、発電所だけではない。<strong>遠くの国から燃料を運ぶ船、発電機を動かす人、山や海を越える送電線、街の変圧器、需要と供給を調整する運用者、そして災害の後に設備を直す作業員。</strong>そのすべてがつながって、初めて電気は私たちのもとへ届く。</p>
+<p><strong>電気は、つくれば必ず届くものではない。</strong></p>
+<p>このことを考える入口として、2026年の日本を見てみたい。</p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-1" data-part="第1章" data-name="燃料の輸送が混乱しても、電力の需給見通しが直ちに崩れなかったのはなぜか">
+<header class="part-head"><span class="part-no">第1章<small>／九章</small></span><h1 class="part-name">燃料の輸送が混乱しても、電力の需給見通しが直ちに崩れなかったのはなぜか</h1></header>
+<article class="ch " id="ch-1"><span class="ch-no">第1章</span><h2>燃料の輸送が混乱しても、電力の需給見通しが直ちに崩れなかったのはなぜか</h2>
+<p>2026年2月末に始まった中東での軍事衝突により、ホルムズ海峡を通る石油の輸送は大きく妨げられた。国際エネルギー機関（IEA）は3月の石油市場報告で、<strong>世界の石油市場の歴史で最大の供給途絶が起きている</strong>と報告した。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］IEA 石油市場報告（2026年3月）</span><div class="kn-t">1973年の石油危機を上回る規模</div><div class="kn-d">供給が止まっている量は、<b>IEAの設立につながった1973年の石油危機の供給喪失を上回り、それ以降のどの途絶よりも大きい</b>としている。ホルムズ海峡を通る原油と石油製品の流量は<b>戦争前の日量約2,000万バレルから、ごくわずかへ落ち込んだ</b>。湾岸諸国は石油生産を合計で少なくとも日量1,000万バレル減らしたとされる。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］経済産業省（2026年5月20日）</span><div class="kn-t">夏季は予備率3％を確保できる「見通し」</div><div class="kn-d">「2026年度夏季の電力需要に対する供給力の余力を示す予備率は、<b>全エリアにおいて、安定供給に最低限必要な予備率3％を確保できている</b>ことを踏まえ、<b>節電要請は実施しません</b>」。<b>これは見通しであり、夏季の実績予備率ではない。</b></div></aside>
+</div>
+<p>ここで疑問が生まれる。燃料を運ぶ重要な海峡で輸送が滞っているのに、なぜ日本では、夏の電力供給に必要な余力を確保できるという見通しが示されたのだろう。</p>
+<p>手がかりは、日本が何で電気をつくっているかにある。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>項目</th><th>2024年度の実績</th><th>備考</th></tr></thead><tbody><tr><td data-label="項目"><strong>発電電力量</strong></td><td data-label="2024年度の実績"><b>9,911億kWh</b>（前年度比0.4％増）</td><td data-label="備考">2026年4月14日公表の確報値</td></tr><tr><td data-label="項目"><strong>火力</strong>（バイオマスを除く）</td><td data-label="2024年度の実績"><b>67.5％</b>（1.1％ポイント減）</td><td data-label="備考">燃料は天然ガス・石炭・石油と複数</td></tr><tr><td data-label="項目"><strong>再生可能エネルギー</strong>（水力を含む）</td><td data-label="2024年度の実績"><b>23.1％</b>（0.2％ポイント増）</td><td data-label="備考">—</td></tr><tr><td data-label="項目"><strong>原子力</strong></td><td data-label="2024年度の実績"><b>9.4％</b>（0.9％ポイント増）</td><td data-label="備考">2基が新たに再稼働</td></tr><tr><td data-label="項目">非化石電源比率</td><td data-label="2024年度の実績"><b>32.5％</b>へ上昇</td><td data-label="備考">再エネと原子力の合計</td></tr></tbody></table></div>
+<p>火力が3分の2を占めるが、<strong>その燃料は天然ガス、石炭、石油と一種類ではない。</strong></p>
+<p>そのため、<strong>石油の輸送が大きく減ることと、日本の発電に必要なすべての燃料が同じ割合で不足することは、同じ意味ではない。</strong>燃料の種類、調達先、在庫、発電設備の運転計画などを分けて見なければ、実際の影響は分からない。</p>
+<div class="note"><p><strong>ここは慎重に書く必要がある。</strong>燃料の分散や在庫が2026年夏の電力供給をそれぞれ何％支えたかという<strong>寄与の大きさは、今回確認できた資料からは計算できない。</strong>供給予備率の見通しを、夏季全体の実績や、個々の対策の効果が証明された数字として扱うこともできない。</p>
+<p>政府自身も同じ発表の中で、<strong>「国際情勢の変化や異常気象、発電所の休廃止の進展、火力発電所の東京湾・太平洋沿岸への集中等、自然災害に対して脆弱な構造にあることを踏まえると、電力需給は予断を許さない状況です」</strong>と書いている。<strong>「余力がある」と「安心してよい」は別のことだ。</strong></p></div>
+<p>一方で、数量と価格は別の経路をたどる。<strong>燃料を調達できても、その価格や輸送費が上がることはある。</strong>電力供給が続くことと、同じ費用で電気を使い続けられることも、同じ問題ではない。</p>
+<p class="disc">出典：<a class="src" href="https://www.iea.org/reports/oil-market-report-march-2026" target="_blank" rel="noopener">［一次］IEA Oil Market Report – March 2026</a>／<a class="src" href="https://www.meti.go.jp/press/2026/05/20260520001/20260520001.html" target="_blank" rel="noopener">［一次］経済産業省 2026年度夏季の電力需給対策を取りまとめました（2026年5月20日）</a>／<a class="src" href="https://www.enecho.meti.go.jp/statistics/total_energy/pdf/gaiyou2024fykaku.pdf" target="_blank" rel="noopener">［一次］資源エネルギー庁 令和6年度（2024年度）エネルギー需給実績（確報）概要（2026年4月・PDF）</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-2" data-part="第2章" data-name="電気を遠くへ送れるようになって、暮らしと産業は変わった">
+<header class="part-head"><span class="part-no">第2章<small>／九章</small></span><h1 class="part-name">電気を遠くへ送れるようになって、暮らしと産業は変わった</h1></header>
+<article class="ch " id="ch-2"><span class="ch-no">第2章</span><h2>電気を遠くへ送れるようになって、暮らしと産業は変わった</h2>
+<p>19世紀後半、街へ電気を供給する仕組みが生まれた当初、<strong>発電所から電気を届けられる範囲は限られていた。</strong></p>
+<p>その後、交流と変圧器の利用が広がり、<strong>高い電圧で遠くへ送り、使う場所の近くで電圧を下げられるようになった。</strong>山の水力を街へ、海沿いの発電所の電気を内陸の工場へ運ぶ道が開かれた。</p>
+<p>その変化は、照明が普及したことにとどまらない。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>場所</th><th>電気が変えたもの</th></tr></thead><tbody><tr><td data-label="場所"><strong>家庭</strong></td><td data-label="電気が変えたもの">冷蔵庫や洗濯機などが、<b>食べ物の保存や日々の家事</b>を変えた</td></tr><tr><td data-label="場所"><strong>工場</strong></td><td data-label="電気が変えたもの">機械ごとにモーターを設置できるようになり、<b>動力源の位置に縛られず設備を配置しやすくなった</b></td></tr><tr><td data-label="場所"><strong>社会の基盤</strong></td><td data-label="電気が変えたもの">水をくみ上げ、温度を管理し、遠くへ情報を送る仕組みも、電気の利用とともに広がった</td></tr></tbody></table></div>
+<p><strong>電気の歴史は、エネルギーをつくる歴史であると同時に、必要な場所で使えるようにしてきた歴史でもある。</strong></p>
+<p>そして、発電する場所と使う場所が離れたことで、<strong>その間を結ぶ送配電網が、暮らしに欠かせない設備になった。</strong></p>
+<div class="note"><p><strong>いまの制度でも、この「運ぶ」役割は独立している。</strong>日本の電気事業は、電気を売る<strong>小売電気事業</strong>と、送電用・配電用の設備を維持・運用して託送供給を行う<strong>一般送配電事業</strong>などに分かれて規定されている。<strong>電気をつくる人、運ぶ人、売る人が、それぞれ別の役割として制度に書かれている。</strong></p></div>
+<p class="disc">出典：<a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/summary/" target="_blank" rel="noopener">［一次］資源エネルギー庁 電気事業制度について（事業者の種類）</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-3" data-part="第3章" data-name="「つくる量」「運べる量」「その時刻に使える量」は違う">
+<header class="part-head"><span class="part-no">第3章<small>／九章</small></span><h1 class="part-name">「つくる量」「運べる量」「その時刻に使える量」は違う</h1></header>
+<article class="ch " id="ch-3"><span class="ch-no">第3章</span><h2>「つくる量」「運べる量」「その時刻に使える量」は違う</h2>
+<p>発電所でつくられた電気は、変電所で電圧を調整され、基幹送電線から地域の配電線へ、そして家庭の近くにある変圧器を経て届けられる。</p>
+<p><strong>送電線には、運べる電力の限界がある。</strong>ある地域で十分に発電できても、別の地域へ必要なだけ送れるとは限らない。日本では<strong>東日本と西日本の交流周波数が50Hzと60Hzに分かれており</strong>、両地域で電気を融通するには、周波数変換設備の容量も関わる。</p>
+<h3>数字の読み方</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">単位の区別</span><div class="kn-t"><b>kW</b> と <b>kWh</b> は別のもの</div><div class="kn-d"><b>kW</b>は、ある時点で発電したり使用したりする<b>電力の大きさ</b>。<b>kWh</b>は、その電力を一定の時間使ったときの<b>電力量</b>。発電所の設備容量が大きくても、点検中なら、その時刻の供給力にはならない。太陽光発電の年間発電量が大きくても、夜間の太陽光の供給力にはならない。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">注意</span><div class="kn-t">年間の合計を日割りしても「1日の需要」にはならない</div><div class="kn-d">年間の発電電力量を365で割れば1日あたりの平均値は出る。<b>しかしそれは平均であって、実際に必要とされた電力量でもなく、ある日の需要でもない。</b>需要は季節と時刻で大きく変わる。</div></aside>
+</div>
+<p>日本の2026年夏季の予備率をめぐっても、<strong>早い段階の見通しと、後に公表された見通しを、単純な一本の数字の変化として読むことはできない。</strong>算定の前提だけでなく、2026年5月の検証では月を前半・後半などに分けて評価する方式が使われているからだ。</p>
+<div class="note"><p><strong>見通しと実績を混ぜないための書き方。</strong>本特集では、予備率について「確保できる見通し」と書き、<strong>「実績予備率」とは書かない。</strong>また、公表時点・需給対策・算定前提・評価期間が違う数字を並べて「改善した」とも書かない。<strong>同じ尺度で測られたと確認できない数字は、比べない。</strong></p></div>
+<p>さらに、電気はその時々の需要と供給をつり合わせながら、<strong>周波数と電圧を適切な範囲に保って運用されている。</strong></p>
+<p><strong>「年間では十分につくれる」「ある時刻には余っている」「別の時刻には余力が小さい」は、同時に成り立ちうる。</strong></p>
+<h3>2026年3月1日、東京エリアで初めて出力制御が行われた</h3>
+<p>2026年3月1日、東京電力パワーグリッドは<strong>同社サービスエリアで初めて</strong>再生可能エネルギーの出力制御を実施した。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］東京電力パワーグリッド（2026年3月1日）</span><div class="kn-t">なぜ実施したか</div><div class="kn-d">「昼間時間帯において、<b>好天が予想され太陽光発電が高い出力となる一方、電力需要が低くなる見通し</b>となりました」。そのうえで<b>火力発電所の運転抑制、揚水運転による需要の創出、地域間連系線を活用したエリア外への送電などの対策を実施してもなお、電力需要に対して供給力が上回ると判断した</b>としている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］当日指示（3月1日）</span><div class="kn-t">実施前に「こう抑えてください」と指示した量</div><div class="kn-d">再エネ出力制御期間は<b>3月1日（日）11時00分〜16時00分</b>。最大余剰電力発生時刻は<b>12時00分〜12時30分</b>。当日指示の再エネ出力制御量は<b>3〜118万kW</b>。このときの需給<b>見通し</b>はエリア需要2,628万kW、揚水運転619万kW、域外送電0、供給力3,365万kW、うち再エネ出力1,529万kW。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］実績（速報値）（3月1日）</span><div class="kn-t">実施後に「これだけ抑えた」と公表した量</div><div class="kn-d">同社は同じ日に、実績（速報値）を別に公表している。再エネ出力制御量は<b>184万kW</b>。期間と最大余剰電力発生時刻は指示と同じ。需給の<b>速報</b>はエリア需要2,543万kW、揚水運転617万kW、域外送電0、供給力3,344万kW、うち再エネ出力1,620万kW。<b>供給力は出力制御前の値</b>とされる。</div></aside>
+</div>
+<p>ここで、<strong>2つの数字を混ぜないでおきたい。</strong>「3〜118万kW」は<strong>実施前に出した当日の指示</strong>であり、「184万kW」は<strong>実施後に公表された実績の速報値</strong>である。<strong>同じ指標ではない。</strong>需給の数字も、前者は見通し、後者は速報で、値が違う。</p>
+<p>そして、これは<strong>その日時の需給を調整するための措置であり、「東京では年間を通じて電気が余っている」という意味ではない。</strong></p>
+<div class="note"><p><strong>内訳は載せていない。</strong>184万kWを電源の種類ごとに分けた数字は、東京電力パワーグリッドの公表資料には書かれていない。<strong>公表されていない内訳を、他の数字から推し量って書くことはしない。</strong></p>
+<p>また、<strong>この東京の初回実施を、他エリアの年間出力制御率の見通しと並べて比較することもしない。</strong>対象地域・年度・算定方法が違い、一方は実施の事実、他方は予測値だからである。</p>
+<p>なお、同社の資料はいずれも<strong>「四捨五入の関係で、合計が一致しないことがある」</strong>と注記している。表の数字を足し合わせて別の数値を導かないための断りである。</p></div>
+<p>電力を考えるとき、年間の合計だけでは見えないものがある。</p>
+<p><strong>いつ、どこで、どれだけ必要なのか。そこへ運べるのか。</strong>その条件まで見て、初めて電気の余裕や不足を考えられる。</p>
+<p class="disc">出典：<a class="src" href="https://www.tepco.co.jp/pg/company/press-information/press/2026/pdf/260301j0101.pdf" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 再生可能エネルギー出力制御の実施について（2026年3月1日・訂正版・PDF／当日指示）</a>／<a class="src" href="https://www.tepco.co.jp/pg/company/press-information/press/2026/pdf/260301j0201.pdf" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 当社サービスエリアにおける「再生可能エネルギー出力制御」実績（速報値）について（2026年3月1日・PDF／実績184万kW）</a>／<a class="src" href="https://www.meti.go.jp/press/2026/05/20260520001/20260520001.html" target="_blank" rel="noopener">［一次］経済産業省 2026年度夏季の電力需給対策（2026年5月20日）</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-4" data-part="第4章" data-name="停電には、異なる原因がある">
+<header class="part-head"><span class="part-no">第4章<small>／九章</small></span><h1 class="part-name">停電には、異なる原因がある</h1></header>
+<article class="ch " id="ch-4"><span class="ch-no">第4章</span><h2>停電には、異なる原因がある</h2>
+<p>停電という同じ結果にも、そこへ至る道筋は異なる。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>停電の型</th><th>何が起きたか</th><th>直すために必要なこと</th></tr></thead><tbody><tr><td data-label="停電の型"><strong>系統全体の停止</strong>（ブラックアウト）</td><td data-label="何が起きたか">需給バランスや周波数・電圧が保てなくなり、広い範囲が同時に停電する</td><td data-label="直すために必要なこと">発電機と送電網、需要を<b>順序立てて立ち上げ直す</b></td></tr><tr><td data-label="停電の型"><strong>設備の物理的な損傷</strong></td><td data-label="何が起きたか">台風や地震で地域の配電線・電柱が壊れる。遠くの発電所は正常でも電気は届かない</td><td data-label="直すために必要なこと">現場の安全確認、倒木・土砂の除去、<b>設備の修復</b></td></tr><tr><td data-label="停電の型"><strong>系統の不安定化</strong></td><td data-label="何が起きたか">発電量は足りていても、振動や電圧・無効電力の制御が追いつかず連鎖的に崩れる</td><td data-label="直すために必要なこと">運用方法と制御の設計そのものの見直し</td></tr></tbody></table></div>
+<h3>2018年9月、北海道で系統全体が止まった</h3>
+<p>2018年9月の北海道胆振東部地震では、大規模な発電所の停止などが重なり、<strong>電力系統全体の需給バランスが崩れ、北海道全域に停電が広がった。</strong></p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］電力広域的運営推進機関 検証委員会 最終報告（2018年12月19日）</span><div class="kn-t">地震から停電まで18分</div><div class="kn-d">検証の対象は<b>9月6日午前3時7分の地震発生後、午前3時25分の大規模停電発生まで</b>の原因分析。周波数を基に系統内で起きた事象を時系列に整理し、発電機ごとの出力の増減、<b>周波数低下リレー（UFR）の動作</b>等を確認して系統全体の需給バランスを読み解いた。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］同報告</span><div class="kn-t">復旧は「順序立てて」行われた</div><div class="kn-d">大規模停電後、<b>一定の供給力（約300万kW）確保に至るプロセスにおける技術的な検証（ブラックスタート電源の立ち上げ等）</b>が行われた。<b>止まった系統は、スイッチひとつでは戻らない。</b></div></aside>
+</div>
+<h3>2025年4月、イベリア半島で起きたこと</h3>
+<p>一方、<strong>発電量の不足だけでは説明できない停電もある。</strong></p>
+<p>2025年4月28日にスペインとポルトガルで起きた大停電について、欧州の送電系統運用者の団体ENTSO-Eは、<strong>2026年3月20日に公表した専門家パネルの最終報告</strong>で、次のように説明している。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］ENTSO-E 最終報告（2026年3月20日）</span><div class="kn-t">単一の原因ではない</div><div class="kn-d">ENTSO-Eは<b>「調査は、この停電が多数の相互に作用する要因の組み合わせから生じたと結論づけている」</b>としている。挙げられた要因は、<b>振動、電圧および無効電力の制御の不足、電圧調整の慣行の違い、スペインにおける急激な出力低下と発電機の解列、そして安定化能力のばらつき</b>である。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">読み方</span><div class="kn-t">どちらにも単純化できない</div><div class="kn-d"><b>この事故を「特定の発電方法だけが原因」とも、「電圧だけが原因」ともまとめることはできない。</b>必要な発電量を確保することと、系統全体を安定して運用することは、別の課題だからだ。<b>本特集は、特定の発電方式への賛否には立ち入らず、確認された事故のしくみだけを説明する。</b></div></aside>
+</div>
+<h3>原因が違えば、復旧に必要な仕事も違う</h3>
+<p>大規模なブラックアウトでは、<strong>外部から電気を受けなくても起動できるブラックスタート電源などを使い、発電機と送電網、需要を順序立てて立ち上げていく。</strong></p>
+<p>配電線が壊れた地域では、<strong>現場の安全を確認し、倒木や土砂を除き、損傷した設備を修復しなければならない。</strong>道路が寸断されていれば、作業員が現場へ到達すること自体が難しくなる。</p>
+<p><strong>電気を取り戻すには、発電所の操作も、現場で設備を直す人の仕事も必要になる。</strong></p>
+<div class="note"><p><strong>停電の規模を表す数字は、読むときに注意が要る。</strong>停電戸数は、<strong>いつ時点の発表か、どの範囲を集計したものか</strong>によって変わる。「戸」で数えるか「軒」で数えるかも、同じとは限らない。<strong>発表時刻と集計範囲の違う数字を並べて、増えた・減ったと読むことはできない。</strong>復旧の完了時刻も同じで、送電が届いた時刻と、各家庭で電気が使えるようになった時刻は別のことがある。</p></div>
+<p class="disc">出典：<a class="src" href="https://www.occto.or.jp/news/oshirase_sonotaoshirase_2018_181219_hokkaidokensho_saishuhoukoku.html" target="_blank" rel="noopener">［一次］電力広域的運営推進機関 平成30年北海道胆振東部地震に伴う大規模停電に関する検証委員会最終報告の取りまとめ及び経済産業大臣への提出について（2018年12月19日）</a>／<a class="src" href="https://www.occto.or.jp/iinkai/hokkaido_kensho/hokkaidokensho_saishuhoukoku.html" target="_blank" rel="noopener">［一次］同 最終報告</a>／<a class="src" href="https://www.entsoe.eu/news/2026/03/20/entso-e-publishes-expert-panel-final-report-on-28-april-2025-blackout-in-spain-and-portugal/" target="_blank" rel="noopener">［一次］ENTSO-E Publishes Expert Panel Final Report on 28 April 2025 Blackout in Spain and Portugal（2026年3月20日）</a>／<a class="src" href="https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/" target="_blank" rel="noopener">［一次］ENTSO-E 28 April 2025 Blackout（報告書の掲載ページ）</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-5" data-part="第5章" data-name="電気が止まると、電気以外のものも止まり始める">
+<header class="part-head"><span class="part-no">第5章<small>／九章</small></span><h1 class="part-name">電気が止まると、電気以外のものも止まり始める</h1></header>
+<article class="ch " id="ch-5"><span class="ch-no">第5章</span><h2>電気が止まると、電気以外のものも止まり始める</h2>
+<p>停電の影響は、照明が消えることだけではない。</p>
+<p>建物や地域の設備によっては、<strong>給水ポンプが停止し、水を使いにくくなる。</strong>携帯電話の基地局には非常用電源が備えられている場合があるが、<strong>停電が長引けば、その電源にも限りがある。</strong>冷蔵・冷凍設備を使う店、温度管理が必要な施設、電気を使う医療機器を必要とする人にも影響が及ぶ。</p>
+<div class="note"><p><strong>ただし、その影響が現れる順序や時間は一律ではない。</strong>非常用電源の有無、燃料や蓄電池の容量、設備の構造、周辺地域の被災状況によって変わる。<strong>本特集は「停電から何時間後に何が止まる」という全国一律の時刻表を示さない。</strong>示せるだけの根拠がないからである。</p></div>
+<h3>備えがあることと、使えることは別</h3>
+<p>地域に太陽光パネルや蓄電池、電気自動車があれば、停電時の備えになる場合もある。<strong>しかし、設置してあることと、停電時に必要な場所へ給電できることは同じではない。</strong></p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>設備</th><th>停電時に使うために確かめること</th></tr></thead><tbody><tr><td data-label="設備"><strong>住宅用の太陽光</strong></td><td data-label="停電時に使うために確かめること"><b>自立運転の機能があるか、どう切り替えるか、使える電力はどれだけか。</b>これらは機種・仕様・操作方法によって異なる。<b>「必ず手動で切り替える」「必ず上限は同じ」と決まっているわけではない</b></td></tr><tr><td data-label="設備"><strong>電気自動車</strong></td><td data-label="停電時に使うために確かめること"><b>車載のコンセントから個々の機器へ給電する</b>のか、<b>V2Hなどの設備を介して住宅へ給電する</b>のかで、必要なものが違う。後者は住宅側の工事と機器が要る</td></tr><tr><td data-label="設備"><strong>蓄電池</strong></td><td data-label="停電時に使うために確かめること">容量、接続されている回路、充電の残量、系統が復旧するまでの時間</td></tr><tr><td data-label="設備"><strong>マイクログリッド</strong></td><td data-label="停電時に使うために確かめること"><b>通常の電力系統から安全に切り離して運転できる構成</b>と、<b>それを維持・運用する体制</b>。設備を置くだけでは足りない</td></tr></tbody></table></div>
+<p>地域内で電気を融通するマイクログリッドにも、同じことがいえる。<strong>設備を置くだけでなく、通常の電力系統から安全に切り離して運転する仕組みと、それを維持・運用する体制があって、初めて停電時の備えとなる。</strong></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-6" data-part="第6章" data-name="電気代は、世界の出来事を地域へ伝える">
+<header class="part-head"><span class="part-no">第6章<small>／九章</small></span><h1 class="part-name">電気代は、世界の出来事を地域へ伝える</h1></header>
+<article class="ch " id="ch-6"><span class="ch-no">第6章</span><h2>電気代は、世界の出来事を地域へ伝える</h2>
+<p>電気が届くことに加えて、<strong>いくらで使えるかも、暮らしや事業を左右する。</strong></p>
+<p>一般的な家庭向けの電気料金には、次の項目がある。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>項目</th><th>何で決まるか</th></tr></thead><tbody><tr><td data-label="項目"><strong>基本料金</strong></td><td data-label="何で決まるか">契約している容量などに応じて決まる</td></tr><tr><td data-label="項目"><strong>電力量料金</strong></td><td data-label="何で決まるか">使った電力量に応じて決まる</td></tr><tr><td data-label="項目"><strong>燃料費調整額</strong></td><td data-label="何で決まるか">原油・LNG（液化天然ガス）・石炭の価格の変動を、毎月の料金に反映させる仕組み</td></tr><tr><td data-label="項目"><strong>再生可能エネルギー発電促進賦課金</strong></td><td data-label="何で決まるか">固定価格買取制度で再生可能エネルギーの電気を買い取る費用を、電気を使うすべての人が負担する</td></tr></tbody></table></div>
+<p>このほか、<strong>電気を運ぶ送配電網の維持・利用にかかる費用（託送にかかる費用）も、料金に関わっている。</strong></p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］資源エネルギー庁</span><div class="kn-t">燃料費調整には上限がある</div><div class="kn-d">燃料費調整制度は、原油・LNG・石炭の価格変動を毎月の電気料金に反映させる仕組みだが、<b>価格の上昇を反映できる幅には上限が設けられている</b>。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">注意</span><div class="kn-t">契約によって違う</div><div class="kn-d"><b>すべての電力契約が同じ料金体系ではない。</b>本特集は「燃料費調整額が必ず最大の変動要因である」とも、「燃料価格が上がれば必ず一定月数後に同額が転嫁される」とも書かない。<b>具体的な料金構成や価格の調整方法は契約によって異なる。</b></div></aside>
+</div>
+<p>海外の燃料価格や為替の変化は、燃料の調達費用を通じて、<strong>時間差を伴いながら</strong>電気料金に影響しうる。だから、<strong>海外で燃料の輸送が滞った日と、家庭の請求額が変わる日は同じとは限らない。</strong></p>
+<h3>電気代の変化は家庭だけの問題ではない</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>誰の</th><th>どこに効くか</th></tr></thead><tbody><tr><td data-label="誰の"><strong>工場</strong></td><td data-label="どこに効くか">製造にかかる費用</td></tr><tr><td data-label="誰の"><strong>農業用ハウス</strong></td><td data-label="どこに効くか">温度管理の費用</td></tr><tr><td data-label="誰の"><strong>冷蔵・冷凍設備を使う事業者</strong></td><td data-label="どこに効くか">商品の保管費用。<b>止められない設備である</b></td></tr><tr><td data-label="誰の"><strong>小規模な宿泊施設</strong></td><td data-label="どこに効くか">冷暖房、給湯、水回り。<b>安定して使えることが、滞在の快適さと事業の継続を支えている</b></td></tr></tbody></table></div>
+<p>一方で、<strong>安定して電気を使えるからこそ、夜間の営業や生産、食品の保管、通信を使った商取引などが可能になってきた。</strong></p>
+<p><strong>電気の費用は負担であると同時に、地域で仕事や暮らしを続けられる条件を維持するための費用でもある。</strong></p>
+<p class="disc">出典：<a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/fuel_cost_adjustment_001/" target="_blank" rel="noopener">［一次］資源エネルギー庁 燃料費調整制度について</a>／<a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/stracture/spec.html" target="_blank" rel="noopener">［一次］資源エネルギー庁 月々の電気料金の内訳</a>／<a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/stracture/pricing/" target="_blank" rel="noopener">［一次］資源エネルギー庁 料金設定の仕組みとは？</a>／<a class="src" href="https://www.enecho.meti.go.jp/category/saving_and_new/saiene/kaitori/surcharge.html" target="_blank" rel="noopener">［一次］資源エネルギー庁 なっとく！再生可能エネルギー（再エネ賦課金）</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-7" data-part="第7章" data-name="AI時代には、電気を使う速度と設備を増やす速度が違う">
+<header class="part-head"><span class="part-no">第7章<small>／九章</small></span><h1 class="part-name">AI時代には、電気を使う速度と設備を増やす速度が違う</h1></header>
+<article class="ch " id="ch-7"><span class="ch-no">第7章</span><h2>AI時代には、電気を使う速度と設備を増やす速度が違う</h2>
+<p>電力需要の変化を考えるうえで、データセンターも欠かせない。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］IEA Key Questions on Energy and AI</span><div class="kn-t">データセンター全体の電力消費</div><div class="kn-d">「データセンターからの電力消費は<b>2025年の485TWhから2030年には950TWhへとおよそ倍増</b>し、<b>2030年には世界の電力需要の約3％</b>を占める」。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">対象範囲の注意</span><div class="kn-t">AI専用設備だけの数字ではない</div><div class="kn-d"><b>この485TWh・950TWhは、データセンター全体の数値である。</b>IEAは別に「<b>AIに特化したデータセンターの電力消費は、データセンター全体よりはるかに速く伸び、この期間に3倍になる</b>」としている。<b>両者を混ぜて「AIが950TWh使う」とは書けない。</b></div></aside>
+</div>
+<p><strong>950TWhは将来予測であり、実績ではない。</strong>本特集では、2025年の485TWhを推計、2030年の950TWhを中心的な予測として扱う。</p>
+<p>データセンターは<strong>特定の地域に集中して立地することがある。</strong>そのため、世界全体の電力量の計算上は足りていても、<strong>建設する場所で必要な電力を受け取れるとは限らない。</strong></p>
+<h3>建てる速さと、つなぐ速さ</h3>
+<p>発電設備やデータセンターを建てる計画と、それらを結ぶ送電網を整える計画には、<strong>異なる時間が必要だ。</strong></p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>何に</th><th>どれだけかかるか</th><th>出所と範囲</th></tr></thead><tbody><tr><td data-label="何に"><strong>データセンターの建設</strong></td><td data-label="どれだけかかるか"><b>1〜2年</b></td><td data-label="出所と範囲">IEA（2025年11月16日の解説）。一般的な目安</td></tr><tr><td data-label="何に"><strong>送電線の建設</strong></td><td data-label="どれだけかかるか"><b>4〜8年</b></td><td data-label="出所と範囲">IEA「Energy and AI」。<b>先進国について</b></td></tr><tr><td data-label="何に"><strong>系統への接続待ち</strong></td><td data-label="どれだけかかるか"><b>2〜10年</b>（国により）</td><td data-label="出所と範囲">IEA。<b>EU内</b>。主要なデータセンター拠点では平均<b>7〜10年</b></td></tr><tr><td data-label="何に"><strong>ケーブルの調達</strong></td><td data-label="どれだけかかるか"><b>2〜3年</b></td><td data-label="出所と範囲">IEA「Building the Future Transmission Grid」。世界</td></tr><tr><td data-label="何に"><strong>大型変圧器の調達</strong></td><td data-label="どれだけかかるか"><b>最長4年</b>（2021年の2倍）</td><td data-label="出所と範囲">同。世界。<b>変圧器やケーブルの待ち時間はこの3年で倍になった</b></td></tr></tbody></table></div>
+<div class="note"><p><strong>上の表は、対象がそれぞれ違う。</strong>送電線の建設年数は先進国について、系統接続の待ち時間はEU内について、調達期間は世界についての数値である。<strong>並べて眺めるときは、どこの話かを添えて読む必要がある。</strong>それでも共通しているのは、<strong>使う側の設備は年単位、運ぶ側の設備はそれより長い年単位で増える</strong>ということだ。</p></div>
+<h3>遅らせているのは、許可だけではない</h3>
+<p>送電網の整備を遅らせる要因には、用地や許認可の問題がある。<strong>さらに近年は、変圧器やケーブルなどの調達にも時間がかかるようになった。</strong></p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］IEA（2025年2月25日）</span><div class="kn-t">値段も上がっている</div><div class="kn-d"><b>ケーブルの費用は2019年からほぼ倍</b>、<b>変圧器の価格は約75％上昇</b>（いずれも物価変動を調整した実質）。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］同</span><div class="kn-t">人も足りない</div><div class="kn-d"><b>世界で約800万人が送配電網の建設・保守・運用に従事しており、2030年までに少なくとも150万人増やす必要がある</b>としている。<b>設備が届いても、それを設置し、保守する人が要る。</b></div></aside>
+</div>
+<div class="note"><p><strong>「職人が最大のボトルネック」という言い方はしない。</strong>送電設備の整備が遅れる理由は一つではない。<strong>用地の確保、許認可、建設そのものに時間がかかることに加えて、変圧器やケーブルの製造・調達、そして人手という複数の制約が重なっている。</strong>どれか一つを最大の原因と決められる根拠は、確認できた資料の中にはない。</p></div>
+<p>送電線を引く許可が下りても、<strong>必要な設備がすぐに届くとは限らない。</strong>そして設備が届いても、<strong>それを設置し、保守する人が必要だ。</strong></p>
+<p><strong>画面の中で新しいサービスを始める速さと、地上に電力設備を増やす速さは、同じではない。</strong></p>
+<h3>AIは、使う側だけにいるわけではない</h3>
+<p>ただし、AIは電力を使う側だけにいるわけでもない。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］IEA「Energy and AI」</span><div class="kn-t">運用の改善に使える可能性</div><div class="kn-d">「AIは<b>変動する再生可能エネルギー発電の予測と系統への統合を改善し、出力制御と排出を減らしうる</b>」。「<b>AIによる故障検知は、系統の故障を素早く特定し正確に位置を絞り込むことで、停電の継続時間を30〜50％短縮しうる</b>」。「遠隔センサーとAIによる管理は、送電線の容量を増やしうる」。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">読み方</span><div class="kn-t">可能性と実績を分ける</div><div class="kn-d"><b>これらはIEAが示す可能性であり、すでに全国で達成された実績ではない。</b>本特集は、<b>AIが増やす電力需要と、AIが運用改善に役立つ可能性を、別々に見る。</b></div></aside>
+</div>
+<p class="disc">出典：<a class="src" href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary" target="_blank" rel="noopener">［一次］IEA Key Questions on Energy and AI – Executive summary</a>／<a class="src" href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener">［一次］IEA Energy and AI – Executive summary</a>／<a class="src" href="https://www.iea.org/commentaries/overcoming-energy-constraints-is-key-to-delivering-on-europe-s-data-centre-goals" target="_blank" rel="noopener">［一次］IEA Overcoming energy constraints is key to delivering on Europe's data centre goals（2025年11月16日）</a>／<a class="src" href="https://www.iea.org/news/rising-component-prices-and-supply-chain-pressures-are-hindering-the-development-of-transmission-grid-infrastructure" target="_blank" rel="noopener">［一次］IEA Rising component prices and supply chain pressures are hindering the development of transmission grid infrastructure（2025年2月25日）</a>／<a class="src" href="https://www.iea.org/reports/building-the-future-transmission-grid/executive-summary" target="_blank" rel="noopener">［一次］IEA Building the Future Transmission Grid – Executive summary</a></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-8" data-part="第8章" data-name="未来の技術にも、それぞれ役割と限界がある">
+<header class="part-head"><span class="part-no">第8章<small>／九章</small></span><h1 class="part-name">未来の技術にも、それぞれ役割と限界がある</h1></header>
+<article class="ch " id="ch-8"><span class="ch-no">第8章</span><h2>未来の技術にも、それぞれ役割と限界がある</h2>
+<p>これからの電力を支える手段は、一つではない。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>手段</th><th>何を担えるか</th><th>何は担えないか</th></tr></thead><tbody><tr><td data-label="手段"><strong>蓄電池</strong></td><td data-label="何を担えるか">発電した時刻と使う時刻のずれを埋める</td><td data-label="何は担えないか"><b>置いただけで長期間の燃料不足は解決しない。</b>容量と費用の制約がある</td></tr><tr><td data-label="手段"><strong>揚水発電</strong></td><td data-label="何を担えるか">同じく時刻のずれを埋める。余剰時に水をくみ上げる</td><td data-label="何は担えないか">立地が限られる。建設に時間がかかる</td></tr><tr><td data-label="手段"><strong>需要応答</strong></td><td data-label="何を担えるか">使う時刻を調整して需要の集中を和らげる</td><td data-label="何は担えないか">参加者と仕組みが要る。量にも限りがある</td></tr><tr><td data-label="手段"><strong>送電網の増強</strong></td><td data-label="何を担えるか">電気を運べる範囲や量を広げる</td><td data-label="何は担えないか"><b>送電線を増やしても、地域の倒れた電柱は直らない。</b>建設と調達に年単位の時間がかかる</td></tr><tr><td data-label="手段"><strong>AIによる予測・点検</strong></td><td data-label="何を担えるか">再エネの予測精度、故障の検知、送電線の容量活用</td><td data-label="何は担えないか">需要そのものは減らない。<b>AI自身も電力を使う</b></td></tr></tbody></table></div>
+<p>一方、<strong>それぞれに容量、立地、費用、建設期間、運用上の制約がある。</strong>蓄電池を置いただけで長期間の燃料不足が解決するわけではないし、送電線を増やしただけで地域の倒れた電柱が直るわけでもない。</p>
+<h3>段階を分けて考える</h3>
+<p>次世代の発電技術についても、<strong>すでに運転している設備、実証段階の技術、研究開発中の技術、将来の商用化見通しを分けて考えたい。</strong></p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">段階の区別</span><div class="kn-t">4つを混ぜない</div><div class="kn-d"><b>①すでに運転している設備</b>（いまの供給力として数えられる）／<b>②実証中の技術</b>（規模と条件が限られる）／<b>③研究段階</b>（時期が定まらない）／<b>④将来予測</b>（前提次第で変わる）。<b>期待される技術を、現在利用できる供給力として数えることはできない。</b></div></aside>
+ <aside class="kn kn-claim"><span class="chip">核融合について</span><div class="kn-t">「投入エネルギーを上回った」の意味</div><div class="kn-d">核融合の研究で「投入したエネルギーを上回るエネルギーが得られた」と報じられる成果がある。<b>これは実験装置の中での特定の条件についての比較であり、発電所全体の消費電力を上回ったという意味でも、商用の送電が可能になったという意味でもない。</b>本特集は、この成果を現在の供給力としては扱わない。</div></aside>
+</div>
+<p><strong>これから必要なのは、「どの発電方法が一つだけ正しいか」という答えを急ぐことではなく、それぞれの技術と設備が何を担え、何は担えないのかを確かめることだ。</strong></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-9" data-part="第9章" data-name="冒頭の問いに戻る">
+<header class="part-head"><span class="part-no">第9章<small>／九章</small></span><h1 class="part-name">冒頭の問いに戻る</h1></header>
+<article class="ch " id="ch-9"><span class="ch-no">第9章</span><h2>冒頭の問いに戻る</h2>
+<p><strong>電気は、どこから来て、なぜ届かなくなるのか。</strong></p>
+<p>電気は発電所でつくられる。けれども、家庭へ届くまでには、<strong>燃料の調達、発電設備、送配電網、周波数と電圧を守る運用、そして設備を維持する人々の仕事</strong>がつながっている。</p>
+<div class="tscroll"><table class="tbl axis wide"><thead><tr><th>どこが欠けると</th><th>どうなるか</th><th>この特集のどこで見たか</th></tr></thead><tbody><tr><td data-label="どこが欠けると"><strong>燃料</strong></td><td data-label="どうなるか">発電に影響する。<b>ただし燃料は一種類ではない</b></td><td data-label="この特集のどこで見たか">第1章</td></tr><tr><td data-label="どこが欠けると"><strong>送電網の余裕</strong></td><td data-label="どうなるか">発電できても、必要な場所へ十分に運べない</td><td data-label="この特集のどこで見たか">第3章・第7章</td></tr><tr><td data-label="どこが欠けると"><strong>電圧や周波数</strong></td><td data-label="どうなるか">保てなければ、系統全体が停止する場合がある</td><td data-label="この特集のどこで見たか">第4章</td></tr><tr><td data-label="どこが欠けると"><strong>地域の配電線</strong></td><td data-label="どうなるか">壊れれば、その先の家庭には届かない</td><td data-label="この特集のどこで見たか">第4章・第5章</td></tr><tr><td data-label="どこが欠けると"><strong>直す人</strong></td><td data-label="どうなるか">設備が届いても、設置し保守する人がいなければ動かない</td><td data-label="この特集のどこで見たか">第4章・第7章</td></tr></tbody></table></div>
+<p>そして、<strong>止まった電気を戻すためには、機器を動かす技術だけでなく、現場に向かい、設備を直し、系統を順序立てて立ち上げる人々の仕事がある。</strong></p>
+<p><strong>電気は、つくる量だけでなく、必要な場所に、必要な時刻に、使える品質で届けられるかが重要になる。</strong></p>
+<p><strong>届かなくなったとき、どこから、どう戻せるのか。</strong></p>
+<p>そこまで含めて考えることが、私たちの暮らしを支える「電気」を理解することなのだ。</p>
+<div class="note"><p><strong>この特集で、あえて書かなかったこと。</strong>①2026年夏の需給について、5つの対策がそれぞれ何％寄与したかという数字。②予備率0.9％と3％を同じ尺度で比べた「改善幅」。③東京の初回出力制御量を電源の種類ごとに分けた内訳。④2026年の熊本地震の停電戸数と復旧完了時刻。⑤停電から何時間後に何が止まるかという全国一律の時刻表。<strong>いずれも、公表資料で裏づけを確認できなかったか、条件の違う数字を並べることになるためである。</strong>確認できたときに、改めて扱いたい。</p></div>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-src" data-part="資料" data-name="この特集で使った出典">
+<header class="part-head"><span class="part-no">資料<small>／九章</small></span><h1 class="part-name">この特集で使った出典</h1></header>
+<article class="ch " id="ch-src"><span class="ch-no">資料</span><h2>この特集で使った出典</h2>
+<p><strong>掲載した出典は、すべて本稿の作成時に実際に内容を取得できたものだけです。</strong>本文中の数値は、対象年・対象地域・単位に加えて、<strong>実績・見通し・推計・将来予測のどれにあたるかを書き添えています。</strong>情報基準日は2026年9月20日です。</p>
+<div class="note"><p><strong>本文に載せなかった数値について。</strong>2026年3月1日の出力制御量を電源の種類ごとに分けた内訳、2026年の熊本地震の停電戸数と復旧完了時刻、2026年夏季の各対策の寄与度、予備率0.9％と3％の比較、核融合の成果を現在の供給力として数えた記述は、<strong>いずれも公表資料で裏づけを確認できなかったため掲載していません。</strong>推測で別の数字を置くこともしていません。</p></div>
+<h3>一次情報（発表元）</h3>
+<ul class="srclist">
+<li><a class="src" href="https://www.enecho.meti.go.jp/statistics/total_energy/pdf/gaiyou2024fykaku.pdf" target="_blank" rel="noopener">［一次］資源エネルギー庁 令和6年度（2024年度）エネルギー需給実績（確報）概要（2026年4月・PDF）— 発電電力量9,911億kWh、火力（バイオマスを除く）67.5％、再生可能エネルギー（水力を含む）23.1％、原子力9.4％、非化石電源比率32.5％</a></li>
+<li><a class="src" href="https://www.meti.go.jp/press/2026/04/20260414001/20260414001.html" target="_blank" rel="noopener">［一次］経済産業省 令和6年度（2024年度）エネルギー需給実績（確報）を取りまとめました（2026年4月14日）— 上記確報の公表</a></li>
+<li><a class="src" href="https://www.meti.go.jp/press/2026/05/20260520001/20260520001.html" target="_blank" rel="noopener">［一次］経済産業省 2026年度夏季の電力需給対策を取りまとめました（2026年5月20日）— 全エリアで予備率3％を確保できる見通し、節電要請を実施しない、「電力需給は予断を許さない状況」</a></li>
+<li><a class="src" href="https://www.tepco.co.jp/pg/company/press-information/press/2026/pdf/260301j0101.pdf" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 再生可能エネルギー出力制御の実施について（2026年3月1日・訂正版・PDF）— 実施理由、期間11時〜16時、最大余剰電力発生時刻、<b>当日指示</b>の制御量3〜118万kW、同日の需給見通し、四捨五入により合計が一致しない旨の注記</a></li>
+<li><a class="src" href="https://www.tepco.co.jp/pg/company/press-information/press/2026/pdf/260301j0201.pdf" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 当社サービスエリアにおける「再生可能エネルギー出力制御」実績（速報値）について（2026年3月1日・PDF）— 当社サービスエリア初の実施、<b>実績（速報値）の再エネ出力制御量184万kW</b>、期間11時〜16時、需給速報（エリア需要2,543万kW・揚水運転617万kW・供給力3,344万kW・再エネ出力1,620万kW）、供給力は出力制御前の値である旨</a></li>
+<li><a class="src" href="https://www.occto.or.jp/news/oshirase_sonotaoshirase_2018_181219_hokkaidokensho_saishuhoukoku.html" target="_blank" rel="noopener">［一次］電力広域的運営推進機関 平成30年北海道胆振東部地震に伴う大規模停電に関する検証委員会最終報告の取りまとめ及び経済産業大臣への提出について（2018年12月19日）— 9月6日3時7分の地震から3時25分の大規模停電までの原因分析、周波数低下リレー（UFR）、約300万kWの供給力確保に至る過程、ブラックスタート電源の立ち上げ</a></li>
+<li><a class="src" href="https://www.occto.or.jp/iinkai/hokkaido_kensho/hokkaidokensho_saishuhoukoku.html" target="_blank" rel="noopener">［一次］電力広域的運営推進機関 同 最終報告（掲載ページ）</a></li>
+<li><a class="src" href="https://www.occto.or.jp/assets/soukaihoka/hyougiinkai/2018/files/hyougiinkai_2018_2_houkoku_1.pdf" target="_blank" rel="noopener">［一次］電力広域的運営推進機関 平成30年北海道胆振東部地震に伴う大規模停電に関する検証委員会 最終報告（概要）（2018年12月19日・PDF）</a></li>
+<li><a class="src" href="https://www.entsoe.eu/news/2026/03/20/entso-e-publishes-expert-panel-final-report-on-28-april-2025-blackout-in-spain-and-portugal/" target="_blank" rel="noopener">［一次］ENTSO-E Publishes Expert Panel Final Report on 28 April 2025 Blackout in Spain and Portugal（2026年3月20日）— 「多数の相互に作用する要因の組み合わせ」、振動、電圧・無効電力の制御の不足、電圧調整の慣行の違い、スペインにおける急激な出力低下と発電機の解列、安定化能力のばらつき</a></li>
+<li><a class="src" href="https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/" target="_blank" rel="noopener">［一次］ENTSO-E 28 April 2025 Iberian Blackout（報告書の掲載ページ）</a></li>
+<li><a class="src" href="https://www.iea.org/reports/oil-market-report-march-2026" target="_blank" rel="noopener">［一次］IEA Oil Market Report – March 2026 — 世界の石油市場の歴史で最大の供給途絶、1973年の石油危機を上回る規模、ホルムズ海峡の流量が戦争前の日量約2,000万バレルからごくわずかへ</a></li>
+<li><a class="src" href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary" target="_blank" rel="noopener">［一次］IEA Key Questions on Energy and AI – Executive summary — データセンターの電力消費が2025年485TWhから2030年950TWhへおよそ倍増、2030年に世界の電力需要の約3％、AIに特化したデータセンターは同期間に3倍</a></li>
+<li><a class="src" href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener">［一次］IEA Energy and AI – Executive summary — 先進国で送電線の建設に4〜8年、変圧器やケーブルの待ち時間がこの3年で倍、AIによる故障検知で停電時間を30〜50％短縮しうる、AIによる再エネ予測と系統統合の改善</a></li>
+<li><a class="src" href="https://www.iea.org/commentaries/overcoming-energy-constraints-is-key-to-delivering-on-europe-s-data-centre-goals" target="_blank" rel="noopener">［一次］IEA Overcoming energy constraints is key to delivering on Europe's data centre goals（2025年11月16日）— データセンターの建設に1〜2年、EU内の系統接続の待ち時間2〜10年、主要拠点では平均7〜10年</a></li>
+<li><a class="src" href="https://www.iea.org/news/rising-component-prices-and-supply-chain-pressures-are-hindering-the-development-of-transmission-grid-infrastructure" target="_blank" rel="noopener">［一次］IEA Rising component prices and supply chain pressures are hindering the development of transmission grid infrastructure（2025年2月25日）— ケーブルの調達2〜3年、大型変圧器は最長4年（2021年の2倍）、ケーブル費用は2019年からほぼ倍、変圧器価格は約75％上昇、送配電網の従事者約800万人と2030年までに150万人以上の増員の必要</a></li>
+<li><a class="src" href="https://www.iea.org/reports/building-the-future-transmission-grid/executive-summary" target="_blank" rel="noopener">［一次］IEA Building the Future Transmission Grid – Executive summary — 上記の調達リードタイムと供給制約の報告本体</a></li>
+<li><a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/fuel_cost_adjustment_001/" target="_blank" rel="noopener">［一次］資源エネルギー庁 燃料費調整制度について — 原油・LNG・石炭の価格変動を毎月の電気料金へ反映する仕組み、上昇を反映できる幅の上限</a></li>
+<li><a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/stracture/spec.html" target="_blank" rel="noopener">［一次］資源エネルギー庁 月々の電気料金の内訳 — 基本料金、電力量料金、再エネ賦課金</a></li>
+<li><a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/stracture/pricing/" target="_blank" rel="noopener">［一次］資源エネルギー庁 料金設定の仕組みとは？</a></li>
+<li><a class="src" href="https://www.enecho.meti.go.jp/category/saving_and_new/saiene/kaitori/surcharge.html" target="_blank" rel="noopener">［一次］資源エネルギー庁 なっとく！再生可能エネルギー（再生可能エネルギー発電促進賦課金）</a></li>
+<li><a class="src" href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/summary/" target="_blank" rel="noopener">［一次］資源エネルギー庁 電気事業制度について — 小売電気事業、一般送配電事業、送電事業、配電事業、特定送配電事業の区分</a></li>
+</ul>
+<h3>この特集の位置づけ</h3>
+<p><strong>本号は、3つの生成AIと編集担当が分担して制作しています。</strong>まず3つのAIが、それぞれ独立に電力について調べました。次に、その3本を突き合わせて食い違いを洗い出し、一本の原稿へまとめました。さらに別のAIが事実関係を精査し、暮らし・地域・未来技術については追加の調査を加えています。最後に、記事としてのHTML制作と、数値・出典・表示・機能の確認を行いました。<strong>公開前には、まとめを担当したAIとは別の視点で、内容の確認を受けています。</strong></p>
+<p><strong>独立して調べた段階で出た数値のうち、まとめる過程で撤回・訂正されたものは復活させていません。</strong>また、<strong>この特集の中心的な問いと結論は、まとめた段階のものを保っています。</strong>出典の照合で確認できなかった数値は、推測で別の数字に置き換えず、本文から外すか、対象範囲を添えて確認できた数値に差し替えています。</p>
+<p><strong>この特集の調査・執筆・編集には、生成AIが関与しています。</strong>第7章でAIの電力需要と、AIを電力設備の運用に使う可能性の両方を扱っているため、この点をはじめに開示しておきます。</p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part part-askai" id="part-askai" data-part="AIで詳しく" data-name="">
+<div class="askai" id="askai">
+  <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+  <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった章や項目の名前に書き換えてからお使いください。</p>
+  <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予測」「仮説」などと明記しています。レポート本文は自動送信されません。</p>
+  <div class="askai-box">
+    <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの『〇〇』について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+    <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+  </div>
+  <div class="askai-links">
+    <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+    <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+    <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+  </div>
+</div>
+
+</section>
+
+<section class="part part-foot" id="part-foot" data-part="一覧・免責" data-name="">
+<p class="backlist"><a href="index.html">← 日曜特集／レポート一覧へ戻る</a></p>
+<footer class="foot">
+  <h2 class="foot-h">免責</h2>
+  <p>本特集は、AI総合研究機構が公開する日曜特集です。掲載内容は作成時点（2026年9月20日）で確認できた情報に基づきます。<strong>本特集では、実績・見通し・推計・将来予測を区別して記載しています。</strong>事実・当事者の主張・報道・分析・将来予測・未確認事項を区別して記載していますが、将来に関する記述はいずれも予測または仮説であり、その実現を保証するものではありません。本特集の内容を根拠とする投資・契約・防災その他の判断は、読者ご自身の責任で行ってください。電気料金の構成や各制度の内容は契約・事業者・時期によって異なり、変更されることがあります。最新の情報は各事業者・官公庁の発表をご確認ください。</p>
+  <p class="disc">情報基準日：2026年9月20日（日）。AI総合研究機構 日曜特集 第5号「電力」。</p>
+</footer>
+</section></div>
+<script>
+(function(){
+  // 現在読んでいる「部」を上部に示す（最小限のスクリプト）
+  var parts = document.querySelectorAll('section.part');
+  var nbPart = document.getElementById('nbPart'), nbName = document.getElementById('nbName');
+  if ('IntersectionObserver' in window && nbPart) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          nbPart.textContent = e.target.getAttribute('data-part') || '';
+          var n = e.target.getAttribute('data-name') || '';
+          nbName.textContent = n ? '　' + n : '';
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    Array.prototype.forEach.call(parts, function(p){ obs.observe(p); });
+  }
+  // AI質問文のコピー
+  var btn = document.getElementById('askaiCopyBtn'), q = document.getElementById('askaiQ');
+  if (btn && q) {
+    btn.addEventListener('click', function(){
+      var t = q.value;
+      function done(){ btn.classList.add('is-copied'); btn.textContent = 'コピーしました';
+        setTimeout(function(){ btn.classList.remove('is-copied'); btn.textContent = '質問文をコピー'; }, 1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, function(){ q.select(); document.execCommand('copy'); done(); });
+      } else { q.select(); document.execCommand('copy'); done(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
