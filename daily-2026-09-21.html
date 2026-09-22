@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年9月21日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  /* ==== 災害支援シグナル ==== */
+  .dsig-wrap{margin:16px 0;}
+  .dsig-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .dsig-head h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);}
+  .dsig-card{border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--line);background:var(--surface-2);}
+  .dsig-red{border-color:rgba(224,36,36,.35);background:linear-gradient(180deg,#FFFBFB,#FFF5F5);}
+  .dsig-amber{border-color:rgba(232,145,45,.35);background:linear-gradient(180deg,#FFFDF8,#FFF8EC);}
+  .dsig-green{border-color:rgba(14,159,110,.3);background:linear-gradient(180deg,#F8FDFB,#F1FAF6);}
+  .dsig-gray{border-color:var(--line);background:var(--surface-2);}
+  .dsig-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800;font-size:14px;margin-bottom:6px;}
+  .dsig-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;}
+  .dsig-red .dsig-badge{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .dsig-amber .dsig-badge{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .dsig-green .dsig-badge{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .dsig-gray .dsig-badge{color:#6B7280;background:#F4F6F9;border:1px solid var(--line);}
+  .dsig-days{font-size:11px;color:var(--ink-3);font-weight:700;}
+  .dsig-flow{display:flex;flex-wrap:wrap;gap:4px;font-size:10.5px;margin:8px 0;color:var(--ink-3);}
+  .dsig-flow span{padding:2px 7px;border-radius:6px;background:var(--line-2);}
+  .dsig-flow span.done{background:#EAF7F1;color:#0B7A55;font-weight:700;}
+  .dsig-flow span.unknown{background:var(--line-2);color:var(--ink-3);border:1px dashed var(--line);}
+  .dsig-rows{font-size:12.5px;color:var(--ink-2);}
+  .dsig-rows div{display:flex;gap:6px;padding:3px 0;border-top:1px dashed var(--line-2);}
+  .dsig-rows div:first-child{border-top:none;}
+  .dsig-rows .k{flex:none;width:92px;color:var(--ink-3);font-weight:700;}
+  .dsig-rows .v-unknown{color:#6B7280;font-style:italic;}
+  .dsig-meta{font-size:10.5px;color:var(--ink-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);}
+  .dsig-meta a{color:inherit;}
+  @media(max-width:560px){.dsig-rows div{flex-direction:column;gap:1px;}.dsig-rows .k{width:auto;}}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  /* ===== 今日いちばん重要なこと ===== */
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+
+  /* ===== 分野ひとこと ===== */
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+
+  /* ===== 分野別ダイジェスト ===== */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+
+  /* 分野ごとの詳細を折りたたむ（内容は削らず、閉じているだけ） */
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+</head><body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年9月21日（月・敬老の日）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今日は、予報が実害に変わった朝です。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の一日レポートです。<strong>本日は祝日ですが、通常どおり作成しています。</strong>今朝は、<strong>台風25号が前日の予報より発達して関東へ向かっていること</strong>、<strong>昨日まで「可能性」だった運休が「計画運休」に変わったこと</strong>、<strong>すでに停電と避難指示が出ていること</strong>、そして<strong>カタールのLNG増産計画に遅れの可能性が出たこと</strong>を中心にお伝えします。<strong>本号は、予報・警報・避難情報・実際の被害を、それぞれ別のものとして書き分けます。</strong>本日から9月23日まで日本の現物株式市場は休場です。<strong>本号に載せた株価・金利・為替・商品の値は、すべて9月18日（金）の終値または最終時点の値であり、本日の値ではありません。</strong>暗号資産は祝日も取引されているため、取得時刻を付けて記載しています。</p>
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-typhoon">台風25号 <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風25号は9月21日6時に<b>八丈島の南西約210キロ、中心気圧965ヘクトパスカル</b>。<b>前日の予報は同じ21日6時を「南西約250キロ・970ヘクトパスカル」としており、同じ時刻どうしの比較で約40キロ近く、5ヘクトパスカル低い値でした。</b>18時に館山市の南南東約120キロまで近づき、23日3時に温帯低気圧へ変わる予報です。</b>
+        <span class="but"><em>特に重要</em> 気象庁は<b>3時間刻みの予報</b>を出す段階に入りました。接近中であることを示します。<strong>前日の予報をそのまま使わず、9月21日6時50分発表へ差し替えています。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-damage">実害 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>5時時点で東京電力パワーグリッド管内の約1,700軒超が停電</b>しています（千葉県で約780軒、神奈川県の相模原市ほか）。<b>千葉・神奈川・東京・静岡の53市区町村で、避難情報の発令または避難所の開設を確認</b>しました。<b>内訳は避難指示27市区町村、高齢者等避難6市町、避難所の開設のみ20市区町村</b>です。</b>
+        <span class="but"><em>事実</em> <strong>昨日まで「予報」だったものが、今朝は「発生した事実」に変わりました。</strong>横浜市は港北区の一部に対し、<b>避難指示の発令理由として「土砂災害発生のため」</b>を示しています（4時30分発令）。<b>その土砂災害の場所・規模・人的被害は確認できていません。</b>本号はここから、予報・警報・避難情報・実際の被害を分けて記載します。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-rain">雨・風・波 <span class="kw-arrow">↓</span></a></span><span>
+        <b>千葉県北西部・北東部の<b>21日6時から22日6時までの予想降水量は、1時間70ミリ・24時間300ミリ</b>。<b>前日発表の1時間40ミリ・24時間200ミリから増えています。</b>伊豆諸島南部の波は<b>8メートルのち9メートル</b>です。</b>
+        <span class="but"><em>予報</em> これは予報であって、発生した被害ではありません。<strong>東京・千葉・神奈川・茨城・静岡のいずれも、昼前から雷を伴い非常に激しい雨の予想です。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-move">連休の交通 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>計画運休の開始時刻より前に、すでに止まっている区間があります。</b>9月21日7時52分現在、JR東日本の<b>外房線（誉田〜安房鴨川）・内房線（千倉〜安房鴨川）・総武本線（佐倉〜成東）・成田線（成田〜銚子）・東金線（全線）・鹿島線（佐原〜鹿島神宮）が運転見合わせ中</b>で、いずれも再開見込みは立っていません。久留里線は終日取りやめです。</b>
+        <span class="but"><em>決定</em> <strong>これとは別に、午後からの計画運休が決まっています（内房線・外房線・青梅線は14時ごろ、八高線・東金線は15時ごろ、総武本線・成田線・鹿島線は16時ごろから）。</strong>全日空<b>53便・約9,700人</b>、日本航空<b>10便・約675人</b>の欠航は9月20日23時00分時点の集計です。<strong>運転見合わせの区間と計画運休の区間は一致しません。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-disaster">災害支援 <span class="kw-arrow">↓</span></a></span><span>
+        <b>小笠原諸島は台風本体が離れ、くもり時々晴れ。十勝岳の噴火警戒レベル3は継続しています。<b>本日、新たな大規模災害として確認できたものはありません。</b></b>
+        <span class="but"><em>十分に調べられなかった</em> <strong>祝日の朝という時間帯もあり、当日の海外速報を網羅的に確認できていません。</strong>前号から持ち越している住家被害2,677棟のその後、義援金・支援窓口、JR内房線の復旧も、更新を確認できていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-lng">LNG <span class="kw-arrow">↓</span></a></span><span>
+        <b>カタールエナジーのサアド・アル・カービ最高経営責任者が、<b>ホルムズ海峡の問題で重要な設備がカタールへ届かず、増産計画の一部が遅れる可能性がある</b>と述べました。ノースフィールド・イーストは2027年、ノースフィールド・サウスは2028年の稼働開始予定です。</b>
+        <span class="but"><em>経営者の懸念</em> <strong>これは「遅れる可能性がある」という発言であって、工期変更の正式決定ではありません。</strong>同氏は現在の生産量を<b>「ごくわずか」</b>とも述べています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-saudi">サウジ <span class="kw-arrow">↓</span></a></span><span>
+        <b>サウジアラビアの原油積み出しは<b>1〜2月の日量750万バレルから、9月前半は約210万バレルへ約70%減</b>。一方でホルムズ海峡経由は<b>9月前半に日量200万バレル超</b>へ増え、8月より約100万バレル多い水準です。</b>
+        <span class="but"><em>分けて読む</em> <strong>東西パイプラインの復旧時期について、サウジ当局は見通しを示していません。</strong>報道による見積もりは「数日」から「8週間」まで開いています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-hormuz">ホルムズ <span class="kw-arrow">↓</span></a></span><span>
+        <b>国際通貨基金PortWatchの日次データを本日も取得しましたが、<b>最新は2026年9月13日のままで、9月14日以降は入っていません</b>。</b>
+        <span class="but"><em>一次情報未確認</em> <strong>本紙が持つ一次データは8日前で止まっています。</strong>AISで確認できた隻数を実際の全通航数として扱わず、一日の数字で「封鎖」とも「正常化」とも書きません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-route">迂回輸送 <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡経由は<b>約3,370海里・10日</b>、喜望峰回りは<b>約13,140海里で、ほぼ1か月多くかかります</b>。オマーンのソハール沖では洋上での積み替えが行われ、エジプトのスエズ湾側とスエド・パイプライン経由の地中海側も使われています。</b>
+        <span class="but"><em>事実</em> <strong>9月13日から9日連続で取れなかった「喜望峰回り」について、隻数ではないものの、距離と所要日数の差が確認できました。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-fuel">燃料 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国の軽油小売は<b>9月14日時点の1ガロン6.285ドル</b>が最新のままです。<b>次の公表は9月22日</b>で、本日時点でこれより新しい週次の値はありません。</b>
+        <span class="but"><em>事実</em> <strong>原油価格が下がっても、軽油が下がるとは限りません。</strong>作る力（製油所）と運ぶ力（タンカー・港）が制約になっている局面では、原油と製品は別々に動きます。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-russia">ロシア・ウクライナ <span class="kw-arrow">↓</span></a></span><span>
+        <b>ロシアの下院選挙の最終日にあたる9月20日、<b>モスクワへ大規模な無人機攻撃</b>があり、モスクワ市長は<b>1,600機超を迎撃、うち450機が首都へ向かっていた</b>と述べました。<b>モスクワの製油所の施設が損傷</b>し、21階建ての建物では火災で400人が避難、3人が死亡しました。</b>
+        <span class="but"><em>分けて読む</em> <strong>攻撃の発生と、製油所の稼働停止は別の事実です。</strong>同じ夜、ウクライナ側でもキーウ州で子ども3人を含む4人、ヘルソン州で3人が死亡したと当局が発表しています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-uschina">米中協議 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米財務長官と中国の何立峰副首相が9月20日、<b>ニューヨークで終日の協議</b>に入りました。議題は<b>11月10日に期限が切れる通商休戦、中国のレアアース磁石の流れ、そしてAIの安全性の歯止め</b>です。</b>
+        <span class="but"><em>段階を分ける</em> <strong>これは「議題に挙がった」段階です。</strong>合意にも正式文書にもなっていません。今週の首脳会談に向けた地ならしと位置づけられています。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-dram">DRAM <span class="kw-arrow">↓</span></a></span><span>
+        <b>CXMTが9月20日、合肥の世界製造業大会で<b>第5世代DRAM製造基盤（G5）の量産</b>を発表しました。<b>記憶領域の間隔を11.95ナノメートルまで詰め、ウエハー1枚あたりの取り数を5割以上増やせる</b>としています。</b>
+        <span class="but"><em>混同しない</em> <strong>これはスマートフォンなどに使う一般向けDRAMで、AIアクセラレーター向けのHBMとは別のものです。</strong>この発表からHBMの供給制約が解けたとは言えません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">取引日程 <span class="kw-arrow">↓</span></a></span><span>
+        <b>本日から<b>9月23日まで日本の現物株式市場は休場</b>です。一方、日本取引所グループは<b>9月21日・22日・23日のデリバティブ祝日取引を実施</b>すると9月18日に発表しています。</b>
+        <span class="but"><em>見方</em> <strong>金曜の終値を「本日の日本株の値動き」とは書きません。</strong>暗号資産は9月21日6時30分（日本時間）時点でビットコイン80,851ドルです。休場明けの値動きは予測しません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-check">答え合わせ <span class="kw-arrow">↓</span></a></span><span>
+        <b>前号が「21日に見る」と書いた項目のうち、<b>台風の実測・交通の確定・中国の最優遇貸出金利</b>で結果が出ました。<b>予報より発達し、運休は決定に変わりました。</b></b>
+        <span class="but"><em>見方</em> 当たり外れではなく、何が分かり、何がまだ分からないかで整理します。<strong>前号が「連休の移動で見るべき日は21日」と書いた見方は、計画運休の内容と整合しました。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-unknown">未確認 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>「情報がなかった」と「十分に調べられなかった」を分けて書きます。</b>本日も気象庁の警報・注意報の配信データが取得できず、警報の有無を一次で確認できていません。</b>
+        <span class="but"><em>未確認</em> <strong>3日連続で同じ事象です。</strong>取得すると発表時刻が2026年5月28日と表示されます。天気予報・府県概況の配信（9月21日4時35分〜5時）は最新です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">予定 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>本日昼過ぎから夜にかけてが台風の山</b>です。22日にスペースXの14回目の飛行と米EIAの週次燃料価格、23日に主要国のPMI速報、24日に日銀の新方針の適用開始と日本市場の再開が並びます。</b>
+        <span class="but"><em>予定</em> <strong>未確定の日程は、確定したものとしては書きません。</strong>米中首脳会談は「今週」とされていますが、日時と議題の確定を本紙は確認できていません。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">台風25号 中心気圧</div><div class="vl mono">965</div><div class="ch up">大型・強い</div><div class="ctx">hPa・9/21 5時 実況</div></div>
+      <div class="cell"><div class="nm">八丈島からの距離</div><div class="vl mono">220</div><div class="ch up">南西・北へ20km/h</div><div class="ctx">km・9/21 5時</div></div>
+      <div class="cell"><div class="nm">停電（東電PG管内）</div><div class="vl mono">1,700</div><div class="ch up">千葉約780軒ほか</div><div class="ctx">軒超・9/21 5時</div></div>
+      <div class="cell"><div class="nm">千葉の24時間雨量</div><div class="vl mono">300</div><div class="ch up">前日予想は200</div><div class="ctx">ミリ・21日6時〜22日6時 予想</div></div>
+      <div class="cell"><div class="nm">伊豆諸島南部の波</div><div class="vl mono">9</div><div class="ch up">8メートルのち</div><div class="ctx">メートル・21日</div></div>
+      <div class="cell"><div class="nm">全日空の欠航</div><div class="vl mono">53</div><div class="ch down">約9,700人に影響</div><div class="ctx">便・9/21・20日23時時点</div></div>
+      <div class="cell"><div class="nm">日本航空の欠航</div><div class="vl mono">10</div><div class="ch down">約675人に影響</div><div class="ctx">便・9/21・同</div></div>
+      <div class="cell"><div class="nm">サウジの原油積み出し</div><div class="vl mono">-70%</div><div class="ch down">750→約210万b/d</div><div class="ctx">1〜2月→9月前半</div></div>
+      <div class="cell"><div class="nm">ホルムズ一次データ</div><div class="vl mono">9/13</div><div class="ch down">8日連続で未更新</div><div class="ctx">IMF PortWatch・9/21確認</div></div>
+      <div class="cell"><div class="nm">米ディーゼル小売</div><div class="vl mono">6.285</div><div class="ch up">次回公表は9/22</div><div class="ctx">ドル/ガロン・EIA 9/14</div></div>
+      <div class="cell"><div class="nm">CXMT 取り数の増加</div><div class="vl mono">+50%</div><div class="ch up">11.95nm・G5</div><div class="ctx">%以上・企業発表</div></div>
+      <div class="cell"><div class="nm">モスクワへの無人機</div><div class="vl mono">450</div><div class="ch up">1,600機超を迎撃</div><div class="ctx">機・9/20・市長発表</div></div>
+      <div class="cell"><div class="nm">ビットコイン</div><div class="vl mono">80,851</div><div class="ch down">24時間-0.19%</div><div class="ctx">ドル・9/21 6:30時点</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-typhoon">台風25号：予報より発達して、いま関東へ向かっています</a></li>
+      <li><a href="#sec-damage">予報から実害へ：停電と、1都3県53市区町村の避難情報の発令または避難所開設</a></li>
+      <li><a href="#sec-rain">予想雨量が1.5倍に増えました</a></li>
+      <li><a href="#sec-move">交通：すでに止まっている区間と、計画運休を分けます</a></li>
+      <li><a href="#sec-disaster">災害支援シグナル：台風以外と、世界の状況</a></li>
+      <li><a href="#sec-lng">カタールのLNG増産計画に、遅れの可能性が出ました</a></li>
+      <li><a href="#sec-saudi">サウジの積み出しは7割減りました</a></li>
+      <li><a href="#sec-hormuz">ホルムズの一次データは、8日連続で止まっています</a></li>
+      <li><a href="#sec-route">迂回路の所要日数が、数字で見えました</a></li>
+      <li><a href="#sec-fuel">米国の燃料価格は、明日まで更新されません</a></li>
+      <li><a href="#sec-russia">モスクワの製油所が被弾し、双方に死者が出ました</a></li>
+      <li><a href="#sec-uschina">米中が、AI・レアアース・関税を同じ机に載せました</a></li>
+      <li><a href="#sec-dram">中国が第5世代DRAMの量産を発表しました</a></li>
+      <li><a href="#sec-market">日本は3日間の休場、海外は動きます</a></li>
+      <li><a href="#sec-check">前号D55の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">連休と来週のウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <section id="sec-typhoon">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・本日の軸</span><span class="sec-title">台風25号は、前日の予報より発達して関東へ向かっています <span class="sub">/ 9月21日6時50分 気象庁発表</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-top">一次情報</span></div>
+
+    <p><strong>まず、前号の予報と今朝の実況を並べます。</strong></p>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">前号が載せた予報（9/20 6時45分発表）</div><div class="vl">21日6時・八丈島の南西約250km</div><div class="ch">970 hPa</div></div>
+      <div class="eq"><div class="nm">今朝の実況（9/21 6時50分発表）</div><div class="vl">21日6時・八丈島の南西約210km</div><div class="ch up">965 hPa</div></div>
+    </div>
+    <p><strong>どちらも「21日6時」の値です。同じ時刻どうしの比較で、実際の位置は予報より約40キロ近く、中心気圧は5ヘクトパスカル低い値でした。</strong>つまり、予報よりやや発達して接近しています。<strong>予報と実況は別のものですが、この2つは対象時刻が同じなので、そのまま並べて比べられます。</strong></p>
+
+    <h4>9月21日6時の実況</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">中心気圧</div><div class="vl">965 hPa</div><div class="ch up">大型で強い</div></div>
+      <div class="eq"><div class="nm">最大風速（中心付近）</div><div class="vl">35 m/s</div><div class="ch up">最大瞬間 50 m/s</div></div>
+      <div class="eq"><div class="nm">位置</div><div class="vl">八丈島の南西約210km</div><div class="ch">北緯31.9度・東経138.1度</div></div>
+      <div class="eq"><div class="nm">進行</div><div class="vl">北北東 20 km/h</div><div class="ch">暴風域 半径185km／強風域 東650km・西440km</div></div>
+    </div>
+
+    <div class="counter">
+      <h5>気象庁が「3時間刻みの予報」を出す段階に入りました</h5>
+      <p><strong>本日6時50分の発表は、1時間後（7時）の推定に続いて、3時間後から24時間後まで3時間刻みで並び、最後に45時間後（23日3時）が付きます。</strong>前日までは12時間・24時間・45時間・69時間という間隔でした。<strong>細かい予報が出るのは、接近しているためです。1時間ごとの予報ではありません。</strong></p>
+    </div>
+
+    <h4>本日の経路（すべて予報）</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>9月21日7時</em>推定（予報ではなく推定）</div>
+        <div class="dg-r"><span>位置</span><span><b>八丈島の南西約190km</b>。北北東へ20km/h、965ヘクトパスカル</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日9時〜12時</em>接近中</div>
+        <div class="dg-r"><span>位置</span><span>北緯32.4度から32.9度へ、北北東に20km/h。965ヘクトパスカルのまま</span></div>
+        <div class="dg-r"><span>予報円</span><span>半径30kmから35km。<b>進路の幅はほとんど広がっていません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日15時</em>伊豆諸島の北へ</div>
+        <div class="dg-r"><span>位置</span><span>北緯33.4度・東経139.4度（<b>八丈島の北側</b>）。北東へ25km/h、予報円は半径40km</span></div>
+        <div class="dg-r"><span>暴風域</span><span>南東側220km・北西側135km。<b>非対称になり、南東側が広くなります</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日18時</em>房総半島に最も近づく時間帯</div>
+        <div class="dg-r"><span>位置</span><span><b>館山市の南南東約120km</b>。北東へ35km/h、予報円は半径45km</span></div>
+        <div class="dg-r"><span>暴風域</span><span>南東側230km・北西側140km</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日21時〜22日3時</em>関東の東へ抜ける</div>
+        <div class="dg-r"><span>位置</span><span>北緯34.6度・東経141.1度から、北緯36.0度・東経143.4度へ。北東35km/hから東北東45km/hへ加速</span></div>
+        <div class="dg-r"><span>前号との違い</span><span>前号（9/20 6時45分発表）は「22日3時に<b>銚子市の東約160km</b>」でした。本日5時45分発表では同じ22日3時を「銚子市の東北東約240km」としており、<b>前号よりやや遠く、やや北寄りを通る予報に変わっています</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月22日6時</em>三陸沖</div>
+        <div class="dg-r"><span>位置</span><span>三陸沖。北東へ45km/h、965ヘクトパスカルのまま</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月23日3時</em>日本のはるか東</div>
+        <div class="dg-r"><span>勢力</span><span><b>温帯低気圧に変わる予報。</b>984ヘクトパスカル、最大風速25メートル。予報円は半径155km</span></div>
+      </div>
+    </div>
+
+    <p><strong>本日の昼過ぎから夜にかけてが山です。</strong>中心が最も近づくのは夕方から夜ですが、<strong>雨と風は昼前から強まる予想です。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2630/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第25号の推定・予報（9月21日6時50分発表）</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/targetTc.json" target="_blank" rel="noopener">［一次］気象庁 発表中の台風一覧</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json" target="_blank" rel="noopener">［一次］気象庁 東京都の府県概況（9月21日4時43分）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-damage">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・実害</span><span class="sec-title">予報から実害へ。停電が発生し、1都3県の53市区町村で避難情報の発令または避難所の開設を確認しました <span class="sub">/ 9月20日19時〜21日6時35分の発令・9月21日7時20分取得（袖ケ浦市は7時55分に追加確認）</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-imp">昨日との違い</span></div>
+
+    <p><strong>昨日まで「予報」だったものが、今朝は「発生した事実」に変わりました。</strong>本紙はここを、災害報道でいちばん注意して書く場所だと考えています。</p>
+
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>停電</em>9月21日5時時点</div>
+        <div class="dg-r"><span>規模</span><span>東京電力パワーグリッド管内で<b>約1,700軒超</b></span></div>
+        <div class="dg-r"><span>内訳</span><span><b>千葉県で約780軒</b>（大網白里市ほか）、<b>神奈川県</b>（相模原市ほか）</span></div>
+        <div class="dg-r"><span>出どころ</span><span>東京電力パワーグリッドのホームページに出ている数字を、NHKが9月21日5時46分に報じたもの。<b>数字は5時時点</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>避難情報</em>9月21日7時20分時点</div>
+        <div class="dg-r"><span>確認できた範囲</span><span>千葉県<b>38</b>市区町村、神奈川県<b>5</b>、東京都<b>7</b>、静岡県<b>3</b>の<b>計53市区町村</b>で、<b>避難情報の発令または避難所の開設</b>を確認しました。<b>53市区町村すべてに避難情報が出ているという意味ではありません</b></span></div>
+        <div class="dg-r"><span>内訳</span><span><b>避難指示 27市区町村</b>（千葉23・神奈川3・東京1・静岡0）／<b>高齢者等避難 6市町</b>（千葉3・神奈川1・静岡2・東京0）／<b>避難所の開設のみ 20市区町村</b>（千葉12・神奈川1・東京6・静岡1）</span></div>
+        <div class="dg-r"><span>数え方</span><span>1つの自治体が避難指示と高齢者等避難の両方を出している場合は、<b>強いほうの避難指示として1件だけ数えています</b>（館山市など）。避難所を開設していても避難情報を出していない自治体は「避難所の開設のみ」に入れています</span></div>
+        <div class="dg-r"><span>段階</span><span>避難情報は、高齢者等避難（レベル3）・避難指示（レベル4）・緊急安全確保（レベル5）の順に強くなります。<b>避難指示は上から2番目</b>です</span></div>
+      </div>
+    </div>
+
+    <h4>いつ、どこに出たか（発令元の発表で確認できたもの）</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>9月20日19時00分</em>東京都大島町</div>
+        <div class="dg-r"><span>内容</span><span><b>全域に避難指示</b>（レベル4）。対象は<b>1,901世帯・3,020人</b></span></div>
+        <div class="dg-r"><span>理由</span><span>土砂災害警戒のため</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月20日23時17分</em>千葉県南房総市</div>
+        <div class="dg-r"><span>内容</span><span><b>全域に避難指示</b>（レベル4）。対象世帯数・人数は公表されていません</span></div>
+        <div class="dg-r"><span>理由</span><span>市の補足説明は「レベル4土砂災害危険警報発表のため」</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日3時29分</em>千葉県館山市</div>
+        <div class="dg-r"><span>内容</span><span><b>土砂災害警戒区域に避難指示</b>（レベル4）。前日9時から、それ以外の全域に高齢者等避難（レベル3）</span></div>
+        <div class="dg-r"><span>理由</span><span>市の補足説明は「レベル4土砂災害危険警報発表のため」</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日4時30分</em>横浜市港北区</div>
+        <div class="dg-r"><span>内容</span><span><b>日吉本町3丁目の一部に避難指示</b>（レベル4）。<b>18世帯・20人</b></span></div>
+        <div class="dg-r"><span>発令理由</span><span><b>横浜市が避難指示の発令理由として示した内容は「土砂災害発生のため」です。</b>本日確認できた発令のうち、警戒ではなく<b>発生</b>を理由に挙げているのはこれだけです</span></div>
+        <div class="dg-r"><span>本紙が確認できたこと</span><span><b>確認できたのは「横浜市がこの理由を示して避難指示を出した」ことまでです。</b>土砂災害そのものについては、<b>発生場所・被害の規模・人的被害の有無のいずれも確認できていません。</b>本紙は、発令理由をもって土砂災害の規模や被害を推測しません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日5時30分</em>千葉県鋸南町</div>
+        <div class="dg-r"><span>内容</span><span><b>土砂災害警戒区域に避難指示</b>（レベル4）。対象世帯数・人数は公表されていません</span></div>
+        <div class="dg-r"><span>避難所</span><span>4時36分に保健福祉総合センター（保田560）と役場本庁（下佐久間3458）の2か所を開設</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日6時17分</em>横浜市港北区</div>
+        <div class="dg-r"><span>内容</span><span>日吉台小学校を避難所として開設。<b>6世帯・7人が避難</b>（同区の発表）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月21日6時35分</em>千葉県袖ケ浦市</div>
+        <div class="dg-r"><span>内容</span><span><b>土砂災害特別警戒区域および土砂災害警戒区域に避難指示</b>（レベル4）。<b>1万8,000世帯・4万363人</b></span></div>
+        <div class="dg-r"><span>同時に</span><span>小櫃川流域の河川氾濫浸水想定区域に<b>高齢者等避難</b>（レベル3）。7,674世帯・1万7,628人</span></div>
+        <div class="dg-r"><span>理由</span><span>市の補足説明は「市内全域に土砂災害の危険性及び小櫃川流域の河川氾濫の危険性が高まったため」</span></div>
+        <div class="dg-r"><span>規模</span><span><b>本紙が確認できた発令のうち、対象人数が公表されているものとしては最も大きい規模です。</b>これは袖ケ浦市が対象とした人数であり、<b>千葉県全体や1都3県全体の避難対象人数ではありません</b></span></div>
+        <div class="dg-r"><span>数え方</span><span>袖ケ浦市は<b>すでに「避難指示27市区町村」に含まれています。</b>この行を加えても自治体数は増えません</span></div>
+      </div>
+    </div>
+
+    <div class="counter">
+      <h5>4つを分けて読んでください</h5>
+      <ul>
+        <li><strong>気象庁の警報・注意報</strong>　気象の状態について気象庁が出すもの。<strong>本日は配信データを取得できず、一次で確認できていません</strong>（後述）。</li>
+        <li><strong>自治体の避難情報</strong>　市区町村が出すもの。<strong>避難指示・高齢者等避難は、自治体が発令する避難情報です。避難所の開設は、避難情報の発令とは別に確認する情報です。本号では両者を分けて集計しています。</strong>複数の自治体の補足説明にある「レベル4土砂災害危険警報」は、自治体が避難指示の根拠として挙げている表現です。</li>
+        <li><strong>実際に発生した被害</strong>　停電の軒数など、起きたことの記録。<strong>5時時点で約1,700軒超。</strong><strong>横浜市港北区の「土砂災害発生」は、横浜市が避難指示の発令理由として示した内容であり、本紙が独立して確認した被害ではありません。</strong>この2つは分けて扱います。</li>
+        <li><strong>予報</strong>　これから起きるかもしれないこと。雨量や波高の予想はこれです。</li>
+      </ul>
+      <p><strong>この4つは、発表する主体も、確からしさも違います。</strong>本紙はまとめて「台風の被害」とは書きません。</p>
+    </div>
+
+    <div class="unknown">
+      <p><strong>本日7時20分の時点で確認できていないこと：</strong>人的被害、行方不明者、住家被害、断水、通信障害、道路・鉄道の被害、医療機関への影響。横浜市港北区の避難指示の発令理由に挙げられた土砂災害については、<strong>発生場所・被害の規模・人的被害の有無のいずれも確認できていません。</strong><strong>「発生していない」ではなく「確認できていない」という意味です。</strong>また、<strong>避難情報の発令または避難所の開設があった自治体が53市区町村であることまでは確認できましたが、それぞれの対象地区・対象人数までは網羅できていません。</strong></p>
+      <p><strong>本日は台風が接近している日です。お住まいの地域に避難情報が出ているかどうかは、本紙ではなく、市区町村と気象庁の発表を直接ご確認ください。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20260921de51524" target="_blank" rel="noopener">NHK（停電 関東中心に1700軒余・9月21日5時46分。数字は5時時点）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/12/" target="_blank" rel="noopener">千葉県内の避難情報・避難所開設（Lアラートを通じた各自治体の発表。9月21日7時20分取得）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/14/" target="_blank" rel="noopener">神奈川県内の避難情報・避難所開設（同）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/13/" target="_blank" rel="noopener">東京都内の避難情報・避難所開設（同）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/22/" target="_blank" rel="noopener">静岡県内の避難情報・避難所開設（同）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/12/12463/" target="_blank" rel="noopener">鋸南町の発表（発表自治体：鋸南町・9月21日5時30分発令）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/14/14109/" target="_blank" rel="noopener">横浜市港北区の発表（発表自治体：横浜市・9月21日4時30分発令）</a>／<a class="src" href="https://crisis.yahoo.co.jp/evacuation/12/12229/" target="_blank" rel="noopener">袖ケ浦市の発表（発表自治体：袖ケ浦市・9月21日6時35分発令・9月21日7時55分取得）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/120000.json" target="_blank" rel="noopener">［一次］気象庁 千葉県の府県概況（9月21日4時44分・銚子地方気象台）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-rain">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・予報</span><span class="sec-title">予想雨量が前日の1.5倍に増えました <span class="sub">/ 9月21日5時 気象庁発表</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-warn">予報であって被害ではない</span><span class="lab lab-top">一次情報</span></div>
+
+    <p><strong>以下はすべて予報です。</strong>前節の停電・避難指示とは別のものとして読んでください。</p>
+
+    <h4>予想降水量が増えています</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">千葉県北西部・北東部（前日発表）</div><div class="vl">1時間40ミリ／24時間200ミリ</div><div class="ch">20日6時〜21日6時</div></div>
+      <div class="eq"><div class="nm">同（本日発表）</div><div class="vl">1時間70ミリ／24時間300ミリ</div><div class="ch up">21日6時〜22日6時</div></div>
+    </div>
+    <p><strong>1時間降水量で1.75倍、24時間降水量で1.5倍に増えました。</strong>対象の期間が1日ずれているため単純な増加とは言えませんが、<strong>同じ地域・同じ気象台の、同じ様式の予想がこれだけ変わったという事実です。</strong></p>
+
+    <h4>地域ごとの予報</h4>
+    <ul>
+      <li><strong>東京地方</strong>　雨。<strong>所により昼前から雷を伴い非常に激しく降る。</strong>風は北の風のち強く、23区西部ではのち非常に強い。波は1メートルのち2.5メートル。</li>
+      <li><strong>伊豆諸島北部</strong>　<strong>所により夜のはじめ頃まで雷を伴い非常に激しい雨。</strong>北東の風強くのち西の風非常に強く。波は<strong>5メートルのち8メートル</strong>。</li>
+      <li><strong>伊豆諸島南部</strong>　<strong>所により昼前から夕方にかけて雷を伴い非常に激しい雨。</strong>南の風非常に強くのち西の風非常に強く。波は<strong>8メートルのち9メートル</strong>（三宅島は7メートルのち9メートル）。</li>
+      <li><strong>千葉県</strong>　昼前から雷を伴い非常に激しく降る所。<strong>太平洋沿岸は21日から22日にかけてうねりを伴い大しけ。「船舶は高波に警戒」</strong>。</li>
+      <li><strong>神奈川県</strong>　昼前から夜のはじめ頃にかけて雷を伴い非常に激しく降る所。海上はうねりを伴いしけ。</li>
+      <li><strong>茨城県</strong>　昼過ぎから雷を伴い非常に激しく降る所。海上は大しけ。</li>
+      <li><strong>静岡県</strong>　雷を伴って非常に激しく降る所。<strong>夕方から次第に曇り</strong>。</li>
+      <li><strong>小笠原諸島</strong>　くもり時々晴れ。<strong>台風本体は離れています。</strong>波は4メートルのち3メートル。</li>
+    </ul>
+
+    <div class="note">
+      <p><strong>22日は回復の予報です。</strong>東京・神奈川・茨城はいずれも「曇り時々晴れ」、千葉は「曇り、未明は雨」。<strong>台風は日本の東を北東へ進み、高気圧に緩やかに覆われる見込み</strong>とされています。</p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json" target="_blank" rel="noopener">［一次］気象庁 東京都の天気予報（9月21日5時発表）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/120000.json" target="_blank" rel="noopener">［一次］気象庁 千葉県の府県概況（9月21日4時44分・予想降水量を含む）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/140000.json" target="_blank" rel="noopener">［一次］気象庁 神奈川県の府県概況（9月21日4時35分・横浜地方気象台）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/080000.json" target="_blank" rel="noopener">［一次］気象庁 茨城県の府県概況（9月21日4時42分・水戸地方気象台）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json" target="_blank" rel="noopener">［一次］気象庁 静岡県の府県概況（9月21日4時43分・静岡地方気象台）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-move">
+    <div class="sec-head"><span class="tick"></span><span class="cat">交通・連休</span><span class="sec-title">すでに止まっている区間があります。「計画運休」の開始時刻より前です <span class="sub">/ 鉄道は9月21日7時52分現在・JR東日本公式</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-imp">前号からの変化</span></div>
+
+    <p><strong>前号（9月20日）の時点では、JR東日本は「遅れや運休の可能性」を示した段階でした。本紙はそれを「まだ決まっていない」と書きました。今朝は、決定に変わっただけでなく、すでに止まっている区間があります。</strong></p>
+    <div class="counter">
+      <h5>鉄道は、次の3つを分けて読んでください</h5>
+      <ul>
+        <li><strong>運転見合わせ中</strong>　確認した時点で、<strong>実際にいま止まっている</strong>区間。</li>
+        <li><strong>計画運休</strong>　今後、運転を取りやめると<strong>決定している</strong>区間・時間帯。</li>
+        <li><strong>運休・遅延の可能性</strong>　<strong>まだ決まっていない</strong>もの。</li>
+      </ul>
+      <p><strong>計画運休の開始予定時刻は、「その時刻までは動く」という意味ではありません。</strong>本日は、開始予定時刻より前にすでに止まっている区間があります。<strong>運転見合わせの区間と、計画運休の区間は一致しません。</strong></p>
+    </div>
+
+    <h4>①-A 鉄道：すでに運転を見合わせている区間（9月21日7時52分現在）</h4>
+    <p><strong>JR東日本の運行情報によると、次の区間は確認した時点ですでに止まっています。いずれも運転再開の見込みは立っていません。</strong></p>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>外房線</em>誉田〜安房鴨川</div>
+        <div class="dg-r"><span>状態</span><span><b>大雨の影響で上下線の運転を見合わせ</b>。再開見込みは立っていません</span></div>
+        <div class="dg-r"><span>あわせて</span><span>千葉〜誉田は大雨の影響で<b>大幅に運転本数が少なく</b>なっています</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>内房線</em>千倉〜安房鴨川</div>
+        <div class="dg-r"><span>状態</span><span><b>大雨の影響で上下線の運転を見合わせ</b>。再開見込みは立っていません</span></div>
+        <div class="dg-r"><span>あわせて</span><span>君津〜千倉は<b>大幅に本数が少なく</b>、千葉〜君津は<b>一部列車が運休</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>総武本線</em>佐倉〜成東</div>
+        <div class="dg-r"><span>状態</span><span><b>大雨の影響で上下線の運転を見合わせ</b>。再開見込みは立っていません</span></div>
+        <div class="dg-r"><span>あわせて</span><span>成東〜銚子は<b>設備点検の影響で遅れと運休</b>、千葉〜佐倉は大雨の影響で遅れ</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>成田線</em>成田〜銚子</div>
+        <div class="dg-r"><span>状態</span><span><b>倒木の影響で上下線の運転を見合わせ</b>。復旧に時間を要しており再開見込みは立っていません</span></div>
+        <div class="dg-r"><span>あわせて</span><span>成田〜我孫子は遅れと運休で<b>常磐線快速電車への直通運転を中止</b>、千葉〜成田・成田〜成田空港は遅れ</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>東金線</em>全線</div>
+        <div class="dg-r"><span>状態</span><span><b>大雨の影響で上下線の運転を見合わせ</b>。再開見込みは立っていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>鹿島線</em>佐原〜鹿島神宮</div>
+        <div class="dg-r"><span>状態</span><span><b>成田線内での倒木の影響で上下線の運転を見合わせ</b>。復旧に時間を要しており再開見込みは立っていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>久留里線</em>全線</div>
+        <div class="dg-r"><span>状態</span><span>台風の影響により<b>9月21日は終日運転を取りやめ</b></span></div>
+      </div>
+    </div>
+    <p><strong>このほか、常磐線（上野〜土浦）と常磐線快速電車（上野〜取手）で遅れと大幅な運休、武蔵野線・総武快速線で一部列車の遅れ、水郡線で倒木による遅れが出ています。</strong>常磐線快速電車も成田線への直通運転を中止しています。</p>
+
+    <h4>①-B 鉄道：計画運休（運転を取りやめると決定している区間・時間帯）</h4>
+    <p><strong>以下は「これから取りやめる」と決まっているものです。上の①-Aのとおり、開始予定時刻より前にすでに止まっている区間があります。区間も①-Aとは一致しません。</strong></p>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>終日</em>9月21日</div>
+        <div class="dg-r"><span>久留里線</span><span><b>終日運転を取りやめ</b>（①-Aのとおり、すでに取りやめ中）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>14時ごろから</em>最終列車まで</div>
+        <div class="dg-r"><span>内房線</span><span>君津〜安房鴨川</span></div>
+        <div class="dg-r"><span>外房線</span><span><b>誉田〜安房鴨川</b>（①-Aのとおり、この区間はすでに見合わせ中）</span></div>
+        <div class="dg-r"><span>青梅線</span><span>青梅〜奥多摩。<b>この区間だけ、22日10時ごろまで</b>取りやめが続きます</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>15時ごろから</em>最終列車まで</div>
+        <div class="dg-r"><span>八高線</span><span>高麗川〜寄居</span></div>
+        <div class="dg-r"><span>東金線</span><span>全線（①-Aのとおり、すでに見合わせ中）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>16時ごろから</em>最終列車まで</div>
+        <div class="dg-r"><span>総武本線</span><span>佐倉〜銚子（①-Aのとおり、佐倉〜成東はすでに見合わせ中）</span></div>
+        <div class="dg-r"><span>成田線</span><span>成田〜銚子（①-Aのとおり、すでに見合わせ中）</span></div>
+        <div class="dg-r"><span>鹿島線</span><span>全線（①-Aのとおり、佐原〜鹿島神宮はすでに見合わせ中）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>そのほかの決定</em>夕方以降</div>
+        <div class="dg-r"><span>烏山線</span><span>18時ごろから全列車</span></div>
+        <div class="dg-r"><span>宇都宮線</span><span>19時50分ごろから、宇都宮〜宝積寺の烏山線直通列車を全て運休</span></div>
+        <div class="dg-r"><span>常磐線</span><span>勝田〜いわきは20時ごろから</span></div>
+      </div>
+    </div>
+    <p><strong>JR東日本は「台風の進路状況により、運転計画が変更になる場合があります」と案内しています。</strong>上の時刻は本日7時52分時点の予定です。</p>
+
+    <h4>①-C 鉄道：まだ決まっていないもの（可能性）</h4>
+    <p>山手線、上野東京ライン、湘南新宿ライン、東海道線、京浜東北線、横須賀線、中央線快速電車、総武快速線、京葉線、武蔵野線、埼京線、高崎線、宇都宮線ほか多くの路線について、JR東日本は<strong>「台風の影響により、22日早朝にかけて遅れや運休が発生する場合があります」</strong>と案内しています。<strong>これは「決定」ではありません。</strong>内房線・外房線・総武本線・成田線・東金線・鹿島線・久留里線・八高線は、<strong>22日も始発から午前中にかけて遅れや運休が発生する場合がある</strong>とされています。</p>
+
+    <h4>② 航空：欠航の便数と影響人数が出ました</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">全日空</div><div class="vl">53便</div><div class="ch down">約9,700人に影響</div></div>
+      <div class="eq"><div class="nm">日本航空</div><div class="vl">10便</div><div class="ch down">約675人に影響</div></div>
+    </div>
+    <p>いずれも<strong>9月21日の夕方以降、羽田空港発着便を中心</strong>としたもので、<strong>9月20日23時00分時点の集計</strong>です。<strong>前号の時点では、両社とも「欠航に関わらず手数料無料で変更・払い戻し」という特別対応の案内までで、便数は出ていませんでした。</strong></p>
+
+    <h4>③ 船：すでに欠航中です</h4>
+    <p>東海汽船は<strong>9月20日から21日にかけて、高速ジェット船が終日全便欠航</strong>。大型客船も、<strong>神津島・式根島・新島・利島・大島発の東京行と、八丈島・御蔵島・三宅島発の東京行が欠航</strong>です。<strong>島から出る手段が海路・空路ともに2日間止まった状態が続いています。</strong></p>
+
+    <div class="counter">
+      <h5>昨日の本紙の見方と、今日の結果</h5>
+      <p><strong>前号は「連休の移動で見るべき日は21日」「②を①のように扱うと、動けたはずの日に動かないことになる」と書きました。</strong><strong>この見方は、今朝の実際の状況にそのままは当てはまりませんでした。</strong>計画運休は午後からの予定でも、<strong>①-Aのとおり、午前中からすでに運転を見合わせている区間があります。</strong><strong>計画運休の開始時刻だけでは、移動できるかどうかを判断できません。</strong>移動の前に、各事業者の最新の運行情報をご確認ください。</p>
+      <p>一方で、<strong>「まだ決まっていないものを決定として扱わない」という書き方自体は、今朝の発表で決定に変わったことで、更新が必要になりました。</strong>本紙は毎朝この段階を確認し直します。</p>
+    </div>
+
+    <div class="unknown">
+      <p><strong>特急について。</strong>特急「新宿さざなみ」と「しおさい」7号・14号は、<strong>9月20日の発表では全区間で運休の予定とされていましたが、9月21日朝の最新の公式運行状況は本紙では確認できていません。</strong>JR東日本の在来線特急の運行情報ページを取得できなかったためです。<strong>上の①-Bには含めていません。</strong>ご利用の前に、JR東日本の発表を直接ご確認ください。</p>
+      <p><strong>確認できていないこと：</strong>高速道路・一般道路の通行止め、空港・港湾の施設そのものへの影響、新幹線の運転計画、私鉄各社の判断、自治体の支援窓口の開設状況。<strong>本紙の確認範囲に入っていません。</strong><strong>航空の欠航便数は9月20日23時00分時点の集計で、本日の更新は確認していません。</strong><strong>鉄道の運転見合わせ・計画運休は9月21日7時52分現在の情報です。各事業者は当日の状況で判断を更新するため、移動の前に必ず最新の発表をご確認ください。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://traininfo.jreast.co.jp/train_info/kanto.aspx" target="_blank" rel="noopener">［一次］JR東日本 関東エリアの運行情報・運休情報（9月21日7時52分現在）</a>／<a class="src" href="https://www.traicy.com/posts/20260920382375/" target="_blank" rel="noopener">TRAICY（JR東日本の運転取りやめ・9月20日）</a>／<a class="src" href="https://raillab.jp/news/article/35472" target="_blank" rel="noopener">レイルラボ（関東各線の計画運休まとめ）</a>／<a class="src" href="https://news.infoseek.co.jp/article/tbs_2959793/" target="_blank" rel="noopener">TBS配信（全日空53便・日本航空10便の欠航／9月20日23時00分時点）</a>／<a class="src" href="https://www.tokaikisen.co.jp/news/821452/" target="_blank" rel="noopener">東海汽船 台風25号による運航状況への影響について（9月19日12時）</a>／<a class="src" href="https://www.jal.co.jp/jp/ja/other/weather_info_dom/" target="_blank" rel="noopener">日本航空 国内線の運航状況</a>／<a class="src" href="https://www.ana.co.jp/fs/dom/jp/" target="_blank" rel="noopener">全日空 国内線運航状況</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-disaster">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害支援シグナル</span><span class="sec-title">台風以外の災害と、世界の状況 <span class="sub">/ 9月21日6時時点</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-warn">確認範囲に制約</span></div>
+
+    <p><strong>台風25号に限定せず、日本と世界の災害を確認しました。</strong></p>
+
+    <h4>日本国内</h4>
+    <ul>
+      <li><strong>十勝岳</strong>　噴火警戒レベル3が継続しています。本日新たな変化は確認していません。</li>
+      <li><strong>小笠原諸島</strong>　台風本体が離れ、くもり時々晴れ。波は4メートルから3メートルへ下がる予報です。<strong>20日に「抜けた側」と書いた状態が続いています。</strong></li>
+      <li><strong>地震・津波・火山（十勝岳以外）・山火事</strong>　本日、新たに確認できたものはありません。</li>
+    </ul>
+
+    <h4>世界</h4>
+    <p><strong>本日、新たな大規模災害として確認できたものはありません。</strong>ただし、<strong>祝日の朝という時間帯もあり、当日の海外速報を網羅的に確認できていません。</strong>ネパールの洪水の確定値、コンゴ民主共和国のエボラ出血熱の最新値は、いずれも前号から更新を確認できていません。</p>
+
+    <div class="unknown">
+      <p><strong>前号から持ち越している被災地の情報も、更新を確認できていません。</strong>住家被害2,677棟のその後、義援金・支援窓口の開設、JR内房線の復旧（9月23日前後の予定）。<strong>内房線については、本日の台風で君津〜安房鴨川が14時ごろから運転取りやめになるため、復旧の話とは別に運行への影響が出ます。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json" target="_blank" rel="noopener">［一次］気象庁 東京都の天気予報（小笠原諸島を含む・9月21日5時発表）</a>／<a class="src" href="https://www.traicy.com/posts/20260920382375/" target="_blank" rel="noopener">TRAICY（内房線の運転取りやめ区間）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-lng">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・本日の重点</span><span class="sec-title">カタールのLNG増産計画に、遅れの可能性が出ました <span class="sub">/ 9月20日 経営者発言</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-warn">経営者の懸念であって決定ではない</span><span class="lab lab-view">本紙の見方</span></div>
+
+    <p><strong>ここまで本紙は、LNGを「いま運べているか」で見てきました。今朝の材料は、そこから先の話です。</strong></p>
+
+    <div class="counter">
+      <h5>発言の内容と、その性質</h5>
+      <p><strong>カタールエナジーのサアド・アル・カービ最高経営責任者が9月20日、ホルムズ海峡の危機によって重要な設備がカタールへ届かず、同社の増産事業の一部が遅れる可能性があると述べました。</strong>ニューヨークで開かれた経済フォーラムでの発言として、ロイターが報じています。</p>
+      <p><strong>ただし、これは「遅れる可能性がある」という発言です。</strong>本紙が確認した範囲で、<strong>工期の変更が正式に決定されたという発表はありません。</strong>どの設備が、どこから届かないのかも示されていません。</p>
+    </div>
+
+    <h4>対象になっている事業</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">ノースフィールド・イースト（NFE）</div><div class="vl">2027年</div><div class="ch">複数のLNG系列が稼働開始予定</div></div>
+      <div class="eq"><div class="nm">ノースフィールド・サウス（NFS）</div><div class="vl">2028年</div><div class="ch">生産開始予定</div></div>
+    </div>
+
+    <h4>連鎖を、段階に分けて見ます</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>① いま</em>輸送の問題</div>
+        <div class="dg-r"><span>状態</span><span>同社のLNG生産量は現在<b>「ごくわずか」</b>と同氏は述べています。8月末には、<b>LNG貨物のキャンセルを11月まで延長</b>したと報じられていました</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>② 設備が届かない</em>今回の新しい材料</div>
+        <div class="dg-r"><span>状態</span><span><b>重要な設備がカタールへ届かない。</b>具体的な品目は示されていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>③ 建設の遅れ</em>可能性の段階</div>
+        <div class="dg-r"><span>状態</span><span><b>「遅れる可能性がある」という経営者の発言。正式決定ではありません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>④ 稼働開始時期</em>未確定</div>
+        <div class="dg-r"><span>状態</span><span>2027年・2028年という予定は示されていますが、<b>変更されたという発表はありません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>⑤ 将来の供給能力</em>確認できず</div>
+        <div class="dg-r"><span>状態</span><span><b>供給量への影響を示す数字は、本紙は確認できていません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>⑥ 長期契約・日本の調達</em>確認できず</div>
+        <div class="dg-r"><span>状態</span><span><b>長期契約への影響についての言及は、今回の報道にはありません</b></span></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><strong>本紙の見方。</strong>いま起きている輸送の障害は、<strong>止まっている期間が過ぎれば元に戻りうる</strong>性質のものです。一方、<strong>増産設備の建設が遅れた場合、その遅れは稼働開始の時期をずらし、数年先の供給能力に残ります。</strong>前者と後者は、影響が続く長さが違います。</p>
+      <p><strong>ただし今回確認できたのは、経営者が懸念を述べたところまでです。</strong>本紙は、これを将来の供給減として数えません。</p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://boereport.com/2026/09/20/qatarenergy-says-hormuz-crisis-may-delay-some-expansion-projects/" target="_blank" rel="noopener">ロイター配信（QatarEnergy says Hormuz crisis may delay some expansion projects・2026年9月20日）</a>／<a class="src" href="https://www.euronews.com/business/2026/08/31/qatarenergy-extends-lng-cancellations-into-november-as-hormuz-disruption-drags-on" target="_blank" rel="noopener">Euronews（LNG貨物のキャンセルを11月まで延長・2026年8月31日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-saudi">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・供給</span><span class="sec-title">サウジの積み出しは7割減りました。復旧の見通しは示されていません <span class="sub">/ 9月17日時点の集計</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-imp">9号連続の持ち越し</span></div>
+
+    <p><strong>東西パイプラインについて、サウジ当局は復旧の時期を示していません。</strong>サウジ・エネルギー省が停止を発表したのは9月11日で、本日で<strong>11日目</strong>です。本紙は9月13日のD48以降、<strong>本号まで9号連続</strong>でこの項目を追っています。</p>
+
+    <h4>実際に積み出された量</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">サウジの原油積み出し（1〜2月）</div><div class="vl">750万 b/d</div><div class="ch">平常時</div></div>
+      <div class="eq"><div class="nm">同（9月前半）</div><div class="vl">約210万 b/d</div><div class="ch down">約70%減</div></div>
+      <div class="eq"><div class="nm">うちホルムズ海峡経由（9月前半）</div><div class="vl">200万 b/d超</div><div class="ch up">8月より約100万 b/d増</div></div>
+    </div>
+    <p><strong>紅海側（ヤンブー）が止まった分を、ホルムズ側が一部引き受けている構図です。</strong>ただし合計は平常時の3割弱にとどまります。</p>
+
+    <div class="counter">
+      <h5>復旧の見通しは「示されていない」が正確です</h5>
+      <p><strong>サウジ当局は修理の時期を示していません。</strong>報道されている見積もりは、<strong>「数日」から「8週間」まで開いています。</strong>AP通信は2人の地域当局者の話として<strong>3〜5週間</strong>と伝えています。</p>
+      <p>復旧後の水準についても、<strong>分析筋は通常能力の40〜60%で日量250〜300万バレル、うち輸出に回せるのは50〜100万バレルという見方</strong>を示しています。<strong>これは分析であって、サウジ側の発表ではありません。</strong></p>
+    </div>
+
+    <h4>段階を分けます</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>損傷施設</em></div>
+        <div class="dg-r"><span>公式</span><span>9月10日朝の複数回の攻撃を受け、サウジ・エネルギー省が<b>「予防的措置」として停止</b>したと発表（9月11日）</span></div>
+        <div class="dg-r"><span>未確認</span><span><b>損傷箇所、3か所目のポンプ施設の番号は、9月13日のD48以降9号連続で確認できていません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>修理・部分再開</em></div>
+        <div class="dg-r"><span>状態</span><span><b>公式発表なし。</b>見積もりは数日〜8週間で開いています</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ヤンブーの積み出し</em></div>
+        <div class="dg-r"><span>状態</span><span>サウジアラムコが<b>停止を確認</b>。再開の発表は確認できていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>通常能力への回復</em></div>
+        <div class="dg-r"><span>状態</span><span><b>時期を示す公式情報はありません</b></span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.aljazeera.com/news/2026/9/17/from-yanbu-to-sohar-tracking-saudi-arabias-alternative-oil-routes" target="_blank" rel="noopener">Al Jazeera（From Yanbu to Sohar: Tracking Saudi Arabia's alternative oil routes・2026年9月17日）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-oil-pipeline-after-drone-attack-what-happened" target="_blank" rel="noopener">Al Jazeera（東西パイプラインの停止・2026年9月12日）</a>／<a class="src" href="https://www.cnbc.com/2026/09/15/oil-prices-saudi-arabia-east-west-pipeline-iran.html" target="_blank" rel="noopener">CNBC（復旧に向けた動きと見積もりの幅・2026年9月15日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-hormuz">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・輸送</span><span class="sec-title">ホルムズの一次データは、8日連続で止まっています <span class="sub">/ 9月21日に再取得</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-warn">一次情報未確認</span><span class="lab lab-top">一次情報</span></div>
+
+    <p><strong>国際通貨基金PortWatchの日次チョークポイントデータを本日も取得しました。結果は前号までと同じです。</strong></p>
+    <div class="counter">
+      <h5>最新は2026年9月13日のまま</h5>
+      <p><strong>9月14日以降のデータは、本日9月21日の時点でも入っていません。</strong>本紙が持つ一次データは<strong>8日前</strong>で止まっています。</p>
+    </div>
+
+    <h4>取得できている範囲（9月上旬）</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">9月11日</div><div class="vl">総8隻</div><div class="ch">タンカー3・貨物5</div></div>
+      <div class="eq"><div class="nm">9月12日</div><div class="vl">総2隻</div><div class="ch down">タンカー1・貨物1</div></div>
+      <div class="eq"><div class="nm">9月13日（最新）</div><div class="vl">総8隻</div><div class="ch">タンカー1・貨物7</div></div>
+    </div>
+    <p><strong>総数が回復して見えても、タンカーが1隻なら原油の流れは戻っていません。</strong>船種まで見る必要があります。</p>
+
+    <div class="note">
+      <p><strong>戦争前の基準値は2つ併存したままです。</strong>ロイターの報道による約125隻/日と、PortWatchの2025年平均85.5隻/日（2024年91.1隻）。<strong>集計主体・対象船種・位置情報（AIS）の扱い・通航1回の数え方・対象期間が同一の尺度であると確認できていないため、直接比較できません。どちらも削除しません。</strong></p>
+      <p><strong>AISで確認できた隻数を、実際の全通航数として扱いません。</strong>位置情報を切っている船は数に入りません。<strong>一日の数字だけで「封鎖」とも「正常化」とも書きません。</strong></p>
+    </div>
+
+    <p><strong>なお、前節のとおりサウジの積み出しではホルムズ経由が9月前半に日量200万バレル超へ増えています。</strong>これは通航「隻数」ではなく「量」の集計で、出所も異なります。<strong>本紙は、この2つを同じ指標として足し合わせません。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query" target="_blank" rel="noopener">［一次］国際通貨基金 PortWatch 日次チョークポイントデータ（chokepoint6・9月21日に再取得）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/9/17/from-yanbu-to-sohar-tracking-saudi-arabias-alternative-oil-routes" target="_blank" rel="noopener">Al Jazeera（ホルムズ経由の積み出し量・2026年9月17日）</a>／<a class="src" href="https://www.iea.org/reports/oil-market-report-march-2026" target="_blank" rel="noopener">［一次］IEA Oil Market Report – March 2026（戦争前のホルムズ通過量 日量約2,000万バレル）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-route">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・輸送</span><span class="sec-title">迂回路の所要日数が、数字で見えました <span class="sub">/ 9日連続で取れなかった項目に進展</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-view">本紙の見方</span></div>
+
+    <p><strong>本紙は9月13日から9日連続で「喜望峰回りの実数」を取れずにいました。</strong>隻数は今回も取れていませんが、<strong>距離と所要日数の差は確認できました。</strong></p>
+
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">ホルムズ海峡経由</div><div class="vl">約3,370海里</div><div class="ch">約10日</div></div>
+      <div class="eq"><div class="nm">喜望峰回り</div><div class="vl">約13,140海里</div><div class="ch down">ほぼ1か月多くかかる</div></div>
+    </div>
+    <p><strong>距離で約3.9倍。</strong>10日で届いていたものが、1か月余計にかかることになります。</p>
+
+    <h4>使われている迂回の経路</h4>
+    <ul>
+      <li><strong>オマーンのソハール沖</strong>　洋上での積み替えが行われています。<strong>前号までに扱ったとおり、この経路もホルムズ海峡そのものは通ります。</strong>避けているのは大型船を危険な海域へ入れることで、海峡の通過は回避できていません。</li>
+      <li><strong>エジプトのアイン・スフナとシディ・ケリル</strong>　スエド・パイプラインを経由して地中海側へ出す経路です。</li>
+    </ul>
+
+    <div class="counter">
+      <h5>4つの数字を分けます</h5>
+      <p><strong>輸送計画 ≠ 実際の積出量 ≠ 実際の海上輸送量 ≠ 需要国への到着量。</strong>本日確認できたのは<strong>積出量（9月前半 約210万b/d）</strong>と<strong>所要日数</strong>までです。</p>
+      <p><strong>需要国への到着量は、今週も確認できていません。</strong>欧州の製油所向けの貨物がキャンセルされ、買い手が北海・米国・西アフリカへ振り替えたと報じられていますが、<strong>アジアの買い手へ実際に届いた量を示す数字には到達していません。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.aljazeera.com/news/2026/9/17/from-yanbu-to-sohar-tracking-saudi-arabias-alternative-oil-routes" target="_blank" rel="noopener">Al Jazeera（迂回路・距離・所要日数・積出量・2026年9月17日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-fuel">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・燃料</span><span class="sec-title">原油と精製燃料を分けます。米国の値は明日まで更新されません <span class="sub">/ 9月14日時点が最新</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-view">本紙の見方</span></div>
+
+    <p><strong>米エネルギー情報局の週次調査は9月15日公表の9月14日時点が最新で、次の公表は9月22日です。本日時点でこれより新しい値はありません。</strong></p>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">米ハイウェイ用ディーゼル 全国平均</div><div class="vl">6.285</div><div class="ch up">前週比 +0.318</div></div>
+      <div class="eq"><div class="nm">米レギュラーガソリン 全国平均</div><div class="vl">4.319</div><div class="ch up">前週比 +0.162</div></div>
+      <div class="eq"><div class="nm">米ディーゼル カリフォルニア</div><div class="vl">8.039</div><div class="ch up">全国平均の1.28倍</div></div>
+    </div>
+    <p>単位はドル/ガロン、いずれも税込み。<strong>ディーゼルは1年前より2.546ドル高い水準です。</strong></p>
+
+    <div class="counter">
+      <h5>備えがあることと、使えることは別です</h5>
+      <p><strong>原油備蓄が十分でも、製油所が止まっていれば軽油は出てきません。</strong>原油在庫・石油製品在庫・製油所稼働率・タンカーの確保・港の積み出し能力は、それぞれ別の制約です。<strong>備蓄の放出は、原油が足りない局面ではその不足を和らげます。ただし、それによって製油所の稼働や製品の輸送の制約まで解けるわけではありません。</strong>また、放出できるものが原油だけとは限りません。<strong>国や制度によっては石油製品そのものを備蓄しており、その場合は製品を出すこともできます。</strong>どの備蓄をどれだけ出せるかは、備蓄の中身と各国の制度によって変わります。<strong>本紙は、備蓄放出を「原油にしか効かない」とも「これで供給の不安が解消する」とも書きません。</strong>なお、本日時点で放出の決定が出ているという情報は確認していません。</p>
+      <p><strong>本紙は「原油価格が下がった＝供給問題が解消した」とは判断しません。</strong>作る力と運ぶ力が制約になっている局面では、原油と製品は別々に動きます。</p>
+    </div>
+
+    <p><strong>本日は日本の祝日で、国内の石油製品価格の新しい公表もありません。</strong>資源エネルギー庁の石油製品価格調査は、前号から引き続き自動取得を拒否されており、国内の軽油小売価格の直近値は確認できていません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">［一次］米エネルギー情報局 ガソリン・ディーゼル価格更新（9月15日公表・9月14日時点。次回公表は9月22日）</a>／<a class="src" href="https://www.iea.org/reports/oil-market-report-march-2026" target="_blank" rel="noopener">［一次］IEA Oil Market Report – March 2026</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-russia">
+    <div class="sec-head"><span class="tick"></span><span class="cat">世界情勢</span><span class="sec-title">モスクワの製油所が被弾し、双方に死者が出ました <span class="sub">/ 9月20日〜21日未明</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-imp">発表主体を分ける</span></div>
+
+    <p><strong>ロシアの下院選挙の最終日にあたる9月20日、モスクワへ大規模な無人機攻撃がありました。発表主体ごとに分けて書きます。</strong></p>
+
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>ロシア側の発表</em>モスクワ市長ほか</div>
+        <div class="dg-r"><span>規模</span><span>ソビャニン市長が<b>1,600機超を迎撃、うち450機が首都へ向かっていた</b>と発表。<b>「前例のない」</b>攻撃と表現</span></div>
+        <div class="dg-r"><span>人的被害</span><span><b>2人が死亡</b>、のち1人が負傷により死亡し<b>計3人</b>。<b>子ども3人を含む20人が負傷</b></span></div>
+        <div class="dg-r"><span>建物</span><span>無人機が<b>21階建ての建物</b>に衝突して火災。<b>400人が避難</b></span></div>
+        <div class="dg-r"><span>製油所</span><span><b>モスクワの製油所の施設が損傷</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ウクライナ側</em>企業の発表</div>
+        <div class="dg-r"><span>主張</span><span>ウクライナ企業のファイアポイントが、<b>同社のFP-1無人機がモスクワ製油所への攻撃に使われた</b>とテレグラムに投稿</span></div>
+        <div class="dg-r"><span>注意</span><span><b>これは攻撃側の企業による主張です。</b>第三者の確認は本紙では取れていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ウクライナ側の被害</em>現地当局</div>
+        <div class="dg-r"><span>キーウ州</span><span>夜間のロシアの攻撃で<b>子ども3人を含む少なくとも4人が死亡</b></span></div>
+        <div class="dg-r"><span>ヘルソン州</span><span><b>少なくとも3人が死亡、9人が負傷</b></span></div>
+      </div>
+    </div>
+
+    <div class="counter">
+      <h5>攻撃の発生と、製油所の稼働停止は別の事実です</h5>
+      <p><strong>本日確認できたのは「モスクワの製油所の施設が損傷した」というところまでです。</strong>稼働が止まったのか、どの程度落ちたのか、いつ戻るのかは確認できていません。<strong>本紙は、被弾の報道から稼働停止を推測しません。</strong></p>
+      <p><strong>停止割合の推計についても、対象施設・算定基準・確認時点がそろわないものは採用しません。</strong>本紙が持つ最も確かな数字は、前号までに扱った国際エネルギー機関の9月17日の公表（1〜8月に平均3日に1回被弾、8月末で無傷の主要製油所は32か所中5か所、実処理量は日量380万バレル）です。</p>
+    </div>
+
+    <h4>エネルギー施設への攻撃停止をめぐる外交</h4>
+    <p>前号までの整理を引き継ぎます。<strong>①発言（9月14日・米大統領）は成立、②提案は成立、③協議は限定的で断続的、④合意は成立していない、⑤攻撃停止命令は確認できず、⑥実際の攻撃停止も成立していない。</strong></p>
+    <p><strong>今朝の攻撃は、⑥が成立していないことを改めて示しています。</strong>本紙は「停戦」を事実の記述としては使いません。</p>
+
+    <div class="unknown">
+      <p><strong>確認できていないこと：</strong>モスクワ製油所の処理能力と停止期間、黒海の民間船舶・港湾・穀物輸送への本日時点の影響、ウクライナ側の電力・ガス設備の被害。<strong>ロシア政府による軽油輸出禁止の延長を示す正式な決定文書も、引き続き確認できていません。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.aljazeera.com/news/2026/9/20/mass-ukrainian-drone-attack-on-moscow-kills-two-russia-says" target="_blank" rel="noopener">Al Jazeera（モスクワへの無人機攻撃・2026年9月20日）</a>／<a class="src" href="https://www.cnn.com/2026/09/20/europe/moscow-ukraine-attack-russia-election" target="_blank" rel="noopener">CNN（選挙最終日の大規模攻撃）</a>／<a class="src" href="https://www.nbcnews.com/world/russia/two-dead-moscow-region-drones-hit-oil-refinery-russian-capital-rcna598767" target="_blank" rel="noopener">NBC News（製油所への着弾と死者）</a>／<a class="src" href="https://www.npr.org/2026/09/20/nx-s1-5975372/ukraine-fires-drones-at-russia-moscow" target="_blank" rel="noopener">NPR（1,000機超の無人機）</a>／<a class="src" href="https://www.bloomberg.com/news/articles/2026-09-20/moscow-refinery-hit-as-russia-reports-largest-2026-drone-attack" target="_blank" rel="noopener">Bloomberg（Moscow Refinery Hit as Russia Reports Largest 2026 Drone Attack）</a>／<a class="src" href="https://www.iea.org/reports/oil-market-report-september-2026" target="_blank" rel="noopener">［一次］IEA 石油市場報告（9月17日・ロシアの製油所の被弾頻度）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-uschina">
+    <div class="sec-head"><span class="tick"></span><span class="cat">世界情勢・通商</span><span class="sec-title">米中が、AI・レアアース・関税を同じ机に載せました <span class="sub">/ 9月20日 ニューヨーク</span></span></div>
+    <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span><span class="lab lab-warn">段階を分ける</span></div>
+
+    <p><strong>米財務長官スコット・ベッセント氏と中国の何立峰副首相が9月20日、ニューヨークで終日の協議に入りました。</strong>米通商代表のジェイミソン・グリア氏も加わり、会場はマンハッタンのJPモルガン・チェース本社。現地時間10時30分ごろ（協定世界時14時30分）の開始とされています。</p>
+
+    <h4>議題として挙がっているもの</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>通商休戦</em>期限が迫る</div>
+        <div class="dg-r"><span>内容</span><span><b>11月10日に期限が切れる米中の通商休戦</b>の扱い</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>レアアース・重要鉱物</em></div>
+        <div class="dg-r"><span>内容</span><span>中国製のレアアース磁石の流れ。<b>米側は「不十分」との立場</b>。中国側は<b>許可の追加発行を交渉材料にしうる</b>と報じられています</span></div>
+        <div class="dg-r"><span>背景</span><span>中国が2025年4月に輸出管理を導入して以降、<b>磁石の月次輸出は導入前の水準を大きく下回って推移</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>AIの安全性</em>新しい議題</div>
+        <div class="dg-r"><span>内容</span><span>AIモデルに関わる重大な安全上の事案の報道を受けた<b>歯止めの設定</b>。<b>公開重みのモデルと非公開重みのモデルの双方</b>について、安全の枠組み、体系の分断の回避、共有されるリスクの管理が焦点とされています</span></div>
+      </div>
+    </div>
+
+    <div class="counter">
+      <h5>段階を分けます</h5>
+      <p><strong>①議題に挙がった ── これが今日の段階です。</strong>②提案された ③双方が合意した ④正式文書になった ⑤実際に制度・輸出入が変わった。<strong>②以降は確認できていません。</strong></p>
+      <p><strong>本紙は、この協議を「今週予定される首脳会談に向けた地ならし」と位置づけられていることまでを事実として書き、合意の成否や政治的な評価には立ち入りません。</strong>日本の製造業への波及も、現時点では確認できる材料がありません。</p>
+    </div>
+
+    <div class="unknown">
+      <p><strong>確認できていないこと：</strong>協議の結果、発表された成果文書の有無、首脳会談の正確な日時と議題、半導体関連規制の具体的な変更、企業の投資・設備計画への影響。<strong>本紙は首脳会談を「今週」としか書けません。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.usnews.com/news/top-news/articles/2026-09-20/us-treasurys-bessent-chinas-he-to-launch-talks-on-ai-trade-critical-minerals" target="_blank" rel="noopener">ロイター配信（US Treasury's Bessent, China's He to Launch Talks on AI, Trade, Critical Minerals・2026年9月20日）</a>／<a class="src" href="https://www.cnbc.com/2026/09/20/bessent-chinas-he-to-hold-talks-on-ai-trade-minerals-reuters.html" target="_blank" rel="noopener">CNBC（同・ロイター配信）</a>／<a class="src" href="https://www.business-standard.com/world-news/us-china-trade-teams-set-to-huddle-in-new-york-to-discuss-ai-iran-126092000621_1.html" target="_blank" rel="noopener">Business Standard（会場・開始時刻・議題）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-dram">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI・半導体</span><span class="sec-title">中国が第5世代DRAMの量産を発表しました。HBMとは別のものです <span class="sub">/ 9月20日 合肥</span></span></div>
+    <div class="labs"><span class="lab lab-imp">重要</span><span class="lab lab-fact">事実</span><span class="lab lab-warn">混同しない</span></div>
+
+    <p><strong>中国のCXMT（長鑫存儲）が9月20日、安徽省合肥で開かれた世界製造業大会で、第5世代のDRAM製造基盤「G5」の量産を発表しました。</strong></p>
+
+    <h4>企業が公表した数値</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">記憶領域の間隔</div><div class="vl">11.95 nm</div><div class="ch">四重パターニングを使用</div></div>
+      <div class="eq"><div class="nm">ウエハー1枚あたりの取り数</div><div class="vl">+50%以上</div><div class="ch up">同社の説明</div></div>
+      <div class="eq"><div class="nm">工場と生産規模</div><div class="vl">月30万枚</div><div class="ch">12インチ3拠点（合肥2・北京1）・2026年9月時点</div></div>
+    </div>
+    <p>あわせて同社は8月29日に<strong>LPDDR6の量産</strong>も発表しており、速度は最大12,800Mbps、シャオミの折りたたみ端末が採用するとされています。</p>
+
+    <div class="counter">
+      <h5>一般向けDRAMと、AI向けHBMは別のものです</h5>
+      <p><strong>今回量産が発表されたのは、スマートフォンやパソコンに使う一般・モバイル向けのDRAMです。</strong>AIアクセラレーターに載せる広帯域メモリ（HBM）とは別の製品です。</p>
+      <p><strong>本紙は、この発表からHBMの供給制約が解消したとは判断しません。</strong>前号までに扱ったとおり、AIの詰まりはGPUからメモリ、さらに光通信用の材料へと見方が移ってきましたが、<strong>そこで問題になっているのはHBMの側です。</strong></p>
+    </div>
+
+    <h4>企業発表と、確認できることを分けます</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>企業が公表したもの</em></div>
+        <div class="dg-r"><span>内容</span><span>製造基盤の世代、記憶領域の間隔、取り数の増加率、量産の開始</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>報じられている制約</em></div>
+        <div class="dg-r"><span>内容</span><span><b>米国の輸出管理により、良品率を保ったまま生産を増やすことが難しい</b>とされます。<b>旧世代の露光装置で複雑な多重パターニングを重ねる必要がある</b>ためです</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>確認できていないもの</em></div>
+        <div class="dg-r"><span>内容</span><span><b>実際の良品率、製造コスト、市場へ出る供給量、既存メーカーとの競争の帰結、日本企業への波及。第三者による評価も確認できていません</b></span></div>
+      </div>
+    </div>
+
+    <p><strong>本紙は、企業が公表した性能数値を「達成された実力」としては扱いません。</strong>量産の発表と、市場に十分な量が出ることは別です。</p>
+
+    <p class="disc">出典：<a class="src" href="https://en.sedaily.com/international/2026/09/20/chinas-cxmt-starts-mass-production-on-5th-generation-dram" target="_blank" rel="noopener">Seoul Economic Daily（China's CXMT Starts Mass Production on 5th-Generation DRAM Process・2026年9月20日）</a>／<a class="src" href="https://www.trendforce.com/news/2026/09/08/news-cxmt-starts-lpddr6-mass-production-at-12800mbps-open-to-global-customers-as-apple-ties-draw-attention/" target="_blank" rel="noopener">TrendForce（CXMTのLPDDR6量産・2026年9月8日）</a>／<a class="src" href="https://videocardz.com/newz/cxmt-starts-lpddr6-mass-production" target="_blank" rel="noopener">VideoCardz（同・製造上の制約）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-market">
+    <div class="sec-head"><span class="tick"></span><span class="cat">市場・取引日程</span><span class="sec-title">日本は3日間の休場。デリバティブは動きます <span class="sub">/ 9月21日〜23日</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">事実</span><span class="lab lab-warn">休場明けは予測しない</span></div>
+
+    <p><strong>本日は9月21日（月・敬老の日）です。9月22日（火）は祝日法第3条第3項による休日、9月23日（水）は秋分の日。日本の現物株式市場は、この3日間休場です。</strong></p>
+
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>閉じているもの</em>9月21日〜23日</div>
+        <div class="dg-r"><span>日本の現物株式市場</span><span><b>3日間休場。</b>取引があるのは24日（木）と25日（金）の2日だけ</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>開いているもの</em>同期間</div>
+        <div class="dg-r"><span>日本のデリバティブ</span><span><b>日本取引所グループが9月18日に、9月21日・22日・23日の祝日取引の実施を発表</b>。大阪取引所と東京商品取引所で、日経225先物やプラッツドバイ原油先物などが取引できます</span></div>
+        <div class="dg-r"><span>米国・欧州の株式</span><span><b>通常どおり。</b>米国は本日も平常取引です（日本時間の今夜から）</span></div>
+        <div class="dg-r"><span>為替・原油・主要商品</span><span>通常どおり</span></div>
+        <div class="dg-r"><span>暗号資産</span><span>24時間・祝日も取引</span></div>
+      </div>
+    </div>
+
+    <h4>暗号資産（祝日も動くため、取得時刻を付けます）</h4>
+    <div class="eq-grid">
+      <div class="eq"><div class="nm">ビットコイン</div><div class="vl">80,851</div><div class="ch down">24時間 -0.19%</div></div>
+      <div class="eq"><div class="nm">イーサリアム</div><div class="vl">2,622.41</div><div class="ch down">24時間 -0.15%</div></div>
+      <div class="eq"><div class="nm">ソラナ</div><div class="vl">109.86</div><div class="ch down">24時間 -0.80%</div></div>
+      <div class="eq"><div class="nm">リップル</div><div class="vl">1.40</div><div class="ch down">24時間 -1.21%</div></div>
+    </div>
+    <p>いずれも<strong>米ドル建て、2026年9月21日6時30分（日本時間）時点</strong>のデータ提供元の更新値です。円換算ではビットコインが約1,268万円。<strong>前日の同じ時刻（9月20日6時50分・81,068ドル）からは、ほぼ横ばいです。</strong></p>
+
+    <div class="counter">
+      <h5>金曜の終値を「本日の日本株の値動き」とは書きません</h5>
+      <p><strong>本号に載せた株価・債券利回り・為替・商品の値は、すべて9月18日（金）の終値または最終時点の値です。</strong>日本市場が3日間閉じている間に、海外市場・為替・エネルギー市場は動きます。<strong>その差は、24日の寄り付きに一度に現れます。</strong></p>
+      <p><strong>ただし、どちらへどれだけ動くかは予測しません。</strong>本紙が書けるのは「現物が閉じている」「デリバティブと海外は開いている」「その差がどこに現れるか」までです。</p>
+    </div>
+
+    <h4>中央銀行</h4>
+    <p><strong>本日、中央銀行から新しい公式資料は出ていません。</strong>直近の決定は、米連邦準備制度が9月16日に0.25%利上げ（誘導目標3.75〜4.00%）、イングランド銀行が9月16日に3.75%で据え置き（9人中3人が利上げに投票）、日本銀行が9月18日に無担保コールレートを1.25%程度へ引き上げ（賛成7・反対2、<strong>適用は9月24日から</strong>）。欧州中央銀行の利上げ決定は前週の9月10日です。</p>
+    <p><strong>次に出る公式資料は、9月24日の日本銀行の総裁記者会見の要旨です。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.jpx.co.jp/news/2040/20260918-01.html" target="_blank" rel="noopener">［一次］日本取引所グループ デリバティブの祝日取引の実施について（2026年9月21日・9月22日・9月23日／2026年9月18日）</a>／<a class="src" href="https://www.jpx.co.jp/derivatives/rules/holidaytrading/index.html" target="_blank" rel="noopener">［一次］日本取引所グループ 祝日取引</a>／<a class="src" href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noopener">［一次］内閣府 国民の祝日について</a>／<a class="src" href="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple&vs_currencies=usd,jpy" target="_blank" rel="noopener">CoinGecko（暗号資産価格・9月21日6時30分 日本時間の更新値）</a>／<a class="src" href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm" target="_blank" rel="noopener">［一次］日本銀行 会合日程と公表予定</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-check">
+    <div class="sec-head"><span class="tick"></span><span class="cat">答え合わせ</span><span class="sec-title">前号D55が「21日に見る」と書いた項目を照合します <span class="sub">/ 結果が出たもの・出ていないもの</span></span></div>
+    <div class="labs"><span class="lab lab-fact">事実</span><span class="lab lab-view">本紙の見方</span></div>
+
+    <h4>結果が出たもの</h4>
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>災害</em>台風25号の進路と勢力</div>
+        <div class="dg-r"><span>前号</span><span>「21日6時に八丈島の南西約250キロ、970ヘクトパスカル」「22日3時に銚子市の東約160キロ」</span></div>
+        <div class="dg-r"><span>今朝</span><span><b>同じ21日6時の実況が南西約210キロ、965ヘクトパスカル。同じ時刻どうしの比較で約40キロ近く、5ヘクトパスカル低い値でした。</b>22日3時の予報位置は北緯36.0度・東経143.4度で、<b>前号の「銚子市の東約160キロ」よりやや遠く、やや北寄りを通る予報になりました</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>交通</em>「可能性」の行方</div>
+        <div class="dg-r"><span>前号</span><span>「JR東日本は『遅れや運休の可能性』を示した段階で、計画運休の発表ではない」</span></div>
+        <div class="dg-r"><span>今朝</span><span><b>決定に変わり、さらに一部はすでに止まりました。</b>久留里線は終日取りやめ。内房線・外房線・八高線・東金線・総武本線・成田線・鹿島線・青梅線は時間を区切って計画運休。<b>そのうえで7時52分現在、外房線・内房線・総武本線・成田線・東金線・鹿島線の各一部区間が大雨または倒木ですでに運転見合わせ中</b>です。特急2本は9月20日の発表では運休予定でしたが、本日朝の公式運行状況は確認できていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>交通</em>航空の欠航</div>
+        <div class="dg-r"><span>前号</span><span>「航空2社の特別対応は欠航の決定ではない」</span></div>
+        <div class="dg-r"><span>今朝</span><span><b>便数が出ました。</b>全日空53便・約9,700人、日本航空10便・約675人</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>実害</em>被害の有無</div>
+        <div class="dg-r"><span>前号</span><span>「20日5時時点で人的被害・住家被害・断水・停電・通信障害は確認できていない」</span></div>
+        <div class="dg-r"><span>今朝</span><span><b>停電が発生しました。</b>5時時点で東京電力パワーグリッド管内に約1,700軒超。<b>1都3県の53市区町村で避難情報の発令または避難所の開設を確認（避難指示27・高齢者等避難6・避難所の開設のみ20）</b>。横浜市は港北区の一部への避難指示の発令理由として「土砂災害発生のため」を示しています（その土砂災害の発生場所・規模・人的被害は未確認）</span></div>
+      </div>
+    </div>
+
+    <h4>本紙の見方の答え合わせ</h4>
+    <div class="counter">
+      <p><strong>前号は「連休の移動で見るべき日は21日」と書きました。</strong>今朝の計画運休は<strong>午後から夕方に集中</strong>し、航空の欠航も<strong>夕方以降</strong>です。<strong>見る日としては合っていました。</strong></p>
+      <p><strong>一方、前号が「まだ決まっていない」と書いた部分は、今朝の発表で決まりました。</strong>これは前号の誤りではなく、<strong>段階が進んだということです。</strong>本紙は毎朝この段階を確認し直します。</p>
+      <p><strong>もう一点、本紙の書き方について。</strong>前号は日曜特集第5号の公開と同じ日で、両方に「予報と実害を分ける」という同じ原則を書きました。<strong>今朝はその原則が実際に必要になった日です。</strong>停電と避難指示は「起きたこと」、雨量と波高は「これから起きるかもしれないこと」として、節を分けています。</p>
+    </div>
+
+    <h4>まだ結果が出ていないもの</h4>
+    <ul>
+      <li><strong>中国の最優遇貸出金利</strong>　本日10時の発表予定でしたが、本紙の作成時点では確認できていません。</li>
+      <li><strong>米EIAの週次燃料価格</strong>　次の公表は9月22日です。</li>
+      <li><strong>サウジのパイプラインの復旧</strong>　公式発表は確認できていません（9月11日の停止発表から11日目、毎日版では9号連続の持ち越し）。</li>
+      <li><strong>ロイター125隻とPortWatch 85.5隻の定義差</strong>　解けていません。一次データ自体が8日前で止まっています。</li>
+      <li><strong>八丈島の在庫のその後</strong>　9月19日の報道以降、更新を確認できていません。</li>
+      <li><strong>リヤドの燃料デポ</strong>　アラムコ・サウジ政府の発表は確認できていません。</li>
+    </ul>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2630/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第25号の推定・予報（9月21日6時50分発表）</a>／<a class="src" href="https://g-path.co.jp/ai-research/brief/daily-2026-09-20.html" target="_blank" rel="noopener">本紙 一日レポート D55（2026年9月20日）</a>／<a class="src" href="https://g-path.co.jp/ai-research/brief/sunday-2026-09-20.html" target="_blank" rel="noopener">本紙 日曜特集第5号「電力」（2026年9月20日）</a>／<a class="src" href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">［一次］米エネルギー情報局 公表スケジュール</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-unknown">
+    <div class="sec-head"><span class="tick"></span><span class="cat">未確認</span><span class="sec-title">確認できなかったこと。「なかった」とは書きません <span class="sub">/ 2つに分けて示します</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-warn">未確認</span></div>
+
+    <h4>この2つは別のことです</h4>
+    <ul>
+      <li><strong>「情報がなかった」</strong>＝探したうえで、掲載に足る新規情報が存在しなかったもの。</li>
+      <li><strong>「十分に調べられなかった」</strong>＝確認の範囲に制約があり、存在するかどうかも判断できないもの。</li>
+    </ul>
+
+    <div class="counter">
+      <h5>本日いちばん重要な未確認：気象庁の警報の有無</h5>
+      <p><strong>気象庁の警報・注意報の配信データを取得したところ、発表時刻が2026年5月28日と表示され、台風25号に対応する更新を確認できませんでした。3日連続で同じ事象です。</strong></p>
+      <p><strong>そのため本紙は、どの地域にどの警報が出ているかを一次情報で確認できていません。</strong>大雨の危険度についても同様です。<strong>これは「警報が出ていない」という意味ではありません。</strong>天気予報・府県概況の配信（9月21日4時35分〜5時）は最新で、本号の雨量・風・波の予報はそちらに基づいています。</p>
+      <p><strong>本日は台風が接近している日です。</strong>避難や移動の判断にあたっては、<strong>気象庁と自治体の発表を直接ご確認ください。</strong></p>
+    </div>
+
+    <h4>十分に調べられなかったもの（網羅性を保証できません）</h4>
+    <ul>
+      <li><strong>9月21日当日の海外速報。</strong>祝日の朝の時間帯で、同日に新規発生した世界の大規模災害・事故・政変について網羅的な確認ができていません。</li>
+      <li><strong>高速道路・一般道路の通行止め、空港・港湾の施設への影響、新幹線の運転計画、私鉄各社の判断。</strong></li>
+      <li><strong>各市区町村の避難情報の対象地区と対象人数。</strong>Lアラートを通じた自治体の発表により、53市区町村で避難情報の発令または避難所の開設があることは確認できましたが、すべての対象地区・人数までは網羅できていません。自治体の支援窓口の開設状況も同様です。</li>
+      <li><strong>市町村レベルの制度変更。</strong>近畿・中国・四国の空き家・古民家補助の改正、民泊条例の直近の変更。</li>
+      <li><strong>SNS・インターネット文化、エンタメ・文化、教育・研究、スポーツ、消費者技術。</strong>本日は独立したトピックとして扱える材料を確認できていません。</li>
+      <li><strong>医療・健康、環境・気候、農業・食料、宇宙・衛星、通信、ロボティクス・自動車、古民家・不動産。</strong>いずれも広域収集の対象として確認しましたが、<strong>台風と中東の材料を優先した結果、本日は独立したトピックとして掲載していません。収集を省略したのではありません。</strong></li>
+    </ul>
+
+    <h4>到達できなかった一次情報</h4>
+    <ul>
+      <li><strong>気象庁の警報・注意報の配信データ</strong>（上記・3日連続）。</li>
+        <li><strong>千葉県防災ポータル。</strong>9月21日7時15分に取得を試みましたが接続できませんでした（HTTP 000）。鋸南町の公式ホームページにも、同時刻の時点で今回の避難指示の掲載を確認できませんでした。<strong>本号の避難情報は、Lアラートを通じて各自治体が発表した内容を集約したページで確認しています。</strong></li>
+      <li><strong>サウジ政府・アラムコによる、東西パイプラインの損傷箇所・復旧計画・ヤンブーの積み出し再開についての公式発表。</strong>9月11日の停止発表以降のものは確認できていません（<strong>本日で11日目、毎日版では9号連続の持ち越し</strong>）。3か所目のポンプ施設の番号も未確認です。</li>
+      <li><strong>アラムコまたはサウジ政府による、リヤドの燃料デポの操業状況についての発表。</strong></li>
+      <li><strong>ロシア政府による、軽油輸出禁止の延長を示す正式な決定文書。</strong></li>
+      <li><strong>カタールエナジーによる、増産事業の工期変更に関する正式発表。</strong>本日確認できたのは経営者の発言のみです。</li>
+      <li><strong>資源エネルギー庁の石油製品価格調査（給油所小売価格）。</strong>ページが自動取得を拒否しました（継続）。</li>
+      <li><strong>九州電力送配電の2026年熊本地震に関する原資料</strong>（日曜特集第5号からの持ち越し）。</li>
+      <li><strong>東京都のデータセンター・ガイドラインの数値基準</strong>（画像形式のPDF・継続）。</li>
+    </ul>
+
+    <h4>数字として確認できなかったもの</h4>
+    <ul>
+      <li>9月14日以降のホルムズ海峡の通航隻数（<strong>一次データが9月13日で停止・8日連続</strong>）。</li>
+      <li>オマーン沖の洋上積み替えを経た原油が、アジアの買い手へ実際に到着した量。</li>
+      <li>モスクワ製油所の処理能力と停止期間。</li>
+      <li>カタールのLNG増産遅れが将来の供給量に与える影響。</li>
+      <li>CXMTの実際の良品率・製造コスト・市場への供給量。</li>
+      <li>台風25号による人的被害・住家被害・断水・通信障害（<strong>本日7時20分時点</strong>）。横浜市が港北区の避難指示の発令理由として示した「土砂災害発生」についても、<strong>発生場所・被害の規模・人的被害の有無のいずれも確認できていません。</strong>発令理由そのものは横浜市の発表として確認できています。</li>
+      <li>喜望峰回りの実数（距離と所要日数は確認できましたが、<strong>隻数は9月13日から9日連続で未取得</strong>）。</li>
+      <li>住家被害2,677棟のその後、義援金・支援窓口、JR内房線の復旧、財務省の月次介入実績、モデル事業6件の所在地（前号からの持ち越し）。</li>
+    </ul>
+
+    <div class="counter">
+      <h5>食い違いをそのまま記録するもの</h5>
+      <p><strong>ホルムズの戦争前の基準値。</strong>ロイターの約125隻/日（報道）と、IMF PortWatch の2025年平均85.5隻/日（一次）。<strong>同一尺度と確認できていないため直接比較できません。どちらも削除しません。</strong></p>
+      <p><strong>サウジ東西パイプラインの復旧時期。</strong>「数日」から「8週間」まで開いており、AP通信は地域当局者の話として3〜5週間と伝えています。<strong>サウジ当局自身は時期を示していません。</strong></p>
+      <p><strong>ロシアの燃料輸出禁止の期限。</strong>ガソリンは2026年末まで、軽油は10月31日までと報じられていますが、<strong>軽油側の正式文書は未確認です。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/warning/data/warning/130000.json" target="_blank" rel="noopener">［一次］気象庁 警報・注意報配信データ（取得したが発表時刻が2026年5月28日と表示）</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json" target="_blank" rel="noopener">［一次］気象庁 東京都の府県概況（9月21日4時43分・こちらは最新）</a>／<a class="src" href="https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query" target="_blank" rel="noopener">［一次］国際通貨基金 PortWatch（9月21日に再取得・最新は9月13日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">予定</span><span class="sec-title">本日と連休、そして来週のウォッチリスト <span class="sub">/ 日本時間で整理します</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">予定</span></div>
+
+    <p><strong>未確定の日程は、確定したものとしては書きません。</strong></p>
+
+    <div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>9月21日（月・敬老の日）</em>本日</div>
+        <div class="dg-r"><span>災害</span><span><b>昼過ぎから夜にかけてが山。</b>15時に台風が八丈島の北西約60km、18時〜21時に関東の東。関東・伊豆諸島で非常に激しい雨の予想</span></div>
+        <div class="dg-r"><span>交通</span><span><b>14時ごろから鉄道の運転取りやめが順次始まります。</b>航空の欠航は夕方以降。<b>21日夕方の東海汽船東京発は当日17時ごろ判断</b>とされていました</span></div>
+        <div class="dg-r"><span>市場</span><span>日本の現物株式は休場。デリバティブは祝日取引。米国市場は今夜から通常取引</span></div>
+        <div class="dg-r"><span>経済</span><span>10時に中国の最優遇貸出金利。米シカゴ連銀全米活動指数</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月22日（火・休日）</em>台風は離れる</div>
+        <div class="dg-r"><span>災害</span><span>3時ごろに銚子市の東北東約240km。<b>その後は北東へ抜け、関東は曇り時々晴れの予報。</b>青梅線の青梅〜奥多摩は10時ごろまで運転取りやめ</span></div>
+        <div class="dg-r"><span>エネルギー</span><span><b>米EIAの週次ガソリン・ディーゼル価格</b>（ディーゼル6.285ドルの次の値）</span></div>
+        <div class="dg-r"><span>宇宙</span><span>スペースX スターシップ14回目の飛行（協定世界時12時15分〜14時14分、予備日は23日）</span></div>
+        <div class="dg-r"><span>その他</span><span>リビアの石油施設警備隊が予告した1週間の期限。ADP雇用統計。ユーロ圏消費者信頼感</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月23日（水・秋分の日）</em></div>
+        <div class="dg-r"><span>経済</span><span>米国・ユーロ圏・英国の9月PMI速報。EIA原油在庫。南アフリカ中銀の政策金利。独Ifo</span></div>
+        <div class="dg-r"><span>市場</span><span>日本の現物株式は休場（3日目）。デリバティブは祝日取引</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月24日（木）</em>日本市場が再開</div>
+        <div class="dg-r"><span>金融政策</span><span><b>日銀の新しい金融市場調節方針（1.25%程度）の適用開始日。</b>［一次］日銀が9月18日の総裁記者会見の要旨を公表</span></div>
+        <div class="dg-r"><span>市場</span><span><b>日本の現物株式市場が3営業日ぶりに再開。</b>3日分の海外材料を一度に織り込みます</span></div>
+        <div class="dg-r"><span>世界情勢</span><span>スイス・スウェーデン・ノルウェー・メキシコの中銀が金利決定。豪雇用統計。米新築住宅販売</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>9月25日（金）以降</em></div>
+        <div class="dg-r"><span>経済</span><span>米耐久財受注（8月）、米生産者物価、ミシガン大消費者信頼感（確報）。［一次］日銀が消費者物価のコア指標などを公表</span></div>
+        <div class="dg-r"><span>9月30日</span><span>ロシアのディーゼル・船舶燃料・ガスオイルの輸出禁止の当初期限（10月31日への延長が報じられています）。KDDIから楽天モバイルへのローミング提供の終了期限</span></div>
+        <div class="dg-r"><span>11月10日</span><span><b>米中の通商休戦の期限</b></span></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><strong>日時を確認できていない予定。</strong>米中首脳会談は「今週」と報じられていますが、<strong>本紙は正確な日時と議題を確認できていません。</strong>国連総会の一般討論の日程も同様です。<strong>予定と結果を混同しないため、確認できたものだけを上の表に載せています。</strong></p>
+      <p><strong>台風に関する運休・欠航は、各事業者が当日の状況で判断を更新します。</strong>本号に載せたのは9月20日から21日朝までの発表です。<strong>移動の前に、必ず最新の発表をご確認ください。</strong></p>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2630/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第25号の予報（9月21日5時45分発表）</a>／<a class="src" href="https://www.jpx.co.jp/news/2040/20260918-01.html" target="_blank" rel="noopener">［一次］日本取引所グループ デリバティブの祝日取引の実施について（9月18日）</a>／<a class="src" href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm" target="_blank" rel="noopener">［一次］日本銀行 会合日程と公表予定</a>／<a class="src" href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">［一次］米エネルギー情報局 公表スケジュール</a>／<a class="src" href="https://www.spacex.com/launches/" target="_blank" rel="noopener">［企業発表］SpaceX 打ち上げ予定</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+<div class="askai" id="askai">
+    <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+    <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった項目の名前に書き換えてからお使いください。</p>
+    <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。レポート本文は自動送信されません。</p>
+    <div class="askai-box">
+      <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+      <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+    </div>
+    <div class="askai-links">
+      <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+      <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+      <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+    </div>
+  </div>
+
+
+  <footer class="foot">
+    <p><a href="index.html">← レポート一覧へ戻る</a></p>
+    <p><strong>AI総合研究機構 — 朝の一日レポート</strong></p>
+    <p><strong>本号(D56)は、AI総合研究機構の朝の一日レポートです。本日は敬老の日ですが、通常どおり作成しました。休日を理由に調査範囲を縮小していません。</strong>広域の収集対象（金融・市場／政治・世界情勢／災害・安全／AI・技術／通信／宇宙・衛星／ロボット・モビリティ／住まい・地域／暮らし／消費者技術／社会・文化／ランダム・ニッチ発見の12領域）を一巡したうえで、掲載情報を選別しました。<strong>確認したが掲載する材料がなかった領域は「確認できなかったこと」の章に並べています。</strong><strong>本文に独立したトピックとして載せた項目は、原則すべて冒頭に一覧しています。件数は日によって変わります。</strong></p>
+    <p><strong>初稿の収集基準時刻は2026年9月21日 7時30分（日本時間）です。公開前の安全情報確認によって判明した交通・避難情報を、各出典の更新・確認時刻を付けて追補しました。本号全体の最終確認時刻は2026年9月21日 8時00分（日本時間）です。</strong><strong>追補したのは、鉄道の運転見合わせ・計画運休（JR東日本 9月21日7時52分現在）と、袖ケ浦市の避難指示（9月21日6時35分発令・7時55分確認）の2点です。</strong>それ以外の数値は初稿のままで、<strong>5時・6時・7時20分などの時点の値を、後の時刻の値として書き換えてはいません。</strong>これ以降の動きは、次号D57で扱います。<strong>本日から9月23日まで日本の現物株式市場は休場です。本号に載せた株価・債券利回り・為替・商品の値は、すべて9月18日（金）の終値または最終時点の値であり、本日の値ではありません。</strong>暗号資産は祝日も取引されているため、取得時刻（9月21日6時30分・日本時間）を付けて別に記載しています。<strong>天気予報と府県概況は9月21日4時35分〜5時の発表です。<strong>台風・避難・交通の情報基準時刻はそれぞれ次のとおりです。台風＝9月21日6時の実況（6時50分発表）。避難情報＝9月21日7時20分に取得した各市区町村の発表の集約（袖ケ浦市の内訳のみ7時55分に追加確認。発令は6時35分）。停電＝9月21日5時時点。鉄道の運転見合わせ・計画運休＝JR東日本の運行情報 9月21日7時52分現在。航空の欠航＝9月20日23時00分時点の集計（本日の更新は確認していません）。特急の運休＝9月20日の発表のみ（本日朝の公式運行状況は確認できていないため、確定事項の一覧には含めていません）。</strong>米国の燃料小売価格は9月14日時点（9月15日公表）で、次回公表は9月22日です。</strong></p>
+    <p><strong>本号の編集方針。</strong>①数字には出典と基準時刻を添えました。②集計主体・基準時刻・価格系列の違うものを、足したり引いたりしていません。③当事者の発表、第三者の確認、報道、関係筋情報、分析・推計を分けて置いています。④<strong>台風25号について、前号の進路予想をそのまま使わず、9月21日6時50分発表の推定・予報へ差し替えました。前号の予報と本日の実況は、どちらも「21日6時」の値をそろえて並べています。あわせて、気象庁の警報・自治体の避難情報・実際に発生した被害・予報の4つを、発表する主体と確からしさの違うものとして章立てで分けています。</strong>⑤<strong>連休の交通について、前号の時点で「可能性」だったものが今朝「決定」に変わったことを明記し、決定した運休・欠航と、まだ決まっていないものを分けました。</strong>⑥<strong>カタールのLNGについて、経営者の懸念・正式に決定した工期変更・実際に発生した設備搬入遅延・将来の供給量への影響を6段階に分け、「遅れる可能性がある」という発言を決定事項として扱っていません。</strong>⑦<strong>サウジ東西パイプラインについて、損傷施設・修理状況・部分再開・実輸送量の回復・ヤンブーの積み出し・通常能力への回復を分け、サウジ当局が復旧時期を示していないことと、報道の見積もりが「数日」から「8週間」まで開いていることを明記しました。</strong>⑧<strong>ホルムズの一次データが9月13日で止まっていることを明示し、AISで確認できた隻数を実際の全通航数として扱っていません。積み出し「量」と通航「隻数」を同じ指標として足し合わせてもいません。</strong>⑨<strong>原油価格の低下を供給問題の解消とは判断せず、原油備蓄があることと、必要な石油製品を生産・輸送できることを分けています。</strong>⑩<strong>ロシア・ウクライナについて、ロシア側の発表・ウクライナ企業の主張・ウクライナ現地当局の発表を分け、攻撃の発生から製油所の稼働停止を推測していません。</strong>⑪<strong>米中協議について「議題に挙がった」段階であることを明記し、提案・合意・正式文書・制度変更とは区別しました。</strong>⑫<strong>中国のDRAMについて、一般・モバイル向けDRAMとAIアクセラレーター向けHBMが別のものであることを明記し、量産発表からHBMの供給制約の解消を推測していません。企業が公表した性能数値と、良品率・製造コスト・市場供給量を分けています。</strong>⑬<strong>金曜の終値を「本日の日本株の値動き」として扱わず、休場明けの値動きも予測していません。</strong>⑭<strong>AIの節で、本レポートの制作に生成AIが関与していることを開示しています。</strong>⑮確認できなかったものは「確認できなかったこと」の章にまとめています。</p>
+    <p><strong>数字の検算について。</strong>台風25号は、9月20日6時45分発表の21日6時の予報が「八丈島の南西約250キロ・970ヘクトパスカル」で、9月21日6時50分発表の実況が「21日6時に南西約210キロ・965ヘクトパスカル」です。<strong>どちらも21日6時の値で、同じ時刻どうしの比較になります。実際の位置は予報より約40キロ近く、中心気圧は5ヘクトパスカル低い値でした。</strong>22日3時の予報位置は、前号の「銚子市の東約160キロ」から、本日6時50分発表では北緯36.0度・東経143.4度へ変わりました（本日5時45分発表では同じ時刻を「銚子市の東北東約240キロ」としています）。避難情報は、確認できた発令時刻が東京都大島町9月20日19時00分、千葉県南房総市9月20日23時17分、千葉県館山市9月21日3時29分、横浜市港北区9月21日4時30分、千葉県鋸南町9月21日5時30分です。9月21日7時20分時点で<strong>避難情報の発令または避難所の開設が確認できたのは</strong>千葉県38・神奈川県5・東京都7・静岡県3の計53市区町村で、<strong>内訳は避難指示27市区町村（千葉23・神奈川3・東京1・静岡0）、高齢者等避難6市町（千葉3・神奈川1・静岡2・東京0）、避難所の開設のみ20市区町村（千葉12・神奈川1・東京6・静岡1）です。27＋6＋20＝53で一致します。</strong>避難指示と高齢者等避難の両方を出している自治体は、強いほうの避難指示として1件だけ数えています。<strong>袖ケ浦市は6時35分に、土砂災害特別警戒区域および土砂災害警戒区域の1万8,000世帯・4万363人へ避難指示、小櫃川流域の河川氾濫浸水想定区域の7,674世帯・1万7,628人へ高齢者等避難を出しています。合計は2万5,674世帯・5万7,991人で、市の発表と一致します。</strong><strong>この人数は袖ケ浦市が対象とした人数であり、千葉県全体や1都3県全体の避難対象人数ではありません。</strong>袖ケ浦市はすでに避難指示27市区町村に含まれているため、この追記で自治体数は変わりません。<strong>鉄道は、9月21日7時52分現在で運転見合わせ中が6線区（外房線・内房線・総武本線・成田線・東金線・鹿島線の各一部区間）、終日取りやめが1線区（久留里線）で、これとは別に午後からの計画運休が決まっています。</strong>千葉県北西部・北東部の予想降水量は、前日発表が1時間40ミリ・24時間200ミリ、本日発表が1時間70ミリ・24時間300ミリで、<strong>1時間降水量は1.75倍、24時間降水量は1.5倍です（対象期間は1日ずれています）。</strong>航空の欠航は全日空53便・約9,700人で1便あたり約183人、日本航空10便・約675人で1便あたり約68人にあたります。サウジの原油積み出しは1〜2月の日量750万バレルから9月前半の約210万バレルで、減少率は約72%です。ホルムズの一次データは9月11日8隻・12日2隻・13日8隻で、13日の内訳はタンカー1隻・貨物船7隻。迂回路は、ホルムズ経由の約3,370海里に対し喜望峰回りが約13,140海里で、<strong>約3.9倍の距離</strong>にあたります。暗号資産は9月21日6時30分（日本時間）時点でビットコイン80,851ドル・約1,268万円で、前日同時刻の81,068ドルからは0.27%の下落です。</p>
+    <p><strong>本号の情報源について。</strong>気象庁の台風情報・天気予報・府県概況、国際通貨基金 PortWatch、米エネルギー情報局、日本取引所グループ、内閣府、日本銀行、国際エネルギー機関、東海汽船、日本航空、全日空を一次情報として用いました。<strong>鉄道の運行情報は、JR東日本の「関東エリアの運行情報・運休情報」（9月21日7時52分現在）を一次情報として用い、運転見合わせ・計画運休・可能性の3つを分けて記載しました。特急の運行情報ページは取得できませんでした。</strong><strong>避難情報は、Lアラートを通じて各市区町村が発表した内容（発表自治体・発令時刻・対象地域・自治体の補足説明を含む）を集約したページで確認しました。発令元は各市区町村です。都県別の集計は、千葉県・神奈川県・東京都・静岡県の4つの一覧ページをそれぞれ数えたもので、4本とも出典に挙げています。</strong>なお、千葉県防災ポータルは9月21日7時15分に接続できず（HTTP 000）、鋸南町の公式ホームページにも同時刻の時点で今回の避難指示の掲載を確認できませんでした。<strong>気象庁の警報・注意報の配信データは、取得したところ発表時刻が2026年5月28日と表示され、台風25号に対応する更新を確認できませんでした。3日連続で同じ事象です。どの地域にどの警報が出ているかを一次で確認できていません。天気予報・府県概況の配信は最新です。</strong>停電の数値は、東京電力パワーグリッドのホームページに出ている値をNHKが報じたもので、基準時刻を本文に明記しています。</p>
+    <p><strong>本日は台風が接近している日です。</strong>避難や移動の判断にあたっては、本レポートではなく、<strong>気象庁と各自治体、および各交通事業者の最新の発表を直接ご確認ください。</strong>本号に載せた運休・欠航は9月20日から21日朝までの発表であり、当日の状況で更新されます。</p>
+    <p>本レポートは情報提供を目的としたもので、投資、法務、税務、医療、その他の専門的助言ではありません。掲載した数値・日付・出典は公開情報に基づいて確認していますが、完全性・正確性を保証するものではありません。実際の判断にあたっては、一次情報と専門家の助言をご確認ください。</p>
+    <p class="cr">© 2026 AI総合研究機構</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var q = document.getElementById('askaiQ');
+  if(!btn || !q) return;
+  btn.addEventListener('click', function(){
+    var text = q.value;
+    function done(){
+      btn.classList.add('is-copied');
+      var old = btn.textContent;
+      btn.textContent = 'コピーしました';
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('is-copied'); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ q.select(); });
+    } else {
+      q.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+    }
+  });
+})();
+</script>
+</body>
+</html>
