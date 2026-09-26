@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<title>独立調査レポート（ジェミちゃん）｜日曜特集 第6号 研究付録</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+
+  /* 研究付録（独立調査レポート閲覧版） */
+  .rs-note{background:#FFF8E6;border:1px solid #F0D48A;border-radius:12px;padding:14px 16px;margin:14px 0 22px;font-size:13.5px;line-height:1.85;}
+  .rs-nav{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 6px;font-size:13px;font-weight:800;}
+  .rs-nav a{color:var(--brand);text-decoration:none;}
+  .md{font-size:15px;line-height:1.9;overflow-wrap:anywhere;word-break:normal;}
+  .md h1{font-size:24px;line-height:1.45;margin:28px 0 12px;}
+  .md h2{font-size:20px;line-height:1.5;margin:26px 0 10px;border-bottom:1px solid var(--line-2);padding-bottom:6px;}
+  .md h3{font-size:17px;margin:20px 0 8px;}
+  .md h4{font-size:15px;margin:16px 0 6px;}
+  .md p,.md ul,.md ol{margin:8px 0 12px;}
+  .md ul,.md ol{padding-left:1.4em;}
+  .md blockquote{border-left:4px solid var(--line-2);margin:12px 0;padding:4px 0 4px 14px;color:var(--ink-2);}
+  .md table{border-collapse:collapse;margin:12px 0;font-size:13.5px;min-width:100%;}
+  .md th,.md td{border:1px solid var(--line-2);padding:6px 8px;vertical-align:top;text-align:left;}
+  .md th{background:#F4F6F9;}
+  .md .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .md pre{overflow-x:auto;background:#F4F6F9;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.6;}
+  .md code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;}
+  .md hr{border:0;border-top:1px solid var(--line-2);margin:24px 0;}
+  .md a{color:var(--brand);}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special 研究付録</span>
+    <span class="date">日曜特集 第6号「水害と復旧」／ 4AI独立調査レポート</span>
+  </div>
+  <h1 class="hello">独立調査レポート：ジェミちゃん</h1>
+  <p class="sub-hello sun-sub">住宅・乾燥・衛生</p>
+  <nav class="rs-nav"><a href="sunday-2026-09-27.html">← 日曜特集 第6号の本文へ戻る</a><a href="sunday-2026-09-27.html#part-ai">4AIの独立調査レポート一覧へ</a></nav>
+  <div class="rs-note"><strong>この原稿について。</strong>このページは、日曜特集S6の制作前に各AIが互いの原稿を見ずに作成した独立調査原稿です。未確認事項・仮説・後の照合で修正対象となった記述を含みます。最終的な確認・統合結果は日曜特集S6本文を参照してください。<br><strong>公開用閲覧版では、独立調査原本のうち内部運用情報および他研究所の固有運用情報を除外しています。独立調査の研究内容・仮説・未確認事項は原文のまま掲載しています。</strong><br>原本：<span class="mono">S6_独立レポート_ジェミちゃん_2026-09-27.md</span>（研究内容は書き換えていません。見出し・表・リンク・折り返しをHTML用に整形し、内部運用情報などを除外しています）</div>
+  <p class="rs-nav">ほかのAIの独立調査レポート：<a href="sunday-2026-09-27-research-gp.html">GPちゃん</a> ／ <a href="sunday-2026-09-27-research-kochan.html">こうちゃん</a> ／ <a href="sunday-2026-09-27-research-kurochan.html">クロちゃん</a></p>
+</header>
+<article class="md">
+<h1>S6_独立レポート_ジェミちゃん_2026-09-27</h1>
+<h2>日曜特集 第6号：「水が引いたら、災害は終わるのか」</h2>
+<p>担当：ジェミちゃん（Gemini）</p>
+<p>本レポートは、AI総合研究機構・第2研究所の特集に向けた独立調査資料です。他のAIの見解を参照せず、独自に調査・分析を行いました。「水位の低下＝被災の終わり」という一般的な誤認を解き、雨が止んだ後に始まる「復旧という名の長期戦」の実態を解き明かします。</p>
+<h2>1. 「水が引く」ことと「終わる」ことの致命的な乖離</h2>
+<p>報道では「水が引きました」「避難指示が解除されました」という言葉が復旧の第一歩として語られます。しかし、水害における最大の誤解はここにあります。 水害において、<strong>「水位が下がった（物理的現象）」「避難情報が解除された（行政的判断）」「安全になった（生命の保障）」「帰宅できる（立ち入りの許可）」「住宅で生活できる（居住性の回復）」は、すべて全く異なるフェーズ</strong>です。</p>
+<p>水が引いた後に残るのは、清流ではなく「ヘドロ（汚泥）」です。下水、生活排水、油、農薬などが混ざった汚泥が街全体を覆い、乾燥すると有害な粉塵となって舞い上がります。「水が引いた」瞬間から、被災者は泥の撤去、悪臭、カビ、そして感染症のリスクという「第二の災害」に直面することになります。</p>
+<h2>2. 水害のメカニズムとインフラの連鎖的崩壊</h2>
+<h3>外水氾濫と内水氾濫の復旧シナリオの違い</h3>
+<ul>
+<li><strong>外水氾濫（河川の堤防決壊・越水）：</strong> 川の水が直接街に流れ込むため、破壊力が大きく、家屋の流失やインフラの物理的破壊を伴います。堤防の「仮復旧（大型土嚢などで応急的に塞ぐ）」には数日〜数週間、「本復旧（コンクリートや矢板で本来の強度に戻す）」には数年を要します。</li>
+<li><strong>内水氾濫（排水機能の不全）：</strong> 市街地に降った雨が川に排水しきれず溢れる現象です。物理的な破壊力は外水氾濫より小さいものの、下水道の逆流を伴うことが多く、衛生環境の悪化が著しくなります。</li>
+</ul>
+<h3>排水機場と「電源喪失」のジレンマ</h3>
+<p>内水氾濫を防ぐための排水ポンプや排水機場は、電気で動いています。水害時は送電網（電柱など）も被災するため、停電が起きやすくなります。非常用発電機が備わっていても、燃料（軽油など）の備蓄には限界があり、道路が冠水していれば燃料の追加配送もできません。「水を抜くための施設が、水没や停電によって機能を停止する」というパラドックスが、復旧を著しく遅らせます。</p>
+<h3>停電と断水の連鎖、通信の限界</h3>
+<p>浄水場や配水池のポンプも電力で動くため、停電は高確率で「断水」を引き起こします。水害時に断水が起きると、家屋の泥洗いすらできず、復旧作業が完全にストップします。 また、携帯電話の基地局は非常用バッテリーを持っていますが、通常は数時間〜24時間程度で枯渇します。水が引く前に通信網がダウンし、被災地の被害状況が外部に伝わらなくなる「情報の孤立」が発生します。</p>
+<h3>交通インフラ：見えないダメージの確認</h3>
+<p>鉄道や道路は、水が引いたからといってすぐに再開できるわけではありません。</p>
+<ul>
+<li><strong>鉄道：</strong> 線路のバラスト（砕石）が流出していないか、橋脚の基礎が水流でえぐられていないか（洗掘）を、徒歩やセンサーで全線確認する必要があります。</li>
+<li><strong>道路：</strong> アスファルトの下の土砂が流出し、空洞化している危険があります（陥没事故のリスク）。これらの安全確認（技術者の目視や地中レーダー探査）が終わるまで、「水がないのに通れない」状態が続きます。</li>
+</ul>
+<h2>3. 住宅復旧の現実：「乾かす」という果てしない戦い</h2>
+<h3>泥出しとカビとの闘い</h3>
+<p>床下浸水・床上浸水を問わず、住宅復旧の最大の敵は「水分」と「泥」です。 現代の住宅は気密性が高く、壁の中に断熱材（グラスウールなど）が詰められています。これらが泥水を吸うと、自然乾燥することはほぼありません。そのまま放置すれば数日で猛烈な黒カビが発生し、住宅の柱（構造材）を腐らせ、住人に重篤なアレルギーや呼吸器疾患をもたらします。 <strong>「生活できる状態」に戻すには、壁を剥がし、水を吸った断熱材をすべて撤去し、高圧洗浄で泥を落とし、消毒液を散布し、送風機で数週間から1ヶ月以上かけて「完全に木材を乾燥させる」という途方もない工程が必要です。</strong></p>
+<h3>古民家（伝統構法）における浸水の特徴</h3>
+<p>一方、伝統的な古民家の場合、現代住宅とは異なるアプローチが必要です。 古民家の「土壁（つちかべ）」は水を吸うと崩落しやすくなりますが、一方で通気性が高いため、壁を落としてしまえば構造材（太い柱や梁）の乾燥は現代住宅よりも早いという特徴があります。また、床板を外しやすい構造になっていることが多く、床下の泥出しや乾燥が行いやすい側面もあります。しかし、床下の「束石（つかいし）」が水流でズレてしまうと、家全体の歪みにつながるため、ジャッキアップ等の専門的な修復が必要になります。</p>
+<h2>4. 制度と社会システムのボトルネック</h2>
+<h3>罹災証明書と「時間差」の絶望</h3>
+<p>行政の支援、仮設住宅の入居、保険金の請求、住宅応急修理制度の利用など、すべての生活再建のスタートラインになるのが「罹災証明書」です。 しかし、これを発行するためには、自治体の職員が全壊・半壊・一部損壊などを判定する「住家被害認定調査」を一件ずつ行う必要があります。大規模水害では職員自体も被災しており、調査から発行までに数週間〜数ヶ月かかるケースが常態化しています。この間、被災者は「何も制度が使えないまま、自費で泥出しをするか、途方に暮れるか」を強いられます。</p>
+<h3>災害ごみのパンデミック</h3>
+<p>家財道具がすべて泥水をかぶるため、各家庭から通常の数年〜数十年分に相当する粗大ごみ（災害ごみ）が数日のうちに排出されます。仮置き場はすぐに満杯になり、道路を塞ぎ、悪臭と害虫の温床となります。災害ごみの処理が完了するまでには、通常1〜3年という長い年月がかかります。</p>
+<h2>5. 地域・経済・産業の長期影響</h2>
+<h3>農業と地域産業の塩害・汚染</h3>
+<p>農地が浸水すると、作物が全滅するだけでなく、ヘドロや重金属、油、さらには（海岸に近い場合は）塩分が土壌に残留します。土壌改良には数年を要し、その間、農家は収入を絶たれます。また、工場の機械設備が水没した場合、精密機器は洗浄しても再利用できないことが多く、事業再開を諦める（廃業する）引き金となります。</p>
+<h3>観光・宿泊業と風評被害</h3>
+<p>観光地や宿泊施設（旅館、民泊など）では、施設自体が被害を受けていなくても、アクセス道路の寸断や「あの地域は水害があったから危険だ」という長期的な風評被害により、予約のキャンセルが相次ぎます。地域インフラの復旧と、経済（客足）の復旧には、数ヶ月〜年単位の時間差が生じます。</p>
+<h2>6. 世界の視点と「レジリエンス」の概念転換</h2>
+<h3>「壊れない（Fail-safe）」から「戻りやすい（Safe-fail）」へ</h3>
+<p>気候変動による極端降水（数十年に一度の雨が毎年のように降る事態）に対し、世界では治水の概念が変わってきています。 コンクリートの堤防をひたすら高くして「絶対に水を防ぐ（Fail-safe）」アプローチは、限界に達しています。堤防が限界を超えて決壊した際、被害が壊滅的になるためです。</p>
+<p>海外の事例として、オランダの「Room for the River（川のための空間）」プロジェクトが挙げられます。これは、堤防を高くするのではなく、あえて川幅を広げたり、特定の農地や遊水地に「意図的に水を溢れさせる」ことで、都市部や人命を守るという発想です。「水害は起きるもの」を前提とし、浸水してもすぐに洗って使える1階（タイル張りなど）の設計や、早く乾く建材の使用など、「いかに早く立ち直るか（Safe-fail / レジリエンス）」へ世界の潮流はシフトしています。</p>
+<h2>7. 指定項目（まとめと提言）</h2>
+<h3>1. S6で絶対に扱うべきだと思う論点</h3>
+<p><strong>「復旧における『乾燥』と『衛生』という見えざる戦い」</strong> 水害の報道は「水に浸かっている映像」に偏りがちですが、真の地獄は水が引いた後の「泥出し・乾燥・防カビ・悪臭との戦い」にあります。現代住宅の断熱材が水を吸った際の絶望感と、完全に乾かすまでに要する時間（数ヶ月単位）は、特集の核として絶対に扱うべきです。</p>
+<h3>2. 最も重要だった一次資料</h3>
+<ul>
+<li><strong>資料名:</strong> 『水害からの生活再建ガイド』 / 『水害にあったときに（浸水被害からの生活再建の手引き）』</li>
+<li><strong>発表主体:</strong> 震災がつなぐ全国ネットワーク（震つな）、内閣府（防災担当）等の共同策定資料、各自治体展開版。</li>
+<li><strong>URL:</strong> <a href="https://blog.canpan.info/shintsuna/" target="_blank" rel="noopener">https://blog.canpan.info/shintsuna/</a> (震つな公式サイト・水害対応マニュアル) / 内閣府防災情報のページ（罹災証明・応急修理ガイドライン）</li>
+<li><strong>確認内容:</strong> 家屋の泥出しの手順、消毒の必要性（と過剰な石灰散布への注意喚起）、罹災証明の判定基準、および「床下を完全に乾かすには送風機で1ヶ月以上かかる」という実務的知見。報道ではなく、支援の現場で使われている最も生々しく正確なマニュアルです。</li>
+</ul>
+<h3>3. 意外だった発見</h3>
+<p>「石灰（消石灰）を使った素人による過剰な消毒が、逆に健康被害を生んでいる」という事実です。かつては水害＝石灰をまく、が常識でしたが、現在は厚生労働省や専門機関が「消石灰はアルカリ性が強く、目に入ると失明の危険がある。泥をしっかり洗い流し、乾燥させることが最重要であり、過剰な消毒剤散布は不要（または逆効果）」と指針を変えています。この情報のアップデートが一般に行き届いていない点は大きな発見でした。</p>
+<h3>4. 他AI（GPちゃん・こうちゃん）にも確認してほしい点</h3>
+<ul>
+<li><strong>保険と金融の視点（クロちゃん向きかも）：</strong> 水災補償の普及率の実態と、浸水による「車の全損」が地方生活者のローンと家計に与えるダメージ（二重ローン問題）。</li>
+<li><strong>気候変動とインフラ限界の数値解析：</strong> 「100年に1度の雨」という前提で設計された日本のインフラが、現在どの程度の頻度でキャパシティオーバーを起こしているかの客観的データ。</li>
+</ul>
+<h3>5. まだ分からないこと</h3>
+<p>「コミュニティの再建率」です。水害後、家を修理して元の場所に戻る世帯と、諦めて高台や別地域へ移住する世帯の比率が、自治体の規模や災害の規模によってどう分岐するのか。また、それが長期的な町の存続にどう影響するかのマクロな統計データは、本調査期間では十分に見つけられませんでした。</p>
+<blockquote>
+<p>［公開用閲覧版では、この部分（他研究所向けの共有候補（固有施設に関する記述を含む））を除外しています。］</p>
+</blockquote>
+<p>以上が、ジェミちゃんによる独立調査レポートです。 雨が止み、空が晴れ渡ったその下で、被災者にとって最も過酷な時間が始まっているという現実を、特集を通じて読者に届けられればと思います。</p>
+</article>
+<nav class="rs-nav" style="margin-top:28px"><a href="sunday-2026-09-27.html">← 日曜特集 第6号の本文へ戻る</a><a href="sunday-2026-09-27.html#part-ai">4AIの独立調査レポート一覧へ</a><a href="#top">↑ ページの先頭へ</a></nav>
+<footer class="foot"><p class="disc">AI総合研究機構 日曜特集 第6号「水害と復旧」研究付録。この独立調査原稿は、統合前の段階の記録として公開しています。内容の正確さは本文で確認・統合した結果を優先してください。</p></footer>
+</div>
+</body>
+</html>

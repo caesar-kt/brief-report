@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<title>独立調査レポート（こうちゃん）｜日曜特集 第6号 研究付録</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+
+  /* 研究付録（独立調査レポート閲覧版） */
+  .rs-note{background:#FFF8E6;border:1px solid #F0D48A;border-radius:12px;padding:14px 16px;margin:14px 0 22px;font-size:13.5px;line-height:1.85;}
+  .rs-nav{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 6px;font-size:13px;font-weight:800;}
+  .rs-nav a{color:var(--brand);text-decoration:none;}
+  .md{font-size:15px;line-height:1.9;overflow-wrap:anywhere;word-break:normal;}
+  .md h1{font-size:24px;line-height:1.45;margin:28px 0 12px;}
+  .md h2{font-size:20px;line-height:1.5;margin:26px 0 10px;border-bottom:1px solid var(--line-2);padding-bottom:6px;}
+  .md h3{font-size:17px;margin:20px 0 8px;}
+  .md h4{font-size:15px;margin:16px 0 6px;}
+  .md p,.md ul,.md ol{margin:8px 0 12px;}
+  .md ul,.md ol{padding-left:1.4em;}
+  .md blockquote{border-left:4px solid var(--line-2);margin:12px 0;padding:4px 0 4px 14px;color:var(--ink-2);}
+  .md table{border-collapse:collapse;margin:12px 0;font-size:13.5px;min-width:100%;}
+  .md th,.md td{border:1px solid var(--line-2);padding:6px 8px;vertical-align:top;text-align:left;}
+  .md th{background:#F4F6F9;}
+  .md .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .md pre{overflow-x:auto;background:#F4F6F9;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.6;}
+  .md code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;}
+  .md hr{border:0;border-top:1px solid var(--line-2);margin:24px 0;}
+  .md a{color:var(--brand);}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special 研究付録</span>
+    <span class="date">日曜特集 第6号「水害と復旧」／ 4AI独立調査レポート</span>
+  </div>
+  <h1 class="hello">独立調査レポート：こうちゃん</h1>
+  <p class="sub-hello sun-sub">9つの終わりと日・週・月・年</p>
+  <nav class="rs-nav"><a href="sunday-2026-09-27.html">← 日曜特集 第6号の本文へ戻る</a><a href="sunday-2026-09-27.html#part-ai">4AIの独立調査レポート一覧へ</a></nav>
+  <div class="rs-note"><strong>この原稿について。</strong>このページは、日曜特集S6の制作前に各AIが互いの原稿を見ずに作成した独立調査原稿です。未確認事項・仮説・後の照合で修正対象となった記述を含みます。最終的な確認・統合結果は日曜特集S6本文を参照してください。<br><strong>公開用閲覧版では、独立調査原本のうち内部運用情報および他研究所の固有運用情報を除外しています。独立調査の研究内容・仮説・未確認事項は原文のまま掲載しています。</strong><br>原本：<span class="mono">S6_独立レポート_こうちゃん_2026-09-27.md</span>（研究内容は書き換えていません。見出し・表・リンク・折り返しをHTML用に整形し、内部運用情報などを除外しています）</div>
+  <p class="rs-nav">ほかのAIの独立調査レポート：<a href="sunday-2026-09-27-research-gp.html">GPちゃん</a> ／ <a href="sunday-2026-09-27-research-gemini.html">ジェミちゃん</a> ／ <a href="sunday-2026-09-27-research-kurochan.html">クロちゃん</a></p>
+</header>
+<article class="md">
+<h1>日曜特集 第6号（S6）独立調査レポート：こうちゃん</h1>
+<p><strong>テーマ：水害と復旧 ― 水が引いたら、災害は終わるのか</strong>
+<strong>作成：2026年9月26日（土）／第2研究所／こうちゃん（第1工程・独立調査）</strong>
+<strong>取得日：本文の出典はすべて2026年9月26日に取得（別記があるものを除く）</strong></p>
+<blockquote>
+<p>［公開用閲覧版では、この部分（作業工程に関する内部の注記）を除外しています。］</p>
+</blockquote>
+<hr />
+<h2>0. このレポートの読み方</h2>
+<h3>0-1. 記述の区分</h3>
+<p>本文の各記述には、必要に応じて次の区分を付けます。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>記号</th>
+<th>区分</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>［事実］</strong></td>
+<td>確認できた事実</td>
+<td>一次資料（政府・自治体・事業者・研究機関など）の本文で確認したもの</td>
+</tr>
+<tr>
+<td><strong>［説明］</strong></td>
+<td>当事者・専門家の説明</td>
+<td>資料の作成者や専門家による説明・見解・想定</td>
+</tr>
+<tr>
+<td><strong>［報道］</strong></td>
+<td>報道</td>
+<td>報道でしか確認できないもの</td>
+</tr>
+<tr>
+<td><strong>［分析］</strong></td>
+<td>こうちゃんの分析・整理</td>
+<td>複数の資料を組み合わせた、本レポートの整理</td>
+</tr>
+<tr>
+<td><strong>［未確認］</strong></td>
+<td>未確認</td>
+<td>探したが一次資料で確認できなかったもの</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典は本文中に〔S番号〕で示し、末尾の「出典一覧」に、発表主体・資料名・発表日・URL・確認した内容をまとめています。</p>
+<h3>0-2. 調査の方法</h3>
+<ul>
+<li>4つの領域（①堤防と排水、②電気・水・通信・交通、③住宅・古民家・生活再建、④過去の事例とレジリエンス）に分けて調べました。</li>
+<li>候補は検索で探し、<strong>原文を開いて本文で確認できた記述だけを［事実］</strong>としました。検索結果の要約でしか見ていないものは［未確認］です。</li>
+<li>PDFは文字を抽出して該当箇所を確認しました。表が崩れて数字と項目の対応が確定できないものは使っていません。</li>
+<li>主要な数字（決壊後の日数、停電・断水の戸数、制度の限度額、被害認定の基準など）は、こうちゃん自身が原文を再取得して照合しました。</li>
+</ul>
+<h3>0-3. 一般化について</h3>
+<p><strong>「今回の事例ではこうだった」と「一般にこうである」は分けて書きます。</strong>特に、台風25号・印旛沼の事例から災害一般の結論を導くことはしません。過去の事例の日数も、定義（「何から何まで」の日数か）が違うものは同じ表に並べても比較の対象にしません。</p>
+<hr />
+<h2>1. 問い：水害はいつ「終わる」のか</h2>
+<h3>1-1. 「終わった」に見える時点は、少なくとも9つある</h3>
+<p>水害では、次の時点がそれぞれ別の日に来ます。<strong>［分析］</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>時点</th>
+<th>何が起きるか</th>
+<th>判断する主体（例）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>降雨の終了</td>
+<td>雨が止む</td>
+<td>気象庁（実況）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>河川水位の低下・氾濫情報の解除</td>
+<td>川の水位が下がり、洪水予報などが解除される</td>
+<td>国・都道府県（河川管理者）・気象庁</td>
+</tr>
+<tr>
+<td>3</td>
+<td>決壊箇所の締切</td>
+<td>壊れた堤防をふさぎ、新たな流入を止める</td>
+<td>河川管理者</td>
+</tr>
+<tr>
+<td>4</td>
+<td>排水・浸水の解消</td>
+<td>堤防の内側にたまった水を外へ出す</td>
+<td>河川管理者・自治体（排水ポンプ車・排水機場）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>避難指示などの解除</td>
+<td>自治体が住民への避難情報を解除する</td>
+<td>市町村</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ライフラインの復旧</td>
+<td>電気・水道・通信・道路・鉄道が戻る</td>
+<td>各事業者</td>
+</tr>
+<tr>
+<td>7</td>
+<td>住まいに戻れる状態</td>
+<td>泥出し・清掃・乾燥・修理が終わる</td>
+<td>住民・工事業者・ボランティア</td>
+</tr>
+<tr>
+<td>8</td>
+<td>仮住まいの終了</td>
+<td>仮設住宅・みなし仮設・避難所から自宅や新しい住まいへ</td>
+<td>住民・自治体</td>
+</tr>
+<tr>
+<td>9</td>
+<td>生活・事業の再開</td>
+<td>仕事・学校・商売が元のように回る</td>
+<td>住民・事業者</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［分析］</strong>このうち1と2は気象と河川の情報で、多くの人が「終わった」と感じやすい時点です。しかし今回の台風25号でも過去の事例でも、<strong>3以降は2から数日〜数年遅れて来ています</strong>（第2章〜第12章）。</p>
+<h3>1-2. 今回の事例：同じ朝に、終わったものと終わっていないものが並んだ</h3>
+<p><strong>［事実］</strong>2026年9月26日の朝、次の状態が同時にありました。</p>
+<ul>
+<li><strong>河川：</strong>国土交通省「川の防災情報」の全国一覧で、洪水予報などにレベル2以上の発表はありませんでした（6時25分・7時00分・9時05分更新）〔S1〕。</li>
+<li><strong>印旛沼：</strong>成田市は「9月26日明け方に降雨が見込まれるため、印旛沼の水位が再び上昇する恐れがあります。すでに浸水している区域には、絶対に近づかないでください」と呼びかけていました〔S2〕。北印旛沼（吉高）の水位は、同じ観測所で9月25日0時3.21m → 6時3.03m → 26日0時2.64m → 26日6時2.49mと下がり続けていました〔S2〕。</li>
+<li><strong>堤防：</strong>国の応急復旧工事は9月25日に着手したばかりでした〔S5〕。</li>
+<li><strong>避難：</strong>栄町（長門川の決壊地域）の避難指示が続いていました。</li>
+<li><strong>停電：</strong>東京電力パワーグリッドの表示で、6時09分に約7,380軒、6時59分に約8,110軒、9時04分に約7,920軒でした（同じ取得方法）。</li>
+<li><strong>断水：</strong>君津市の3配水区で約1,340戸の断水が続いていました〔S30〕。</li>
+</ul>
+<p><strong>［分析］</strong>「河川の発表がない」ことと「浸水が解消した」「安全に立ち入れる」ことは、同じ朝に別々の状態でした。これが本レポートの出発点です。</p>
+<hr />
+<h2>2. 堤防：壊れ方と、ふさぎ方</h2>
+<h3>2-1. 堤防が壊れる3つの仕組み</h3>
+<p><strong>［事実］</strong>千曲川堤防調査委員会の報告書（2020年8月）は、堤防の決壊を「河川水の越水による堤防決壊」「河川水の浸透による堤防決壊」「河川水の侵食・洗掘による堤防決壊」の3形態に分け、「これらのメカニズムが複合的な要因となって堤防決壊することもある」としています〔S10〕。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>形態</th>
+<th>仕組み（一次資料の説明）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>越水</strong></td>
+<td>堤防を越えた水が、川と反対側（川裏）の法尻（のりじり）を削り、法面、天端（てんば）へと崩れが進んで決壊する〔S10〕。国交省の技術資料も「土堤の侵食過程は、川裏部から始まり、天端の崩壊へと進行する」「法尻で最も大きなせん断力が作用する」と説明〔S11〕</td>
+</tr>
+<tr>
+<td><strong>浸透（パイピング・すべり）</strong></td>
+<td>高い水位で地盤に水がしみ込み、川裏側の地盤から土砂が流れ出して「水みち」ができる（パイピング）。または、堤防の中の水位が上がって土の強さが落ち、川裏の法面がすべる〔S10〕。近畿地方整備局の資料は、水位が急に下がったときに「堤防内に水が残留し、ゆるんだ堤防がすべり破壊を起こす」場合も示す〔S12〕</td>
+</tr>
+<tr>
+<td><strong>侵食・洗掘</strong></td>
+<td>川の流れが、堤防の川側を削る〔S10〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［事実］</strong>関東地方整備局江戸川河川事務所は、「水面が堤防の上面まで余裕がある時点にもかかわらず、堤防基盤から漏水することがあります。また、漏水がきっかけで堤防が崩れるケースもあり」と説明しています〔S13〕。<strong>水が堤防を越えなくても決壊しうる</strong>ということです。</p>
+<p><strong>［未確認］</strong>今回の北印旛沼・角川・長門川の決壊が、どの形態によるものかを示す一次資料は、9月26日時点で見つかっていません。<strong>本レポートは今回の決壊の原因を推定しません。</strong></p>
+<h3>2-2. 決壊後の工程：「締切」「仮堤防」「応急復旧」「本復旧」は別の段階</h3>
+<p><strong>［事実］</strong>過去の国の資料では、決壊後の工程は次の順で進んでいます〔S14〕〔S15〕〔S16〕。</p>
+<ol>
+<li><strong>荒締切（欠口止め）</strong>：壊れた口を土や石で急いでふさぎ、川からの流入を止める</li>
+<li><strong>仮堤防（締切盛土）</strong>：盛土で仮の堤防を作る</li>
+<li><strong>鋼矢板二重締切（応急復旧の完了）</strong>：鋼矢板を二重に打って仮の堤防を補強する</li>
+<li><strong>本復旧</strong>：計画どおりの断面で、堤防を造り直す</li>
+</ol>
+<h3>2-3. 実際の日数（国の資料による）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>事例</th>
+<th>決壊</th>
+<th>仮堤防・締切盛土の完成</th>
+<th>応急復旧の完了</th>
+<th>本復旧</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>鬼怒川</strong>（常総市・2015年）</td>
+<td>9月10日12時50分頃。決壊幅約200m</td>
+<td><strong>9月16日</strong>（1週間）</td>
+<td><strong>9月24日</strong>（2週間。鋼矢板の補強工事の終了）</td>
+<td>2016年1月着手、同年6月完成を目指すと記載</td>
+<td>〔S14〕</td>
+</tr>
+<tr>
+<td><strong>千曲川</strong>（長野市穂保・2019年）</td>
+<td>10月13日5時半に確認。決壊幅は最終的に約70m</td>
+<td><strong>10月17日23時50分</strong>（仮堤防）</td>
+<td><strong>10月30日</strong>（鋼矢板仮締切堤防）</td>
+<td>2020年5月29日「堤防復旧概成」（延長140m）</td>
+<td>〔S15〕〔S10〕</td>
+</tr>
+<tr>
+<td><strong>小田川</strong>（倉敷市真備町・2018年、左岸3k400）</td>
+<td>7月7日（被害発生日）</td>
+<td><strong>7月15日</strong>（締切盛土）</td>
+<td><strong>7月21日</strong>（二重締切堤防。鋼矢板910枚）</td>
+<td>別事業（合流点の付替えなど、2018〜2023年度）</td>
+<td>〔S16〕〔S17〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［分析］</strong>3つの事例では、<strong>仮の堤防まで約1週間、鋼矢板による応急復旧の完了まで約2週間</strong>でした。ただし、決壊幅（約70m〜約200m）、地形、資機材の運び込みやすさが違い、<strong>この日数を他の決壊に当てはめることはできません。</strong></p>
+<h3>2-4. 今回の事例：印旛沼（2026年9月）</h3>
+<p><strong>［事実］</strong>
+- 9月22日、台風25号の豪雨で、県が管理する北印旛沼の堤防が約100メートル決壊し、北印旛沼に流れ込む農業排水路である角川の堤防の一部も決壊しました〔S3〕。
+- 千葉県の空撮資料（9月22日14時時点）は「破堤箇所から流出が継続し、浸水範囲が拡大」と記し、長門川の破堤箇所を「L=20m」としています〔S4〕。
+- 9月22日に千葉県から国へ支援要請があり、9月23日に関東地方整備局がTEC-FORCE（緊急災害対策派遣隊）を派遣しました。船形干拓の「大規模な決壊箇所」は「工事監督も含めた強力な支援」とされています〔S6〕。同日、長門川（栄町酒直）の決壊も支援の対象に加わりました〔S7〕。
+- 9月24日の発表で、<strong>9月25日に緊急復旧工事に着手</strong>すること、工法は「荒締切工及び鋼矢板二重締切工」、施工は鹿島建設であることが示されました〔S5〕。
+- 9月25日、国土交通省は「チーム印旛沼」（千葉県・水資源機構・関東地方整備局）を結成し、<strong>3本柱の対策</strong>を発表しました〔S8〕〔S9〕。
+  - ① 9月25日7時時点で約3.0mの印旛沼の水位を、「一両日中に平常時の水位である2.3mまで低下」させる
+  - ② 「決壊した堤防の応急復旧（印旛沼等の３地区４か所）」
+  - ③ 排水ポンプ車を「今後30台まで増強」
+  - これらを「台風第26号の接近を考慮し、１週間程度を目途に完了させることを目指します」</p>
+<p><strong>［分析］重要な注意：</strong>報道では「1週間程度で応急復旧」と要約されましたが、<strong>国交省の原文で「1週間程度」がかかっているのは、水位低下・応急復旧・浸水地の排水の3本柱全体です</strong>〔S8〕。応急復旧だけの完了時期を示した記述は、原文にはありません。また、過去の3事例では決壊から応急復旧の完了まで約2週間でしたが、今回は決壊（9月22日）から着手（9月25日）までに3日かかっています。<strong>着手から1週間程度で終わるかどうかは、本レポート作成時点では分かりません。</strong></p>
+<p><strong>［未確認］</strong>
+- 決壊の時刻（千葉県の資料は「9月22日」まで）
+- 「３地区４か所」のうち、どの地区が2か所なのか
+- 9月26日以降の工事の進み具合</p>
+<hr />
+<h2>3. 排水：水はどこへ、どうやって出ていくのか</h2>
+<h3>3-1. 排水ポンプ車の能力</h3>
+<p><strong>［事実］</strong>関東地方整備局京浜河川事務所によると、排水ポンプ車の総排水量は毎分30m³で、「25mプールの水を13分で空にする能力」です〔S18〕。ポンプは1台30kg以下で、人の手で設置できます〔S18〕。</p>
+<p><strong>［分析］</strong>30台がすべて動いた場合、毎分900m³、1時間で5万4千m³です。一方、水資源機構の資料では、印旛沼の水位を1cm動かすのに約11万5,600m³の水が必要です〔S20〕。<strong>ポンプ車は沼そのものの水位を下げる主役ではなく、決壊で堤防の外にあふれた水（浸水地）を抜くための道具</strong>と読むのが自然です。国の3本柱でも、沼の水位低下（①）と浸水地の排水（③）は別の項目になっています〔S8〕。</p>
+<h3>3-2. 自然排水できないとき</h3>
+<p><strong>［事実］</strong>印旛沼の排水は、水資源機構の説明では次の順です〔S19〕〔S20〕。</p>
+<ol>
+<li>平常時：9月〜翌年4月はYP2.3m、5〜8月はYP2.5mを常時満水位とし、酒直水門と酒直機場で水位を管理する</li>
+<li>洪水時に利根川へ自然に排水できないと判断した場合：「印旛水門を閉鎖して利根川からの流入を防ぐとともに、印旛機場（排水量92トン）を運転して洪水を利根川に排水」</li>
+<li>それでも水位が下がらない場合：「大和田機場（排水量120トン）を運転し、花見川を通じて東京湾に排水」</li>
+</ol>
+<p><strong>［事実］</strong>成田市も9月26日のページで、「通常、印旛沼の水は水門から自然に利根川へ流しますが、降水量が増えたときなどは排水機場のポンプによる排水を実施します」と説明し、国に要請した排水ポンプ車11台（待機支援車を含めて計12台）が9月22日14時10分から印旛水門付近で排水し、花見川方向（東京湾方向）でも複数のポンプ車で排水していると記しています〔S2〕。</p>
+<p><strong>［事実］</strong>水資源機構の論文は、利根川の水位が上がると「印旛沼側に逆流する場合がある」ため水門を閉じてポンプに切り替えること、2014年6月から降雨前に沼の水位をあらかじめ下げる「予備排水」を始めたことを記しています〔S20〕。</p>
+<p><strong>［分析］</strong>低い土地や湖沼では、<strong>水は「高いほうから低いほうへ」しか自然に流れません。</strong>排水先（利根川）の水位が高いと自然排水ができず、ポンプに頼ることになります。この構造があるため、雨が止んでも、排水先の川の水位が下がるまで、あるいはポンプで汲み出すまで、水は引きません。</p>
+<h3>3-3. 排水は、下流の危険と引き換えになることがある</h3>
+<p><strong>［事実］</strong>北陸地方整備局の千曲川の出水速報（2019年）は、排水機場から本川へ合計約510万m³を強制排水した一方で、「下流の流下能力の不足している区間で破堤・越水の恐れがあるときは、上流側のポンプ排水を止め、下流への流量を抑える運転調整を実施」したと記しています〔S21〕。</p>
+<p><strong>［分析］</strong>内側の浸水を早く抜くことと、下流の堤防を守ることは、ときに両立しません。<strong>排水が「止まっている」ことが、下流を守るための判断である場合があります。</strong></p>
+<h3>3-4. 浸水が解消するまでの日数（定義を明記）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>事例</th>
+<th>定義</th>
+<th>日数</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>鬼怒川（常総市・2015年）</td>
+<td>堤防決壊（9月10日）から「宅地及び公共施設等の浸水が概ね解消」（9月19日）まで</td>
+<td><strong>約10日</strong>。排水ポンプ車は日最大51台、約780万m³を排水</td>
+<td>〔S14〕〔S22〕</td>
+</tr>
+<tr>
+<td>小田川（真備町・2018年）</td>
+<td>排水作業の開始（7月8日）から「宅地・生活道路の浸水が概ね解消」（7月11日）まで</td>
+<td><strong>約3日</strong>（浸水約1,200ha）</td>
+<td>〔S16〕</td>
+</tr>
+<tr>
+<td>同上</td>
+<td>倉敷市の記録で、TEC-FORCEから排水作業の完了報告を受けた日</td>
+<td><strong>7月12日</strong></td>
+<td>〔S23〕</td>
+</tr>
+<tr>
+<td>2019年東日本台風（全国）</td>
+<td>全国74市町村での排水活動の結果</td>
+<td><strong>「10月30日までに、概ね浸水が解消」</strong>（台風は10月12日〜13日）</td>
+<td>〔S24〕</td>
+</tr>
+<tr>
+<td>ハリケーン・カトリーナ（2005年）</td>
+<td>上陸から陸軍工兵隊の「市内の全ての洪水を除去」の報告まで</td>
+<td><strong>43日</strong>（事前の想定は9週間）</td>
+<td>〔S25〕</td>
+</tr>
+<tr>
+<td>首都圏の想定（荒川右岸の低地）</td>
+<td>排水施設が動かない最悪の想定で、浸水が2週間以上続く面積</td>
+<td><strong>約50km²</strong></td>
+<td>〔S26〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［分析］</strong>同じ「浸水の解消」でも、「宅地の概ね解消」「排水作業の完了」「地域全体の概ね解消」は別の定義です。<strong>上の表は日数の大小を比べるためのものではなく、「水が引くまでに数日から数十日の幅がある」ことを示すためのものです。</strong>首都圏の想定は、「排水ポンプが止まる」ことが浸水の長さを決める要因になりうることを示しています。</p>
+<hr />
+<h2>4. 停電：なぜ止まり、どの順で戻るのか</h2>
+<h3>4-1. 水害・台風で停電する理由</h3>
+<p><strong>［事実］</strong>東京電力の振り返り（2019年）は、台風15号の配電被害の原因を「倒木や建物倒壊，飛来物，土砂崩れ等の地盤影響による二次被害」としています〔S31〕。経済産業省は、変電所が浸水した例も記録しています（2019年台風19号で「千曲川の堤防が決壊し変電設備が浸水。移動用変圧器を活用し仮復旧」など）〔S32〕。2018年西日本豪雨では、中国電力の沼田西変電所が「河川の氾濫により水没し，送電できない状態」になり、仮設の機器を運び込んで送電を再開しました〔S33〕。</p>
+<h3>4-2. 復旧の順序</h3>
+<p><strong>［事実］</strong>
+- 九州電力送配電は、「変電所など電源側から順に設備を復旧する必要がある」と説明しています。「高圧配電線の復旧が完了しても…引込線が断線している場合は停電が続く」とも書いています〔S34〕。
+- 関西電力送配電の説明では、手順は被害状況の調査 → 保安措置 → 電柱 → 高圧配電線 → 変圧器 → 引込線の順です〔S35〕。</p>
+<p><strong>［事実］</strong>中国電力の報告（2018年西日本豪雨）は、真備地区などで「広範囲に浸水しました。（復旧作業は退水後に実施）」と記しています〔S36〕。<strong>水が引くまで、電気の復旧作業には入れません。</strong></p>
+<h3>4-3. 長期化した例：2019年台風15号（房総半島台風）</h3>
+<p><strong>［事実］</strong>経済産業省の検証（2019年10月・2020年1月）〔S37〕〔S38〕：
+- 9月9日7時50分に、関東の広い範囲で<strong>最大約93万戸</strong>の停電
+- ピークから<strong>99%の復旧まで約280時間</strong>（12日程度）。9月24日に、復旧困難な箇所などを除いて復旧が完了
+- 長期化の理由は、倒木・飛来物による電柱の折損・倒壊が多数発生し（前年の台風21号の約1.5倍）、「山間部を中心とした立ち入り困難な地域での巡視が十分に行えず、被害状況の全容把握に時間を要した結果、地域別の復旧見通しの公表が遅れ、復旧が長期化」
+- 市区町村別の復旧見通しの公表までに「4日半」
+- 同じ年の台風19号では、巡視を1,000班（台風15号の5倍）に増やし、ドローンも使って、99%の解消まで「90時間以内」</p>
+<p><strong>［事実］</strong>資源エネルギー庁は「隠れ停電」を説明しています。停電情報システムは「高圧線の復旧作業が完了すると『停電解消』と表示」されるため、低圧線や引込線の損傷による停電は見えません〔S39〕。</p>
+<p><strong>［分析］</strong>停電情報の「解消」は、一軒ごとの通電の確認とは限りません。停電の件数の数字にも、この限界があります。</p>
+<h3>4-4. 今回の事例</h3>
+<p><strong>［事実］</strong>東京電力パワーグリッドの停電情報の表示（ページを表示させてから読み取る方法）では、9月24日6時14分に約16,930軒、25日6時14分に約11,320軒、26日6時09分に約7,380軒と減りました。一方、26日6時59分には約8,110軒、9時04分には約7,920軒（東京都約550軒を含む）でした。</p>
+<p><strong>［分析］</strong>週末の雨の後に一時増えたことは、<strong>「減り続ける」一方向の復旧ではない</strong>ことを示しています。ただし、増えた分が台風25号の被害の続きなのか新たな停電なのかは、表示からは分かりません。経産省の資料にも、倒れかけた木が後から電線に触れて停電が一時的に増えた例が記録されています〔S37〕。</p>
+<hr />
+<h2>5. 断水：「停電」「管の破損」「水が出る」「飲める」</h2>
+<h3>5-1. 停電が断水につながる仕組み</h3>
+<p><strong>［事実］</strong>厚生労働省の調査報告書（2021年3月）によると、2019年台風15号の<strong>最大断水戸数は139,744戸で、「主な被害要因は停電」</strong>でした。全ての地域で断水が解消したのは9月25日です〔S40〕。
+- 停電した水道施設のうち、自家発電設備が「稼働した127施設／稼働しなかった3施設／自家発電設備無し368施設」でした〔S40〕。
+- 富津市域では、停電で増圧ポンプ場が止まり、配水場の貯留水が9月11日時点で尽きて断水しました〔S40〕。</p>
+<p><strong>［分析］</strong>配水池に水が残っている間は、停電していても蛇口から水が出ます。<strong>停電から断水までには、配水池の水が尽きるまでの時間差があります。</strong></p>
+<p><strong>［事実］</strong>岐阜大学の時系列報告（2019年9月27日）は、台風15号の停電の「波及的な影響が水道・通信網に及び」と整理しています。山武郡市広域水道企業団の約65,000戸の断水は、受水元の九十九里地域水道企業団の「停電に伴う送水停止」が原因でした〔S41〕。</p>
+<h3>5-2. 電気が戻っても、水はすぐには戻らない</h3>
+<p><strong>［事実］</strong>同じ厚労省の報告書は、かずさ水道の事例から、停電が解消しても断水が続いた理由を2つ挙げています〔S40〕。
+1. 山間部では送水管が一本道のようにつながっており、「管路の上流側が停電していると、下流側が復電していても送水することができなかった」
+2. 水が抜けた管にそのまま水を流すと、「赤濁水等の濁った水が蛇口から出るだけでなく、管内にある大量の空気が水流を不安定にして水道設備が毀損する恐れ」がある。そのため、上流から下流へ順に管を洗ってから配水を再開した</p>
+<p><strong>［事実］</strong>2019年台風19号では、神奈川県山北町の皆瀬川浄水場で、導水管・浄水場の洗浄に約9日、「臨時水質検査に計10日間（原水5日、浄水5日）を要した」と記録されています〔S40〕。</p>
+<h3>5-3. 「水が出る」と「飲める」</h3>
+<p><strong>［事実］</strong>2018年西日本豪雨の厚労省の報告書（2021年1月）によると、最大263,593戸が断水し、「断水は8月13日までに一部地域を除いて全ての地域で解消」しました。しかし「水質基準を満たさないなどの理由により、摂取制限を伴う給水が9月中旬まで継続した地域もある」とされています〔S42〕。</p>
+<p><strong>［事実］</strong>倉敷市の記録では、真備地区で7月9日から試験通水（飲用不可）を始め、小田川南側の断水解消（7月16日・1,300戸）を経て、<strong>7月18日に真備浄水場の電源が復旧</strong>し、<strong>7月24日に真備地区全域の断水が解消</strong>しました〔S23〕。</p>
+<p><strong>［事実］</strong>今回の台風25号でも、かずさ水道広域連合企業団は「一部地域で水が出ることがありますが、断水解消のお知らせがあるまでは、使用をお控えください」と呼びかけていました〔S30〕。</p>
+<p><strong>［分析］</strong>「水が出る」「断水解消のお知らせ」「飲用可能」は、それぞれ別の時点です。</p>
+<h3>5-4. 今回の事例</h3>
+<p><strong>［事実］</strong>かずさ水道の発表で、君津市の東日笠配水区は道路崩落による水道管の破損で断水し（当初約650戸）、9月25日18時に解消しました。大戸見・坂畑・蔵玉配水区の約1,340戸は、「管路の漏水と停電」を原因に断水が続いていました（9月25日更新）〔S30〕。</p>
+<p><strong>［分析］</strong>今回の君津市には、断水の原因として「管の破損」と「停電」の両方の型が現れていました。</p>
+<hr />
+<h2>6. 通信：停電の後に遅れてやってくる障害</h2>
+<p><strong>［事実］</strong>政府の検証チームの報告（2020年1月）によると、2019年台風15号では「停電が長期間に及んだため、携帯電話基地局等における非常用電源が維持できない等の理由により」通信障害が広い範囲で長く続きました。非常用電源は技術基準どおりに設置されていましたが、「停電が想定を超えて長期間にわたったことから…機能を持続できなかった」とされています〔S43〕。
+- 通信は「停電の復旧状況等の不確定要素が多く、復旧見込みを公表していなかった」〔S43〕
+- 一方で、「携帯電話の基地局は停波すると周辺基地局がカバーするため、数週間もの間、１社も使えない地域はなかった」〔S43〕
+- 2019年台風19号では、「ハザードマップ上の危険エリアではない地域であっても、堤防越流により通信局舎が停止した事例」がありました〔S43〕</p>
+<p><strong>［事実］</strong>岐阜大学の報告は、台風15号で携帯3社の停止局数がそれぞれ9月10日に最大になったことを示し、「台風通過後に停止局数が最大となっているのは，停電後に使用されていた予備電源が枯渇したためと考えられる」としています（著者の推定）〔S41〕。</p>
+<p><strong>［事実］</strong>総務省の資料（2025年6月）では、全国の基地局のバッテリーの持続時間は<strong>「24時間未満 90%」</strong>です〔S44〕。房総半島台風などを受けて、市町村役場などをカバーする基地局の24時間の停電対策が義務付けられています〔S45〕。</p>
+<p><strong>［事実］</strong>豪雨では、停波の原因は停電より伝送路（光ファイバーなど）の断線が多いことがあります。2018年西日本豪雨の基地局の停波原因は「伝送路断が56％、停電が36％、水没が5%、設備故障が3%」でした〔S46〕。</p>
+<p><strong>［分析］</strong>通信の障害は、台風が通り過ぎた直後ではなく、<strong>予備電源が尽きた後に遅れて広がる</strong>ことがあります。また、豪雨では土砂崩れで回線が切れることが多く、<strong>停電だけを直しても通信が戻らない</strong>場合があります。</p>
+<hr />
+<h2>7. 交通：「再開見込み」と実際の再開が違う理由</h2>
+<h3>7-1. 鉄道は、雨が止んでから点検が始まる</h3>
+<p><strong>［事実］</strong>JR西日本は、雨量の規制値を下回ると「工務の係員が必要な区間の点検を開始」し、徒歩で巡回し、流れ込んだ土砂を取り除いてから運転を再開する、と説明しています。「線路や斜面に相当量の雨水を吸い込んでいる場合は…天気が回復していても徐行や運転見合わせを行う場合があります」とも書いています〔S47〕。</p>
+<h3>7-2. 被害の種類で、復旧期間の桁が変わる</h3>
+<p><strong>［事実］</strong>国土交通省の政策レビュー（2018年10月）は、鉄道施設の被害別の復旧期間を次のように示しています〔S48〕。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>被害</th>
+<th>復旧期間の目安（国交省）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>橋りょうの被災</td>
+<td>数ヶ月〜数年程度（特に橋脚が倒壊した場合は長期間）</td>
+</tr>
+<tr>
+<td>高架橋</td>
+<td>十数日〜数ヶ月程度</td>
+</tr>
+<tr>
+<td>土砂崩壊</td>
+<td>数ヶ月程度（工事用の進入路の確保や沿線の地権者との協議に時間）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［事実］</strong>実例（定義：被災から運転再開まで）
+- <strong>JR久大本線</strong>（2017年）：花月川橋梁の橋脚4基が倒壊。通常なら復旧に3年程度かかる見込みのところ、出水期の着工が認められ、2018年7月14日に再開（約1年）〔S49〕。国交省の資料は約1年・約16億円としています〔S48〕。
+- <strong>JR只見線</strong>（2011年新潟・福島豪雨）：橋りょうが流出。「被災から約11年にわたって不通」で、2022年10月1日に全線再開〔S50〕〔S51〕。
+- <strong>JR肥薩線 八代〜吉松</strong>（2020年7月豪雨）：2025年度から鉄道での復旧に着手。アクションプランの目標表に「2033年度末（復旧時）」〔S52〕〔S53〕。
+- <strong>ドイツ・アール線</strong>（2021年洪水）：一部区間は2021年末に再開。全線の運転再開は2025年12月14日（約4年5か月）。18kmの線路、22の橋、5つのトンネル、10の駅を復旧し、あわせて電化。「川の中に中央橋脚を置かない橋」を採用〔S54〕。</p>
+<h3>7-3. 道路：まず1本の道を通し、本復旧には年単位</h3>
+<p><strong>［事実］</strong>2020年7月豪雨の球磨川では、「球磨川を渡河する橋梁が10橋流失」しました。国はまず、国道219号と並行する県道を組み合わせた「1本の啓開ルートの確保」を目指しました〔S55〕。国道219号の一部は嵩上げ工事で全面通行止めが続き、<strong>坂本橋の完成で一般車両が通れるようになったのは2026年2月14日</strong>（被災から約5年7か月）でした〔S56〕。</p>
+<h3>7-4. 今回の事例</h3>
+<p><strong>［事実］</strong>JR東日本の運行情報（9月21日〜26日の各朝）では、次のように動きました。
+- 外房線は、9月22日朝に「夕方ごろ再開見込み」とされていましたが、23日朝は千葉〜安房鴨川で終日見合わせに区間が広がり、平常に戻ったのは24日でした。
+- 内房線の姉ケ崎〜木更津は「少なくとも3か月程度」の見込みです。
+- 久留里線の木更津〜久留里は10月3日、成田線の佐原〜銚子は10月4日の再開予定です。
+- 代行バスは「9月28日以降、検討」でした。</p>
+<p><strong>［分析］</strong>「再開見込み」は、点検の結果で変わります。<strong>被害の種類（橋か、盛土か、斜面か）が分かるまで、見込みは暫定値</strong>です。</p>
+<hr />
+<h2>8. 住宅：乾かすまでが、いちばん長い</h2>
+<h3>8-1. 復旧の手順</h3>
+<p><strong>［事実］</strong>岡山県の住宅課が掲載する倉敷市・岡山県建築士会倉敷支部の「水害後の応急対応シート」は、手順を<strong>片付け・解体 → 清掃 → 洗浄 → 消毒 → 乾燥</strong>としています〔S60〕。</p>
+<h3>8-2. 乾燥期間：資料によって「1か月以上」「2か月以上」「3か月以上」</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>資料</th>
+<th>乾燥期間の記述</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>震災がつなぐ全国ネットワーク「水害にあったときに」（2025年3月版）</td>
+<td>「家屋を十分に乾かすには１か月以上かかります」。床板をはがし、機械で風を送りながら「最低でも１か月」</td>
+<td>〔S61〕</td>
+</tr>
+<tr>
+<td>佐賀県建築士会（推定）</td>
+<td>「床下空間（基礎内部）を完全に乾燥させるには約１ヶ月程度」</td>
+<td>〔S63〕</td>
+</tr>
+<tr>
+<td>倉敷市・岡山県建築士会倉敷支部の応急対応シート</td>
+<td>「自然乾燥させる場合は２か月以上の乾燥期間が必要と言われています」</td>
+<td>〔S60〕</td>
+</tr>
+<tr>
+<td>岡山県建築指導課・岡山県建築士事務所協会（平成30年7月豪雨）</td>
+<td>「十分な自然乾燥（最低でも３ヶ月以上）」</td>
+<td>〔S62〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［事実］</strong>乾燥の目安として、応急対応シートは「含水率計などで乾燥が15％程度に進んでいる事を確認」するよう求めています〔S60〕。</p>
+<p><strong>［分析］</strong>資料によって1〜3か月以上と幅があり、<strong>機械乾燥か自然乾燥か、床下だけか壁の中までか</strong>で違うと読めます。どれか一つに決めず、幅で示すのが安全です。</p>
+<h3>8-3. 断熱材・壁・電気・消毒</h3>
+<p><strong>［事実］</strong>
+- <strong>断熱材：</strong>応急対応シートは、浸水した部分は撤去し、特に繊維系（ロックウール、グラスウール、セルロースファイバー、インシュレーションボード）に注意するよう求めています〔S60〕。岡山県の資料は「どの断熱材も撤去が望ましい」としています〔S62〕。
+- <strong>壁：</strong>床上数十センチの浸水では、「最大の浸水ラインの上部10～15cm程度のところから下の壁を除去」〔S60〕。佐賀県建築士会は、「内装の表面が乾燥しても、内部に水分が残っていると構造体（柱・土台など）の劣化を進行させ、内部にカビ」と注意しています〔S63〕。
+- <strong>電気：</strong>「作業前には必ずブレーカーを落としましょう」「復旧前に必ず電力会社に点検（漏電チェック）」。太陽光パネルは被災後も発電している可能性があるとしています〔S60〕。震つなは、水害の後にブレーカーが落ちていたら漏電の可能性があり、電力会社に相談するよう書いています〔S61〕。
+- <strong>消毒：</strong>佐倉市は「清掃が不十分だと消毒の効果を発揮できません」「床下や庭などの消毒は原則不要です」としています〔S64〕。震つなも「しっかり洗浄していれば消毒は必ずしも必要ではありません」としています〔S61〕。
+- <strong>優先順位：</strong>震つなは、「泥を取りのぞききることよりも、木材を乾燥させて水分を抜くことを優先します」としています〔S61〕。</p>
+<h3>8-4. 罹災証明の被害区分（浸水深による判定）</h3>
+<p><strong>［事実］</strong>内閣府の「災害に係る住家の被害認定基準運用指針」（第1次調査、木造・プレハブの戸建て1〜2階）〔S65〕：</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>浸水深</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>床上1.8m以上</td>
+<td>大規模半壊（損害割合40%以上50%未満）</td>
+</tr>
+<tr>
+<td>床上1m以上1.8m未満</td>
+<td>中規模半壊（30%以上40%未満）</td>
+</tr>
+<tr>
+<td>床上0.1m以上1m未満</td>
+<td>半壊（20%以上30%未満）</td>
+</tr>
+<tr>
+<td>床上0.1m未満</td>
+<td>準半壊（10%以上20%未満）</td>
+</tr>
+<tr>
+<td>床下浸水</td>
+<td>準半壊に至らない（一部損壊）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［事実］</strong>「床上0.1ｍ」は「巾木の高さを目安に設定した基準」で、内壁に巾木の汚れ以外の損傷があると判断できる場合は別の扱いがありえます〔S65〕。</p>
+<p><strong>［事実］</strong>内閣府の手引き（2024年5月）は、「過去の災害対応では、災害発生から１ヶ月を目処に調査を行い、初回の罹災証明書を交付する事例が多くなっています」としています〔S66〕。</p>
+<p><strong>［分析］</strong>乾燥に1か月以上、罹災証明の初回交付に約1か月。<strong>「住める状態」に戻るまでの最短の目安が、ここで1か月単位になります。</strong></p>
+<hr />
+<h2>9. 古民家：現代の住宅と何が違うか</h2>
+<p><strong>［事実］</strong>
+- <strong>土壁：</strong>佐賀県建築士会は、「土壁は水に濡れると徐々に溶け出し、壁の強度が低下」し、表面が板や石膏ボードで覆われていても「内部の土壁が崩れている可能性」があるとしています。緩んだ部分は撤去して塗り直し、「土材は再利用可能です」〔S63〕。
+- <strong>貫・小舞：</strong>応急対応シートは「貫は、大切です。現状のまま残してください」「壁土は再利用できる場合もあるので、廃棄する前に専門家に相談」としています〔S60〕。岡山県の資料は「真壁（土壁）の場合は、貫や小舞を除去しないこと」としています〔S62〕。
+- <strong>耐震性：</strong>岡山県の資料は、真備地区では「土壁塗りの古い住宅も多く、浸水により壁土が流れ落ち、竹小舞のみの状態」になり、耐震性の低下が懸念されると記しています〔S62〕。
+- <strong>記録：</strong>撤去の前に、内装材に残った浸水のシミを写真などで記録し、人物などの比較物を入れて撮るよう求めています〔S62〕。
+- <strong>古文書・資料：</strong>歴史資料ネットワークは、泥水にぬれた資料も「捨てないでください」とし、「48から72時間でカビが生じることがあります」「ビニール袋に入れて冷凍保存」するよう説明しています〔S67〕。兵庫県教育委員会のマニュアルも、水損した古文書を「すぐに災害ゴミとして遺棄せず」専門機関へ相談するよう求めています〔S68〕。</p>
+<p><strong>［分析］</strong>現代の住宅では「濡れた断熱材や石膏ボードは交換」が基本ですが、<strong>伝統構法の住宅では、構造を担う部材（貫・小舞）を残し、壁土も再利用できる可能性がある</strong>という点が大きく違います。<strong>「片付け」の段階で捨ててしまうと取り返しがつかないもの</strong>（貫・小舞・壁土・古文書）がある、というのが古民家の特徴です。</p>
+<p><strong>［未確認］</strong>文化庁・文化財防災センターによる「浸水した伝統構法の建物の応急処置」の具体的な手引きは、今回は見つけられませんでした。</p>
+<hr />
+<h2>10. 生活再建：「決まった」と「使える」のあいだ</h2>
+<h3>10-1. 制度の4段階</h3>
+<p><strong>［分析］</strong>生活再建の制度は、次の4段階に分けて見る必要があります。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>段階</th>
+<th>意味</th>
+<th>今回の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 制度がある</td>
+<td>法律・要綱がある</td>
+<td>災害救助法、被災者生活再建支援法</td>
+</tr>
+<tr>
+<td>② 適用された</td>
+<td>その災害・その地域に適用が決まった</td>
+<td>災害救助法：9月21日発表、千葉県15市8町1村に9月20日付〔S70〕</td>
+</tr>
+<tr>
+<td>③ 受付が始まった</td>
+<td>窓口が開いた</td>
+<td>佐倉市の罹災証明：9月24日から〔S71〕。県営住宅：9月23日から〔S72〕</td>
+</tr>
+<tr>
+<td>④ 実際に使える</td>
+<td>必要な書類がそろい、支給・入居・修理が始まる</td>
+<td>罹災証明の交付は即日ではなく原則郵送〔S71〕</td>
+</tr>
+</tbody>
+</table></div>
+<h3>10-2. 主な制度と、今回わかった「ずれ」</h3>
+<p><strong>［事実］</strong>
+- <strong>応急修理（災害救助法）：</strong>令和8年度の限度額は、大規模半壊・中規模半壊・半壊が1世帯あたり757,000円以内、準半壊は367,000円以内です。期間は「災害発生の日から３か月以内に完了（国の災害対策本部が設置された災害においては６か月以内に完了）」です〔S73〕。
+  - 千葉市（8月豪雨分）は期限を令和9年2月28日まで延長し、「修理業者に工事費を支払ってしまった場合は、制度の対象外」と注意しています〔S74〕。
+- <strong>応急仮設住宅：</strong>建設型は「災害発生の日から20日以内」に着工。賃貸型（みなし仮設）は最長2年です〔S75〕。
+- <strong>被災者生活再建支援法：</strong>基礎支援金は全壊など100万円・大規模半壊50万円。加算支援金は、再建の方法に応じて最大200万円です〔S76〕。
+  - <strong>災害救助法が適用されても、支援法が自動的に適用されるわけではありません。</strong>
+  - 2026年8月の千葉豪雨では、支援法（国の制度）が適用されたのは千葉市・佐倉市・市原市・八千代市・大網白里市の5市だけでした。その他の市町村は県の独自事業で対応しています。適用の発表は9月11日で、<strong>豪雨（8月13日）から約4週間後</strong>でした〔S77〕。
+- <strong>台風25号への支援法の適用：</strong>9月26日時点で、一次資料を確認できていません［未確認］。千葉市は9月22日時点で「台風25号で被災された方への支援は検討中です」と掲載していました〔S78〕。
+- <strong>事業者支援：</strong>経済産業省は9月24日に台風25号の被災中小企業への支援措置を発表しました。セーフティネット保証4号は「近日中に官報にて地域の指定を告示する予定」で、それまでは事前相談の段階です〔S79〕。
+- <strong>保険：</strong>日本損害保険協会は、災害救助法の適用地域の契約者について継続手続きと保険料の払込を猶予し（千葉県は11月末日まで）、「保険金等の請求に際しては、地方自治体から交付される罹災証明書の提出は原則不要」としています〔S80〕。
+  - 水災補償の支払い条件（地盤面から45cm、損害30%など）は約款によるとされ、協会の一次資料では確認できていません［未確認］。国民生活センター誌の記事（2023年・外部の筆者）での説明にとどまります〔S81〕。
+- <strong>災害ごみ：</strong>環境省の手引きは、「水害の場合は、発災直後から排出されることもある」とし、仮置場が搬入しにくいと「路上等に片付けごみが混合状態で大量に排出」されると注意しています〔S82〕。
+- <strong>ボランティア：</strong>災害ボランティアセンターは「被災地の市区町村社会福祉協議会に設置されるケースが一般化」しています〔S83〕。
+  - 今回、佐倉市社会福祉協議会は9月25日に募集を始めました（60人・千葉県内在住・Web予約制）。9月26日は荒天で活動を中止しています〔S84〕。</p>
+<p><strong>［分析］</strong>今回の事例では、①〜④のずれが複数の制度で同時に見えました。
+- 災害救助法の適用：9月21日（死者が消防庁の集計で1人の時点）
+- 罹災証明の受付：9月24日
+- ボランティアの募集：9月25日
+- 保証4号：告示待ち
+- 支援法：未確認</p>
+<p><strong>「制度が動いた」ことを「支援が届いた」と読まない</strong>ことが重要です。</p>
+<hr />
+<h2>11. 復旧の依存関係：一次資料で確認できる連鎖</h2>
+<p><strong>［事実］</strong>一次資料で確認できた「AがBの復旧の条件になっている」関係は、次のとおりです。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>前提</th>
+<th>→</th>
+<th>後続</th>
+<th>根拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浸水が引く</td>
+<td>→</td>
+<td>電気の復旧作業に入れる</td>
+<td>中国電力「復旧作業は退水後に実施」〔S36〕</td>
+</tr>
+<tr>
+<td>道路・倒木の処理</td>
+<td>→</td>
+<td>電気の巡視・復旧</td>
+<td>経産省「立ち入り困難な地域での巡視が十分に行えず」〔S38〕、九州電力送配電〔S34〕</td>
+</tr>
+<tr>
+<td>電気</td>
+<td>→</td>
+<td>水道（浄水・送水ポンプ）</td>
+<td>厚労省「主な被害要因は停電」〔S40〕、岐阜大学〔S41〕</td>
+</tr>
+<tr>
+<td>上流の電気</td>
+<td>→</td>
+<td>下流の水道</td>
+<td>厚労省（かずさ水道の事例）〔S40〕</td>
+</tr>
+<tr>
+<td>電気の復旧 → 管の洗浄 → 水質検査</td>
+<td>→</td>
+<td>水道の使用再開</td>
+<td>厚労省〔S40〕</td>
+</tr>
+<tr>
+<td>浄水場の電源の復旧（7月18日）</td>
+<td>→</td>
+<td>地区全域の断水解消（7月24日）</td>
+<td>倉敷市（真備）〔S23〕</td>
+</tr>
+<tr>
+<td>電気（予備電源の持続時間）</td>
+<td>→</td>
+<td>携帯電話の基地局</td>
+<td>政府の検証チーム〔S43〕、総務省〔S44〕</td>
+</tr>
+<tr>
+<td>地下の電気設備が浸水</td>
+<td>→</td>
+<td>エレベーター・給水の停止</td>
+<td>国交省・経産省のガイドライン（武蔵小杉の事例）〔S57〕</td>
+</tr>
+<tr>
+<td>住宅の乾燥（1〜3か月）</td>
+<td>→</td>
+<td>修理・帰宅</td>
+<td>〔S60〕〔S61〕〔S62〕</td>
+</tr>
+<tr>
+<td>住まいの確保</td>
+<td>→</td>
+<td>避難所の閉鎖</td>
+<td>長野市の検証報告書〔S58〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［分析］</strong>これらをつなぐと、次のような連鎖が一次資料の範囲で描けます。</p>
+<blockquote>
+<p>浸水が引く → 電気の復旧作業 → 浄水場・ポンプが動く → 管を洗い、水質を検査する → 水が使える → 住宅の清掃・乾燥 → 修理 → 帰宅</p>
+</blockquote>
+<p>ただし、<strong>一つの地域でこの連鎖のすべての段階の日付をそろえて確認できた一次資料は、今回見つけられていません</strong>。上の連鎖は、別々の事例の資料を組み合わせたものです。</p>
+<p><strong>［事実］</strong>国の国土強靱化基本計画（2023年7月28日閣議決定）も、「交通・通信・エネルギー等の機能が一体的に安定して発揮できるよう、相互関連性も踏まえつつ、ライフライン全体の強靱化を図る」としています〔S85〕。</p>
+<hr />
+<h2>12. 過去の事例：水が引いてから何が、どれだけかかったか</h2>
+<p><strong>［事実］</strong>定義ごとに分けて並べます。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>事例</th>
+<th>浸水の解消</th>
+<th>ライフライン</th>
+<th>避難所の閉鎖</th>
+<th>仮住まい</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>常総市</strong>（2015年）</td>
+<td>約10日（宅地等）</td>
+<td>停電約11,200世帯、断水約4,400軒・約7,400軒（解消日は未確認）</td>
+<td>12月8日に最後の避難所を閉鎖［報道］</td>
+<td>みなし仮設の多くが市外。約1年半後に退去期限</td>
+<td>〔S22〕〔S86〕</td>
+</tr>
+<tr>
+<td><strong>倉敷市真備</strong>（2018年）</td>
+<td>約3日（宅地・生活道路の概ね解消）。7月12日に排水完了の報告</td>
+<td>全域の断水解消は7月24日</td>
+<td>12月13日（福祉避難所を除く）</td>
+<td>建設型の入居開始は9月8日から。12月に借上型3,030戸・建設型255戸</td>
+<td>〔S16〕〔S23〕</td>
+</tr>
+<tr>
+<td><strong>長野市</strong>（2019年）</td>
+<td>未確認（全国で「10月30日までに概ね解消」）</td>
+<td>停電解消は10月20日。下水処理場の本稼働は令和4年4月の予定（報告書の時点）</td>
+<td>12月20日（約70日）</td>
+<td>—</td>
+<td>〔S24〕〔S58〕</td>
+</tr>
+<tr>
+<td><strong>人吉市</strong>（2020年）</td>
+<td>未確認</td>
+<td>未確認</td>
+<td>指定避難所の最終閉鎖は12月28日（約6か月）</td>
+<td>熊本県全体で、2026年4月末時点でも8戸16人が仮設等に入居</td>
+<td>〔S87〕〔S88〕</td>
+</tr>
+<tr>
+<td><strong>能登</strong>（2024年9月豪雨）</td>
+<td>未確認</td>
+<td>停電は最大6,910戸、断水は最大5,216戸</td>
+<td>未確認</td>
+<td>地震の仮設住宅が床上浸水（6団地222戸）</td>
+<td>〔S89〕</td>
+</tr>
+<tr>
+<td><strong>カトリーナ</strong>（2005年）</td>
+<td>43日（市内の排水完了）</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>〔S25〕</td>
+</tr>
+<tr>
+<td><strong>タイ洪水</strong>（2011年）</td>
+<td>工業団地の浸水は10月中旬〜11月</td>
+<td>—</td>
+<td>—</td>
+<td>約7か月後も、被災7団地の約2割の工場が全く再開できず（JETRO）</td>
+<td>〔S90〕〔S91〕</td>
+</tr>
+<tr>
+<td><strong>アール渓谷</strong>（2021年）</td>
+<td>—</td>
+<td>鉄道の全線再開まで約4年5か月</td>
+<td>—</td>
+<td>—</td>
+<td>〔S54〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［分析］単純に比較できない理由</strong>（個別の資料の記述を組み合わせた整理）
+- <strong>地形：</strong>自然に水が抜けない土地（ゼロメートル地帯、低平地、湖沼の周辺）では、ポンプが動くかどうかで浸水の期間が決まります〔S26〕〔S25〕。
+- <strong>何を「復旧」とするか：</strong>長野市では、停電解消（約1週間）と下水処理の本稼働（2年以上）が同じ「ライフライン」の中で大きく違いました〔S58〕。
+- <strong>避難所の閉鎖は住まいの確保で決まる：</strong>長野市の報告書は、避難所の閉鎖を応急仮設住宅など新たな住まいの確保と一体で進める必要を述べています〔S58〕。
+- <strong>二重被災：</strong>能登では、地震の復旧途中に豪雨が重なりました〔S89〕。
+- <strong>制度の違い：</strong>国によって、仮設住宅・保険・補償の仕組みが違います。</p>
+<p><strong>［分析］</strong>それでも、比べて言えることがあります。<strong>浸水の解消は「日」、ライフラインは「週」、住宅と避難所は「月」、仮住まいの解消と交通の本復旧は「年」の単位</strong>で、段階ごとに時間の桁が変わっていました。これは上の事例に共通する傾向で、今回の印旛沼がどうなるかの予測ではありません。</p>
+<hr />
+<h2>13. 復旧しやすい地域とは何か：レジリエンス</h2>
+<p><strong>［事実］</strong>国連防災機関（UNDRR）は、レジリエンスを「ハザードにさらされたシステム、コミュニティ、社会が、…ハザードの影響に抵抗し、吸収し、受け入れ、適応し、変容し、回復する能力」と定義しています〔S92〕。</p>
+<p><strong>［事実］</strong>仙台防災枠組（2015年）は、復旧・復興の段階は「災害の前に準備しておく必要がある」とし、Build Back Better（より良い復興）の「重要な機会」と位置づけています〔S93〕。</p>
+<p><strong>［事実］</strong>国の国土強靱化基本計画は、基本目標の一つに「迅速な復旧復興」を置き、「自律・分散・協調」型の社会、「人流・物流の多重性・代替性」「情報収集手段の冗長性」、「停電時自立機能を持つコージェネレーションシステム等」を挙げています〔S85〕。</p>
+<p><strong>［事実］</strong>国の「流域治水」は、「①氾濫をできるだけ防ぐ、減らす対策、②被害対象を減少させるための対策、③被害の軽減、早期復旧・復興のための対策」をハード・ソフト一体で進めるとしており、<strong>早期復旧は流域治水の柱の一つ</strong>です〔S94〕。</p>
+<p><strong>［事実］</strong>UNDRRは、都市のレジリエンスを評価するスコアカード（「10の必須事項」に沿って、レベル1は47の設問を各0〜3点、レベル2は117の基準を各0〜5点で採点）を公開しています〔S95〕。</p>
+<p><strong>［分析］</strong>一次資料で確認できた「戻しやすくする」具体策を、このレポートの各章から拾うと次のとおりです。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>分野</th>
+<th>具体策</th>
+<th>根拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>排水</td>
+<td>降雨前の予備排水（印旛沼・2014年から）、排水ポンプ車の広域派遣</td>
+<td>〔S20〕〔S14〕</td>
+</tr>
+<tr>
+<td>電力</td>
+<td>巡視班の増強とドローンの活用（台風19号で99%解消まで90時間以内）、電源車、重要施設の自家発電</td>
+<td>〔S38〕</td>
+</tr>
+<tr>
+<td>水道</td>
+<td>自家発電設備（台風15号では停電した施設の多くに設備なし）、配水池の容量</td>
+<td>〔S40〕</td>
+</tr>
+<tr>
+<td>通信</td>
+<td>基地局の24時間の停電対策の義務化、周辺の基地局によるカバー</td>
+<td>〔S45〕〔S43〕</td>
+</tr>
+<tr>
+<td>建物</td>
+<td>電気設備を浸水リスクの低い場所に置く</td>
+<td>〔S57〕</td>
+</tr>
+<tr>
+<td>交通</td>
+<td>川の中に橋脚を置かない橋（アール線）</td>
+<td>〔S54〕</td>
+</tr>
+<tr>
+<td>住まい</td>
+<td>ハザードマップの理解（真備の浸水範囲は想定と概ね一致。ただし内容を理解していた人は24%）</td>
+<td>〔S96〕</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>［事実］</strong>一方、ハザードマップには限界もあります。国交省の資料（牛山素行氏の速報を引用）は、2019年台風19号の「『洪水』『河川』犠牲者の５割強が浸水想定区域内」とし、区域外が比較的多い理由として中小河川で浸水想定区域の指定が進んでいないことを挙げています〔S24〕。</p>
+<p><strong>［報道］</strong>NHKは9月25日、印旛沼の浸水範囲が浸水想定区域と重なるとして、ハザードマップの確認を呼びかける記事を配信しています（見出しのみ取得）。</p>
+<hr />
+<h2>14. 今回の台風25号・印旛沼から言えること（事実と分析を分けて）</h2>
+<p><strong>［事実］</strong>確認できた範囲の時系列です。
+- 9月20日：災害救助法の適用日（千葉県15市8町1村）
+- 9月21日：救助法の適用を発表〔S70〕
+- 9月22日：北印旛沼・角川の堤防が決壊。空撮で「浸水範囲が拡大」。排水ポンプ車の稼働開始（14時10分）〔S3〕〔S4〕〔S2〕
+- 9月23日：長門川の決壊を確認。TEC-FORCE派遣。県営住宅の受付開始〔S6〕〔S7〕〔S72〕
+- 9月24日：成田市が「今後も浸水範囲が拡大するおそれ」。罹災証明の受付開始（佐倉市）。経産省の事業者支援〔S71〕〔S79〕
+- 9月25日：応急復旧工事に着手。チーム印旛沼の3本柱（1週間程度が目途）。ボランティア募集〔S5〕〔S8〕〔S84〕
+- 9月26日：成田市「水位が再び上昇する恐れ」。水位は6時2.49m。河川の全国一覧でレベル2以上の発表なし〔S2〕〔S1〕</p>
+<p><strong>［分析］</strong>
+1. <strong>「雨が止む」から「応急復旧に着手」まで3日</strong>、過去の事例では着手から応急復旧の完了まで約2週間でした。今回の「1週間程度」は3本柱全体の目標であり、応急復旧だけの完了時期ではありません。
+2. <strong>印旛沼は自然排水が基本の沼</strong>で、利根川の水位やポンプの能力に左右されます。沼の水位（成田市の観測）と、決壊で外にあふれた浸水地の水は、別に考える必要があります。
+3. <strong>生活再建の制度は、被害の全体が見える前に動き始めました。</strong>ただし、住まいに戻れるまでの目安（乾燥1〜3か月、罹災証明の初回交付は約1か月）を考えると、<strong>「水が引いた」から「住める」までには、少なくとも月単位の時間が必要になる可能性があります。</strong>これは過去の事例と手引きからの一般的な目安であり、今回の各世帯についての予測ではありません。</p>
+<hr />
+<h2>15. S6に入れるべき重要論点</h2>
+<ol>
+<li><strong>「終わり」は9つの別々の時点</strong>（降雨終了 → 河川情報の解除 → 締切 → 浸水解消 → 避難解除 → ライフライン → 住める状態 → 仮住まいの終了 → 生活再開）。S6の骨格になる。</li>
+<li><strong>時間の桁が段階ごとに変わる</strong>：浸水は「日」、ライフラインは「週」、住宅・避難所は「月」、仮住まい・交通の本復旧は「年」。定義を明記した表で示す。</li>
+<li><strong>堤防の決壊から応急復旧まで約2週間</strong>（鬼怒川・千曲川・小田川。国の資料）と、今回の「1週間程度」が3本柱全体の目標であることの区別。</li>
+<li><strong>自然排水できない土地では、ポンプが主役</strong>。印旛沼の仕組み（酒直水門・印旛機場・大和田機場）と、上流の排水が下流を危険にする場合の運転調整。</li>
+<li><strong>停電 → 断水 → 通信の連鎖</strong>と、「電気が戻っても水が戻らない」理由（上流の停電、管の洗浄、水質検査）。</li>
+<li><strong>「水が出る」「解消のお知らせ」「飲める」は別</strong>（西日本豪雨で、摂取制限が9月中旬まで続いた地域）。</li>
+<li><strong>通信の障害は停電の後に遅れてピークを迎える</strong>（予備電源が尽きる）。</li>
+<li><strong>鉄道の「見込み」は点検の結果で変わる</strong>。被害の種類で復旧期間の桁が変わる（高架橋は十数日〜、橋は数か月〜数年、只見線は約11年、アール線は約4年5か月）。</li>
+<li><strong>住宅は乾燥が最も長い</strong>（1〜3か月以上、含水率15%程度が目安）。泥より乾燥を優先。</li>
+<li><strong>古民家は「捨ててはいけないもの」がある</strong>（貫・小舞・壁土・古文書）。</li>
+<li><strong>制度の4段階</strong>（制度がある → 適用 → 受付 → 使える）。救助法と支援法は別。事業者支援は告示待ち。</li>
+<li><strong>レジリエンス＝戻しやすさ</strong>。予備排水・巡視の強化・自家発電・基地局の電源・電気設備の設置場所・中央橋脚のない橋など、具体策が一次資料にある。</li>
+</ol>
+<h2>16. 特に強い一次資料</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>資料</th>
+<th>強い理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>〔S14〕関東地方整備局「平成27年9月関東・東北豪雨に係る洪水被害及び復旧状況等について」</td>
+<td>決壊 → 仮堤防 → 応急復旧 → 本復旧、排水、浸水解消が1冊で日付つきでそろう</td>
+</tr>
+<tr>
+<td>〔S40〕厚労省「台風15号・19号 水道施設被害状況調査報告書」</td>
+<td>停電 → 断水の連鎖、電気が戻っても水が戻らない理由、水質検査の日数が一次資料で書かれている</td>
+</tr>
+<tr>
+<td>〔S23〕倉敷市「平成30年7月豪雨災害から復興への記録」</td>
+<td>排水完了 → 浄水場の電源復旧 → 断水解消 → 仮設入居 → 避難所閉鎖が一つの地域で時系列にそろう</td>
+</tr>
+<tr>
+<td>〔S38〕経産省「台風15号の停電復旧対応等に係る検証結果取りまとめ」</td>
+<td>長期化の理由と、翌月の台風19号での改善（90時間以内）の比較</td>
+</tr>
+<tr>
+<td>〔S43〕政府検証チーム「検証レポート（台風第15号関係）」</td>
+<td>通信障害の原因（非常用電源の枯渇）と、電力・通信の連携不足</td>
+</tr>
+<tr>
+<td>〔S8〕国交省「チーム印旛沼による緊急排水等オペレーション」（2026年9月25日）</td>
+<td>今回の「1週間程度」の正確な範囲（3本柱全体）と「30台」が原文で確認できる</td>
+</tr>
+<tr>
+<td>〔S19〕〔S20〕水資源機構</td>
+<td>印旛沼の排水の仕組みの一次説明</td>
+</tr>
+<tr>
+<td>〔S65〕内閣府「災害に係る住家の被害認定基準運用指針」</td>
+<td>浸水深による被害区分の公式の基準</td>
+</tr>
+<tr>
+<td>〔S60〕倉敷市・岡山県建築士会倉敷支部「水害後の応急対応シート」</td>
+<td>住宅の乾燥・断熱材・壁・土壁の実務的な手順（含水率15%）</td>
+</tr>
+<tr>
+<td>〔S48〕国交省「鉄道の防災・減災対策」政策レビュー</td>
+<td>被害の種類ごとの鉄道の復旧期間</td>
+</tr>
+</tbody>
+</table></div>
+<h2>17. まだ確認できないこと</h2>
+<ul>
+<li>印旛沼の決壊の時刻と原因（越水・浸透・侵食のどれか）</li>
+<li>印旛沼の応急復旧の9月26日以降の進み具合、ポンプ車が30台に達したか、水位が2.3mまで下がったか</li>
+<li>「３地区４か所」の内訳</li>
+<li>台風25号に対する被災者生活再建支援法の適用、応急修理の実施、応急仮設住宅</li>
+<li>行方不明者の人数が報道と消防庁で違う理由（W9から持ち越し）</li>
+<li>長野市（千曲川）の浸水解消の日付、常総市の停電・断水の解消日</li>
+<li>過去の一つの地域で、「浸水解消 → 電気 → 水 → 住宅 → 帰宅」のすべての日付がそろう一次資料</li>
+<li>損保協会の一次資料での水災補償の支払い条件（45cm・30%）</li>
+<li>文化財・伝統構法の建物の浸水に対する公的な応急処置の手引き</li>
+<li>タイの工業団地の排水完了までの日数</li>
+<li>各国の水害の復旧期間を横断的に比べた学術的な総括</li>
+</ul>
+<blockquote>
+<p>［公開用閲覧版では、この部分（内部の確認工程に向けた論点）を除外しています。］</p>
+<p>［公開用閲覧版では、この部分（他研究所向けの共有候補）を除外しています。］</p>
+</blockquote>
+<hr />
+<h2>出典一覧</h2>
+<p><strong>取得日：すべて2026年9月26日。</strong>「確認内容」は本文で使った記述です。HTTPはすべて200で取得できたもの（例外は各行に記載）。</p>
+<h3>A. 今回の事例（台風25号・印旛沼）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>発表主体</th>
+<th>資料名</th>
+<th>発表日</th>
+<th>URL</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>国土交通省</td>
+<td>川の防災情報（発表されている全国の洪水の危険度）</td>
+<td>2026-09-26（6:25・7:00・9:05更新）</td>
+<td><a href="https://www.river.go.jp/index" target="_blank" rel="noopener">https://www.river.go.jp/index</a></td>
+<td>レベル2以上の発表なし（ヘッドレス描画で取得）</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>成田市</td>
+<td>台風25号に伴う情報一覧</td>
+<td>2026-09-24〜26更新</td>
+<td><a href="https://www.city.narita.chiba.jp/kurashi/page0000_00413.html" target="_blank" rel="noopener">https://www.city.narita.chiba.jp/kurashi/page0000_00413.html</a></td>
+<td>「水位が再び上昇する恐れ」、吉高の水位、自然排水とポンプ排水の説明、ポンプ車11台・9月22日14時10分から</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>千葉県 県土整備部</td>
+<td>北印旛沼の堤防決壊について</td>
+<td>2026-09-23（21:30更新）</td>
+<td><a href="https://www.pref.chiba.lg.jp/kendosei/press/2026/kitainba.html" target="_blank" rel="noopener">https://www.pref.chiba.lg.jp/kendosei/press/2026/kitainba.html</a></td>
+<td>北印旛沼約100m・角川の決壊（9月22日）、長門川の決壊</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>千葉県</td>
+<td>印旛沼周辺・佐倉市域被災概要（9/22 14時空撮）</td>
+<td>2026-09-22</td>
+<td><a href="https://www.pref.chiba.lg.jp/kendosei/press/2026/documents/bessi1-hisai.pdf" target="_blank" rel="noopener">https://www.pref.chiba.lg.jp/kendosei/press/2026/documents/bessi1-hisai.pdf</a></td>
+<td>「流出が継続し、浸水範囲が拡大」、長門川「L=20m」</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>国交省 関東地方整備局</td>
+<td>印旛沼の堤防の緊急復旧に着手します</td>
+<td>2026-09-24</td>
+<td><a href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00581.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00581.pdf</a></td>
+<td>9月25日着手、延長約100m、荒締切工及び鋼矢板二重締切工、鹿島建設</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>関東地方整備局</td>
+<td>印旛沼の堤防の緊急復旧を国が支援します</td>
+<td>2026-09-23</td>
+<td><a href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00578.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00578.pdf</a></td>
+<td>9月22日の支援要請、TEC-FORCE、「工事監督も含めた強力な支援」</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>関東地方整備局</td>
+<td>〔追加支援〕長門川の堤防について</td>
+<td>2026-09-23</td>
+<td><a href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00580.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00580.pdf</a></td>
+<td>長門川（栄町酒直）を追加</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>国交省 水管理・国土保全局 防災課</td>
+<td>チーム印旛沼による緊急排水等オペレーションについて</td>
+<td>2026-09-25</td>
+<td><a href="https://www.mlit.go.jp/report/press/mizukokudo06_hh_000362.html（PDF:" target="_blank" rel="noopener">https://www.mlit.go.jp/report/press/mizukokudo06_hh_000362.html（PDF:</a> <a href="https://www.mlit.go.jp/report/press/content/002024241.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/report/press/content/002024241.pdf</a>）</td>
+<td>3本柱、2.3m、3地区4か所、30台まで増強、「１週間程度を目途に完了」</td>
+</tr>
+<tr>
+<td>S9</td>
+<td>関東地方整備局・千葉県・水資源機構</td>
+<td>「チーム印旛沼」を結成</td>
+<td>2026-09-25</td>
+<td><a href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00582.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00582.pdf</a></td>
+<td>3者の連携、第1回連絡調整会議（9月25日17時）</td>
+</tr>
+<tr>
+<td>S30</td>
+<td>かずさ水道広域連合企業団</td>
+<td>台風25号に伴う断水等について</td>
+<td>2026-09-23・25更新</td>
+<td><a href="https://www.kazusa-kouiki.jp/2026/09/%E5%8F%B0%E9%A2%A825%E5%8F%B7%E3%81%AB%E4%BC%B4%E3%81%86%E6%96%AD%E6%B0%B4%E7%AD%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">https://www.kazusa-kouiki.jp/2026/09/%E5%8F%B0%E9%A2%A825%E5%8F%B7%E3%81%AB%E4%BC%B4%E3%81%86%E6%96%AD%E6%B0%B4%E7%AD%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/</a></td>
+<td>東日笠の解消（9月25日18時）、3配水区約1,340戸（漏水と停電）、「使用をお控えください」</td>
+</tr>
+<tr>
+<td>S70</td>
+<td>内閣府</td>
+<td>令和８年台風第25号に伴う災害に係る災害救助法の適用について</td>
+<td>2026-09-21</td>
+<td><a href="https://www.bousai.go.jp/pdf/260921.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/pdf/260921.pdf</a></td>
+<td>15市8町1村（9月20日付）・大島町</td>
+</tr>
+<tr>
+<td>S71</td>
+<td>佐倉市</td>
+<td>罹災証明書・被災証明書（台風25号）の発行について</td>
+<td>2026-09</td>
+<td><a href="https://www.city.sakura.lg.jp/soshiki/kikikanrika/taihuu25/risai/22727.html" target="_blank" rel="noopener">https://www.city.sakura.lg.jp/soshiki/kikikanrika/taihuu25/risai/22727.html</a></td>
+<td>定規を当てた浸水写真、「即日発行はできません。原則郵送」</td>
+</tr>
+<tr>
+<td>S72</td>
+<td>千葉県 住宅課</td>
+<td>台風第25号等の被災者に対する県営住宅の提供について</td>
+<td>2026-09-23</td>
+<td><a href="https://www.pref.chiba.lg.jp/juutaku/press/2026/r8taifu25gou-sien.html" target="_blank" rel="noopener">https://www.pref.chiba.lg.jp/juutaku/press/2026/r8taifu25gou-sien.html</a></td>
+<td>50戸（予定）、受付開始9月23日</td>
+</tr>
+<tr>
+<td>S74</td>
+<td>千葉市</td>
+<td>被災住宅の応急修理（令和8年8月千葉豪雨）</td>
+<td>2026-09-25更新</td>
+<td><a href="https://www.city.chiba.jp/toshi/kenchiku/jutakuseisaku/r8gouusaigai_oukyuushuuri.html" target="_blank" rel="noopener">https://www.city.chiba.jp/toshi/kenchiku/jutakuseisaku/r8gouusaigai_oukyuushuuri.html</a></td>
+<td>期限の延長（令和9年2月28日）、先払いは対象外</td>
+</tr>
+<tr>
+<td>S77</td>
+<td>千葉県</td>
+<td>令和8年8月千葉豪雨に係る被災者生活再建支援法の適用及び県事業の実施について</td>
+<td>2026-09-11（9-18更新）</td>
+<td><a href="https://www.pref.chiba.lg.jp/bousaik/press/2026/seikatsusaikenr8gouu.html" target="_blank" rel="noopener">https://www.pref.chiba.lg.jp/bousaik/press/2026/seikatsusaikenr8gouu.html</a></td>
+<td>支援法は5市のみ、それ以外は県事業</td>
+</tr>
+<tr>
+<td>S78</td>
+<td>千葉市</td>
+<td>【千葉豪雨・台風25号】生活・住まい・子育ての支援</td>
+<td>2026-09-22更新</td>
+<td><a href="https://www.city.chiba.jp/sogoseisaku/kikikanri/bosai/chibagouu/seikatsu.html" target="_blank" rel="noopener">https://www.city.chiba.jp/sogoseisaku/kikikanri/bosai/chibagouu/seikatsu.html</a></td>
+<td>「台風25号で被災された方への支援は検討中」</td>
+</tr>
+<tr>
+<td>S79</td>
+<td>経済産業省</td>
+<td>令和8年台風第25号に伴う災害に関して被災中小企業・小規模事業者支援措置を行います</td>
+<td>2026-09-24</td>
+<td><a href="https://www.meti.go.jp/press/2026/09/20260924001.html" target="_blank" rel="noopener">https://www.meti.go.jp/press/2026/09/20260924001.html</a></td>
+<td>保証4号は「近日中に官報にて地域の指定を告示する予定」</td>
+</tr>
+<tr>
+<td>S80</td>
+<td>日本損害保険協会</td>
+<td>災害救助法適用地域の契約者への特別措置</td>
+<td>2026-09-24現在</td>
+<td><a href="https://www.sonpo.or.jp/news/notice/2026/2609_002.html" target="_blank" rel="noopener">https://www.sonpo.or.jp/news/notice/2026/2609_002.html</a></td>
+<td>猶予（千葉県は11月末日）、罹災証明書は原則不要、勧誘業者に注意</td>
+</tr>
+<tr>
+<td>S84</td>
+<td>佐倉市社会福祉協議会</td>
+<td>災害ボランティア活動を希望される方へ／9/26（土）の活動中止</td>
+<td>2026-09-25</td>
+<td><a href="https://www.sakurashakyo.or.jp/pages/88/detail=1/b_id=677/r_id=180" target="_blank" rel="noopener">https://www.sakurashakyo.or.jp/pages/88/detail=1/b_id=677/r_id=180</a> ／ <a href="https://www.sakurashakyo.or.jp/pages/88/detail=1/b_id=677/r_id=181" target="_blank" rel="noopener">https://www.sakurashakyo.or.jp/pages/88/detail=1/b_id=677/r_id=181</a></td>
+<td>募集開始・60人・県内在住・Web予約、26日中止</td>
+</tr>
+<tr>
+<td>—</td>
+<td>東京新聞（共同通信）</td>
+<td>国交省、１週間で印旛沼応急復旧 台風２６号に備え</td>
+<td>2026-09-25</td>
+<td><a href="https://www.tokyo-np.co.jp/article/517623" target="_blank" rel="noopener">https://www.tokyo-np.co.jp/article/517623</a></td>
+<td>［報道］「チーム印旛沼」、2.3m以下へ</td>
+</tr>
+<tr>
+<td>—</td>
+<td>NHK</td>
+<td>印旛沼 浸水範囲は浸水想定区域と重なる ハザードマップ確認を</td>
+<td>2026-09-25</td>
+<td><a href="https://news.web.nhk/newsweb/na/nd-20260925de52316" target="_blank" rel="noopener">https://news.web.nhk/newsweb/na/nd-20260925de52316</a></td>
+<td>［報道］見出しのみ取得</td>
+</tr>
+<tr>
+<td>—</td>
+<td>東京電力パワーグリッド</td>
+<td>停電情報</td>
+<td>2026-09-24〜26</td>
+<td><a href="https://teideninfo.tepco.co.jp/" target="_blank" rel="noopener">https://teideninfo.tepco.co.jp/</a></td>
+<td>停電軒数（ヘッドレス描画で取得）</td>
+</tr>
+<tr>
+<td>—</td>
+<td>JR東日本</td>
+<td>関東エリアの運行情報</td>
+<td>2026-09-21〜26</td>
+<td><a href="https://traininfo.jreast.co.jp/train_info/kanto.aspx" target="_blank" rel="noopener">https://traininfo.jreast.co.jp/train_info/kanto.aspx</a></td>
+<td>各線の見込み・予定</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B. 堤防と排水</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>発表主体</th>
+<th>資料名</th>
+<th>発表日</th>
+<th>URL</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S10</td>
+<td>千曲川堤防調査委員会（事務局：北陸地方整備局）</td>
+<td>千曲川堤防調査委員会報告書</td>
+<td>2020-08</td>
+<td><a href="https://www.hrr.mlit.go.jp/river/chikumagawateibouchousa/chikuma-houkokusyo-isshiki.pdf" target="_blank" rel="noopener">https://www.hrr.mlit.go.jp/river/chikumagawateibouchousa/chikuma-houkokusyo-isshiki.pdf</a></td>
+<td>決壊の3形態、穂保の決壊幅約70m、2020年5月29日の復旧概成</td>
+</tr>
+<tr>
+<td>S11</td>
+<td>国交省 水管理・国土保全局</td>
+<td>越水による河川堤防の侵食メカニズム（技術検討会 資料2-1）</td>
+<td>記載なし</td>
+<td><a href="https://www.mlit.go.jp/river/shinngikai_blog/gijutsu_kentoukai/dai02kai/pdf/doc2-1.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/river/shinngikai_blog/gijutsu_kentoukai/dai02kai/pdf/doc2-1.pdf</a></td>
+<td>侵食は川裏から始まり天端へ、法尻に最大のせん断力</td>
+</tr>
+<tr>
+<td>S12</td>
+<td>近畿地方整備局 猪名川河川事務所</td>
+<td>浸透による破堤のメカニズム</td>
+<td>記載なし</td>
+<td><a href="https://www.kkr.mlit.go.jp/inagawa/bousai/ckbq0o0000000cuq-att/dike_mechanism.pdf" target="_blank" rel="noopener">https://www.kkr.mlit.go.jp/inagawa/bousai/ckbq0o0000000cuq-att/dike_mechanism.pdf</a></td>
+<td>パイピング、水位低下時のすべり</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>関東地方整備局 江戸川河川事務所</td>
+<td>堤防は決壊することもあります!!</td>
+<td>記載なし</td>
+<td><a href="https://www.ktr.mlit.go.jp/edogawa/edogawa00069.html" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/edogawa/edogawa00069.html</a></td>
+<td>水が越えなくても漏水から崩れる</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>関東地方整備局</td>
+<td>「平成27年9月関東・東北豪雨」に係る洪水被害及び復旧状況等について</td>
+<td>2017-04-01時点版</td>
+<td><a href="https://www.ktr.mlit.go.jp/ktr_content/content/000687586.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/ktr_content/content/000687586.pdf</a></td>
+<td>仮堤防1週間・応急復旧2週間、ポンプ車日最大51台・約780万m³、浸水解消10日</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>北陸地方整備局 河川部</td>
+<td>千曲川 穂保地先（左岸58.0k）緊急復旧状況</td>
+<td>2019-12</td>
+<td><a href="https://www.hrr.mlit.go.jp/river/pdf/fukkyuujoukyou.pdf" target="_blank" rel="noopener">https://www.hrr.mlit.go.jp/river/pdf/fukkyuujoukyou.pdf</a></td>
+<td>10月17日仮堤防、10月30日鋼矢板仮締切堤防</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>国交省 水管理・国土保全局</td>
+<td>平成30年7月豪雨における被害等の概要（資料2）</td>
+<td>2018-09-28</td>
+<td><a href="https://www.mlit.go.jp/common/001256692.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/common/001256692.pdf</a></td>
+<td>小田川の締切盛土7月15日・二重締切7月21日、浸水の概ね解消7月11日</td>
+</tr>
+<tr>
+<td>S17</td>
+<td>中国地方整備局 岡山河川事務所</td>
+<td>真備緊急治水対策プロジェクトと高梁川災害復旧の概要</td>
+<td>記載なし</td>
+<td><a href="https://www.cgr.mlit.go.jp/okakawa/mabikinkyuuchisuitaisaku/odagawa_overview.html" target="_blank" rel="noopener">https://www.cgr.mlit.go.jp/okakawa/mabikinkyuuchisuitaisaku/odagawa_overview.html</a></td>
+<td>背水影響、合流点の付替え（約4.6km下流）</td>
+</tr>
+<tr>
+<td>S18</td>
+<td>関東地方整備局 京浜河川事務所</td>
+<td>排水ポンプ車</td>
+<td>記載なし</td>
+<td><a href="https://www.ktr.mlit.go.jp/keihin/keihin00243.html" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/keihin/keihin00243.html</a></td>
+<td>毎分30m³、25mプールを13分</td>
+</tr>
+<tr>
+<td>S19</td>
+<td>水資源機構 千葉用水総合管理所</td>
+<td>印旛沼開発事業</td>
+<td>記載なし</td>
+<td><a href="https://www.water.go.jp/kanto/chiba/inba/inbanumakaihatsumain.html" target="_blank" rel="noopener">https://www.water.go.jp/kanto/chiba/inba/inbanumakaihatsumain.html</a></td>
+<td>常時満水位、印旛水門・印旛機場（92トン）・大和田機場（120トン）</td>
+</tr>
+<tr>
+<td>S20</td>
+<td>水資源機構ほか</td>
+<td>印旛沼開発施設における予備排水の効果について</td>
+<td>記載なし</td>
+<td><a href="https://www.ktr.mlit.go.jp/ktr_content/content/000858072.pdf" target="_blank" rel="noopener">https://www.ktr.mlit.go.jp/ktr_content/content/000858072.pdf</a></td>
+<td>逆流時の水門閉塞、1cmあたり約115,600m³、2014年6月から予備排水</td>
+</tr>
+<tr>
+<td>S21</td>
+<td>北陸地方整備局 千曲川河川事務所</td>
+<td>令和元年東日本台風による千曲川・犀川出水 速報</td>
+<td>2019</td>
+<td><a href="https://www.hrr.mlit.go.jp/chikuma/bousai/shussui/20191012kouzui/sokuhou.pdf" target="_blank" rel="noopener">https://www.hrr.mlit.go.jp/chikuma/bousai/shussui/20191012kouzui/sokuhou.pdf</a></td>
+<td>排水機場の運転調整</td>
+</tr>
+<tr>
+<td>S22</td>
+<td>常総市水害対策検証委員会</td>
+<td>平成27年常総市鬼怒川水害対応に関する検証報告書</td>
+<td>2016-06-13</td>
+<td><a href="https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf" target="_blank" rel="noopener">https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf</a></td>
+<td>約40km²浸水、宅地等の浸水解消まで約10日、停電・断水の規模</td>
+</tr>
+<tr>
+<td>S24</td>
+<td>国交省</td>
+<td>令和元年台風第19号による被害等（資料6）</td>
+<td>2019-11-22</td>
+<td><a href="https://www.mlit.go.jp/river/shinngikai_blog/shaseishin/kasenbunkakai/shouiinkai/kikouhendou_suigai/1/pdf/11_R1T19niyoruhigai.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/river/shinngikai_blog/shaseishin/kasenbunkakai/shouiinkai/kikouhendou_suigai/1/pdf/11_R1T19niyoruhigai.pdf</a></td>
+<td>ポンプ車約200台、「10月30日までに概ね浸水が解消」、犠牲者の5割強が浸水想定区域内</td>
+</tr>
+<tr>
+<td>S94</td>
+<td>国交省・東北地方整備局</td>
+<td>流域治水の推進／流域治水とは</td>
+<td>記載なし</td>
+<td><a href="https://www.mlit.go.jp/river/kasen/suisin/index.html" target="_blank" rel="noopener">https://www.mlit.go.jp/river/kasen/suisin/index.html</a> ／ <a href="https://www.thr.mlit.go.jp/karyuu/activity/ryuiki01.html" target="_blank" rel="noopener">https://www.thr.mlit.go.jp/karyuu/activity/ryuiki01.html</a></td>
+<td>3つの柱（早期復旧・復興を含む）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C. 電気・水・通信・交通</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>発表主体</th>
+<th>資料名</th>
+<th>発表日</th>
+<th>URL</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S31</td>
+<td>東京電力HD・東京電力PG</td>
+<td>台風15号に伴う停電復旧対応の振り返り（中間整理）</td>
+<td>2019-10-31</td>
+<td><a href="https://www.tepco.co.jp/press/release/2019/pdf4/191031j0201.pdf" target="_blank" rel="noopener">https://www.tepco.co.jp/press/release/2019/pdf4/191031j0201.pdf</a></td>
+<td>最大約934,900軒、倒木などの二次被害、見通しの訂正</td>
+</tr>
+<tr>
+<td>S32</td>
+<td>経済産業省</td>
+<td>令和元年に発生した災害の概要と対応（電力安全小委 資料1）</td>
+<td>2019-12-05</td>
+<td><a href="https://www.meti.go.jp/shingikai/sankoshin/hoan_shohi/denryoku_anzen/pdf/021_01_00.pdf" target="_blank" rel="noopener">https://www.meti.go.jp/shingikai/sankoshin/hoan_shohi/denryoku_anzen/pdf/021_01_00.pdf</a></td>
+<td>千曲川の決壊で変電設備が浸水、移動用変圧器で仮復旧</td>
+</tr>
+<tr>
+<td>S33</td>
+<td>中国電力</td>
+<td>沼田西変電所の復旧について</td>
+<td>2018-07-13</td>
+<td><a href="https://www.energia.co.jp/assets/press/2018/p180713-1a.pdf" target="_blank" rel="noopener">https://www.energia.co.jp/assets/press/2018/p180713-1a.pdf</a></td>
+<td>水没、仮設機器で送電再開</td>
+</tr>
+<tr>
+<td>S34</td>
+<td>九州電力送配電</td>
+<td>停電の復旧手順</td>
+<td>記載なし</td>
+<td><a href="https://www.kyuden.co.jp/td/emergency/disaster/process.html" target="_blank" rel="noopener">https://www.kyuden.co.jp/td/emergency/disaster/process.html</a></td>
+<td>電源側から順に、引込線の断線、道路寸断</td>
+</tr>
+<tr>
+<td>S35</td>
+<td>関西電力送配電</td>
+<td>復旧のしくみ・復旧の流れ</td>
+<td>記載なし</td>
+<td><a href="https://www.kansai-td.co.jp/teiden-info/recovery-flow.html" target="_blank" rel="noopener">https://www.kansai-td.co.jp/teiden-info/recovery-flow.html</a></td>
+<td>調査→保安→電柱→高圧→変圧器→引込線</td>
+</tr>
+<tr>
+<td>S36</td>
+<td>中国電力</td>
+<td>平成30年7月豪雨災害への対応について（電力安全小委 資料3）</td>
+<td>2018</td>
+<td><a href="https://www.meti.go.jp/shingikai/sankoshin/hoan_shohi/denryoku_anzen/pdf/017_03_00.pdf" target="_blank" rel="noopener">https://www.meti.go.jp/shingikai/sankoshin/hoan_shohi/denryoku_anzen/pdf/017_03_00.pdf</a></td>
+<td>「復旧作業は退水後に実施」</td>
+</tr>
+<tr>
+<td>S37</td>
+<td>経済産業省</td>
+<td>台風15号に伴う停電復旧プロセス等に係る検証について（WG資料4）</td>
+<td>2019-10-03</td>
+<td><a href="https://www.meti.go.jp/shingikai/enecho/denryoku_gas/denryoku_gas/resilience_wg/pdf/005_04_00.pdf" target="_blank" rel="noopener">https://www.meti.go.jp/shingikai/enecho/denryoku_gas/denryoku_gas/resilience_wg/pdf/005_04_00.pdf</a></td>
+<td>最大約93万戸、9月24日の復旧完了、倒れかけた木による再停電</td>
+</tr>
+<tr>
+<td>S38</td>
+<td>経済産業省 電力レジリエンスWG</td>
+<td>台風15号の停電復旧対応等に係る検証結果取りまとめ</td>
+<td>2020-01</td>
+<td><a href="https://www.meti.go.jp/shingikai/enecho/denryoku_gas/denryoku_gas/resilience_wg/pdf/20200110_report_02.pdf" target="_blank" rel="noopener">https://www.meti.go.jp/shingikai/enecho/denryoku_gas/denryoku_gas/resilience_wg/pdf/20200110_report_02.pdf</a></td>
+<td>99%解消まで約280時間、長期化の理由、4日半、台風19号は90時間以内</td>
+</tr>
+<tr>
+<td>S39</td>
+<td>資源エネルギー庁</td>
+<td>「台風」と「電力」〜長期停電から考える電力のレジリエンス</td>
+<td>2020-01-23</td>
+<td><a href="https://www.enecho.meti.go.jp/about/special/johoteikyo/typhoon.html" target="_blank" rel="noopener">https://www.enecho.meti.go.jp/about/special/johoteikyo/typhoon.html</a></td>
+<td>隠れ停電、電柱被害1,996本</td>
+</tr>
+<tr>
+<td>S40</td>
+<td>厚生労働省 水道課</td>
+<td>令和元年度 房総半島台風及び東日本台風 水道施設被害状況調査報告書</td>
+<td>2021-03</td>
+<td><a href="https://www.env.go.jp/content/900547254.pdf" target="_blank" rel="noopener">https://www.env.go.jp/content/900547254.pdf</a></td>
+<td>最大139,744戸・主因は停電、自家発電の有無、上流の停電、洗管、水質検査10日</td>
+</tr>
+<tr>
+<td>S41</td>
+<td>岐阜大学 能島暢呂・加藤宏紀</td>
+<td>令和元年台風15号におけるライフライン復旧概況（時系列編）Ver.1</td>
+<td>2019-09-27</td>
+<td><a href="https://www1.gifu-u.ac.jp/~nojima/LLEQreport/190909-Typhoon15-LL-GUNN-ver.1.pdf" target="_blank" rel="noopener">https://www1.gifu-u.ac.jp/~nojima/LLEQreport/190909-Typhoon15-LL-GUNN-ver.1.pdf</a></td>
+<td>停電の波及、送水停止、停止局数の推移（著者の推定）</td>
+</tr>
+<tr>
+<td>S42</td>
+<td>厚生労働省・日本水道協会</td>
+<td>平成30年7月豪雨 水道施設被害状況調査報告書</td>
+<td>2021-01</td>
+<td><a href="https://www.mlit.go.jp/common/830006642.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/common/830006642.pdf</a></td>
+<td>最大263,593戸、8月13日に概ね解消、摂取制限は9月中旬まで</td>
+</tr>
+<tr>
+<td>S43</td>
+<td>政府 検証チーム</td>
+<td>検証レポート（中間とりまとめ・台風第15号関係）</td>
+<td>2020-01</td>
+<td><a href="https://www.soumu.go.jp/main_content/000665016.pdf" target="_blank" rel="noopener">https://www.soumu.go.jp/main_content/000665016.pdf</a></td>
+<td>非常用電源の枯渇、復旧見込みを公表していなかった、通信局舎の停止</td>
+</tr>
+<tr>
+<td>S44</td>
+<td>総務省 移動通信課</td>
+<td>災害時における携帯電話基地局等の強靱化対策事業（資料9-2）</td>
+<td>2025-06</td>
+<td><a href="https://www.soumu.go.jp/main_content/001019059.pdf" target="_blank" rel="noopener">https://www.soumu.go.jp/main_content/001019059.pdf</a></td>
+<td>バッテリー持続24時間未満が90%</td>
+</tr>
+<tr>
+<td>S45</td>
+<td>総務省</td>
+<td>災害時における通信の確保について</td>
+<td>2026-02-25</td>
+<td><a href="https://www.soumu.go.jp/main_content/001060240.pdf" target="_blank" rel="noopener">https://www.soumu.go.jp/main_content/001060240.pdf</a></td>
+<td>役場をカバーする基地局の24時間停電対策の義務化</td>
+</tr>
+<tr>
+<td>S46</td>
+<td>総務省</td>
+<td>令和元年版 情報通信白書（平成30年7月豪雨における通信の状況）</td>
+<td>2019</td>
+<td><a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r01/html/nd124420.html" target="_blank" rel="noopener">https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r01/html/nd124420.html</a></td>
+<td>停波原因：伝送路断56%・停電36%・水没5%・故障3%</td>
+</tr>
+<tr>
+<td>S47</td>
+<td>JR西日本</td>
+<td>豪雨の場合（在来線）</td>
+<td>記載なし</td>
+<td><a href="https://www.westjr.co.jp/company/action/service/safety_transport/typhoon/" target="_blank" rel="noopener">https://www.westjr.co.jp/company/action/service/safety_transport/typhoon/</a></td>
+<td>規制値を下回ってから点検、天気回復後も徐行</td>
+</tr>
+<tr>
+<td>S48</td>
+<td>国土交通省</td>
+<td>平成30年度 政策レビュー 鉄道の防災・減災対策</td>
+<td>2018-10</td>
+<td><a href="https://www.mlit.go.jp/common/001256849.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/common/001256849.pdf</a></td>
+<td>被害別の復旧期間、久大線約1年・約16億円</td>
+</tr>
+<tr>
+<td>S49</td>
+<td>鹿島建設</td>
+<td>花月川橋梁復旧工事が完成、JR久大本線が全線復旧</td>
+<td>2018-07</td>
+<td><a href="https://www.kajima.co.jp/tech/civil_engineering/topics/180714.html" target="_blank" rel="noopener">https://www.kajima.co.jp/tech/civil_engineering/topics/180714.html</a></td>
+<td>通常3年程度のところ約10か月、2018年7月14日再開（施工会社の資料）</td>
+</tr>
+<tr>
+<td>S50</td>
+<td>国土交通省</td>
+<td>国土交通白書2023 コラム「JR只見線 豪雨災害からの全線運転再開」</td>
+<td>2023</td>
+<td><a href="https://www.mlit.go.jp/hakusyo/mlit/r04/hakusho/r05/html/n2326c01.html" target="_blank" rel="noopener">https://www.mlit.go.jp/hakusyo/mlit/r04/hakusho/r05/html/n2326c01.html</a></td>
+<td>2022年10月1日全線再開、上下分離</td>
+</tr>
+<tr>
+<td>S51</td>
+<td>福島県</td>
+<td>JR只見線について</td>
+<td>記載なし</td>
+<td><a href="https://www.pref.fukushima.lg.jp/sec/16005g/tadamisen.html" target="_blank" rel="noopener">https://www.pref.fukushima.lg.jp/sec/16005g/tadamisen.html</a></td>
+<td>「約11年にわたって不通」</td>
+</tr>
+<tr>
+<td>S52</td>
+<td>熊本県・JR九州</td>
+<td>最終合意書の取り交わしについて（肥薩線）</td>
+<td>2025-04-01</td>
+<td><a href="https://www.jrkyushu.co.jp/news/__icsFiles/afieldfile/2025/04/01/250401_jr_hisatsuline_final_agreement.pdf" target="_blank" rel="noopener">https://www.jrkyushu.co.jp/news/__icsFiles/afieldfile/2025/04/01/250401_jr_hisatsuline_final_agreement.pdf</a></td>
+<td>2025年度から鉄道で復旧に着手</td>
+</tr>
+<tr>
+<td>S53</td>
+<td>JR肥薩線再生協議会</td>
+<td>JR肥薩線復興アクションプラン</td>
+<td>2025-02</td>
+<td><a href="https://www.pref.kumamoto.jp/uploaded/attachment/287183.pdf" target="_blank" rel="noopener">https://www.pref.kumamoto.jp/uploaded/attachment/287183.pdf</a></td>
+<td>「2033年度末（復旧時）」</td>
+</tr>
+<tr>
+<td>S54</td>
+<td>ドイツ鉄道</td>
+<td>Die Bahn ist zurück im Ahrtal!</td>
+<td>2025-12-12</td>
+<td><a href="https://www.deutschebahn.com/de/presse/pressestart_zentrales_uebersicht/Die-Bahn-ist-zurueck-im-Ahrtal--13699724" target="_blank" rel="noopener">https://www.deutschebahn.com/de/presse/pressestart_zentrales_uebersicht/Die-Bahn-ist-zurueck-im-Ahrtal--13699724</a></td>
+<td>2025年12月14日全線再開、22の橋、中央橋脚なし、約5.9億ユーロ</td>
+</tr>
+<tr>
+<td>S55</td>
+<td>国交省 道路局</td>
+<td>球磨川に架かる橋梁10橋、両岸道路約100kmの早期復旧に向け…</td>
+<td>2020-07-22</td>
+<td><a href="https://www.mlit.go.jp/report/press/content/001355382.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/report/press/content/001355382.pdf</a></td>
+<td>10橋流失、1本の啓開ルート</td>
+</tr>
+<tr>
+<td>S56</td>
+<td>九州地方整備局 八代復興事務所</td>
+<td>記者発表（坂本橋の完成）</td>
+<td>2025-12-12</td>
+<td><a href="https://www.qsr.mlit.go.jp/yatsushiro_r/newstopics_files/20251212/251212kisya.pdf" target="_blank" rel="noopener">https://www.qsr.mlit.go.jp/yatsushiro_r/newstopics_files/20251212/251212kisya.pdf</a></td>
+<td>2026年2月14日から一般車両の通行</td>
+</tr>
+<tr>
+<td>S85</td>
+<td>内閣官房</td>
+<td>国土強靱化基本計画</td>
+<td>2023-07-28</td>
+<td><a href="https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/pdf/kk-honbun-r057028.pdf" target="_blank" rel="noopener">https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/pdf/kk-honbun-r057028.pdf</a></td>
+<td>相互関連性、迅速な復旧復興、自律・分散・協調、多重性・冗長性</td>
+</tr>
+</tbody>
+</table></div>
+<h3>D. 住宅・古民家・生活再建</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>発表主体</th>
+<th>資料名</th>
+<th>発表日</th>
+<th>URL</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S57</td>
+<td>国交省 住宅局・経産省 電力安全課</td>
+<td>建築物における電気設備の浸水対策ガイドライン</td>
+<td>2020-06</td>
+<td><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001349327.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/jutakukentiku/build/content/001349327.pdf</a></td>
+<td>高層マンション地下の受変電設備の冠水、設置場所の対策</td>
+</tr>
+<tr>
+<td>S60</td>
+<td>倉敷市・岡山県建築士会倉敷支部（岡山県住宅課掲載）</td>
+<td>現場に貼って使える 水害後の応急対応シート</td>
+<td>2018年豪雨後（掲載ページ2021-08-27更新）</td>
+<td><a href="https://www.pref.okayama.jp/uploaded/attachment/298903.pdf" target="_blank" rel="noopener">https://www.pref.okayama.jp/uploaded/attachment/298903.pdf</a></td>
+<td>手順、2か月以上、含水率15%、断熱材、壁の除去、土壁、電気</td>
+</tr>
+<tr>
+<td>S61</td>
+<td>震災がつなぐ全国ネットワーク</td>
+<td>水害にあったときに～浸水被害からの生活再建の手引き～</td>
+<td>2025-03（Web版2025-07）</td>
+<td><a href="https://www.shintsuna.org/img/tools/suigai_leaflet_2507.pdf" target="_blank" rel="noopener">https://www.shintsuna.org/img/tools/suigai_leaflet_2507.pdf</a></td>
+<td>1か月以上、乾燥を優先、断熱材、ブレーカー、消毒、写真</td>
+</tr>
+<tr>
+<td>S62</td>
+<td>岡山県 建築指導課・岡山県建築士事務所協会</td>
+<td>平成30年７月豪雨における被災住宅の復旧方法</td>
+<td>2018</td>
+<td><a href="https://www.pref.okayama.jp/uploaded/attachment/297037.pdf" target="_blank" rel="noopener">https://www.pref.okayama.jp/uploaded/attachment/297037.pdf</a></td>
+<td>最低3か月以上、断熱材の撤去、貫や小舞を除去しない、真備の土壁</td>
+</tr>
+<tr>
+<td>S63</td>
+<td>佐賀県建築士会（推定・ヘッダー判読不能）</td>
+<td>浸水後の「壁・床」内部の対処について</td>
+<td>不明</td>
+<td><a href="https://www.kenchikushikai.or.jp/data/torikumi/shinsuihigaitaiou_kabeyuka.pdf" target="_blank" rel="noopener">https://www.kenchikushikai.or.jp/data/torikumi/shinsuihigaitaiou_kabeyuka.pdf</a></td>
+<td>内部の水分とカビ、床下約1か月、土壁の強度と再利用</td>
+</tr>
+<tr>
+<td>S64</td>
+<td>佐倉市</td>
+<td>水害時の衛生対策と消毒方法について</td>
+<td>2026-09</td>
+<td><a href="https://www.city.sakura.lg.jp/soshiki/kikikanrika/taihuu25/eisei/22715.html" target="_blank" rel="noopener">https://www.city.sakura.lg.jp/soshiki/kikikanrika/taihuu25/eisei/22715.html</a></td>
+<td>清掃と乾燥が先、床下や庭の消毒は原則不要</td>
+</tr>
+<tr>
+<td>S65</td>
+<td>内閣府</td>
+<td>災害に係る住家の被害認定基準運用指針（第2編 水害）</td>
+<td>令和8年6月改定版（浸水深の基準は令和6年5月）</td>
+<td><a href="https://www.bousai.go.jp/taisaku/pdf/r605shishin_3.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/taisaku/pdf/r605shishin_3.pdf</a></td>
+<td>浸水深による判定表、巾木の注記</td>
+</tr>
+<tr>
+<td>S66</td>
+<td>内閣府</td>
+<td>災害に係る住家被害認定業務 実施体制の手引き</td>
+<td>2024-05</td>
+<td><a href="https://www.bousai.go.jp/taisaku/pdf/r605saigai_tebiki_full.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/taisaku/pdf/r605saigai_tebiki_full.pdf</a></td>
+<td>初回の罹災証明の交付は1か月が目処</td>
+</tr>
+<tr>
+<td>S67</td>
+<td>歴史資料ネットワーク</td>
+<td>水損資料の取り扱いについて</td>
+<td>不明</td>
+<td><a href="http://siryo-net.jp/pub/archives/website/suison-siryo.htm" target="_blank" rel="noopener">http://siryo-net.jp/pub/archives/website/suison-siryo.htm</a></td>
+<td>捨てない、冷凍保存、48〜72時間でカビ</td>
+</tr>
+<tr>
+<td>S68</td>
+<td>兵庫県教育委員会</td>
+<td>文化財所有者のための兵庫県文化財防災・災害対応マニュアル</td>
+<td>2022-03</td>
+<td><a href="https://www.hyogo-c.ed.jp/~shabun-bo/gyouseisituhp/top/manualforowners.pdf" target="_blank" rel="noopener">https://www.hyogo-c.ed.jp/~shabun-bo/gyouseisituhp/top/manualforowners.pdf</a></td>
+<td>水損した古文書を遺棄しない、報告と届出の流れ</td>
+</tr>
+<tr>
+<td>S73</td>
+<td>内閣府</td>
+<td>災害救助法の概要（令和8年度）第9章 住宅の応急修理</td>
+<td>2026</td>
+<td><a href="https://www.bousai.go.jp/oyakudachi/pdf/kyuujo_c7.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/oyakudachi/pdf/kyuujo_c7.pdf</a></td>
+<td>757,000円／367,000円、3か月以内（6か月以内）</td>
+</tr>
+<tr>
+<td>S75</td>
+<td>内閣府</td>
+<td>災害救助法の概要 第2章 応急仮設住宅の供与</td>
+<td>2026</td>
+<td><a href="https://www.bousai.go.jp/oyakudachi/pdf/kyuujo_c2.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/oyakudachi/pdf/kyuujo_c2.pdf</a></td>
+<td>建設型は20日以内に着工、賃貸型は最長2年</td>
+</tr>
+<tr>
+<td>S76</td>
+<td>内閣府</td>
+<td>被災者生活再建支援制度の概要</td>
+<td>記載なし</td>
+<td><a href="https://www.bousai.go.jp/taisaku/seikatsusaiken/pdf/140612gaiyou.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/taisaku/seikatsusaiken/pdf/140612gaiyou.pdf</a></td>
+<td>基礎支援金・加算支援金、申請期間</td>
+</tr>
+<tr>
+<td>S81</td>
+<td>国民生活センター『国民生活』2023年6月号（筆者：清水香・FP）</td>
+<td>特集3</td>
+<td>2023-06</td>
+<td><a href="https://www.kokusen.go.jp/wko/pdf/wko-202306_03.pdf" target="_blank" rel="noopener">https://www.kokusen.go.jp/wko/pdf/wko-202306_03.pdf</a></td>
+<td>多くの約款は床上浸水または地盤面から45cm以上（外部筆者の説明）</td>
+</tr>
+<tr>
+<td>S82</td>
+<td>環境省</td>
+<td>災害時の一般廃棄物処理に関する初動対応の手引き</td>
+<td>2021-03改訂</td>
+<td><a href="https://www.env.go.jp/content/900535402.pdf" target="_blank" rel="noopener">https://www.env.go.jp/content/900535402.pdf</a></td>
+<td>水害では発災直後から排出、仮置場の配置</td>
+</tr>
+<tr>
+<td>S83</td>
+<td>内閣府</td>
+<td>災害ボランティアセンター（社会福祉協議会等）について</td>
+<td>記載なし</td>
+<td><a href="https://www.bousai.go.jp/kyoiku/bousai-vol/saigaivc.html" target="_blank" rel="noopener">https://www.bousai.go.jp/kyoiku/bousai-vol/saigaivc.html</a></td>
+<td>市区町村社協に設置が一般化</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. 過去の事例とレジリエンス</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>発表主体</th>
+<th>資料名</th>
+<th>発表日</th>
+<th>URL</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S23</td>
+<td>倉敷市</td>
+<td>平成30年7月豪雨災害から復興への記録～被災からの歩み～（全編版）</td>
+<td>2020-10</td>
+<td><a href="https://www.city.kurashiki.okayama.jp/_res/projects/default_project/_page_/001/013/553/all.pdf" target="_blank" rel="noopener">https://www.city.kurashiki.okayama.jp/_res/projects/default_project/_page_/001/013/553/all.pdf</a></td>
+<td>排水完了報告7月12日、浄水場電源7月18日、全域断水解消7月24日、仮設入居、避難所閉鎖12月13日</td>
+</tr>
+<tr>
+<td>S25</td>
+<td>米国下院 超党派特別委員会</td>
+<td>A FAILURE OF INITIATIVE（Levees）</td>
+<td>2006-02</td>
+<td><a href="https://govinfo.library.unt.edu/katrina/levees.pdf" target="_blank" rel="noopener">https://govinfo.library.unt.edu/katrina/levees.pdf</a></td>
+<td>上陸から43日で排水完了、想定は9週間</td>
+</tr>
+<tr>
+<td>S26</td>
+<td>中央防災会議 専門調査会</td>
+<td>首都圏水没（報告の概要）</td>
+<td>2010-04</td>
+<td><a href="https://www.bousai.go.jp/kaigirep/chuobou/26/pdf/shiryo6.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/kaigirep/chuobou/26/pdf/shiryo6.pdf</a></td>
+<td>浸水2週間以上の面積約50km²（最悪想定）</td>
+</tr>
+<tr>
+<td>S58</td>
+<td>長野市</td>
+<td>令和元年東日本台風災害対応 検証報告書</td>
+<td>2020-07</td>
+<td><a href="https://www.city.nagano.nagano.jp/documents/1803/346440.pdf" target="_blank" rel="noopener">https://www.city.nagano.nagano.jp/documents/1803/346440.pdf</a></td>
+<td>避難所約70日（12月20日閉鎖）、停電解消10月20日、下水処理の本稼働予定</td>
+</tr>
+<tr>
+<td>S86</td>
+<td>内閣府</td>
+<td>事例コード201503 2015年関東・東北豪雨（災害復興施策事例集）</td>
+<td>記載なし</td>
+<td><a href="https://www.bousai.go.jp/kaigirep/houkokusho/hukkousesaku/saigaitaiou/output_html_1/pdf/201503.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/kaigirep/houkokusho/hukkousesaku/saigaitaiou/output_html_1/pdf/201503.pdf</a></td>
+<td>みなし仮設の多くが市外、退去期限</td>
+</tr>
+<tr>
+<td>S87</td>
+<td>人吉市</td>
+<td>令和2年7月豪雨 人吉市災害記録・検証誌〈概要版〉</td>
+<td>2026-06-03更新</td>
+<td><a href="https://www.city.hitoyoshi.lg.jp/toppage/kurashi_nav/nav_bosai/bousai_keikaku/38829" target="_blank" rel="noopener">https://www.city.hitoyoshi.lg.jp/toppage/kurashi_nav/nav_bosai/bousai_keikaku/38829</a></td>
+<td>指定避難所の最終閉鎖12月28日</td>
+</tr>
+<tr>
+<td>S88</td>
+<td>熊本県</td>
+<td>応急仮設住宅等の入居状況（令和8年4月30日現在）</td>
+<td>2026-05-01</td>
+<td><a href="https://www.pref.kumamoto.jp/uploaded/attachment/309213.pdf" target="_blank" rel="noopener">https://www.pref.kumamoto.jp/uploaded/attachment/309213.pdf</a></td>
+<td>8戸16人が入居継続</td>
+</tr>
+<tr>
+<td>S89</td>
+<td>国交省</td>
+<td>能登半島地震・豪雨災害の被害概要及び検討課題（資料4）</td>
+<td>2025-03-27</td>
+<td><a href="https://www.mlit.go.jp/river/shinngikai_blog/renrakukaigi/dai05kai/pdf/04.pdf" target="_blank" rel="noopener">https://www.mlit.go.jp/river/shinngikai_blog/renrakukaigi/dai05kai/pdf/04.pdf</a></td>
+<td>地震の復旧中に豪雨、仮設6団地222戸が床上浸水</td>
+</tr>
+<tr>
+<td>S90</td>
+<td>世界銀行・タイ政府</td>
+<td>Thai Flood 2011: Rapid Assessment（Overview）</td>
+<td>2012</td>
+<td><a href="https://documents1.worldbank.org/curated/en/677841468335414861/txt/698220WP0v10P106011020120Box370022B.txt" target="_blank" rel="noopener">https://documents1.worldbank.org/curated/en/677841468335414861/txt/698220WP0v10P106011020120Box370022B.txt</a></td>
+<td>工業団地の浸水10月中旬〜11月、製造業が被害の約7割</td>
+</tr>
+<tr>
+<td>S91</td>
+<td>JETRO</td>
+<td>洪水後の事業再開企業は72.1％</td>
+<td>2012-05-11</td>
+<td><a href="https://www.jetro.go.jp/biznews/2012/05/4fab2e82ee868.html" target="_blank" rel="noopener">https://www.jetro.go.jp/biznews/2012/05/4fab2e82ee868.html</a></td>
+<td>約2割が未再開（本文173工場。小見出しの219とは食い違い）</td>
+</tr>
+<tr>
+<td>S92</td>
+<td>UNDRR</td>
+<td>Terminology: Resilience</td>
+<td>2017</td>
+<td><a href="https://www.undrr.org/terminology/resilience" target="_blank" rel="noopener">https://www.undrr.org/terminology/resilience</a></td>
+<td>レジリエンスの定義</td>
+</tr>
+<tr>
+<td>S93</td>
+<td>国連総会</td>
+<td>仙台防災枠組 2015-2030（A/RES/69/283）</td>
+<td>2015-06-03</td>
+<td><a href="https://documents.un.org/doc/undoc/gen/n15/167/16/pdf/n1516716.pdf" target="_blank" rel="noopener">https://documents.un.org/doc/undoc/gen/n15/167/16/pdf/n1516716.pdf</a></td>
+<td>復旧の事前準備、Build Back Better</td>
+</tr>
+<tr>
+<td>S95</td>
+<td>UNDRR（MCR2030）</td>
+<td>Disaster Resilience Scorecard for Cities</td>
+<td>2017</td>
+<td><a href="https://mcr2030.undrr.org/disaster-resilience-scorecard-cities" target="_blank" rel="noopener">https://mcr2030.undrr.org/disaster-resilience-scorecard-cities</a></td>
+<td>10の必須事項、47問・117基準</td>
+</tr>
+<tr>
+<td>S96</td>
+<td>内閣府（中央防災会議 WG）</td>
+<td>平成30年7月豪雨を踏まえた水害・土砂災害からの避難のあり方について（報告）参考資料</td>
+<td>2018-12</td>
+<td><a href="https://www.bousai.go.jp/kaigirep/chuobou/jikkoukaigi/13/pdf/shiryo6.pdf" target="_blank" rel="noopener">https://www.bousai.go.jp/kaigirep/chuobou/jikkoukaigi/13/pdf/shiryo6.pdf</a></td>
+<td>真備の浸水範囲は想定と概ね一致、内容を理解していた人24%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>F. 取得できなかった・一次資料で確認できなかったもの（記録）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>対象</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>長野市の旧検証報告書URL（documents/635/349786.pdf）</td>
+<td>HTTP 404（新URL〔S58〕で取得）</td>
+</tr>
+<tr>
+<td>JR東日本「自然災害（雨）」Q&amp;A、只見線再開のプレスリリース</td>
+<td>HTTP 403</td>
+</tr>
+<tr>
+<td>経済産業省「浸水した太陽電池発電設備による感電事故防止」（2019年）</td>
+<td>HTTP 403</td>
+</tr>
+<tr>
+<td>NISC 重要インフラの相互依存性の解析資料</td>
+<td>正しく取得できず</td>
+</tr>
+<tr>
+<td>国交省住宅局・建築研究所・日本建築学会の「浸水住宅の復旧手引き」</td>
+<td>該当資料に行き着けず</td>
+</tr>
+<tr>
+<td>文化財防災センター『必携 文化財防災の手引き』</td>
+<td>検索要約のみ</td>
+</tr>
+<tr>
+<td>損保協会の一次資料での水災補償の条件（45cm・30%）</td>
+<td>確認できず</td>
+</tr>
+<tr>
+<td>沼田西変電所の停電戸数（11,500戸）・水深約2m、中国電力管内の最大停電58,520戸</td>
+<td>検索要約のみ</td>
+</tr>
+<tr>
+<td>肥薩線の「2033年度ごろ再開」「計400億円程度」（報道）</td>
+<td>一次資料で未確認（アクションプランの「2033年度末（復旧時）」、復興方針案の「概算235億円」とは定義が違う）</td>
+</tr>
+<tr>
+<td>武蔵小杉のタワーマンションの復旧（電力約1週間・給排水約2週間）</td>
+<td>報道（神奈川新聞）のみ。本文では使っていない</td>
+</tr>
+<tr>
+<td>常総市の最後の避難所の閉鎖（12月8日）</td>
+<td>報道（日本経済新聞）のみ</td>
+</tr>
+<tr>
+<td>長野市の浸水範囲がハザードマップと「ほぼ一致」</td>
+<td>報道（信濃毎日新聞）のみ。本文では使っていない</td>
+</tr>
+<tr>
+<td>愛媛県宇和島市の摂取制限「41日間」</td>
+<td>報告書の表から確定できず。本文では厚労省の「9月中旬まで継続した地域もある」の記述を使用</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>以上。第1工程の独立レポート（こうちゃん）。</strong></p>
+</article>
+<nav class="rs-nav" style="margin-top:28px"><a href="sunday-2026-09-27.html">← 日曜特集 第6号の本文へ戻る</a><a href="sunday-2026-09-27.html#part-ai">4AIの独立調査レポート一覧へ</a><a href="#top">↑ ページの先頭へ</a></nav>
+<footer class="foot"><p class="disc">AI総合研究機構 日曜特集 第6号「水害と復旧」研究付録。この独立調査原稿は、統合前の段階の記録として公開しています。内容の正確さは本文で確認・統合した結果を優先してください。</p></footer>
+</div>
+</body>
+</html>
