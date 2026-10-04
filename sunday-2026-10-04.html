@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI総合研究機構 日曜特集 第7号（2026年10月4日）。荷物は、なぜ翌日に届くのか。そして、届かなくなる日は来るのか。コンテナからCLO、海峡、災害、AI、自動運転まで、物流の過去・現在・未来を、4つのAIの独立調査を統合してたどります。">
+<title>荷物は、なぜ翌日に届くのか。そして、届かなくなる日は来るのか。</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+
+  /* S6 追加：引用・手順・4AIカード */
+  .quote{font-size:17px;font-weight:800;line-height:1.7;border-left:4px solid var(--brand);padding:6px 0 6px 14px;margin:18px 0;color:var(--ink);}
+  ol.steps,ul.dots{margin:12px 0 16px 1.3em;line-height:1.9;}
+  ol.steps li,ul.dots li{margin:6px 0;}
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
+  .ai-card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:16px;box-shadow:var(--sh-1);}
+  .ai-card:hover{border-color:var(--brand);}
+  .ai-name{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.06em;}
+  .ai-theme{font-size:16px;font-weight:800;line-height:1.5;}
+  .ai-desc{font-size:13px;line-height:1.75;color:var(--ink-2);}
+  .ai-go{margin-top:auto;font-size:12px;font-weight:800;color:var(--brand);}
+
+  /* S7：物流 */
+  .flow{list-style:none;margin:14px 0 18px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;counter-reset:fl;}
+  .flow li{position:relative;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px 10px 38px;font-size:13px;line-height:1.6;counter-increment:fl;}
+  .flow li::before{content:counter(fl);position:absolute;left:10px;top:10px;width:20px;height:20px;border-radius:50%;background:var(--brand);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .flow li b{display:block;font-size:13.5px;margin-bottom:2px;}
+  .flow li span{color:var(--ink-2);}
+  .flow.tl{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+  .flow.tl li::before{content:"";width:10px;height:10px;top:15px;left:14px;background:var(--amber);}
+  .lv{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;margin-right:4px;white-space:nowrap;}
+  .lv-use{background:#E6F6EF;color:#0B7A55;}
+  .lv-early{background:#EEF1FF;color:#3D5AFE;}
+  .lv-test{background:#FFF5E8;color:#B5651D;}
+  .lv-plan{background:#F3EEFA;color:#7A4EBF;}
+  .fc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 18px;}
+  .fc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.7;}
+  .fc-y{font-size:18px;font-weight:800;color:var(--brand);margin-bottom:4px;}
+  .fc-l{font-size:11.5px;font-weight:800;margin:10px 0 2px;border-radius:6px;padding:2px 8px;display:inline-block;}
+  .fc-h{background:#E6F6EF;color:#0B7A55;} .fc-m{background:#FFF5E8;color:#B5651D;} .fc-p{background:#F3EEFA;color:#7A4EBF;}
+  .fc ul{margin:4px 0 4px;padding-left:1.2em;}
+  .srcnote{font-size:12px;color:var(--ink-3);line-height:1.7;margin:-4px 0 14px;}
+  @media(max-width:760px){.fc-grid{grid-template-columns:1fr;}}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special</span>
+    <span class="date">2026年10月4日（日）／ 日曜特集 第7号</span>
+  </div>
+  <h1 class="hello">荷物は、なぜ翌日に届くのか。そして、届かなくなる日は来るのか。</h1>
+  <p class="sub-hello sun-sub">コンテナからCLO、海峡、災害、AI、自動運転まで――物流の過去・現在・未来</p>
+  <p class="sun-lead">長い特集です。<strong>玄関に届いた一つの箱を入口に、物流がどうやってできあがり、2026年の日本と世界でどこが細くなり、止まるとき何が起きるのか、そしてAIや自動運転が何を変え、何を変えないのかを、歴史・制度・海峡・災害・価格・技術・未来の順にたどります。</strong>4つのAIが互いの原稿を見ずに調べた独立調査を比較・統合し、一次資料で確かめ直してまとめました。目次から気になる章へ飛んでいただいても構いません。<strong>確認できた事実、報道、本特集の整理、見通し・仮説を書き分けています。</strong>情報基準日は2026年10月4日です。</p>
+</header>
+<div class="nowbar" id="nowbar" aria-live="polite"><span class="nb-name">いま読んでいる章：<b id="nbPart">導入</b><span id="nbName"></span></span><a href="#toc">目次へ ↑</a></div>
+<nav class="toc" id="toc" aria-label="目次"><div class="toc-title">目次</div>
+<p class="toc-lead">導入と11の章、終章、4AIの独立調査レポートへの案内、出典一覧で構成しています。上から順に読んでも、気になる章から読んでも構いません。</p>
+<ol class="toc-top">
+<li class="toc-solo"><a href="#part-0">導入　玄関に届いた一つの箱から</a></li>
+<li class="toc-solo"><a href="#part-1">第1章　物流とは、「運ぶこと」だけではない</a></li>
+<li class="toc-solo"><a href="#part-2">第2章　道、鉄道、冷蔵、コンテナ――物流が社会を作り替えた</a></li>
+<li class="toc-solo"><a href="#part-3">第3章　「翌日届く」を分解する</a></li>
+<li class="toc-solo"><a href="#part-4">第4章　2026年、日本の物流は本当に危機なのか</a></li>
+<li class="toc-solo"><a href="#part-5">第5章　都市では多すぎ、地方では少なすぎる</a></li>
+<li class="toc-solo"><a href="#part-6">第6章　世界の物流は、狭い場所を通っている</a></li>
+<li class="toc-solo"><a href="#part-7">第7章　物流が止まると、何が止まるのか</a></li>
+<li class="toc-solo"><a href="#part-8">第8章　在庫は無駄か、保険か</a></li>
+<li class="toc-solo"><a href="#part-9">第9章　「送料無料」と返品無料を、誰が払っているのか</a></li>
+<li class="toc-solo"><a href="#part-10">第10章　AI、ロボット、自動運転は、どこまで物流を変えるか</a></li>
+<li class="toc-solo"><a href="#part-11">第11章　2030、2040、2050年の「届く」</a></li>
+<li class="toc-solo"><a href="#part-12">終章　「届く」は、社会が交わしている約束</a></li>
+<li class="toc-solo"><a href="#part-ai">付録　4AIの独立調査レポートを見る</a></li>
+<li class="toc-solo"><a href="#part-src">資料　この特集で使った出典</a></li>
+</ol>
+<div class="toc-note"><strong>この特集の読み方。</strong>数字には、<strong>発表した主体、いつ時点の値か、実績か見通しか</strong>を添えています。<strong>「実績」「推計」「目標」「見通し」「構想」を区別し、</strong>定義や分母の違う数字は、並べても大小を比べていません。技術は<span class="lv lv-use">実用</span><span class="lv lv-early">導入初期</span><span class="lv lv-test">実証</span><span class="lv lv-plan">構想</span>に分けています。</div>
+</nav>
+
+<section class="part" id="part-0" data-part="導入" data-name="玄関に届いた一つの箱から">
+<header class="part-head"><span class="part-no">導入<small>／十一章</small></span><h1 class="part-name">玄関に届いた一つの箱から</h1></header>
+<article class="ch " id="ch-0"><span class="ch-no">導入</span><h2>玄関に届いた一つの箱から</h2>
+
+<p>夜、スマートフォンで洗剤と電池を注文する。翌日の昼、玄関に箱が置かれている。<strong>この間に何が起きているのか、私たちはほとんど知らない。</strong></p>
+<p>箱の中身は、どこかの倉庫の棚に、注文される前から置かれていた。注文の情報は数秒で倉庫に届き、誰かが（あるいはロボットが）棚から取り出し、箱に詰め、ラベルを貼った。箱は夜のうちに大型トラックで運ばれ、仕分けの拠点を通り、地域の営業所へ、そして配達の車へ渡された。電池がアジアの工場で作られたものなら、その前には工場から港へ、港から船へ、船は海峡と運河を抜けて日本の港へ、という長い旅がある。</p>
+<p class="lead-s"><strong>「翌日届く」は、トラックが速く走るから実現しているのではない。</strong>情報が先に走り、在庫が近くに置かれ、倉庫・幹線・仕分け・配達が時刻どおりにつながっているから実現している。</p>
+<p>この特集は、その「つながり」をたどる。過去にどうやってできあがったのか。2026年の日本と世界で、どこが細くなっているのか。止まるとき、何が起きるのか。AIや自動運転はどこまで助けになるのか。そして2030年、2040年、2050年に「物が届く」という当たり前は、どんな形になっているのか。</p>
+<p>結論を先に書いておく。<strong>物流は「すでに届かなくなっている」わけでも、「心配はいらない」わけでもない。</strong>平時の物流は、標準化と情報と夜間の労働によって驚くほど高い水準で動いている。一方で、2024年問題の後も荷待ち・低い積載率・人口減少・地方の採算といった構造の問題は残り、世界では海峡を通る船の大幅な減少や運河の渇水が「運べる量」そのものを削っている。<strong>物は届いている。しかし、届け続けるための余白は、かなり使われている。</strong></p>
+<div class="note"><p><strong>この特集のつくり方。</strong>4つのAIが互いの原稿を見ずに独立して調べ、その4本を比較・統合し、数字を一次資料で確かめ直しました。<strong>事実（一次資料で確認したもの）、報道、本特集の整理、見通し・仮説を書き分けています。</strong>情報基準日は2026年10月4日です。4本の独立調査は、末尾の「4AIの独立調査レポートを見る」から読めます。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-1" data-part="第1章" data-name="物流とは、「運ぶこと」だけではない">
+<header class="part-head"><span class="part-no">第1章<small>／十一章</small></span><h1 class="part-name">物流とは、「運ぶこと」だけではない</h1></header>
+<article class="ch " id="ch-1"><span class="ch-no">第1章</span><h2>物流とは、「運ぶこと」だけではない</h2>
+
+<p>物流という言葉からトラックや宅配便を思い浮かべる人は多い。しかし運ぶことは、物流が毎日している仕事の一部にすぎない。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>機能</th><th>何をしているか</th><th>止まると何が起きるか</th></tr></thead><tbody><tr><td data-label="機能"><b>運ぶ</b>（輸送）</td><td data-label="何をしているか">距離を越える</td><td data-label="止まると何が起きるか">物が動かない</td></tr><tr><td data-label="機能"><b>保管する</b></td><td data-label="何をしているか"><b>時間を越える</b></td><td data-label="止まると何が起きるか">必要なときに物がない</td></tr><tr><td data-label="機能"><b>積み替える</b>（荷役）</td><td data-label="何をしているか">船・鉄道・トラックをつなぐ</td><td data-label="止まると何が起きるか">港・駅・倉庫で詰まる</td></tr><tr><td data-label="機能"><b>仕分ける</b></td><td data-label="何をしているか">行き先ごとに分ける</td><td data-label="止まると何が起きるか">混ざったまま届かない</td></tr><tr><td data-label="機能"><b>包む</b></td><td data-label="何をしているか">壊れないようにし、数えられる単位をつくる</td><td data-label="止まると何が起きるか">破損する。数えられない</td></tr><tr><td data-label="機能"><b>追跡する</b>（情報）</td><td data-label="何をしているか">いまどこに何があるかを知る</td><td data-label="止まると何が起きるか">探す作業が生まれる。出荷できない</td></tr><tr><td data-label="機能"><b>予測して置く</b>（在庫配置）</td><td data-label="何をしているか">注文される前に近くへ置く</td><td data-label="止まると何が起きるか">速く運んでも間に合わない</td></tr></tbody></table></div>
+<h3>輸送は距離を越え、保管は時間を越える</h3>
+<p>この表の1行目と2行目は、実は同じ問題への別の答えである。<strong>近くに置いておけば、速く運ぶ必要はない。速く運べるなら、近くに置いておく必要はない。</strong>冷蔵技術は「保管できる時間」を延ばし、コンテナや高速道路は「運ぶ時間」を縮めた。Just in Time（必要な物を必要なときに必要なだけ）は、保管を輸送で置き換える選択だった。物流の歴史は、<strong>距離と時間の交換レート</strong>が技術によって書き換えられてきた歴史として読むことができる。</p>
+<h3>物流の本質は「同期」</h3>
+<p>船が速くても、港が空いていなければ荷物は降ろせない。トラックが来ても、荷物の準備ができていなければ待つ。倉庫に商品があっても、在庫の情報が間違っていれば出荷できない。<strong>物流の価値は、それぞれの工程の最高速度ではなく、工程どうしが同じ時刻につながることで生まれる。</strong>荷待ちを減らす予約システムも、データの標準化も、通関のデジタル化も、すべて「同期の精度を上げる」取り組みとして一本につながる。</p>
+<p>本特集では、物流を次のように捉える。</p>
+<div class="quote"><p><strong>物流とは、距離・時間・在庫を、お金・人・燃料・電気・水を使って調整し、必要な物を必要な時刻に必要な場所へ置くための、社会の仕組みである。</strong></p></div>
+<p>どれか一つが足りなくなれば、ほかがそろっていても「届く」は成り立たない。この見方は、第7章の「止まる物流」を考えるときの物差しになる。</p>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-2" data-part="第2章" data-name="道、鉄道、冷蔵、コンテナ――物流が社会を作り替えた">
+<header class="part-head"><span class="part-no">第2章<small>／十一章</small></span><h1 class="part-name">道、鉄道、冷蔵、コンテナ――物流が社会を作り替えた</h1></header>
+<article class="ch " id="ch-2"><span class="ch-no">第2章</span><h2>道、鉄道、冷蔵、コンテナ――物流が社会を作り替えた</h2>
+
+<p>物流の歴史を年表として並べるのではなく、<strong>「それ以前にできなかった何が、できるようになったか」</strong>で見ていく。</p>
+<h3>軽くて高い物から、重くて安い物へ</h3>
+<p>陸の上を人や動物が運んでいた時代、輸送費は極端に高かった。遠くから運ばれてくるのは、絹・香辛料・宝石・塩のように<strong>重さの割に値段の高い物</strong>に限られた。穀物のように重くて安い物は、作った場所の近くで食べるしかない。物流が、人が住める場所と都市の大きさを決めていた。水の上は陸より桁違いに安く運べたため、文明は川や海の近くに集まった。</p>
+<h3>運河と蒸気船と鉄道：世界の価格がそろい始めた</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］スエズ運河庁</span><div class="kn-t">1869年開通、1967〜75年は閉鎖</div><div class="kn-d">スエズ運河は1869年11月17日に開通した。1967年の第3次中東戦争で閉鎖され、再開は1975年6月5日。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">学術（Feyrer）</span><div class="kn-t">閉鎖の8年間が「自然の実験」になった</div><div class="kn-d">スエズの閉鎖で海上距離が伸びた国と伸びなかった国を比べた研究は、<b>海上距離が10％縮むと貿易は約5％増え、貿易が1ドル増えると所得は約25セント増える</b>と推計した。ムンバイ〜ロンドンは、スエズ経由で約6,200海里、喜望峰回りで約10,800海里である。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">学術（O'Rourke）</span><div class="kn-t">小麦の値段の差が縮んだ</div><div class="kn-d">英国リバプールと米国シカゴの小麦の価格差は、<b>1870年57.6％、1895年17.8％、1913年15.6％</b>と縮んだ。蒸気船・鉄道・電信によって、遠い市場の価格が近づいた。「世界市場」は輸送が作ったと言える。</div></aside>
+</div>
+<p>鉄道が変えたのは速度だけではない。<strong>時刻表</strong>である。帆船は風任せ、馬車は天候任せだったが、鉄道は決まった時刻に着く。到着時刻を前提に計画が立てられれば、在庫を減らせる。そして時刻表を広い地域でそろえるために、英国の鉄道時刻の統一や米国の標準時の制定のように、<strong>時刻そのものを社会全体で合わせる必要</strong>が生まれた。物流は、人類の時間の数え方まで変えた。</p>
+<p>トラックは、駅と港の「その先」を埋めた。工場も店も駅前にある必要がなくなり、郊外の工場やロードサイドの店が生まれた。<strong>物流の「端」が変わると、都市の形が変わる。</strong></p>
+<h3>パレット：人が1個ずつ持つことをやめた</h3>
+<p>コンテナの前に、もう一つの革命があった。ばらばらの荷物を1トン前後の単位にまとめ、フォークリフトで一度に持ち上げられるようにしたパレットである。第二次世界大戦中の軍の補給で本格的に使われ、戦後に産業へ広がった。<strong>人間の体力が、物流の速さを決める要因でなくなった最初の技術</strong>である。</p>
+<p>その80年前の技術の普及率が、2026年の日本ではまだ国の目標になっている。2026年3月に閣議決定された総合物流施策大綱は、2030年度に向けた目標に<strong>「標準仕様パレットの導入率 50％以上」</strong>を掲げた（第4章）。第4章で見る手積み・手降ろしの問題は、パレット化が終わっていないことの言い換えでもある。</p>
+<h3>冷やして運ぶ：食卓と医療を作り替えた</h3>
+<div class="kn-grid">
+ <aside class="kn kn-claim"><span class="chip">報道（RNZ）</span><div class="kn-t">1882年、冷凍した羊肉が地球の反対側へ</div><div class="kn-d">ニュージーランドのダニーデン号は冷凍した羊肉を積み、1882年2月15日に出港して5月24日にロンドンに着いた。冷凍によって、地球の反対側が食料の産地になった。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］国連環境計画・国連食糧農業機関（2022年）</span><div class="kn-t">いまも冷やせていない食料がある</div><div class="kn-d">2017年に、冷蔵が必要な食品のうち実際に冷蔵されたのは<b>45％</b>だけと推計された。冷蔵がないために失われた食料は<b>5億2,600万トン（世界の食料生産の12％）</b>。</div></aside>
+</div>
+<p>冷蔵・冷凍がなければ、生鮮食品は産地の近くで旬の時期にしか食べられない。刺身・牛乳・冷凍食品・コンビニの弁当の多くは成り立たず、インスリンやワクチン、血液製剤の流通も今の形では存在しない。<strong>冷蔵物流は、食文化と医療の前提そのもの</strong>である。日本では1988年7月、ヤマト運輸がクール宅急便を始めた（開発に4年、設備投資150億円）。</p>
+<p>一方で、冷やすには電気が要る。<strong>停電が長引けば、冷蔵・冷凍倉庫の在庫そのものが失われる。</strong>日曜特集第5号「電力」とここでつながる。</p>
+<h3>コンテナ革命：最も深く世界を変えた「接続方式」</h3>
+<p>コンテナ以前、海上輸送で最もお金がかかったのは、海を渡ることではなく、<strong>港で荷物を積み替えること</strong>だった。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">学術書（Levinson『The Box』）</span><div class="kn-t">運賃は関税より大きな壁だった</div><div class="kn-d">1961年、米国の海上運賃だけで、<b>輸出額の12％、輸入額の10％</b>に当たった。当時の米国の平均輸入関税は7％だった。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">同上</span><div class="kn-t">費用の半分は「港」</div><div class="kn-d">1960年ごろ、シカゴからフランスのナンシーへ医薬品をトラック1台分送ると<b>2,386ドル</b>かかった。内訳は、米国内の陸送341ドル、<b>港湾費用1,163ドル（48.7％）</b>、海上輸送581ドル（24.4％）、欧州内の陸送206ドル。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">学術（BEK論文が引用した1972年の調査）</span><div class="kn-t">荷役は1時間1.7トンから30トンへ</div><div class="kn-d">英国・欧州の港の荷役の生産性は、<b>1965年の1時間1.7トンから、1970/71年には30トン</b>に上がった。1959年の専用のコンテナクレーンは1時間に400トンを扱えた。</div></aside>
+</div>
+<p>1956年4月26日、トラック会社の経営者だったマルコム・マクリーンは、改造したタンカー「アイデアルX」に58個の箱を積んでニューアークを出た。<strong>彼が解いたのは「船をどう速くするか」ではなく、「トラックの荷台を、そのまま船に載せられないか」</strong>だった。コンテナは海運の改良ではなく、<strong>陸と海のつなぎ目の再設計</strong>だった。</p>
+<p>箱の大きさは1960年代後半にかけて国際的に標準化された。<strong>本質は鉄の箱ではなく標準化である。</strong>同じ寸法の箱なら、船・クレーン・トレーラー・貨車・ヤードのすべてをそろえて設計できる。中身を見ずに、箱だけを最適化できる。積み替えの手間・時間・盗難・破損が同時に減った。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>変わったもの</th><th>何が起きたか</th></tr></thead><tbody><tr><td data-label="変わったもの"><b>港</b></td><td data-label="何が起きたか">荷役が機械化され、停泊は日単位から時間単位へ。英国の登録港湾労働者は1989年までの10年で約3分の2減った（27,000人→9,400人、英国議会の記録。コンテナだけが理由ではない）</td></tr><tr><td data-label="変わったもの"><b>港町</b></td><td data-label="何が起きたか">深い水深と広い背後地を持つ新しい港へ荷物が移った。ニューヨークでは、コンテナ化が1967〜75年に工業の基盤が崩れた大きな要因の一つとされる（Levinson、学術論文）</td></tr><tr><td data-label="変わったもの"><b>工場の場所</b></td><td data-label="何が起きたか">「作る場所」と「売る場所」を切り離せるようになり、国際分業とサプライチェーンが広がった</td></tr><tr><td data-label="変わったもの"><b>貿易</b></td><td data-label="何が起きたか">1962〜90年のデータで、コンテナ化の効果は大きく、20世紀のグローバル化の推進力だったとする研究がある（Bernhofen・El-Sahli・Kneller、2016年）。Levinsonは、1966年からの10年で工業製品の貿易量が製造業生産の2倍超の速さで伸びたと書いている</td></tr><tr><td data-label="変わったもの"><b>中身</b></td><td data-label="何が起きたか">箱は密閉されているため、中身は書類でしか分からない。密輸・安全保障の問題がコンテナ保安の仕組みを生んだ</td></tr></tbody></table></div>
+<div class="note"><p><strong>反対側の見方も残しておく。</strong>海上輸送費そのものは1950年代からそれほど下がっていないとする研究（Hummels、2007年）や、ニューヨーク／ニュージャージー港で1970〜75年に生産性が倍になってもトン当たりの実質労働費は7％しか下がらなかったとする研究（Bridgman、2014年）がある。<strong>コンテナの効果は、運賃表の数字より、時間・確実性・積み替えの手間・盗難の減少といった、運賃に表れにくい部分に大きく出た</strong>可能性がある。なお、よく引用される「荷役費が1トン5.86ドルから16セントへ」は、本特集では原典を確認できなかったため使っていない。</p></div>
+<h3>情報が物より先に走り始めた：バーコード・POS・宅配便・EC</h3>
+<ol class="flow tl"><li><b>1973年</b><span>FedExが営業開始。初日の夜、186個を米国25都市へ</span></li><li><b>1974年</b><span>バーコード（UPC）の最初のスキャン。米オハイオ州で、ガム1個</span></li><li><b>1976年</b><span>ヤマト運輸の宅急便が関東で始まる。初日は11個</span></li><li><b>1982年</b><span>セブン‐イレブン・ジャパンがPOSを導入</span></li><li><b>1988年</b><span>クール宅急便</span></li><li><b>2005年</b><span>Amazon Prime。年79ドルで2日配送が無料</span></li><li><b>2024年度</b><span>日本の宅配便は50億3,147万個</span></li></ol>
+<p>売れた瞬間にデータが発注につながると、店は在庫を減らせる。<strong>在庫とは、ある意味で「情報がないことへの保険」</strong>である。宅配便は、個人が個人へ1個から翌日に送れる仕組みを作り、通信販売とECの土台になった。同時に、<strong>「不在」と「再配達」という問題も生まれた。</strong></p>
+<p>ECが物流に与えた最大の変化は、出荷の単位である。店へはケースやパレットで運んでいた荷物が、数百万の世帯へ1個ずつ届くようになった。ピッキング・梱包・配送の回数は桁で増え、返品という逆向きの物流も生まれた。</p>
+<div class="quote"><p><strong>物流の革新は、「速く運ぶこと」より「積み替えを減らすこと」で起きてきた。</strong>パレットもコンテナも、速度は上げていない。つなぎ目での手作業を消しただけである。この法則は、2026年の日本の問題にそのまま当てはまる。荷待ち・手積み・再配達は、すべて「つなぎ目で止まっている時間」だからである。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-3" data-part="第3章" data-name="「翌日届く」を分解する">
+<header class="part-head"><span class="part-no">第3章<small>／十一章</small></span><h1 class="part-name">「翌日届く」を分解する</h1></header>
+<article class="ch " id="ch-3"><span class="ch-no">第3章</span><h2>「翌日届く」を分解する</h2>
+
+<h3>国内の倉庫にある商品（例：洗剤1本）</h3>
+<ol class="flow"><li><b>注文</b><span>ECのシステムが在庫を照会し、どの倉庫から出すかを決める</span></li><li><b>倉庫</b><span>倉庫管理システムが指示を出し、人やロボットが棚から取り出す</span></li><li><b>梱包</b><span>箱のサイズを選び、緩衝材を詰め、送り状を貼る</span></li><li><b>出荷仕分け</b><span>宅配会社別・方面別に分ける</span></li><li><b>集荷・ハブ</b><span>大型の仕分け拠点で方面別に再仕分け</span></li><li><b>幹線輸送</b><span>夜間に大型トラックや鉄道で、届け先の地域の拠点へ</span></li><li><b>地域拠点</b><span>配達担当ごとに仕分け</span></li><li><b>配達</b><span>ドライバーがルートを回る。不在なら持ち戻り</span></li><li><b>受取</b><span>対面・置き配・宅配ボックス・コンビニ・ロッカー</span></li></ol>
+<h3>海外で作られた商品（例：ノートパソコン1台）</h3>
+<ol class="flow"><li><b>工場</b><span>パレットに積まれ、トラックで港へ</span></li><li><b>輸出</b><span>コンテナヤードへ搬入、輸出通関、クレーンで船へ</span></li><li><b>海上輸送</b><span>マラッカ海峡などを通り、数日〜数週間</span></li><li><b>日本の港</b><span>荷揚げ、ヤードに置かれ、輸入通関・検査</span></li><li><b>ドレージ</b><span>トレーラーで港から物流センターへ</span></li><li><b>物流センター</b><span>ここから先は上の国内の流れへ</span></li></ol>
+<h3>「速さ」の正体</h3>
+<p>工程を並べると、<strong>翌日届く速さの大部分は、走る速さではなく、次の3つで作られている</strong>ことが分かる。</p>
+<ol class="dots">
+<li><strong>情報の先回り</strong>：注文は数秒で倉庫に届き、出荷の準備は荷物が動く前に始まっている。</li>
+<li><strong>近い在庫</strong>：注文される前に、消費地の近くの倉庫に置いてある。「速く運ぶ」より「予測して置く」ほうが速さに効く。</li>
+<li><strong>工程の同期</strong>：注文の締め切り、倉庫の処理、幹線便の出発、仕分け拠点の処理能力、配達の出発が、数時間単位でかみ合っている。</li></ol>
+<p>この同期を支えているのは、<strong>夜間に働く人々</strong>である。倉庫の作業員、夜の高速道路を走る幹線のドライバー、仕分け拠点の作業員。消費者が見るのは玄関先の数メートルだけだが、その背後には、倉庫・幹線・港・船・通関・情報システム・道路と港の管理者・荷主の担当者がいる。</p>
+<h3>つまずきやすいのは「境界」</h3>
+<p>荷物が止まりやすいのは、走っている途中ではなく、<strong>次の工程へ渡す境界</strong>である。荷主の出荷場での待機、港のゲート、通関、倉庫の入出庫、幹線から配達への積み替え。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］関東地方整備局</span><div class="kn-t">予約と情報共有で、港の待ち時間が減った</div><div class="kn-d">横浜港のゲート前でトレーラーが待つ時間を減らす仕組み（CONPAS）は、2026年3月の試験運用で<b>平均20〜30分程度</b>の待機の削減を確認し、7月中旬から常時運用に入った。<b>これはAIではなく、予約と情報連携の効果</b>である。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］国土交通省</span><div class="kn-t">実際に運んでいるのは誰か</div><div class="kn-d">2025年4月施行の改正貨物自動車運送事業法は、元請けに「実運送体制管理簿」の作成を義務づけた。<b>実際に誰が運んでいるのかを、荷主も元請けも把握しきれないほど委託が重なっていた</b>からである（第4章）。</div></aside>
+</div>
+<div class="note"><p><strong>「翌日配送」は、ひとつの企業のサービスではない。</strong>夜間の労働、高速道路、倉庫の立地、住所の制度、決済、スマートフォン、宅配ボックス、そして受け取る側の行動までが組み合わさって成り立っている。<strong>「翌日配送を続けるか」は、社会がどこまで速さに資源を使うかという選択でもある。</strong></p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-4" data-part="第4章" data-name="2026年、日本の物流は本当に危機なのか">
+<header class="part-head"><span class="part-no">第4章<small>／十一章</small></span><h1 class="part-name">2026年、日本の物流は本当に危機なのか</h1></header>
+<article class="ch " id="ch-4"><span class="ch-no">第4章</span><h2>2026年、日本の物流は本当に危機なのか</h2>
+
+<h3>2024年問題は、何だったのか</h3>
+<p>2024年4月、トラック運転者の時間外労働に上限がかかった。原則は月45時間・年360時間、臨時的な特別の事情がある場合でも<strong>年960時間</strong>。あわせて、年間の拘束時間は原則3,516時間から3,300時間へ、休息は「継続8時間以上」から「継続11時間以上を基本とし、9時間を下回らない」へ変わった（厚生労働省）。</p>
+<p>運転手が働ける時間が減れば、運べる量が減る。対策をとらなければ<strong>2024年度に約14％、2030年度に約34％</strong>の輸送力が不足する可能性がある――2023年8月に政府の検討会がまとめたこの推計（民間研究所の試算。前提は「具体的な対応を行わなかった場合」）が、「物流危機」という言葉を広めた。</p>
+<h3>2026年3月、政府自身が数字を整理し直した</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］総合物流施策大綱（2026年3月31日閣議決定）</span><div class="kn-t">2024年度の不足は「概ね克服」</div><div class="kn-d">「2030年度に想定された約34％の輸送力不足のうち、約14％は、物流の『2024年問題』に対応するための官民の取組の成果等により<b>概ね克服</b>することができた」。2024年度を越えても、一部で輸送の制限は見られたものの、大きな混乱は避けられたとしている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］同・注記</span><div class="kn-t">運ぶ量そのものが約12％減っていた</div><div class="kn-d">「営業用トラックの貨物輸送量については、当初の想定（<b>2019年：28.4億トン</b>）から足元（<b>2024年：25.1億トン</b>）にかけて<b>約12％減少</b>しており、これも物流における需給ひっ迫の解消に寄与している」。<b>「克服」の一部は、効率化ではなく運ぶ量の減少による</b>。減った理由は、この資料からは分からない。</div></aside>
+</div>
+<p>そのうえで、政府の検討会は2030年度の見通しを計算し直した。<strong>結果は、ひとつの数字ではなく、前提の違う3つのシナリオになった。</strong></p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>前提</th><th>何も施策を講じなかった場合の不足</th><th>施策による効果</th><th>差し引き</th></tr></thead><tbody><tr><td data-label="前提"><b>平均的な想定</b></td><td data-label="何も施策を講じなかった場合の不足">▲7％（1.7億トン）</td><td data-label="施策による効果">+25.7</td><td data-label="差し引き"><b>+18.7</b></td></tr><tr><td data-label="前提"><b>2024年ベース</b></td><td data-label="何も施策を講じなかった場合の不足">▲15％（3.8億トン）</td><td data-label="施策による効果">+25.7</td><td data-label="差し引き"><b>+10.7</b></td></tr><tr><td data-label="前提"><b>2019年ベース</b></td><td data-label="何も施策を講じなかった場合の不足">▲25％（7.2億トン）</td><td data-label="施策による効果">+25.7</td><td data-label="差し引き"><b>+0.7</b></td></tr></tbody></table></div>
+<p class="srcnote">出典：内閣官房 物流政策推進会議（第1回）資料2-1「総合物流施策大綱（2026年度〜2030年度）の案について」の参考（有識者検討会提言、2026年3月3日公表）。2024年度の貨物輸送量（25.1億トン）を100とした値。施策の効果の内訳は、荷待ち・荷役等時間の短縮+7.5、積載効率の向上+6.6、陸・海・空の「新モーダルシフト」+6.4、宅配便の確実な受け取り+1.8、ドローンでのラストマイル配送+2.9、その他+0.5。</p>
+<div class="note"><p><strong>この表の読み方。</strong></p>
+<ul class="dots">
+<li><strong>約34％という数字は、2026年の見通しではない。</strong>34％は、2019年の貨物量を前提に「何もしなかった場合」として作られた過去の推計である。</li>
+<li><strong>「34％が7％になった」と比べることもできない。</strong>基準となる年（2019年か2024年か）、貨物量の前提、施策の効果の入れ方が違う。</li>
+<li><strong>差し引きがプラスでも「解決した」わけではない。</strong>+25.7は、施策が計画どおりに効いた場合の計算であり、実績ではない。中身は、荷待ちの削減・積載率の向上・モーダルシフトといった「これまで進まなかったこと」である。最も厳しい2019年ベースでは、差し引きは+0.7にとどまる。</li>
+<li>大綱は、2030年度を乗り越えても<strong>2040年度・2050年度にはさらに不足が見込まれる</strong>としている。</li></ul></div>
+<h3>2026年4月、荷主の責任が制度になった</h3>
+<p>2026年4月1日、改正された物流効率化法（物資の流通の効率化に関する法律）が全面施行された。2025年4月にすべての荷主と物流事業者へ努力義務がかかり、2026年4月からは一定規模以上の事業者に義務がかかる。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>区分</th><th>指定の基準</th><th>指定された数（2026年8月27日時点）</th><th>主な義務</th></tr></thead><tbody><tr><td data-label="区分">荷主・連鎖化事業者</td><td data-label="指定の基準">取扱貨物 年9万トン以上</td><td data-label="指定された数（2026年8月27日時点）"><b>3,257</b>（第1種荷主1,792・第2種荷主1,446・連鎖化事業者19。重複を除いた実事業者数2,142）</td><td data-label="主な義務"><b>物流統括管理者（CLO）の選任</b>、中長期計画、定期報告</td></tr><tr><td data-label="区分">トラック事業者</td><td data-label="指定の基準">保有150台以上</td><td data-label="指定された数（2026年8月27日時点）"><b>877</b></td><td data-label="主な義務">中長期計画、定期報告</td></tr><tr><td data-label="区分">倉庫業者</td><td data-label="指定の基準">保管量70万トン以上</td><td data-label="指定された数（2026年8月27日時点）"><b>56</b></td><td data-label="主な義務">中長期計画、定期報告</td></tr></tbody></table></div>
+<p class="srcnote">出典：国土交通省 物流効率化法の説明会資料（2026年9月）。事前の想定は荷主等3,200程度、トラック790程度、倉庫70程度だった。</p>
+<p><strong>荷待ちは、運送会社の努力だけでは減らない。待たせているのは、荷物を出す側と受け取る側だからである。</strong>工場が「朝8時に一斉納品」と指定すれば、トラックは同じ時間に集まり、列ができる。小売が頻繁な小口納品を求めれば、積載率は下がる。この法律は、問題の持ち主を「運送会社」から「荷主」へ移した。</p>
+<div class="note"><p><strong>ただし、効果はまだ測られていない。</strong>最初の中長期計画の提出期限は2026年10月末（初年度のみ延長）、最初の定期報告は2027年7月末である。<strong>本特集の情報基準日（10月4日）の時点では、制度の効果を示す報告は一度も出ていない。</strong>「責任の構造は変わった」と「効果が出た」は、分けて考える必要がある。</p></div>
+<h3>数字で見る現場</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>項目</th><th>現状</th><th>2030年度の目標（大綱）</th></tr></thead><tbody><tr><td data-label="項目">トラックの積載効率</td><td data-label="現状"><b>41.3％</b>（平均して半分以上は空気を運んでいる）</td><td data-label="2030年度の目標（大綱）">44％</td></tr><tr><td data-label="項目">荷待ち・荷役等の時間</td><td data-label="現状">ドライバー1人<b>年約750時間</b></td><td data-label="2030年度の目標（大綱）">年625時間</td></tr><tr><td data-label="項目">1運行あたりの荷待ち・荷役</td><td data-label="現状"><b>合計約3時間</b></td><td data-label="2030年度の目標（大綱）">全国平均で合計2時間以内</td></tr><tr><td data-label="項目">標準仕様パレットの導入率</td><td data-label="現状">―</td><td data-label="2030年度の目標（大綱）"><b>50％以上</b></td></tr><tr><td data-label="項目">物資拠点の非常用電源の導入率</td><td data-label="現状"><b>21％</b></td><td data-label="2030年度の目標（大綱）">50％</td></tr><tr><td data-label="項目">ドライバーの年間所得</td><td data-label="現状">大型492万円・中小型437万円（全産業527万円、2024年）</td><td data-label="2030年度の目標（大綱）">全産業平均まで引き上げ</td></tr><tr><td data-label="項目">ドライバーの年間労働時間</td><td data-label="現状">大型2,484時間・中小型2,424時間（全産業2,052時間、2024年）</td><td data-label="2030年度の目標（大綱）">全産業平均まで引き下げ</td></tr></tbody></table></div>
+<p class="srcnote">出典：総合物流施策大綱・同概要（内閣官房 資料2-1）、国土交通省 荷主判断基準の解説書。</p>
+<p>積載効率41.3％という数字は、「ドライバーが足りない」とは別の問題を示している。理由は、毎日少しずつ納める商慣行、時間指定、帰り荷がない片道輸送、荷姿のばらつき、そして<strong>競合する会社どうしが荷物を混ぜない</strong>ことにある。人を増やさなくても、積載率が上がれば輸送力は増える。</p>
+<h3>人</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］厚生労働省</span><div class="kn-t">有効求人倍率 2.54倍</div><div class="kn-d">自動車運転従事者の有効求人倍率は<b>2.54倍</b>（2026年8月、常用・パートを含む原数値）。職業計は1.06倍。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">業界団体（全日本トラック協会）</span><div class="kn-t">50歳以上が初めて5割超</div><div class="kn-d">2024年、トラックのドライバー等は約86万人。<b>50歳以上が51.0％</b>で初めて5割を超えた。運転従事者の女性比率は4.6％。15〜29歳は10.1％（全産業16.8％、大綱）。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］大綱・出入国在留管理庁</span><div class="kn-t">外国人材は、まだ即効薬ではない</div><div class="kn-d">特定技能「自動車運送業」の受入れの上限は、令和10年度までで<b>2万2,100人</b>（大綱）。実際の在留者は<b>558人</b>（2026年6月末速報。トラック・タクシー・バスの合計。2025年12月末は151人）。「物流倉庫」分野は0人。</div></aside>
+</div>
+<p><strong>労働時間を減らすと、時間で稼いでいた人の収入が減る。収入が減れば、人は辞める。</strong>大綱が「所得を全産業平均まで引き上げる」と「労働時間を全産業平均まで引き下げる」を並べて目標にしたのは、この二つを同時に進めなければ逆効果になるからだと読める。同時に達成するには、時間あたりの運賃を上げるしかない。つまり物流費は上がる（第9章）。</p>
+<h3>多重下請けと運賃</h3>
+<ul class="dots">
+<li><strong>2025年4月</strong>：運送契約の書面化、元請けによる実運送体制管理簿の作成が義務に（改正貨物自動車運送事業法）。</li>
+<li><strong>2026年4月</strong>：トラック適正化二法（2025年6月公布）の一部が施行。白トラ（無許可の有償運送）を使った荷主等の処罰、委託を<strong>「2次までに制限する努力義務」</strong>など。</li>
+<li><strong>まだ施行されていないもの</strong>：5年ごとの事業許可の更新制と、運賃を支える<strong>「適正原価」</strong>。施行は「公布の日から三年を超えない範囲内」で政令で定める日とされ、<strong>施行日は決まっていない</strong>。適正原価の有識者検討会は2026年7月から開かれている。</li>
+<li>2024年3月に告示された標準的運賃は「平均約8％の運賃引上げ」。ただし、強制力のある最低運賃ではない。</li>
+<li>トラック・物流Gメンは総勢360名規模。2026年10月・11月は集中監視月間で、公正取引委員会・中小企業庁・警察と連携する。</li></ul>
+<p>多重下請けは「悪い慣行」として語られることが多いが、<strong>日によって大きく変わる荷物の量を吸収する仕組み</strong>でもある。問題は階層があることそのものより、各段階で運賃が抜かれ、最も下で実際に運ぶ会社に責任だけが集まる構造にある。</p>
+<h3>反対側から見る：「危機」ではない、という見方</h3>
+<ul class="dots">
+<li><strong>懸念された深刻な停滞は、2024年度には起きなかった。</strong>政府自身がそう総括している。「危機」と言い続けることが、事実をゆがめる面もある。</li>
+<li><strong>人手不足は、安すぎた運賃と待遇を正常に戻す圧力でもある。</strong>荷主が無償の荷役や長い待機を当然と考えられなくなったことは、改善である。その代わり、消費者は商品の値段や送料の上昇という形で負担する。</li>
+<li>ただし、<strong>危機の見積もりが小さくなった最大の理由の一つは、運ぶ量が減ったこと</strong>である。需要が戻れば、逼迫も戻りうる。</li></ul>
+<div class="quote"><p><strong>2026年の日本の物流は、「崩れた」のでも「解決した」のでもない。危機の見積もりは下がり、代わりに「対策を実際に進められるか」が最大の変数になった。</strong></p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-5" data-part="第5章" data-name="都市では多すぎ、地方では少なすぎる">
+<header class="part-head"><span class="part-no">第5章<small>／十一章</small></span><h1 class="part-name">都市では多すぎ、地方では少なすぎる</h1></header>
+<article class="ch " id="ch-5"><span class="ch-no">第5章</span><h2>都市では多すぎ、地方では少なすぎる</h2>
+
+<p>物流の問題は、東京と山間の集落で同じではない。<strong>都市では荷物が多すぎることが問題になり、地方では荷物が少なすぎることが問題になる。</strong></p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th></th><th>都市</th><th>地方</th></tr></thead><tbody><tr><td data-label="">問題の中心</td><td data-label="都市">荷物が<b>多すぎる</b></td><td data-label="地方">荷物が<b>少なすぎる</b></td></tr><tr><td data-label="">よくある姿</td><td data-label="都市">道路の混雑、駐車場所がない、集合住宅・タワーマンション（エレベーターを使う「縦のラストワンマイル」）、再配達、小口のEC</td><td data-label="地方">1台で広い範囲を回っても配る数が少ない、店の閉店、車に乗れない高齢者、医薬品、豪雪・離島</td></tr><tr><td data-label="">再配達率（2026年4月、大手6社）</td><td data-label="都市"><b>8.5％</b></td><td data-label="地方"><b>6.0％</b></td></tr><tr><td data-label="">効く対策</td><td data-label="都市">置き配・宅配ボックス・ロッカー、時間帯の分散、共同配送</td><td data-label="地方">共同配送、貨客混載、郵便との連携、移動販売、受取拠点、ドローン</td></tr><tr><td data-label="">限界</td><td data-label="都市">道路と荷さばき場は増やしにくい</td><td data-label="地方"><b>配る密度そのものが下がり続ける</b></td></tr></tbody></table></div>
+<h3>都市：再配達は減ってきた</h3>
+<p>宅配便の再配達率は、2017年10月期の約15.5％から、<strong>2026年4月には約7.6％</strong>に下がった。置き配や宅配ボックスなど多様な受取方法の利用率は約31.0％で、国は2030年度に50％程度を目指す（国土交通省）。再配達の問題は、受け取る側が悪いという話ではない。不在でも受け取れる仕組みと、時間を変えやすい仕組みがあれば減る。</p>
+<h3>地方：効率化だけでは届かない場所がある</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］農林水産省</span><div class="kn-t">食料品アクセス困難人口 904万人</div><div class="kn-d">店まで遠く、車も使えない人など、食料品の購入に困難を抱える65歳以上の人は<b>904万人</b>（2020年推計、65歳以上の25.6％）。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］総合物流施策大綱</span><div class="kn-t">ドローン配送の社会実装は17件</div><div class="kn-d">ドローン配送の社会実装は<b>17件</b>（2025年2月）。2030年度の目標は174件。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］日本郵便</span><div class="kn-t">能登で、郵便局を拠点にした実証</div><div class="kn-d">日本郵便とKDDIは2026年9月28日〜10月4日、石川県の珠洲郵便局をドローンの拠点にした配送の実証を行っている。<b>実証であり、日常の配送になったわけではない。</b></div></aside>
+</div>
+<p>配送の費用は、ほぼ<strong>1コースあたりに配る数（配送密度）</strong>で決まる。1日に100個を配る地域と10個を配る地域では、1個あたりの費用が桁で違う。効率化を徹底すれば、企業にとって合理的な判断は「密度の低い地域から撤退する」になりうる。路線バス、ガソリンスタンド、銀行の支店で実際に起きてきたことである。<strong>効率化は、配送密度が一定以上ある地域でしか効かない。</strong></p>
+<p>解決策として挙げられるものにも、それぞれ限界がある。</p>
+<ul class="dots">
+<li><strong>貨客混載</strong>：バスや鉄道で荷物を運ぶ。ただし、そのバスや鉄道自体が減っている。</li>
+<li><strong>郵便と宅配の連携</strong>：弱っている二つを足しても、強くなるとは限らない。</li>
+<li><strong>ドローン</strong>：積める量・天候・航続距離・離着陸の場所・費用の制約がある。医薬品や急ぎの小さな荷物には向くが、日常の食料配送の主役になるとは考えにくい。</li>
+<li><strong>移動販売</strong>：品ぞろえが限られるが、高齢者の見守りという役割も持つ。</li>
+<li><strong>集落の受取拠点</strong>：そこまで行けない人こそ、支援が必要な人である。</li></ul>
+<h3>物流は、公共のインフラなのか</h3>
+<p>電気・水道・通信には、全国どこでもサービスを受けられるようにする仕組みがある。郵便には、全国均一の料金で届けることを法律で定めた仕組みがある。<strong>しかし、生活に必要な物の多くは、いま郵便ではなく宅配便で届いている。そして宅配便には、そうした保証の仕組みがない。</strong></p>
+<p>総合物流施策大綱は、目指す価値の一つに<strong>「社会インフラとしての物流（ユニバーサルサービス）」</strong>を掲げ、「地域のラストマイル配送等の持続可能な提供の維持・確保」を施策に入れた。ただし、それを誰がどの費用で担うのかは、本特集が確認した範囲では明示されていない。</p>
+<div class="note"><p><strong>物流の危機は、全国の平均ではなく「ネットワークの端」で先に起きる。</strong>日本全体でトラックが足りていても、山あいの集落の最後の一便がなくなれば、その地域では物流は止まっている。平均だけを見ると、最も困っている場所を見落とす。<strong>採算の合わない地域の物流を、社会としてどこまで、誰の負担で支えるのか。</strong>これは技術の問題ではなく、社会の選択である。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-6" data-part="第6章" data-name="世界の物流は、狭い場所を通っている">
+<header class="part-head"><span class="part-no">第6章<small>／十一章</small></span><h1 class="part-name">世界の物流は、狭い場所を通っている</h1></header>
+<article class="ch " id="ch-6"><span class="ch-no">第6章</span><h2>世界の物流は、狭い場所を通っている</h2>
+
+<h3>世界の物流の骨格は、いまも船</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］国連貿易開発会議（UNCTAD）</span><div class="kn-t">重量で約8割、金額で7割超</div><div class="kn-d">国連貿易開発会議は、世界の貿易の<b>重量で約80％、金額で70％超</b>が海上で運ばれていると説明している。航空貨物は、業界団体によれば金額で33％超、量では1％未満。<b>「8割」「9割」という数字は分母（重量か金額か）が資料ごとに違うので、並べて比べない。</b></div></aside>
+ <aside class="kn kn-claim"><span class="chip">UNCTAD『Review of Maritime Transport 2025』</span><div class="kn-t">同じ量を、より遠くまで運んでいる</div><div class="kn-d">2024年の海上貿易量は127億2,000万トン（+2.2％）。距離を掛けたトンマイルは<b>+5.9％</b>。平均の輸送距離は、2018年の4,831マイルから<b>2024年の5,245マイル</b>に延びた。紅海を避けて喜望峰を回る船が増えたことが大きい。</div></aside>
+</div>
+<p>運ぶ量はほとんど増えていないのに、運ぶ距離が3倍近い速さで伸びている。<strong>本特集はこれを「距離のインフレ」と呼ぶ。</strong>同じ荷物を運ぶために、より多くの船・燃料・時間・船員が要り、二酸化炭素の排出も増える。グローバル化は「距離を消した」と言われてきたが、航路が閉じると、距離は突然、経済に戻ってくる。</p>
+<h3>主要なチョークポイントの現在地</h3>
+<p>国際通貨基金（IMF）のPortWatchは、船の位置情報（AIS）から海峡・運河の通航隻数を毎日推計している。本特集がその日次データから計算した1日あたりの平均は、次のとおりである。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>海峡・運河</th><th>2023年1〜10月</th><th>2025年</th><th>2026年1〜9月</th><th>最近の状態</th></tr></thead><tbody><tr><td data-label="海峡・運河"><b>ホルムズ海峡</b></td><td data-label="2023年1〜10月">95.6隻</td><td data-label="2025年">85.5隻</td><td data-label="2026年1〜9月">20.0隻（3月以降は3〜4隻）</td><td data-label="最近の状態"><b>AISで観測できる通航隻数が大幅に減少</b>。2026年3月の平均3.2隻、9月（1〜27日）3.7隻</td></tr><tr><td data-label="海峡・運河"><b>スエズ運河</b></td><td data-label="2023年1〜10月">73.6隻</td><td data-label="2025年">38.5隻</td><td data-label="2026年1〜9月">40.7隻</td><td data-label="最近の状態">危機前の約半分のまま</td></tr><tr><td data-label="海峡・運河"><b>バブ・エル・マンデブ海峡</b></td><td data-label="2023年1〜10月">74.6隻</td><td data-label="2025年">33.5隻</td><td data-label="2026年1〜9月">33.7隻</td><td data-label="最近の状態">紅海の入口。2026年9月は26.2隻</td></tr><tr><td data-label="海峡・運河"><b>喜望峰</b></td><td data-label="2023年1〜10月">48.9隻</td><td data-label="2025年">89.5隻</td><td data-label="2026年1〜9月">90.9隻</td><td data-label="最近の状態">迂回する船で約2倍に</td></tr><tr><td data-label="海峡・運河"><b>パナマ運河</b></td><td data-label="2023年1〜10月">31.7隻</td><td data-label="2025年">31.1隻</td><td data-label="2026年1〜9月">31.7隻</td><td data-label="最近の状態">2023年11〜12月は渇水の制限で22.9隻</td></tr></tbody></table></div>
+<p class="srcnote">出典：IMF PortWatch 日次データ（2026年10月4日に取得）から本特集が計算。AIS（船舶自動識別装置）にもとづく推計で、AISを切った船は数えられない。表の平均値はPortWatchの公表値そのものではない。</p>
+<h3>ホルムズ海峡：閉鎖ではないが、AISで観測できる通航隻数は大幅に減っている</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］米エネルギー情報局（EIA）</span><div class="kn-t">世界の石油消費の約2割が通る</div><div class="kn-d">2024年にホルムズ海峡を通った石油は<b>日量2,000万バレル</b>で、世界の石油液体の消費の<b>約20％</b>に当たる。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］国際海事機関（IMO）2026年9月16日</span><div class="kn-t">商船への攻撃80件、船員の死者は少なくとも22人</div><div class="kn-d">IMOは、ホルムズ海峡とその周辺で<b>商船への攻撃80件</b>を確認し、<b>船員の死者は少なくとも22人</b>にのぼるとして、加盟国に商船と船員を攻撃しないよう求めた（2026年9月16日）。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］IMO 2026年4月24日（経過）</span><div class="kn-t">「海峡のどこにも安全な通航はない」</div><div class="kn-d">4月24日の時点では、確認された攻撃は29件、船員の死者は少なくとも10人で、<b>約1,600隻・約2万人の船員</b>が湾内にとどまっていた。事務局長は「there is no safe transit anywhere in the Strait of Hormuz」と述べた。3月には、周辺でGNSS（衛星測位）が広く妨害・偽装されていると認めている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］EIA 2026年9月9日（見通し）</span><div class="kn-t">制約は年末まで続く見込み</div><div class="kn-d">EIAは、海峡の通航の制約が<b>2026年10〜12月期まで続く</b>と予測している。通航は徐々に増え、代替の輸出ルートも使われるとしている。<b>これは予測であり、実績ではない。</b></div></aside>
+</div>
+<p>2026年のホルムズは、法的・物理的に完全に閉じられているわけではない。<strong>PortWatchのAISで観測できる通航隻数は、危機前に比べて大幅に低下している</strong>（上の表）。ただし、<strong>AISを切った船はこの数に含まれない</strong>ため、実際の通航のすべてを表すわけではない。EIAは9月時点で、通航と輸出の流れは徐々に回復する一方、<strong>制約は2026年末まで続く</strong>と見込んでいる。本特集は「閉鎖」とは書かず、<strong>「AISで観測できる通航隻数の大幅な減少」</strong>として扱う。</p>
+<h3>運べない理由は一つではない</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>型</th><th>状態</th><th>2026年の例</th><th>解き方</th></tr></thead><tbody><tr><td data-label="型"><b>通れない</b></td><td data-label="状態">航路が物理的・軍事的に使えない</td><td data-label="2026年の例">攻撃の危険が大きいホルムズ海峡（AISで観測できる通航隻数が大幅に減少）、渇水時のパナマ運河の通航枠</td><td data-label="解き方">外交・安全確保、水の確保</td></tr><tr><td data-label="型"><b>通れるが行かない</b></td><td data-label="状態">安全の判断で船会社が避ける</td><td data-label="2026年の例">紅海（会社ごとに判断が分かれる）</td><td data-label="解き方">安全の回復、各社の判断</td></tr><tr><td data-label="型"><b>行けるが割に合わない</b></td><td data-label="状態">保険・燃料・運賃が見合わない</td><td data-label="2026年の例">戦争保険料。ホルムズは船の価格の1〜3％から7.5〜10％へ上がったと報じられている</td><td data-label="解き方">保険料・運賃の低下</td></tr><tr><td data-label="型"><b>行けるが遠い</b></td><td data-label="状態">迂回で距離・日数・燃料が増える</td><td data-label="2026年の例">喜望峰回り</td><td data-label="解き方">航路の正常化</td></tr></tbody></table></div>
+<p>報道では、これらがすべて「紅海危機」「ホルムズ危機」という一つの言葉でまとめられる。しかし「通れない」は外交と安全でしか解けず、「割に合わない」は保険料が下がれば解ける。<strong>原因が違えば、効く対策も違う。</strong></p>
+<h3>エネルギーの海峡は、食料の海峡でもある</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］世界貿易機関（WTO）2026年3月</span><div class="kn-t">肥料の供給の約3分の1が通る</div><div class="kn-d">WTOは、ホルムズの寸断が石油だけでなく肥料の供給を減らし、価格を上げていると指摘した。イランとバーレーン・カタール・サウジアラビアなどの湾岸諸国は、尿素やアンモニアなどの肥料を大量に輸出しており、<b>その世界供給の約3分の1がホルムズ海峡を通る</b>とされる。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］WTO 同</span><div class="kn-t">世界の物品貿易の見通し</div><div class="kn-d">世界の物品貿易量は2025年に+4.6％、2026年は+1.9％の見通し。原油価格のショックが長引けば+1.4％まで下がるとした。<b>見通しであり、実績ではない。</b></div></aside>
+</div>
+<p>肥料が届かなければ、次の作付けが減る。<strong>エネルギーの物流が止まると、半年から1年遅れて食料の価格に効いてくる。</strong>海峡の通航が細ることは、エネルギーの危機であると同時に、翌年の食料の危機の種でもある。</p>
+<h3>気候は「水」として物流の能力を削る</h3>
+<p>パナマ運河は閘門式で、船を1隻通すたびにガトゥン湖の淡水を使う。<strong>雨が降らなければ、通せる船の数そのものが減る。</strong>スエズ運河や自然の海峡は水を消費しない。気候の変化に対して、パナマは構造的に弱い。</p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］パナマ運河庁</span><div class="kn-t">2023年、初めての通航制限</div><div class="kn-d">2023年、渇水で1日の通航を22隻に制限した。2023年10月は流域で記録上最も乾燥した10月で、運河は「通航を制限しなければならなかったのは初めて」とした。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］パナマ運河庁 2026年9月28日</span><div class="kn-t">枠は戻すが「水不足は続いている」</div><div class="kn-d">2026年8〜9月に再び渇水で通航枠を減らしたあと、10月15日から1日33枠に増やし、喫水を49.0フィート（14.94m）にすると発表した。同時に「流域の水不足は続いている」と書いている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］パナマ運河庁 2026年9月16日</span><div class="kn-t">同じ湖の水を、200万人超が飲んでいる</div><div class="kn-d">新しい水源（リオ・インディオ貯水池）の計画では、38地区550世帯が移転の対象になる。<b>運河の湖からは200万人を超える人が給水を受けている。</b>船を通す水と人が飲む水を、同じ湖が分け合っている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］ドイツ連邦水路管理局</span><div class="kn-t">ライン川の水位がマイナスに</div><div class="kn-d">ライン川の物流の要所カウプの水位は、<b>2026年10月1日に−6cm</b>を記録した（10月4日は7cm）。それまでの最低記録は2018年10月の25cm（報道）。水位が下がると、船は積める量を減らすしかない。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］米国 NOAA/NIDIS</span><div class="kn-t">ミシシッピ川も</div><div class="kn-d">メンフィスの水位は2022年に−10.8フィート、2023年に−12.0フィートで、2023年が観測史上最低。2022年10月初めには2,000隻を超えるバージが滞留した。</div></aside>
+</div>
+<div class="note"><p><strong>物流の気候リスクは、多くの場合「暑さ」ではなく「水」として現れる。</strong>水が足りなければ運河と川が細り、水が多すぎれば道路・港・倉庫が浸かる（日曜特集第6号「水害と復旧」）。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-7" data-part="第7章" data-name="物流が止まると、何が止まるのか">
+<header class="part-head"><span class="part-no">第7章<small>／十一章</small></span><h1 class="part-name">物流が止まると、何が止まるのか</h1></header>
+<article class="ch " id="ch-7"><span class="ch-no">第7章</span><h2>物流が止まると、何が止まるのか</h2>
+
+<p>「物流が止まった」と一言で言うと、対策がかみ合わない。<strong>止まり方は、原因によって違い、元に戻るまでの時間も桁で違う。</strong></p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>止まり方</th><th>典型的な例</th><th>戻るまでの時間の目安（本特集の整理）</th></tr></thead><tbody><tr><td data-label="止まり方"><b>人が足りない</b></td><td data-label="典型的な例">ドライバー・港湾・倉庫の担い手不足</td><td data-label="戻るまでの時間の目安（本特集の整理）">年〜10年（人は年単位でしか増えない）</td></tr><tr><td data-label="止まり方"><b>器が足りない</b></td><td data-label="典型的な例">船・トラック・コンテナ・倉庫の不足</td><td data-label="戻るまでの時間の目安（本特集の整理）">年（発注から数年）</td></tr><tr><td data-label="止まり方"><b>道が使えない</b></td><td data-label="典型的な例">地震・水害・大雪、海峡・運河の封鎖や渇水</td><td data-label="戻るまでの時間の目安（本特集の整理）">日〜年</td></tr><tr><td data-label="止まり方"><b>つなぎ目で詰まる</b></td><td data-label="典型的な例">荷役・仕分け・通関・積み替え、物資拠点の滞留</td><td data-label="戻るまでの時間の目安（本特集の整理）">時間〜週</td></tr><tr><td data-label="止まり方"><b>情報が止まる</b></td><td data-label="典型的な例">サイバー攻撃、システム障害、GNSSの妨害</td><td data-label="戻るまでの時間の目安（本特集の整理）">時間〜週</td></tr><tr><td data-label="止まり方"><b>エネルギーがない</b></td><td data-label="典型的な例">停電、燃料の途絶</td><td data-label="戻るまでの時間の目安（本特集の整理）">日〜週</td></tr><tr><td data-label="止まり方"><b>値段が合わない</b></td><td data-label="典型的な例">戦争保険料、過疎地の採算割れ</td><td data-label="戻るまでの時間の目安（本特集の整理）">政策次第（報じられにくい）</td></tr></tbody></table></div>
+<p>この中で、<strong>最も戻るのが遅いのは「人」</strong>である。道路は直り、船は造れる。しかし辞めた人は戻らない。そして<strong>最も見落とされるのは「つなぎ目」</strong>である。物流は走っているときには止まらない。止まるのは、港・駅・倉庫・荷さばき場・玄関先といった接点である。</p>
+<h3>情報が止まると、物は無事でも動けない</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］名古屋港運協会・国土交通省</span><div class="kn-t">名古屋港のランサムウェア（2023年7月）</div><div class="kn-d">2023年7月4日6時30分から6日18時15分まで、名古屋港の全ターミナルの搬出入が止まった。<b>37隻の荷役が最大24時間遅れ、コンテナ約2万本の搬出入に影響</b>し、トヨタ自動車は輸出向け自動車部品の梱包工場4か所のラインを<b>7日間</b>止めた。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］国土交通省 同じ資料</span><div class="kn-t">しかし、自動車の生産には影響がなかった</div><div class="kn-d">同じ資料は「<b>国内外での自動車の生産に影響はなかった</b>」とも書いている。止まった工程があっても、在庫や代替の手段がその衝撃を吸収したと考えられる（第8章）。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">報道</span><div class="kn-t">海運大手も止まった</div><div class="kn-d">2017年、マルウェア「NotPetya」で海運大手マースクのシステムが止まり、同社は損失を2億〜3億ドル規模と説明したと報じられた。</div></aside>
+</div>
+<p><strong>「物も人も無事なのに、港が止まる」。</strong>倉庫管理システムが止まれば、どこに何があるか分からず出荷できない。通関のシステムが止まれば、荷物が港にあっても引き取れない。位置が分からなければ、船は安全に入港できない。デジタル化は物流を速くしたが、<strong>デジタルが壊れても最低限動けること</strong>まで含めて、強さと考える必要がある。</p>
+<h3>災害のとき、詰まるのは「運ぶ」より「降ろす・分ける」</h3>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］内閣府 能登半島地震の検証</span><div class="kn-t">パレットとフォークリフトが足りなかった</div><div class="kn-d">国のプッシュ型支援（要請を待たずに物資を送る）は計82日間行われた。検証資料は、道路の寸断と渋滞で到着が遅れたこと、<b>パレット積みでない荷物の人力での荷下ろしと、フォークリフトの不足で混乱した</b>こと、物資拠点は1月9日に民間の物流事業者の支援を受けてから円滑になったことを挙げている。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］総合物流施策大綱</span><div class="kn-t">物資拠点の非常用電源は21％</div><div class="kn-d">災害時の物資拠点の非常用電源の導入率は<b>21％</b>で、2030年度に50％を目指す。<b>停電すれば、物資があってもフォークリフトも照明も通信も止まる。</b></div></aside>
+</div>
+<p>平時にパレット化が進んでいなければ、災害時の物資拠点も手積み・手降ろしになる。<strong>パレットやコンテナのような標準化は、平時の効率化策であると同時に、非常時の速さでもある。</strong>平時の非効率は、災害時に、人手と時間と、ときに命のコストとして現れる。</p>
+<h3>止まった実績が、次の選択を変える</h3>
+<p>総合物流施策大綱は、鉄道貨物が減った理由について「度重なる自然災害による大規模な輸送障害を背景として、<strong>荷主からの信頼が低下したことが一因</strong>」と書いた。内航海運も、2022年度に388億トンキロまで増えたあと、荒天や機関故障による欠航の影響で2023年度は371億トンキロに減った。</p>
+<p>鉄道と船は、トラックより人手が少なく、二酸化炭素も少ない。しかし1か所で線路が切れれば路線全体が止まり、復旧に長くかかることがある。2026年9月の台風25号でも、JR東日本は内房線の姉ケ崎〜長浦間について「復旧まで少なくとも3か月程度」と発表した（2026年10月3日）。<strong>「モーダルシフトを進めること」と「災害に強い物流をつくること」は、短期的にはぶつかる場合がある。</strong>止まっても困らない仕組み（代替ルート、復旧の速さ、遅れを許容できる契約）を先に用意することが、両立の条件になる。</p>
+<h3>大きな拠点は、強さと弱さを同時に生む</h3>
+<p>自動化と効率化のために、物流センターは大型化・集約化してきた。大型の拠点は平時には効率が高い。しかし<strong>その一か所が水害・地震・停電・サイバー攻撃で止まると、広い範囲の配送が同時に止まる（単一障害点、SPOF）</strong>。大型化そのものが悪いのではなく、集約による効率と、止まったときの影響範囲の大きさを、両方とも勘定に入れる必要がある。</p>
+<div class="note"><p><strong>ほかのインフラとのつながり。</strong>電気が止まれば、自動倉庫・仕分け機・港のクレーン・冷蔵倉庫・通信が止まる（第5号「電力」）。水害では、道路・港・倉庫が浸かり、川の水位が内陸の水運を左右する（第6号「水害と復旧」）。<strong>物流は、ほかのインフラが止まったときの影響が最後に集まる場所でもある。</strong></p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-8" data-part="第8章" data-name="在庫は無駄か、保険か">
+<header class="part-head"><span class="part-no">第8章<small>／十一章</small></span><h1 class="part-name">在庫は無駄か、保険か</h1></header>
+<article class="ch " id="ch-8"><span class="ch-no">第8章</span><h2>在庫は無駄か、保険か</h2>
+
+<p>物流は長いあいだ、余分を減らす方向へ進んできた。在庫を減らし、倉庫を小さくし、必要な物を必要なときに必要なだけ届ける。<strong>Just in Time（JIT）</strong>である。</p>
+<h3>JITは失敗ではない</h3>
+<p>JITは、在庫に眠っていたお金を解放し、倉庫の面積と光熱費を減らし、売れ残りや廃棄を減らし、不良品を早く見つけられるようにした。在庫を持つことには、資金・保管・劣化・廃棄の費用がかかる。<strong>在庫は「無駄」ではないが、「無料」でもない。</strong></p>
+<h3>問題は、全員が同時に在庫を減らしたこと</h3>
+<p>1社がJITを進めると、その会社の在庫は取引先へ移る。<strong>サプライチェーンの全員がそれぞれ在庫を減らすと、全体から緩衝材が消える。</strong>そのとき、どこか一か所が止まれば、衝撃を受け止める場所がどこにもない。<strong>JITは、企業ごとには合理的でも、全体では脆くなりうる。</strong>いわゆる「合成の誤謬」である。</p>
+<p>反対に、在庫を増やせばすべて解決するわけでもない。調達先を増やせば単価と管理の手間が上がり、国内回帰には人手とエネルギーの制約がある。<strong>「効率か、強靱性か」の二択ではない。本当の問いは、どこに、どれだけの余白を持つかである。</strong></p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>余白の種類</th><th>例</th><th>平時の費用</th><th>止まったときの価値</th></tr></thead><tbody><tr><td data-label="余白の種類"><b>在庫</b></td><td data-label="例">安全在庫、備蓄</td><td data-label="平時の費用">保管費。物が劣化する</td><td data-label="止まったときの価値">供給が止まった時間を稼ぐ</td></tr><tr><td data-label="余白の種類"><b>設備</b></td><td data-label="例">予備の車両・倉庫・クレーン</td><td data-label="平時の費用">使わなくても減価する</td><td data-label="止まったときの価値">能力の不足を補う</td></tr><tr><td data-label="余白の種類"><b>経路</b></td><td data-label="例">複数のルート・港・輸送手段</td><td data-label="平時の費用">契約と維持の費用</td><td data-label="止まったときの価値">迂回できる</td></tr><tr><td data-label="余白の種類"><b>時間</b></td><td data-label="例">納期に余裕をとる</td><td data-label="平時の費用">サービスの水準が下がる</td><td data-label="止まったときの価値">遅れを吸収できる</td></tr><tr><td data-label="余白の種類"><b>人</b></td><td data-label="例">余裕のある人員、複数の仕事ができる人</td><td data-label="平時の費用">人件費</td><td data-label="止まったときの価値">例外処理・災害対応ができる。<b>訓練で価値が増える唯一の余白</b></td></tr></tbody></table></div>
+<p>名古屋港の事例（第7章）で、梱包工場が7日間止まっても自動車の生産に影響が出なかったのは、どこかに在庫や代替の手段があったからだと考えられる。<strong>余白は、平時には費用に見え、止まったときには保険になる。</strong>物流の費用を評価するときには、平時の単価だけでなく、「止まったときの損失」も含めて考える必要がある。</p>
+<div class="quote"><p><strong>エネルギー・医薬品・主要な食料・重要な部品のように、止まったときの損失が大きく代わりを用意しにくい物から、優先して余白を持つ。</strong>代わりが利く物は、JITのままでよい。そして他の余白は使わなければ劣化するが、人の余白だけは、使わないあいだに訓練で育つ。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-9" data-part="第9章" data-name="「送料無料」と返品無料を、誰が払っているのか">
+<header class="part-head"><span class="part-no">第9章<small>／十一章</small></span><h1 class="part-name">「送料無料」と返品無料を、誰が払っているのか</h1></header>
+<article class="ch " id="ch-9"><span class="ch-no">第9章</span><h2>「送料無料」と返品無料を、誰が払っているのか</h2>
+
+<p>燃料、人件費、車両、高速道路の料金、倉庫、港の使用料、船や飛行機の運賃、梱包資材、保険、通関、再配達、返品の処理。<strong>物流の費用がゼロになることはない。</strong></p>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］消費者庁 2023年12月19日</span><div class="kn-t">「送料無料」の表示は禁止されていない</div><div class="kn-d">消費者庁は「送料無料」表示についての考え方を公表し、表示する場合は、その理由や仕組みを消費者に<b>分かりやすく説明</b>するよう事業者に求めた。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">日本ロジスティクスシステム協会（業界団体）</span><div class="kn-t">売上の5.32％が物流費</div><div class="kn-d">2025年度の調査で、企業の<b>売上高に占める物流コストの比率は5.32％</b>（205社）。過去20年で4番目に高い。内訳（2023年度調査）は輸送費57.6％、保管費16.4％、その他26.0％。</div></aside>
+</div>
+<h3>「無料」の送料は、どこへ行ったのか</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>「送料無料」の実際</th><th>誰が払っているか</th></tr></thead><tbody><tr><td data-label="「送料無料」の実際">商品の値段に含めている</td><td data-label="誰が払っているか"><b>消費者</b>（気づきにくい）</td></tr><tr><td data-label="「送料無料」の実際">出店者が負担している</td><td data-label="誰が払っているか"><b>出店者</b>（利益を削る）</td></tr><tr><td data-label="「送料無料」の実際">プラットフォームが販促費として負担</td><td data-label="誰が払っているか"><b>プラットフォーム</b>（会費や手数料など別のところで回収）</td></tr><tr><td data-label="「送料無料」の実際">運賃を低く抑えて成り立たせている</td><td data-label="誰が払っているか"><b>運送会社と、そこで働く人</b></td></tr></tbody></table></div>
+<p>日本では長いあいだ、物流費の一部を<strong>運送会社とドライバーの時間</strong>が負担してきた。荷待ちの時間は基本的に無償で、手積み・手降ろしも運賃に含まれるものとして扱われることが多かった。2024年以降の制度（標準的運賃、荷待ち・荷役時間の削減、多重下請けの是正）は、<strong>この見えない負担を荷主へ、そして最終的には消費者へ戻す</strong>方向に動いている。</p>
+<p><strong>「送料無料」は嘘ではない。</strong>消費者が追加で払う必要がないのは事実である。しかし、<strong>消費者の追加の支払いがゼロでも、社会全体の物流の費用はゼロではない。</strong>費用が見えなくなると、時間指定・再配達・少しずつの注文のように、物流の資源を多く使う行動の重さも見えなくなる。</p>
+<h3>返品という、逆向きの物流</h3>
+<div class="kn-grid">
+ <aside class="kn kn-claim"><span class="chip">全米小売業協会（業界団体）2025年10月</span><div class="kn-t">米国の返品は売上の15.8％</div><div class="kn-d">米国の2025年の返品は売上の<b>15.8％、8,499億ドル</b>、ネット通販では<b>19.3％</b>と推計された。</div></aside>
+</div>
+<p>返品の荷物は、行き先が1か所に集まらないため、通常の配送より効率が悪い。運ぶ、検品する、再び売る、あるいは捨てる。その費用と環境への負荷は統計に表れにくい。<strong>「返品無料」も、送料無料と同じく、費用の付け替え</strong>である。</p>
+<h3>物流費の上昇は、弱いところに強く効く</h3>
+<p>物流費は、重さと体積にかかり、商品の値段にはかからない。<strong>米・水・洗剤・おむつのような重くて安い生活必需品ほど、値段に占める物流費の割合が大きい。</strong>そして地方ほど、1個あたりの配送費が高い。物流費の適正化は必要だが、<strong>地理的にも所得の面でも、弱い側により強く効く</strong>ことを忘れてはならない。</p>
+<div class="kn-grid">
+ <aside class="kn kn-claim"><span class="chip">学術（IMF Working Paper）</span><div class="kn-t">運賃の上昇は、半年から1年遅れて物価に届く</div><div class="kn-d">46か国のデータでは、海上運賃が大きく上がる（1標準偏差、21.8ポイント）と、12か月で物価上昇率が<b>0.15ポイント</b>上がり、12か月後に最も強く効く（IMF WP/22/61）。2026年の研究では、港の遅れが100時間増えると物価上昇率が<b>約0.5ポイント</b>上がり、5か月後に最も強く効くとしている。</div></aside>
+</div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-10" data-part="第10章" data-name="AI、ロボット、自動運転は、どこまで物流を変えるか">
+<header class="part-head"><span class="part-no">第10章<small>／十一章</small></span><h1 class="part-name">AI、ロボット、自動運転は、どこまで物流を変えるか</h1></header>
+<article class="ch " id="ch-10"><span class="ch-no">第10章</span><h2>AI、ロボット、自動運転は、どこまで物流を変えるか</h2>
+
+<p>未来の技術を、すでに広く使われている技術のように書かないために、<strong>実用・導入初期・実証・構想</strong>の4つに分ける（2026年10月時点）。</p>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>技術</th><th>段階</th><th>根拠</th></tr></thead><tbody><tr><td data-label="技術">自動倉庫、搬送ロボット（AGV／AMR）、自動仕分け機</td><td data-label="段階"><span class="lv lv-use">実用</span></td><td data-label="根拠">Amazonは2025年7月に100万台目のロボットを日本の拠点に配備（同社）。大綱は倉庫の自動化率を12％から20％へ</td></tr><tr><td data-label="技術">予約システム（港のゲート、倉庫のバース）</td><td data-label="段階"><span class="lv lv-use">実用</span></td><td data-label="根拠">横浜港のCONPASは2026年7月から常時運用</td></tr><tr><td data-label="技術">AIによる需要予測・配車</td><td data-label="段階"><span class="lv lv-use">実用</span></td><td data-label="根拠">効果の公表値は「数％」「数十分」の単位が多く、企業の見込み値も多い</td></tr><tr><td data-label="技術">無人の自動運転トラック（米国の公道）</td><td data-label="段階"><span class="lv lv-early">導入初期</span></td><td data-label="根拠">Auroraは2025年5月1日、ダラス〜ヒューストンで無人の商用運行を開始。「年末に無人200台」は計画（2026年7月）。決算説明会の書き起こしでは稼働は約25台（報道）</td></tr><tr><td data-label="技術">自動運転トラック（日本）</td><td data-label="段階"><span class="lv lv-test">実証</span></td><td data-label="根拠">新東名の自動運転車優先レーン（2025年3月〜、夜間）。2025年度の実証は運転席に人がいる「ハンズオフ」。<b>運転席が無人のトラックの商用運行は確認できない</b>。大綱の2030年度目標は1,000台</td></tr><tr><td data-label="技術">ドローン配送</td><td data-label="段階"><span class="lv lv-early">導入初期</span>（米国）／<span class="lv lv-test">実証</span>（日本）</td><td data-label="根拠">米ウォルマートは累計100万件超（66店・4州、2026年5月、同社）。日本の社会実装は17件（2025年2月）</td></tr><tr><td data-label="技術">自律運航船</td><td data-label="段階"><span class="lv lv-test">実証</span></td><td data-label="根拠">日本の実証船4隻が2026年3月に国の船舶検査に合格。IMOは2026年5月に<b>任意の</b>コードを採択。強制の規則は2032年の発効が見込まれている</td></tr><tr><td data-label="技術">自動物流道路</td><td data-label="段階"><span class="lv lv-plan">構想</span></td><td data-label="根拠">2030年代半ばに先行ルートの運用を目指す。2026年度は実証の事業者を採択した段階（国土交通省）</td></tr><tr><td data-label="技術">完全無人のサプライチェーン、地下物流網の全国展開</td><td data-label="段階"><span class="lv lv-plan">構想</span></td><td data-label="根拠">技術・制度・費用のいずれも未確立</td></tr></tbody></table></div>
+<h3>AIで解ける問題、解けない問題</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>AIが得意なこと（情報と計画）</th><th>AIだけでは解けないこと（物理）</th></tr></thead><tbody><tr><td data-label="AIが得意なこと（情報と計画）">需要の予測、在庫をどこに置くか</td><td data-label="AIだけでは解けないこと（物理）">運転手・船員・作業員がいない</td></tr><tr><td data-label="AIが得意なこと（情報と計画）">配車、ルート、積み合わせ</td><td data-label="AIだけでは解けないこと（物理）">道路や橋が壊れた</td></tr><tr><td data-label="AIが得意なこと（情報と計画）">予約、受け渡しの時刻合わせ</td><td data-label="AIだけでは解けないこと（物理）">海峡が危険で、保険が付かない</td></tr><tr><td data-label="AIが得意なこと（情報と計画）">異常の検知、どの航路・供給元が危ないかの予測</td><td data-label="AIだけでは解けないこと（物理）">運河や川の水が足りない</td></tr><tr><td data-label="AIが得意なこと（情報と計画）">書類・通関・問い合わせの処理</td><td data-label="AIだけでは解けないこと（物理）">燃料・電気がない</td></tr><tr><td data-label="AIが得意なこと（情報と計画）">倉庫内のロボットの交通整理</td><td data-label="AIだけでは解けないこと（物理）">形の不揃いな荷物を積み、降ろす</td></tr></tbody></table></div>
+<p><strong>AIは物流の「無駄」（空車、荷待ち、過剰な在庫、再配達）を減らすことはできる。しかし、物流の「上限」（人、車線、船、港、水、燃料）を増やすことはない。</strong>道路が一本しかなければ、AIが100通りの迂回案を計算しても通れない。</p>
+<h3>人の技は、まだ置き換えにくい</h3>
+<p>形の不揃いな荷物を荷台に隙間なく積み込む「積み付け」、狭い納品先でのバック、悪天候の中での配達、現場での例外の処理。こうした<strong>熟練した人の頭の中にある技（暗黙知）</strong>は、ロボットやAIへの置き換えを最も難しくしている部分である。倉庫でも、箱はつかめても、袋物・柔らかい物・混ざった雑多な物はまだ難しい。</p>
+<p>AI社会を支える設備そのものが、特別な物流を必要とすることも見落とされやすい。サーバーラックや半導体の露光装置のように、<strong>極めて重く精密な機械</strong>は、特殊な車両と熟練した技術者がいなければ運べない。</p>
+<h3>反対側から見る：AIは働く人を幸せにするか</h3>
+<p>AIの配車システムが、ドライバーのルートや休憩の時間を秒単位で管理するようになると、<strong>働く人の裁量が減り、精神的な負担が増える「デジタル監視労働」</strong>になるおそれもある。一方で、人が足りない業界では、自動化は仕事を奪うより、<strong>人がいなくて回らない仕事を回し、重労働を減らす</strong>役割のほうが大きい可能性もある。どちらに転ぶかは、技術そのものより、使い方と働き方の設計で決まる。</p>
+<h3>次の革命は、地味な標準化から来るかもしれない</h3>
+<p>インターネットでは、情報は一社の専用回線だけを通らず、共通の規約によって複数のネットワークをまたいで届く。物流でも、荷物を標準の容器に入れ、倉庫・トラック・鉄道・船を企業の枠を越えて共同で使い、空いている輸送能力をつなぐ<strong>「フィジカルインターネット」</strong>という構想がある。日本でも、標準仕様パレット（平面サイズ1,100mm×1,100mm、レンタル方式等）の取りまとめ（2024年6月）や、データ連携が進められている。</p>
+<p>コンテナ革命の本質が標準化だったように、<strong>次の物流革命も、空を飛ぶドローンや無人トラックより、「他社の荷物を同じ設備で扱える」「情報が共通の形式で渡る」という地味な標準化から起きる可能性がある。</strong>AIも、共通のデータがなければ力を発揮できない。<strong>自動化は、道路の上より先に、工程と工程の境界から進む</strong>と考えられる。</p>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-11" data-part="第11章" data-name="2030、2040、2050年の「届く」">
+<header class="part-head"><span class="part-no">第11章<small>／十一章</small></span><h1 class="part-name">2030、2040、2050年の「届く」</h1></header>
+<article class="ch " id="ch-11"><span class="ch-no">第11章</span><h2>2030、2040、2050年の「届く」</h2>
+
+<p>ここからは見通しである。<strong>確定した未来としてではなく、確からしさの度合いを分けて</strong>書く。</p>
+<div class="fc-grid">
+<div class="fc"><div class="fc-y">2030年</div>
+<p class="fc-l fc-h">比較的確度が高い</p><ul><li>物流効率化法の定期報告が出そろい、荷待ち・荷役の実績が初めて数字で見える</li><li>大手の倉庫の自動化、予約システム、置き配・ロッカーが当たり前になる</li><li>ドライバーの平均年齢はさらに上がる</li></ul>
+<p class="fc-l fc-m">あり得るが不確実</p><ul><li>日本で、運転席が無人のトラックが限られた高速道路の区間・時間帯で商用運行を始める</li><li>「適正原価」と許可の更新制が施行される</li><li>ホルムズ・紅海が正常化し、逆に船が余って運賃が下がる</li><li>IMOの国際海運の脱炭素の枠組みが採択される</li></ul>
+<p class="fc-l fc-p">構想・仮説</p><ul><li>自動物流道路の運用（目標は2030年代半ば）</li></ul></div>
+<div class="fc"><div class="fc-y">2040年</div>
+<p class="fc-l fc-h">比較的確度が高い</p><ul><li>生産年齢人口がさらに減り、担い手不足は2030年より厳しい（大綱も2040年度の不足を見込む）</li><li>倉庫の定型作業の多くは機械が担い、人の仕事は監視・保守・例外の処理へ移る</li><li>人口の少ない地域で、配達の頻度の低下や受取拠点への移行が進む</li></ul>
+<p class="fc-l fc-m">あり得るが不確実</p><ul><li>高速道路の幹線輸送の相当部分が、自動運転・中継輸送・鉄道・船に置き換わる</li><li>企業の枠を越えて設備と車両を融通しあう仕組みが広がる</li><li>運河や川の通航制限が、数年に一度ではなく毎年の現象になる</li></ul>
+<p class="fc-l fc-p">構想・仮説</p><ul><li>フィジカルインターネットに近い、全国規模の共同物流</li></ul></div>
+<div class="fc"><div class="fc-y">2050年</div>
+<p class="fc-l fc-h">比較的確度が高い</p><ul><li>脱炭素・災害への強さ・サイバーへの強さが、物流の品質の基本条件になる</li><li>物流は今以上に、気候と水の制約を受ける</li></ul>
+<p class="fc-l fc-m">あり得るが不確実</p><ul><li>国際海運がIMOの「2050年頃にネットゼロ」に近づく（<b>目標であり、達成は不確実</b>）</li><li>長距離の幹線の大部分が、無人または遠隔監視の運転になる</li></ul>
+<p class="fc-l fc-p">構想・仮説</p><ul><li>人が運転・操船しない物流が主流になる</li><li>標準化された共有の輸送能力を、AIが自動で手配する市場が主流になる</li></ul></div>
+</div>
+<h3>脱炭素の現在地（2026年10月時点）</h3>
+<div class="tscroll"><table class="tbl wide"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td data-label="区分"><b>決まっているもの</b></td><td data-label="内容">IMOの2023年改訂の温室効果ガス削減戦略：2050年頃までにネットゼロ、2030年に20〜30％、2040年に70〜80％削減（2008年比）。いずれも<b>目標</b></td></tr><tr><td data-label="区分"><b>採択されていないもの</b></td><td data-label="内容">IMOの「Net-Zero Framework」（燃料の基準と排出への課金）は、2025年4月に承認されたが、<b>同年10月に採択の議論が1年延期</b>された</td></tr><tr><td data-label="区分"><b>これからの日程</b></td><td data-label="内容">2026年11月30日〜12月3日に海洋環境保護委員会（MEPC85）、12月4日に採択を議論する臨時会合を再開する予定（MEPC85で確認が条件）</td></tr><tr><td data-label="区分"><b>欧州で施行中</b></td><td data-label="内容">EU排出量取引制度の海運への適用（2024年〜。排出枠の提出割合は2026年70％、2027年以降100％）、FuelEU Maritime（2025年〜）</td></tr></tbody></table></div>
+<div class="kn-grid">
+ <aside class="kn kn-fact"><span class="chip">［一次］国土交通省 2024年度</span><div class="kn-t">同じ1トンを1km運ぶときのCO2</div><div class="kn-d">自家用貨物車1,112、営業用貨物車195、航空103、船舶41、鉄道19（g-CO2／トンキロ）。<b>航空の値は旅客便の空きスペースで運ぶ貨物の値で、「飛行機がトラックより環境にやさしい」という意味ではない。</b>自家用と営業用のトラックの差は約5.7倍で、<b>積み合わせて満載に近く運ぶか</b>が環境の負荷を大きく左右する。</div></aside>
+ <aside class="kn kn-fact"><span class="chip">［一次］国際エネルギー機関（IEA）</span><div class="kn-t">電動トラックは世界販売の9％</div><div class="kn-d">2025年、電動トラックは世界のトラック販売の<b>9％</b>になった。増加の大半は中国による。</div></aside>
+ <aside class="kn kn-claim"><span class="chip">DNV（船級協会）</span><div class="kn-t">代替燃料の船の発注は減速</div><div class="kn-d">2025年の代替燃料船の発注は275隻で前年比47％減。LNGが188隻、メタノール61隻、アンモニアはごく少数。<b>船の脱炭素を最も制約しているのは、エンジンではなく、グリーンな燃料の供給量</b>と考えられる。</div></aside>
+</div>
+<div class="quote"><p><strong>未来の物流の品質は、「最も速い」だけでは測れなくなる。</strong>止まっても戻せる。迂回できる。共有できる。人が少なくても維持できる。低炭素である。2050年の「届く」は、速さより、<strong>確実さと選べること</strong>で価値が測られるようになると、本特集は考える。</p></div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-12" data-part="終章" data-name="「届く」は、社会が交わしている約束">
+<header class="part-head"><span class="part-no">終章<small>／十一章</small></span><h1 class="part-name">「届く」は、社会が交わしている約束</h1></header>
+<article class="ch " id="ch-12"><span class="ch-no">終章</span><h2>「届く」は、社会が交わしている約束</h2>
+
+<p>蛇口をひねれば水が出るように、注文すれば翌日に荷物が来る。その便利さがあまりに安定しているから、私たちは途中の何十もの工程を意識しない。</p>
+<p>しかし、物流は自然にそこにあるものではない。標準化された箱、道路、港、船、倉庫、燃料、電気、水、情報、法律、時刻、そして夜に働く人々。<strong>それらが毎日つながり続けた結果として、「届く」は成り立っている。</strong></p>
+<p>2026年の世界では、海峡を通る船が大きく減り、運河の水が減り、川が細った。日本では、2024年問題の後も、荷待ち・低い積載率・人口の減少・地方の採算という構造の問題が残り、荷主の責任を問う制度が動き始めたばかりである。AIと自動化は確実に入ってくるが、人・道路・船・港・水・燃料という物理の上限を消すことはできない。</p>
+<p>だから、問うべきは「ドローンが飛ぶか」「トラックが無人になるか」だけではない。</p>
+<ul class="dots">
+<li><strong>私たちは、どこまでの速さを求めるのか。</strong>すべての荷物を翌日に届ける必要はあるのか。</li>
+<li><strong>余白を、どこに置くのか。</strong>在庫か、経路か、人か。</li>
+<li><strong>人口が減る地域の物流を、誰が、どの負担で支えるのか。</strong></li>
+<li><strong>便利さの費用を、働く人へどう返すのか。</strong></li>
+<li><strong>企業の壁を越えて、設備とデータをどこまで共有できるのか。</strong></li></ul>
+<p class="lead-s"><strong>「届く」とは、社会が何を、いつ、どこまで、誰の負担で届けると約束するか、を形にしたものである。</strong>その約束をどう結び直すかは、物流会社だけでなく、荷物を出す側、受け取る側、そして私たち一人ひとりの選択にかかっている。</p>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-ai" data-part="付録" data-name="4AIの独立調査レポートを見る">
+<header class="part-head"><span class="part-no">付録<small>／十一章</small></span><h1 class="part-name">4AIの独立調査レポートを見る</h1></header>
+<article class="ch " id="ch-ai"><span class="ch-no">付録</span><h2>4AIの独立調査レポートを見る</h2>
+
+<p>本号は、4つのAIが<strong>互いの原稿を見ずに</strong>作成した独立調査レポートを比較・統合してつくりました。4本の原稿は、<strong>どこで一致し、どこで食い違ったかを読める研究の記録</strong>として、研究内容を書き換えずに残しています。<strong>4本のどれかが「正しい答え」というわけではありません。</strong></p>
+<div class="note"><p><strong>お読みになる前に。</strong>独立調査レポートは、統合の前の段階の原稿です。<strong>未確認の事項、仮説、後の照合で更新の対象になった数字・記述を含みます。</strong>本特集では、たとえば「2030年に約34％不足」を2026年の見通しとして扱うこと（2026年3月の新しい見通しに置き換え）、IMOの2050年ネットゼロを「確度が高い」とすること（目標として扱い、達成は不確実とした）、ホルムズ海峡の状態についての食い違い（PortWatchのAIS観測値とIMO・EIAの発表で「閉鎖ではないが、AISで観測できる通航隻数は大幅に減っている」と確認）、二次情報だけで確認された数字（有効求人倍率は厚生労働省の一次の値に置き換え、価格転嫁率などは不採用）を、修正・不採用にしています。<strong>最終的な確認と統合の結果は、本特集の本文を優先してください。</strong>公開用閲覧版では、独立調査原本のうち内部運用情報を除外しています。</p></div>
+<div class="ai-grid">
+<a class="ai-card" href="sunday-2026-10-04-research-gp.html"><span class="ai-name">GPちゃん</span><span class="ai-theme">同期・余白・標準化・フィジカルインターネット</span><span class="ai-desc">物流の本質を「同期」と捉え、危機は平均ではなく「ネットワークの端」で起きること、余白は平時の費用であり非常時の保険であること、次の革命は企業間の標準化と共同利用から来る可能性を論じた。</span><span class="ai-go">独立調査レポートを読む →</span></a>
+<a class="ai-card" href="sunday-2026-10-04-research-kurochan.html"><span class="ai-name">クロちゃん</span><span class="ai-theme">接点・制度・新2030年見通し・物流史の法則</span><span class="ai-desc">「輸送は距離、保管は時間を越える」「革新は積み替えを減らすことで起きる」などの法則、2026年3月の新しい2030年見通しへの更新、パレットと非常用電源のKPI、7つの止まり方を示した。</span><span class="ai-go">独立調査レポートを読む →</span></a>
+<a class="ai-card" href="sunday-2026-10-04-research-gemini.html"><span class="ai-name">ジェミちゃん</span><span class="ai-theme">物理制約・SPOF・返品物流・暗黙知</span><span class="ai-desc">大型物流拠点を単一障害点として見る視点、返品物流の隠れた負担、AI社会を支える超重量・精密物流、自動化を阻む暗黙知、AIによる「デジタル監視労働」という反対側の視点を出した。</span><span class="ai-go">独立調査レポートを読む →</span></a>
+<a class="ai-card" href="sunday-2026-10-04-research-kochan.html"><span class="ai-name">こうちゃん</span><span class="ai-theme">一次資料・水リスク・肥料→食料・サイバーと在庫</span><span class="ai-desc">物流の気候リスクを「水」で整理し、肥料を通じて海峡の通航の減少が食料に及ぶ連鎖、外国人材の受入れ上限と在留者の差、距離のインフレ、サイバー攻撃を在庫が吸収した事例を示した。</span><span class="ai-go">独立調査レポートを読む →</span></a>
+</div>
+
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part" id="part-src" data-part="資料" data-name="この特集で使った出典">
+<header class="part-head"><span class="part-no">資料<small>／十一章</small></span><h1 class="part-name">この特集で使った出典</h1></header>
+<article class="ch " id="ch-src"><span class="ch-no">資料</span><h2>この特集で使った出典</h2>
+<p><strong>掲載した出典は、本稿の作成時（2026年10月4日）に実際に内容を取得して確認したものです。</strong>「［一次］」は、政府・国際機関・自治体・事業者の発表など、発表元の資料を示します。業界団体・企業・報道・学術の資料は、それぞれ種類を添えています。</p>
+<div class="note"><p><strong>本文に載せなかったもの。</strong>「荷役費が1トン5.86ドルから16セントへ」（原典を確認できず）、「2030年度の不足は34.1％」という表記（一次資料は「約34％」）、価格転嫁率・倒産件数・ドライバーの平均年齢の一部（二次情報のみ）、「送料当社負担」への表示の切り替えの進み具合、喜望峰回りで増える日数（一次資料で確認できず）、パナマ運河の通常時の通航隻数の一部の数字、自動物流道路の実証の詳細の一部は、<strong>一次資料で確認できなかったため本文に載せていません。</strong></p></div>
+<h3>日本の制度・現状</h3><ul class="srclist">
+<li><a class="src" href="https://www.maff.go.jp/j/press/shokuhin/ryutu/attach/pdf/260331-2.pdf" target="_blank" rel="noopener">［一次］総合物流施策大綱（2026年度〜2030年度、2026年3月31日閣議決定）— 2024年度の約14％の不足を概ね克服、貨物輸送量28.4億トン→25.1億トン（約12％減）、鉄道貨物の信頼低下、内航海運、外国人材の上限2万2,100人、ユニバーサルサービス、標準仕様パレット</a></li>
+<li><a class="src" href="https://www.cas.go.jp/jp/seisaku/buturyu_seisaku_suishin/dai1/siryou2-1.pdf" target="_blank" rel="noopener">［一次］内閣官房 物流政策推進会議（第1回）資料2-1 — 2030年度の需給ギャップ ▲7％／▲15％／▲25％、施策効果+25.7、主なKPI（積載効率、荷待ち・荷役等時間、標準仕様パレット、非常用電源21％→50％ほか）</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/seisakutokatsu/freight/content/001985184.pdf" target="_blank" rel="noopener">［一次］2030年度に向けた総合物流施策大綱に関する検討会 提言（2026年3月3日）— 「平均で約7％～最大で約25％」</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/seisakutokatsu/freight/content/002023033.pdf" target="_blank" rel="noopener">［一次］国土交通省 物流効率化法 説明会資料（2026年9月）— 特定事業者の指定数（2026年8月27日時点）、中長期計画・定期報告の期限</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/seisakutokatsu/freight/content/001993308.pdf" target="_blank" rel="noopener">［一次］国土交通省 物流効率化法の概要 — 指定基準、CLO</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/seisakutokatsu/freight/content/001984869.pdf" target="_blank" rel="noopener">［一次］国土交通省 荷主の判断基準の解説書 — 1運行あたりの荷待ち・荷役、1回の受渡しごとに原則1時間以内</a></li>
+<li><a class="src" href="https://driver-roudou-jikan.mhlw.go.jp/truck/notice" target="_blank" rel="noopener">［一次］厚生労働省 トラック運転者の労働時間等の改善基準 — 年960時間、拘束時間、休息期間</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/jidosha/jidosha_mn4_000014.html" target="_blank" rel="noopener">［一次］国土交通省 貨物自動車運送事業法の改正（2025年4月施行）— 書面交付、実運送体制管理簿</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/jidosha/jidosha_mn4_000019.html" target="_blank" rel="noopener">［一次］国土交通省 トラック適正化二法 — 2026年4月施行分と、許可更新制・適正原価の施行時期</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/jidosha/jidosha_mn4_000020.html" target="_blank" rel="noopener">［一次］国土交通省 適正原価に関する検討会</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/jidosha04_hh_000367.html" target="_blank" rel="noopener">［一次］国土交通省 トラック・物流Gメンの集中監視月間（2026年9月28日）</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/content/001732088.pdf" target="_blank" rel="noopener">［一次］国土交通省 標準的運賃の改定（2024年3月）— 平均約8％の運賃引上げ</a></li>
+<li><a class="src" href="https://www.mhlw.go.jp/content/11602000/001753011.pdf" target="_blank" rel="noopener">［一次］厚生労働省 一般職業紹介状況（2026年8月）— 自動車運転従事者の有効求人倍率</a></li>
+<li><a class="src" href="https://jta.or.jp/wp-content/themes/jta_theme/pdf/yusosangyo2025.pdf" target="_blank" rel="noopener">全日本トラック協会 日本のトラック輸送産業 現状と課題2025（業界団体）— 年齢構成、女性比率</a></li>
+<li><a class="src" href="https://www.moj.go.jp/isa/content/001459490.pdf" target="_blank" rel="noopener">［一次］出入国在留管理庁 特定技能在留外国人数（2026年6月末）— 自動車運送業558人、物流倉庫0人</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/tokatsu01_hh_001025.html" target="_blank" rel="noopener">［一次］国土交通省 宅配便の再配達率・多様な受取方法（2026年7月10日）— 約7.6％、都市部8.5％・地方6.0％、約31.0％</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/jidosha04_hh_000341.html" target="_blank" rel="noopener">［一次］国土交通省 宅配便等取扱実績（2024年度）— 50億3,147万個</a></li>
+<li><a class="src" href="https://www.caa.go.jp/policies/policy/consumer_policy/other/free_shipping" target="_blank" rel="noopener">［一次］消費者庁 「送料無料」表示の見直し</a></li>
+<li><a class="src" href="https://www.maff.go.jp/j/press/kanbo/kihyo01/240227.html" target="_blank" rel="noopener">［一次］農林水産省 食料品アクセス困難人口の推計</a></li>
+<li><a class="src" href="https://files.japanpost.jp/assets/34d9d11432734cfaa759e78fe395b688/fab2553d63eb471a9174326aa5b44cc6/20260928_01_01.pdf" target="_blank" rel="noopener">［一次］日本郵便 珠洲郵便局を拠点としたドローン配送の実証（2026年9月28日〜10月4日）</a></li>
+<li><a class="src" href="https://www.ktr.mlit.go.jp/kisha/kisha_03355.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 横浜港CONPASの常時運用 — 平均20〜30分程度の待機削減</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/road01_hh_002141.html" target="_blank" rel="noopener">［一次］国土交通省 自動物流道路の実証</a></li>
+<li><a class="src" href="https://www1.logistics.or.jp/news/news-12744/" target="_blank" rel="noopener">日本ロジスティクスシステム協会 2025年度物流コスト調査（業界団体）— 売上高物流コスト比率5.32％</a></li>
+</ul><h3>世界の海運・チョークポイント・気候</h3><ul class="srclist">
+<li><a class="src" href="https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portname%3D%27Strait+of+Hormuz%27&amp;outFields=date,n_total&amp;orderByFields=date+DESC&amp;resultRecordCount=12&amp;f=json" target="_blank" rel="noopener">［一次］IMF PortWatch チョークポイントの日次通航データ（2026年10月4日取得。月平均は本特集が計算）</a></li>
+<li><a class="src" href="https://www.eia.gov/todayinenergy/detail.php?id=65504" target="_blank" rel="noopener">［一次］米エネルギー情報局 ホルムズ海峡 — 日量2,000万バレル、世界の石油液体消費の約20％</a></li>
+<li><a class="src" href="https://www.eia.gov/pressroom/releases/press592.php" target="_blank" rel="noopener">［一次］米エネルギー情報局 短期エネルギー見通し（2026年9月9日）— 通航の制約は10〜12月期まで続く見込み</a></li>
+<li><a class="src" href="https://www.imo.org/en/MediaCentre/PressBriefings/pages/Stop-attacking-ships-and-seafarers-IMO-Secretary-General.aspx" target="_blank" rel="noopener">［一次］国際海事機関 商船と船員への攻撃の停止を要請（2026年9月16日）— 攻撃80件、船員の死者少なくとも22人</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/pressbriefings/pages/no-safe-transit-through-hormuz-imo-secretary-general.aspx" target="_blank" rel="noopener">［一次］国際海事機関 ホルムズ海峡（2026年4月24日・経過）— 攻撃29件、約1,600隻・約2万人</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-calls-for-safe-passage-framework-in-strait-of-hormuz.aspx" target="_blank" rel="noopener">［一次］国際海事機関 理事会（2026年3月19日）— GNSSの妨害・偽装</a></li>
+<li><a class="src" href="https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf" target="_blank" rel="noopener">［一次］世界貿易機関 Global Trade Outlook（2026年3月）— 物品貿易の見通し、肥料の世界供給の約3分の1がホルムズを通る</a></li>
+<li><a class="src" href="https://www.un.org/depts/los/general_assembly/contributions_2015_2/UNCTAD_Contribution.pdf" target="_blank" rel="noopener">［一次］国連貿易開発会議（2015年）— 重量で約80％、金額で70％超</a></li>
+<li><a class="src" href="https://maritimecyprus.com/wp-content/uploads/2025/10/UNCTAD-2025overview_en_c.pdf" target="_blank" rel="noopener">UNCTAD Review of Maritime Transport 2025 Overview（文書番号入りの写し。UNCTADのサイトは取得できず）— 海上貿易量、トンマイル、平均輸送距離</a></li>
+<li><a class="src" href="https://pancanal.com/canal-de-panama-anuncia-aumento-de-calado-y-de-transitos-diarios/" target="_blank" rel="noopener">［一次］パナマ運河庁（2026年9月28日）— 10月15日から33枠・喫水49.0フィート、水不足は続いている</a></li>
+<li><a class="src" href="https://pancanal.com/canal-de-panama-y-entidades-del-estado-establecen-comite-para-coordinar-acciones-del-reasentamiento-en-rio-indio/" target="_blank" rel="noopener">［一次］パナマ運河庁（2026年9月16日）— リオ・インディオ、200万人超への給水</a></li>
+<li><a class="src" href="https://pancanal.com/en/panama-canal-to-increase-daily-transits-to-24-starting-in-january/" target="_blank" rel="noopener">［一次］パナマ運河庁 — 2023年の通航制限、記録上最も乾燥した10月</a></li>
+<li><a class="src" href="https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P30D" target="_blank" rel="noopener">［一次］ドイツ連邦水路管理局 PEGELONLINE（カウプの水位）</a></li>
+<li><a class="src" href="https://www.drought.gov/watersheds/mississippi-river-dashboard/drought-lower-mississippi" target="_blank" rel="noopener">［一次］米国 NOAA/NIDIS ミシシッピ川の渇水</a></li>
+<li><a class="src" href="https://www.aljazeera.com/economy/2026/7/23/how-shipping-insurance-rates-are-rising-as-hormuz-bab-al-mandeb-shut-down" target="_blank" rel="noopener">報道（Al Jazeera、S&P Globalの報告）— 戦争保険料</a></li>
+<li><a class="src" href="https://www.iata.org/en/programs/cargo/" target="_blank" rel="noopener">国際航空運送協会（業界団体）— 航空貨物は金額で33％超、量で1％未満</a></li>
+</ul><h3>物流の歴史</h3><ul class="srclist">
+<li><a class="src" href="https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx" target="_blank" rel="noopener">［一次］スエズ運河庁 運河の歴史</a></li>
+<li><a class="src" href="https://cepr.org/voxeu/columns/1967-75-suez-canal-closure-lessons-trade-and-trade-income-link" target="_blank" rel="noopener">学術（Feyrer）スエズ閉鎖と貿易・所得</a></li>
+<li><a class="src" href="https://www.nuff.ox.ac.uk/Economics/History/Paper106/orourke106.pdf" target="_blank" rel="noopener">学術（O'Rourke）小麦価格の収斂</a></li>
+<li><a class="src" href="http://assets.press.princeton.edu/chapters/s10724.pdf" target="_blank" rel="noopener">学術書 Levinson, The Box 第1章 — 1961年の運賃、1960年ごろのシカゴ→ナンシーの費用</a></li>
+<li><a class="src" href="https://www2.gwu.edu/~iiep/waits/documents/2014/BEK_container_Feb2014.pdf" target="_blank" rel="noopener">学術（Bernhofen・El-Sahli・Kneller）コンテナ革命と世界貿易 — 荷役の生産性</a></li>
+<li><a class="src" href="https://econpapers.repec.org/RePEc:eee:inecon:v:98:y:2016:i:c:p:36-50" target="_blank" rel="noopener">学術 Journal of International Economics 98（2016年）掲載版</a></li>
+<li><a class="src" href="https://api.parliament.uk/historic-hansard/lords/1989/apr/06/dock-labour-scheme" target="_blank" rel="noopener">［一次］英国議会議事録（1989年4月6日）— 登録港湾労働者</a></li>
+<li><a class="src" href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/06C303B6BF2DA84D5FF9AB41F32B92F1/S0007680500080983a.pdf/container-shipping-and-the-decline-of-new-york-19551975.pdf" target="_blank" rel="noopener">学術（Levinson, Business History Review 2006）コンテナとニューヨークの衰退</a></li>
+<li><a class="src" href="https://ideas.repec.org/a/aea/jecper/v21y2007i3p131-154.html" target="_blank" rel="noopener">学術（Hummels 2007）輸送費の長期推移</a></li>
+<li><a class="src" href="https://www.rnz.co.nz/news/country/467732/meat-industry-celebrates-140-years-since-first-frozen-shipment-to-the-uk" target="_blank" rel="noopener">報道（RNZ）ダニーデン号</a></li>
+<li><a class="src" href="https://openknowledge.fao.org/server/api/core/bitstreams/cf42e3c6-157e-4ea9-8873-8b3cc9242b96/content" target="_blank" rel="noopener">［一次］国連環境計画・国連食糧農業機関 持続可能な食料コールドチェーン（2022年）</a></li>
+<li><a class="src" href="https://www.yamato-hd.co.jp/100th-anniversary/column/detail11.html" target="_blank" rel="noopener">ヤマトホールディングス クール宅急便の開発（企業）</a></li>
+<li><a class="src" href="https://www.kuronekoyamato.co.jp/ytc/corp/corporate/history.html" target="_blank" rel="noopener">ヤマト運輸 沿革（企業）— 宅急便の開始</a></li>
+<li><a class="src" href="https://www.gs1.org/docs/media_centre/gs1pr_260614_first_barcode_scan.pdf" target="_blank" rel="noopener">GS1 最初のバーコードスキャン（標準化団体）</a></li>
+<li><a class="src" href="https://www.sej.co.jp/company/enkaku.html" target="_blank" rel="noopener">セブン‐イレブン・ジャパン 沿革（企業）— POS</a></li>
+<li><a class="src" href="https://newsroom.fedex.com/newsroom/europe-english/fedex-marks-40th-anniversary" target="_blank" rel="noopener">FedEx 40周年（企業）</a></li>
+</ul><h3>止まる物流（災害・サイバー）</h3><ul class="srclist">
+<li><a class="src" href="https://meikoukyo.com/wp-content/uploads/2023/07/0bb9d9907568e832da8f400e529efc99.pdf" target="_blank" rel="noopener">［一次］名古屋港運協会 システム障害（2023年7月）</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/kowan/content/001879954.pdf" target="_blank" rel="noopener">［一次］国土交通省 港湾のサイバー事例集（2026年5月）— 37隻、約2万本、梱包工場4か所7日間、自動車の生産に影響なし</a></li>
+<li><a class="src" href="https://www.theregister.com/2017/08/16/notpetya_ransomware_attack_cost_us_300m_says_shipping_giant_maersk/" target="_blank" rel="noopener">報道（The Register）NotPetyaとマースク</a></li>
+<li><a class="src" href="https://www.bousai.go.jp/updates/r60101notojishin/pdf/kensho_team4_shiryo01.pdf" target="_blank" rel="noopener">［一次］内閣府 能登半島地震の検証資料 — プッシュ型支援82日間、パレット・フォークリフト</a></li>
+<li><a class="src" href="https://www.jreast.co.jp/aas/20261003_c01.pdf" target="_blank" rel="noopener">［一次］JR東日本 千葉事業本部 千葉県内各線区の運行計画（2026年10月3日）</a></li>
+</ul><h3>技術・環境・価格</h3><ul class="srclist">
+<li><a class="src" href="https://www.aboutamazon.com/news/operations/amazon-million-robots-ai-foundation-model" target="_blank" rel="noopener">Amazon 100万台目のロボット（企業）</a></li>
+<li><a class="src" href="https://ir.aurora.tech/news-events/press-releases/detail/119/aurora-begins-commercial-driverless-trucking-in-texas-ushering-in-a-new-era-of-freight" target="_blank" rel="noopener">Aurora 無人の商用運行の開始（2025年5月1日、企業）</a></li>
+<li><a class="src" href="https://ir.aurora.tech/news-events/press-releases/detail/147/aurora-announces-second-quarter-2026-results" target="_blank" rel="noopener">Aurora 2026年4〜6月期決算（企業）— 年末の計画</a></li>
+<li><a class="src" href="https://www.fool.com/earnings/call-transcripts/2026/08/07/aurora-aur-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener">報道（決算説明会の書き起こし）— 稼働台数</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/report/press/content/001861145.pdf" target="_blank" rel="noopener">［一次］国土交通省 新東名の自動運転車優先レーン</a></li>
+<li><a class="src" href="https://www.isuzu.co.jp/newsroom/details/20251021_1.html" target="_blank" rel="noopener">いすゞ自動車 自動運転トラックの実証（企業）</a></li>
+<li><a class="src" href="https://corporate.walmart.com/news/2026/05/29/walmart-celebrates-1-million-drone-deliveries-marking-a-major-milestone-in-customer-convenience" target="_blank" rel="noopener">Walmart ドローン配送100万件（企業）</a></li>
+<li><a class="src" href="https://www.mri.co.jp/news/press/20260406.html" target="_blank" rel="noopener">三菱総合研究所 自動運航船の検査合格（MEGURI2040）</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/meetingsummaries/pages/temporary-msc-111.aspx" target="_blank" rel="noopener">［一次］国際海事機関 MSC111 — 自律運航船の任意コード</a></li>
+<li><a class="src" href="https://www.mlit.go.jp/sogoseisaku/environment/sosei_environment_tk_000007.html" target="_blank" rel="noopener">［一次］国土交通省 運輸部門の二酸化炭素排出量・輸送量当たりの排出量</a></li>
+<li><a class="src" href="https://www.iea.org/reports/global-ev-outlook-2026/executive-summary" target="_blank" rel="noopener">［一次］国際エネルギー機関 Global EV Outlook 2026</a></li>
+<li><a class="src" href="https://www.dnv.com/news/2026/LNG-fuelled-container-ships-sustain-alternative-fuel-share-of-global-orderbook-amid-industry-slowdown/" target="_blank" rel="noopener">DNV 代替燃料船の発注（船級協会）</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/pressbriefings/pages/revised-ghg-reduction-strategy-for-global-shipping-adopted-.aspx" target="_blank" rel="noopener">［一次］国際海事機関 2023年改訂GHG削減戦略</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-net-zero-shipping-talks-to-resume-in-2026.aspx" target="_blank" rel="noopener">［一次］国際海事機関 Net-Zero Frameworkの採択の議論を1年延期</a></li>
+<li><a class="src" href="https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-progresses-work-on-ship-emissions-pollution-and-ocean-protection.aspx" target="_blank" rel="noopener">［一次］国際海事機関 MEPC85と臨時会合の再開の予定</a></li>
+<li><a class="src" href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">全米小売業協会 2025年の返品（業界団体）</a></li>
+<li><a class="src" href="https://www.elibrary.imf.org/view/journals/001/2022/061/article-A001-en.xml" target="_blank" rel="noopener">学術 IMF Working Paper WP/22/61 — 海上運賃と物価</a></li>
+<li><a class="src" href="https://www.elibrary.imf.org/view/journals/001/2026/026/article-A001-en.xml" target="_blank" rel="noopener">学術 IMF Working Paper（2026年）— 港の遅れと物価</a></li>
+</ul>
+<h3>この特集の位置づけ</h3>
+<p>本号は、<strong>4つのAIがそれぞれ独立に調査したレポート</strong>を比較・統合し、一次資料で確かめ直して制作しました。独立調査の段階の記述のうち、統合の過程で修正・不採用としたものは本文に戻していません。</p>
+<p><strong>本特集の調査・整理・執筆には、複数のAIモデルが関与しています。</strong></p>
+</article>
+<div class="backtop"><a href="#toc">↑ 目次へ</a></div></section>
+
+<section class="part part-askai" id="part-askai" data-part="AIで詳しく" data-name="">
+<div class="askai" id="askai">
+  <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+  <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった章や項目の名前に書き換えてからお使いください。</p>
+  <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予測」「仮説」などと明記しています。レポート本文は自動送信されません。</p>
+  <div class="askai-box">
+    <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの『〇〇』について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+    <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+  </div>
+  <div class="askai-links">
+    <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+    <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+    <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+  </div>
+</div>
+
+</section>
+
+<section class="part part-foot" id="part-foot" data-part="一覧・免責" data-name="">
+<p class="backlist"><a href="index.html">← 日曜特集／レポート一覧へ戻る</a></p>
+<footer class="foot">
+  <h2 class="foot-h">免責</h2>
+  <p>本特集は、AI総合研究機構が公開する日曜特集です。掲載内容は作成時点（2026年10月4日）で確認できた情報に基づきます。海峡・運河の通航、制度の施行、各種の見通しは変わることがあります。<strong>事実・報道・本特集の整理・見通し・仮説・未確認事項を区別して記載していますが、本特集は投資・経営・法律・物流の実務についての専門的な助言ではありません。</strong>制度の対応や取引の判断にあたっては、国・自治体・事業者の最新の発表と専門家の助言を直接ご確認ください。</p>
+  <p class="disc">情報基準日：2026年10月4日（日）。AI総合研究機構 日曜特集 第7号「物流」。</p>
+</footer>
+</section></div>
+<script>
+(function(){
+  // 現在読んでいる「部」を上部に示す（最小限のスクリプト）
+  var parts = document.querySelectorAll('section.part');
+  var nbPart = document.getElementById('nbPart'), nbName = document.getElementById('nbName');
+  if ('IntersectionObserver' in window && nbPart) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          nbPart.textContent = e.target.getAttribute('data-part') || '';
+          var n = e.target.getAttribute('data-name') || '';
+          nbName.textContent = n ? '　' + n : '';
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    Array.prototype.forEach.call(parts, function(p){ obs.observe(p); });
+  }
+  // AI質問文のコピー
+  var btn = document.getElementById('askaiCopyBtn'), q = document.getElementById('askaiQ');
+  if (btn && q) {
+    btn.addEventListener('click', function(){
+      var t = q.value;
+      function done(){ btn.classList.add('is-copied'); btn.textContent = 'コピーしました';
+        setTimeout(function(){ btn.classList.remove('is-copied'); btn.textContent = '質問文をコピー'; }, 1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, function(){ q.select(); document.execCommand('copy'); done(); });
+      } else { q.select(); document.execCommand('copy'); done(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
