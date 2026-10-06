@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年10月7日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  /* ==== 災害支援シグナル ==== */
+  .dsig-wrap{margin:16px 0;}
+  .dsig-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .dsig-head h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);}
+  .dsig-card{border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--line);background:var(--surface-2);}
+  .dsig-red{border-color:rgba(224,36,36,.35);background:linear-gradient(180deg,#FFFBFB,#FFF5F5);}
+  .dsig-amber{border-color:rgba(232,145,45,.35);background:linear-gradient(180deg,#FFFDF8,#FFF8EC);}
+  .dsig-green{border-color:rgba(14,159,110,.3);background:linear-gradient(180deg,#F8FDFB,#F1FAF6);}
+  .dsig-gray{border-color:var(--line);background:var(--surface-2);}
+  .dsig-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800;font-size:14px;margin-bottom:6px;}
+  .dsig-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;}
+  .dsig-red .dsig-badge{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .dsig-amber .dsig-badge{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .dsig-green .dsig-badge{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .dsig-gray .dsig-badge{color:#6B7280;background:#F4F6F9;border:1px solid var(--line);}
+  .dsig-days{font-size:11px;color:var(--ink-3);font-weight:700;}
+  .dsig-flow{display:flex;flex-wrap:wrap;gap:4px;font-size:10.5px;margin:8px 0;color:var(--ink-3);}
+  .dsig-flow span{padding:2px 7px;border-radius:6px;background:var(--line-2);}
+  .dsig-flow span.done{background:#EAF7F1;color:#0B7A55;font-weight:700;}
+  .dsig-flow span.unknown{background:var(--line-2);color:var(--ink-3);border:1px dashed var(--line);}
+  .dsig-rows{font-size:12.5px;color:var(--ink-2);}
+  .dsig-rows div{display:flex;gap:6px;padding:3px 0;border-top:1px dashed var(--line-2);}
+  .dsig-rows div:first-child{border-top:none;}
+  .dsig-rows .k{flex:none;width:92px;color:var(--ink-3);font-weight:700;}
+  .dsig-rows .v-unknown{color:#6B7280;font-style:italic;}
+  .dsig-meta{font-size:10.5px;color:var(--ink-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);}
+  .dsig-meta a{color:inherit;}
+  @media(max-width:560px){.dsig-rows div{flex-direction:column;gap:1px;}.dsig-rows .k{width:auto;}}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  /* ===== 今日いちばん重要なこと ===== */
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+
+  /* ===== 分野ひとこと ===== */
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+
+  /* ===== 分野別ダイジェスト ===== */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+
+  /* 分野ごとの詳細を折りたたむ（内容は削らず、閉じているだけ） */
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+</head><body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年10月7日（水）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>酒々井町の浸水は浅くなっても、まだ引いていません。千葉県は第27報で住家被害を更新し、OpenAIは大規模障害の原因を公表しました。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の一日レポートです。今朝は、<strong>千葉県第27報</strong>、<strong>酒々井町の浸水の深さと船形干拓の二重締切</strong>、<strong>台風27号のあとの高波と西湘バイパス</strong>、<strong>鉄道・道路・停電</strong>を中心にお伝えします。あわせて、<strong>生活再建</strong>、<strong>7万円台の日経平均と米国の最高値</strong>、<strong>10年国債の入札と日銀総裁の発言</strong>、<strong>G7の備蓄放出</strong>、<strong>モスクワへの無人機攻撃とブラジル</strong>、<strong>OpenAIの報告書</strong>、<strong>ノーベル物理学賞</strong>も扱います。<strong>本号は、排水と浸水の解消、発表と実施、一次の発言と関係者の報道を分けて書きます。</strong></p>
+    <ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-toll">千葉県第27報 <span class="kw-arrow">↓</span></a></span><span>
+        <b>人的被害は変わらず（死者10人）。住家被害は<b>全壊67棟・半壊469棟・一部破損294棟</b>に増え、孤立集落は<b>9地区→5地区</b>（10月6日16時）。</b>
+        <span class="but"><em>前号からの変化</em> 比べる相手は全項目が載った第24報（10月2日）です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-inba">酒々井・印旛沼 <span class="kw-arrow">↓</span></a></span><span>
+        <b>酒々井町の浸水の深さはB地点で<b>56cm→15.5cm</b>。ただし<b>A地点は10月6日16時に100cm</b>。船形干拓の二重締切は沼側28%・宅地側25%。</b>
+        <span class="but"><em>前号の答え</em> <strong>排水は続いていますが、浸水は解消していません。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-typhoon">台風・高波 <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風27号は<b>970ヘクトパスカル</b>で日本の東へ、今日中に温帯低気圧の予報。関東の海上は昼前まで高波に警戒。<b>西湘バイパスは4区間が通行止め</b>（第4報）。</b>
+        <span class="but"><em>予報と実況</em> 台風29号は予報で12日に小笠原近海。予報は予報です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-rail">交通・道路 <span class="kw-arrow">↓</span></a></span><span>
+        <b>JRは3日続けて同じ運転計画の表示。久留里線は「運転再開見込は立っていません」。千葉県管理道路の全面通行止めは<b>48区間</b>のまま。</b>
+        <span class="but"><em>計画と実績を分けます</em> <strong>列車ごとの実績は未確認。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-lifeline">停電・通信 <span class="kw-arrow">↓</span></a></span><span>
+        <b>停電は約520軒から<b>約450軒</b>に。NTT東日本は第3報のまま。</b>
+        <span class="but"><em>前号からの変化</em> 停電の原因は一次資料に書かれていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-support">生活再建 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>栄町が災害対策本部を解散</b>（10月6日17時）。酒々井町は住宅の支援制度を案内。富津市のボランティアセンターは、市と県の表示が食い違ったまま。</b>
+        <span class="but"><em>予定と実施を分けます</em> 東海汽船は社長の辞任を発表。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">市場 <span class="kw-arrow">↓</span></a></span><span>
+        <b>日経平均は10月6日、<b>70,683.98円</b>で終値として7万円台に。米国はS&amp;P500とナスダックが最高値。米10年債は5.27%、ドル円は158.12円。</b>
+        <span class="but"><em>確定値</em> <strong>株高と、高い長期金利・100ドル前後の原油は同時にあります。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-rates">金利・日銀 <span class="kw-arrow">↓</span></a></span><span>
+        <b>10年国債の入札は<b>平均落札利回り3.101%</b>（表面利率3.1%）。植田総裁は「基調的な上昇率は２％に<b>近づいています</b>」。8日は30年債の入札。</b>
+        <span class="but"><em>一次と報道を分けます</em> 「2%に達した」はロイターの関係者報道です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-energy">G7・中東 <span class="kw-arrow">↓</span></a></span><span>
+        <b>G7の1億バレルは、IEAが<b>10月14〜15日</b>に詳細を決める見通し（報道）。PortWatchの最新は10月4日の4隻。</b>
+        <span class="but"><em>発表と実施を分けます</em> 実物の放出と国別の量は、一次資料で確認できません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">ロシア・ブラジル <span class="kw-arrow">↓</span></a></span><span>
+        <b>ウクライナがモスクワ州へ大規模な無人機攻撃、<b>2人が死亡</b>と報道。石油施設の被弾は公式な確認なし。ブラジルは決選投票へ両陣営が動く。</b>
+        <span class="but"><em>報道</em> 機数は当局と報道で異なるため書いていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">OpenAI <span class="kw-arrow">↓</span></a></span><span>
+        <b>9月30日（日本時間）の大規模障害の<b>報告書を公開</b>。原因は機能の展開による社内の接続容量の枯渇。10月6日の個別の障害はすべて解消。</b>
+        <span class="but"><em>前号の答え</em> 9月の障害と10月6日の障害は別の出来事です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-life">科学・スポーツ <span class="kw-arrow">↓</span></a></span><span>
+        <b>ノーベル物理学賞は<b>アイスキューブ</b>のハルツェン氏に。化学賞は今夜18時45分以降。パ・リーグのCSは10日から。</b>
+        <span class="but"><em>一次情報</em> 震度4以上の地震はありません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-check">答え合わせ <span class="kw-arrow">↓</span></a></span><span>
+        <b>前号の項目のうち、<b>OpenAIの原因分析、千葉県の被害報、酒々井町、二重締切、台風27号、西湘バイパス、停電、東京市場</b>で答えが出ました。</b>
+        <span class="but"><em>答え合わせ</em> <strong>前号以前の本文には、今回は手を加えていません。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-unknown">未確認 <span class="kw-arrow">↓</span></a></span><span>
+        <b><b>本日いちばん重要な未確認は、酒々井町の浸水が解消する見込みと、高波による実際の被害です。</b></b>
+        <span class="but"><em>最重要</em> <strong>米中、AI各社、半導体・端末・エンタメ・SNSは十分に調べられていません。</strong></span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">予定 <span class="kw-arrow">↓</span></a></span><span>
+        <b>本日は<b>昼前までの高波</b>、<b>14時のガソリン価格</b>、<b>夜のノーベル化学賞</b>。8日は<b>30年国債の入札</b>。</b>
+        <span class="but"><em>予定</em> 9日から東海汽船は代わりの船で運航。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">酒々井町 浸水の深さ（B地点）</div><div class="vl mono">15.5</div><div class="ch down">9/28 56</div><div class="ctx">cm・10/6 9時</div></div>
+      <div class="cell"><div class="nm">酒々井町 浸水の深さ（A地点）</div><div class="vl mono">100</div><div class="ch">10/6 16時</div><div class="ctx">cm・解消していない</div></div>
+      <div class="cell"><div class="nm">二重締切（沼側／宅地側）</div><div class="vl mono">28%/25%</div><div class="ch up">前号 20%/22%</div><div class="ctx">10/6 15時</div></div>
+      <div class="cell"><div class="nm">千葉県 住家被害 全壊</div><div class="vl mono">67</div><div class="ch up">第24報 59</div><div class="ctx">棟・第27報</div></div>
+      <div class="cell"><div class="nm">千葉県 孤立集落</div><div class="vl mono">5</div><div class="ch down">第24報 9</div><div class="ctx">地区・第27報</div></div>
+      <div class="cell"><div class="nm">台風27号 中心気圧</div><div class="vl mono">970</div><div class="ch down">前号 950</div><div class="ctx">hPa・10/7 6時実況</div></div>
+      <div class="cell"><div class="nm">停電（千葉県）</div><div class="vl mono">450</div><div class="ch down">前号 520</div><div class="ctx">軒（約）・10/7 7:09</div></div>
+      <div class="cell"><div class="nm">日経平均</div><div class="vl mono">70,683.98</div><div class="ch up">+737.12（+1.05%）</div><div class="ctx">円・10/6終値</div></div>
+      <div class="cell"><div class="nm">10年国債入札 平均利回り</div><div class="vl mono">3.101%</div><div class="ch">表面利率3.1%</div><div class="ctx">第384回・10/6</div></div>
+      <div class="cell"><div class="nm">米10年債利回り</div><div class="vl mono">5.27%</div><div class="ch down">前日 5.31%</div><div class="ctx">10/6（米財務省）</div></div>
+      <div class="cell"><div class="nm">ドル円</div><div class="vl mono">158.12</div><div class="ch up">前号 157.92</div><div class="ctx">円・10/7 7:06ごろ</div></div>
+      <div class="cell"><div class="nm">ブレント原油</div><div class="vl mono">101.15</div><div class="ch up">前日 100.32</div><div class="ctx">ドル・10/6</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-toll">千葉県第27報：住家被害が増え、孤立集落は5地区に</a></li>
+      <li><a href="#sec-inba">酒々井・印旛沼：浸水はB地点で15.5cm、A地点は100cm。二重締切は28%・25%</a></li>
+      <li><a href="#sec-typhoon">台風27号は日本の東へ、高波と西湘バイパス、台風28号・29号</a></li>
+      <li><a href="#sec-rail">交通・道路：JRは同じ表示、県管理道路は48区間</a></li>
+      <li><a href="#sec-lifeline">停電は約450軒に、NTTは第3報のまま</a></li>
+      <li><a href="#sec-support">生活再建：栄町の本部解散、酒々井町の住宅支援、富津市、東海汽船</a></li>
+      <li><a href="#sec-market">市場：日経平均7万円台、米国の最高値と高い長期金利</a></li>
+      <li><a href="#sec-rates">金利・日銀：10年国債の入札と植田総裁の発言</a></li>
+      <li><a href="#sec-energy">G7・中東：1億バレルの詳細は10月14〜15日の見通し、PortWatch</a></li>
+      <li><a href="#sec-world">ロシア・ブラジル：モスクワ州への無人機攻撃、決選投票へ</a></li>
+      <li><a href="#sec-ai">OpenAI：大規模障害の報告書と10月6日の障害</a></li>
+      <li><a href="#sec-life">科学・スポーツ：ノーベル物理学賞、CS</a></li>
+      <li><a href="#sec-check">前号D71の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">本日と、この先のウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <section id="sec-toll">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害</span><span class="sec-title">千葉県が第27報。人的被害は変わらず、住家被害は全壊67棟・半壊469棟・一部破損294棟に。孤立集落は9地区から5地区に減りました <span class="sub">/ 千葉県 第27報（10月6日16時00分）と第24報（10月2日16時00分）の比較</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号からの変化</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>千葉県 第27報</em>10月6日16時00分</div>
+        <div class="dg-r"><span>人的被害</span><span>死者<b>10人</b>、行方不明0人、重傷2人、軽傷29人。第26報（10月4日の臨時報）から変わっていません</span></div>
+        <div class="dg-r"><span>比べる相手</span><span>第25報・第26報は人的被害だけの臨時報だったため、住家被害は、全項目が載った最後の<b>第24報（10月2日16時）</b>と比べています</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>住家被害</em>第24報 → 第27報（千葉県の集計）</div>
+        <div class="dg-r"><span>全壊</span><span>59棟 → <b>67棟</b>（印西市3→6、長柄町8→10、旭市0→2、佐倉市11→12）</span></div>
+        <div class="dg-r"><span>半壊</span><span>414棟 → <b>469棟</b>（長柄町0→25、佐倉市321→333、大網白里市1→5 など）</span></div>
+        <div class="dg-r"><span>一部破損</span><span>189棟 → <b>294棟</b>（長柄町0→27、大網白里市2→21、長南町4→17、鴨川市1→13 など）</span></div>
+        <div class="dg-r"><span>床上浸水</span><span>419棟 → <b>400棟</b>（長柄町39→14、大網白里市20→9 などで減り、八街市37→48 などで増加）</span></div>
+        <div class="dg-r"><span>床下浸水</span><span>1,216棟 → <b>1,264棟</b>（八街市19→39 など）。成田市の300棟は「浸水想定区域からの推計」と注記</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>そのほか</em>第27報</div>
+        <div class="dg-r"><span>孤立集落</span><span>4市1町9地区（第24報）→ <b>3市1町5地区</b>：君津市2地区（坂畑、怒田）、富津市1地区（金谷）、袖ケ浦市1地区（飯富）、<b>酒々井町1地区（馬橋）</b>。白井市3地区と袖ケ浦市の野里が外れました</span></div>
+        <div class="dg-r"><span>停電（県の記載）</span><span>約490軒（10月6日13時時点）</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>住家被害が増えたのは、調査が進んで判定が出たためか、新たな被害かは、資料からは分かりません。床上浸水が減った市町は、判定の見直しを含むとみられますが、理由は書かれていません。<strong>県の集計で、消防庁の数とは足し合わせていません。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://pref-chiba-bousai.my.salesforce-sites.com/services/apexrest/commonsfile/?fileid=00PTK00000xmxF72AI&key=vizcW4AjnXmnDs7VqtxVHas6kjJxEQnsP2TxrmyJ" target="_blank" rel="noopener">［一次］千葉県 令和８年台風第２５号について（第27報・10月6日16時00分）</a>／<a class="src" href="https://pref-chiba-bousai.my.salesforce-sites.com/services/apexrest/commonsfile/?fileid=00PTK00000xP6xt2AC&key=vizcW4AjnXmnDs7VqtxVHas6kjJxEQnsP2TxrmyJ" target="_blank" rel="noopener">［一次］千葉県 同（第24報・10月2日16時00分・比較用）</a>／<a class="src" href="https://www.bousai.pref.chiba.lg.jp/" target="_blank" rel="noopener">［一次］千葉県防災ポータル</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-inba">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・復旧</span><span class="sec-title">酒々井町の浸水は、水位計のB地点で56cmから15.5cmへ下がりました。ただしA地点では10月6日夕方も100cm。船形干拓の二重締切は沼側28%・宅地側25%に <span class="sub">/ 関東地方整備局 酒々井町緊急排水 進捗状況（10月6日16時時点）／チーム印旛沼（10月6日15時時点）／TEC-FORCE通信No.10</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号の答え</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>酒々井町 開運団地</em>関東地方整備局 10月6日16時時点</div>
+        <div class="dg-r"><span>浸水の深さ（B地点）</span><span>9月28日8時 <b>56cm</b> → 10月6日9時 <b>15.5cm</b>。グラフでは10月2日以降、48・43・34・24cmと下がっています</span></div>
+        <div class="dg-r"><span>浸水の深さ（A地点）</span><span>10月6日16時 <b>100cm</b></span></div>
+        <div class="dg-r"><span>ポンプ</span><span>酒々井町のポンプが9月21日から稼働。国のポンプ（最大毎分15立方メートル）は9月28日ごろに設置され、10月1日ごろに増設（グラフの表示）</span></div>
+        <div class="dg-r"><span>資料の注記</span><span>「周辺の浸水箇所の中で最も深い場所に水位計を設置したものではないため、浸水範囲内での最大浸水深を示したものではありません」</span></div>
+        <div class="dg-r"><span>前号の答え</span><span>前号は「排水の開始と浸水の解消は未確認」としていました。国の資料では、<b>排水は9月下旬から続いており、浸水は浅くなっているものの、解消はしていません</b>。今日以降の強化された排水作業の実施は、引き続き確認します</span></div>
+        <div class="dg-r"><span>専門家の調査</span><span>TEC-FORCE通信No.10（10月6日）は、酒々井町での通信設備の配備を掲載。<b>土砂災害の専門家による調査の結果は、今朝の時点で公表されていません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>船形干拓（成田市）</em>10月6日15時時点</div>
+        <div class="dg-r"><span>鋼矢板（沼側）</span><span>前号 約20%（24.8m）→ <b>約28%（34.8m／124m）</b></span></div>
+        <div class="dg-r"><span>鋼矢板（宅地側）</span><span>前号 約22%（23.6m）→ <b>約25%（26.8m／105m）</b></span></div>
+        <div class="dg-r"><span>この先</span><span>中詰土の進捗率と完了の見込みは、資料に書かれていません。二重締切は本復旧ではありません</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>酒々井町の浸水は、場所によって深さが大きく違います。B地点では大きく下がった一方、A地点では10月6日16時の時点で1mの深さがありました。<strong>「排水が進んでいる」ことと「浸水が解消した」ことは別です。</strong>千葉県第27報でも、酒々井町馬橋は孤立集落として残っています。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960656.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 酒々井町緊急排水 進捗状況（10月6日16時時点）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960646.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 決壊した堤防の応急復旧〜チーム印旛沼〜（10月6日15時時点）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960648.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 浸水箇所における緊急排水〜チーム印旛沼〜（10月6日15時時点）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960634.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 関東TEC-FORCE活動通信 No.10（10月6日）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00593.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 酒々井町の住宅浸水被害解消に向けた排水作業の強化（10月5日）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/saigai/kyoku_dis00001050.html" target="_blank" rel="noopener">［一次］関東地方整備局 台風第25号 災害情報</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-typhoon">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・気象</span><span class="sec-title">台風27号は970ヘクトパスカルで日本の東へ離れ、今日中に温帯低気圧に変わる見込み。関東の海上は昼前まで高波に警戒。西湘バイパスは第4報で有料区間を含む4区間が通行止めです <span class="sub">/ 気象庁 台風情報（10月7日6時の実況・6時45分発表ほか）／千葉県・関東甲信地方の気象解説情報（10月7日6時20分・5時33分）／横浜国道事務所・NEXCO中日本（10月6日）</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">予報と実況</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>台風27号</em>気象庁 10月7日6時の実況（6時45分発表）</div>
+        <div class="dg-r"><span>実況</span><span>中心気圧<b>970ヘクトパスカル</b>、最大風速35メートル、最大瞬間風速50メートル。「大型で強い」。日本の東（北緯37.9度、東経151.4度）を北東へ毎時65キロ</span></div>
+        <div class="dg-r"><span>予報</span><span>7日18時には<b>温帯低気圧</b>に変わり、日本のはるか東へ（予報で、今の状態ではありません）</span></div>
+        <div class="dg-r"><span>前号との違い</span><span>前号は6日6時の実況で950ヘクトパスカル・小笠原近海。勢力は弱まりながら離れています</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>高波</em>気象庁の解説情報・警報</div>
+        <div class="dg-r"><span>呼びかけ</span><span>「関東地方の海上では、<b>７日昼前にかけて</b>、うねりを伴った高波に警戒」（5時33分）。「千葉県北東部と南部の海上では、７日昼前にかけて…大しけ」（6時20分）</span></div>
+        <div class="dg-r"><span>警報・注意報</span><span>千葉県：<b>北東部・南部に波浪警報</b>（6日16時10分の発表が継続）。東京都：伊豆諸島南部は7日0時06分に<b>波浪警報から注意報へ</b>。神奈川県：強風注意報</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>西湘バイパス</em>横浜国道事務所・NEXCO中日本 第4報（10月6日）</div>
+        <div class="dg-r"><span>通行止め</span><span>大磯東IC〜西湘二宮IC 下り（無料区間）約6.0km（継続）、<b>大磯西IC〜西湘二宮IC 上り（無料区間）約2.3km（新規）</b>、西湘二宮IC〜小田原西IC 上下（有料区間）約13.4km（継続）、早川JCT〜石橋IC 上下（有料区間）約1.6km（継続）</span></div>
+        <div class="dg-r"><span>推移</span><span>第1報（6日1時30分〜）は無料区間の下り約6.0kmだけ → 第2報で有料区間の下り約12.1kmが加わり → 第3報・第4報で区間の変更と上り線の追加</span></div>
+        <div class="dg-r"><span>解除</span><span>「高波が収まり安全が確認された後」。<b>今朝の時点で、解除（終報）の発表は事務所のページにありません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>伊豆諸島の船</em>東海汽船</div>
+        <div class="dg-r"><span>欠航</span><span>「台風27号接近に伴い」6日夜の東京発 三宅島・御蔵島・八丈島行の大型客船と、7日の八丈島・御蔵島・三宅島発 東京行を欠航。7日の高速ジェット船は終日全便欠航（第3報・10月6日）</span></div>
+        <div class="dg-r"><span>臨時便</span><span>7日は臨時の大型客船（東京9時発〜大島13時30分着、大島14時30分発〜東京19時着）を運航。運航状況（7日6時20分現在）では東京9時発の臨時便は「就航」</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>台風28号・29号</em>気象庁（日本から遠い海上）</div>
+        <div class="dg-r"><span>台風28号</span><span>7日6時の実況：ウェーク島近海で970ヘクトパスカル・「強い」、西へ毎時45キロ。予報では10日3時に「日本の東」</span></div>
+        <div class="dg-r"><span>台風29号</span><span>7日3時の実況：マーシャル諸島で994ヘクトパスカル。予報では発達し、10日3時に950ヘクトパスカル・「非常に強い」、<b>12日3時（120時間後）に小笠原近海</b></span></div>
+        <div class="dg-r"><span>読み方</span><span>どちらも今は日本から遠く、数日先の位置は予報です。日本への影響の有無は、気象庁の今後の発表で確かめます</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>台風27号は離れつつありますが、うねりによる高波は関東の海上に残っています。西湘バイパスの通行止めは、昨日のうちに区間が広がりました。<strong>通行止めや警報は、被害が出たことを意味しません。</strong>地上の観測値だけで、海の状態や暴風域との位置関係は判断していません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2633/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第27号の実況と予報（10月7日6時45分発表）</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2635/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第28号の実況と予報</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2634/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第29号の実況と予報</a>／<a class="src" href="https://www.data.jma.go.jp/developer/xml/data/20261006212033_0_VPFJ51_120000.xml" target="_blank" rel="noopener">［一次］気象庁 千葉県気象解説情報（10月7日6時20分）</a>／<a class="src" href="https://www.data.jma.go.jp/developer/xml/data/20261006203318_0_VPCJ51_130000.xml" target="_blank" rel="noopener">［一次］気象庁 関東甲信地方気象解説情報（10月7日5時33分）</a>／<a class="src" href="https://www.jma.go.jp/bosai/warning/#area_type=offices&area_code=120000" target="_blank" rel="noopener">［一次］気象庁 千葉県の警報・注意報</a>／<a class="src" href="https://www.jma.go.jp/bosai/warning/#area_type=offices&area_code=130000" target="_blank" rel="noopener">［一次］気象庁 東京都の警報・注意報</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kisha_03754.pdf" target="_blank" rel="noopener">［一次］横浜国道事務所・NEXCO中日本 西湘バイパス通行止め（第4報・10月6日）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00596.pdf" target="_blank" rel="noopener">［一次］同（第3報）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kyoku_s_kisha_00595.pdf" target="_blank" rel="noopener">［一次］同（第2報）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/yokohama/" target="_blank" rel="noopener">［一次］関東地方整備局 横浜国道事務所</a>／<a class="src" href="https://www.tokaikisen.co.jp/news/829098/" target="_blank" rel="noopener">［一次］東海汽船 台風27号接近に伴う運航（第3報・10月6日）</a>／<a class="src" href="https://www.tokaikisen.co.jp/schedule/" target="_blank" rel="noopener">［一次］東海汽船 運航状況（10月7日6時20分現在）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-rail">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・交通</span><span class="sec-title">鉄道は3日続けて同じ運転計画の表示です。久留里線の久留里〜上総亀山は「運転再開見込は立っていません」のまま。千葉県管理の道路の全面通行止めは48区間で変わりません <span class="sub">/ JR東日本 運行情報 10月7日7時01分〜7時05分／千葉県 10月6日現在</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-warn">計画と実績を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>JR東日本</em>運行情報 10月7日7時01分〜7時05分</div>
+        <div class="dg-r"><span>内房線</span><span>長浦〜木更津は1時間2本、姉ケ崎〜長浦は終日見合わせでバス代行（輸送力は鉄道の1〜2割程度、再開まで少なくとも3か月程度）、千葉〜姉ケ崎は朝夕3割・日中7割程度、木更津〜安房鴨川は5割程度。<b>前号・前々号と同じ表示</b></span></div>
+        <div class="dg-r"><span>久留里線</span><span>久留里〜上総亀山は終日運転見合わせ、「<b>運転再開見込は立っていません</b>」。バス・タクシーによる代行輸送</span></div>
+        <div class="dg-r"><span>成田線・外房線</span><span>成田線は平常運転（7時05分）。外房線の千葉〜大網は一部列車が運休</span></div>
+        <div class="dg-r"><span>特急</span><span>しおさいは一部運休（11本が全区間運休）、新宿さざなみは当分の間全列車運休。前号と同じ</span></div>
+        <div class="dg-r"><span>実績</span><span>運行情報は運転計画の表示です。<b>列車ごとの実際の運転実績は、JRの公開情報からは確認できません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>千葉県管理の道路</em>千葉県 10月6日現在</div>
+        <div class="dg-r"><span>全面通行止め</span><span><b>48区間</b>、うち大規模被災29区間（前号の10月5日時点と同じ数）。県は10月6日14時時点の「被災箇所の状況と復旧見込み」を新たに掲載</span></div>
+        <div class="dg-r"><span>区分ごとの数</span><span>「大規模（１カ月以上）」「中規模（１カ月程度）」「小規模（１～３週間程度）」の3区分の区間数は、県のページの本文に書かれていません</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>鉄道の表示は、10月5日から変わっていません。「動いている計画」が続いていることは分かりますが、何本が実際に走ったかは分かりません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://traininfo.jreast.co.jp/train_info/line.aspx?gid=1&lineid=uchiboline" target="_blank" rel="noopener">［一次］JR東日本 内房線の運行情報（10月7日7時01分現在）</a>／<a class="src" href="https://traininfo.jreast.co.jp/train_info/line.aspx?gid=1&lineid=kururiline" target="_blank" rel="noopener">［一次］JR東日本 久留里線の運行情報（10月7日7時01分現在）</a>／<a class="src" href="https://traininfo.jreast.co.jp/train_info/line.aspx?gid=1&lineid=naritaline" target="_blank" rel="noopener">［一次］JR東日本 成田線の運行情報（10月7日7時05分現在）</a>／<a class="src" href="https://traininfo.jreast.co.jp/train_info/kanto.aspx" target="_blank" rel="noopener">［一次］JR東日本 関東エリアの運行情報</a>／<a class="src" href="https://traininfo.jreast.co.jp/train_info/chyokyori.aspx" target="_blank" rel="noopener">［一次］JR東日本 在来線特急等の運行情報</a>／<a class="src" href="https://www.pref.chiba.lg.jp/doukan/douroiji/kiseijyouhou.html" target="_blank" rel="noopener">［一次］千葉県 県管理道路の通行規制情報及び被災箇所の状況と復旧見込み（10月6日更新）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-lifeline">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・ライフライン</span><span class="sec-title">千葉県の停電は約520軒から約450軒に。NTT東日本は第3報のままです <span class="sub">/ 東京電力パワーグリッド 10月7日7時09分現在／NTT東日本 千葉事業部の掲載一覧（10月7日朝）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号からの変化</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>停電</em>東京電力パワーグリッド 10月7日7時09分現在</div>
+        <div class="dg-r"><span>推移</span><span>約1,430軒（10月5日朝）→ 約520軒（10月6日朝）→ <b>約450軒</b>（千葉県。6時59分も同じ）</span></div>
+        <div class="dg-r"><span>市町村別</span><span>市原市 約100軒、木更津市 約80軒、袖ケ浦市 約50軒、千葉市稲毛区 約50軒、長柄町 約40軒、茂原市 約40軒、鴨川市 約30軒、大多喜町 約20軒、君津市 約20軒、富津市 約20軒、長南町 約10軒</span></div>
+        <div class="dg-r"><span>前号との差</span><span>市原市 140→100、木更津市 90→80、袖ケ浦市 70→50。ほかは前号と同じ値</span></div>
+        <div class="dg-r"><span>県の記載</span><span>千葉県第27報は「約490軒（13時時点）」（10月6日）。時刻が違うため、東京電力の値とは比べていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>通信</em>NTT東日本 千葉事業部</div>
+        <div class="dg-r"><span>最新の報</span><span>今朝も<b>第3報（10月2日11時）</b>が最新。第4報は出ていません</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>停電は少しずつ減っています。残る約450軒の原因は、東京電力の停電情報のページには書かれていません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://teideninfo.tepco.co.jp/" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 停電情報（10月7日7時09分現在）</a>／<a class="src" href="https://teideninfo.tepco.co.jp/flash/12000000000.html" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 停電情報 千葉県（市町村別）</a>／<a class="src" href="https://www.ntt-east.co.jp/chiba/information/" target="_blank" rel="noopener">［一次］NTT東日本 千葉事業部 お知らせ一覧（10月7日朝に確認）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-support">
+    <div class="sec-head"><span class="tick"></span><span class="cat">災害・生活再建</span><span class="sec-title">栄町が災害対策本部を解散しました。酒々井町は住宅の支援制度を案内。富津市の災害ボランティアセンターは、市の告知と県の一覧で表示が食い違ったままです <span class="sub">/ 各市町・千葉県・内閣府・東海汽船のページ（10月7日朝に取得）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号からの変化</span><span class="lab lab-warn">予定と実施を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>市町</em>10月7日朝に取得</div>
+        <div class="dg-r"><span>栄町</span><span>「発令していた全ての避難指示の解除等により、<b>10月6日（火）17時に（災害対策本部を）解散</b>」。「警戒体制を維持するとともに、引き続き被災地区に対する支援を継続」（10月6日18時30分配信）</span></div>
+        <div class="dg-r"><span>酒々井町</span><span>10月6日に住宅の支援制度を案内。住宅の応急修理は、大規模半壊・中規模半壊・半壊で75万7,000円以内、準半壊で36万7,000円以内（税込）など。町の通行止めは10月5日19時現在で「墨」と「馬橋 開運団地」の2か所のまま</span></div>
+        <div class="dg-r"><span>富津市</span><span>市のページは「10月5日から31日まで開設」のまま、千葉県の災害ボランティア情報の一覧は今朝も「<b>開設準備中・10/5設置予定</b>」。<b>実際に開いたかは、一次資料で確認できません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>国・交通事業者</em></div>
+        <div class="dg-r"><span>激甚災害</span><span>内閣府の指定状況のページに、台風25号はまだ載っていません</span></div>
+        <div class="dg-r"><span>東海汽船</span><span>国の行政処分（10月2日）を受け、3隻が10月9日から28日まで使用停止になり、代わりの船で運航。社長は「経営責任を明確にするため」10月31日付で辞任し、11月1日付で新社長が就く（10月5日の同社の発表）</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>災害対策本部の解散は、対応が「ひと区切り」になった市町が出てきたことを示します。一方で、酒々井町のように浸水と通行止めが続く地区もあります。<strong>ボランティアへの参加を考える方は、各市町と社会福祉協議会の最新の案内を直接ご確認ください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.town.sakae.chiba.jp/bousai-saigai/jouhou-mail/page008627.html" target="_blank" rel="noopener">［一次］栄町 災害対策本部の解散について（10月6日18時30分配信）</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026093000015/" target="_blank" rel="noopener">［一次］酒々井町 被災された方の住まいの支援（10月6日）</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026092200010/" target="_blank" rel="noopener">［一次］酒々井町 台風第25号による通行止め（10月5日19時現在）</a>／<a class="src" href="https://www.city.futtsu.lg.jp/0000008689.html" target="_blank" rel="noopener">［一次］富津市 台風第25号支援・関連情報</a>／<a class="src" href="https://www.saigai-chiba.com/" target="_blank" rel="noopener">［一次］千葉県 災害ボランティア情報</a>／<a class="src" href="https://www.bousai.go.jp/taisaku/gekijinhukko/status.html" target="_blank" rel="noopener">［一次］内閣府 激甚災害の指定状況</a>／<a class="src" href="https://www.tokaikisen.co.jp/wordpress/wp-content/uploads/2026/10/140120261005545903.pdf" target="_blank" rel="noopener">［一次］東海汽船 代表取締役の異動に関するお知らせ（10月5日）</a>／<a class="src" href="https://www.tokaikisen.co.jp/news/826444/" target="_blank" rel="noopener">［一次］東海汽船 船舶使用停止に伴う代替運航（10月5日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-market">
+    <div class="sec-head"><span class="tick"></span><span class="cat">金融・市場</span><span class="sec-title">日経平均は10月6日、終値で7万円台の70,683円に。米国ではS&P500とナスダックが最高値を更新した一方、米10年債は5.27%と高い水準のままです <span class="sub">/ 株式・金利は10月6日の確定値／為替・暗号資産は10月7日7時06分ごろの表示（データ提供会社）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">確定値</span><span class="lab lab-imp">前号からの変化</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>日本</em>10月6日（火）の確定値</div>
+        <div class="dg-r"><span>日経平均</span><span><b>70,683.98円</b>（前日比 +737.12円、+1.05%）。高値70,798.62円。日経の公式値</span></div>
+        <div class="dg-r"><span>TOPIX</span><span>4,183.56（前日4,145.22。データ提供会社）</span></div>
+        <div class="dg-r"><span>国債（財務省）</span><span>掲載の最新は10月5日分：10年3.085%、30年4.166%</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>米国・商品</em>10月6日（米国時間）の確定値</div>
+        <div class="dg-r"><span>株式</span><span>S&amp;P500 7,818.93（+0.58%）、ナスダック総合 27,599.79（+0.45%）、ダウ 51,521.28（+0.49%）（データ提供会社）。S&amp;P500とナスダックは<b>最高値</b>（Yahoo Finance）</span></div>
+        <div class="dg-r"><span>米国債</span><span>米財務省の値で10年<b>5.27%</b>（前日5.31%）、30年5.64%（同5.66%）</span></div>
+        <div class="dg-r"><span>商品</span><span>北海ブレント 101.15ドル、WTI 89.91ドル、金 4,192.7ドル、銀 61.70ドル（先物・データ提供会社。清算値の一次照合はしていません）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>為替・暗号資産</em>10月7日7時06分ごろ（データ提供会社）</div>
+        <div class="dg-r"><span>為替</span><span>ドル円<b>158.12円</b>（前号157.92円）、ユーロ円178.05円、ポンド円209.89円、豪ドル円110.40円</span></div>
+        <div class="dg-r"><span>暗号資産</span><span>ビットコイン約8万5,600ドル、イーサリアム約2,699ドル</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>株価の最高値と、高い水準の長期金利・100ドル前後の原油は、同じ日に並んでいます。<strong>株が上がっていることだけで、金利や原油の重さが消えたわけではありません。</strong>値動きの理由は、本紙が確認した一次資料には書かれていません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://indexes.nikkei.co.jp/nkave/historical/nikkei_stock_average_daily_jp.csv" target="_blank" rel="noopener">［一次］日経平均 日次データ（CSV）</a>／<a class="src" href="https://finance.yahoo.co.jp/quote/998405.T" target="_blank" rel="noopener">Yahoo!ファイナンス TOPIX</a>／<a class="src" href="https://www.mof.go.jp/jgbs/reference/interest_rate/jgbcm.csv" target="_blank" rel="noopener">［一次］財務省 国債金利情報</a>／<a class="src" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610" target="_blank" rel="noopener">［一次］米財務省 国債利回り（10月）</a>／<a class="src" href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-6-dow-sp-500-nasdaq-080526166.html" target="_blank" rel="noopener">Yahoo Finance 10月6日の米国株（最高値）</a>／<a class="src" href="https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=5d&interval=1d" target="_blank" rel="noopener">原油先物（データ提供会社）</a>／<a class="src" href="https://query1.finance.yahoo.com/v8/finance/chart/JPY%3DX?range=5d&interval=1d" target="_blank" rel="noopener">ドル円（データ提供会社）</a>／<a class="src" href="https://query1.finance.yahoo.com/v8/finance/chart/BTC-USD?range=5d&interval=1d" target="_blank" rel="noopener">ビットコイン（データ提供会社）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-rates">
+    <div class="sec-head"><span class="tick"></span><span class="cat">金利・日銀</span><span class="sec-title">10年国債の入札は表面利率3.1%、平均落札利回り3.101%。植田総裁は「基調的な上昇率は２％に近づいています」と述べ、利上げを続ける考えを示しました <span class="sub">/ 財務省（10月6日）／日本銀行 総裁挨拶（10月6日）／報道（ロイター、10月6日）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-view">関係者報道は分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>10年利付国債（第384回）</em>財務省 10月6日入札</div>
+        <div class="dg-r"><span>条件</span><span>表面利率<b>年3.1%</b>、発行日10月7日、償還期限 令和18年（2036年）9月20日</span></div>
+        <div class="dg-r"><span>価格競争入札</span><span>応募額<b>7兆4,011億円</b>、募入決定額1兆9,661億円（応募額は募入決定額の約3.76倍・本紙の計算）</span></div>
+        <div class="dg-r"><span>利回り</span><span>募入平均利回り<b>3.101%</b>、募入最高利回り3.103%</span></div>
+        <div class="dg-r"><span>次の観測点</span><span><b>10月8日（木）に30年利付国債の入札</b>（財務省の入札カレンダー）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>日本銀行</em>植田総裁 全国証券大会での挨拶（10月6日）</div>
+        <div class="dg-r"><span>物価</span><span>「中長期の予想物価上昇率は引き続き上昇しており、消費者物価の<b>基調的な上昇率は２％に近づいています</b>」</span></div>
+        <div class="dg-r"><span>政策</span><span>「経済・物価・金融情勢に応じて、<b>引き続き政策金利を引き上げ</b>、金融緩和の度合いを調整していくことになる」。タイミングとペースは見通しの確度とリスクを点検しながら検討</span></div>
+        <div class="dg-r"><span>重点</span><span>「基調的な物価上昇率を２％程度の水準で安定させていくという観点が、これまでよりも重要になってきている」</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>関係者報道</em>ロイター（10月6日）</div>
+        <div class="dg-r"><span>内容</span><span>日銀は今月、<b>基調的なインフレ率がおおむね2%の目標に達した</b>と示す可能性がある、と事情に詳しい関係者3人が話した、と報道</span></div>
+        <div class="dg-r"><span>扱い</span><span>総裁の一次の発言は「近づいています」までです。「達した」は関係者の話の報道で、日銀の一次資料ではありません</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/resul20261006.htm" target="_blank" rel="noopener">［一次］財務省 10年利付国債（第384回）の入札結果（10月6日）</a>／<a class="src" href="https://www.mof.go.jp/jgbs/auction/calendar/2610.htm" target="_blank" rel="noopener">［一次］財務省 入札カレンダー（令和8年10月）</a>／<a class="src" href="https://www.boj.or.jp/about/press/koen_2026/data/ko261006a.pdf" target="_blank" rel="noopener">［一次］日本銀行 植田総裁 全国証券大会における挨拶（10月6日・PDF）</a>／<a class="src" href="https://finance.yahoo.com/economy/policy/articles/boj-may-signal-underlying-inflation-042823754.html" target="_blank" rel="noopener">ロイター（Yahoo Finance掲載）日銀の基調的インフレの評価（10月6日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-energy">
+    <div class="sec-head"><span class="tick"></span><span class="cat">エネルギー・中東</span><span class="sec-title">G7の1億バレルは、IEAが10月14〜15日の会合で詳細を決める見通しと報じられています。実物の放出と国別の量は、今朝も一次資料で確認できません <span class="sub">/ IEA（10月2日）／IMF PortWatch（10月4日まで）／報道（ロイター、10月6日）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-view">報道</span><span class="lab lab-warn">発表と実施を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>G7・IEA</em></div>
+        <div class="dg-r"><span>報道</span><span>IEAの理事会が<b>10月14〜15日の会合</b>で、G7が発表したディーゼルと原油の備蓄放出の詳細を決める見通し、と関係者2人の話としてロイターが報道。量の内訳と参加国は未公表</span></div>
+        <div class="dg-r"><span>一次</span><span>IEAの10月6日以降の実施の発表は見当たりません。<b>「1億バレルの発表」と「実物の引き渡し」は別のまま</b>です</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ホルムズ海峡・湾岸</em></div>
+        <div class="dg-r"><span>通航データ</span><span>IMF PortWatchの最新が<b>10月4日の4隻</b>に更新（10月1日0隻、2日4隻、3日2隻）。AISで観測できる船の数で、AISを切った船は含まれません</span></div>
+        <div class="dg-r"><span>湾岸の輸出（報道）</span><span>イランを除く湾岸の原油の流れは9月に戦争前の81%超まで回復、とロイター。サウジの東西パイプラインについて、エネルギー相の話として「5.8-million barrels」に達したと報道（単位の説明なし）</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>原油価格の水準と、実際に運ばれている量は別の指標です。本紙は「ホルムズ海峡が閉鎖された」とは書きません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets" target="_blank" rel="noopener">［一次］IEA 事務局長のG7首脳会合への参加（10月2日）</a>／<a class="src" href="https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portname%3D%27Strait+of+Hormuz%27&outFields=date,n_total&orderByFields=date+DESC&resultRecordCount=12&f=json" target="_blank" rel="noopener">［一次］IMF PortWatch ホルムズ海峡の通航データ</a>／<a class="src" href="https://www.businessday.co.za/markets/2026-10-06-iea-to-finalise-allocation-of-100-million-barrel-emergency-release-by-g7/" target="_blank" rel="noopener">ロイター（BusinessDay掲載）IEAが1億バレル放出の詳細を10月14〜15日に決定へ（10月6日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-world">
+    <div class="sec-head"><span class="tick"></span><span class="cat">世界</span><span class="sec-title">ウクライナがモスクワ州へ大規模な無人機攻撃、2人が死亡と報道。ブラジルでは決選投票に向けて両陣営が動いています <span class="sub">/ 報道（Al Jazeera・TASS・AP、10月5〜6日）</span></span></div>
+    <div class="labs"><span class="lab lab-view">報道</span><span class="lab lab-warn">当局発表と独立確認を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>ロシア・ウクライナ</em>10月5日夜〜6日朝</div>
+        <div class="dg-r"><span>ロシア当局</span><span>モスクワ市長は、モスクワへ向かう無人機を多数撃墜したと発表（TASS）。<b>機数はロシア当局の発表と報道で異なり、本紙は書きません</b></span></div>
+        <div class="dg-r"><span>被害（報道）</span><span>モスクワ州で<b>2人が死亡</b>（Al Jazeera、州知事の話として）。負傷者の数は報道によって違います</span></div>
+        <div class="dg-r"><span>石油施設</span><span>軍事ブロガーが、州内最大級の石油貯蔵施設に被弾したと主張。Al Jazeeraは「<b>被弾の公式な確認はない</b>」と明記。ウクライナ側の公式な説明は確認できていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ブラジル</em>10月25日の決選投票へ</div>
+        <div class="dg-r"><span>陣営（報道）</span><span>ルーラ大統領が選挙陣営を立て直し、フラビオ・ボルソナロ氏は支持の拡大を図っている、とAP</span></div>
+        <div class="dg-r"><span>市場</span><span>ボベスパは10月6日、205,835（前日206,912から約0.5%下落・データ提供会社）。前日の大幅高のあと、横ばい圏です</span></div>
+        <div class="dg-r"><span>世論調査</span><span>第1回投票のあとの決選投票の世論調査は、今朝の時点で確認できていません</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.aljazeera.com/news/2026/10/6/ukraine-launches-major-drone-attack-on-russias-moscow-region-killing-two" target="_blank" rel="noopener">Al Jazeera モスクワ州への無人機攻撃（10月6日）</a>／<a class="src" href="https://tass.com/emergencies/2197907" target="_blank" rel="noopener">TASS モスクワ市長の発表（10月6日）</a>／<a class="src" href="https://www.pbs.org/newshour/world/lula-shake-ups-campaign-as-flavio-bolsonaro-reaches-for-more-support-ahead-of-brazils-runoff" target="_blank" rel="noopener">AP（PBS掲載）ブラジル大統領選の決選投票に向けた両陣営（10月5日）</a>／<a class="src" href="https://query1.finance.yahoo.com/v8/finance/chart/%5EBVSP?range=5d&interval=1d" target="_blank" rel="noopener">ボベスパ指数（データ提供会社）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-ai">
+    <div class="sec-head"><span class="tick"></span><span class="cat">AI</span><span class="sec-title">OpenAIが、9月30日（日本時間）の大規模障害の報告書を公開しました。原因は、ある機能の展開で社内の接続が使い尽くされたこと。10月6日の個別の障害はすべて解消しています <span class="sub">/ OpenAI Status（報告書・障害の履歴）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号の答え</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>報告書（Write-up）</em>9月29日（米太平洋時間）の障害</div>
+        <div class="dg-r"><span>何が起きたか</span><span>米太平洋時間9月29日10時30分ごろ（日本時間30日2時30分ごろ）から、ChatGPT・Codex・API（Agents APIを含む）でエラーが増加</span></div>
+        <div class="dg-r"><span>根本原因</span><span>ある<b>機能の展開</b>によって、通常の設定の読み込みのたびに裏側の確認が繰り返し走り、社内の複数のサービスに新しい接続を開いた。失敗した確認がさらに再試行を生み、<b>共有のネットワーク接続の容量を使い尽くした</b>ため、正常なサービスどうしも通信できなくなった</span></div>
+        <div class="dg-r"><span>影響</span><span>リクエストの失敗やタイムアウト、ChatGPT・Codexへのサインインのしにくさ、会話やタスクの開始・再開・完了の失敗</span></div>
+        <div class="dg-r"><span>復旧</span><span>展開を止め、大半の影響は約30分後（日本時間30日3時ごろ）に緩和。残りの不具合は、障害のある設備を避ける経路への切り替え、繰り返しのリクエストの削減、データベースのキャッシュ容量の増強で、日本時間30日8時7分ごろに解消</span></div>
+        <div class="dg-r"><span>再発防止</span><span>原因の機能を止め、繰り返し確認を出すコードを削除。重いデータベースの問い合わせを直し、ネットワーク容量を拡大中</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>10月6日の個別の障害</em>別の出来事です</div>
+        <div class="dg-r"><span>主なもの</span><span>APIの管理画面のログイン、ChatGPTの会話・画像生成など複数の製品、ChatGPT Goの会話、Responses APIでの大きなPDFの処理、Computer Use（いずれも日本時間6日〜7日朝、<b>すべて解消</b>）</span></div>
+        <div class="dg-r"><span>現在</span><span>今朝の表示は「<b>All Systems Operational</b>」</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>前号まで「未公開」としていた原因分析は、予告どおり公開されました。<strong>9月の大規模障害の報告書と、10月6日の個別の障害は、別の出来事として分けています。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://status.openai.com/incidents/01M3Q4RK1SM4EMK445GGPG7C0N/write-up" target="_blank" rel="noopener">［一次］OpenAI Status 報告書（9月29日〈米国時間〉の障害）</a>／<a class="src" href="https://status.openai.com/incidents/01M3Q4RK1SM4EMK445GGPG7C0N" target="_blank" rel="noopener">［一次］OpenAI Status 9月30日（日本時間）の障害</a>／<a class="src" href="https://status.openai.com/history" target="_blank" rel="noopener">［一次］OpenAI Status 障害の履歴</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-life">
+    <div class="sec-head"><span class="tick"></span><span class="cat">科学・スポーツ</span><span class="sec-title">ノーベル物理学賞は、南極の氷を使ったニュートリノ観測装置「アイスキューブ」のハルツェン氏に。プロ野球のクライマックスシリーズは10日に始まります <span class="sub">/ ノーベル財団（10月6日）／NPB</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>ノーベル賞</em>ノーベル財団</div>
+        <div class="dg-r"><span>物理学賞</span><span>フランシス・ハルツェン氏（米ウィスコンシン大学マディソン校）。授賞理由は「<b>アイスキューブ・ニュートリノ観測所</b>への決定的な貢献と、宇宙由来の高エネルギー・ニュートリノの発見」。南極の氷を、ニュートリノをとらえる装置として使う発想</span></div>
+        <div class="dg-r"><span>次</span><span>化学賞は7日11時45分（中央ヨーロッパ夏時間）以降＝<b>日本時間7日18時45分以降</b>の発表予定</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>プロ野球</em>NPB</div>
+        <div class="dg-r"><span>パ・リーグ</span><span>クライマックスシリーズのファーストステージは10月10日から、西武（2位）と日本ハム（3位）。ファイナルステージは14日からソフトバンク（1位）と</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.nobelprize.org/prizes/physics/2026/press-release/" target="_blank" rel="noopener">［一次］ノーベル財団 2026年 物理学賞 発表（10月6日）</a>／<a class="src" href="https://www.nobelprize.org/prizes/about/prize-announcement-dates/" target="_blank" rel="noopener">［一次］ノーベル財団 発表日程</a>／<a class="src" href="https://npb.jp/news/detail/20261006_05.html" target="_blank" rel="noopener">［一次］NPB パーソル クライマックスシリーズ パの日程（10月6日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-check">
+    <div class="sec-head"><span class="tick"></span><span class="cat">答え合わせ</span><span class="sec-title">前号D71の「予定」「未確認」はどうなったか <span class="sub">/ 10月6日号との比較</span></span></div>
+    <div class="labs"><span class="lab lab-imp">答え合わせ</span><span class="lab lab-fact">前号の本文は変えていません</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>答えが出たもの</em>前号 → 今朝</div>
+        <div class="dg-r"><span>OpenAIの原因分析</span><span>未公開 → <b>報告書（Write-up）を公開</b>。原因は機能の展開による社内の接続容量の枯渇</span></div>
+        <div class="dg-r"><span>千葉県の被害報</span><span>第26報が最新 → <b>第27報</b>（10月6日16時）。住家被害が増え、孤立集落は9地区→5地区</span></div>
+        <div class="dg-r"><span>酒々井町</span><span>「排水の開始と浸水の解消は未確認」→ 国の資料で、排水は9月下旬から続き、B地点の浸水は56cm→15.5cmに。<b>A地点は10月6日16時に100cmで、解消はしていない</b></span></div>
+        <div class="dg-r"><span>二重締切</span><span>沼側20%・宅地側22% → <b>沼側28%・宅地側25%</b>（10月6日15時時点）</span></div>
+        <div class="dg-r"><span>台風27号</span><span>950ヘクトパスカル（6日6時）→ <b>970ヘクトパスカル</b>（7日6時）。今日中に温帯低気圧に変わる予報</span></div>
+        <div class="dg-r"><span>西湘バイパス</span><span>第1報（下り約6.0km）→ <b>第4報で4区間</b>（有料区間と上り線を含む）</span></div>
+        <div class="dg-r"><span>停電</span><span>約520軒 → <b>約450軒</b></span></div>
+        <div class="dg-r"><span>東京市場</span><span>日経平均 69,946.86円 → <b>70,683.98円</b>（10月6日）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>変わらなかったもの・まだのもの</em></div>
+        <div class="dg-r"><span>JR</span><span>内房線・久留里線・成田線・外房線・特急とも前号と同じ表示</span></div>
+        <div class="dg-r"><span>富津市</span><span>ボランティアセンターが実際に開いたかは未確認のまま</span></div>
+        <div class="dg-r"><span>NTT東日本</span><span>第4報なし</span></div>
+        <div class="dg-r"><span>G7の1億バレル</span><span>実物の放出と国別の量は一次資料で未確認。IEAの決定は10月14〜15日の見通し（報道）</span></div>
+        <div class="dg-r"><span>国交省</span><span>第17報（10月5日9時）が最新のまま</span></div>
+      </div>
+    </div>
+    <p><strong>前号（10月6日号）、前々号（10月5日号・10月6日に風向の表記を訂正済み）、週刊版W10、日曜特集S7の本文には、今回は手を加えていません。</strong>新しく分かったことは本号に積み上げています。</p>
+
+    <p class="disc">出典：<a class="src" href="https://status.openai.com/incidents/01M3Q4RK1SM4EMK445GGPG7C0N/write-up" target="_blank" rel="noopener">［一次］OpenAI Status 報告書</a>／<a class="src" href="https://pref-chiba-bousai.my.salesforce-sites.com/services/apexrest/commonsfile/?fileid=00PTK00000xmxF72AI&key=vizcW4AjnXmnDs7VqtxVHas6kjJxEQnsP2TxrmyJ" target="_blank" rel="noopener">［一次］千葉県 第27報</a>／<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960656.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 酒々井町緊急排水 進捗状況（10月6日16時時点）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960646.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 決壊した堤防の応急復旧（10月6日15時時点）</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2633/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第27号の実況と予報</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kisha_03754.pdf" target="_blank" rel="noopener">［一次］西湘バイパス通行止め（第4報）</a>／<a class="src" href="https://teideninfo.tepco.co.jp/" target="_blank" rel="noopener">［一次］東京電力パワーグリッド 停電情報</a>／<a class="src" href="https://indexes.nikkei.co.jp/nkave/historical/nikkei_stock_average_daily_jp.csv" target="_blank" rel="noopener">［一次］日経平均 日次データ</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-unknown">
+    <div class="sec-head"><span class="tick"></span><span class="cat">確認の限界</span><span class="sec-title">確認できなかったこと <span class="sub">/ 本号の取材の範囲</span></span></div>
+    <div class="labs"><span class="lab lab-warn">未確認</span><span class="lab lab-fact">調べたが材料なし／調べきれず を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>最重要の未確認</em></div>
+        <div class="dg-r"><span>酒々井町</span><span>開運団地の浸水が解消する見込み、土砂災害の専門家による調査の結果、強化された排水作業の内容</span></div>
+        <div class="dg-r"><span>高波</span><span>西湘バイパスの通行止めの解除、千葉県・伊豆諸島の沿岸での実際の被害の有無</span></div>
+        <div class="dg-r"><span>住家被害</span><span>千葉県第27報で増えた分が、調査の進展によるものか新たな被害か</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>そのほかの未確認</em></div>
+        <div class="dg-r"><span>災害</span><span>富津市のボランティアセンターの開設、二重締切と中詰土の完了見込み、県管理道路の3区分ごとの区間数、停電の原因</span></div>
+        <div class="dg-r"><span>市場</span><span>10月6日の日本の長期金利（財務省の掲載は10月5日分まで）、商品先物の清算値の一次照合</span></div>
+        <div class="dg-r"><span>世界</span><span>モスクワ州の石油施設の被害（公式な確認なし）、ウクライナ側の公式な説明、ブラジルの決選投票の世論調査</span></div>
+        <div class="dg-r"><span>エネルギー</span><span>1億バレルの放出の量・国別・開始</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>調べたが材料がなかった領域／十分に調べられなかった領域</em></div>
+        <div class="dg-r"><span>材料なし</span><span>内閣府の新しい発表（激甚災害の指定を含む）、国交省の第18報、リコールの新しい届出、震度4以上の地震</span></div>
+        <div class="dg-r"><span>調べきれず</span><span>米中の新しい動き、Nvidia・Google・Meta・Microsoftの一次の発表、半導体・宇宙・スマートフォン・PC・エンタメ・SNS、八丈島・大島の航空便、観光庁・民泊（ページを取得できず）、ElevenLabsのインド投資（一次の会社発表を見つけられず）</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.ktr.mlit.go.jp/ktr_content/content/000960656.pdf" target="_blank" rel="noopener">［一次］関東地方整備局 酒々井町緊急排水 進捗状況（10月6日16時時点）</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/kisha_03754.pdf" target="_blank" rel="noopener">［一次］西湘バイパス通行止め（第4報）</a>／<a class="src" href="https://pref-chiba-bousai.my.salesforce-sites.com/services/apexrest/commonsfile/?fileid=00PTK00000xmxF72AI&key=vizcW4AjnXmnDs7VqtxVHas6kjJxEQnsP2TxrmyJ" target="_blank" rel="noopener">［一次］千葉県 第27報</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="tick"></span><span class="cat">予定</span><span class="sec-title">本日と、この先のウォッチリスト <span class="sub">/ 予定は予定として書いています</span></span></div>
+    <div class="labs"><span class="lab lab-imp">予定</span><span class="lab lab-warn">予報は予報</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>本日 10月7日（水）</em></div>
+        <div class="dg-r"><span>高波</span><span>関東地方の海上・千葉県北東部と南部の海上は「７日昼前にかけて」高波に警戒</span></div>
+        <div class="dg-r"><span>台風27号</span><span>予報では18時に温帯低気圧へ</span></div>
+        <div class="dg-r"><span>酒々井町</span><span>現地対策本部前で毎日13時から15分間のブリーフィング（国の発表）</span></div>
+        <div class="dg-r"><span>ガソリン</span><span>資源エネルギー庁が14時に店頭価格（10月5日時点）を公表の予定</span></div>
+        <div class="dg-r"><span>ノーベル賞</span><span>化学賞の発表は日本時間18時45分以降</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>この先</em></div>
+        <div class="dg-r"><span>国債</span><span><b>10月8日（木）に30年利付国債の入札</b></span></div>
+        <div class="dg-r"><span>東海汽船</span><span>10月9日から28日まで、3隻の使用停止に伴い代わりの船で運航</span></div>
+        <div class="dg-r"><span>インフルエンザ</span><span>第40週の全国の集計は10月9日（金）の公表予定</span></div>
+        <div class="dg-r"><span>台風29号</span><span>予報では12日3時に小笠原近海（予報は予報）</span></div>
+        <div class="dg-r"><span>IEA</span><span>10月14〜15日の会合で1億バレルの放出の詳細を決める見通し（報道）</span></div>
+        <div class="dg-r"><span>ブラジル</span><span>10月25日に大統領選の決選投票</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.mof.go.jp/jgbs/auction/calendar/2610.htm" target="_blank" rel="noopener">［一次］財務省 入札カレンダー（令和8年10月）</a>／<a class="src" href="https://www.nobelprize.org/prizes/about/prize-announcement-dates/" target="_blank" rel="noopener">［一次］ノーベル財団 発表日程</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2634/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第29号の実況と予報</a>／<a class="src" href="https://www.tokaikisen.co.jp/news/826444/" target="_blank" rel="noopener">［一次］東海汽船 船舶使用停止に伴う代替運航</a>／<a class="src" href="https://www.businessday.co.za/markets/2026-10-06-iea-to-finalise-allocation-of-100-million-barrel-emergency-release-by-g7/" target="_blank" rel="noopener">ロイター（BusinessDay掲載）IEAの決定の見通し</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+<div class="askai" id="askai">
+    <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+    <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった項目の名前に書き換えてからお使いください。</p>
+    <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。レポート本文は自動送信されません。</p>
+    <div class="askai-box">
+      <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+      <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+    </div>
+    <div class="askai-links">
+      <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+      <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+      <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+    </div>
+  </div>
+
+
+  <footer class="foot">
+    <p><a href="index.html">← レポート一覧へ戻る</a></p>
+    <p><strong>AI総合研究機構 — 朝の一日レポート</strong></p>
+    <p><strong>本号は、AI総合研究機構の朝の一日レポートです。</strong>広域の収集対象（金融・市場／政治・世界情勢／災害・安全／AI・技術／通信／宇宙・衛星／ロボット・モビリティ／住まい・地域／暮らし／消費者技術／社会・文化／ランダム・ニッチ発見の12領域）を一巡したうえで、掲載情報を選別しました。<strong>「確認したが掲載する材料がなかった領域」と「十分に調べられなかった領域」は、「確認できなかったこと」の章で分けて示しています。</strong><strong>本文に独立したトピックとして載せた項目は、原則すべて冒頭に一覧しています。件数は日によって変わります。</strong></p>
+    <p><strong>収集の基準時刻: 2026年10月7日 7時00分（日本時間）。本号全体の最終確認時刻は2026年10月7日 7時17分（日本時間）です。</strong>これ以降の動きは、次号で扱います。<strong>情報ごとの基準時刻は次のとおりです。千葉県＝第27報（10月6日16時00分）と第24報（10月2日16時00分）。印旛沼・酒々井町＝関東地方整備局 酒々井町緊急排水 進捗状況（10月6日16時時点）、チーム印旛沼（10月6日15時時点）、TEC-FORCE通信No.10（10月6日）。台風＝気象庁 台風第27号 10月7日6時の実況（6時45分発表）、第28号 7日6時、第29号 7日3時、千葉県気象解説情報 10月7日6時20分、関東甲信地方気象解説情報 5時33分、警報・注意報 10月7日4時07分ほか。西湘バイパス＝第4報（10月6日）。東海汽船＝第3報（10月6日12時）と運航状況 10月7日6時20分現在。鉄道＝JR東日本 運行情報 10月7日7時01分〜7時05分。道路＝千葉県 10月6日現在。停電＝東京電力パワーグリッド 10月7日7時09分。通信＝NTT東日本 第3報（10月2日11時）。生活再建＝各市町・内閣府・東海汽船のページを10月7日朝に取得。株式・米国債＝10月6日の確定値、日本国債は財務省の10月5日の値、入札は財務省 10月6日。為替・暗号資産＝10月7日7時06分ごろの表示。日銀＝総裁挨拶 10月6日。AI＝OpenAI Status（日本時間）。その他＝各発表・報道の日付どおり。</strong></p>
+    <p><strong>本号の編集方針。</strong>①数字には出典と基準時刻を添えました。②<strong>酒々井町は、排水が続いていることと、浸水が解消したことを分けて書いています。水位計の値は、浸水範囲の最大の深さではありません（国の資料の注記）。</strong>③<strong>二重締切の進み具合を、本復旧の進み具合とは書いていません。</strong>④<strong>千葉県の住家被害の増減は、全項目が載った第24報との比較で、理由は資料に書かれていないため推測していません。</strong>⑤<strong>台風の予報の値を、今の勢力としては書いていません。警報・通行止め・欠航を、被害とは書いていません。地上の観測値だけで、暴風域との位置関係や海の状態を判断していません。</strong>⑥<strong>内房線などは、JRの表示を書き、列車ごとの実績とは分けています。</strong>⑦<strong>停電の原因は推測していません。</strong>⑧<strong>消防庁・国・千葉県・市町の数は、時刻と範囲が違うため足し合わせていません。</strong>⑨<strong>日銀総裁の発言（一次）と、ロイターの関係者報道を分けています。</strong>⑩<strong>市場の値動きの理由は、本紙が確認した一次資料にないため書いていません。</strong>⑪<strong>G7の1億バレルの発表と、実物の放出を分けています。ホルムズ海峡を「閉鎖」とは書いていません。</strong>⑫<strong>モスクワへの無人機攻撃は、ロシア当局の発表、報道、公式に確認されていない主張を分けています。</strong>⑬<strong>前号（10月6日号）、前々号（10月5日号・10月6日に風向の表記を訂正済み）、週刊版W10、日曜特集S7の本文は、今回は書き換えず、新しく分かったことは本号に積み上げています。</strong>⑭<strong>AIによる調査・執筆・編集が関与しています。制作体制は複数のAIと編集担当の分担で、固有名は出していません。</strong></p>
+    <p><strong>数字の検算について。</strong>千葉県の住家被害は、全壊59→67（+8）、半壊414→469（+55）、一部破損189→294（+105）、床上浸水419→400（−19）、床下浸水1,216→1,264（+48）です。二重締切は34.8÷124＝<strong>約28%</strong>、26.8÷105＝<strong>約25.5%</strong>（資料の表記は「約25%」）です。停電の市町村別の合計は100＋80＋50＋50＋40＋40＋30＋20＋20＋20＋10＝<strong>460軒</strong>で、千葉県の表示「約450軒」とは、それぞれが概数のため一致しません。日経平均は70,683.98−69,946.86＝<strong>+737.12円</strong>です。10年国債の入札の応募額は7兆4,011億円÷1兆9,661億円＝<strong>約3.76倍</strong>です。</p>
+    <p><strong>本号の情報源について。</strong>千葉県・関東地方整備局・横浜国道事務所・中日本高速道路・気象庁・東海汽船・JR東日本・東京電力パワーグリッド・NTT東日本・栄町・酒々井町・富津市・内閣府・日本経済新聞社（日経平均）・財務省・米財務省・日本銀行・IEA・国際通貨基金 PortWatch・OpenAI・ノーベル財団・NPBの発表を一次情報として用いました。米国株の最高値、日銀の関係者報道、IEAの決定の見通し、モスクワへの無人機攻撃、ブラジルの陣営の動きは、Yahoo Finance・ロイター・Al Jazeera・TASS・APの報道です。TOPIX・米国株の値・商品・為替・暗号資産・ボベスパはデータ提供会社の値です。</p>
+    <p><strong>関東の海上は昼前まで高波に警戒が必要で、酒々井町では浸水が続いています。</strong>避難や移動の判断にあたっては、本レポートではなく、<strong>気象庁と各自治体、および各交通事業者・電力会社・水道事業者・通信事業者の最新の発表を直接ご確認ください。</strong></p>
+    <p>本レポートは情報提供を目的としたもので、投資、法務、税務、医療、その他の専門的助言ではありません。掲載した数値・日付・出典は公開情報に基づいて確認していますが、完全性・正確性を保証するものではありません。実際の判断にあたっては、一次情報と専門家の助言をご確認ください。</p>
+    <p class="cr">© 2026 AI総合研究機構</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var q = document.getElementById('askaiQ');
+  if(!btn || !q) return;
+  btn.addEventListener('click', function(){
+    var text = q.value;
+    function done(){
+      btn.classList.add('is-copied');
+      var old = btn.textContent;
+      btn.textContent = 'コピーしました';
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('is-copied'); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ q.select(); });
+    } else {
+      q.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+    }
+  });
+})();
+</script>
+</body>
+</html>
