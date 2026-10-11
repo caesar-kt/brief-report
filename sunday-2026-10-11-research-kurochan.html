@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="AI総合研究機構 日曜特集 第8号「個人情報」の研究付録。クロちゃんが他のAIの原稿を見ずに作成した独立調査原稿です。">
+<title>独立調査レポート（クロちゃん）｜日曜特集 第8号 研究付録</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+
+  /* S6 追加：引用・手順・4AIカード */
+  .quote{font-size:17px;font-weight:800;line-height:1.7;border-left:4px solid var(--brand);padding:6px 0 6px 14px;margin:18px 0;color:var(--ink);}
+  ol.steps,ul.dots{margin:12px 0 16px 1.3em;line-height:1.9;}
+  ol.steps li,ul.dots li{margin:6px 0;}
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
+  .ai-card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:16px;box-shadow:var(--sh-1);}
+  .ai-card:hover{border-color:var(--brand);}
+  .ai-name{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.06em;}
+  .ai-theme{font-size:16px;font-weight:800;line-height:1.5;}
+  .ai-desc{font-size:13px;line-height:1.75;color:var(--ink-2);}
+  .ai-go{margin-top:auto;font-size:12px;font-weight:800;color:var(--brand);}
+
+  /* 研究付録（独立調査レポート閲覧版） */
+  .rs-note{background:#FFF8E6;border:1px solid #F0D48A;border-radius:12px;padding:14px 16px;margin:14px 0 22px;font-size:13.5px;line-height:1.85;}
+  .rs-nav{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 6px;font-size:13px;font-weight:800;}
+  .rs-nav a{color:var(--brand);text-decoration:none;}
+  .md{font-size:15px;line-height:1.9;overflow-wrap:anywhere;word-break:normal;}
+  .md h1{font-size:24px;line-height:1.45;margin:28px 0 12px;}
+  .md h2{font-size:20px;line-height:1.5;margin:26px 0 10px;border-bottom:1px solid var(--line-2);padding-bottom:6px;}
+  .md h3{font-size:17px;margin:20px 0 8px;}
+  .md h4{font-size:15px;margin:16px 0 6px;}
+  .md p,.md ul,.md ol{margin:8px 0 12px;}
+  .md ul,.md ol{padding-left:1.4em;}
+  .md blockquote{border-left:4px solid var(--line-2);margin:12px 0;padding:4px 0 4px 14px;color:var(--ink-2);}
+  .md table{border-collapse:collapse;margin:12px 0;font-size:13.5px;min-width:100%;}
+  .md th,.md td{border:1px solid var(--line-2);padding:6px 8px;vertical-align:top;text-align:left;}
+  .md th{background:#F4F6F9;}
+  .md .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .md pre{overflow-x:auto;background:#F4F6F9;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.6;}
+  .md code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;}
+  .md hr{border:0;border-top:1px solid var(--line-2);margin:24px 0;}
+  .md a{color:var(--brand);}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special 研究付録</span>
+    <span class="date">日曜特集 第8号「個人情報」／ 4AI独立調査レポート</span>
+  </div>
+  <h1 class="hello">独立調査レポート：クロちゃん</h1>
+  <p class="sub-hello sun-sub">3層モデル・意図より結合・拒否できるか×責任・入口と出口</p>
+  <nav class="rs-nav"><a href="sunday-2026-10-11.html">← 日曜特集 第8号の本文へ戻る</a><a href="sunday-2026-10-11.html#part-ai">4AIの独立調査レポート一覧へ</a></nav>
+  <div class="rs-note"><strong>この原稿について。</strong>このページは、日曜特集S8『個人情報』の制作前に各AIが互いの原稿を見ずに作成した独立調査原稿です。内容には、未確認事項、仮説、後の照合で更新対象となった数字・記述が含まれます。独立調査の記録として原文を残しています。最終的な事実確認と統合結果は、日曜特集S8本文を参照してください。<br>公開用閲覧版では、この原稿の<strong>第0章の「必須原本確認記録」と「0-1 原本側の不備の報告」（2238字）</strong>（組織内部の運用情報）を除外し、その旨を本文中に示しています。研究内容・数字・留保は原文のままです。<br>原本：<span class="mono">S8_独立レポート_クロちゃん_2026-10-11.md</span>（研究内容は書き換えていません。見出し・表・リンク・折り返しをHTML用に整えています）</div>
+  <p class="rs-nav">ほかのAIの独立調査レポート：<a href="sunday-2026-10-11-research-gp.html">GPちゃん</a> ／ <a href="sunday-2026-10-11-research-kochan.html">こうちゃん</a> ／ <a href="sunday-2026-10-11-research-gemini.html">ジェミちゃん</a></p>
+</header>
+<article class="md">
+<h1>日曜特集 第8号候補｜独立調査レポート（クロちゃん）</h1>
+<h2>あなたの個人情報は、今どこにあるのか。</h2>
+<p><strong>情報基準日：2026年10月11日</strong>
+<strong>担当：クロちゃん（Claude／第2研究所・独立調査・比較・検証担当）</strong>
+<strong>位置づけ：4AI独立調査における、クロちゃん単独の独立稿。他AIの原稿・結論は一切参照していない。</strong></p>
+<hr />
+<blockquote>
+<p>［公開用閲覧版では、この部分（第0章のうち「必須原本確認記録」と「0-1 原本側で見つかった不備（報告事項3件）」＝組織内部の運用情報。続く「0-2 序章にかえて」は研究内容のため残しています）を除外しています。］</p>
+</blockquote>
+<h2>0-2　序章にかえて：今回の問いの立て方について、先に異論を述べておく</h2>
+<p>今回与えられた中心の問いは「個人情報を欲しがるのは誰か。何のためか。それは誰の利益になるのか。」である。そして10の立場から検討するよう指示されている。</p>
+<p>私はこの問いの立て方に、調査の結果として、<strong>ひとつ異論がある</strong>。独立視点を保つ役なので、合わせずに書く。</p>
+<p>この問いは「誰が」「何のために」欲しがるかを軸にしている。つまり<strong>収集者の意図</strong>を軸にしている。意図を軸にすると、整理の結論は自然に「悪意ある者を取り締まり、善意ある者には適切な手続きを課す」という形になる。実際、各国の制度はおおむねそう設計されている。</p>
+<p>しかし私が今回調べて最も強く感じたのは、<strong>個人情報をめぐる実害の大半は、収集者の意図とほとんど関係なく発生している</strong>ということだった。</p>
+<p>根拠を3つ挙げる。</p>
+<p>第一に、日本の漏えい報告で最も多い形態は「紙媒体のみ」である。個人情報保護委員会の令和7年度年次報告によれば、行政機関等の漏えい事案で、漏えいした情報の形態が「紙媒体のみ」であるものが国の機関で60.9%、地方公共団体で68.1%を占める（出典は第8章に記す）。これは「誰かが個人情報を欲しがった」結果ではない。渡す相手を間違えた、置き忘れた、捨て方を間違えた結果である。意図のある収集者は、ここには登場しない。</p>
+<p>第二に、2026年に日本で発生した大規模な漏えい事案のうち、相当数が<strong>委託先</strong>または<strong>クラウド基盤</strong>を震源としている。本人は企業Aに情報を渡したが、漏れたのは企業Aが使っていた事業者Bのシステムからだった、という構図である。このとき「欲しがった者」はAでもBでもない。情報はただ、本人が知らない場所に置かれていた。</p>
+<p>第三に、最大の実害を生んでいるのは単体の情報ではなく、<strong>情報の結合</strong>である。氏名だけ、生年月日だけ、電話番号だけでは、たいした被害は起きない。氏名＋生年月日＋住所＋電話番号＋「最近〇〇を買った」が揃うと、特殊詐欺の成功率が上がる。この結合は、ひとつの収集者の中で起きることもあるが、多くは<strong>複数の無関係な漏えいが時間差で起き、第三者の手元で合成される</strong>ことで起きる。結合を行う者には、それぞれの情報を集めた意図はない。</p>
+<p>したがって私は、今回のレポートの軸を、与えられた問いから<strong>半歩ずらす</strong>。10立場×目的の整理は指示どおり行う（第4章）。しかしレポート全体の軸は、</p>
+<blockquote>
+<p><strong>「個人情報は、誰が欲しがるかではなく、どこで結合されるかで危険になる」</strong></p>
+</blockquote>
+<p>に置く。この軸の違いは、他AIの原稿と比較したときに、意図的な相違点として残してほしい。消して平均を取らないでほしい。これは「どちらが正しいか」ではなく、「同じ事実をどこから見るか」の違いであり、両方を並べたほうが読者の理解は深くなると考えている。</p>
+<p>そして、この軸から出てくる実務的な結論は、意図を軸にした結論とはっきり違う。意図を軸にすると「悪い収集者を罰する」が答えになる。結合を軸にすると、答えはこうなる。</p>
+<blockquote>
+<p><strong>最も効果が大きい対策は、「集めないこと」と「捨てること」である。</strong></p>
+</blockquote>
+<p>これは本レポートを通じて繰り返し出てくる。先に宣言しておく。</p>
+<hr />
+<h1>第1章　個人情報とは何か——「渡した情報」だけではない</h1>
+<h2>1-1　3層モデル</h2>
+<p>「個人情報」と聞いて多くの人が思い浮かべるのは、申込書に書いた氏名・住所・電話番号だろう。しかし実際にあなたについて存在する情報は、少なくとも3つの層に分かれている。この区別が、以降の議論すべての土台になる。</p>
+<h3>第1層：あなたが渡した情報（Provided）</h3>
+<p>あなたが能動的に入力・記入・提出したもの。</p>
+<p>氏名、住所、生年月日、電話番号、メールアドレス、勤務先、年収、家族構成、口座番号、クレジットカード番号、マイナンバー、健康保険証の記号番号、学歴、職歴、本人確認書類の画像、プロフィール写真、アンケートの回答、SNSへの投稿。</p>
+<p>この層には特徴がある。<strong>本人が自覚している</strong>。そして<strong>本人が内容を知っている</strong>。だから「何が漏れたか」を本人が理解できる。制度の設計も、主にこの層を前提にしている。同意を取る、利用目的を通知する、開示請求に応じる——どれも「本人が自分の情報の内容を知っている」ことを前提にした仕組みである。</p>
+<h3>第2層：あなたの行動から発生した情報（Observed）</h3>
+<p>あなたが入力したわけではないが、あなたが何かをした結果として機械が記録したもの。</p>
+<p>購買履歴、閲覧履歴、検索履歴、滞在時間、クリック位置、スクロール速度、位置情報の時系列、Wi-Fiアクセスポイントの接続履歴、Bluetoothビーコンの検知履歴、改札の通過記録、ETCの通過記録、監視カメラの映像、スマートメーターの30分値、アプリの起動時刻、端末の識別子、IPアドレス、ブラウザのフィンガープリント（画面解像度・フォント・言語設定・GPUの組み合わせ）、通話の発信先と時刻（通話内容ではなく「誰といつ何分話したか」）。</p>
+<p>この層の特徴は、<strong>本人がその存在をおおむね知らず、内容をまったく知らない</strong>ことである。あなたは自分の購買履歴を暗記していない。先月どのサイトを何時に見たかを覚えていない。だから「自分のどの行動情報が漏れたか」を本人が判断できない。</p>
+<p>量も第1層とは桁が違う。第1層はせいぜい数十項目だが、第2層はひとりにつき1日で数千〜数万件の記録が生まれる。</p>
+<h3>第3層：あなたについて推測された情報（Inferred）</h3>
+<p>第1層と第2層を材料に、統計モデルやAIが生成した「あなたについての予測」。</p>
+<p>推定年収、推定年齢、推定性別、推定世帯構成、推定居住形態（持ち家か賃貸か）、推定車保有、推定子どもの有無と年齢、推定健康状態、推定妊娠段階、推定転職意欲、推定支払い能力、推定解約確率、推定政治的傾向、推定宗教的関心、推定性的指向、推定精神状態、推定購買意欲スコア、推定詐欺リスクスコア、推定信用スコア。</p>
+<p>この層の特徴は3つある。</p>
+<ol>
+<li><strong>本人が渡していない。</strong></li>
+<li><strong>本人が存在を知らない場合がほとんどである。</strong></li>
+<li><strong>そして——事実である必要がない。</strong></li>
+</ol>
+<p>ここが決定的に重要である。第1層と第2層は、正しいか間違っているかを検証できる。住所が違っていれば訂正できる。購買履歴が他人のものなら消せる。しかし第3層は「推測」なので、間違っていても「間違い」とは言いにくい。推定年収800万円という値は、あなたの実年収が400万円であっても、モデルの出力としては「間違い」ではなく「予測誤差」である。</p>
+<p>そして、第3層があなたの扱いを決める。広告の出し方、与信の可否、保険料の見積もり、採用の選考順位、問い合わせ窓口での優先度。あなたが知らない、あなたが渡していない、事実かどうかも定かでない数値が、あなたの現実を変える。</p>
+<h2>1-2　なぜ3層に分ける必要があるのか</h2>
+<p>この区別をしないと、議論が噛み合わなくなるからである。</p>
+<p>「個人情報を守る」と言うとき、多くの人は第1層を想像する。パスワードを強くする、本人確認を厳しくする、紙を鍵のかかる棚に入れる。これは第1層にはよく効く。</p>
+<p>しかし第2層は、守りようがない。あなたが改札を通れば記録が生まれる。これを「守る」には、改札を通らないか、記録を取らせないかしかない。個人の努力でできることはほとんどない。</p>
+<p>第3層はさらに厄介である。守るべき対象が、収集時点では存在しない。生成された瞬間に存在し、生成した事業者の中にだけある。本人には見えない。だから「第3層を守る」という言い方自体が成立しにくい。できるのは「生成させない」か「生成されたものの使い方を縛る」かである。</p>
+<p><strong>制度が第1層を中心に設計され、実害が第2層・第3層で起きている。</strong> これが今の個人情報問題の構造的なズレだと、私は考える。これは私自身の分析であり、どこかの公的文書の結論ではない。</p>
+<h2>1-3　情報の「価値」は、取り替えられるかどうかで決まる</h2>
+<p>犯罪者にとっての価値、企業にとっての価値、本人にとっての損害——これらは一致しない。市場価格の高さと、本人の被害の大きさは別物である。</p>
+<p>私が整理軸として提案したいのは、<strong>「取り替えられるか」</strong>である。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>情報</th>
+<th>取り替えられるか</th>
+<th>漏れたときの本人の対処</th>
+<th>本質的な危険度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パスワード</td>
+<td><strong>取り替えられる</strong></td>
+<td>変更する</td>
+<td>低（すぐ変えれば終わる）</td>
+</tr>
+<tr>
+<td>クレジットカード番号</td>
+<td><strong>取り替えられる</strong></td>
+<td>再発行する</td>
+<td>低〜中（不正利用は補償制度がある）</td>
+</tr>
+<tr>
+<td>電話番号</td>
+<td>取り替えられる（手間は大きい）</td>
+<td>変更する</td>
+<td>中</td>
+</tr>
+<tr>
+<td>メールアドレス</td>
+<td>取り替えられる（手間は大きい）</td>
+<td>変更する</td>
+<td>中</td>
+</tr>
+<tr>
+<td>口座番号</td>
+<td>取り替えられる（かなり手間）</td>
+<td>変更する</td>
+<td>中</td>
+</tr>
+<tr>
+<td>住所</td>
+<td>取り替えられる（引っ越しが必要）</td>
+<td>引っ越す</td>
+<td>中〜高</td>
+</tr>
+<tr>
+<td>氏名</td>
+<td>ほぼ取り替えられない</td>
+<td>—</td>
+<td>高</td>
+</tr>
+<tr>
+<td>生年月日</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td>高</td>
+</tr>
+<tr>
+<td>マイナンバー</td>
+<td>原則取り替えられない（不正利用時等の例外あり）</td>
+<td>—</td>
+<td>高</td>
+</tr>
+<tr>
+<td>顔</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td><strong>最高</strong></td>
+</tr>
+<tr>
+<td>声</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td><strong>最高</strong></td>
+</tr>
+<tr>
+<td>指紋・虹彩</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td><strong>最高</strong></td>
+</tr>
+<tr>
+<td>既往歴・病歴</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td><strong>最高</strong></td>
+</tr>
+<tr>
+<td>家族関係</td>
+<td><strong>取り替えられない</strong></td>
+<td>—</td>
+<td>高</td>
+</tr>
+<tr>
+<td>過去の行動履歴</td>
+<td><strong>取り替えられない</strong>（過去は変えられない）</td>
+<td>—</td>
+<td>高</td>
+</tr>
+</tbody>
+</table></div>
+<p>この表から読めることが2つある。</p>
+<p><strong>ひとつ。</strong> 世間が最も恐れる「カード番号が漏れた」は、取り替えられる側にある。被害額は大きくても、本人の人生に恒久的には残らない。</p>
+<p><strong>ふたつ。</strong> 世間があまり恐れていない「顔が漏れた」は、取り替えられない側にある。顔はパスワードと違って変更できない。しかも顔は隠して歩くものではないので、「漏れないように管理する」という考え方がそもそも成立しにくい。</p>
+<p>生体情報が特別扱いされるべき理由は、「センシティブだから」ではなく、<strong>一度漏れたら本人が永久に対処できないから</strong>である。これは感情の問題ではなく、可逆性の問題である。令和8年改正個人情報保護法が顔特徴データ等に新しい規律を設けたのは、この可逆性の問題への対応と理解できる（第5章）。</p>
+<h2>1-4　そして、価値は結合で跳ね上がる</h2>
+<p>単体の情報の価値は、実は低い。</p>
+<ul>
+<li>電話番号だけ → 無言電話か、せいぜい営業電話</li>
+<li>氏名だけ → 何もできない</li>
+<li>「〇〇を買った」だけ → 誰のことか分からない</li>
+</ul>
+<p>ところが結合すると、こうなる。</p>
+<ul>
+<li>氏名＋電話番号 → 名指しの営業電話</li>
+<li>＋住所 → 郵送、訪問</li>
+<li>＋生年月日 → 本人確認の突破、年齢を使った話法</li>
+<li>＋家族構成 → 「お子さんの件で」という切り出し</li>
+<li>＋購買履歴 → 「先日お買い上げいただいた商品の件で」という、信じられてしまう切り出し</li>
+<li>＋資産に関する推測 → ターゲットの選別。被害額の最大化</li>
+</ul>
+<p>特殊詐欺の成功率を決めるのは、電話を何件かけたかではなく、<strong>「この人は騙せる確率が高い」という選別がどれだけ正確か</strong>である。選別の精度は、結合された情報の数で決まる。</p>
+<p>だから序章で述べた軸に戻る。危険なのは、ひとつの情報が漏れることではない。<strong>別々の場所から漏れた情報が、どこかで合わさること</strong>である。そして、合わさる場所を制度はほとんど見ていない。</p>
+<hr />
+<h1>第2章　歴史——個人情報は、いつから「集められるもの」になったのか</h1>
+<p>この章で伝えたいのは、個人情報の収集は<strong>インターネットとともに始まったのではない</strong>ということである。集める側の動機は、何百年も前からほとんど変わっていない。変わったのは、集める<strong>コスト</strong>と、結合する<strong>速度</strong>である。</p>
+<h2>2-1　国家が人を数える：戸籍と人別改</h2>
+<p>人を名前で把握し、記録に残す仕組みは、古くから国家の基本機能だった。徴税、徴兵、治安維持のためである。</p>
+<p>日本の近世では、寺請制度と結びついた<strong>宗門人別改帳</strong>が、村ごとに人の所属と移動を記録した。目的はもともと宗教統制だったが、結果として人口・世帯・移動の台帳として機能した。（歴史的事実。ただし地域・時期により運用差が大きい。）</p>
+<p>明治に入り、1872年（明治5年）に全国統一の戸籍が編製された。干支から<strong>壬申戸籍</strong>と呼ばれる。ここで重要なのは、その後の扱いである。壬申戸籍には、族称のほか、身分差別につながる記載が含まれていた。そのため<strong>1968年に閲覧が禁止され、法務局で封印・保管される措置がとられた</strong>。（歴史的事実。法務省の措置として広く記録されている。一次資料の原文には今回到達していない。）</p>
+<p>この事例が今日の議論に示唆することは大きい。</p>
+<blockquote>
+<p><strong>一度集めた情報が、時代が変わって「持っていること自体が害になる情報」に変わることがある。そのとき国家ができたのは、消すことではなく、封印することだった。</strong></p>
+</blockquote>
+<p>公文書を廃棄することにも別の問題があった（歴史の検証可能性を失う）。つまり、集めてしまった情報は、消すことも残すことも、どちらも代償を伴う。これは、現代のデータベースに残る推測データにもそのまま当てはまる問題である。</p>
+<h2>2-2　民間が人を評価する：信用調査</h2>
+<p>19世紀、商取引の広域化に伴って、取引相手の支払い能力を調べる<strong>信用調査業</strong>が欧米で生まれた。日本でも明治期に興信所が成立する。</p>
+<p>調べる内容は、資産、借金、商売の評判、そして——しばしば——私生活、家族、出自、交友関係にまで及んだ。現代の基準から見れば、明らかに偏見と差別を含む記録が「信用情報」として流通していた時期がある。</p>
+<p>米国では1970年、<strong>公正信用報告法（FCRA：Fair Credit Reporting Act）</strong> が成立した。信用報告の正確性と、本人の閲覧・訂正の権利を定めた法律で、現在の米国の消費者データ規制の基礎になっている。FCRAが「本人は自分について何が報告されているかを見られるべきだ」という原則を立てたことは、後の個人情報保護の考え方——開示請求権——につながっていく。（歴史的事実。）</p>
+<h2>2-3　国際原則：OECD8原則（1980年）</h2>
+<p>コンピュータで大量の個人データを扱えるようになった1970年代、各国で「データ保護」の法整備が始まる。国によって基準がばらばらだと国際的なデータの流れが止まるため、1980年、OECDが<strong>プライバシー保護と個人データの国際流通についてのガイドライン</strong>を採択した。いわゆる<strong>OECD8原則</strong>である。</p>
+<ol>
+<li>収集制限の原則</li>
+<li>データ内容の原則（正確性）</li>
+<li>目的明確化の原則</li>
+<li>利用制限の原則</li>
+<li>安全保護の原則</li>
+<li>公開の原則</li>
+<li>個人参加の原則</li>
+<li>責任の原則</li>
+</ol>
+<p>40年以上前の原則だが、今読んでも古びていない。むしろ、第4章で行う「8観点比較」のほとんどは、この8原則の言い換えである。<strong>原則は1980年にすでに出揃っていた。問題は、原則を守るコストが、破るコストより常に高いことだった。</strong></p>
+<h2>2-4　日本の「名簿文化」と、2014年の転換点</h2>
+<p>日本には独特の事情があった。<strong>名簿が当たり前に流通する社会</strong>だったことである。</p>
+<p>学校の卒業名簿、同窓会名簿、PTA名簿、町内会名簿、社員名簿、業界団体の会員名簿。かつては、住所と電話番号が載った名簿が、ごく普通に印刷・配布されていた。電話帳には個人宅の番号が載っていた。こうした名簿が古書店や名簿業者に流れ、ダイレクトメールや営業電話に使われることも、長く半ば公然の慣行だった。</p>
+<p>2003年に個人情報保護法が成立し（2005年全面施行）、名簿の扱いは変わり始めた。しかし大きな転換点は、<strong>2014年に発覚した大手教育事業者の大規模な顧客情報流出事件</strong>だった。委託先の従業員が顧客データを持ち出し、名簿業者に売却し、それが別の事業者の営業に使われた。</p>
+<p>この事件で社会が知ったのは、次のことだった。</p>
+<ul>
+<li><strong>内部の人間が持ち出した</strong>（外部からの攻撃ではない）</li>
+<li><strong>委託先の人間だった</strong>（本人が情報を渡した会社の社員ではない）</li>
+<li><strong>名簿業者を経由して転売された</strong>（流通経路が存在した）</li>
+<li><strong>買った側は、出所が違法だと知らなかった、と主張できた</strong></li>
+</ul>
+<p>この事件を受けた<strong>2015年の個人情報保護法改正</strong>（2017年全面施行）では、第三者提供時の<strong>記録の作成・保存義務</strong>（いわゆるトレーサビリティ）、不正な利益を図る目的での<strong>個人情報データベース等の提供罪</strong>の新設、オプトアウトによる第三者提供の届出制、そして独立した監督機関である<strong>個人情報保護委員会</strong>の設置（2016年）が盛り込まれた。（制度の事実。）</p>
+<p>「どこから来た名簿か記録せよ」という義務は、名簿流通を直接止めるものではない。しかし「出所を知らなかった」という言い逃れを難しくした。この発想は、第10章で扱う2025年の名簿屋への処分にもつながっている。</p>
+<h2>2-5　Cookieとスマートフォン：第2層の爆発</h2>
+<p>1994年、Webブラウザに<strong>Cookie</strong>という仕組みが実装された。もともとは、買い物かごの中身を覚えておくための技術だった。しかし、複数のサイトにまたがって同じ利用者を識別できる「サードパーティCookie」が使われるようになり、<strong>あなたがどのサイトを見て回ったかを、あなたが訪れていない第三者が記録できる</strong>ようになった。</p>
+<p>これが第1章で述べた<strong>第2層（行動から発生した情報）</strong>の始まりである。</p>
+<p>2007年以降のスマートフォン普及で、第2層は爆発的に増えた。スマートフォンは常に持ち歩かれ、常に電源が入り、常に位置を知っている。アプリはそれぞれ独自の識別子と位置情報を取得でき、その一部は広告配信の仕組みを通じて外部へ送られた。</p>
+<p>ここで構造が決定的に変わった。<strong>第1層の時代、情報を集めるには本人に書かせる必要があった。第2層の時代、本人は何も書かなくてよい。持ち歩くだけでよい。</strong></p>
+<h2>2-6　AI：第3層の量産</h2>
+<p>そして2020年代、第3層（推測された情報）が量産の段階に入った。</p>
+<p>推測そのものは昔からあった。保険の数理、信用スコア、マーケティングのセグメント。しかし、それらは特定の目的のために、限られた変数で作られていた。機械学習と大規模言語モデルの普及で、<strong>大量の第2層データから、目的を限らずに、あらゆる属性を推定する</strong>ことが安くなった。</p>
+<p>さらに、生成AIは<strong>存在しない情報を、あたかも存在するかのように生成できる</strong>。ある人物について質問されたAIが、もっともらしい経歴や発言を作り出すことがある。これは「漏えい」でも「収集」でもない、新しい種類の個人情報問題である。第12章で扱う。</p>
+<h2>2-7　歴史から読み取れること</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時代</th>
+<th>主な層</th>
+<th>集めるコスト</th>
+<th>結合の速度</th>
+<th>主な担い手</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近世〜近代</td>
+<td>第1層</td>
+<td>非常に高い（人手で記録）</td>
+<td>非常に遅い（紙の照合）</td>
+<td>国家</td>
+</tr>
+<tr>
+<td>20世紀</td>
+<td>第1層</td>
+<td>高い</td>
+<td>遅い</td>
+<td>国家・信用調査業・名簿業</td>
+</tr>
+<tr>
+<td>1990〜2000年代</td>
+<td>第1層＋第2層</td>
+<td>下がり始める</td>
+<td>速くなる</td>
+<td>加えてネット企業</td>
+</tr>
+<tr>
+<td>2010年代</td>
+<td>第2層が中心</td>
+<td>ほぼゼロ</td>
+<td>非常に速い</td>
+<td>加えて広告技術・データ仲介</td>
+</tr>
+<tr>
+<td>2020年代</td>
+<td>第3層が急増</td>
+<td>ほぼゼロ</td>
+<td>ほぼリアルタイム</td>
+<td>加えてAI事業者</td>
+</tr>
+</tbody>
+</table></div>
+<p>動機（徴税、治安、与信、販売）はほとんど変わっていない。変わったのは、<strong>集めるコストがゼロに近づき、結合がリアルタイムになった</strong>ことである。</p>
+<p>そして、制度の主な関心は、まだ第1層に向いている。</p>
+<hr />
+<h1>第3章　情報はどうやって集まるのか——本人が渡していない7つの経路</h1>
+<h2>3-1　本人が「渡した」場合だけではない</h2>
+<p>あなたの情報が誰かの手元にあるとき、その経路は大きく7つに分けられる。上から順に、本人の自覚が薄くなる。</p>
+<p><strong>経路1：直接入力・提出</strong>
+申込書、会員登録、アンケート、本人確認書類の提出。本人の自覚は最も強い。</p>
+<p><strong>経路2：サービス利用に伴う自動記録</strong>
+購買履歴、ポイントカード、交通系ICカード、アプリの利用ログ。本人は「使った」自覚はあるが、「記録された」自覚は薄い。</p>
+<p><strong>経路3：第三者による入力</strong>
+あなたが登録していないサービスに、あなたの情報が載っている。典型は、<strong>知人がスマートフォンの連絡先を同期した</strong>場合である。あなたは何もしていないが、あなたの氏名・電話番号・メールアドレスは、知人が使うアプリの事業者のサーバーに送られている。同窓会名簿、PTA名簿、職場の緊急連絡網も同じ構造である。<strong>他人の善意や都合で、あなたの情報が外に出る。</strong></p>
+<p><strong>経路4：委託先・再委託先</strong>
+あなたが情報を渡したのはA社だが、A社はシステム運用をB社に、データ入力をC社に、印刷・発送をD社に委託している。あなたの情報はB・C・Dにもある。本人はB・C・Dの存在を知らない。</p>
+<p><strong>経路5：公開情報の収集（スクレイピング）</strong>
+SNSの公開プロフィール、公開投稿、公開写真、登記簿、官報、ニュース記事。ひとつひとつは「公開」されているが、それを機械的に大量に集めて結合すると、本人が公開したつもりのない人物像ができあがる。</p>
+<p><strong>経路6：データの売買・仲介</strong>
+データブローカーと呼ばれる事業者が、複数の出所から集めたデータを結合し、販売する。日本では名簿業者がこれに近い。本人はその存在も、取引の内容も知らない（第7章）。</p>
+<p><strong>経路7：推測による生成</strong>
+経路1〜6の情報から、本人について新しい情報が作られる（第3層）。<strong>本人から一度も集めていない情報が、存在するようになる。</strong></p>
+<h2>3-2　同意制度は機能しているか</h2>
+<p>経路1と2は、建前上「本人の同意」に基づいている。利用規約とプライバシーポリシーに同意したからである。</p>
+<p>では、同意は機能しているのか。</p>
+<p>調査の過程で確認した限り、この問いに「機能している」と答える公的報告書や研究は見つからなかった。代わりに見えてきたのは、同意制度の限界を、<strong>制度の側が認め始めている</strong>という事実である。</p>
+<p>その最も明確な証拠が、2026年に日本とEUで同時に起きたことである。日本は令和8年改正で、統計作成目的等における同意取得義務の免除や、同意取得の例外要件の緩和を盛り込んだ。EUは Digital Omnibus 案で、AIの学習を GDPR の「正当な利益（legitimate interest）」で行えるようにする条文案を示した。どちらも、<strong>「同意を取らなくてもよい場面を広げる」</strong>方向の改正である（第5章・第6章・第12章）。</p>
+<p>これは「同意を取っても実質がないなら、同意以外の歯止めに移ろう」という判断とも読めるし、「同意の取得が事業の負担なので、緩めよう」という判断とも読める。私は両方の側面があると考えるが、どちらの側面が強いかは、改正の運用が始まってみないと判断できない。ここは<strong>見解</strong>として留めておく。</p>
+<p>ただし、ひとつだけ強く言えることがある。</p>
+<blockquote>
+<p><strong>同意を外すなら、後から確認できる仕組みを外してはならない。</strong></p>
+</blockquote>
+<p>同意は、事前の歯止めだった。それが形骸化していたのは事実だとしても、外すのであれば、事後の歯止め——記録、監査、開示請求、苦情への対応、違反時の制裁——は、むしろ強めなければ釣り合わない。令和8年改正が課徴金制度と団体による差止請求を同時に導入したのは、この釣り合いを取ろうとした設計として読める。それが実際に釣り合うかどうかは、施行後の執行件数で判断するしかない（第5章）。</p>
+<h2>3-3　「本人が読まない同意」の構造</h2>
+<p>同意制度の限界は、本人の怠慢ではなく、構造の問題である。</p>
+<ul>
+<li>1人が1年間に同意する利用規約の数は、数十〜数百に及ぶ。すべてを読むのは現実的に不可能である。</li>
+<li>読んでも、第4経路（委託先）や第6経路（データ仲介）の具体的な相手は書かれていないことが多い。「業務委託先」「提携先」とだけ書いてある。</li>
+<li>拒否すると、サービスが使えない。多くの場合、選択肢は「同意する」か「使わない」の二択である。</li>
+<li>そして、同意の時点では存在しない第3層の情報（推測）について、同意することはそもそもできない。</li>
+</ul>
+<p>つまり、本人が完璧に読み、完璧に理解したとしても、<strong>同意の時点で判断材料が揃っていない</strong>。これが、同意制度の本質的な限界である。</p>
+<hr />
+<h1>第4章　誰が、何のために欲しがるのか——10の立場×8つの観点</h1>
+<h2>4-1　比較の方法</h2>
+<p>ここで、指示された10の立場を、指示された8つの観点で比較する。</p>
+<p><strong>10の立場：</strong> ①行政 ②善意・公益（医療研究、災害支援、福祉など） ③正当な企業活動（取引・契約の履行に必要な範囲） ④商業利用（広告・マーケティング・データ販売） ⑤個人・家族・地域の善意（名簿、連絡網、見守り） ⑥悪意ある個人（ストーカー、嫌がらせ、のぞき見） ⑦犯罪集団（特殊詐欺、なりすまし、恐喝） ⑧国家安全保障（情報機関、外国政府） ⑨グレーゾーン（名簿業者、調査業、一部のデータブローカー） ⑩AI（学習データ、推論、生成）</p>
+<p><strong>8つの観点：</strong> 集める目的／取得方法／本人の理解／利用範囲／保管期間／二次利用／拒否できるか／責任の所在</p>
+<p>表の各セルは、<strong>典型的な場合の一般的傾向</strong>を示した私の整理である。個別の組織や事業者がこの通りだという意味ではない。分析であって、事実の記録ではない。</p>
+<h2>4-2　比較表（前半：目的・方法・理解・範囲）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>立場</th>
+<th>集める目的</th>
+<th>取得方法</th>
+<th>本人の理解</th>
+<th>利用範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①行政</td>
+<td>徴税、給付、住民サービス、統計、治安</td>
+<td>法令に基づく届出・申請、他機関からの照会</td>
+<td>中（届け出た自覚はあるが、機関間の連携は知らない）</td>
+<td>法令で定められた範囲。ただし機関間連携で広がる</td>
+</tr>
+<tr>
+<td>②善意・公益</td>
+<td>医療の向上、研究、災害時の救援、福祉の把握</td>
+<td>診療記録、研究参加同意、要支援者名簿</td>
+<td>低〜中（診療の自覚はあるが、研究利用は知らないことが多い）</td>
+<td>研究計画・事業目的の範囲。ただし時間とともに広がりやすい</td>
+</tr>
+<tr>
+<td>③正当な企業活動</td>
+<td>契約の履行、配送、決済、本人確認、アフターサービス</td>
+<td>申込時の入力、取引記録</td>
+<td>中〜高（取引に必要と理解しやすい）</td>
+<td>取引の範囲。ただし「関連サービスの案内」に広がる</td>
+</tr>
+<tr>
+<td>④商業利用</td>
+<td>広告の最適化、販売促進、データ販売による収益</td>
+<td>行動の自動記録、Cookie、SDK、他社からの購入</td>
+<td><strong>低</strong>（ほぼ自覚がない）</td>
+<td>広い。目的が抽象的（「サービス向上のため」）</td>
+</tr>
+<tr>
+<td>⑤個人・家族・地域の善意</td>
+<td>連絡、見守り、親睦、緊急時の安否確認</td>
+<td>名簿の作成、連絡先の交換、SNSでの共有</td>
+<td>中（作った自覚はあるが、外への流出は想定していない）</td>
+<td>本来は狭い。だが管理が緩く、外へ出やすい</td>
+</tr>
+<tr>
+<td>⑥悪意ある個人</td>
+<td>付きまとい、嫌がらせ、支配、のぞき見</td>
+<td>SNSの観察、位置共有の悪用、知人からの聞き出し、ゴミ</td>
+<td><strong>なし</strong>（気づかれないことが目的）</td>
+<td>特定の1人に集中</td>
+</tr>
+<tr>
+<td>⑦犯罪集団</td>
+<td>詐欺、なりすまし、恐喝、不正送金</td>
+<td>名簿の購入、漏えいデータの入手、フィッシング、侵入</td>
+<td><strong>なし</strong></td>
+<td>金銭化できる限り無制限</td>
+</tr>
+<tr>
+<td>⑧国家安全保障</td>
+<td>防諜、テロ対策、外国の影響工作、外交上の優位</td>
+<td>法的権限に基づく取得、通信傍受、外国によるサイバー攻撃・大量取得</td>
+<td><strong>なし</strong>（秘密が前提）</td>
+<td>安全保障の名目で広くなりうる</td>
+</tr>
+<tr>
+<td>⑨グレーゾーン</td>
+<td>名簿の販売、調査の受託、データの再販</td>
+<td>名簿の買い集め、公開情報の収集、他社からの購入</td>
+<td><strong>なし</strong>（存在自体を知らない）</td>
+<td>買い手次第。出所と使途の追跡が難しい</td>
+</tr>
+<tr>
+<td>⑩AI</td>
+<td>学習による性能向上、推論・生成サービスの提供</td>
+<td>公開情報のスクレイピング、利用者の入力、ライセンス購入</td>
+<td><strong>低</strong>（学習に使われた自覚はほぼない）</td>
+<td>モデルの中に溶け込み、範囲を定義しにくい</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4-3　比較表（後半：保管・二次利用・拒否・責任）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>立場</th>
+<th>保管期間</th>
+<th>二次利用</th>
+<th>拒否できるか</th>
+<th>責任の所在</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①行政</td>
+<td>法令で定められた期間。長期・永年もある</td>
+<td>法令に基づく範囲（統計、他機関連携）</td>
+<td><strong>ほぼできない</strong>（届出義務がある）</td>
+<td><strong>明確</strong>（行政機関・首長。情報公開・開示請求・審査請求の制度がある）</td>
+</tr>
+<tr>
+<td>②善意・公益</td>
+<td>研究期間・診療録の保存期間など。長期化しやすい</td>
+<td>別の研究への転用が起きやすい</td>
+<td>一部できる（研究参加の拒否、オプトアウト）</td>
+<td>比較的明確（倫理審査、研究責任者）</td>
+</tr>
+<tr>
+<td>③正当な企業活動</td>
+<td>契約期間＋法定保存期間。ただし実際には「念のため」残りやすい</td>
+<td>「関連サービス」への転用</td>
+<td>取引をやめれば可能。ただし取引中は難しい</td>
+<td>明確（契約当事者）。ただし<strong>委託先で漏れると責任が分散する</strong></td>
+</tr>
+<tr>
+<td>④商業利用</td>
+<td><strong>不明確</strong>（「必要な期間」）</td>
+<td><strong>中核</strong>（二次利用が事業そのもの）</td>
+<td>形式的には可能（オプトアウト設定）。実際は難しい</td>
+<td><strong>見えにくい</strong>（データが複数社を経由し、誰が持っているか分からない）</td>
+</tr>
+<tr>
+<td>⑤個人・家族・地域の善意</td>
+<td><strong>無期限</strong>（誰も捨てない）</td>
+<td>想定外の利用が起きやすい（名簿の転売）</td>
+<td>人間関係上、断りにくい</td>
+<td><strong>曖昧</strong>（作成者が個人・任意団体で、管理責任者がいない）</td>
+</tr>
+<tr>
+<td>⑥悪意ある個人</td>
+<td>執着が続く限り</td>
+<td>目的そのもの</td>
+<td><strong>できない</strong></td>
+<td>加害者個人。ただし発覚しにくい</td>
+</tr>
+<tr>
+<td>⑦犯罪集団</td>
+<td>換金できる限り。転売で永続化</td>
+<td>転売・再利用が前提</td>
+<td><strong>できない</strong></td>
+<td>犯罪者。ただし<strong>海外拠点で追跡困難</strong></td>
+</tr>
+<tr>
+<td>⑧国家安全保障</td>
+<td>秘密</td>
+<td>秘密</td>
+<td><strong>できない</strong></td>
+<td>国内機関は理論上明確だが検証困難。外国政府の場合は<strong>事実上誰も問えない</strong></td>
+</tr>
+<tr>
+<td>⑨グレーゾーン</td>
+<td>不明</td>
+<td>再販が事業そのもの</td>
+<td>理論上は削除請求できるが、<strong>どこにあるかを知らないので請求できない</strong></td>
+<td><strong>見えにくい</strong>（届出制はあるが、全体像が分からない）</td>
+</tr>
+<tr>
+<td>⑩AI</td>
+<td><strong>定義しにくい</strong>（モデルの重みに溶けている）</td>
+<td>生成・推論すべてが二次利用</td>
+<td>オプトアウトの仕組みは一部あるが、<strong>学習済みのものは事実上取り消せない</strong></td>
+<td><strong>未確立</strong>（学習者、提供者、利用者のどこが負うか議論中）</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4-4　8観点を2つの軸に縮めると、3つのグループが現れる</h2>
+<p>8観点のうち、本人にとって最も切実なのは2つだと考える。</p>
+<ul>
+<li><strong>拒否できるか</strong>（入口の選択権）</li>
+<li><strong>責任の所在は明確か</strong>（出口の救済）</li>
+</ul>
+<p>この2軸で10の立場を配置すると、3つのグループに分かれる。</p>
+<h3>グループA：拒否できないが、責任は明確</h3>
+<p><strong>①行政、②善意・公益（の一部）</strong></p>
+<p>本人に拒否の自由はない。税の申告を拒めば罰則がある。しかし、何か起きたときに誰に責任を問えばよいかははっきりしている。開示請求ができ、苦情を申し立てられ、報道され、議会で追及される。</p>
+<p>このグループの課題は、<strong>責任が明確なぶん、漏えいが表に出る</strong>ことである。第8章で見るように、行政機関等の漏えい報告件数は増えている。これは行政が劣化しているというよりも、報告されるようになったと読む余地がある。</p>
+<h3>グループB：拒否できる（ことになっている）が、責任が見えにくい</h3>
+<p><strong>③正当な企業活動（委託先経由の場合）、④商業利用、⑩AI</strong></p>
+<p>建前上、本人はサービスを使わない自由、オプトアウトする自由を持つ。しかし実際には、情報が委託先・提携先・広告技術事業者・データ仲介業者を経由して広がり、<strong>何か起きたときに、誰が持っていたのか分からない</strong>。</p>
+<p>このグループの課題は、拒否が<strong>形式的</strong>であることと、責任が<strong>分散</strong>していることである。</p>
+<h3>グループC：拒否もできず、責任も誰も負っていない</h3>
+<p><strong>⑤個人・家族・地域の善意、⑥悪意ある個人、⑦犯罪集団、⑧国家安全保障（外国政府）、⑨グレーゾーン</strong></p>
+<p>ここには、悪意ある者と並んで、<strong>⑤善意の個人・家族・地域が入っている</strong>。これが本章で最も伝えたい点である。</p>
+<p>PTA名簿、自治会名簿、同窓会名簿、マンションの居住者名簿、親族のLINEグループ。作った人に悪意はない。しかし、</p>
+<ul>
+<li>載る人は断りにくい（人間関係上）</li>
+<li>誰も捨てない（無期限保管）</li>
+<li>管理責任者がいない（任意団体、個人）</li>
+<li>流出しても報告義務の対象外になりやすく、気づかれない</li>
+</ul>
+<p>という点で、構造上は<strong>グループCに属する</strong>。そして第10章で示すように、個人情報保護委員会自身が、名簿流出の注意喚起の宛先として、<strong>自治会・同窓会・PTA・マンション管理組合</strong>を名指ししている。</p>
+<blockquote>
+<p><strong>善意の収集は、悪意の収集と同じグループに入りうる。違いは意図だけで、構造は同じである。</strong></p>
+</blockquote>
+<p>これが、序章で「意図を軸にすると見誤る」と述べた理由の、最も具体的な姿である。</p>
+<h2>4-5　誰の利益になるのか</h2>
+<p>中心の問いの最後の部分「それは誰の利益になるのか」について、私の整理を示す。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>立場</th>
+<th>主に利益を得る者</th>
+<th>本人も利益を得るか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①行政</td>
+<td>社会全体（公平な課税、適切な給付）</td>
+<td><strong>得る</strong>（給付、サービス）。ただし監視の側面もある</td>
+</tr>
+<tr>
+<td>②善意・公益</td>
+<td>将来の患者、被災者、社会全体</td>
+<td>得る場合がある（医療の向上）。直接の利益は小さいことが多い</td>
+</tr>
+<tr>
+<td>③正当な企業活動</td>
+<td>企業と本人の双方</td>
+<td><strong>得る</strong>（取引が成立する）</td>
+</tr>
+<tr>
+<td>④商業利用</td>
+<td>広告主、プラットフォーム、データ仲介業者</td>
+<td><strong>部分的に得る</strong>（無料サービス、関連性の高い広告）。ただし対価の釣り合いは本人に見えない</td>
+</tr>
+<tr>
+<td>⑤個人・家族・地域</td>
+<td>共同体の構成員</td>
+<td>得る（連絡、安否確認）。だが流出時の損害は本人だけが負う</td>
+</tr>
+<tr>
+<td>⑥悪意ある個人</td>
+<td>加害者のみ</td>
+<td><strong>得ない</strong>（損害のみ）</td>
+</tr>
+<tr>
+<td>⑦犯罪集団</td>
+<td>犯罪者のみ</td>
+<td><strong>得ない</strong></td>
+</tr>
+<tr>
+<td>⑧国家安全保障</td>
+<td>国家（国内機関なら国民全体と主張されうる）</td>
+<td>国内なら間接的に得ると主張されうる。外国なら得ない</td>
+</tr>
+<tr>
+<td>⑨グレーゾーン</td>
+<td>業者と買い手</td>
+<td><strong>ほぼ得ない</strong></td>
+</tr>
+<tr>
+<td>⑩AI</td>
+<td>AI事業者と利用者全体</td>
+<td>間接的に得る（AIサービスの向上）。ただし個人単位の対価はない</td>
+</tr>
+</tbody>
+</table></div>
+<p>ひとつの傾向が読み取れる。<strong>本人が利益を得る度合いと、本人が理解している度合いは、おおむね比例している。</strong> 本人がよく理解している①③は本人の利益も大きく、本人がほとんど理解していない④⑨⑩は本人の利益が小さいか見えない。</p>
+<p>これは偶然ではないと考える。本人が理解していれば、本人に利益のない収集は拒否されるからである。逆に言えば、<strong>本人の理解が低い領域ほど、本人に利益のない収集が残りやすい</strong>。</p>
+<hr />
+<h1>第5章　日本の制度——令和8年改正個人情報保護法</h1>
+<h2>5-1　改正の経緯（事実）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>日付</th>
+<th>出来事</th>
+<th>区分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-04-07</td>
+<td>改正法案 閣議決定・国会提出</td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2026-05-26</td>
+<td>衆議院可決</td>
+<td>事実</td>
+</tr>
+<tr>
+<td><strong>2026-07-10</strong></td>
+<td><strong>成立</strong></td>
+<td>事実</td>
+</tr>
+<tr>
+<td><strong>2026-07-17</strong></td>
+<td><strong>公布（令和8年法律第56号）</strong></td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2026-08</td>
+<td>個人情報保護委員会が政令・規則の全体像（案）を公表</td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2027-01-17</td>
+<td>罰則の一部が先行施行</td>
+<td>法定日程</td>
+</tr>
+<tr>
+<td>2027年3〜5月</td>
+<td>政令の公布予定</td>
+<td><strong>予定</strong>（当局発表の見通し）</td>
+</tr>
+<tr>
+<td>2028-07-16まで</td>
+<td>本体施行（公布から2年以内）</td>
+<td>法定期限。<strong>具体的な施行日は未確定</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>確認方法の注記：上記日程は、個人情報保護委員会の公表資料および国会審議の経過を報じた複数の資料で突き合わせた。改正法の条文全文（官報）には今回直接到達していない。条番号は委員会の概要資料の記載に基づく。</p>
+<p>つまり、<strong>2026年10月11日の基準日時点で、改正法は「成立・公布済み、本体未施行」</strong>である。記事で「改正法により〜が義務になった」と書くのは誤りで、「〜が義務になる（施行は2028年7月までに）」と書く必要がある。</p>
+<h2>5-2　12の改正項目</h2>
+<p>委員会の資料に基づき、主な改正項目を整理する。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>方向</th>
+<th>私の短評</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>統計作成等の目的による、同意取得義務の免除</td>
+<td><strong>緩和</strong></td>
+<td>統計の範囲の定義が要点。第3層（推測）の生成と区別できるかが焦点</td>
+</tr>
+<tr>
+<td>②</td>
+<td>同意取得の例外要件の緩和</td>
+<td><strong>緩和</strong></td>
+<td>①と並び、同意依存からの離脱の一歩</td>
+</tr>
+<tr>
+<td>③</td>
+<td>16歳未満の子どもに関する規律の明確化・厳格化</td>
+<td><strong>強化</strong></td>
+<td>法定代理人の関与。年齢確認の方法が実務上の難所</td>
+</tr>
+<tr>
+<td>④</td>
+<td>顔特徴データ等（特定生体個人情報）の規律新設</td>
+<td><strong>強化</strong></td>
+<td>第1章の「取り替えられない情報」への初の本格対応</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>委託を受けた事業者の規律整備</td>
+<td><strong>強化</strong></td>
+<td>第9章で見る「委託先が震源」問題への対応</td>
+</tr>
+<tr>
+<td>⑥</td>
+<td>漏えい等発生時の本人通知義務の緩和</td>
+<td><strong>緩和</strong></td>
+<td>誤送付1件ごとの通知負担への対応。ただし本人が知る機会が減る懸念</td>
+</tr>
+<tr>
+<td>⑦</td>
+<td><strong>課徴金制度の創設（第148条の3〜17）</strong></td>
+<td><strong>強化</strong></td>
+<td><strong>日本初</strong>。詳細は5-3</td>
+</tr>
+<tr>
+<td>⑧</td>
+<td>勧告・命令の柔軟化（第148条）</td>
+<td>強化</td>
+<td>段階を踏まずに命令できる余地</td>
+</tr>
+<tr>
+<td>⑨</td>
+<td>違反行為を補助等する第三者への措置（第148条の2）</td>
+<td><strong>強化</strong></td>
+<td>名簿の仲介・システム提供者への射程</td>
+</tr>
+<tr>
+<td>⑩</td>
+<td>罰則の強化（第176〜186条）</td>
+<td>強化</td>
+<td>一部が2027-01-17に先行施行</td>
+</tr>
+<tr>
+<td>⑪</td>
+<td>団体による差止請求</td>
+<td><strong>強化</strong></td>
+<td>消費者団体が本人に代わって止められる。被害者が自分で気づけない第2層・第3層問題に効く可能性</td>
+</tr>
+<tr>
+<td>⑫</td>
+<td>連絡可能個人関連情報</td>
+<td>規律新設</td>
+<td>氏名がなくても連絡できる情報（メールアドレス、端末IDなど）への対応と読める</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-3　課徴金制度——何が新しいのか</h2>
+<p>これまで日本の個人情報保護法には、違反した事業者からお金を取る仕組みが、事実上なかった。罰金はあったが、刑事手続きが必要で、ほとんど使われなかった。命令に従わない場合に初めて罰則がかかる二段構えで、委員会の主な手段は「指導・助言」だった。</p>
+<p>令和7年度年次報告によると、令和7年度の監督実績は、<strong>報告徴収19件、指導・助言455件、勧告2件、命令1件</strong>である。漏えい報告が年間約1万9千件ある中で、命令は1件。これは委員会の怠慢というより、<strong>制度上、命令まで行くことがほぼ想定されていなかった</strong>ことを示している（数値は事実、解釈は私の見解）。</p>
+<p>課徴金制度の骨格（委員会の資料に基づく）：</p>
+<ul>
+<li><strong>算定基準</strong>：違反行為によって得た財産上の利益に相当する額</li>
+<li><strong>対象</strong>：4つの類型の違反</li>
+<li><strong>規模要件</strong>：本人1,000人を基準とする</li>
+<li><strong>加算</strong>：再違反の場合は加算</li>
+<li><strong>減額</strong>：自主申告した場合は減額</li>
+</ul>
+<h3>私の見方：「得た利益」基準の強みと弱み</h3>
+<p><strong>強み</strong>：違反で儲けた分を吐き出させるので、「違反したほうが得」という計算が成り立たなくなる。名簿の不正販売や、同意のない第三者提供で利益を上げる事業者には効く。</p>
+<p><strong>弱み</strong>：<strong>利益を得ていない違反には、ほとんど効かない。</strong> 第8章で見るとおり、漏えいの大半は誤送付・誤交付・紛失・不正アクセスで、事業者は何も儲けていない。むしろ損をしている。「得た利益」基準では、これらに課徴金はかからない（またはかかっても小さい）。</p>
+<p>EUのGDPRは、全世界売上高の最大4%という<strong>売上高基準</strong>を採っている。これは安全管理義務違反（漏えい）にも大きな制裁を科せる。日本は利益基準を選んだ。</p>
+<p>つまり、</p>
+<blockquote>
+<p><strong>日本の課徴金は「悪用して儲けた者」を狙い撃ちにし、「守り方が杜撰だった者」にはあまり効かない設計である。</strong></p>
+</blockquote>
+<p>これは良し悪しではなく、<strong>設計思想の違い</strong>である。悪用を主に止めたいのか、管理の杜撰さを主に止めたいのか。日本の漏えいの実態（第8章）から見ると、後者の比重が大きいのに、制度は前者を狙っている——という見方もできるし、管理の杜撰さは課徴金ではなく命令と公表で対応すべきだという見方もできる。どちらが妥当かは、私には判断できない。両論を残す。</p>
+<h2>5-4　行政と民間：役割と責任の違い</h2>
+<p>2021年改正（2022〜2023年施行）で、それまで別々だった民間・国の行政機関・独立行政法人・地方公共団体の個人情報保護制度が、<strong>個人情報保護法に一本化</strong>された。監督も個人情報保護委員会に一元化された（地方公共団体の一部は経過措置あり）。</p>
+<p>一本化されたことで、行政機関等の漏えい件数が委員会の統計に表れるようになった。第8章で見る「行政機関等の漏えい報告の増加」は、この制度変更の影響を受けている可能性がある。<strong>件数の増加＝悪化と即断してはならない</strong>理由のひとつである。</p>
+<p>行政と民間の責任の違いは、第4章の整理どおりである。行政は<strong>拒否できないが責任は明確</strong>、民間は<strong>拒否できるが責任が分散しやすい</strong>。そして、行政も民間に業務を委託している。住民情報システムの運用、給付金の事務処理、コールセンター。<strong>行政の情報が民間委託先から漏れたとき、責任は「行政の明確さ」と「民間の分散」の両方を持つ。</strong> 2026年のIDCFクラウド事案（第9章）で、影響が<strong>495の企業・自治体</strong>に及んだと発表されたのは、この構造の典型である。</p>
+<hr />
+<h1>第6章　EUと米国——同じ問題への、正反対の答え</h1>
+<h2>6-1　EU：権利として守る</h2>
+<p>EUは、個人データの保護を<strong>基本権</strong>と位置づけている（EU基本権憲章第8条）。2018年5月に適用が始まった<strong>GDPR（一般データ保護規則）</strong>が中心である。</p>
+<p>GDPRの特徴：
+- データ処理には、6つの<strong>適法性の根拠</strong>（同意、契約、法的義務、生命の利益、公益、正当な利益）のいずれかが必要
+- 本人の権利が強い：アクセス権、訂正権、<strong>消去権（忘れられる権利）</strong>、データポータビリティ権、異議申立権、<strong>自動化された意思決定に服さない権利</strong>
+- 制裁金は<strong>全世界売上高の最大4%または2,000万ユーロの高い方</strong>
+- EU域外への移転は、十分性認定や標準契約条項などの条件付き</p>
+<h3>制裁金の実績（2026年10月時点で確認できた範囲）</h3>
+<p>施行から8年で、<strong>累計制裁金は約71億ユーロ</strong>とされる（法律事務所等の集計による。公的な公式集計ではない）。うちアイルランドのデータ保護委員会（DPC）によるものが<strong>約40.4億ユーロ</strong>。米国の大手IT企業の多くがEU拠点をアイルランドに置いているためである。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時期</th>
+<th>対象</th>
+<th>金額</th>
+<th>理由</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023-05</td>
+<td>Meta</td>
+<td>€12億</td>
+<td>EU→米国のデータ移転</td>
+<td><strong>控訴中・支払停止</strong></td>
+</tr>
+<tr>
+<td>2025-05</td>
+<td>TikTok</td>
+<td>€5.3億</td>
+<td><strong>EEA→中国へのデータ移転</strong>（GDPR第46条1項）</td>
+<td>公表（確定状況は要確認）</td>
+</tr>
+<tr>
+<td>2022-09</td>
+<td>Meta（Instagram）</td>
+<td>€4.05億</td>
+<td><strong>子どものデータ</strong>の扱い</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2023-09</td>
+<td>TikTok</td>
+<td>€3.45億</td>
+<td>子どものデータ</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>LinkedIn</td>
+<td>€3.1億</td>
+<td>行動広告のための処理</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2022-11</td>
+<td>Meta</td>
+<td>€2.65億</td>
+<td><strong>約5億3,300万件のスクレイピング</strong>による流出</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>WhatsApp</td>
+<td>€2.25億</td>
+<td>透明性</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Clearview AI</td>
+<td>€3,050万</td>
+<td>顔認識データベース（オランダDPA）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>（2021）</td>
+<td>Amazon</td>
+<td>€7.46億（ルクセンブルク）</td>
+<td>行動広告</td>
+<td><strong>2026-03 取り消し</strong></td>
+</tr>
+<tr>
+<td>2023→2026-03</td>
+<td>Criteo</td>
+<td>€4,000万（仏CNIL）</td>
+<td>行動広告の同意</td>
+<td><strong>2026-03 国務院（コンセイユ・デタ）で維持</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>注記：金額は各監督機関または当事者の公表、および専門メディアの報道に基づく。状態欄の「確定・未確定」は事案ごとに異なり、<strong>公表された制裁金＝支払われた制裁金ではない</strong>。Amazonの€7.46億が2026年3月に取り消されたことは、この区別の重要性を示している。</p>
+<h3>Digital Omnibus：EUが緩め始めた</h3>
+<p>2025年11月19日、欧州委員会は <strong>Digital Omnibus（デジタル包括法案）</strong> を公表した。複数のデジタル規制を簡素化するもので、個人データに関わる主な内容は次のとおり（報道・専門メディアに基づく）。</p>
+<ul>
+<li><strong>GDPRに新たな第88c条を設け、AIの開発・学習のための個人データ処理を「正当な利益」に基づいて行えることを明確化</strong></li>
+<li>個人データの定義の絞り込み（特定の事業者にとって識別不能なデータの扱い）</li>
+<li>AI Act の高リスクAIに関する義務の適用を、<strong>2026-08-02 から 2027-12-02 へ延期</strong>（2026-05-07に暫定合意と報道）</li>
+<li>合成コンテンツの表示義務、非同意の性的画像を生成するAIの禁止は2026-12-02から（報道）</li>
+</ul>
+<p><strong>情報競合・未確認</strong>：2026年10月11日の基準日時点で、Digital Omnibus が<strong>正式に採択されたかどうかを、一次情報で確認できなかった</strong>。暫定合意の報道はあるが、官報掲載・発効を確認していない。記事化する場合は「暫定合意」「提案」と書き、「決定した」とは書かないこと。</p>
+<p>これに先立つ2025年5月、アイルランドDPCは、MetaがEU利用者の公開データを用いて大規模言語モデルを学習することを、<strong>利用者にオプトアウトの機会を与えることを前提に</strong>容認した（報道）。</p>
+<p><strong>EUは「同意がなくてもAI学習はできる」方向へ、実務と立法の両面で動いている。</strong> 日本の令和8年改正（統計目的の同意免除など）と、時期がほぼ重なっている。第12章で扱う。</p>
+<h2>6-2　米国：市場の中で、分野ごとに</h2>
+<p>米国には、GDPRのような<strong>包括的な連邦プライバシー法がない</strong>。代わりに、分野別の法律（医療のHIPAA、金融のGLBA、子どものCOPPA、信用情報のFCRAなど）と、州法と、連邦取引委員会（FTC）による「不公正・欺瞞的な取引慣行」の取り締まりの組み合わせで対応している。</p>
+<h3>州法の広がり</h3>
+<ul>
+<li>包括的な消費者プライバシー法を持つ州：<strong>約20州</strong>（2026年時点。カリフォルニア州が2018年に先行）。2026-01-01には<strong>インディアナ州、ケンタッキー州、ロードアイランド州</strong>の法律が施行</li>
+<li>データブローカーに特化した法律（登録制など）を持つ州：<strong>7州</strong>（カリフォルニア、オレゴン、テキサス、バーモント、モンタナ、コネチカット〔<strong>2026-10-01施行</strong>〕、ニュージャージー〔登録要件<strong>2027-03-27</strong>〕）</li>
+</ul>
+<h3>カリフォルニア州 DROP：「一度の請求で、全ブローカーから消す」</h3>
+<p>最も注目すべき制度が、カリフォルニア州の <strong>DROP（Delete Request and Opt-Out Platform）</strong> である。根拠法は <strong>Delete Act（SB 362）</strong>。<strong>2026年1月1日に稼働</strong>した。</p>
+<p>カリフォルニア州民は、州のサイトで<strong>一度の請求を出すだけで、州に登録されたすべてのデータブローカーに対して、自分のデータの削除を求められる</strong>。データブローカー側は、定期的にDROPを確認し、削除しなければならない（2026-08-01から新たな登録要件も施行）。</p>
+<p>これは、第4章で指摘した「グループC：どこにあるか知らないので請求できない」問題への、<strong>現時点で最も直接的な制度的回答</strong>である。本人がブローカーを一社ずつ探し出して請求する必要がない。<strong>発見のコストを、本人から国家とブローカーに移した</strong>。</p>
+<p>日本に同等の仕組みはない。名簿業者のオプトアウト届出は個人情報保護委員会に公表されているが、本人が業者ごとに個別に請求する必要がある。</p>
+<h3>連邦レベル：進んで、戻って</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時期</th>
+<th>出来事</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-01</td>
+<td>FTC、X-Mode/Outlogic に位置情報の販売で命令</td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2024-01</td>
+<td>FTC、InMarket に位置情報で命令</td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2024-12</td>
+<td>FTC、Gravy Analytics/Venntel、Mobilewalla に命令（機微な場所の位置情報）</td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2024-12-13</td>
+<td>CFPB、FCRAのRegulation V改正でデータブローカーを規制する規則案を提案</td>
+<td>事実</td>
+</tr>
+<tr>
+<td><strong>2025-05-15</strong></td>
+<td><strong>CFPB、上記規則案を撤回</strong></td>
+<td>事実</td>
+</tr>
+<tr>
+<td>2026-02</td>
+<td>FTC、<strong>PADFAA</strong>（外国敵対国による米国人データの取得からの保護法）に基づき<strong>13社へ警告書</strong></td>
+<td>事実（FTC発表として報道）</td>
+</tr>
+<tr>
+<td>2026-05</td>
+<td>FTC、Kochava（位置情報）との和解案</td>
+<td>報道</td>
+</tr>
+<tr>
+<td>—</td>
+<td>DOJ、<strong>大量の機微データの懸念国への移転を制限する規則</strong>（28 CFR）</td>
+<td>施行済み</td>
+</tr>
+<tr>
+<td>—</td>
+<td>NJ州「Daniel's Law」（裁判官等の住所情報の削除請求）</td>
+<td>州法</td>
+</tr>
+<tr>
+<td>—</td>
+<td>連邦DELETE Act（全国版DROP）</td>
+<td><strong>委員会段階</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>米国の動きで読み取れるのは、<strong>消費者保護としてのデータブローカー規制は後退し（CFPB規則案の撤回）、安全保障としてのデータブローカー規制は前進している（PADFAA、DOJ規則）</strong>という二重性である。</p>
+<p>つまり米国では、「あなたのデータが売られること」は消費者問題としては止まりにくいが、「あなたのデータが中国・ロシアなどに売られること」は国家安全保障問題として止められ始めている。<strong>同じデータ、同じ売買でも、買い手の国籍によって規制の強さが変わる。</strong> 第4章の⑧国家安全保障が、他の立場の規制にまで影響を及ぼしている例である。</p>
+<h2>6-3　3つの制度の比較</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>観点</th>
+<th>日本</th>
+<th>EU</th>
+<th>米国</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本思想</td>
+<td>事業者規制＋本人の権利（中間型）</td>
+<td><strong>基本権</strong></td>
+<td><strong>市場・分野別</strong></td>
+</tr>
+<tr>
+<td>包括法</td>
+<td>あり（個人情報保護法）</td>
+<td>あり（GDPR）</td>
+<td><strong>連邦にはない</strong>（州法あり）</td>
+</tr>
+<tr>
+<td>制裁の基準</td>
+<td>2028年までに<strong>利益基準</strong>の課徴金導入</td>
+<td><strong>売上高基準</strong>（最大4%）</td>
+<td>FTCの命令・和解、州の罰金</td>
+</tr>
+<tr>
+<td>データブローカー</td>
+<td>名簿業者のオプトアウト届出制</td>
+<td>GDPRの一般規律</td>
+<td>7州で登録制、<strong>CAはDROP</strong></td>
+</tr>
+<tr>
+<td>AI学習と同意</td>
+<td>統計目的等で同意免除へ（改正）</td>
+<td>「正当な利益」で可能へ（Omnibus案）</td>
+<td>包括規律なし</td>
+</tr>
+<tr>
+<td>生体情報</td>
+<td>改正で新規律</td>
+<td>特別な種類のデータ（原則禁止）</td>
+<td>イリノイ州BIPAなど州法</td>
+</tr>
+<tr>
+<td>子ども</td>
+<td>改正で16歳未満を明確化</td>
+<td>加盟国により13〜16歳</td>
+<td>COPPA（13歳未満）</td>
+</tr>
+<tr>
+<td>2025〜2026年の方向</td>
+<td><strong>強化と緩和の同時進行</strong></td>
+<td><strong>緩和の方向</strong>（Omnibus）</td>
+<td><strong>消費者保護は後退、安保は前進</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>第7章　データ仲介市場と広告——見えない取引所</h1>
+<h2>7-1　データブローカーとは何か</h2>
+<p>データブローカー（データ仲介業者）とは、<strong>本人と直接の関係を持たずに</strong>、個人に関するデータを収集・結合・分析・販売する事業者である。日本の名簿業者は、その古い形態と言える。</p>
+<p>データブローカーの仕入れ先は、主に次のとおり（一般的な類型の整理）。</p>
+<ul>
+<li>公的記録（登記、裁判記録、有権者名簿〔米国〕など）</li>
+<li>小売・ポイントプログラムの購買データ</li>
+<li>アプリに組み込まれたSDKが送る位置情報・端末情報</li>
+<li>広告配信の過程で流れるデータ（後述のRTB）</li>
+<li>他のデータブローカーからの購入</li>
+<li>公開情報のスクレイピング</li>
+</ul>
+<p>販売先は、広告主、金融機関（与信・不正検知）、保険会社、雇用主（身元調査）、不動産業者（入居審査）、調査業者、そして——FTCの一連の処分が示したように——ときに<strong>政府機関や、出所を問わない買い手</strong>である。</p>
+<h2>7-2　位置情報：最も危険な「第2層」</h2>
+<p>FTCが2024年に相次いで処分したX-Mode/Outlogic、InMarket、Gravy Analytics/Venntel、Mobilewallaは、いずれも<strong>スマートフォンの位置情報</strong>を扱う事業者だった。FTCが問題にしたのは、<strong>医療機関、宗教施設、シェルター、軍事施設などの「機微な場所」への訪問が推測できる位置情報</strong>を、十分な保護なく販売・利用していたことである（FTC発表）。</p>
+<p>位置情報が危険な理由は、第1章の3層モデルで説明できる。</p>
+<ul>
+<li>位置情報そのものは<strong>第2層</strong>（行動から発生）</li>
+<li>しかし、「毎晩23時から翌7時まで滞在する場所」は<strong>自宅</strong>、「平日9時から18時まで滞在する場所」は<strong>勤務先</strong>になる。つまり、<strong>匿名の位置情報から、第1層（住所・勤務先）が逆算できる</strong></li>
+<li>さらに「週1回、特定の診療所に通う」から<strong>病歴</strong>が、「毎週金曜に特定の宗教施設に行く」から<strong>信仰</strong>が推測される（<strong>第3層</strong>）</li>
+</ul>
+<p>つまり位置情報は、<strong>第2層でありながら、第1層と第3層を同時に生み出す</strong>。広告業界がよく使う「匿名化された広告ID」は、この逆算に対してほとんど無力である（第11章の再識別の問題）。</p>
+<h2>7-3　RTB：あなたがページを開くたびに起きている競売</h2>
+<p><strong>RTB（リアルタイム入札：Real-Time Bidding）</strong> は、Web広告の主要な配信方式である。</p>
+<p>あなたがWebページを開く。その瞬間、ページの広告枠について、あなたに関する情報（端末ID、おおまかな位置、閲覧中のページ、推定属性など）を付けた「入札リクエスト」が、多数の広告事業者に一斉に送られる。各事業者は、ミリ秒単位で「この人にこの枠で広告を出すならいくら払うか」を入札し、最高額の事業者の広告が表示される。</p>
+<p>問題は、<strong>入札に負けた事業者も、入札リクエストに含まれたあなたの情報を受け取っている</strong>ことである。広告を出さなかった事業者の手元にも、データは残りうる。</p>
+<p>アイルランドの市民団体ICCL（Irish Council for Civil Liberties）は2022年、RTBによって個人のデータが1日に何百回も広告事業者に送られているとする推計を公表した（<strong>市民団体による推計</strong>であり、公的統計ではない。推計方法に対する業界からの反論もある）。</p>
+<p>EUでは、RTBの同意管理の枠組み（IAB EuropeのTCF）について、ベルギーのデータ保護機関が2022年にGDPR違反と判断し、2024年には欧州司法裁判所が、この枠組みで使われる同意の文字列（TCストリング）が<strong>個人データに当たりうる</strong>との判断を示した（裁判所の判断として報道・解説されている。判決原文には今回到達していない）。</p>
+<p>RTBについて私が強調したいのは、<strong>この仕組みには「漏えい」という概念がそもそも当てはまらない</strong>ことである。データは盗まれたのではなく、<strong>仕組みどおりに、大量の事業者に配られている</strong>。本人の同意画面（Cookieバナー）は形式上存在するが、配布先の事業者は数百に及ぶことがあり、本人が把握することは不可能である。</p>
+<h2>7-4　スコアリング：第3層が人生を決める</h2>
+<p>データブローカーとAIの組み合わせが生み出す最も影響の大きいものが、<strong>スコア</strong>である。</p>
+<ul>
+<li>信用スコア（支払い能力）</li>
+<li>不正リスクスコア（なりすまし・詐欺の可能性）</li>
+<li>解約予測スコア（顧客が離れる可能性）</li>
+<li>購買意欲スコア</li>
+<li>健康リスクスコア</li>
+<li>採用適性スコア</li>
+<li>入居審査スコア</li>
+</ul>
+<p>スコアには、本人が<strong>知らない</strong>、<strong>見られない</strong>、<strong>訂正できない</strong>という三重の問題がある。FCRAは米国の信用報告について本人の閲覧・訂正権を定めたが（第2章）、それ以外のスコアの多くはこの射程の外にある。</p>
+<p>GDPRは「専ら自動化された処理に基づく決定」に服さない権利を定めている（第22条）。しかしスコアが人間の判断の「参考」として使われる場合、この規定が適用されるかは争いがある。</p>
+<p>日本の個人情報保護法には、プロファイリングやスコアリングを正面から規律する規定は、現時点では乏しい。令和8年改正でもこの点の本格的な規律は見送られたと理解している（<strong>私の理解。条文全文で確認していない</strong>）。</p>
+<h2>7-5　「誰が持っているか分からない」という問題の本質</h2>
+<p>第4章で、グループB・Cの共通点を「責任が見えにくい」と整理した。データ仲介市場は、その仕組みそのものである。</p>
+<p>あなたのデータは：
+1. A社のアプリで収集され（経路2）
+2. A社のSDK提供者B社に送られ（経路4）
+3. B社からデータブローカーC社に販売され（経路6）
+4. C社で他のデータと結合され、スコア化され（経路7）
+5. C社からD社、E社、F社に販売される</p>
+<p>このとき、本人が知っているのはA社だけである。A社に削除を求めても、C社・D社・E社・F社のデータは消えない。カリフォルニア州のDROP（第6章）が画期的なのは、<strong>本人がC社以降の存在を知らなくても、削除を求められる</strong>からである。</p>
+<hr />
+<h1>第8章　漏えいの実像——3つの意外な事実</h1>
+<h2>8-1　最も信頼できる日本の統計</h2>
+<p>日本の個人情報漏えいについて、最も網羅的な公的統計は、<strong>個人情報保護委員会の年次報告</strong>である。2022年4月から、一定の漏えい等について委員会への報告が<strong>義務化</strong>された（2020年改正）。</p>
+<p>本章の数値はすべて、<strong>令和7年度年次報告（2026年7月7日公表）</strong> に基づく。
+出典：<a href="https://www.ppc.go.jp/files/pdf/080707_annual_report.pdf" target="_blank" rel="noopener">https://www.ppc.go.jp/files/pdf/080707_annual_report.pdf</a></p>
+<p><strong>数値の読み方の注意</strong>：以下の「件数」は、<strong>委員会に報告された漏えい等の事案の件数</strong>であり、漏えいした<strong>人数</strong>でも、<strong>データの件数（レコード数）</strong>でもない。1件の事案に1人分の情報が含まれることもあれば、数百万人分が含まれることもある。</p>
+<h3>漏えい等の報告件数（令和7年度＝2025年4月〜2026年3月）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区分</th>
+<th>令和5年度</th>
+<th>令和6年度</th>
+<th>令和7年度</th>
+<th>増減</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>民間事業者</td>
+<td>12,120件</td>
+<td><strong>19,056件</strong>（過去最多）</td>
+<td>17,139件</td>
+<td>減少</td>
+</tr>
+<tr>
+<td>行政機関等</td>
+<td>—</td>
+<td>1,951件</td>
+<td><strong>2,278件</strong></td>
+<td><strong>増加</strong></td>
+</tr>
+<tr>
+<td>特定個人情報（マイナンバー関連）</td>
+<td>—</td>
+<td>2,052件</td>
+<td>392件</td>
+<td>大幅減少</td>
+</tr>
+<tr>
+<td>総数</td>
+<td>—</td>
+<td>—</td>
+<td><strong>19,417件</strong></td>
+<td>前年度比 <strong>−7.6%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>（「—」は今回の確認範囲で該当数値を確認しなかったもの。）</p>
+<h3>監督の実績（令和7年度）</h3>
+<ul>
+<li>報告徴収：19件</li>
+<li>指導・助言：455件</li>
+<li><strong>勧告：2件</strong></li>
+<li><strong>命令：1件</strong></li>
+</ul>
+<h3>相談の実績（令和7年度）</h3>
+<ul>
+<li>個人情報保護法相談ダイヤル：民間事業者関係 19,887件、公的部門関係 3,637件</li>
+</ul>
+<h2>8-2　意外な事実①：漏えいの主役は、紙である</h2>
+<blockquote>
+<p><strong>行政機関等の漏えいで、漏えいした情報の形態が「紙媒体のみ」だったものが、国の機関で60.9%、地方公共団体で68.1%を占め、最多だった。</strong></p>
+</blockquote>
+<p>サイバー攻撃でも、クラウドの設定ミスでもない。<strong>紙</strong>である。</p>
+<p>さらに、民間の報告を見ても同じ傾向がある。令和6年度は、報告者から寄せられた <strong>9,494件のうち7,923件（83.5%）が、誤交付・誤送付・誤廃棄</strong>だった。令和7年度第4四半期の個人情報関係の報告4,602件は、<strong>大半が病院・薬局での誤交付</strong>だったとされる。</p>
+<p>病院で他の患者の処方箋や検査結果を渡してしまう。薬局で他人の薬の説明書を渡してしまう。役所で他人の書類を同封してしまう。</p>
+<p>つまり、<strong>日本の個人情報漏えいの「件数」の大部分は、人間の手作業のミスである</strong>。</p>
+<p>これは、ニュースで報じられる漏えいのイメージ——ハッカー、ランサムウェア、ダークウェブ——とは大きく異なる。ニュースになるのは<strong>大規模な事案</strong>（1件で数百万人分）であり、件数の大部分を占める<strong>小規模な事案</strong>（1件で1人分）は、ほとんど報道されない。</p>
+<h3>私の見方：件数と影響は、別々に見なければならない</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>種類</th>
+<th>件数</th>
+<th>1件あたりの人数</th>
+<th>報道されやすさ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>紙の誤交付・誤送付</td>
+<td><strong>非常に多い</strong></td>
+<td>ほとんど1人〜数人</td>
+<td>低い</td>
+</tr>
+<tr>
+<td>不正アクセス・ランサムウェア</td>
+<td>少ない</td>
+<td>数千〜数千万人</td>
+<td><strong>高い</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>委員会の報告でも、<strong>1件あたりの漏えい人数が1,000人以下の事案が93.6%</strong> を占める。</p>
+<p>どちらが「深刻」かは、何を基準にするかで変わる。件数で見れば紙、人数で見ればサイバー攻撃である。そして、<strong>被害を受けた本人にとっては、どちらも同じ1件</strong>である。病院で自分の病歴が書かれた紙を他人に渡された人にとって、それが「1件あたり1人の小規模事案」であることは何の慰めにもならない。</p>
+<p>しかも紙の誤交付で漏れるのは、<strong>要配慮個人情報（病歴など）を含むことが多い</strong>。報告によれば、行政機関等の漏えいで最も多いのは<strong>要配慮個人情報を含むもの</strong>で、国の機関で64.9%、地方公共団体で74.1%に上る。</p>
+<p><strong>漏えいの件数が多いのは紙、しかもその紙には、最も取り替えられない情報（病歴）が書かれている。</strong> これが日本の漏えいの実像である。</p>
+<h2>8-3　意外な事実②：「件数」は「人数」ではない</h2>
+<p>ここは第9章で詳しく扱うが、要点だけ先に示す。</p>
+<p>ニュースで「〇〇万件の個人情報が漏えい」と報じられるとき、その「件」が何を数えているかは、事案ごとに違う。</p>
+<ul>
+<li>人数（ユニークな個人の数）</li>
+<li>レコード数（1人が複数のレコードを持つことがある）</li>
+<li>会員番号の数（1人が複数のアカウントを持つことがある）</li>
+<li>メールアドレスの数</li>
+<li>画像の数、ファイルの数</li>
+</ul>
+<p>そして「漏えいした」なのか「漏えいしたおそれがある」なのか「アクセスされた痕跡がある」なのか「外部に転送された痕跡はない」なのかも、事案ごとに違う。</p>
+<h2>8-4　意外な事実③：民間は減り、行政は増えた</h2>
+<p>令和7年度、民間の報告は前年度の過去最多から<strong>減少</strong>した一方、行政機関等の報告は<strong>増加</strong>した。</p>
+<p>これを「行政の管理が悪化した」と読むのは、早計である。考えられる要因は複数ある（以下は<strong>私の仮説</strong>であり、委員会の分析ではない）。</p>
+<ol>
+<li>2022〜2023年の官民一元化で、地方公共団体の報告体制が整い、<strong>報告されるようになった</strong></li>
+<li>行政は紙の書類を大量に扱い、誤交付・誤送付が起きやすい業務構造である</li>
+<li>行政は報告義務を厳格に守る傾向があり、民間より小さな事案も報告している可能性</li>
+<li>実際に管理が悪化している可能性</li>
+</ol>
+<p>どの要因が大きいかは、現時点の統計だけでは判断できない。</p>
+<p>民間の減少についても同じで、「民間の管理が改善した」とも、「民間の報告が減った（報告しなくなった）」とも読める。報告義務化から4年目で、報告の基準が事業者の間で定着してきた影響も考えられる。</p>
+<blockquote>
+<p><strong>漏えい報告の件数は、「漏えいの量」ではなく、「漏えいの量×報告する文化」の積である。</strong> 件数の増減を、漏えいの増減と同一視してはならない。</p>
+</blockquote>
+<h2>8-5　マイナンバー関連の大幅減少</h2>
+<p>特定個人情報（マイナンバー関連）の報告は、令和6年度の2,052件から令和7年度は392件へと大幅に減少した。</p>
+<p>令和6年度の件数が多かった背景には、マイナンバーカードと健康保険証・公金受取口座などのひも付けで、別人の情報がひも付けられる誤登録が相次いだ時期の影響が考えられる（<strong>私の推測</strong>。委員会報告で要因を確認していない）。減少は、その対応が一巡した結果である可能性があるが、ここも断定はできない。</p>
+<hr />
+<h1>第9章　2026年の事案と、数字の作法</h1>
+<h2>9-1　この章の取材方針</h2>
+<p>本章では、2026年に日本で公表された主な漏えい等の事案を整理する。調査品質の条件に従い、以下を守った。</p>
+<ul>
+<li><strong>実際の被害者の個人情報、漏えいデータそのものは、取得も閲覧も掲載もしていない。</strong> 扱うのは、当事者の公式発表と報道で示された「件数」「種類」「経緯」のみである。</li>
+<li><strong>漏えい確定／漏えいのおそれ／不正アクセス（侵入）／サービス停止</strong>を区別する。</li>
+<li><strong>事件の件数／人数／データ件数</strong>を混同しない。</li>
+</ul>
+<p><strong>確認方法の限界（重要）</strong>：以下の2026年の国内事案は、<strong>多くを報道・専門メディア・漏えい事案のまとめサイト経由で確認しており、当事者の公式発表の原文には到達していないものが多い</strong>。一次情報優先の原則に照らすと、記事化の前に、各社の公式発表（プレスリリース・お知らせ）での確認が必要である。</p>
+<h2>9-2　2026年の主な国内事案（基準日までの公表に基づく）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>事案</th>
+<th>公表された規模</th>
+<th>何を数えた数字か</th>
+<th>状態の区別</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KDDI系ISPのメールサービス</td>
+<td>当初「最大1,422万件」→ <strong>2026-07-06の続報で確定値</strong></td>
+<td><strong>メールアドレス約1,223万件、うちパスワード約762万件</strong></td>
+<td>続報で確定</td>
+<td>「最大」と「確定」で約200万件の差。<strong>初報の数字を確定値として使わない</strong></td>
+</tr>
+<tr>
+<td>アフラック生命</td>
+<td>約440万人</td>
+<td><strong>人数</strong>（うち約22万人は口座関連）</td>
+<td>—</td>
+<td>人数で公表された例</td>
+</tr>
+<tr>
+<td>EPARKリラク＆エステ</td>
+<td>約2,218万レコード</td>
+<td><strong>レコード数</strong>（人数ではない）</td>
+<td>—</td>
+<td><strong>要配慮個人情報を含む</strong>と公表</td>
+</tr>
+<tr>
+<td>Helpfeel「Gyazo」</td>
+<td>ユーザー関連約2,362万件、画像メタデータ約4.9億件</td>
+<td>ユーザー関連と<strong>メタデータ</strong>を区別</td>
+<td>—</td>
+<td>「4.9億件の個人情報」と書くのは誤り</td>
+</tr>
+<tr>
+<td>ブックオフGHD</td>
+<td>最大約643万件</td>
+<td><strong>会員番号の件数</strong></td>
+<td>「最大」</td>
+<td><strong>人数ではない</strong>と明記されている</td>
+</tr>
+<tr>
+<td>ローソンID</td>
+<td>215万5,345件</td>
+<td>ID数</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>焼肉きんぐアプリ</td>
+<td>1,078万件以上</td>
+<td>アプリ会員関連</td>
+<td>「以上」</td>
+<td>—</td>
+</tr>
+<tr>
+<td>ショップサーブ</td>
+<td>8,853,839件</td>
+<td>データ件数</td>
+<td>—</td>
+<td><strong>885万人を意味しない</strong></td>
+</tr>
+<tr>
+<td>日本テレネット</td>
+<td>約106.6万件</td>
+<td>—</td>
+<td><strong>外部転送の痕跡は確認されていない</strong>と公表</td>
+<td>「漏えい」と書くのは不正確。「漏えいのおそれ」</td>
+</tr>
+<tr>
+<td>TEMAIRAZU</td>
+<td>最大約445万人</td>
+<td>人数</td>
+<td>「最大」</td>
+<td>—</td>
+</tr>
+<tr>
+<td>大和証券</td>
+<td>約11万名</td>
+<td>人数</td>
+<td>—</td>
+<td><strong>委託先経由</strong></td>
+</tr>
+<tr>
+<td>IDCFクラウド</td>
+<td><strong>495の企業・自治体</strong>に影響</td>
+<td><strong>組織の数</strong>（人数ではない）</td>
+<td>—</td>
+<td><strong>クラウド基盤が震源</strong>。個人の数は各組織が別途公表</td>
+</tr>
+<tr>
+<td>ApplyNow</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>マイナンバー、基礎年金番号</strong>を含むと報道</td>
+</tr>
+<tr>
+<td>2りんかん・イエローハット</td>
+<td><strong>3,179,454名分</strong> vs <strong>約345万名分</strong></td>
+<td>人数</td>
+<td>—</td>
+<td><strong>資料間で数値が食い違う</strong>。どちらが正しいか未確定</td>
+</tr>
+</tbody>
+</table></div>
+<h2>9-3　数字の作法：5つのルール</h2>
+<p>これらの事案から、個人情報漏えいの数字を扱うときの作法を5つにまとめる。記事化の際の校閲基準として提案する。</p>
+<h3>作法1：「件」が何を数えているかを、必ず書く</h3>
+<p>人数、レコード数、会員番号数、メールアドレス数、組織数、画像数。同じ「件」でも、意味がまったく違う。ブックオフの「643万件」は会員番号の数であり、ショップサーブの「885万件」は885万人ではない。IDCFクラウドの「495」は企業・自治体の数である。</p>
+<p><strong>ルール：数字の直後に、単位の意味を書く。</strong>（例：「会員番号ベースで最大約643万件。人数ではない」）</p>
+<h3>作法2：「最大」と「確定」を区別する</h3>
+<p>KDDI系ISPの事案は、初報の「最大1,422万件」が、続報で「メールアドレス約1,223万件」に確定した。<strong>初報は最悪の場合を見積もり、続報で調査が進んで減ることが多い。</strong> 逆に増えることもある。</p>
+<p><strong>ルール：「最大」「以上」「約」を削らない。続報があれば、続報の日付と数字で上書きする。</strong></p>
+<h3>作法3：「漏えい」「漏えいのおそれ」「アクセスの痕跡」「外部転送の痕跡なし」を区別する</h3>
+<p>日本テレネットは「外部転送の痕跡は確認されていない」と公表している。これは「漏えいした」とは違う。システムに侵入されたこと（不正アクセス）と、データが外部に持ち出されたこと（漏えい）は、別の事実である。</p>
+<p>さらに「サービス停止」は、データが漏れたかどうかとは別の被害である。ランサムウェアでシステムが暗号化されてサービスが止まっても、データが外部に持ち出されていない場合がある（逆に、持ち出されたうえで暗号化される二重恐喝もある）。</p>
+<p><strong>ルール：当事者の発表の言葉づかいを変えない。「おそれ」を「漏えい」に格上げしない。</strong></p>
+<h3>作法4：重複を含むかどうかを確認する</h3>
+<p>1人が複数のアカウント、複数のメールアドレス、複数の注文履歴を持つことがある。レコード数や会員番号数には重複が含まれる。</p>
+<p><strong>ルール：人数として公表されていない数字を、人数として書かない。</strong></p>
+<h3>作法5：資料間の食い違いは、両方書く</h3>
+<p>2りんかん・イエローハットの事案では、3,179,454名分と約345万名分という2つの数字がある。どちらかを選んで書くと、誤りを広める可能性がある。</p>
+<p><strong>ルール：食い違いがあれば、両方の数字と出所を併記し、「資料により異なる」と書く。</strong></p>
+<h2>9-4　委託先とクラウドが「震源」になる</h2>
+<p>2026年の事案を並べて見えるのは、<strong>本人が情報を渡した相手ではなく、その先の事業者が震源になる</strong>事案の多さである。</p>
+<ul>
+<li>大和証券：<strong>委託先</strong>経由</li>
+<li>IDCFクラウド：<strong>クラウド基盤</strong>の事案が、<strong>495の企業・自治体</strong>に波及</li>
+</ul>
+<p>ひとつのクラウド基盤、ひとつの委託先が侵害されると、その上に乗っているすべての組織の利用者に影響が及ぶ。<strong>一点の侵害が、数百の組織の漏えいになる。</strong></p>
+<p>海外でも同じ構造が繰り返されている（報道・当事者発表に基づく。各事案の一次資料には今回すべて到達していない）。</p>
+<ul>
+<li><strong>2023年 MOVEit</strong>：ファイル転送ソフトの脆弱性を突かれ、そのソフトを使う多数の組織から一斉にデータが盗まれた（ソフトウェアのサプライチェーン型）</li>
+<li><strong>2024年 Snowflake 顧客アカウント</strong>：クラウドデータ基盤の顧客アカウントの認証情報が盗まれ、複数の大手企業のデータが流出したと報道された（クラウド基盤そのものの脆弱性ではなく、<strong>顧客側の認証の弱さ</strong>が原因とされた点に注意）</li>
+<li><strong>2024年 Change Healthcare</strong>：米国の医療決済処理会社へのランサムウェア攻撃。米国保健福祉省（HHS）への報告に基づき、影響を受けた人数は<strong>約1億9,000万人</strong>とされた（2025年の更新値。当事者発表・HHSの集計に基づく報道）</li>
+</ul>
+<p>令和8年改正で<strong>委託を受けた事業者の規律整備</strong>（項目⑤）が入ったのは、この構造への対応である。ただし、<strong>クラウド基盤の事業者が「委託を受けた事業者」に当たるかどうか</strong>は、クラウドの契約形態（データを預かるだけか、処理するか）によって異なり、制度上の扱いは単純ではない。ここは今後の政令・規則・ガイドラインで詰められる論点である。</p>
+<h2>9-5　国内外の過去の大規模事案（参考）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>年</th>
+<th>事案</th>
+<th>規模</th>
+<th>型</th>
+<th>区分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013（公表2016〜17）</td>
+<td>Yahoo（米）</td>
+<td>約30億アカウント</td>
+<td>不正アクセス</td>
+<td><strong>アカウント数</strong></td>
+</tr>
+<tr>
+<td>2014</td>
+<td>国内大手教育事業者</td>
+<td>数千万件規模</td>
+<td><strong>委託先従業員の内部持ち出し→名簿業者へ転売</strong></td>
+<td>件数（重複含む）</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>日本年金機構</td>
+<td>約125万件</td>
+<td><strong>標的型メール</strong>による不正アクセス</td>
+<td>件数</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>Equifax（米・信用情報機関）</td>
+<td>約1億4,700万人</td>
+<td>脆弱性の放置による不正アクセス</td>
+<td><strong>人数</strong></td>
+</tr>
+<tr>
+<td>2018</td>
+<td>Marriott／Starwood</td>
+<td>約3億8,300万件（ゲスト記録）</td>
+<td>買収先システムへの長期潜伏</td>
+<td><strong>レコード数</strong>（人数より多い）</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>Facebook（Meta）</td>
+<td>約5億3,300万件</td>
+<td><strong>スクレイピング</strong></td>
+<td>件数。EUで€2.65億の制裁（第6章）</td>
+</tr>
+<tr>
+<td>2023（発覚）</td>
+<td>国内通信大手グループのコールセンター委託先</td>
+<td>約900万件超</td>
+<td><strong>派遣社員による長期の内部持ち出し</strong></td>
+<td>件数</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>National Public Data（米）</td>
+<td>「約29億レコード」と報道</td>
+<td>不正アクセス</td>
+<td><strong>レコード数</strong>（人数ではない。米国の人口を大きく上回る数字が「人数」と誤報された例）</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Change Healthcare（米）</td>
+<td>約1億9,000万人</td>
+<td>ランサムウェア</td>
+<td>人数</td>
+</tr>
+</tbody>
+</table></div>
+<p>国内の過去事案のうち、内部持ち出し型（2014年、2023年発覚）は、いずれも<strong>委託先</strong>の従業員または派遣社員による犯行だった。<strong>「外部からの攻撃」よりも、「内部の人間」と「委託の連鎖」が、大規模漏えいの典型的な経路である</strong>ことを、この表は示している。</p>
+<p>なお、National Public Dataの「29億」は、件数を人数と取り違えた報道が広がった典型例として、作法1・作法4の教材になる。</p>
+<h2>9-6　漏えいの経路の分類</h2>
+<p>本章と第8章を合わせ、漏えいの経路を分類する。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>経路</th>
+<th>例</th>
+<th>件数の傾向</th>
+<th>1件の規模</th>
+<th>主な対策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>誤交付・誤送付（紙）</td>
+<td>病院・薬局・役所での渡し間違い、封入ミス</td>
+<td><strong>非常に多い</strong></td>
+<td>小</td>
+<td>ダブルチェック、封入の機械化、本人確認</td>
+</tr>
+<tr>
+<td>誤送信（電子）</td>
+<td>メールの宛先間違い、BCCとCCの取り違え</td>
+<td>多い</td>
+<td>小〜中</td>
+<td>送信保留、宛先確認、外部アドレス警告</td>
+</tr>
+<tr>
+<td>紛失・置き忘れ</td>
+<td>書類・USBメモリ・PCの紛失</td>
+<td>多い</td>
+<td>小〜中</td>
+<td>持ち出し制限、暗号化</td>
+</tr>
+<tr>
+<td>誤廃棄</td>
+<td>シュレッダーにかけずに廃棄、廃棄業者の不備</td>
+<td>中</td>
+<td>小〜大</td>
+<td>廃棄証明、溶解処理</td>
+</tr>
+<tr>
+<td>誤公開</td>
+<td>Webサイトでの誤掲載、クラウドの公開設定ミス</td>
+<td>中</td>
+<td>小〜<strong>大</strong></td>
+<td>公開前確認、設定監査</td>
+</tr>
+<tr>
+<td>内部持ち出し</td>
+<td>従業員・委託先社員による持ち出し・売却</td>
+<td>少</td>
+<td><strong>大</strong></td>
+<td>権限の最小化、ログ監視、持ち出し検知</td>
+</tr>
+<tr>
+<td>不正アクセス</td>
+<td>脆弱性・認証情報の悪用</td>
+<td>少〜中</td>
+<td><strong>大</strong></td>
+<td>脆弱性管理、多要素認証</td>
+</tr>
+<tr>
+<td>ランサムウェア</td>
+<td>暗号化＋窃取の二重恐喝</td>
+<td>少〜中</td>
+<td><strong>大</strong>＋サービス停止</td>
+<td>バックアップ、分離、復旧訓練</td>
+</tr>
+<tr>
+<td>委託先・クラウド経由</td>
+<td>上記いずれかが委託先・基盤で発生</td>
+<td>増加傾向（見方）</td>
+<td><strong>極めて大</strong>（波及）</td>
+<td>委託先管理、契約、監査</td>
+</tr>
+<tr>
+<td>スクレイピング</td>
+<td>公開情報の大量収集</td>
+<td>把握困難</td>
+<td>大</td>
+<td>収集制限、規約、技術的対策</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>第10章　犯罪者は何のために欲しがるのか——そして善意が最高品質のデータを作る</h1>
+<h2>10-1　犯罪者の動機は、ほぼすべて「お金」である</h2>
+<p>犯罪集団（第4章の⑦）が個人情報を欲しがる理由は、大きく分けて次のとおり。本章では、被害の構造を理解するために必要な範囲で類型を示し、手口の具体的な実行方法には触れない。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>用途</th>
+<th>欲しい情報</th>
+<th>被害</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>特殊詐欺のターゲット選別</strong></td>
+<td>氏名、電話番号、住所、年齢、家族構成、資産の推測</td>
+<td>金銭被害。高齢者に集中</td>
+</tr>
+<tr>
+<td><strong>なりすまし</strong></td>
+<td>氏名、生年月日、住所、本人確認書類の画像</td>
+<td>口座開設・携帯電話契約・ローンの不正利用</td>
+</tr>
+<tr>
+<td><strong>アカウント乗っ取り</strong></td>
+<td>メールアドレス、パスワード（使い回し）</td>
+<td>不正購入、ポイント窃取、SNSの悪用</td>
+</tr>
+<tr>
+<td><strong>フィッシングの精度向上</strong></td>
+<td>利用しているサービス、購買履歴</td>
+<td>「本物らしい」偽メールによる二次被害</td>
+</tr>
+<tr>
+<td><strong>恐喝</strong></td>
+<td>病歴、性的指向、不倫などの秘密、顔写真</td>
+<td>精神的被害、金銭被害</td>
+</tr>
+<tr>
+<td><strong>転売</strong></td>
+<td>上記すべて</td>
+<td>情報が永続的に流通する</td>
+</tr>
+</tbody>
+</table></div>
+<p>ここで、第1章の「結合」が決定的な意味を持つ。メールアドレスとパスワードの組がひとつ漏れると、同じ組を使い回している別のサービスへの不正ログインが試みられる。KDDI系ISPの事案で「パスワード約762万件」が確定したことの重大さは、そのメールサービスだけでなく、<strong>同じパスワードを使い回している他のサービス</strong>に及ぶ点にある。</p>
+<h2>10-2　被害は、件数ではなく、人の上に積み重なる</h2>
+<p>警察庁の統計によれば、特殊詐欺の被害は近年、高水準で推移している（各年の認知件数・被害額は警察庁「特殊詐欺の認知・検挙状況等」で公表。<strong>本レポートでは2025年分の確定値を一次資料で確認できなかったため、具体的な数値は記載しない</strong>。記事化の際は最新の確定値を警察庁資料で確認すること）。</p>
+<p>被害者にとって、情報漏えいの被害は1回では終わらない。</p>
+<ol>
+<li>漏えいする</li>
+<li>詐欺の電話がかかってくる</li>
+<li>騙されて金銭を失う</li>
+<li><strong>「騙されやすい人」として名簿に載る（いわゆる「カモリスト」）</strong></li>
+<li>別の詐欺グループから、さらに電話がかかってくる</li>
+</ol>
+<p>一度被害に遭った人が、繰り返し狙われる。被害の事実そのものが、<strong>新しい個人情報（第3層：「騙されやすい」という推測）</strong>になる。</p>
+<h2>10-3　名簿屋への処分：2025年の2つの事例</h2>
+<h3>事例1：有限会社ビジネスプランニング（2025年5月16日）</h3>
+<p>個人情報保護委員会は2025年5月16日、名簿業者である有限会社ビジネスプランニングに対し、<strong>個人情報保護法に基づく初の緊急命令</strong>を出した。あわせて勧告と報告の命令も行った。</p>
+<p>委員会の発表によると：
+- 同社は、オプトアウトによる第三者提供の<strong>届出をしていた事業者</strong>だった（つまり、制度上は「正規の」名簿業者だった）
+- 2023年5月から2024年10月にかけて、名簿の買い手が<strong>違法な目的に使うおそれを認識しながら</strong>、<strong>特殊詐欺グループに名簿を販売</strong>していた
+- 委員会が把握した端緒は<strong>警察からの情報提供</strong>で、2025年4月18日に立入検査を行った</p>
+<p>出典：個人情報保護委員会「個人情報の保護に関する法律に基づく行政上の対応について」（2025年5月16日）<a href="https://www.ppc.go.jp/files/pdf/250516_houdou.pdf" target="_blank" rel="noopener">https://www.ppc.go.jp/files/pdf/250516_houdou.pdf</a></p>
+<h3>事例2：株式会社中央ビジネスサービス（2025年9月10日）</h3>
+<p>委員会は2025年9月10日、名簿業者の株式会社中央ビジネスサービスに勧告を行った。対象は<strong>約49万人分</strong>の個人情報とされる（委員会発表に基づく報道。発表原文で人数の数え方を確認していない）。</p>
+<h3>この2つの事例が示すこと</h3>
+<p><strong>第一に、届出制は「正規」と「悪質」を分けていなかった。</strong> ビジネスプランニングは届出事業者だった。届出があることは、業者が適正であることを意味しない。</p>
+<p><strong>第二に、委員会は自力では見つけられなかった。</strong> 端緒は警察だった。名簿業者の取引は外から見えないため、犯罪捜査の過程で初めて浮かび上がる。</p>
+<p><strong>第三に、最初の緊急命令が出たのは2025年である。</strong> 法律の施行（2005年）から20年、緊急命令という仕組みが使われたのは初めてだった。<strong>仕組みがあることと、仕組みが使われることは別である。</strong></p>
+<h2>10-4　善意は、最高品質のデータを生産する</h2>
+<p>ここで、本レポートで最も伝えたい論点のひとつを述べる。</p>
+<p>個人情報保護委員会は、「<strong>STOP！名簿流出</strong>」というフライヤーを作成し、注意喚起を行っている。その<strong>宛先</strong>が示唆的である。</p>
+<blockquote>
+<p><strong>自治会、同窓会、PTA、マンション管理組合</strong></p>
+</blockquote>
+<p>出典：個人情報保護委員会 <a href="https://www.ppc.go.jp/news/online_criminal_flyer/" target="_blank" rel="noopener">https://www.ppc.go.jp/news/online_criminal_flyer/</a></p>
+<p>委員会がこれらの団体を名指ししているのは、<strong>これらが作る名簿が、犯罪者にとって価値が高い</strong>からだと考えられる（委員会がその理由を明示的に述べているかは確認していない。以下は私の分析である）。</p>
+<p>なぜ価値が高いのか。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>性質</th>
+<th>善意の名簿</th>
+<th>一般的な商業データ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正確さ</td>
+<td><strong>非常に高い</strong>（本人や家族が自ら書く、互いに顔見知り）</td>
+<td>中（推測や古い情報が混ざる）</td>
+</tr>
+<tr>
+<td>鮮度</td>
+<td>高い（毎年更新される）</td>
+<td>ばらつく</td>
+</tr>
+<tr>
+<td>結合度</td>
+<td><strong>高い</strong>（氏名＋住所＋電話＋家族構成＋子どもの学年が一枚に）</td>
+<td>項目が分散</td>
+</tr>
+<tr>
+<td>属性の手がかり</td>
+<td><strong>高い</strong>（同窓会名簿＝年齢と学歴、マンション名簿＝居住形態と資産の推測、PTA名簿＝子どもの年齢）</td>
+<td>推測が必要</td>
+</tr>
+<tr>
+<td>管理</td>
+<td><strong>弱い</strong>（任意団体、担当者は毎年交代、紙で配布）</td>
+<td>法令上の安全管理義務</td>
+</tr>
+<tr>
+<td>流出の発覚</td>
+<td><strong>しにくい</strong>（報告義務の外になりやすい）</td>
+<td>報告義務あり</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>善意で集めた名簿は、正確で、新しく、結合済みで、管理が弱い。犯罪者にとって、これ以上の条件はない。</strong></p>
+</blockquote>
+<p>善意の名簿の作り手に悪意はない。むしろ、共同体を支えるための大切な仕組みである。しかし、<strong>意図が善であることと、データとしての危険性は、まったく無関係</strong>である。</p>
+<p>これが、序章で「意図を軸にすると見誤る」と書いた理由の、最も鋭い実例である。</p>
+<h2>10-5　悪意ある個人：もうひとつの見えない被害</h2>
+<p>犯罪集団と違い、悪意ある個人（第4章の⑥）の目的は金銭ではなく、<strong>特定の1人への執着</strong>である。</p>
+<p>この類型の被害は、件数統計にほとんど現れない。漏えいではなく、<strong>本人が公開した情報や、知人を介した情報の「組み合わせ」</strong>で起きるからである。</p>
+<ul>
+<li>SNSに投稿した写真の背景から、自宅の場所が推測される</li>
+<li>位置情報の共有機能（家族・恋人間）が、関係が壊れた後に監視の道具になる</li>
+<li>共通の知人から、引っ越し先や勤務先を聞き出される</li>
+<li>小型の位置追跡タグが、本人の持ち物に仕込まれる</li>
+</ul>
+<p>ここでも、<strong>情報の一つひとつは「漏えい」ではない</strong>。本人が公開したもの、本人が共有を許可したもの、知人が悪気なく話したもの。それが一人の加害者の手元で<strong>結合</strong>されたとき、被害になる。</p>
+<p>この類型の対策は、制度よりも、<strong>位置情報・共有設定の見直し</strong>や、<strong>相談窓口の存在を知っておくこと</strong>など、個人の側にかかる部分が大きい（第14章）。</p>
+<hr />
+<h1>第11章　善意が生む不利益——そして「匿名化」の限界</h1>
+<h2>11-1　善意の収集が生む4つの不利益</h2>
+<p>第4章で、善意の個人・家族・地域が「グループC」に入ることを示した。ここでは、善意の収集が生む不利益を、名簿流出以外の面から整理する。</p>
+<h3>不利益1：断れないことによる強制</h3>
+<p>PTA、自治会、職場の連絡網。「みんな出しているから」「緊急時に必要だから」と言われると、断りにくい。断れば、共同体から外れたように見られる。<strong>同意の形式はあっても、選択の自由がない。</strong></p>
+<h3>不利益2：目的の拡大</h3>
+<p>災害時の安否確認のために作った名簿が、いつの間にか行事の案内、寄付の依頼、選挙の運動にも使われる。作った時点の目的と、使われる目的がずれていく。</p>
+<h3>不利益3：見守りが監視になる</h3>
+<p>子どもの位置情報アプリ、高齢者の見守りセンサー、従業員の健康管理。目的は保護だが、同じ仕組みが<strong>支配や管理の道具</strong>にもなる。どこからが見守りで、どこからが監視かは、<strong>見守られる側がどう感じるか</strong>で決まり、見守る側からは判断できない。</p>
+<h3>不利益4：「保護するため」の情報が、差別の材料になる</h3>
+<p>避難行動要支援者名簿（2013年の災害対策基本法改正で市町村に作成が義務付けられた）は、災害時に支援が必要な人——高齢者、障害のある人など——を把握し、避難を助けるための名簿である。命を救うために必要な仕組みである。</p>
+<p>しかし、この名簿は同時に、<strong>「この地域で、ひとりで逃げられない人はここにいる」というリスト</strong>でもある。平時に地域で共有すれば、防災上は効果的だが、悪用されれば危険である。共有しなければ、災害時に間に合わない。</p>
+<p>多くの自治体は、本人の同意を得た人の情報だけを平時に共有する、という方式で折り合いをつけている（制度の事実。運用は自治体により異なる）。しかし、同意しなかった人こそ支援が必要な人だった、という可能性は残る。</p>
+<blockquote>
+<p><strong>善意の収集には、「集めると危険、集めないと危険」というジレンマがある。</strong> これは制度で解消できるものではなく、地域ごとに、そのつど判断するしかない。</p>
+</blockquote>
+<h2>11-2　匿名化は、思われているほど匿名ではない</h2>
+<p>善意・公益（研究、統計）でも商業利用でも、「個人を特定できないように加工すれば大丈夫」という考え方が広く使われている。日本の制度でも、<strong>匿名加工情報</strong>（2015年改正で導入）や<strong>仮名加工情報</strong>（2020年改正で導入）という枠組みがある。</p>
+<p>しかし、研究の世界では、<strong>「匿名化されたデータから個人を再特定できる」</strong>ことが、繰り返し示されてきた（以下は学術研究・報道に基づく。論文原文には今回すべて到達していない）。</p>
+<ul>
+<li><strong>郵便番号・生年月日・性別の3つで、米国人口の大部分（約87%）が特定できる</strong>とする推計（Latanya Sweeney、2000年前後の研究）</li>
+<li>2006年、AOLが「匿名化」した検索履歴を公開したところ、検索内容から<strong>特定の個人が割り出された</strong>（報道）</li>
+<li>2006〜2008年、Netflixが「匿名化」した映画評価データを公開したところ、<strong>別の公開データと突き合わせることで個人の再特定が可能</strong>と示された（Narayanan &amp; Shmatikov）</li>
+<li>位置情報について、<strong>時刻と場所の組を4点知っていれば、大部分の人を一意に特定できる</strong>とする研究（de Montjoye ほか、2013年）</li>
+<li><strong>15個程度の属性があれば、米国人のほぼ全員（99.98%）を再特定できる</strong>とする推定（Rocher ほか、2019年、Nature Communications）</li>
+</ul>
+<p>日本でも2013年、交通系ICカードの乗降履歴を、氏名等を除いた形で外部企業に提供した事案が、利用者への説明不足などから強い批判を受けた（報道）。法的な違法性とは別に、「<strong>本人の理解</strong>」（第4章の観点）が欠けていたことが問題になった例である。</p>
+<h3>匿名化について、私の見方</h3>
+<p>再識別の研究が示しているのは、<strong>匿名化はデータの性質ではなく、「他にどんなデータがあるか」との関係で決まる</strong>ということである。</p>
+<p>あるデータ単体では匿名でも、別のデータと結合すれば匿名でなくなる。そして、<strong>世界に存在するデータの量は増え続けている</strong>。今日匿名なデータが、明日も匿名である保証はない。</p>
+<p>つまり、ここでも序章の軸に戻る。<strong>危険は結合で生まれる。</strong> そして匿名化は、結合に対して脆弱である。</p>
+<p>日本の匿名加工情報制度は、加工方法の基準を定め、<strong>再識別を禁止する義務</strong>を受領者に課している。これは「技術で守れない部分を、法的義務で補う」設計であり、合理的である。ただし、その義務が守られているかを外部から確認する手段は限られている（<strong>私の見解</strong>）。</p>
+<hr />
+<h1>第12章　AI時代の個人情報——4つの新しい問題</h1>
+<p>AIは、個人情報の問題を「量的に」拡大しただけでなく、「質的に」新しい問題を生んでいる。4つに整理する。</p>
+<h2>12-1　問題1：学習——一度入ったら、取り出せない</h2>
+<p>大規模言語モデルは、インターネット上の大量のテキストで学習される。そこには、個人の氏名、経歴、投稿、ブログ、ニュース記事に登場した人物の情報が含まれる。</p>
+<p>データベースなら、特定の行を削除できる。しかし学習済みモデルでは、<strong>個人の情報は特定の場所にあるのではなく、モデル全体の重み（パラメータ）に分散して溶け込んでいる</strong>。特定の人物の情報だけを取り除く「機械的忘却（machine unlearning）」は研究段階にあり、大規模モデルで確実に行う方法は、確立していない（<strong>研究の現状についての私の理解</strong>）。</p>
+<p>第4章の比較表で、⑩AIの「保管期間」を「定義しにくい」、「拒否できるか」を「学習済みのものは事実上取り消せない」としたのは、このためである。</p>
+<p>GDPRの消去権（忘れられる権利）は、データベースを前提に作られた。<strong>学習済みモデルに対して、消去権をどう実現するか</strong>は、法的にも技術的にも、まだ答えが出ていない。</p>
+<h2>12-2　問題2：推論——渡していない情報を、作り出す</h2>
+<p>第1章の第3層（推測された情報）を、AIは大量に、安く、精度よく作り出す。</p>
+<p>文章の書き方から、年齢、性別、出身地、教育水準、精神状態が推測される。購買履歴から、妊娠、病気、経済的困窮が推測される。顔写真から、年齢、感情、場合によっては健康状態の手がかりが推測されると主張されている（顔からの属性推定には、科学的根拠が疑わしいものも含まれる）。</p>
+<p>推測は、<strong>正しくても問題</strong>であり（本人が隠していたことが暴かれる）、<strong>間違っていても問題</strong>である（事実でない属性で扱われる）。</p>
+<h2>12-3　問題3：人物像の生成——存在しない情報が、事実のように語られる</h2>
+<p>生成AIに実在の人物について尋ねると、AIがもっともらしい、しかし<strong>事実ではない経歴や発言</strong>を生成することがある（いわゆるハルシネーション）。</p>
+<p>これは従来の個人情報保護の枠組みでは捉えにくい。</p>
+<ul>
+<li><strong>収集</strong>ではない（誰もその情報を集めていない）</li>
+<li><strong>漏えい</strong>でもない（もともと存在しない情報である）</li>
+<li>しかし、<strong>特定の個人について、誤った情報が流通する</strong></li>
+</ul>
+<p>EUでは、生成AIが実在の人物について誤った情報を出力したことについて、GDPRの「正確性の原則」違反として苦情が申し立てられた例がある（市民団体による申立てとして報道）。</p>
+<h2>12-4　問題4：顔・声・生体——取り替えられない情報の複製</h2>
+<p>第1章で、顔・声・指紋は「取り替えられない」情報だと述べた。生成AIは、これらを<strong>複製できる</strong>ようになった。</p>
+<ul>
+<li><strong>声の複製</strong>：短い音声サンプルから、本人そっくりの声を合成できる。家族の声を装った詐欺電話の手口として警戒されている</li>
+<li><strong>顔の合成</strong>：本人の写真から、本人が言っていないことを言う動画を作れる。非同意の性的画像の生成は、特に深刻な被害として各国で規制が進んでいる。EUのDigital Omnibusでは、非同意の性的画像を生成するAIの禁止が2026-12-02からとされている（<strong>暫定合意の報道に基づく</strong>）</li>
+<li><strong>生体認証の突破</strong>：顔認証・声紋認証を、合成された顔・声で突破する試み</li>
+</ul>
+<p><strong>取り替えられない情報が、複製可能になった。</strong> これは、生体情報を本人確認の「最後の砦」としてきた仕組みの前提を揺るがす。パスワードは漏れたら変えればよい。顔は、変えられない。</p>
+<p>令和8年改正の<strong>顔特徴データ等（特定生体個人情報）の規律新設</strong>（項目④）は、この問題への日本の最初の本格的な対応である。ただし改正の主眼は、顔認証カメラなどによる<strong>顔特徴データの取得と利用</strong>の規律であり、<strong>生成AIによる顔・声の複製そのもの</strong>をどこまで射程に入れているかは、政令・規則の段階で確認が必要である（<strong>未確認</strong>）。</p>
+<h2>12-5　日本とEUが、同時に同意規制を緩めた</h2>
+<p>第5章と第6章で見たとおり、2025〜2026年に、日本とEUはほぼ同時に、同意に頼らない個人データ処理の範囲を広げる方向へ動いた。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>日本（令和8年改正）</th>
+<th>EU（Digital Omnibus案）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>状態</td>
+<td><strong>成立・公布済み、施行は2028年7月までに</strong></td>
+<td><strong>暫定合意の報道あり、正式採択は未確認</strong></td>
+</tr>
+<tr>
+<td>同意の扱い</td>
+<td>統計作成等の目的で同意取得義務を免除、例外要件を緩和</td>
+<td>AI学習を「正当な利益」で可能に（第88c条案）</td>
+</tr>
+<tr>
+<td>同時に強化したもの</td>
+<td>課徴金、差止請求、生体情報、子ども、委託先</td>
+<td>合成コンテンツの表示、非同意性的画像AIの禁止</td>
+</tr>
+</tbody>
+</table></div>
+<p>これは偶然ではないと私は考える。両者に共通する背景は、</p>
+<ol>
+<li><strong>同意制度が実質的に機能していないという認識</strong>（第3章）</li>
+<li><strong>AIの開発競争で、データ利用の制約が競争上の不利になるという産業界・政府の懸念</strong></li>
+</ol>
+<p>の2つである。どちらの比重が大きいかは、国・地域によって、また論者によって見方が分かれる（<strong>見解の対立</strong>。第15章）。</p>
+<h2>12-6　「同意を外すなら、後から確認できることを外してはならない」</h2>
+<p>第3章で述べたことを、AIの文脈で繰り返す。</p>
+<p>同意は事前の歯止めだった。それを外すなら、<strong>事後の歯止め</strong>——何に使われたかを後から確認できること、問題があれば止められること、違反には制裁があること——が必要である。</p>
+<p>AIの場合、事後の確認はとりわけ難しい。</p>
+<ul>
+<li>何が学習に使われたかを、本人が確認する手段がほとんどない</li>
+<li>学習済みモデルから、特定の情報を取り除くことは困難である</li>
+<li>推論結果（第3層）は、生成した事業者の中にしかない</li>
+</ul>
+<p>だから、<strong>AIについて同意規制を緩めるのであれば、学習データの開示、推論結果の開示請求、オプトアウトの実効性</strong>など、事後の確認手段を同時に整えなければ、釣り合わない。</p>
+<p>日本の改正が、統計作成目的の同意免除と同時に課徴金・差止請求を入れたこと、EUのOmnibus案が学習の正当な利益化と同時に表示義務・禁止事項を入れたことは、この釣り合いを意識した設計と読める。<strong>ただし、「学習に使ったかどうかを本人が確認できる仕組み」は、どちらの改正でも明確には見当たらなかった</strong>（私の確認範囲での判断）。ここが、両制度の最大の空白だと考える。</p>
+<hr />
+<h1>第13章　流出したら、何を取り戻せて、何を取り戻せないのか</h1>
+<h2>13-1　取り戻せるもの、取り戻せないもの</h2>
+<p>第1章の「取り替えられるか」の表を、流出後の対処の観点から整理し直す。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>流出したもの</th>
+<th>取り戻せるか</th>
+<th>本人ができること</th>
+<th>残る被害</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パスワード</td>
+<td><strong>取り戻せる</strong></td>
+<td>直ちに変更。使い回し先もすべて変更</td>
+<td>ほぼなし（変更が早ければ）</td>
+</tr>
+<tr>
+<td>クレジットカード番号</td>
+<td><strong>取り戻せる</strong></td>
+<td>停止・再発行。不正利用の補償申請</td>
+<td>手間、一時的な不便</td>
+</tr>
+<tr>
+<td>口座番号</td>
+<td>ほぼ取り戻せる</td>
+<td>金融機関に連絡、必要なら変更</td>
+<td>手間</td>
+</tr>
+<tr>
+<td>メールアドレス</td>
+<td>部分的に</td>
+<td>変更（手間大）、迷惑メール対策</td>
+<td>フィッシングの標的化が続く</td>
+</tr>
+<tr>
+<td>電話番号</td>
+<td>部分的に</td>
+<td>変更（手間大）、着信拒否</td>
+<td>詐欺電話が続く</td>
+</tr>
+<tr>
+<td>住所</td>
+<td>部分的に</td>
+<td>引っ越し（現実的でないことが多い）</td>
+<td>郵便・訪問の被害</td>
+</tr>
+<tr>
+<td>氏名・生年月日</td>
+<td><strong>取り戻せない</strong></td>
+<td>なし</td>
+<td>なりすましのリスクが続く</td>
+</tr>
+<tr>
+<td>マイナンバー</td>
+<td>原則取り戻せない</td>
+<td>不正利用のおそれがある場合は番号の変更を請求できる（制度上の例外）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>病歴・健康情報</td>
+<td><strong>取り戻せない</strong></td>
+<td>なし</td>
+<td>差別・偏見のリスク</td>
+</tr>
+<tr>
+<td>顔・声・生体</td>
+<td><strong>取り戻せない</strong></td>
+<td>なし</td>
+<td>合成・なりすましのリスクが<strong>永続</strong></td>
+</tr>
+<tr>
+<td>「騙されやすい」という推測</td>
+<td><strong>取り戻せない</strong></td>
+<td>なし</td>
+<td>繰り返し狙われる</td>
+</tr>
+</tbody>
+</table></div>
+<h2>13-2　「削除」は、どこまで効くか</h2>
+<p>流出した情報について、本人ができる「削除」の手段は限られている。</p>
+<ul>
+<li><strong>流出元への削除請求</strong>：流出元の事業者には請求できる。しかし、すでに外に出たコピーは消えない</li>
+<li><strong>検索エンジンへの削除請求</strong>：検索結果から外すことはできる（日本では2017年の最高裁決定が判断基準を示した）。しかし、元のページは残る</li>
+<li><strong>名簿業者への削除請求</strong>：オプトアウトを請求できる。しかし、どの業者が持っているか分からない</li>
+<li><strong>カリフォルニア州のDROP</strong>：州に登録された全ブローカーに一括で請求できる。<strong>日本には同等の仕組みがない</strong></li>
+<li><strong>ダークウェブ上の情報</strong>：事実上、削除できない</li>
+</ul>
+<blockquote>
+<p><strong>一度外に出た情報は、回収できない。できるのは、「使いにくくすること」（パスワード変更、カード停止）と、「見つけにくくすること」（検索結果からの削除）だけである。</strong></p>
+</blockquote>
+<h2>13-3　最強の対策は、「集めないこと」</h2>
+<p>ここまでの議論を、ひとつの結論にまとめる。</p>
+<ul>
+<li>漏えいの大部分は、悪意ではなく、ミスで起きる（第8章）</li>
+<li>大規模な漏えいは、委託先とクラウドから起きる（第9章）</li>
+<li>危険は、別々の情報が結合されることで生まれる（第1章）</li>
+<li>匿名化は、結合に対して脆弱である（第11章）</li>
+<li>一度出た情報は、取り戻せない（本章）</li>
+</ul>
+<p>これらすべてに効く対策は、ひとつしかない。</p>
+<blockquote>
+<p><strong>最初から集めないこと。集めたら、必要がなくなった時点で捨てること。</strong></p>
+</blockquote>
+<p>持っていない情報は、漏れない。誤送付もされない。委託先から流出もしない。結合もされない。</p>
+<p>これは当たり前のことに聞こえるが、実際には最も実行されていない対策である。なぜなら、</p>
+<ul>
+<li>集めるコストはほぼゼロである</li>
+<li>捨てる作業には手間がかかる</li>
+<li>「いつか役に立つかもしれない」という期待がある</li>
+<li>捨てたことによって失う利益は見えやすいが、持っていたことによる漏えいリスクは見えにくい</li>
+</ul>
+<p>からである。</p>
+<p>OECD8原則の第1原則は「収集制限の原則」だった（第2章）。<strong>40年以上前に最初に書かれた原則が、今も最も守られていない原則である。</strong></p>
+<hr />
+<h1>第14章　個人・企業・行政ができること</h1>
+<h2>14-1　個人ができること（10項目）</h2>
+<p>効果の大きい順に並べた（私の判断による順位）。</p>
+<ol>
+<li><strong>パスワードを使い回さない。</strong> パスワード管理ソフトを使う。漏えい1件の被害を1サービスに閉じ込める最大の手段である</li>
+<li><strong>多要素認証（二段階認証）を、使えるところはすべて有効にする。</strong> パスワードが漏れても、不正ログインを防げる</li>
+<li><strong>知らない番号からの電話で、お金の話になったら切る。</strong> 家族を名乗る声でも、いったん切って、自分が知っている番号にかけ直す（声の合成への対策）</li>
+<li><strong>「〇〇の件で」と自分の情報を知っている相手でも、それだけで信用しない。</strong> 漏えいした情報を知っていることは、本物である証拠にならない</li>
+<li><strong>名簿・連絡網に載せる情報を最小にする。</strong> 求められても、必要な項目だけを書く。断ってよい項目は断る</li>
+<li><strong>スマートフォンのアプリの位置情報の許可を見直す。</strong> 「常に許可」を「使用中のみ」か「許可しない」に</li>
+<li><strong>位置共有・家族共有の設定を定期的に確認する。</strong> 関係が変わったら、すぐに解除する</li>
+<li><strong>SNSに投稿する写真の背景（自宅周辺、子どもの学校、制服）に注意する</strong></li>
+<li><strong>漏えいの通知が来たら、その事業者のパスワードと、同じパスワードを使っていたサービスをすべて変更する</strong></li>
+<li><strong>困ったら相談する。</strong> 個人情報保護委員会の相談ダイヤル、消費生活センター（188）、警察相談専用電話（#9110）</li>
+</ol>
+<h2>14-2　企業ができること（10項目）</h2>
+<ol>
+<li><strong>集める項目を最小にする。</strong> 「念のため」の項目を削る</li>
+<li><strong>保管期間を決め、期限が来たら捨てる。</strong> 捨てたことを記録する</li>
+<li><strong>紙の書類の受け渡しと封入に、確認の仕組みを入れる。</strong> 漏えい件数の最大の要因に直接効く</li>
+<li><strong>メールの誤送信対策を入れる。</strong> 送信の一時保留、外部宛ての警告</li>
+<li><strong>委託先・クラウドの管理を、契約だけでなく実態で確認する。</strong> 監査、ログの確認、再委託の把握</li>
+<li><strong>アクセス権を最小にする。</strong> 内部持ち出しの最大の防止策</li>
+<li><strong>多要素認証を全従業員・全委託先に義務付ける</strong></li>
+<li><strong>バックアップを分離して保管し、復旧訓練をする。</strong> ランサムウェア対策</li>
+<li><strong>漏えい時の公表で、数字の意味を正確に書く。</strong> 人数か件数か、確定か最大か、漏えいかおそれか（第9章の作法）</li>
+<li><strong>令和8年改正への準備を始める。</strong> 課徴金、委託先規律、生体情報、子どもの規律は、施行（2028年7月まで）より前に体制を整える必要がある</li>
+</ol>
+<h2>14-3　行政ができること（6項目）</h2>
+<ol>
+<li><strong>紙の誤交付・誤送付の対策を、最優先課題として位置づける。</strong> 行政の漏えいの6〜7割は紙である</li>
+<li><strong>委託先・クラウドの管理基準を、自治体間で共通化する。</strong> 一つの基盤の侵害が数百の組織に波及する構造に対応する</li>
+<li><strong>住民の情報の「捨て方」の基準を明確にする。</strong> 保存期間の過ぎた情報を確実に廃棄する</li>
+<li><strong>自治会・PTA・マンション管理組合など、地域の任意団体への名簿管理の支援を強める。</strong> 委員会のフライヤーを超えた、実務的な支援（テンプレート、講習）</li>
+<li><strong>名簿業者のオプトアウトを、本人が一括で請求できる仕組みを検討する。</strong> カリフォルニア州DROPのような仕組み</li>
+<li><strong>漏えい統計で、件数だけでなく人数・形態・経路を分けて公表し続ける。</strong> 年次報告の分析はすでに優れているが、報道で件数だけが独り歩きしないよう、人数ベースの集計も示す</li>
+</ol>
+<hr />
+<h1>第15章　反対意見と、不都合な事実</h1>
+<p>独立調査の役割として、本レポートの主張に対する反対意見を、できるだけ強い形で示す。</p>
+<h2>15-1　「集めないことが最強の対策」への反論</h2>
+<p><strong>反論</strong>：データを集めなければ、医療の進歩も、不正の検知も、災害時の支援も、サービスの改善もできない。「集めない」は、社会全体の利益を犠牲にする。</p>
+<p><strong>私の応答</strong>：この反論は正しい。私が言いたいのは「何も集めるな」ではなく、「<strong>目的に必要な範囲で集め、必要がなくなったら捨てる</strong>」である。問題は、必要な範囲を超えた「念のため」の収集と、捨てられない保管である。ただし、「必要な範囲」の線引きは、立場によって大きく異なり、私にはその線を引けない。</p>
+<h2>15-2　過剰萎縮の問題</h2>
+<p><strong>反論</strong>：個人情報保護を強調しすぎると、<strong>必要な情報共有まで止まる</strong>。</p>
+<p>これは重要な反論である。2005年の個人情報保護法全面施行の直後、「個人情報だから」という理由で、災害・事故時の安否情報の提供、学校の連絡網、医療機関間の情報共有などが止まる「過剰反応」が社会問題になった（当時、政府も過剰反応への注意を呼びかけた）。</p>
+<p>情報を出さないことで、人命が危険にさらされることがある。避難行動要支援者名簿のジレンマ（第11章）は、その典型である。</p>
+<p><strong>私の応答</strong>：本レポートは「集めないこと」「捨てること」を強調したが、これは<strong>萎縮を勧めるものではない</strong>。必要な共有は、法律上も認められている（生命・身体の保護のための例外など）。萎縮を防ぐには、「何をしてはいけないか」だけでなく、「<strong>何をしてよいか</strong>」を明確に伝えることが必要である。この点は、本レポートの記述の弱点として認める。</p>
+<h2>15-3　「同意の緩和」は改善だという見方</h2>
+<p><strong>反論</strong>：同意制度は形骸化していた。誰も読まない利用規約への「同意」を求めるより、事業者の責任と事後の監督を強化するほうが、本人の保護として実質的である。日本とEUの改正は、その方向への正しい転換である。</p>
+<p><strong>私の応答</strong>：この見方には説得力がある。私も同意制度の限界は認める（第3章）。私の懸念は、<strong>同意を緩和する部分は確実に施行される一方、事後の監督を強化する部分が実際にどれだけ使われるか</strong>は分からない、という点にある。日本で緊急命令が初めて使われるまで20年かかった（第10章）。この懸念は、施行後の執行実績で検証されるべきもので、現時点では見解の対立として残す。</p>
+<h2>15-4　「紙が最多」は、深刻さの指標ではないという見方</h2>
+<p><strong>反論</strong>：紙の誤交付は件数が多いだけで、1件あたりの被害は小さい。大規模なサイバー攻撃のほうが、社会全体への影響ははるかに大きい。紙を強調するのはミスリードである。</p>
+<p><strong>私の応答</strong>：一理ある。件数と影響は別の指標である（第8章で区別した）。ただし、紙の誤交付で漏れるのは<strong>病歴などの要配慮個人情報</strong>であることが多く、本人にとっての被害は小さくない。また、報道がサイバー攻撃に偏りがちな中で、件数の実態を伝える意味はあると考える。どちらを「主役」と呼ぶかは、基準の選び方の問題として、両論を残す。</p>
+<h2>15-5　「善意の名簿の危険」は、共同体を壊すという懸念</h2>
+<p><strong>反論</strong>：善意の名簿が危険だと強調すれば、PTAや自治会の連絡網がなくなり、地域のつながりが弱まる。それ自体が、災害時の脆弱性を高める。</p>
+<p><strong>私の応答</strong>：これも正しい懸念である。私の主張は、名簿をなくせではなく、<strong>名簿の項目を絞り、配布範囲を限り、不要になったら回収・廃棄する</strong>という管理の改善である。ただし、任意団体にそうした管理を求めること自体が負担であり、担い手不足を加速させる可能性はある。</p>
+<h2>15-6　データ利用の規制は、イノベーションを阻害するという見方</h2>
+<p><strong>反論</strong>：EUの厳しい規制は、欧州のAI・IT産業の競争力を弱めた。日本が同じ道を歩むべきではない。</p>
+<p><strong>私の応答</strong>：この主張には、支持する分析も、反対する分析もある。規制と競争力の因果関係は、本レポートの調査範囲では検証できなかった。EUがDigital Omnibusで規制を緩める方向に動いたこと自体は、EU当局がこの懸念を一定程度受け入れたことを示す事実である。</p>
+<hr />
+<h1>第16章　2030年・2040年・2050年の展望</h1>
+<p>以下は<strong>未来予測</strong>であり、私自身の推測を含む。確実性の度合いを3段階で示す。</p>
+<ul>
+<li>【確度：高】すでに法律や計画で決まっていること</li>
+<li>【確度：中】現在の傾向から強く予想されること</li>
+<li>【確度：低】可能性として考えられること</li>
+</ul>
+<h2>16-1　2030年</h2>
+<ul>
+<li>【高】令和8年改正個人情報保護法が施行され（2028年7月までに）、課徴金の最初の事例が出ているかどうかが、制度の実効性の試金石になる</li>
+<li>【高】EU AI Actの高リスクAIに関する義務が適用されている（Omnibusの延期が確定すれば2027年12月以降）</li>
+<li>【中】米国で、カリフォルニア州DROPのような一括削除の仕組みを導入する州が増える</li>
+<li>【中】生成AIによる声・顔の複製を使った詐欺が一般化し、<strong>「声や顔で本人確認する」仕組みの見直し</strong>が進む</li>
+<li>【中】紙の誤交付は、電子化の進展で減少するが、ゼロにはならない</li>
+<li>【低】日本で、名簿業者への一括オプトアウトの仕組みが議論される</li>
+</ul>
+<h2>16-2　2040年</h2>
+<ul>
+<li>【中】個人の行動データ（第2層）の量はさらに増え、「行動を記録されない」ことが、事実上不可能になる</li>
+<li>【中】AIによる推測（第3層）が、行政・金融・医療・雇用の判断に広く組み込まれ、<strong>推測の開示・訂正を求める権利</strong>が、制度上の主要な論点になる</li>
+<li>【低】学習済みモデルからの情報の削除（機械的忘却）が実用化されるか、されないかで、「忘れられる権利」のあり方が大きく変わる</li>
+<li>【低】量子計算機の実用化が進めば、現在暗号化されて保管されているデータが将来解読される「今収集し、後で解読する」リスクが現実化する（耐量子暗号への移行が間に合うかどうかに依存）</li>
+</ul>
+<h2>16-3　2050年</h2>
+<ul>
+<li>【低】今日の子どもたちは、生まれたときから行動データを記録され続けた最初の世代として成人している。<strong>子ども時代のデータを、本人が大人になってから消せるかどうか</strong>が、大きな社会問題になっている可能性がある</li>
+<li>【低】顔・声・生体情報の複製が完全に容易になり、「生体情報による本人確認」という考え方そのものが放棄されている可能性がある</li>
+<li>【低】あるいは逆に、技術（プライバシー強化技術、分散型ID、秘密計算）の発展で、<strong>データを集めずに、データを使う</strong>ことが当たり前になっている可能性もある</li>
+</ul>
+<h2>16-4　未来について、ひとつだけ確かなこと</h2>
+<blockquote>
+<p><strong>今日集めた情報は、2050年にも残っている可能性がある。そのとき、その情報がどう使われるかを、今日の私たちは決められない。</strong></p>
+</blockquote>
+<p>壬申戸籍は、1872年には「当たり前の記録」だった。100年後、それは封印すべきものになった（第2章）。今日のデータベースに眠る推測データが、2050年にどんな意味を持つかは、誰にも分からない。</p>
+<p>だからこそ、第13章の結論に戻る。<strong>集めないこと。捨てること。</strong> それが、未来の世代に対してできる、最も確実な配慮である。</p>
+<hr />
+<h1>結び　あなたの個人情報は、今どこにあるのか。</h1>
+<p>この問いに、正確に答えられる人はいない。あなた自身も、あなたの情報を最初に受け取った事業者も、行政も答えられない。</p>
+<p>あなたが渡した情報（第1層）は、渡した相手と、その委託先と、そのクラウドにある。
+あなたの行動から生まれた情報（第2層）は、あなたが使ったアプリと、その先の広告事業者と、データブローカーにある。
+あなたについて推測された情報（第3層）は、それを作った事業者の中にだけあり、あなたには見えない。
+そして、あなたの知人が同期した連絡先、あなたの子どものPTA名簿、あなたのマンションの居住者名簿にも、あなたの情報はある。</p>
+<p>個人情報を欲しがるのは誰か、という問いから、このレポートは始まった。しかし調べるほど、問題は「誰が欲しがるか」より、「<strong>どこにあって、どこで結びつくか</strong>」にあると分かってきた。善意で作られた名簿も、悪意で買われた名簿も、データとしては同じ顔をしている。</p>
+<p>私たちにできることは、思われているより多い。パスワードを使い回さないこと。名簿に書く項目を減らすこと。知っている声でも、いったん電話を切ること。そして、集める側に立ったとき——会社で、役所で、PTAで、自治会で——<strong>本当に必要な分だけ集め、要らなくなったら捨てること</strong>。</p>
+<p>持っていない情報は、漏れない。</p>
+<hr />
+<h1>【A】本調査で最も重要だと考える発見（7項目）</h1>
+<ol>
+<li>
+<p><strong>日本の漏えいの「件数」の主役は、サイバー攻撃ではなく紙である。</strong> 行政機関等の漏えいの形態は「紙媒体のみ」が国60.9%・地方68.1%で最多。民間の報告者からの報告でも、令和6年度は83.5%が誤交付・誤送付・誤廃棄だった。（個人情報保護委員会 令和7年度年次報告）</p>
+</li>
+<li>
+<p><strong>その紙に書かれているのは、最も取り替えられない情報（病歴など）である。</strong> 行政機関等の漏えいで最も多いのは要配慮個人情報を含むもの（国64.9%・地方74.1%）。</p>
+</li>
+<li>
+<p><strong>善意の名簿は、犯罪者にとって最高品質のデータになる。</strong> 個人情報保護委員会自身が、名簿流出の注意喚起の宛先に自治会・同窓会・PTA・マンション管理組合を名指ししている。正確・新鮮・結合済み・管理が弱いという条件が揃う。</p>
+</li>
+<li>
+<p><strong>日本初の課徴金は「得た利益」基準で、管理の杜撰さによる漏えいにはあまり効かない設計である。</strong> 漏えいの実態（ミス中心）と、制度の狙い（悪用による利益）にズレがある可能性。</p>
+</li>
+<li>
+<p><strong>日本とEUが、2025〜2026年にほぼ同時に、同意に頼らない処理の範囲を広げた。</strong> どちらも同時に事後の歯止めを強めたが、「AI学習に使われたかを本人が確認できる仕組み」は、どちらにも明確には見当たらない。</p>
+</li>
+<li>
+<p><strong>大規模漏えいの震源は、本人が情報を渡した相手ではなく、委託先とクラウドである。</strong> IDCFクラウドの事案は495の企業・自治体に波及した。過去の国内大規模内部持ち出し事案も、委託先の人間によるものだった。</p>
+</li>
+<li>
+<p><strong>米国では、データ売買の規制が「消費者保護」としては後退し（CFPB規則案撤回）、「安全保障」としては前進している（PADFAA、DOJ規則）。</strong> 同じデータ売買でも、買い手の国籍で規制の強さが変わる。一方カリフォルニア州DROPは、本人の「発見のコスト」を国家とブローカーに移した画期的な仕組みである。</p>
+</li>
+</ol>
+<h1>【B】クロちゃん独自の論点（8項目）</h1>
+<p>他AIの原稿と比較する際、意図的な相違点として残してほしい論点である。</p>
+<ol>
+<li><strong>問いの軸の転換：「誰が欲しがるか」から「どこで結合されるか」へ。</strong> 実害の大半は収集者の意図と無関係に発生している（序章）。</li>
+<li><strong>3層モデル（渡した／発生した／推測された）。</strong> 制度は第1層中心に設計され、実害は第2・第3層で起きているというズレ（第1章）。</li>
+<li><strong>「取り替えられるか」による情報の危険度の整理。</strong> 生体情報の特別扱いの根拠を、感情ではなく可逆性に置く（第1章）。</li>
+<li><strong>10立場×8観点を「拒否できるか×責任の所在」に縮めた3グループ分類。</strong> 善意の個人・家族・地域が、悪意ある者と同じグループCに入る（第4章）。</li>
+<li><strong>漏えい報告件数＝漏えいの量×報告する文化。</strong> 民間減・行政増を、悪化・改善と即断しない（第8章）。</li>
+<li><strong>数字の作法5点。</strong> 件数が何を数えているか、最大と確定、漏えいとおそれ、重複、食い違いの併記（第9章）。</li>
+<li><strong>「同意を外すなら、後から確認できることを外してはならない」。</strong> 日本とEUの改正を、この釣り合いの観点で評価する（第3章・第12章）。</li>
+<li><strong>最強の対策は「集めないこと」と「捨てること」。</strong> OECD8原則の第1原則が、40年以上経って最も守られていない（第13章）。壬申戸籍の封印の歴史を、現代の推測データの問題と重ねる（第2章・第16章）。</li>
+</ol>
+<h1>【C】反対意見（6項目）</h1>
+<p>第15章に詳述。要旨のみ再掲する。</p>
+<ol>
+<li>「集めない」は、医療・不正検知・災害支援などの社会的利益を犠牲にする</li>
+<li><strong>過剰萎縮</strong>：保護の強調が、必要な情報共有（安否確認、要支援者支援）を止める</li>
+<li>同意の緩和は、形骸化した制度からの正しい転換である</li>
+<li>紙の誤交付は件数が多いだけで、影響の大きさではサイバー攻撃が主役である</li>
+<li>善意の名簿の危険を強調すると、地域の共同体を弱める</li>
+<li>データ利用の規制は、AI・IT産業の競争力を弱める</li>
+</ol>
+<p>いずれも、本レポートは<strong>解消せずに残した</strong>。それぞれの理由は第15章に記した。</p>
+<h1>【D】数値の読み方：5つの作法</h1>
+<ol>
+<li><strong>「件」が何を数えているかを、必ず書く</strong>（人数／レコード数／会員番号数／メールアドレス数／組織数／画像数）</li>
+<li><strong>「最大」と「確定」を区別する</strong>（KDDI系ISP：最大1,422万件 → 確定 メールアドレス約1,223万件）</li>
+<li><strong>「漏えい」「漏えいのおそれ」「不正アクセス」「外部転送の痕跡なし」「サービス停止」を区別する</strong></li>
+<li><strong>重複を含むかどうかを確認し、人数として公表されていない数字を人数として書かない</strong>（National Public Dataの「29億」はレコード数）</li>
+<li><strong>資料間の食い違いは、両方書く</strong>（2りんかん・イエローハット：3,179,454名分 vs 約345万名分）</li>
+</ol>
+<p>加えて、本レポートで遵守した原則：
+- 制裁金の<strong>公表</strong>と<strong>確定・支払い</strong>を区別する（Amazon €7.46億は2026年3月に取り消し、Meta €12億は控訴中・支払停止）
+- 漏えい報告の「件数」は事案の数であり、漏えい人数ではない
+- 法律の「成立・公布」と「施行」を区別する（令和8年改正は基準日時点で本体未施行）</p>
+<h1>【E】確認できなかったこと・未確定のこと（12項目）</h1>
+<ol>
+<li><strong>Digital Omnibusの正式採択の有無</strong>：2026-05-07の暫定合意の報道はあるが、基準日時点で正式採択・官報掲載を一次情報で確認できなかった。<strong>情報競合</strong>として扱う</li>
+<li><strong>令和8年改正法の条文全文</strong>：委員会の概要資料・報道で確認したが、官報の条文全文には到達していない。条番号は概要資料の記載による</li>
+<li><strong>令和8年改正の本体施行日</strong>：「公布から2年以内（2028-07-16まで）」という法定期限は確認したが、具体的な施行日は未定</li>
+<li><strong>2026年の国内漏えい事案の当事者発表原文</strong>：多くを報道・まとめサイト経由で確認した。<strong>記事化の前に各社の公式発表での確認が必要</strong></li>
+<li><strong>2りんかん・イエローハット事案の正確な人数</strong>：3,179,454名分と約345万名分の食い違いが未解消</li>
+<li><strong>株式会社中央ビジネスサービスの「49万人分」の数え方</strong>：委員会発表原文で確認していない</li>
+<li><strong>特殊詐欺の2025年の確定値</strong>：警察庁の一次資料で確認していないため、具体的数値を記載しなかった</li>
+<li><strong>GDPR累計制裁金「約71億ユーロ」</strong>：法律事務所等の民間集計であり、公的な公式集計ではない</li>
+<li><strong>TikTok €5.3億の確定状況</strong>：控訴の有無・確定の状況を確認していない</li>
+<li><strong>令和8年改正の顔特徴データ規律が、生成AIによる顔・声の複製をどこまで射程に入れるか</strong>：政令・規則の段階で確認が必要</li>
+<li><strong>令和7年度の行政機関等の漏えい増加の要因</strong>：制度変更・報告文化・実際の悪化のいずれが大きいか、委員会報告の範囲では判断できなかった</li>
+<li><strong>マイナンバー関連の報告が2,052件から392件に減った要因</strong>：ひも付け誤登録の一巡によるものと推測したが、未確認</li>
+</ol>
+<h1>【F】主要出典一覧</h1>
+<p><strong>一次情報（公的機関・当事者の公式発表）</strong></p>
+<ul>
+<li>個人情報保護委員会「令和7年度 年次報告」（2026年7月7日公表）
+  <a href="https://www.ppc.go.jp/files/pdf/080707_annual_report.pdf" target="_blank" rel="noopener">https://www.ppc.go.jp/files/pdf/080707_annual_report.pdf</a>
+  ——漏えい等報告件数、形態別割合、監督実績、相談件数</li>
+<li>個人情報保護委員会「個人情報の保護に関する法律に基づく行政上の対応について」（2025年5月16日、有限会社ビジネスプランニングへの緊急命令等）
+  <a href="https://www.ppc.go.jp/files/pdf/250516_houdou.pdf" target="_blank" rel="noopener">https://www.ppc.go.jp/files/pdf/250516_houdou.pdf</a></li>
+<li>個人情報保護委員会「STOP！名簿流出」フライヤー
+  <a href="https://www.ppc.go.jp/news/online_criminal_flyer/" target="_blank" rel="noopener">https://www.ppc.go.jp/news/online_criminal_flyer/</a></li>
+<li>個人情報保護委員会　令和8年改正個人情報保護法に関する公表資料（改正項目の概要、政令・規則の全体像（案）2026年8月）
+  <a href="https://www.ppc.go.jp/" target="_blank" rel="noopener">https://www.ppc.go.jp/</a> （委員会トップから改正関連ページ）</li>
+<li>米国連邦取引委員会（FTC）　X-Mode/Outlogic、InMarket、Gravy Analytics/Venntel、Mobilewallaに関する発表（2024年）、PADFAA警告書（2026年2月）
+  <a href="https://www.ftc.gov/" target="_blank" rel="noopener">https://www.ftc.gov/</a></li>
+<li>米国消費者金融保護局（CFPB）　Regulation V規則案（2024-12-13提案、2025-05-15撤回）
+  <a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">https://www.consumerfinance.gov/</a></li>
+<li>カリフォルニア州プライバシー保護局（CPPA）　DROP（Delete Request and Opt-Out Platform）
+  <a href="https://cppa.ca.gov/" target="_blank" rel="noopener">https://cppa.ca.gov/</a></li>
+<li>欧州委員会　Digital Omnibus（2025-11-19公表）
+  <a href="https://commission.europa.eu/" target="_blank" rel="noopener">https://commission.europa.eu/</a></li>
+<li>OECD「プライバシー保護と個人データの国際流通についてのガイドライン」（1980年）</li>
+</ul>
+<p><strong>準一次・報道・分析</strong></p>
+<ul>
+<li>2026年国内漏えい事案（KDDI系ISP、アフラック生命、EPARKリラク＆エステ、Gyazo、ブックオフGHD、ローソンID、焼肉きんぐ、ショップサーブ、日本テレネット、TEMAIRAZU、大和証券、IDCFクラウド、ApplyNow、2りんかん・イエローハット）：<strong>報道・専門メディア・まとめサイト経由で確認。当事者発表原文は記事化前に要確認</strong></li>
+<li>GDPR制裁金の累計・個別事案：各国データ保護機関の発表および法律事務所等の集計</li>
+<li>再識別研究：Sweeney（2000年前後）、Narayanan &amp; Shmatikov（2008）、de Montjoye ほか（2013, Scientific Reports）、Rocher ほか（2019, Nature Communications）</li>
+<li>ICCL（Irish Council for Civil Liberties）のRTBに関する推計（2022年）——<strong>市民団体による推計</strong></li>
+</ul>
+<hr />
+<h1>付記　本レポートの限界</h1>
+<ol>
+<li><strong>一次情報への到達度にばらつきがある。</strong> 日本の統計（年次報告）と名簿屋への処分は一次資料で確認したが、2026年の個別漏えい事案は多くを報道経由で確認した。</li>
+<li><strong>法律の条文全文を読んでいない。</strong> 令和8年改正、GDPR、各州法とも、主に公的機関の概要資料と専門メディアの解説に依拠した。</li>
+<li><strong>海外の事案は、米国・EUに偏っている。</strong> 中国、韓国、インド、東南アジアなどの制度と事案は、ほとんど扱えなかった。</li>
+<li><strong>10立場×8観点の比較表は、私の分析である。</strong> 個別の組織がこの通りだという意味ではなく、類型の傾向を示したものである。</li>
+<li><strong>未来予測（第16章）は推測である。</strong> 確度を3段階で示したが、確度の判断そのものも私の見解である。</li>
+<li><strong>実際の被害者の個人情報や漏えいデータは、一切取得・閲覧・掲載していない。</strong> 扱ったのは、公表された件数・種類・経緯のみである。</li>
+<li><strong>他AIの原稿は一切参照していない。</strong> 結論を合わせていない。相違点は、比較・統合の段階で、相違点として残してほしい。</li>
+</ol>
+<hr />
+<p><em>本レポートは、第2研究所 日曜特集第8号候補のための独立調査稿である。HTML制作、index変更、commit、push、deploy、公開は行っていない。Google Drive上の正式原本の変更・移動・削除も行っていない。</em></p>
+<p><strong>情報基準日：2026年10月11日</strong>
+<strong>作成：クロちゃん（Claude）</strong></p>
+</article>
+<nav class="rs-nav" style="margin-top:28px"><a href="sunday-2026-10-11.html">← 日曜特集 第8号の本文へ戻る</a><a href="sunday-2026-10-11.html#part-ai">4AIの独立調査レポート一覧へ</a><a href="#top">↑ ページの先頭へ</a></nav>
+<footer class="foot"><p class="disc">AI総合研究機構 日曜特集 第8号「個人情報」研究付録。この独立調査原稿は、統合前の段階の記録として公開しています。内容の正確さは、本文で確認・統合した結果を優先してください。</p></footer>
+</div>
+</body>
+</html>
