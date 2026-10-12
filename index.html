@@ -212,42 +212,380 @@
     .mo-tot{margin-left:0;} .mo-ym{min-width:0;}
   }
 </style>
-</head>
-<body>
-<div class="wrap">
+<style id="ui-2026-10">
+/* ===== 朝レポート UI 2026-10（新デザイン）=====
+   既存のCSSの後ろに置き、見た目だけを上書きする。内容・機能のクラスは変えない。 */
+body.ui{
+  --bg:#EEF4FC; --surface:#FFFFFF; --surface-2:#F7FAFE;
+  --ink:#13213D; --ink-2:#44526B; --ink-3:#77849B; --navy:#0D1D42;
+  --line:#E1E8F3; --line-2:#ECF1F8;
+  --brand:#1F5FEF; --brand-2:#4D8BFF; --brand-soft:#EBF2FF;
+  --acc:#1F5FEF; --acc-2:#4D8BFF; --acc-soft:#EBF2FF; --badge:#F28A1E;
+  --sh-1:0 1px 2px rgba(20,40,90,.05),0 1px 3px rgba(20,40,90,.06);
+  --sh-2:0 2px 6px rgba(20,40,90,.05),0 10px 26px rgba(20,40,90,.07);
+  --sh-3:0 6px 14px rgba(20,40,90,.06),0 22px 48px rgba(20,40,90,.10);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  background:
+    radial-gradient(1100px 520px at 88% -8%,rgba(77,139,255,.14),transparent 62%),
+    radial-gradient(900px 460px at -5% 0%,rgba(77,139,255,.08),transparent 60%),
+    linear-gradient(180deg,#F5F9FF 0%,var(--bg) 55%);
+  background-attachment:scroll;
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","BIZ UDPGothic","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
+  color:var(--ink);padding:14px 14px 64px;overflow-wrap:anywhere;
+}
+body.ui-w{--brand:#3B5A88;--brand-2:#6F8BB5;--brand-soft:#EDF2F9;--acc:#3B5A88;--acc-2:#7E96BA;--acc-soft:#EDF2F9;--badge:#4C6384;}
+body.ui-s{--brand:#7348CF;--brand-2:#9F7BE6;--brand-soft:#F3EEFC;--acc:#7348CF;--acc-2:#A783EA;--acc-soft:#F3EEFC;--badge:#7348CF;
+  --bg:#F3F0FB;
+  background:radial-gradient(1100px 520px at 88% -8%,rgba(160,120,230,.16),transparent 62%),
+    radial-gradient(900px 460px at -5% 0%,rgba(77,139,255,.07),transparent 60%),
+    linear-gradient(180deg,#F8F6FE 0%,var(--bg) 55%);}
+body.ui-i .wrap{max-width:1080px;}
+body.ui-d .wrap,body.ui-w .wrap{max-width:860px;}
+body.ui-s .wrap{max-width:860px;}
+.ui .wrap>*{min-width:0;}
+.ui img,.ui svg,.ui iframe,.ui video{max-width:100%;}
 
-  <header>
+/* ---- アイコン ---- */
+.ic{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;flex:none;
+  background:var(--c-bg);color:var(--c);vertical-align:middle;}
+.ic svg{width:17px;height:17px;}
+.c-blue{--c:#1F5FEF;--c-bg:#EAF1FF;} .c-orange{--c:#EE7A16;--c-bg:#FFF1E3;}
+.c-sky{--c:#0B95D6;--c-bg:#E4F5FD;} .c-teal{--c:#0E9785;--c-bg:#E2F5F2;}
+.c-amber{--c:#C98A00;--c-bg:#FFF5DA;} .c-red{--c:#D9443A;--c-bg:#FDEBE9;}
+.c-indigo{--c:#5656D6;--c-bg:#EEEEFD;} .c-pink{--c:#D9497F;--c-bg:#FDE9F1;}
+.c-green{--c:#2B9A4E;--c-bg:#E6F5EA;} .c-slate{--c:#566985;--c-bg:#EDF1F7;}
+.c-violet{--c:#7348CF;--c-bg:#F1EBFC;} .c-acc{--c:var(--acc);--c-bg:var(--acc-soft);}
+
+/* ---- サイトの帯 ---- */
+.site{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;
+  background:rgba(255,255,255,.94);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0;
+  padding:8px 16px;box-shadow:var(--sh-1);position:relative;z-index:2;}
+.site-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);min-height:44px;}
+.site-logo{width:36px;height:36px;flex:none;}
+.site-nm{display:flex;flex-direction:column;font-weight:800;font-size:16px;line-height:1.2;letter-spacing:.03em;}
+.site-nm small{font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:.1em;}
+.site-nav{display:flex;gap:4px;flex-wrap:wrap;}
+.site-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:10px;
+  font-size:13px;font-weight:700;color:var(--ink-2);text-decoration:none;}
+.site-nav a:hover{background:var(--brand-soft);color:var(--brand);}
+.site-nav a.pri{background:var(--brand);color:#fff;}
+.site-nav a.pri:hover{background:var(--brand-2);color:#fff;}
+
+/* ---- ヒーロー（装飾画像） ---- */
+.hero{position:relative;overflow:hidden;min-height:330px;display:flex;align-items:center;
+  background:#fff var(--hero) right center/cover no-repeat;border:1px solid var(--line);border-top:0;
+  border-radius:0 0 22px 22px;box-shadow:var(--sh-2);}
+.hero::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 36%,rgba(255,255,255,.35) 60%,rgba(255,255,255,0) 78%);}
+.hero-in{position:relative;padding:36px 38px;max-width:580px;min-width:0;}
+.hero-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.bd-kind,.bd-no{display:inline-flex;align-items:center;height:28px;color:#fff;font-weight:800;font-size:13.5px;border-radius:6px;padding:0 11px;}
+.bd-kind{background:var(--badge);}
+.bd-no{background:var(--navy);font-family:var(--mono);letter-spacing:.02em;}
+.hero .date{font-size:15px;font-weight:700;color:var(--ink);margin-left:4px;}
+.hero-title{font-size:40px;font-weight:900;line-height:1.28;color:var(--navy);margin:16px 0 0;letter-spacing:.01em;}
+.img-note{position:absolute;right:12px;bottom:9px;font-size:10px;line-height:1.6;color:#fff;
+  background:rgba(13,29,66,.42);border-radius:6px;padding:1px 8px;}
+
+/* ---- 誌面（mast） ---- */
+.ui .mast{margin-top:16px;border-radius:20px;padding:26px 28px 24px;background:#fff;box-shadow:var(--sh-2);}
+.ui .mast::before{background:linear-gradient(90deg,var(--acc),var(--acc-2));}
+.ui .mast::after{display:none;}
+.ui .brandtag{color:var(--acc);background:var(--acc-soft);border-color:transparent;}
+.ui .brandtag i{background:var(--acc);}
+.ui h1.hello{font-size:26px;line-height:1.5;margin-top:14px;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--navy);}
+.ui .sub-hello{font-size:14px;line-height:1.9;}
+
+/* 分野アイコンの帯 */
+.fields{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px;}
+.fields a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:5px 16px 5px 7px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1);font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;}
+.fields a:hover{border-color:var(--acc-2);color:var(--acc);}
+
+/* 区切り見出し */
+.blk-h{display:flex;align-items:center;gap:10px;margin:28px 0 12px;font-size:20px;font-weight:900;color:var(--navy);line-height:1.4;}
+.blk-h .ic{width:34px;height:34px;}
+.blk-h .en{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-3);}
+.blk-sub{font-size:12.5px;color:var(--ink-3);margin:-6px 0 10px;}
+
+/* 主なポイント */
+.kp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.kp{display:flex;flex-direction:column;gap:8px;padding:16px 16px 15px;border-radius:16px;min-width:0;
+  background:linear-gradient(180deg,#fff 0%,#fff 40%,var(--c-bg) 140%);border:1px solid var(--line);
+  box-shadow:var(--sh-1);text-decoration:none;color:var(--ink-2);font-size:13px;line-height:1.75;transition:transform .12s,box-shadow .12s;}
+.kp:hover{transform:translateY(-1px);box-shadow:var(--sh-2);}
+.kp-h{display:flex;align-items:center;gap:10px;font-weight:900;font-size:15.5px;color:var(--c);line-height:1.4;}
+.kp-h::after{content:"›";margin-left:auto;font-size:22px;line-height:1;color:var(--ink-3);}
+.kp-t b{color:var(--ink);}
+
+/* 全項目一覧 */
+.ui .three{margin-top:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:2px 18px;box-shadow:var(--sh-1);}
+.ui .three li{gap:14px;padding:14px 0;border-top:1px solid var(--line-2);}
+.ui .three li:first-child{border-top:0;}
+.ui .three li>span.kw{flex:none;width:148px;}
+.ui a.kw-link{display:inline-flex;align-items:center;gap:9px;min-height:40px;font-size:13.5px;font-weight:800;color:var(--navy);
+  border-bottom:0;line-height:1.4;}
+.ui a.kw-link .ic{width:28px;height:28px;}
+.ui a.kw-link:hover{color:var(--acc);}
+.ui .kw-arrow{color:var(--acc);}
+.ui .but{background:var(--surface-2);border-left-color:var(--acc-2);}
+.ui .but em{color:var(--acc);}
+
+/* 数字カード */
+.ui .strip{margin-top:0;border-radius:16px;box-shadow:var(--sh-1);}
+.ui .cell{background:#fff;}
+.ui .cell .vl{color:var(--navy);}
+
+/* 目次 */
+.ui nav.toc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px 20px;margin-top:18px;box-shadow:var(--sh-2);}
+.ui .toc-title{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;color:var(--navy);
+  letter-spacing:0;text-transform:none;margin-bottom:12px;}
+.ui .toc-title .ic{width:34px;height:34px;}
+.ui .toc-title .en{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-3);}
+.ui .toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;counter-reset:toc;}
+.ui .toc-list li{counter-increment:toc;min-width:0;}
+.ui .toc-list a{display:flex;align-items:center;gap:12px;min-height:46px;height:100%;border-radius:12px;background:var(--surface-2);
+  border:1px solid var(--line-2);padding:8px 12px;font-size:13px;line-height:1.55;color:var(--ink);font-weight:700;}
+.ui .toc-list a::before{content:counter(toc,decimal-leading-zero);flex:none;width:32px;height:24px;display:grid;place-items:center;
+  border-radius:7px;background:var(--acc-soft);color:var(--acc);font-size:11.5px;font-weight:800;font-family:var(--mono);}
+.ui .toc-list a::after{content:"›";margin-left:auto;padding-left:6px;color:var(--acc);font-size:19px;line-height:1;}
+.ui .toc-list a:hover{border-color:var(--acc-2);color:var(--acc);}
+
+/* 本文の節 */
+.ui .wrap{counter-reset:sec;}
+.ui .divider span{color:var(--acc);}
+.ui section[id^="sec-"]{counter-increment:sec;background:#fff;border-radius:20px;padding:22px 24px 20px;margin-top:18px;box-shadow:var(--sh-2);}
+.ui .sec-head{align-items:center;gap:8px 12px;padding:0 0 14px;margin-bottom:16px;border-bottom:2px solid var(--acc-soft);}
+.ui .sec-head>.ic{width:40px;height:40px;order:0;}
+.ui .sec-head>.ic svg{width:21px;height:21px;}
+.ui .sec-head .sec-title{order:1;flex:1 1 280px;min-width:0;font-size:18.5px;line-height:1.5;color:var(--navy);}
+.ui .sec-head .sec-title::before{content:counter(sec,decimal-leading-zero);color:var(--acc);font-weight:900;margin-right:10px;font-family:var(--mono);}
+.ui .sec-head .cat{order:2;background:var(--acc-soft);color:var(--acc);letter-spacing:.1em;}
+.ui .dgrid{grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));}
+.ui .dg{border-radius:14px;min-width:0;}
+.ui .dg-h em{color:var(--acc);background:var(--acc-soft);}
+.ui .backtop a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:var(--acc);font-weight:700;border-bottom:0;}
+.ui p.disc{overflow-wrap:anywhere;}
+.ui .src{color:#3A5584;}
+
+/* AIに質問 */
+.ui .askai{background:linear-gradient(180deg,#fff 0%,var(--acc-soft) 160%);border:1px solid var(--line);border-radius:20px;
+  padding:22px 22px 20px;margin-top:22px;box-shadow:var(--sh-2);}
+.ui .askai-title{display:flex;align-items:center;justify-content:center;gap:10px;font-size:18px;font-weight:900;color:var(--navy);}
+.ui .askai-copy{min-height:44px;border-color:var(--acc);background:var(--acc-soft);color:var(--acc);}
+.ui .askai-copy:hover{background:var(--acc);color:#fff;}
+.ui .askai-link{display:flex;align-items:center;justify-content:center;min-height:44px;background:#fff;}
+.ui .askai-link:hover{border-color:var(--acc);color:var(--acc);}
+
+/* フッター */
+.ui .foot{border-radius:20px;background:#fff;box-shadow:var(--sh-1);}
+.ui .foot>p:first-child a,.ui .backlist a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;
+  background:var(--acc-soft);color:var(--acc);font-weight:800;text-decoration:none;}
+
+/* ---- 週刊版：比較・流れ ---- */
+.ui-w .three{position:relative;padding-left:40px;}
+.ui-w .three::before{content:"";position:absolute;left:22px;top:26px;bottom:26px;width:2px;
+  background:linear-gradient(180deg,var(--acc-2),var(--line));}
+.ui-w .three li{position:relative;}
+.ui-w .three li::before{content:"";position:absolute;left:-24px;top:26px;width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--acc);}
+.ui-w .strip .cell .ch{font-family:var(--mono);}
+
+/* ---- 日曜特集：長文読み物 ---- */
+.ui-s h1.hello,.ui-s .part-name,.ui-s .ch h2,.ui-s .hero-title{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","BIZ UDPMincho","Noto Serif JP",serif;}
+.ui-s h1.hello{font-size:30px;line-height:1.5;font-weight:800;}
+.ui-s .sun-sub{font-size:16px;color:var(--ink-2);}
+.ui-s .part-head{border-top:3px solid var(--acc);}
+.ui-s .part-name{color:var(--navy);font-weight:800;}
+.ui-s .ch{border-radius:18px;padding:26px 28px 18px;box-shadow:var(--sh-1);}
+.ui-s .ch p{font-size:15px;line-height:2.05;}
+.ui-s .ch h2{font-size:22px;color:var(--navy);}
+.ui-s .ch .ch-no{color:var(--acc);}
+.ui-s .ch.intro{border-left-color:var(--acc-2);}
+.ui-s .nowbar{border-radius:14px;}
+.ui-s .toc-top{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;}
+.ui-s .toc-top>li{border-top:0;min-width:0;}
+.ui-s .toc-solo a{display:flex;align-items:center;gap:10px;min-height:46px;height:100%;padding:8px 12px;border-radius:12px;
+  background:var(--surface-2);border:1px solid var(--line-2);font-size:13px;line-height:1.55;}
+.ui-s .toc-solo a::after{content:"›";margin-left:auto;padding-left:6px;color:var(--acc);font-size:19px;line-height:1;}
+.ui-s .toc-solo a:hover{border-color:var(--acc-2);color:var(--acc);}
+.ui-s .toc-lead{font-size:13px;}
+.ui-s .hero{min-height:300px;}
+.ui-s .hero .hero-title{font-size:36px;}
+
+/* ---- 入口（index） ---- */
+.ui-i header.ix-hero{position:relative;overflow:hidden;border-radius:0 0 24px 24px;border-top:0;min-height:380px;
+  background:#fff var(--hero) right center/cover no-repeat;padding:42px 42px 46px;}
+.ui-i header.ix-hero::before{inset:0;height:auto;
+  background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.88) 38%,rgba(255,255,255,.15) 64%,rgba(255,255,255,0) 100%);}
+.ui-i header.ix-hero::after{display:none;}
+.ui-i header.ix-hero>*{position:relative;}
+.ui-i header.ix-hero .img-note{position:absolute;}
+.ix-catch{font-size:54px;font-weight:900;line-height:1.24;color:var(--navy);margin-top:18px;letter-spacing:.02em;}
+.ui-i header.ix-hero h1{font-size:19px;line-height:1.5;margin-top:16px;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--navy);}
+.ui-i header.ix-hero .sub{max-width:34em;font-size:14px;}
+.brand3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
+.bc{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:9px;min-height:220px;min-width:0;padding:20px 20px 18px;
+  border-radius:18px;color:#fff;text-decoration:none;background:var(--bcbg) 70% center/cover no-repeat;box-shadow:var(--sh-2);
+  transition:transform .12s,box-shadow .12s;}
+.bc:hover{transform:translateY(-2px);box-shadow:var(--sh-3);}
+.bc::before{content:"";position:absolute;inset:0;background:var(--ov);}
+.bc>*{position:relative;}
+.bc-d{--ov:linear-gradient(160deg,rgba(25,86,226,.97) 0%,rgba(31,95,239,.86) 46%,rgba(31,95,239,.2) 100%);}
+.bc-w{--ov:linear-gradient(160deg,rgba(52,72,104,.97) 0%,rgba(70,92,126,.86) 46%,rgba(76,99,132,.2) 100%);}
+.bc-s{--ov:linear-gradient(160deg,rgba(104,62,196,.97) 0%,rgba(115,72,207,.86) 46%,rgba(170,110,225,.2) 100%);}
+.bc-top{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900;letter-spacing:.04em;}
+.bc-top svg{width:30px;height:30px;fill:none;stroke:#fff;}
+.bc-desc{font-size:13.5px;line-height:1.75;max-width:17em;}
+.bc-cta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border-radius:10px;
+  background:#fff;color:var(--navy);font-size:13.5px;font-weight:800;}
+.bc-cta span{font-size:18px;color:var(--brand);}
+.bc-cnt{font-size:12.5px;font-weight:700;}
+.ui-i .counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:14px;padding:6px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-1);}
+.ui-i .cbadge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0;border:0;border-left:1px solid var(--line-2);border-radius:0;
+  background:none;padding:10px 16px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);}
+.ui-i .cbadge:first-child{border-left:0;}
+.ui-i .cbadge .ic{width:40px;height:40px;}
+.ui-i .cbadge .ic svg{width:21px;height:21px;}
+.ui-i .cb-l{flex-basis:auto;}
+.ui-i .cbadge b{font-size:28px;font-family:var(--mono);color:var(--navy);line-height:1.1;}
+.ui-i .divider span{display:inline-flex;align-items:center;gap:10px;font-size:20px;font-weight:900;letter-spacing:.02em;
+  text-transform:none;color:var(--navy);}
+.ui-i .divider span .ic{width:34px;height:34px;}
+.ui-i .hero-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.ui-i .hcard{min-width:0;border-radius:20px;}
+.ui-i .hcard.d{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:26px;align-content:start;
+  border:1.5px solid #F7CF9F;background:linear-gradient(180deg,#fff,#FFFBF5);}
+.ui-i .hcard.d>*{grid-column:2;}
+.ui-i .hcard.d>.hc-thumb{grid-column:1;grid-row:1/span 7;align-self:start;height:250px;}
+.hc-thumb{border-radius:14px;background:var(--hero) 72% center/cover no-repeat;}
+.ui-i .hcard.w>.hc-thumb,.ui-i .hcard.s>.hc-thumb{height:150px;margin:-4px 0 14px;}
+.ui-i .hcard-go{display:flex;align-items:center;justify-content:center;min-height:48px;}
+.ui-i .hcard.w::before{background:linear-gradient(90deg,#3B5A88,#7E96BA);}
+.ui-i .hcard.w .hcard-kind{color:#3B5A88;}
+.ui-i .hcard.w .hcard-pts li::before{background:#7E96BA;}
+.ui-i .hcard.w .hcard-go{background:linear-gradient(160deg,#3B5A88,#6F8BB5);box-shadow:0 3px 12px rgba(59,90,136,.28);}
+.ui-i .hcard.d .hcard-kind{color:var(--brand);}
+.ui-i .ar-no.kw{color:#3B5A88;background:#EDF2F9;}
+.ui-i .ar-go{display:inline-flex;align-items:center;min-height:44px;}
+.ui-i details.mo{border-radius:16px;}
+.ui-i details.mo summary{min-height:56px;}
+.ui-i details.mo-note summary{min-height:44px;}
+.ui-i .foot{border-top:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 20px;}
+
+/* ---- 中間幅 ---- */
+@media (max-width:1023px){
+  .brand3{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .bc-s{grid-column:1/-1;}
+  .ix-catch{font-size:44px;}
+}
+@media (max-width:860px){
+  .ui-i .hcard.d{display:flex;}
+  .ui-i .hcard.d>.hc-thumb{min-height:0;height:170px;width:100%;flex:none;margin:-4px 0 14px;}
+  .ui-i .counts{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ui-i .cbadge:nth-child(3){border-left:0;}
+  .ui-i .cbadge:nth-child(n+3){border-top:1px solid var(--line-2);}
+}
+@media (max-width:760px){
+  .kp-grid{grid-template-columns:1fr;}
+  .ui-i .hero-grid{grid-template-columns:1fr;}
+}
+/* ---- スマホ ---- */
+@media (max-width:640px){
+  body.ui{padding:10px 10px 56px;}
+  .site{padding:6px 10px;border-radius:16px 16px 0 0;}
+  .site-nm{font-size:15px;}
+  .site-nav a{padding:0 10px;font-size:12.5px;}
+  .hero{display:block;min-height:0;padding-top:150px;background-image:var(--hero-m,var(--hero));background-size:100% auto;background-position:center top;border-radius:0 0 18px 18px;}
+  .hero::before{background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 100px,rgba(255,255,255,.94) 165px,#fff 205px);}
+  .hero-in{padding:0 18px 22px;}
+  .hero-title,.ui-s .hero .hero-title{font-size:27px;margin-top:12px;}
+  .hero .date{font-size:13.5px;margin-left:0;width:100%;}
+  .img-note{top:8px;bottom:auto;right:8px;}
+  .ui .mast{padding:20px 16px 18px;}
+  .ui h1.hello{font-size:21px;}
+  .ui-s h1.hello{font-size:24px;}
+  .fields a{font-size:12.5px;padding-right:13px;}
+  .blk-h{font-size:18px;margin-top:24px;}
+  .blk-h .en{display:none;}
+  .ui .three{padding:2px 14px;}
+  .ui .three li>span.kw{width:auto;}
+  .ui-w .three{padding-left:30px;}
+  .ui-w .three::before{left:15px;}
+  .ui-w .three li::before{left:-20px;top:22px;}
+  .ui nav.toc{padding:16px 14px;}
+  .ui .toc-title .en{display:none;}
+  .ui .toc-list,.ui-s .toc-top{grid-template-columns:1fr;}
+  .ui section[id^="sec-"]{padding:18px 14px 16px;border-radius:18px;}
+  .ui .sec-head .sec-title{font-size:16.5px;flex-basis:100%;order:2;}
+  .ui .sec-head .cat{order:1;}
+  .ui-s .ch{padding:18px 15px 12px;}
+  .ui-s .ch p{font-size:14.5px;line-height:1.95;}
+  .ui-s .ch h2{font-size:19px;}
+  .ui-i header.ix-hero{display:block;min-height:0;padding:192px 18px 24px;background-image:var(--hero-m,var(--hero));background-size:100% auto;background-position:center top;border-radius:0 0 20px 20px;}
+  .ui-i header.ix-hero::before{background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 120px,rgba(255,255,255,.92) 188px,#fff 230px);}
+  .ui-i header.ix-hero .img-note{top:8px;bottom:auto;right:8px;}
+  .ix-catch{font-size:33px;margin-top:12px;}
+  .brand3{grid-template-columns:1fr;}
+  .bc{min-height:0;}
+  .ui-i .counts{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ui-i .cbadge:nth-child(3){border-left:0;}
+  .ui-i .cbadge:nth-child(n+3){border-top:1px solid var(--line-2);}
+  .ui-i .cbadge{padding:10px;gap:8px;}
+  .ui-i .cbadge .ic{width:34px;height:34px;}
+  .ui-i .cbadge b{font-size:24px;}
+  .ui-i .divider span{font-size:18px;}
+}
+
+/* 日曜特集：目次の注記の余白 */
+.ui-s .toc-note{margin-top:14px;}
+
+</style>
+</head>
+<body class="ui ui-i">
+<div class="wrap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></symbol><symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol><symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l7-7"/></symbol><symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11h12M8 17l-2 4M16 17l2 4M9 14h.01M15 14h.01"/></symbol><symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/></symbol><symbol id="i-storm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><path d="M4 10c1.6-4.6 7.6-7 12.4-4.6M20 14c-1.6 4.6-7.6 7-12.4 4.6"/></symbol><symbol id="i-water" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6M6.5 9.5V15M17.5 9.5V15"/><path d="M3 19c2 0 2-1.5 4.5-1.5S9.5 19 12 19s2.5-1.5 4.5-1.5S19 19 21 19"/></symbol><symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10h7M8.5 14h7M8.5 18h4"/></symbol><symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 2.5-6.5 6-11z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8 5.7-5.8"/></symbol><symbol id="i-question" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.6 2.6 0 1 1 3.6 2.4c-.8.4-1.1.9-1.1 1.8M12 17h.01"/></symbol><symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol><symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol><symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-7M12 20V5M18 20v-10"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2zM12 6v14"/></symbol><symbol id="i-sum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5H7l6 7-6 7h10"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.5 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol><symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol><symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.6"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 21h12M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></symbol><symbol id="i-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-6 4 12 3-6h4"/></symbol><symbol id="i-num" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19h14M7 15V9M12 15V5M17 15v-4"/></symbol><symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="5" rx="1.5"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></symbol></svg>
+<nav class="site" aria-label="サイト"><a class="site-brand" href="index.html"><svg class="site-logo" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="lgL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D86FF"/><stop offset="1" stop-color="#1546C8"/></linearGradient></defs><circle cx="20" cy="20" r="19" fill="url(#lgL)"/><path d="M7.5 27.5c6.5 2.2 16.5-.5 24.5-12" stroke="#BCD4FF" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M20 8.5l2.9 8.6 8.6 2.9-8.6 2.9L20 31.5l-2.9-8.6-8.6-2.9 8.6-2.9z" fill="#fff"/></svg><span class="site-nm">AI総合研究機構<small>Morning Brief</small></span></a><span class="site-nav"><a href="#latest">最新号</a><a href="#archive">月別アーカイブ</a></span></nav>
+
+  <header class="ix-hero" style="--hero:url(assets/hero/index-2026-10.webp);--hero-m:url(assets/hero/index-2026-10-m.webp)">
     <span class="brandtag"><i></i>AI総合研究機構 · Morning Brief Archive</span>
+    <p class="ix-catch">世界を読み、<br>明日を考える。</p>
     <h1>AI総合研究機構<br>朝の一日レポート 記録</h1>
     <p class="sub">毎日版・週刊版・日曜特集の発行済みレポートを保存しています。<strong>まず最新の3号を大きく表示し、それ以前は月別にまとめています。</strong>月の見出しを開くと、その月の全号が一覧で出ます。</p>
-    <div class="counts">
-      <span class="cbadge">毎日版 <b>77</b> 号</span>
-      <span class="cbadge">週刊版 <b>11</b> 号</span>
-      <span class="cbadge">日曜特集 <b>8</b> 号</span>
-      <span class="cbadge">通算 <b>96</b> 号</span>
-    </div>
+    <span class="img-note">背景はイメージ画像です</span>
   </header>
 
-  <div class="divider"><span>Latest — 最新号</span></div>
+  <nav class="brand3" aria-label="3つのレポート"><a class="bc bc-d" href="daily-2026-10-13.html" style="--bcbg:url(assets/hero/daily-2026-10-m.webp)"><span class="bc-top"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>毎日版</span><span class="bc-desc">前日から今朝までの国内外の動きを、毎朝まとめています。</span><span class="bc-cta">最新号（D78）を読む<span aria-hidden="true">›</span></span><span class="bc-cnt">公開中：78号</span></a><a class="bc bc-w" href="weekly-2026-10-10.html" style="--bcbg:url(assets/hero/weekly-2026-10-m.webp)"><span class="bc-top"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bars"/></svg>週刊版</span><span class="bc-desc">1週間の動きを、一本の流れとして整理します。</span><span class="bc-cta">最新号（W11）を読む<span aria-hidden="true">›</span></span><span class="bc-cnt">公開中：11号</span></a><a class="bc bc-s" href="sunday-2026-10-11.html" style="--bcbg:url(assets/hero/sunday-2026-10-m.webp)"><span class="bc-top"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>日曜特集</span><span class="bc-desc">一つのテーマを、時間をかけて深く掘り下げます。</span><span class="bc-cta">最新号（S8）を読む<span aria-hidden="true">›</span></span><span class="bc-cnt">公開中：8号</span></a></nav>
+
+  <div class="counts" aria-label="発行件数">
+      <span class="cbadge"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span class="cb-l">毎日版</span> <b>78</b> 号</span>
+      <span class="cbadge"><span class="ic c-slate" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-bars"/></svg></span><span class="cb-l">週刊版</span> <b>11</b> 号</span>
+      <span class="cbadge"><span class="ic c-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-book"/></svg></span><span class="cb-l">日曜特集</span> <b>8</b> 号</span>
+      <span class="cbadge"><span class="ic c-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-sum"/></svg></span><span class="cb-l">通算</span> <b>97</b> 号</span>
+    </div>
+
+  <div class="divider" id="latest"><span><span class="ic c-amber" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></span>Latest — 最新号</span></div>
 
   <div class="hero-grid">
 
-    <div class="hcard d">
+    <div class="hcard d"><div class="hc-thumb" style="--hero:url(assets/hero/daily-2026-10-m.webp)" aria-hidden="true"></div>
       <div class="hcard-kind">Daily — 毎日版</div>
-      <div class="hcard-meta"><span class="hcard-no">D77</span><span class="hcard-date">2026年10月12日（月）</span></div>
-      <div class="hcard-title">酒々井町の浸水した住宅は3戸に。JR東日本とビューカードも、メールアドレスなどの漏えいの「可能性」を公表していました。台風29号は小笠原近海を北上しています。</div>
+      <div class="hcard-meta"><span class="hcard-no">D78</span><span class="hcard-date">2026年10月13日（火）</span></div>
+      <div class="hcard-title">北朝鮮が12日、弾道ミサイルを少なくとも2発発射し、2発目は約910kmを超えて飛びました。酒々井町の浸水した住宅は2戸に。コミューン社の約30.7万人の会員情報の漏えいも、本号で取り上げます。</div>
       <ul class="hcard-pts">
-        <li><b>酒々井・印旛沼</b>　浸水した住宅は<b>8戸→3戸</b>、A地点は61→37.5cm。船形干拓の中詰土は<b>約29%→約60%</b></li>
-        <li><b>情報漏えい</b>　IDCフロンティアの件に伴い、<b>JR東日本（最大約167万件・約39万件）とビューカード（約403万件）</b>も「可能性」を公表。件数は人数ではありません</li>
-        <li><b>台風・島</b>　台風29号は12日6時の実況で<b>小笠原近海・955ヘクトパスカル「非常に強い」</b>。28号は熱帯低気圧に</li>
-        <li><b>世界</b>　米大統領が<b>「エネルギー停戦」</b>を投稿、ウクライナは「ロシアが破った」。ジブチ沖の移民船の死者139人</li>
-        <li><b>市場</b>　<b>スポーツの日で東京市場は休み</b>。ドル円は週明けの取引で158.28円</li>
+        <li><b>北朝鮮</b>　12日9時台に弾道ミサイル少なくとも2発。2発目は<b>最高高度約70km程度・約910km超</b>、変則軌道の可能性も含め分析中。日本のEEZへの飛来は確認されず</li>
+        <li><b>酒々井・印旛沼</b>　浸水した住宅は<b>3戸→2戸</b>、A地点は37.5→9cm。船形干拓の中詰土は<b>約60%→約67%</b></li>
+        <li><b>情報漏えい</b>　コミューン社が10月9日に<b>約30.7万人（推計）の漏えいを確認</b>と公表していました。ヤマハ発動機は約1,600名分の「可能性」</li>
+        <li><b>市場</b>　東京は<b>3連休明け</b>。米国の半導体株指数は−2.67%、韓国株は<b>−3.65%</b>、ブレントは106.65ドル</li>
+        <li><b>台風・交通</b>　台風29号は日本の東で「強い」に。九州新幹線は今朝、始発から全線で見合わせ。シェアサイクルはあす開始</li>
       </ul>
-      <p class="hcard-more" style="font-size:11.5px;color:#8794A3;margin:6px 0 0;">本号は上記のほか、被害報と激甚災害、鉄道・停電・通信、ホルムズ海峡、リヤド・パキスタン・パナマ、AIエージェントの件とデータセンター、プロ野球など、<strong>あわせて14項目</strong>を掲載しています。<strong>避難と移動の判断は、気象庁・自治体・各事業者の最新の発表をご確認ください。</strong></p>
-      <a class="hcard-go" href="daily-2026-10-12.html">毎日版を読む →</a>
+      <p class="hcard-more" style="font-size:11.5px;color:#8794A3;margin:6px 0 0;">本号は上記のほか、被害報と激甚災害、停電・通信、中東のタンカーと空港、「エネルギー停戦」・パキスタン・パナマ、マイクロソフトの自社AIチップ、プロ野球・ノーベル経済学賞・Suicaなど、<strong>あわせて15項目</strong>を掲載しています。<strong>避難と移動の判断は、気象庁・自治体・各事業者の最新の発表をご確認ください。</strong></p>
+      <a class="hcard-go" href="daily-2026-10-13.html">毎日版を読む →</a>
     </div>
 
-    <div class="hcard w">
+    <div class="hcard w"><div class="hc-thumb" style="--hero:url(assets/hero/weekly-2026-10-m.webp)" aria-hidden="true"></div>
       <div class="hcard-kind">Weekly — 週刊版</div>
       <div class="hcard-meta"><span class="hcard-no">W11</span><span class="hcard-date">2026年10月10日（土）</span></div>
       <div class="hcard-title">「終わった」と「まだ」が、同じ日に並んだ一週間でした。10月4日から10日の7日間を、一本の流れとして追います。</div>
@@ -262,7 +600,7 @@
       <a class="hcard-go" href="weekly-2026-10-10.html">週刊版を読む →</a>
     </div>
 
-    <div class="hcard s">
+    <div class="hcard s"><div class="hc-thumb" style="--hero:url(assets/hero/sunday-2026-10-m.webp)" aria-hidden="true"></div>
       <div class="hcard-kind">Sunday — 日曜特集</div>
       <div class="hcard-meta"><span class="hcard-no">S8</span><span class="hcard-date">2026年10月11日（日）</span></div>
       <div class="hcard-title">あなたの個人情報は、今どこにあるのか。<br>――誰が、何のために欲しがるのか。善意、商売、犯罪、国家、AI、そして見えない結合</div>
@@ -278,13 +616,14 @@
 
   </div>
 
-  <div class="divider"><span>Archive — 月別アーカイブ</span></div>
+  <div class="divider" id="archive"><span><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-archive"/></svg></span>Archive — 月別アーカイブ</span></div>
   <p class="sec-lead">月の見出しをクリックすると、その月に発行した全号が開きます。<strong>閉じている間は一覧を表示しないので、探すときだけ開いてください。</strong>過去号のファイルは削除せずに残しているため、<code style="background:#EFE7D8;color:#8A5A0F;border-radius:4px;padding:1px 5px;font-family:ui-monospace,monospace;font-size:11px;">daily-2026-07-27.html</code> のように日付でURLを直接開くこともできます。</p>
 
   <details class="mo" open>
-    <summary><span class="mo-ym">2026年10月</span><span class="mo-cnt">毎日版 <b>12</b>件　週刊版 <b>2</b>件　日曜特集 <b>2</b>件</span><span class="mo-tot">計 16件</span></summary>
+    <summary><span class="mo-ym">2026年10月</span><span class="mo-cnt">毎日版 <b>13</b>件　週刊版 <b>2</b>件　日曜特集 <b>2</b>件</span><span class="mo-tot">計 17件</span></summary>
     <div class="mo-body">
-      <details class="mo-note"><summary>この月の記録（各号の要点）</summary><p>D77 2026年10月12日（月・スポーツの日）毎日版：収集の基準時刻10月12日6時40分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/11 15時：浸水した住宅8→3戸（床上1・床下2、「12戸の浸水解消」）、A地点61→37.5cm、C地点105→83cm。中詰土約29→約60%（1,990/3,300m3）。TEC-FORCEが10/13に東金市へ道路の調査報告を手交・【被害報・激甚災害】千葉県第28報・消防庁第25報・激甚災害は追加指定の見込みのまま・【台風・島】29号 10/12 6時955hPa「非常に強い」（実況、小笠原近海）、12日18時に日本の東で「強い」、15日3時に温帯低気圧の予報。28号は10/11 15時に熱帯低気圧。千葉県南部に強風注意報。東海汽船は利島・新島・式根島・神津島（ジェット船）、御蔵島・八丈島が欠航・【交通・停電・通信】JRは同じ表示、しおさい全列車運休。シェアサイクルは14日開始前（千葉県が10/11に利用方法を修正）。県管理道路48区間。停電10/12 6時59分約140軒。NTT第4報のまま・【情報漏えい】JR東日本（えきねっと最大約167万件・大人の休日倶楽部約39万件）とビューカード（約403万件）が10/9に漏えいの可能性を公表していた（前号まで未掲載、本号で掲載）。IDCF 10/11 18時「新たに公表すべき重要な事実はありません」。JR九州・佐川急便は続報なし・【市場・世界・AI】東京市場は休場、ドル円158.28円（10/12 7:06）。ホルムズでタンカー2隻被弾（報道）。米大統領の「エネルギー停戦」投稿。リヤド空港11日にも被弾、10日の死者13人（報道）。ジブチ沖の海難 死者139人（IOM）。パキスタンがKP州に非常事態。パナマM7.7（USGS）。ハリケーン・サイモン。Anthropicの件に米政府が透明性を要求（報道）。ヤンデックスのデータセンターに1週間で3か所目の攻撃。CSはDeNAがファイナル進出・月曜定期リンク確認（9/28〜10/11の18本）すべて200・外部出典リンク86本・ユニーク71・一次情報70箇所・本文14節・冒頭一覧14項目・数字カード12枚・S8 2026年10月11日（日）日曜特集第8号「個人情報」：導入＋15章＋終章＋4AI独立調査レポートへの案内。情報基準日10月11日。4AI（GPちゃん・クロちゃん・ジェミちゃん・こうちゃん）が互いを見ずに独立調査し、「誰が欲しがるか」と「どこで結びつくか」の両方を問う構成に。【第1章】渡した・行動から生まれた・推測された情報の3層、5つの動詞（見つける・届ける・見分ける・予測する・動かす）・【第5・6章】FTCのMobilewalla命令（2025年1月）、米最高裁Chatrie判決（2026年6月29日）、アイルランド当局のGoogleへの4億300万ユーロ（2026年9月21日）、リアルタイム入札の推計（ICCL、米国で1人1日747回）、カリフォルニア州DROPに30万人超・【第7章】避難行動要支援者名簿：平時の提供は名簿掲載者の39.9％（2026年4月1日）・【第8章】個人情報保護委員会 令和7年度：民間17,139件、うち直接の報告等13,345件で紙媒体のみ76.9％・誤交付45.5％・誤送付21.6％。東京商工リサーチ2025年：180件・3,063万6,910人分・不正アクセス等64.4％・【第9章】2026年は100万件以上の漏えいが10月5日時点で10件。ランサムウェアの被害報告は上半期123件で過去最多。IDCフロンティア（停止）・JR九州（可能性）・佐川急便（件数未公表）を別案件として区別・【第10章】詐欺被害は2026年8月末で2,360.7億円。証券口座の不正取引は2025年1月〜2026年9月に10,642件（2026年9月は2件）。犯罪統計と特定の漏えいを因果で結ばない・【第12章】改正個人情報保護法 7月10日成立・7月17日公布・施行は公布から2年以内。AI Omnibusは発効、Digital Omnibusは提案段階・出典35本（すべて取得確認）・4AI研究付録4ページは件数に含めない・D76 2026年10月11日（日）毎日版：収集の基準時刻10月11日6時25分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/10 15時：浸水した住宅11→8戸（床上5・床下3、「7戸の浸水解消」）、A地点78→61cm、C地点123→105cm。中詰土約2→約29%（960/3,300m3）。町が10/8の記者会見の案内と資料を掲載（会見録なし）・【被害報・激甚災害】千葉県第28報・消防庁第25報が最新のまま。激甚災害は追加指定の見込みのまま・【台風・島】29号 10/11 3時950hPa「非常に強い」（実況）、予報で11日15時・12日3時小笠原近海。28号は12日3時に温帯低気圧の予報。東海汽船は利島・新島・式根島・神津島が往復欠航。伊豆諸島・小笠原に波浪注意報（10/9発表）・【交通・停電・通信】JRは前号と同じ表示、しおさい全列車運休。停電10/11 6時34分約140軒。NTT第4報のまま・【情報漏えい】JR九州：メールアドレス最大約130万件が閲覧・取得された可能性（確定ではない）。IDCフロンティア第3・4報：ランサムウェア、東日本リージョン1、495の企業・自治体。佐川急便第4報：件数は未公表・【市場・エネルギー】週末のため10/9の確定値。北海ブレント104.72・WTI91.85・米ディーゼル先物4.738（−3.0%）。OFAC一般許可135（ロシア産ディーゼル、2027/4/7まで）。10/12はスポーツの日・【世界・AI・健康】ザポリージャ攻撃で20人死亡・32人負傷（州当局、報道）。ガザ停戦1年、リヤド空港で225便欠航（報道）。OpenAI Android障害は10/10に解消。Anthropicが内部評価のネット接続停止を拡大。WHO DON620（高脅威病原体は陰性、確定診断なし）。Crew-12帰還・外部出典リンク82本・ユニーク67・一次情報67箇所・本文14節・冒頭一覧14項目・数字カード12枚・W11 2026年10月10日（土）週刊版：対象期間10/4〜10/10。情報基準時刻10月10日6時15分（最終確認は本文に記載）。【今週の軸】「終わった」と「まだ」が同じ日に並んだ週（編集上の整理）・【印旛沼・酒々井】鋼矢板 10/3着手→宅地側10/8・沼側10/9完了、中詰土約2%。酒々井 B地点 56→0cm（10/8解消）、A地点100→78cm、C地点123cm、浸水住宅15→11戸、10/8新ポンプ排水・【被害報】行方不明0人（10/4〜5）。県第28報 全壊81・半壊531・一部破損448・床上361。消防庁第25報のまま・【ライフライン】停電 730→620→1,430→520→450→420→460→260軒。NTT第4報 光約900・固定約650・【交通・生活再建】成田線佐原〜銚子10/4・内房線長浦〜木更津10/5再開。姉ケ崎〜長浦は3か月、代行バス10/5〜、シェアサイクル10/14開始決定。栄町対策本部解散・印西市復興本部。激甚災害 追加指定見込み（10/9）・【台風】27号925hPa（10/5）→10/7温帯低気圧、西湘10/7全解除。29号は予報で12日小笠原近海・【中東・市場】IEA：1億バレルは3月の未放出分の前倒し。ブレント102→104ドル。日経平均10/6 70,683.98（初の7万円台）、週間+1.06%。10年債入札3.101%・30年債入札4.109%・【世界・AI・科学】ブラジル決選投票10/25。OpenAI 9/30障害の原因公表。TSMC 9月+54.6%。ノーベル賞5部門（化学 硤合憲三氏）。インフルエンザ第40週11.35・外部出典リンク117本・ユニーク103（ページ単位38）・一次情報30箇所・本文16章・冒頭一覧13項目・数字カード12枚・D75 2026年10月10日（土）毎日版：収集の基準時刻10月10日6時15分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/9：既設函渠を活用した新たなポンプ排水を10/8開始（毎分0.5m3×1台、順次増設予定）。10/9 15時：浸水した住宅15→11戸（10/9 10時）、A地点92→78cm、C地点（新）134→123cm。鋼矢板は宅地側10/8・沼側10/9に完了、中詰土約2%（90/3,300m3）・【被害報】千葉県第28報・消防庁第25報が最新のまま・【台風・島】29号 10/10 3時970hPa「強い」、予報で11日「非常に強い」・12日3時小笠原近海。28号は10日3時に小笠原近海、6時に日本の東（994hPa）。東海汽船は八丈島航路が9日夜・10日欠航。千葉県に波浪・濃霧注意報・【交通・停電・通信】シェアサイクル 10/14 6時開始130台→16日までに300台、12時間無料（千葉国道事務所）。しおさい全列車運休。交通マネジメント検討会の結果、国による道路啓開。停電10/10 6時34分約260軒。NTT第4報 光約900・固定約650回線・【激甚災害・生活再建】内閣府10/9：梅雨前線豪雨から台風第25号までの災害に新たな適用措置の追加指定見込み（公共土木71→84%など）。県の宿泊施設避難所は宿泊代原則公費・【市場】日経平均10/9 69,030.92（−11.19、安値68,150.02）、週間+1.06%。ダウ+0.83%・S&amp;P500+0.59%・ナスダック+0.64%、米10年5.24%・【世界・AI・科学】米大統領「中間選挙前にイランを攻撃しない」（報道）。ブラジル Datafolha 有効票52%対48%・Atlas 52.8%対47.2%。ウクライナ1日で41人死亡（報道）。SpaceXが800MHz帯を取得へ。OpenAI Android障害。ノーベル平和賞 ナビ・ピレイ氏。インフルエンザ定点11.35・外部出典リンク87本・ユニーク70・一次情報71箇所・本文14節・冒頭一覧14項目・数字カード12枚・D74 2026年10月9日（金）毎日版：収集の基準時刻10月9日6時50分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/8 15時：浸水深 A地点95→92cm・B地点6→0cm（解消、10/8 9時）、A地点は解消せず。避難11世帯23人（県第28報）。二重締切 沼側約68%（84.4/124m）・宅地側約96%（100.8/105m）・【被害報】千葉県第28報（10/8 16時、17時訂正）：全壊67→81・半壊469→531・一部破損294→448・床上浸水400→361棟、重傷者2→4人。消防庁第25報のまま・【台風】29号 10/9 3時975hPa「強い」、予報で12日3時に小笠原近海（950hPa「非常に強い」）。28号は6時45分の予報で10日6時に日本の東。千葉県は0時37分に波浪注意報を解除、6時49分に南部に再び発表・【交通・停電・生活再建】JRは前号と同じ表示。県管理道路48区間・大規模被災28区間。10/9 16時に交通マネジメント検討会（内房線 姉ケ崎・長浦間のシェアサイクル）、13時に内房線・県道287号の復旧会議。停電10/9 6時49分約460軒。県が民間宿泊施設の避難所を確保、三浦市が応急修理の受付・【市場・経済】日経平均10/8 69,042.11（−993.60）、30年国債入札 平均利回り4.109%・応募額1兆7,472億円、米10年5.22%、ブレント103.92ドル。日銀 地域経済報告は全地域「回復」「持ち直し」・【世界・AI・科学】ホルムズ海峡の通航が2か月ぶりの低水準（報道）。クラマトルスクで33人死亡（非常事態庁、報道）。TSMC 9月売上+54.6%。OpenAIのAPACのエラーは解消、売上の報道はFT。ノーベル文学賞 アン・カーソン氏・外部出典リンク90本・ユニーク68・一次情報78箇所・本文14節・冒頭一覧14項目・数字カード12枚・D73 2026年10月8日（木）毎日版：収集の基準時刻10月8日6時50分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/7 15時：浸水深 A地点100→95cm・B地点15.5→6cm（10/7 9時）、解消せず。二重締切 沼側約46%（57.2/124m）・宅地側約43%（46.0/105m）・【被害報】千葉県第27報・消防庁第25報が最新のまま・【西湘・台風】西湘バイパス 第5報（10/7 9:30一部解除）・終報（12:00全区間解除）。台風27号は温帯低気圧。29号は予報で12日3時に小笠原近海。千葉県は波浪注意報へ、神奈川県は解除・【交通・停電・生活再建】JRは前号と同じ表示。県管理道路48区間・大規模被災29→28。停電10/8 7:09約420軒。印西市が災害復興本部へ移行。富津市VCは県の一覧で開設中（10/5〜）。東海汽船は10/8夜発から代替運航・【市場・エネルギー】日経平均10/7 70,035.71（−648.27）、米10年5.28%、FOMC議事要旨「大半が年末までにもう一段の引き上げ」、30年国債10/8入札予定。IEA 10/7声明：3月協調行動の未放出約1億バレルを前倒し、ディーゼル優先・【世界・AI・科学】ウクライナへの大規模攻撃で28人死亡（内相の発表として報道）。OpenAIデスクトップ障害は解消、Microsoft MXC一般提供・Surface Laptop Ultra。ノーベル化学賞 カガン氏・硤合憲三氏。旭市で震度4（10/8 4:13）。ガソリン170.2円横ばい・外部出典リンク79本・ユニーク64・一次情報71箇所・本文14節・冒頭一覧14項目・数字カード12枚・D72 2026年10月7日（水）毎日版：収集の基準時刻10月7日7時00分（最終確認は本文に記載）。【千葉県第27報】10/6 16時：死者10・行方不明0（変わらず）。住家 全壊59→67・半壊414→469・一部破損189→294・床上419→400・床下1,216→1,264（第24報比）。孤立4市1町9地区→3市1町5地区・【酒々井・印旛沼】関東地整 酒々井町緊急排水 10/6 16時：浸水深B地点 9/28 56cm→10/6 15.5cm、A地点 10/6 16時 100cm、解消せず。二重締切 10/6 15時 沼側約28%（34.8/124m）・宅地側約25%（26.8/105m）・【台風・高波】27号 10/7 6時 970hPa 日本の東、18時に温帯低気圧の予報。千葉北東部・南部に波浪警報。西湘バイパス 第4報で4区間通行止め。東海汽船ジェット船欠航・臨時便。28号・29号は遠方（29号は予報で12日小笠原近海）・【交通・ライフライン】JRは前号と同じ表示、久留里線は再開見込み立たず。県管理道路48区間（10/6）。停電10/7 7:09約450軒。NTT第4報なし。栄町が災害対策本部を解散（10/6 17時）・【市場・金利】日経平均10/6 70,683.98（+737.12）、S&P500・ナスダック最高値、米10年5.27%、ドル円158.12。10年国債第384回 表面3.1%・平均3.101%・応募7兆4,011億円、8日30年債入札。植田総裁「基調的な上昇率は２％に近づいています」、ロイター関係者報道とは区別・【世界・AI】G7 1億バレルはIEAが10/14〜15に詳細決定の見通し（報道）、PortWatch 10/4 4隻。モスクワ州へ無人機攻撃で2人死亡（報道）。OpenAIが9/30障害の報告書を公開。ノーベル物理学賞 ハルツェン氏・外部出典リンク80本・ユニーク64・一次情報68箇所・本文15節・冒頭一覧15項目・数字カード12枚・D71 2026年10月6日（火）毎日版：収集の基準時刻10月6日6時30分（最終確認は本文に記載）。【人的被害】消防庁第25報（10/5 9時）「前報から変更なし」死者17・行方不明0・住家2,412。千葉県は第26報のまま・【印旛沼・酒々井】関東地整10/5 15時：二重締切 沼側約20%（24.8/124m）・宅地側約22%（23.6/105m）、完了見込みなし。酒々井町 10/5発表で現地対策本部設置、10/6「排水作業に向けた準備」着手、TEC-FORCE通信No.9に国総研の技術的支援。吉高10/5 13時2.02m・【台風27号】10/6 6時実況 小笠原近海950hPa・大型で強い。伊豆諸島南部に波浪警報（6:16）、関東の海上6日夕方〜7日明け方に高波警戒、6日の波 小笠原7m・関東6m。西湘バイパス 大磯東〜西湘二宮 下り約6km 10/6 1:30〜通行止め。東海汽船ジェット船 終日欠航・【交通・道路】内房線は前号と同じ表示。千葉県管理道路 全面通行止め48区間（10/5 14時、10/1は56）、大規模被災29・【ライフライン】停電10/6 6:39約520軒（銚子市が一覧から外れる）。NTT第4報なし・【市場・政治・世界】日経平均10/5 69,946.86（+1,637.40）、TOPIX 4,145.22、米10年5.31%、ブレント100.32、ボベスパ約+7.7%。所信表明（国債発行額を適切にコントロール、消費税・支援金法案）、日豪財務大臣対話を新設。ブラジル大統領選 ボルソナロ氏47.03%・ルーラ大統領45.16%で決選投票へ。ハルキウ6人死亡（報道）、EUがハイブリッド攻撃の急増を警告。G7 1億バレルは実施未確認・【AI・暮らし】OpenAI一部機能低下・RCA未公開、Wikimediaの指摘、Reflection Beam。ノーベル医学賞 光遺伝学。前号の父島の風向（北→北北東の区分）を答え合わせ欄に記録・外部出典リンク79本・ユニーク65・一次情報69箇所・本文15節・冒頭一覧15項目・数字カード12枚・D70 2026年10月5日（月）毎日版：収集の基準時刻10月5日6時30分（最終確認は本文に記載）。【人的被害】千葉県第26報（臨時報・10/4 10:30）長柄町の死者と行方不明者が同一人物と確認、行方不明1→0、死者10。消防庁第24報（10/4 14時）死者17・行方不明0・負傷41、住家2,412棟（変わらず）・【印旛沼・酒々井】関東地整10/4 15時資料：船形 鋼矢板二重締切 沼側約19%（24.0/124m）・宅地側約1%（1.6/105m）。酒々井町開運団地は馬橋川の閉塞で浸水継続、10/4に県・町が支援強化を要請、国は5日から国総研の土砂災害専門家を含むTEC-FORCEを追加派遣の予定（開始は未確認）。吉高10/4 17時2.00m・【交通】JR10/5 6:18〜6:39：内房線 長浦〜木更津は一部運休（1時間2本、下り長浦6:28発〜・上り木更津5:50発〜）、姉ケ崎〜長浦は代行バス（輸送力1〜2割）・再開3か月程度。成田線は平常運転。久留里線 久留里〜上総亀山は再開見込み立たず・代行。しおさいは一部運休（11本運休）・【台風27号】10/5 6時実況 小笠原近海925hPa・最大風速50m/s・大型で非常に強い。小笠原諸島に波浪警報（うねり）・強風注意報。父島6時 北7.9m/s・【ライフライン】停電10/5 6:39約1,430軒（銚子市約870軒、理由は未確認）。NTT第4報なし・【生活再建・市場・世界】富津市VC 10/5〜（予定）、長柄町 自主避難所10/4閉鎖。株式は10/2確定値、ドル円157.68。G7 1億バレルは声明段階、IEA 3月分約3.25億バレル放出済み、PortWatch最新9/27の1隻。ブラジル大統領選は開票途中。メルツ首相キーウで13億ユーロ超（報道）。OpenAI RCA未公開。凱旋門賞ダリズ連覇・外部出典リンク71本・ユニーク59・一次情報61箇所・本文14節・冒頭一覧14項目・数字カード12枚・S7 2026年10月4日（日）日曜特集第7号「物流」：導入＋11章＋終章＋4AI独立調査レポートへの案内。情報基準日10月4日。4AI（GPちゃん・クロちゃん・ジェミちゃん・こうちゃん）が互いを見ずに独立調査し、「物流は輸送だけでなく、必要な物を必要な時刻に置く社会の仕組み」で一致。【第2章】運河・鉄道・冷蔵・パレット・コンテナ。コンテナの本質は標準化、革新は積み替えを減らすことで起きる・【第3章】翌日届くの正体＝情報の先回り・近い在庫・工程の同期・【第4章】2024年度の約14％不足は概ね克服（貨物量は2019年28.4億トン→2024年25.1億トン、約12％減）。2030年度の見通しは▲7％／▲15％／▲25％の3前提、施策効果+25.7は計画値。物流効率化法の特定荷主等3,257、初回の定期報告は2027年7月・【第6章】PortWatchのAIS観測隻数でホルムズ1日95.6隻→3〜4隻（閉鎖ではないが観測隻数は大幅減。AISを切った船は含まれない）、IMOの確認した商船への攻撃80件・船員の死者少なくとも22人（9月16日）、スエズは約半分、肥料の世界供給の約3分の1がホルムズを通る（WTO）、パナマ運河・ライン川の水・【第7章】名古屋港のランサムウェア：梱包工場7日停止、ただし自動車の生産に影響なし。能登のパレット・フォークリフト不足、物資拠点の非常用電源21％・【第10章】実用・導入初期・実証・構想を区別、AIで解ける問題と物理の制約・出典78本（すべて取得確認）・4AI研究付録4ページは件数に含めない・D69 2026年10月4日（日）毎日版：収集の基準時刻10月4日6時30分（最終確認は本文に記載）。週刊版W10はGate C待ちで未公開のため、本号の数え方には含めない。【人的被害】消防庁第23報（10/3 16時）死者17（千葉10・長柄町1人が加わる）・行方不明1・負傷41、住家2,412棟（第22報2,319）。千葉県第25報（臨時報・10/3 15時）死者10、長柄町で見つかった方は「行方不明者との同一性について現在調査中」、行方不明1（長柄町）を残す・【印旛沼】関東地整10/3 15時資料：船形 荒締切（約YP5.0m）10/3完了（工程図は6:00、公式Xは8時）。鋼矢板二重締切は沼側0/124m・宅地側0/105m。吉高10/3 17時2.04m（10/2は1.87m、理由不明）。県は北印旛沼の避難情報の基準水位を応急復旧完了まで引き下げ（9/28〜）・【交通】JR10/3 16時：成田線 佐原〜銚子10/4始発再開、千葉〜佐原は1日2本運休。内房線 長浦〜木更津10/5再開、姉ケ崎〜長浦は3か月程度・10/5から代行バス。しおさいは資料「4・6・11号のみ運転」と運行情報「全列車運休」が食い違い。久留里線の取りやめは久留里〜上総亀山のみ・【台風27号】10/4 6時 小笠原近海945hPa・大型で非常に強い。予報5日6時925hPa。小笠原は波浪注意報、5日夕方〜6日はじめに接近のおそれ・【ライフライン】停電10/4 6:29約620軒。NTT第4報なし・【市場・世界】休場。BLS原文で雇用+2.9万・失業率4.2%・7〜8月計−6万。G7原文「1億バレル直ちに開始・4か月・20日以内にディーゼル前倒し」、放出開始は未確認、日本の「4億バレル超」は3月の数字。北朝鮮が10/3弾道ミサイル。対ロ制裁33団体9個人。OpenAI RCA未公開。阪神セ・リーグ優勝・外部出典リンク69本・ユニーク59・一次情報61箇所・本文15節・冒頭一覧15項目・数字カード12枚・W10 2026年10月3日（土）週刊版：対象期間9/27〜10/3。情報基準時刻10月3日8時00分（最終確認は本文に記載）。【今週の軸】確かめていた項目が段階ごとに「完了」へ変わり、そのたびに次の工程が見えた週（編集上の整理）・【印旛沼】9/28石材投入開始→角川9/29 21:15・長門川9/30 23:00荒締切完了→船形 氾濫を止める9/30・HWL10/1・約YP5.0m 90%（10/2 17時、完了見込み）。次は鋼矢板二重締切、本復旧ではない。沼平均YP1.98→1.95、吉高2.00→1.87m（比べない）・【人的被害】消防庁 第16報13人→第22報16人、住家1,592→2,319棟。千葉県は行方不明3→2→1人（消防庁2人と足さない）・【ライフライン】停電 約5,600→約730軒、断水10/2 17:30全解消、NTT光 約840→約2,040回線（理由不明）、工業用水は未定・【交通】代行 予定→実施、久留里線10/2運転再開（報道）、成田線10/4予定、内房線3か月・都営バス臨時10/1〜・【台風】26号 945hPa→10/2温帯低気圧、27号 970hPa・大型で強い（予報925hPa）・【中東】米回答の中身非公表、ヤンブー積み込み再開（報道）、G7 1億バレル声明、ロシア輸出禁止10/31まで延長、米軽油6.382・【市場】日経+2.93%（TOPIX−0.91%）、米10年債5.17→5.28%・【今週分かったこと】①追跡した対象では完了が段階ごと ②増加した数に一次資料の理由説明なし ③集計主体・時刻・定義・範囲の違いで数や表現が違う・外部出典リンク155本・ユニーク84・一次情報69箇所・本文17章・冒頭一覧14項目・数字カード12枚・D68 2026年10月3日（土）毎日版：収集の基準時刻10月3日6時51分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。【印旛沼】関東地整10/2 17時資料：船形 荒締切（約YP5.0m）90%「盛土完了・遮水シート施工中」。10/2記者発表「荒締切工が完了する見込み」、10/3 10時に現地説明会。荒締切は応急措置、次は鋼矢板二重締切（本格復旧に向けた仮締切堤防）。長門川の延長は10/1の36mから10/2は33.2m。沼平均10/2 15時YP1.95、吉高10/2 17時1.87m。HWL完了時刻の差・「10/2」が消えた理由は説明なし・【台風27号】10/3 6時マリアナ諸島970hPa・大型で強い、暴風域130km。予報10/4小笠原近海945、10/5 925hPa。東京都解説情報（10/2 16:41）小笠原は4〜6日高波警戒・6日頃警報級大雨の可能性。おがさわら丸は父島発を10/4に早発。東海汽船に船舶使用停止命令（10/9〜28代替運航、台風とは別件）・【人的被害】消防庁第22報（10/2 8時）死者16・行方不明2・負傷41で変わらず、住家2,319棟。千葉県第24報（10/2 16時）は行方不明1（長柄町）、孤立4市1町9地区・【ライフライン】断水は10/2 17:30に全て解消（8市3町最大約4,400戸）。停電10/3 6:44約730軒。NTT第3報（10/2 11時）光約2,040・固定約1,860回線。道路啓開は29か所中20か所不要・2か所完了。基地局15局停波中（移動基地局でエリア支障は解消）・【交通】久留里線 木更津〜久留里は産経が「2日、始発から運転再開」と報道、国交省16報の見合わせからも外れる（JR一次は未確認）。成田線10/4始発予定を維持。国道16号は朝最大約80分・【市場】10/2 日経平均68,309.46（−0.94%）、TOPIX4,091.00（−0.99%）、米10年債5.28%、米雇用2.9万人増（報道）、G7が1億バレル放出・【AI・世界】OpenAI Pagesは10/2 8:44解消、データ分析障害は10/3 1:51解消、RCA未公表。イランは米回答非公表。米中の実施日未定・一時停止は2027/1/10まで延長。国連：ウクライナ民間人死傷55%増。クルー13ドッキング・外部出典リンク72本・ユニーク59・一次情報57箇所・本文15節・冒頭一覧15項目・数字カード12枚・D67 2026年10月2日（金）毎日版：収集の基準時刻10月2日6時25分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。【印旛沼】関東地整10/1 15時資料：角川 荒締切100%（9/29 21:15完了）、長門川100%（9/30 23:00完了・延長36mに）、船形 氾濫を止める9/30完了・HWL100%（工程図10/1 15:00、公式Xは午前2時頃）・約YP5.0mは27%。千葉県10/1発表「9月30日に完了」（PDFは「緊急復旧」）、本復旧は検討段階。沼平均10/1 15時YP2.02、吉高10/1 17時1.97m。「10/2」が消えた理由の説明なし・【台風】27号 10/2 6時マリアナ諸島990hPa（予報で10/4小笠原近海945hPa）。26号は10/2 3時に温帯低気圧化。八丈町の自主避難所10/1閉鎖。JAL・青ヶ島は未確認・【人的被害】消防庁第21報（10/1 9時）死者16・行方不明2で変わらず、住家2,211棟。千葉県第23報は行方不明を鴨川市1・長柄町1、孤立4市1町10地区（国は金谷のみ）。山武市の避難指示は10/1解除、栄町白山は継続・【ライフライン】停電10/2 6:14約1,160軒（千葉のみ）、県は10/1 16時約1,770軒。断水は国15報で市原315・鴨川約80、県は市原301・鴨川80。道路啓開29か所中1か所完了。工業用水は給水車で給水、浄水場は未定・【交通】久留里線 木更津〜久留里は木更津市が「10月2日より運転を再開します」、JR運行情報から見合わせの表示が消え、国交省15報も10/2に。実際の運転の発表は未確認。成田線10/4・【生活再建】県営住宅95戸確保・提供予定59戸、仮置場16市町、VCは長柄・君津10/1～・成田10/2～の掲載・【市場】10/1 日経平均68,956.72（+3.30%）、TOPIX4,131.98（+0.57%）、米10年債 当日値5.24%・日中一時5.33%（報道）・【半導体・AI】マイクロン株10/1+3.0%、TrendForceはDRAM契約価格10〜15%上昇を予測。OpenAIはログイン・広告の障害が10/2 4:39回復、Pagesは監視中。Gemini 4 Argonは限定提供・【世界】イランは米回答の中身不明、米財務省が自動車・鉄道部門に制裁。米中の実施日なし・外部出典リンク70本・ユニーク57・一次情報57箇所・本文15節・冒頭一覧15項目・数字カード12枚・D66 2026年10月1日（木）毎日版：収集の基準時刻10月1日7時25分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。この号から10月の月ブロックを新設。【印旛沼】関東地整9/29 17時資料：船形干拓 氾濫を止める61%（44m/72.6m）、角川 同94%（43m/46m、別ページに「完了」の記載）、長門川 荒締切45%（15m/33.2m）・大型土のう71%。9/28資料にあった「10/2」の表記が9/29資料の工程図になし。沼平均9/29 15時YP2.00。吉高9/30 17時1.91m。9/30の総括資料・TEC-FORCE通信No.6も9/29時点の値・【台風26号】10/1 3時 青ヶ島付近・1000hPa（同時刻の予報996hPa）。6時 八丈島の南東約50km・1002hPa。伊豆諸島南部に9/30 20:06土砂災害警報→10/1 1:16注意報→7:29解除。八丈島128.5mm。被害の掲載なし、青ヶ島・JALは未確認。台風27号の情報も・【人的被害】消防庁第20報（9/30 9時）死者16で変わらず、負傷41、住家2,180棟（千葉の床上−274・半壊+278で区分の変更を含むとみられる）。避難指示は栄町・山武市・横須賀市のまま・【ライフライン】停電10/1 7:19約2,190軒（千葉のみ）。市原市断水315戸・鴨川市約130戸。国の道路啓開29か所実施中。NTT東日本第3報なし。工業用水は新発表なし・【交通】JRは久留里線10/2始発再開予定、国交省第14報は10/3を目指すと記載。成田線10/4。内房線代行バスは調整中・【生活再建】山武市 応急修理・賃貸型応急住宅。茂原市 自主避難所。長柄町・君津市の災害VCが10/1から・【イラン】イラン政府が米国の正式回答を受領と報道（中身非公表）。PortWatchは9/27が最新・【米中】USTRは300億ドルずつの推奨段階。実施日なし・【市場】9/30 日経平均66,753.72（+1.94%）、8月末比+441.79（+0.67%）。TOPIX4,108.65（Yahoo）。米10年債5.29%・【半導体・AI】マイクロン四半期売上542.3億ドル、次期見通し615億ドル±15億ドル。OpenAI 9/30の障害は8:14解消、API向けGPT-6.1 Solなど・【世界・制度】キーウへの攻撃（報道）、EU重要通信システム提案、国交省がドライバーモニタリングを義務化・【未確認】船形干拓の完成時期、「10/2」が消えた理由、排水、JAL、青ヶ島、TSMC等・外部出典リンク70本・ユニーク58・一次情報54箇所・本文15節・冒頭一覧15項目・数字カード12枚・</p></details>
+      <details class="mo-note"><summary>この月の記録（各号の要点）</summary><p>D78 2026年10月13日（火）毎日版：収集の基準時刻10月13日6時10分（最終確認は本文に記載）。【北朝鮮】防衛省 10/12：9時台に弾道ミサイル少なくとも2発。①9:19ごろ 高度約20km程度・約220km程度、②9:36ごろ 高度約70km程度・約910km超、変則軌道の可能性を含め日米韓で分析中。EEZへの飛来は確認されず・【酒々井・印旛沼】関東地整 10/12 15時：浸水した住宅3→2戸（床上1・床下1、「13戸の浸水解消」）、A地点37.5→9cm、C地点83→54cm。中詰土約60→約67%（2,230/3,300m3）・【被害報・激甚災害】千葉県第28報・消防庁第25報・激甚災害は追加指定の見込みのまま・【台風・島】29号 10/13 3時970hPa「強い」（実況、日本の東）、15日3時に温帯低気圧の予報。千葉県南部の強風注意報は12日解除、小笠原の波浪注意報も12日解除。ジェット船は大島以外欠航・【交通・停電・通信】しおさいの運休の表示が号の列挙に変化。九州新幹線は13日始発から全線見合わせ（NHK）。県管理道路48区間（10/12 14時）。停電10/13 6時29分約120軒。NTT第4報のまま・【情報漏えい】コミューン 10/9：約30.7万人（推計、メールアドレスを含む約12.6万人）の漏えいを確認（前号まで未掲載、本号で掲載）。ヤマハ発動機 10/12：約1,600名分の可能性。IDCF 10/12 18時「新たに公表すべき重要な事実はありません」。仏スーパーの冷蔵設備への攻撃、アホールド・デレーズのシステム停止（報道）・【市場・世界・AI】10/12 ダウ+0.38%、ナスダック−0.44%、半導体株指数−2.67%、KOSPI−3.65%、ブレント106.65ドル（清算値、報道）。ホルムズ・オマーン沖で11日にタンカーへの攻撃4件（報道）、リヤド空港の死者は報道により12人／少なくとも14人。エネルギー停戦は双方の確認なし。パキスタンKP州首相拘束、21日までに議会承認。パナマ地震の被害家屋1,200戸超。マイクロソフトMaia 300（2027年）。ノーベル経済学賞はホール氏・ウッドフォード氏・外部出典リンク123本・ユニーク92・一次情報78箇所・本文15節・冒頭一覧15項目・数字カード12枚・D77 2026年10月12日（月・スポーツの日）毎日版：収集の基準時刻10月12日6時40分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/11 15時：浸水した住宅8→3戸（床上1・床下2、「12戸の浸水解消」）、A地点61→37.5cm、C地点105→83cm。中詰土約29→約60%（1,990/3,300m3）。TEC-FORCEが10/13に東金市へ道路の調査報告を手交・【被害報・激甚災害】千葉県第28報・消防庁第25報・激甚災害は追加指定の見込みのまま・【台風・島】29号 10/12 6時955hPa「非常に強い」（実況、小笠原近海）、12日18時に日本の東で「強い」、15日3時に温帯低気圧の予報。28号は10/11 15時に熱帯低気圧。千葉県南部に強風注意報。東海汽船は利島・新島・式根島・神津島（ジェット船）、御蔵島・八丈島が欠航・【交通・停電・通信】JRは同じ表示、しおさい全列車運休。シェアサイクルは14日開始前（千葉県が10/11に利用方法を修正）。県管理道路48区間。停電10/12 6時59分約140軒。NTT第4報のまま・【情報漏えい】JR東日本（えきねっと最大約167万件・大人の休日倶楽部約39万件）とビューカード（約403万件）が10/9に漏えいの可能性を公表していた（前号まで未掲載、本号で掲載）。IDCF 10/11 18時「新たに公表すべき重要な事実はありません」。JR九州・佐川急便は続報なし・【市場・世界・AI】東京市場は休場、ドル円158.28円（10/12 7:06）。ホルムズでタンカー2隻被弾（報道）。米大統領の「エネルギー停戦」投稿。リヤド空港11日にも被弾、10日の死者13人（報道）。ジブチ沖の海難 死者139人（IOM）。パキスタンがKP州に非常事態。パナマM7.7（USGS）。ハリケーン・サイモン。Anthropicの件に米政府が透明性を要求（報道）。ヤンデックスのデータセンターに1週間で3か所目の攻撃。CSはDeNAがファイナル進出・月曜定期リンク確認（9/28〜10/11の18本）すべて200・外部出典リンク86本・ユニーク71・一次情報70箇所・本文14節・冒頭一覧14項目・数字カード12枚・S8 2026年10月11日（日）日曜特集第8号「個人情報」：導入＋15章＋終章＋4AI独立調査レポートへの案内。情報基準日10月11日。4AI（GPちゃん・クロちゃん・ジェミちゃん・こうちゃん）が互いを見ずに独立調査し、「誰が欲しがるか」と「どこで結びつくか」の両方を問う構成に。【第1章】渡した・行動から生まれた・推測された情報の3層、5つの動詞（見つける・届ける・見分ける・予測する・動かす）・【第5・6章】FTCのMobilewalla命令（2025年1月）、米最高裁Chatrie判決（2026年6月29日）、アイルランド当局のGoogleへの4億300万ユーロ（2026年9月21日）、リアルタイム入札の推計（ICCL、米国で1人1日747回）、カリフォルニア州DROPに30万人超・【第7章】避難行動要支援者名簿：平時の提供は名簿掲載者の39.9％（2026年4月1日）・【第8章】個人情報保護委員会 令和7年度：民間17,139件、うち直接の報告等13,345件で紙媒体のみ76.9％・誤交付45.5％・誤送付21.6％。東京商工リサーチ2025年：180件・3,063万6,910人分・不正アクセス等64.4％・【第9章】2026年は100万件以上の漏えいが10月5日時点で10件。ランサムウェアの被害報告は上半期123件で過去最多。IDCフロンティア（停止）・JR九州（可能性）・佐川急便（件数未公表）を別案件として区別・【第10章】詐欺被害は2026年8月末で2,360.7億円。証券口座の不正取引は2025年1月〜2026年9月に10,642件（2026年9月は2件）。犯罪統計と特定の漏えいを因果で結ばない・【第12章】改正個人情報保護法 7月10日成立・7月17日公布・施行は公布から2年以内。AI Omnibusは発効、Digital Omnibusは提案段階・出典35本（すべて取得確認）・4AI研究付録4ページは件数に含めない・D76 2026年10月11日（日）毎日版：収集の基準時刻10月11日6時25分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/10 15時：浸水した住宅11→8戸（床上5・床下3、「7戸の浸水解消」）、A地点78→61cm、C地点123→105cm。中詰土約2→約29%（960/3,300m3）。町が10/8の記者会見の案内と資料を掲載（会見録なし）・【被害報・激甚災害】千葉県第28報・消防庁第25報が最新のまま。激甚災害は追加指定の見込みのまま・【台風・島】29号 10/11 3時950hPa「非常に強い」（実況）、予報で11日15時・12日3時小笠原近海。28号は12日3時に温帯低気圧の予報。東海汽船は利島・新島・式根島・神津島が往復欠航。伊豆諸島・小笠原に波浪注意報（10/9発表）・【交通・停電・通信】JRは前号と同じ表示、しおさい全列車運休。停電10/11 6時34分約140軒。NTT第4報のまま・【情報漏えい】JR九州：メールアドレス最大約130万件が閲覧・取得された可能性（確定ではない）。IDCフロンティア第3・4報：ランサムウェア、東日本リージョン1、495の企業・自治体。佐川急便第4報：件数は未公表・【市場・エネルギー】週末のため10/9の確定値。北海ブレント104.72・WTI91.85・米ディーゼル先物4.738（−3.0%）。OFAC一般許可135（ロシア産ディーゼル、2027/4/7まで）。10/12はスポーツの日・【世界・AI・健康】ザポリージャ攻撃で20人死亡・32人負傷（州当局、報道）。ガザ停戦1年、リヤド空港で225便欠航（報道）。OpenAI Android障害は10/10に解消。Anthropicが内部評価のネット接続停止を拡大。WHO DON620（高脅威病原体は陰性、確定診断なし）。Crew-12帰還・外部出典リンク82本・ユニーク67・一次情報67箇所・本文14節・冒頭一覧14項目・数字カード12枚・W11 2026年10月10日（土）週刊版：対象期間10/4〜10/10。情報基準時刻10月10日6時15分（最終確認は本文に記載）。【今週の軸】「終わった」と「まだ」が同じ日に並んだ週（編集上の整理）・【印旛沼・酒々井】鋼矢板 10/3着手→宅地側10/8・沼側10/9完了、中詰土約2%。酒々井 B地点 56→0cm（10/8解消）、A地点100→78cm、C地点123cm、浸水住宅15→11戸、10/8新ポンプ排水・【被害報】行方不明0人（10/4〜5）。県第28報 全壊81・半壊531・一部破損448・床上361。消防庁第25報のまま・【ライフライン】停電 730→620→1,430→520→450→420→460→260軒。NTT第4報 光約900・固定約650・【交通・生活再建】成田線佐原〜銚子10/4・内房線長浦〜木更津10/5再開。姉ケ崎〜長浦は3か月、代行バス10/5〜、シェアサイクル10/14開始決定。栄町対策本部解散・印西市復興本部。激甚災害 追加指定見込み（10/9）・【台風】27号925hPa（10/5）→10/7温帯低気圧、西湘10/7全解除。29号は予報で12日小笠原近海・【中東・市場】IEA：1億バレルは3月の未放出分の前倒し。ブレント102→104ドル。日経平均10/6 70,683.98（初の7万円台）、週間+1.06%。10年債入札3.101%・30年債入札4.109%・【世界・AI・科学】ブラジル決選投票10/25。OpenAI 9/30障害の原因公表。TSMC 9月+54.6%。ノーベル賞5部門（化学 硤合憲三氏）。インフルエンザ第40週11.35・外部出典リンク117本・ユニーク103（ページ単位38）・一次情報30箇所・本文16章・冒頭一覧13項目・数字カード12枚・D75 2026年10月10日（土）毎日版：収集の基準時刻10月10日6時15分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/9：既設函渠を活用した新たなポンプ排水を10/8開始（毎分0.5m3×1台、順次増設予定）。10/9 15時：浸水した住宅15→11戸（10/9 10時）、A地点92→78cm、C地点（新）134→123cm。鋼矢板は宅地側10/8・沼側10/9に完了、中詰土約2%（90/3,300m3）・【被害報】千葉県第28報・消防庁第25報が最新のまま・【台風・島】29号 10/10 3時970hPa「強い」、予報で11日「非常に強い」・12日3時小笠原近海。28号は10日3時に小笠原近海、6時に日本の東（994hPa）。東海汽船は八丈島航路が9日夜・10日欠航。千葉県に波浪・濃霧注意報・【交通・停電・通信】シェアサイクル 10/14 6時開始130台→16日までに300台、12時間無料（千葉国道事務所）。しおさい全列車運休。交通マネジメント検討会の結果、国による道路啓開。停電10/10 6時34分約260軒。NTT第4報 光約900・固定約650回線・【激甚災害・生活再建】内閣府10/9：梅雨前線豪雨から台風第25号までの災害に新たな適用措置の追加指定見込み（公共土木71→84%など）。県の宿泊施設避難所は宿泊代原則公費・【市場】日経平均10/9 69,030.92（−11.19、安値68,150.02）、週間+1.06%。ダウ+0.83%・S&amp;P500+0.59%・ナスダック+0.64%、米10年5.24%・【世界・AI・科学】米大統領「中間選挙前にイランを攻撃しない」（報道）。ブラジル Datafolha 有効票52%対48%・Atlas 52.8%対47.2%。ウクライナ1日で41人死亡（報道）。SpaceXが800MHz帯を取得へ。OpenAI Android障害。ノーベル平和賞 ナビ・ピレイ氏。インフルエンザ定点11.35・外部出典リンク87本・ユニーク70・一次情報71箇所・本文14節・冒頭一覧14項目・数字カード12枚・D74 2026年10月9日（金）毎日版：収集の基準時刻10月9日6時50分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/8 15時：浸水深 A地点95→92cm・B地点6→0cm（解消、10/8 9時）、A地点は解消せず。避難11世帯23人（県第28報）。二重締切 沼側約68%（84.4/124m）・宅地側約96%（100.8/105m）・【被害報】千葉県第28報（10/8 16時、17時訂正）：全壊67→81・半壊469→531・一部破損294→448・床上浸水400→361棟、重傷者2→4人。消防庁第25報のまま・【台風】29号 10/9 3時975hPa「強い」、予報で12日3時に小笠原近海（950hPa「非常に強い」）。28号は6時45分の予報で10日6時に日本の東。千葉県は0時37分に波浪注意報を解除、6時49分に南部に再び発表・【交通・停電・生活再建】JRは前号と同じ表示。県管理道路48区間・大規模被災28区間。10/9 16時に交通マネジメント検討会（内房線 姉ケ崎・長浦間のシェアサイクル）、13時に内房線・県道287号の復旧会議。停電10/9 6時49分約460軒。県が民間宿泊施設の避難所を確保、三浦市が応急修理の受付・【市場・経済】日経平均10/8 69,042.11（−993.60）、30年国債入札 平均利回り4.109%・応募額1兆7,472億円、米10年5.22%、ブレント103.92ドル。日銀 地域経済報告は全地域「回復」「持ち直し」・【世界・AI・科学】ホルムズ海峡の通航が2か月ぶりの低水準（報道）。クラマトルスクで33人死亡（非常事態庁、報道）。TSMC 9月売上+54.6%。OpenAIのAPACのエラーは解消、売上の報道はFT。ノーベル文学賞 アン・カーソン氏・外部出典リンク90本・ユニーク68・一次情報78箇所・本文14節・冒頭一覧14項目・数字カード12枚・D73 2026年10月8日（木）毎日版：収集の基準時刻10月8日6時50分（最終確認は本文に記載）。【酒々井・印旛沼】関東地整 10/7 15時：浸水深 A地点100→95cm・B地点15.5→6cm（10/7 9時）、解消せず。二重締切 沼側約46%（57.2/124m）・宅地側約43%（46.0/105m）・【被害報】千葉県第27報・消防庁第25報が最新のまま・【西湘・台風】西湘バイパス 第5報（10/7 9:30一部解除）・終報（12:00全区間解除）。台風27号は温帯低気圧。29号は予報で12日3時に小笠原近海。千葉県は波浪注意報へ、神奈川県は解除・【交通・停電・生活再建】JRは前号と同じ表示。県管理道路48区間・大規模被災29→28。停電10/8 7:09約420軒。印西市が災害復興本部へ移行。富津市VCは県の一覧で開設中（10/5〜）。東海汽船は10/8夜発から代替運航・【市場・エネルギー】日経平均10/7 70,035.71（−648.27）、米10年5.28%、FOMC議事要旨「大半が年末までにもう一段の引き上げ」、30年国債10/8入札予定。IEA 10/7声明：3月協調行動の未放出約1億バレルを前倒し、ディーゼル優先・【世界・AI・科学】ウクライナへの大規模攻撃で28人死亡（内相の発表として報道）。OpenAIデスクトップ障害は解消、Microsoft MXC一般提供・Surface Laptop Ultra。ノーベル化学賞 カガン氏・硤合憲三氏。旭市で震度4（10/8 4:13）。ガソリン170.2円横ばい・外部出典リンク79本・ユニーク64・一次情報71箇所・本文14節・冒頭一覧14項目・数字カード12枚・D72 2026年10月7日（水）毎日版：収集の基準時刻10月7日7時00分（最終確認は本文に記載）。【千葉県第27報】10/6 16時：死者10・行方不明0（変わらず）。住家 全壊59→67・半壊414→469・一部破損189→294・床上419→400・床下1,216→1,264（第24報比）。孤立4市1町9地区→3市1町5地区・【酒々井・印旛沼】関東地整 酒々井町緊急排水 10/6 16時：浸水深B地点 9/28 56cm→10/6 15.5cm、A地点 10/6 16時 100cm、解消せず。二重締切 10/6 15時 沼側約28%（34.8/124m）・宅地側約25%（26.8/105m）・【台風・高波】27号 10/7 6時 970hPa 日本の東、18時に温帯低気圧の予報。千葉北東部・南部に波浪警報。西湘バイパス 第4報で4区間通行止め。東海汽船ジェット船欠航・臨時便。28号・29号は遠方（29号は予報で12日小笠原近海）・【交通・ライフライン】JRは前号と同じ表示、久留里線は再開見込み立たず。県管理道路48区間（10/6）。停電10/7 7:09約450軒。NTT第4報なし。栄町が災害対策本部を解散（10/6 17時）・【市場・金利】日経平均10/6 70,683.98（+737.12）、S&P500・ナスダック最高値、米10年5.27%、ドル円158.12。10年国債第384回 表面3.1%・平均3.101%・応募7兆4,011億円、8日30年債入札。植田総裁「基調的な上昇率は２％に近づいています」、ロイター関係者報道とは区別・【世界・AI】G7 1億バレルはIEAが10/14〜15に詳細決定の見通し（報道）、PortWatch 10/4 4隻。モスクワ州へ無人機攻撃で2人死亡（報道）。OpenAIが9/30障害の報告書を公開。ノーベル物理学賞 ハルツェン氏・外部出典リンク80本・ユニーク64・一次情報68箇所・本文15節・冒頭一覧15項目・数字カード12枚・D71 2026年10月6日（火）毎日版：収集の基準時刻10月6日6時30分（最終確認は本文に記載）。【人的被害】消防庁第25報（10/5 9時）「前報から変更なし」死者17・行方不明0・住家2,412。千葉県は第26報のまま・【印旛沼・酒々井】関東地整10/5 15時：二重締切 沼側約20%（24.8/124m）・宅地側約22%（23.6/105m）、完了見込みなし。酒々井町 10/5発表で現地対策本部設置、10/6「排水作業に向けた準備」着手、TEC-FORCE通信No.9に国総研の技術的支援。吉高10/5 13時2.02m・【台風27号】10/6 6時実況 小笠原近海950hPa・大型で強い。伊豆諸島南部に波浪警報（6:16）、関東の海上6日夕方〜7日明け方に高波警戒、6日の波 小笠原7m・関東6m。西湘バイパス 大磯東〜西湘二宮 下り約6km 10/6 1:30〜通行止め。東海汽船ジェット船 終日欠航・【交通・道路】内房線は前号と同じ表示。千葉県管理道路 全面通行止め48区間（10/5 14時、10/1は56）、大規模被災29・【ライフライン】停電10/6 6:39約520軒（銚子市が一覧から外れる）。NTT第4報なし・【市場・政治・世界】日経平均10/5 69,946.86（+1,637.40）、TOPIX 4,145.22、米10年5.31%、ブレント100.32、ボベスパ約+7.7%。所信表明（国債発行額を適切にコントロール、消費税・支援金法案）、日豪財務大臣対話を新設。ブラジル大統領選 ボルソナロ氏47.03%・ルーラ大統領45.16%で決選投票へ。ハルキウ6人死亡（報道）、EUがハイブリッド攻撃の急増を警告。G7 1億バレルは実施未確認・【AI・暮らし】OpenAI一部機能低下・RCA未公開、Wikimediaの指摘、Reflection Beam。ノーベル医学賞 光遺伝学。前号の父島の風向（北→北北東の区分）を答え合わせ欄に記録・外部出典リンク79本・ユニーク65・一次情報69箇所・本文15節・冒頭一覧15項目・数字カード12枚・D70 2026年10月5日（月）毎日版：収集の基準時刻10月5日6時30分（最終確認は本文に記載）。【人的被害】千葉県第26報（臨時報・10/4 10:30）長柄町の死者と行方不明者が同一人物と確認、行方不明1→0、死者10。消防庁第24報（10/4 14時）死者17・行方不明0・負傷41、住家2,412棟（変わらず）・【印旛沼・酒々井】関東地整10/4 15時資料：船形 鋼矢板二重締切 沼側約19%（24.0/124m）・宅地側約1%（1.6/105m）。酒々井町開運団地は馬橋川の閉塞で浸水継続、10/4に県・町が支援強化を要請、国は5日から国総研の土砂災害専門家を含むTEC-FORCEを追加派遣の予定（開始は未確認）。吉高10/4 17時2.00m・【交通】JR10/5 6:18〜6:39：内房線 長浦〜木更津は一部運休（1時間2本、下り長浦6:28発〜・上り木更津5:50発〜）、姉ケ崎〜長浦は代行バス（輸送力1〜2割）・再開3か月程度。成田線は平常運転。久留里線 久留里〜上総亀山は再開見込み立たず・代行。しおさいは一部運休（11本運休）・【台風27号】10/5 6時実況 小笠原近海925hPa・最大風速50m/s・大型で非常に強い。小笠原諸島に波浪警報（うねり）・強風注意報。父島6時 北7.9m/s・【ライフライン】停電10/5 6:39約1,430軒（銚子市約870軒、理由は未確認）。NTT第4報なし・【生活再建・市場・世界】富津市VC 10/5〜（予定）、長柄町 自主避難所10/4閉鎖。株式は10/2確定値、ドル円157.68。G7 1億バレルは声明段階、IEA 3月分約3.25億バレル放出済み、PortWatch最新9/27の1隻。ブラジル大統領選は開票途中。メルツ首相キーウで13億ユーロ超（報道）。OpenAI RCA未公開。凱旋門賞ダリズ連覇・外部出典リンク71本・ユニーク59・一次情報61箇所・本文14節・冒頭一覧14項目・数字カード12枚・S7 2026年10月4日（日）日曜特集第7号「物流」：導入＋11章＋終章＋4AI独立調査レポートへの案内。情報基準日10月4日。4AI（GPちゃん・クロちゃん・ジェミちゃん・こうちゃん）が互いを見ずに独立調査し、「物流は輸送だけでなく、必要な物を必要な時刻に置く社会の仕組み」で一致。【第2章】運河・鉄道・冷蔵・パレット・コンテナ。コンテナの本質は標準化、革新は積み替えを減らすことで起きる・【第3章】翌日届くの正体＝情報の先回り・近い在庫・工程の同期・【第4章】2024年度の約14％不足は概ね克服（貨物量は2019年28.4億トン→2024年25.1億トン、約12％減）。2030年度の見通しは▲7％／▲15％／▲25％の3前提、施策効果+25.7は計画値。物流効率化法の特定荷主等3,257、初回の定期報告は2027年7月・【第6章】PortWatchのAIS観測隻数でホルムズ1日95.6隻→3〜4隻（閉鎖ではないが観測隻数は大幅減。AISを切った船は含まれない）、IMOの確認した商船への攻撃80件・船員の死者少なくとも22人（9月16日）、スエズは約半分、肥料の世界供給の約3分の1がホルムズを通る（WTO）、パナマ運河・ライン川の水・【第7章】名古屋港のランサムウェア：梱包工場7日停止、ただし自動車の生産に影響なし。能登のパレット・フォークリフト不足、物資拠点の非常用電源21％・【第10章】実用・導入初期・実証・構想を区別、AIで解ける問題と物理の制約・出典78本（すべて取得確認）・4AI研究付録4ページは件数に含めない・D69 2026年10月4日（日）毎日版：収集の基準時刻10月4日6時30分（最終確認は本文に記載）。週刊版W10はGate C待ちで未公開のため、本号の数え方には含めない。【人的被害】消防庁第23報（10/3 16時）死者17（千葉10・長柄町1人が加わる）・行方不明1・負傷41、住家2,412棟（第22報2,319）。千葉県第25報（臨時報・10/3 15時）死者10、長柄町で見つかった方は「行方不明者との同一性について現在調査中」、行方不明1（長柄町）を残す・【印旛沼】関東地整10/3 15時資料：船形 荒締切（約YP5.0m）10/3完了（工程図は6:00、公式Xは8時）。鋼矢板二重締切は沼側0/124m・宅地側0/105m。吉高10/3 17時2.04m（10/2は1.87m、理由不明）。県は北印旛沼の避難情報の基準水位を応急復旧完了まで引き下げ（9/28〜）・【交通】JR10/3 16時：成田線 佐原〜銚子10/4始発再開、千葉〜佐原は1日2本運休。内房線 長浦〜木更津10/5再開、姉ケ崎〜長浦は3か月程度・10/5から代行バス。しおさいは資料「4・6・11号のみ運転」と運行情報「全列車運休」が食い違い。久留里線の取りやめは久留里〜上総亀山のみ・【台風27号】10/4 6時 小笠原近海945hPa・大型で非常に強い。予報5日6時925hPa。小笠原は波浪注意報、5日夕方〜6日はじめに接近のおそれ・【ライフライン】停電10/4 6:29約620軒。NTT第4報なし・【市場・世界】休場。BLS原文で雇用+2.9万・失業率4.2%・7〜8月計−6万。G7原文「1億バレル直ちに開始・4か月・20日以内にディーゼル前倒し」、放出開始は未確認、日本の「4億バレル超」は3月の数字。北朝鮮が10/3弾道ミサイル。対ロ制裁33団体9個人。OpenAI RCA未公開。阪神セ・リーグ優勝・外部出典リンク69本・ユニーク59・一次情報61箇所・本文15節・冒頭一覧15項目・数字カード12枚・W10 2026年10月3日（土）週刊版：対象期間9/27〜10/3。情報基準時刻10月3日8時00分（最終確認は本文に記載）。【今週の軸】確かめていた項目が段階ごとに「完了」へ変わり、そのたびに次の工程が見えた週（編集上の整理）・【印旛沼】9/28石材投入開始→角川9/29 21:15・長門川9/30 23:00荒締切完了→船形 氾濫を止める9/30・HWL10/1・約YP5.0m 90%（10/2 17時、完了見込み）。次は鋼矢板二重締切、本復旧ではない。沼平均YP1.98→1.95、吉高2.00→1.87m（比べない）・【人的被害】消防庁 第16報13人→第22報16人、住家1,592→2,319棟。千葉県は行方不明3→2→1人（消防庁2人と足さない）・【ライフライン】停電 約5,600→約730軒、断水10/2 17:30全解消、NTT光 約840→約2,040回線（理由不明）、工業用水は未定・【交通】代行 予定→実施、久留里線10/2運転再開（報道）、成田線10/4予定、内房線3か月・都営バス臨時10/1〜・【台風】26号 945hPa→10/2温帯低気圧、27号 970hPa・大型で強い（予報925hPa）・【中東】米回答の中身非公表、ヤンブー積み込み再開（報道）、G7 1億バレル声明、ロシア輸出禁止10/31まで延長、米軽油6.382・【市場】日経+2.93%（TOPIX−0.91%）、米10年債5.17→5.28%・【今週分かったこと】①追跡した対象では完了が段階ごと ②増加した数に一次資料の理由説明なし ③集計主体・時刻・定義・範囲の違いで数や表現が違う・外部出典リンク155本・ユニーク84・一次情報69箇所・本文17章・冒頭一覧14項目・数字カード12枚・D68 2026年10月3日（土）毎日版：収集の基準時刻10月3日6時51分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。【印旛沼】関東地整10/2 17時資料：船形 荒締切（約YP5.0m）90%「盛土完了・遮水シート施工中」。10/2記者発表「荒締切工が完了する見込み」、10/3 10時に現地説明会。荒締切は応急措置、次は鋼矢板二重締切（本格復旧に向けた仮締切堤防）。長門川の延長は10/1の36mから10/2は33.2m。沼平均10/2 15時YP1.95、吉高10/2 17時1.87m。HWL完了時刻の差・「10/2」が消えた理由は説明なし・【台風27号】10/3 6時マリアナ諸島970hPa・大型で強い、暴風域130km。予報10/4小笠原近海945、10/5 925hPa。東京都解説情報（10/2 16:41）小笠原は4〜6日高波警戒・6日頃警報級大雨の可能性。おがさわら丸は父島発を10/4に早発。東海汽船に船舶使用停止命令（10/9〜28代替運航、台風とは別件）・【人的被害】消防庁第22報（10/2 8時）死者16・行方不明2・負傷41で変わらず、住家2,319棟。千葉県第24報（10/2 16時）は行方不明1（長柄町）、孤立4市1町9地区・【ライフライン】断水は10/2 17:30に全て解消（8市3町最大約4,400戸）。停電10/3 6:44約730軒。NTT第3報（10/2 11時）光約2,040・固定約1,860回線。道路啓開は29か所中20か所不要・2か所完了。基地局15局停波中（移動基地局でエリア支障は解消）・【交通】久留里線 木更津〜久留里は産経が「2日、始発から運転再開」と報道、国交省16報の見合わせからも外れる（JR一次は未確認）。成田線10/4始発予定を維持。国道16号は朝最大約80分・【市場】10/2 日経平均68,309.46（−0.94%）、TOPIX4,091.00（−0.99%）、米10年債5.28%、米雇用2.9万人増（報道）、G7が1億バレル放出・【AI・世界】OpenAI Pagesは10/2 8:44解消、データ分析障害は10/3 1:51解消、RCA未公表。イランは米回答非公表。米中の実施日未定・一時停止は2027/1/10まで延長。国連：ウクライナ民間人死傷55%増。クルー13ドッキング・外部出典リンク72本・ユニーク59・一次情報57箇所・本文15節・冒頭一覧15項目・数字カード12枚・D67 2026年10月2日（金）毎日版：収集の基準時刻10月2日6時25分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。【印旛沼】関東地整10/1 15時資料：角川 荒締切100%（9/29 21:15完了）、長門川100%（9/30 23:00完了・延長36mに）、船形 氾濫を止める9/30完了・HWL100%（工程図10/1 15:00、公式Xは午前2時頃）・約YP5.0mは27%。千葉県10/1発表「9月30日に完了」（PDFは「緊急復旧」）、本復旧は検討段階。沼平均10/1 15時YP2.02、吉高10/1 17時1.97m。「10/2」が消えた理由の説明なし・【台風】27号 10/2 6時マリアナ諸島990hPa（予報で10/4小笠原近海945hPa）。26号は10/2 3時に温帯低気圧化。八丈町の自主避難所10/1閉鎖。JAL・青ヶ島は未確認・【人的被害】消防庁第21報（10/1 9時）死者16・行方不明2で変わらず、住家2,211棟。千葉県第23報は行方不明を鴨川市1・長柄町1、孤立4市1町10地区（国は金谷のみ）。山武市の避難指示は10/1解除、栄町白山は継続・【ライフライン】停電10/2 6:14約1,160軒（千葉のみ）、県は10/1 16時約1,770軒。断水は国15報で市原315・鴨川約80、県は市原301・鴨川80。道路啓開29か所中1か所完了。工業用水は給水車で給水、浄水場は未定・【交通】久留里線 木更津〜久留里は木更津市が「10月2日より運転を再開します」、JR運行情報から見合わせの表示が消え、国交省15報も10/2に。実際の運転の発表は未確認。成田線10/4・【生活再建】県営住宅95戸確保・提供予定59戸、仮置場16市町、VCは長柄・君津10/1～・成田10/2～の掲載・【市場】10/1 日経平均68,956.72（+3.30%）、TOPIX4,131.98（+0.57%）、米10年債 当日値5.24%・日中一時5.33%（報道）・【半導体・AI】マイクロン株10/1+3.0%、TrendForceはDRAM契約価格10〜15%上昇を予測。OpenAIはログイン・広告の障害が10/2 4:39回復、Pagesは監視中。Gemini 4 Argonは限定提供・【世界】イランは米回答の中身不明、米財務省が自動車・鉄道部門に制裁。米中の実施日なし・外部出典リンク70本・ユニーク57・一次情報57箇所・本文15節・冒頭一覧15項目・数字カード12枚・D66 2026年10月1日（木）毎日版：収集の基準時刻10月1日7時25分（最終確認は本文に記載）。最初に未公開号を確認し0件（DEC-033）。この号から10月の月ブロックを新設。【印旛沼】関東地整9/29 17時資料：船形干拓 氾濫を止める61%（44m/72.6m）、角川 同94%（43m/46m、別ページに「完了」の記載）、長門川 荒締切45%（15m/33.2m）・大型土のう71%。9/28資料にあった「10/2」の表記が9/29資料の工程図になし。沼平均9/29 15時YP2.00。吉高9/30 17時1.91m。9/30の総括資料・TEC-FORCE通信No.6も9/29時点の値・【台風26号】10/1 3時 青ヶ島付近・1000hPa（同時刻の予報996hPa）。6時 八丈島の南東約50km・1002hPa。伊豆諸島南部に9/30 20:06土砂災害警報→10/1 1:16注意報→7:29解除。八丈島128.5mm。被害の掲載なし、青ヶ島・JALは未確認。台風27号の情報も・【人的被害】消防庁第20報（9/30 9時）死者16で変わらず、負傷41、住家2,180棟（千葉の床上−274・半壊+278で区分の変更を含むとみられる）。避難指示は栄町・山武市・横須賀市のまま・【ライフライン】停電10/1 7:19約2,190軒（千葉のみ）。市原市断水315戸・鴨川市約130戸。国の道路啓開29か所実施中。NTT東日本第3報なし。工業用水は新発表なし・【交通】JRは久留里線10/2始発再開予定、国交省第14報は10/3を目指すと記載。成田線10/4。内房線代行バスは調整中・【生活再建】山武市 応急修理・賃貸型応急住宅。茂原市 自主避難所。長柄町・君津市の災害VCが10/1から・【イラン】イラン政府が米国の正式回答を受領と報道（中身非公表）。PortWatchは9/27が最新・【米中】USTRは300億ドルずつの推奨段階。実施日なし・【市場】9/30 日経平均66,753.72（+1.94%）、8月末比+441.79（+0.67%）。TOPIX4,108.65（Yahoo）。米10年債5.29%・【半導体・AI】マイクロン四半期売上542.3億ドル、次期見通し615億ドル±15億ドル。OpenAI 9/30の障害は8:14解消、API向けGPT-6.1 Solなど・【世界・制度】キーウへの攻撃（報道）、EU重要通信システム提案、国交省がドライバーモニタリングを義務化・【未確認】船形干拓の完成時期、「10/2」が消えた理由、排水、JAL、青ヶ島、TSMC等・外部出典リンク70本・ユニーク58・一次情報54箇所・本文15節・冒頭一覧15項目・数字カード12枚・</p></details>
+      <div class="ar"><span class="ar-dt">10月13日（火）</span><span class="ar-no kd">D78</span><span class="ar-ti">北朝鮮が弾道ミサイルを少なくとも2発発射し、2発目は約910kmを超えて飛翔。酒々井町の浸水した住宅は2戸に、船形干拓の中詰土は約67%に。コミューン社の約30.7万人の会員情報の漏えいの公表（10月9日）を本号で掲載。3連休明けの市場、半導体株と韓国株の下げ、中東のタンカーへの攻撃、マイクロソフトの自社AIチップ、ノーベル経済学賞。</span><span class="ar-kd">毎日版</span><a class="ar-go" href="daily-2026-10-13.html">読む</a></div>
       <div class="ar"><span class="ar-dt">10月12日（月）</span><span class="ar-no kd">D77</span><span class="ar-ti">酒々井町の浸水した住宅は8戸から3戸に、船形干拓の中詰土は約60%に。IDCフロンティアの件に伴い、JR東日本とビューカードもメールアドレスなどの漏えいの「可能性」を公表していました。台風29号は小笠原近海を北上、28号は熱帯低気圧に。米大統領の「エネルギー停戦」の投稿、リヤドの空港への再攻撃、ジブチ沖の海難。スポーツの日で東京市場は休みです。</span><span class="ar-kd">毎日版</span><a class="ar-go" href="daily-2026-10-12.html">読む</a></div>
       <div class="ar"><span class="ar-dt">10月11日（日）</span><span class="ar-no ks">S8</span><span class="ar-ti">あなたの個人情報は、今どこにあるのか。一日の暮らしの中で生まれる情報を入口に、それが誰の手元にあり、誰が何のために欲しがり、どこで結びつき、どう流出しているのかをたどります。渡した・行動から生まれた・推測された情報の3層、10の立場と5つの動詞、同じ位置情報・医療情報の光と影、見えない広告とデータ仲介、善意の名簿の危うさ、漏えいの二つの統計と2026年の大型事案、犯罪者が欲しがる理由、国家の監視、2026年の改正個人情報保護法とEU・米国、AIの推測、取り戻せるもの・取り戻せないもの、2030・2040・2050年。4つのAIの独立調査を統合し、4本の独立調査レポートも研究付録として公開しています。</span><span class="ar-kd">日曜特集</span><a class="ar-go" href="sunday-2026-10-11.html">読む</a></div>
       <div class="ar"><span class="ar-dt">10月11日（日）</span><span class="ar-no kd">D76</span><span class="ar-ti">台風29号が「非常に強い」勢力になり、小笠原近海へ向かう予報。酒々井町の浸水した住宅は11戸から8戸に、船形干拓の中詰土は約29%に。JR九州・IDCフロンティア・佐川急便が情報漏えいの続報。米財務省がロシア産ディーゼルの一般許可を出しました。</span><span class="ar-kd">毎日版</span><a class="ar-go" href="daily-2026-10-11.html">読む</a></div>
