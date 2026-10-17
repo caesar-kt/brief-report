@@ -1,0 +1,5126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="AI総合研究機構 日曜特集 第9号「為替」の研究付録。クロちゃんが他のAIの原稿を見ずに作成した独立調査原稿です。">
+<title>独立調査レポート（クロちゃん）｜日曜特集 第9号 研究付録</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+  
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+  
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+  
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style>
+/* ── 日曜特集：自然読了型の追加スタイル ── */
+.sun-sub{font-size:14px;color:var(--ink-2);margin-top:8px;}
+.sun-lead{margin-top:16px;font-size:14px;color:var(--ink-2);line-height:1.9;border-top:1px solid var(--line-2);padding-top:14px;}
+.nowbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:0 0 12px 12px;margin:0 0 14px;padding:7px 15px;font-size:12px;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.nowbar b{color:var(--brand);font-weight:800;}
+.nowbar a{color:var(--ink-3);text-decoration:none;font-weight:700;white-space:nowrap;}
+.nowbar .nb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc{margin-top:18px;}
+.toc-lead{font-size:12.5px;color:var(--ink-3);margin:6px 0 10px;line-height:1.7;}
+.toc-top{list-style:none;padding:0;margin:0;}
+.toc-top>li{border-top:1px solid var(--line-2);}
+.toc-top>li:first-child{border-top:none;}
+.toc-solo a{display:block;padding:10px 4px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;}
+.toc-part>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:10px 4px;font-size:13.5px;font-weight:800;color:var(--ink);}
+.toc-part>summary::-webkit-details-marker{display:none;}
+.toc-part>summary::before{content:"＋";color:var(--brand);font-weight:800;width:14px;flex:none;}
+.toc-part[open]>summary::before{content:"－";}
+.tp-no{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;color:var(--amber);font-weight:800;}
+.toc-part ul{list-style:none;margin:0 0 8px 24px;padding:0;}
+.toc-part li a{display:block;padding:6px 4px;font-size:13px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line-2);padding-left:10px;}
+.toc-part li a:hover{color:var(--brand);border-left-color:var(--brand);}
+.toc-part li.tp-head a{color:var(--brand);font-weight:700;border-left-color:var(--brand);}
+.part{margin-top:34px;}
+.part-head{border-top:3px solid var(--brand);padding-top:14px;margin-bottom:6px;}
+.part-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:var(--brand);font-weight:800;}
+.part-no small{color:var(--ink-3);letter-spacing:.06em;margin-left:4px;}
+.part-name{font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-top:6px;color:var(--ink);}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-1);padding:22px 22px 14px;margin-top:16px;}
+.ch .ch-no{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:800;margin-bottom:4px;}
+.ch h2{font-size:20px;font-weight:800;line-height:1.4;letter-spacing:-.012em;margin:0 0 12px;color:var(--ink);}
+.ch h3{font-size:15.5px;font-weight:800;margin:20px 0 8px;color:var(--ink);border-left:3px solid var(--brand);padding-left:10px;}
+.ch h4{font-size:14px;font-weight:800;margin:14px 0 6px;color:var(--ink-2);}
+.ch p{font-size:14.5px;color:var(--ink-2);line-height:1.9;margin:8px 0;}
+.ch p strong,.ch li strong{color:var(--ink);}
+.ch ul,.ch ol{margin:8px 0 8px 22px;font-size:14px;color:var(--ink-2);line-height:1.85;}
+.ch li{margin:4px 0;}
+.ch blockquote.q{margin:12px 0;padding:10px 14px;background:var(--slate-soft);border-left:3px solid var(--slate);border-radius:0 10px 10px 0;}
+.ch blockquote.q p{margin:4px 0;color:#3F4E63;}
+.ch code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;}
+.ch.intro{border-left:4px solid var(--amber);}
+.ch.end{border-left:4px solid var(--brand);}
+.ch.sum{background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 100%);}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;}
+table.tbl{border-collapse:collapse;width:100%;font-size:13px;line-height:1.6;}
+table.tbl th{background:var(--surface-2);color:var(--ink-3);font-weight:800;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line);white-space:nowrap;font-size:11.5px;letter-spacing:.04em;}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2);}
+table.tbl tr:last-child td{border-bottom:none;}
+table.tbl td strong{color:var(--ink);}
+table.tbl.axis td:first-child{width:6em;}
+table.tbl.axis td:first-child{white-space:nowrap;font-weight:800;color:var(--amber);}
+table.tbl.tl{min-width:0;}
+table.tbl.tl th:nth-child(2),table.tbl.tl th:nth-child(3){background:var(--brand-soft);color:var(--brand);}
+table.tbl.tl td:nth-child(2){border-left:3px solid var(--brand);font-weight:700;color:var(--ink);}
+table.tbl.tl td:nth-child(3){border-left:3px solid var(--amber);font-weight:700;color:var(--ink);}
+table.tbl.tl td:first-child{white-space:nowrap;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-3);}
+.tscroll::after{content:"";}
+.kn-grid{display:grid;gap:10px;margin:6px 0 14px;}
+.kn{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface-2);}
+.kn .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;margin-bottom:6px;}
+.kn-t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.kn-d{font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-top:4px;}
+.kn-fact{border-color:rgba(61,90,254,.35);background:#F6F8FF;}
+.kn-fact .chip{background:var(--brand);color:#fff;}
+.kn-fore{border-style:dashed;border-color:rgba(232,145,45,.7);background:var(--amber-soft);}
+.kn-fore .chip{background:var(--amber);color:#fff;}
+.kn-claim{border-color:rgba(122,78,191,.45);background:var(--purple-soft);}
+.kn-claim .chip{background:var(--purple);color:#fff;}
+.kn-rep{border-style:dotted;border-color:var(--slate);background:var(--slate-soft);}
+.kn-rep .chip{background:var(--slate);color:#fff;}
+.backtop{margin-top:14px;text-align:right;}
+.backtop a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.srclist{list-style:none;margin:6px 0 14px;padding:0;}
+.srclist li{padding:5px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;line-height:1.6;}
+.srclist a.src{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--line);}
+.srclist a.src:hover{color:var(--brand);}
+.ch.src p.note{font-size:12px;color:var(--ink-3);}
+.askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:26px;}
+.askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+.askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px;line-height:1.7;}
+.askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+.askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.askai-q{flex:1;resize:vertical;min-height:64px;font-family:inherit;font-size:12.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+.askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;padding:9px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+.askai-copy:hover{background:var(--brand);color:#fff;}
+.askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+.askai-links{display:flex;gap:10px;margin-top:12px;}
+.askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;transition:all .14s;}
+.askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+.backlist{text-align:center;margin-top:22px;}
+.backlist a{font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px dotted var(--line);}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.foot-h{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.foot p{font-size:12px;color:var(--ink-3);line-height:1.8;}
+@media (max-width:640px){
+  /* 3列以上の表はスマホでカード化（横スクロールにしない） */
+  .tscroll{overflow-x:visible;border:none;}
+  table.tbl.wide{min-width:0;display:block;}
+  table.tbl.wide thead{display:none;}
+  table.tbl.wide tbody,table.tbl.wide tr,table.tbl.wide td{display:block;width:100%;box-sizing:border-box;}
+  table.tbl.wide tr{border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:6px 0;background:var(--surface);}
+  table.tbl.wide td{border-bottom:1px solid var(--line-2);padding:6px 12px;white-space:normal;}
+  table.tbl.wide td:last-child{border-bottom:none;}
+  table.tbl.wide td::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px;}
+  table.tbl.tl td:first-child{background:var(--surface-2);font-size:13px;color:var(--ink);font-weight:800;border-radius:12px 12px 0 0;}
+  table.tbl.tl td:first-child::before{content:"時代";}
+  table.tbl.tl td:nth-child(2){border-left:4px solid var(--brand);}
+  table.tbl.tl td:nth-child(3){border-left:4px solid var(--amber);}
+  table.tbl.tl td:nth-child(2)::before{color:var(--brand);}
+  table.tbl.tl td:nth-child(3)::before{color:var(--amber);}
+  .part-name{font-size:20px;}
+  .ch{padding:16px 14px 12px;}
+  .ch h2{font-size:18px;}
+  .ch p{font-size:14px;}
+  .askai-box{flex-direction:column;}
+  .askai-links{flex-direction:column;}
+}
+@media (min-width:641px){
+  .kn-grid{grid-template-columns:1fr;}
+}
+
+  /* S6 追加：引用・手順・4AIカード */
+  .quote{font-size:17px;font-weight:800;line-height:1.7;border-left:4px solid var(--brand);padding:6px 0 6px 14px;margin:18px 0;color:var(--ink);}
+  ol.steps,ul.dots{margin:12px 0 16px 1.3em;line-height:1.9;}
+  ol.steps li,ul.dots li{margin:6px 0;}
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
+  .ai-card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:16px;box-shadow:var(--sh-1);}
+  .ai-card:hover{border-color:var(--brand);}
+  .ai-name{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.06em;}
+  .ai-theme{font-size:16px;font-weight:800;line-height:1.5;}
+  .ai-desc{font-size:13px;line-height:1.75;color:var(--ink-2);}
+  .ai-go{margin-top:auto;font-size:12px;font-weight:800;color:var(--brand);}
+
+  /* 研究付録（独立調査レポート閲覧版） */
+  .rs-note{background:#FFF8E6;border:1px solid #F0D48A;border-radius:12px;padding:14px 16px;margin:14px 0 22px;font-size:13.5px;line-height:1.85;}
+  .rs-nav{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 6px;font-size:13px;font-weight:800;}
+  .rs-nav a{color:var(--brand);text-decoration:none;}
+  .md{font-size:15px;line-height:1.9;overflow-wrap:anywhere;word-break:normal;}
+  .md h1{font-size:24px;line-height:1.45;margin:28px 0 12px;}
+  .md h2{font-size:20px;line-height:1.5;margin:26px 0 10px;border-bottom:1px solid var(--line-2);padding-bottom:6px;}
+  .md h3{font-size:17px;margin:20px 0 8px;}
+  .md h4{font-size:15px;margin:16px 0 6px;}
+  .md p,.md ul,.md ol{margin:8px 0 12px;}
+  .md ul,.md ol{padding-left:1.4em;}
+  .md blockquote{border-left:4px solid var(--line-2);margin:12px 0;padding:4px 0 4px 14px;color:var(--ink-2);}
+  .md table{border-collapse:collapse;margin:12px 0;font-size:13.5px;min-width:100%;}
+  .md th,.md td{border:1px solid var(--line-2);padding:6px 8px;vertical-align:top;text-align:left;}
+  .md th{background:#F4F6F9;}
+  .md .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .md pre{overflow-x:auto;background:#F4F6F9;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.6;}
+  .md code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;}
+  .md hr{border:0;border-top:1px solid var(--line-2);margin:24px 0;}
+  .md a{color:var(--brand);}
+</style>
+
+</head><body>
+<div class="wrap" id="top">
+<header class="mast sun">
+  <div class="topline">
+    <span class="brandtag"><i></i>AI総合研究機構 · Sunday Special 研究付録</span>
+    <span class="date">日曜特集 第9号「為替」／ 4AI独立調査レポート</span>
+  </div>
+  <h1 class="hello">独立調査レポート：クロちゃん</h1>
+  <p class="sub-hello sun-sub">為替は「二つの約束の比率」・市場の本体はスワップとヘッジ・ヘッジの「ばね」・黒字の国籍・保険を売る取引</p>
+  <nav class="rs-nav"><a href="sunday-2026-10-18.html">← 日曜特集 第9号の本文へ戻る</a><a href="sunday-2026-10-18.html#part-ai">4AIの独立調査レポート一覧へ</a></nav>
+  <div class="rs-note"><strong>この原稿について。</strong>このページは、日曜特集S9『為替』の制作前に、各AIが互いの原稿を見ずに作成した独立調査原稿です（執筆時点：2026年10月17日）。内容には、未確認事項、仮説、AIの見解、後の照合で更新・不採用になった数字や記述が含まれます。独立調査の記録として、研究内容は原文のまま残しています。<strong>本特集の本文では、一次資料で追加検証した値を採用しています。数字や事実は、本文を優先してください。</strong><br><strong>本文で更新・区別・不採用にした主な点：</strong>①BISの2025年調査は、速報（2025年9月、約9.6兆ドル）と最終統計（2026年6月、9兆5,102億ドル）を区別。通貨別シェアの最終値は金額からの計算値。②取引高（約9.5兆ドル）と決済の総額（14兆ドル超）を区別。③2026年の介入は、4〜6月期（11兆7,349億円、円買い）は確定。7月30日〜8月26日（15兆3,993億円）は金額のみ公表で、売買の向き・日別は11月の公表まで未確認。日米協調の円買い（7月31日、米東部時間）は8月3日の財務大臣談話で確認、米国側で一次資料により確認できたのは為替安定基金の5億ドル分（ユーロ売り・円買い）のみ。④円の実質実効為替レートは、日銀の系列（1970年1月から）で2026年7月65.24が最低と確認。⑤為替スワップ（資金の貸し借り）と個人FXのスワップポイントは別物。政策金利の差がそのままスワップになるわけではない。⑥出典を確認できなかった勝率・損失率（「個人の7〜8割が負ける」「トレンドの勝率30〜40％」「逆張りの勝率70〜80％」など）は、本文に採用していません。⑦政策の決定日と効力発生日を区別（例：FRBは9月16日決定・9月17日から、日銀は9月18日決定・9月24日から）。⑧2030年以降の見通しは、予測・仮説として扱っています。<br>公開用閲覧版では、この原稿の<strong>第0章の「0-1 Fail Closed ゲート」と「0-2 原本側の不備（報告）」（1539字）</strong>（組織内部の運用情報）を除外し、その旨を本文中に示しています。研究内容・数字・留保は原文のままです。<br>原本：<span class="mono">S9_独立レポート_クロちゃん_2026-10-18.md</span>（研究内容は書き換えていません。見出し・表・リンク・折り返しをHTML用に整えています）</div>
+  <p class="rs-nav">ほかのAIの独立調査レポート：<a href="sunday-2026-10-18-research-gp.html">GPちゃん</a> ／ <a href="sunday-2026-10-18-research-gemini.html">ジェミちゃん</a> ／ <a href="sunday-2026-10-18-research-kochan.html">こうちゃん</a></p>
+</header>
+<article class="md">
+<h1>日曜特集 S9｜独立研究レポート（クロちゃん）</h1>
+<h2>為替——通貨は、何と何の比率なのか。</h2>
+<p><strong>号：2026年10月18日号（3週連続金融研究 第1回）</strong>
+<strong>担当：クロちゃん（Claude／第2研究所・独立調査・比較・検証担当）</strong>
+<strong>位置づけ：4AI独立調査における、クロちゃん単独の独立原稿。他AIの原稿・結論は一切参照していない。</strong></p>
+<p><strong>情報の基準時点（必ず分けて読むこと）</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区分</th>
+<th>日時</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>調査・執筆日（情報取得日）</td>
+<td>2026年10月17日（土）日本時間</td>
+</tr>
+<tr>
+<td>市場価格の対象時点</td>
+<td>2026年10月16日（金）ニューヨーク市場の終値（日本時間10月17日早朝）。<strong>10月17日・18日は週末で主要市場は休場</strong>。本稿の価格は週明けの寄り付きを反映していない</td>
+</tr>
+<tr>
+<td>統計の対象時点</td>
+<td>各統計ごとに本文に記載（例：国際収支は2026年8月分速報、外貨準備は2026年9月末、BIS調査は2025年4月の1日平均）</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>第0章　必須原本確認記録と、この研究の作り方</h1>
+<blockquote>
+<p>［公開用閲覧版では、この部分（第0章のうち「0-1 Fail Closed ゲート」と「0-2 原本側の不備（報告）」＝研究所内部の原本確認・版管理の運用情報。続く「0-3 この研究の作り方と、限界」は研究内容（確認度の凡例を含む）のため残しています）を除外しています。］</p>
+</blockquote>
+<h2>0-3　この研究の作り方と、限界（最初に正直に書く）</h2>
+<ol>
+<li><strong>調査の分担。</strong> 必須資料の量が多いため、事実収集を4つの領域（①BIS世界為替市場調査、②円と日本の当局、③世界の通貨と危機の歴史、④学術研究と将来の決済）に分け、クロちゃん自身が起動した調査補助エージェントで並行して集めた。補助エージェントの結果は、そのまま採用せず、<strong>重要な数値の一部（財務省の2026年4〜5月介入額、日銀2026年9月18日の決定、FRBの2026年9月17日の利上げ、2026年10月16日のドル円終値、BISの公表スケジュールと12月号の主要値）はクロちゃん自身が一次資料で再確認した。</strong></li>
+<li><strong>検索回数の上限。</strong> 調査の途中で、このセッションのWeb検索の上限に達した。そのため、一部の数値は「補助エージェントが確認したが、クロちゃんが直接は再確認していない」状態で残っている。本文では、こうした数値を区別して表記する。</li>
+<li><strong>確認度の表記</strong>（本文中で使う）
+   - <strong>【一次確認】</strong>：クロちゃんが一次資料（中央銀行・財務省・BIS・IMF等の原文）を直接取得して確認した
+   - <strong>【一次（補助確認）】</strong>：補助エージェントが一次資料で確認した。クロちゃんは直接は再取得していない
+   - <strong>【報道】</strong>：報道・民間サイトでのみ確認
+   - <strong>【既知・未再照合】</strong>：歴史的によく記録された事実だが、今回一次資料で再照合していない
+   - <strong>【要確認】</strong>：確度が低い。記事化の前に一次資料での確認が必要
+   - <strong>【計算】</strong>：公表値からクロちゃんが計算した値
+   - <strong>【分析】【仮説】【予測】</strong>：クロちゃん自身の考え</li>
+<li><strong>他AIの原稿は見ていない。</strong> 結論を合わせていない。</li>
+</ol>
+<hr />
+<h1>序章　為替レートは「値段」ではなく「比率」である——問いの立て方について</h1>
+<h2>序-1　最初に、一般的な見方への異論を書いておく</h2>
+<p>為替を語るとき、多くの解説は「ドル円が上がった・下がった」という<strong>値段の動き</strong>から始まる。そして、値段を動かす原因として「金利差」「貿易収支」「介入」「リスク回避」を並べる。FXトレーダー向けの解説なら、ここにテクニカル分析と注文の仕組みが加わる。</p>
+<p>この並べ方は間違っていない。しかし今回の調査で、私は3つの点で、この一般的な見方には<strong>重大な見落とし</strong>があると考えるようになった。独立視点の役割として、合わせずに先に書く。</p>
+<h3>見落とし1｜世界の為替取引の大半は「値動きに賭ける取引」ではない</h3>
+<p>BIS（国際決済銀行）の2025年調査によれば、世界の為替取引は1日平均 <strong>約9.5兆ドル</strong>（2025年4月）。そのうち最大の商品は<strong>為替スワップ（約42%）</strong>で、スポット（直物）は約31%にすぎない（第2章）。</p>
+<p>為替スワップとは、「今日ドルを借りて円を貸し、3か月後に戻す」ような、<strong>資金の貸し借りを通貨をまたいで行う取引</strong>である。方向に賭けているのではない。資金繰りとヘッジのための取引である。</p>
+<p>つまり、個人のFXトレーダーが画面で見ている「スポットの値動き」は、世界の為替市場のごく一部の表層にすぎない。<strong>市場の本体は、資金繰りとヘッジの巨大な配管である。</strong> この配管の圧力が変わると、表層の値動きも変わる。BISの2025年の分析は、取引急増の主因を「投機」ではなく<strong>「ヘッジ比率の低下と、その後のヘッジのかけ直し」</strong>に求めている（第2章・第9章）。</p>
+<h3>見落とし2｜「為替レート」はひとつではない</h3>
+<p>ニュースで報じられる「1ドル＝158円」は、<strong>名目の、2国間の、スポットの</strong>レートである。しかし通貨の強さ・弱さを測るには、少なくとも次の4つを区別しなければならない。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>指標</th>
+<th>何を測るか</th>
+<th>2026年の円での例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名目2国間レート</td>
+<td>1ドルが何円か</td>
+<td>158.02円（2026-10-16 NY終値）【一次確認】</td>
+</tr>
+<tr>
+<td>名目実効レート</td>
+<td>貿易相手国の通貨全体に対する円の強さ（加重平均）</td>
+<td>ドル以外の通貨の動きを反映する</td>
+</tr>
+<tr>
+<td>実質2国間レート</td>
+<td>物価差を調整した交換比率</td>
+<td>日米の物価上昇率の差を反映する</td>
+</tr>
+<tr>
+<td><strong>実質実効レート</strong></td>
+<td>物価差を調整した、通貨全体に対する購買力</td>
+<td><strong>2026年に1970年代以来の低水準との報道</strong>【報道・要確認】</td>
+</tr>
+</tbody>
+</table></div>
+<p>名目のドル円が「1990年4月と同じ160円」だとしても、その間に米国の物価は日本の物価よりはるかに上がっている。だから<strong>実質的な円の購買力は、1990年の160円よりずっと弱い</strong>。「同じ160円」は「同じ円安」ではない（第3章）。</p>
+<h3>見落とし3｜通貨は「国の約束」であり、為替レートは「2つの約束の比率」である</h3>
+<p>円は、日本銀行が発行し、日本政府が税の支払いに受け取ることを約束した負債である。ドルも同じ構造をもつ。だから為替レートは、2つの国の<strong>約束の信用度の比率</strong>として読める。</p>
+<p>この見方をとると、為替の大変動の多くが説明しやすくなる。</p>
+<ul>
+<li>固定相場が崩れるのは、「この比率を守る」という約束を、市場が信じなくなったときである（1971年ブレトンウッズ、1992年英ポンド、1997年タイ・バーツ）</li>
+<li>通貨危機の国で並行市場（闇レート）が生まれるのは、公式の約束と実際の約束が分かれたときである（ナイジェリア、エジプト、レバノン、アルゼンチン）</li>
+<li>そして、一国の通貨は<strong>なくなることがある</strong>。ブルガリア・レフは、2026年1月1日にユーロへ置き換わった【一次（補助確認）：欧州委員会】</li>
+</ul>
+<h2>序-2　本研究の軸</h2>
+<p>以上から、本研究は次の軸で書く。</p>
+<blockquote>
+<p><strong>為替レートは、2つの国の「約束」の比率である。その比率は、金利差・貿易・介入だけでなく、「誰が、どれだけヘッジしているか」「黒字が本当に通貨に戻ってくるか」「その約束を守る力と意思があるか」で動く。</strong></p>
+</blockquote>
+<p>FXトレーダーの目線は最重要に扱う（第11〜14章）。ただし、トレーダーが戦う相手は、他のトレーダーだけではない。<strong>ヘッジをする生命保険会社、配当を再投資する企業、NISAで外国株を買う家計、介入する財務省、金利を決める中央銀行</strong>——画面の向こう側にいる、方向に賭けていない巨大な参加者である。彼らの動きを知らずに値動きだけを見ることは、海流を知らずに波だけを見ることに近い、と私は考える。</p>
+<hr />
+<h1>第1部　世界の通貨と、世界の為替市場</h1>
+<h1>第1章　通貨と為替制度——「固定か変動か」ではなく、スペクトラムで見る</h1>
+<h2>1-1　世界の通貨制度の歴史（要約）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時代</th>
+<th>制度</th>
+<th>何が「約束」だったか</th>
+<th>崩れた理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19世紀後半〜1914年</td>
+<td><strong>国際金本位制</strong>（英国が中心）</td>
+<td>通貨を一定量の金と交換する</td>
+<td>第一次世界大戦で各国が金の輸出を停止</td>
+</tr>
+<tr>
+<td>1920年代〜1930年代</td>
+<td>金本位制への復帰と崩壊</td>
+<td>戦前の平価で金と交換する</td>
+<td>大恐慌。英国は1931年、米国は1933年に離脱。通貨の切り下げ競争</td>
+</tr>
+<tr>
+<td>1944〜1971年</td>
+<td><strong>ブレトンウッズ体制</strong></td>
+<td>ドルは金1オンス＝35ドルで交換、他通貨はドルに固定（調整可能な固定相場）</td>
+<td>米国の財政赤字・インフレでドルの金兌換が維持できなくなった</td>
+</tr>
+<tr>
+<td>1971年8月15日</td>
+<td><strong>ニクソン・ショック</strong>（金兌換停止）</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1971年12月</td>
+<td>スミソニアン協定（固定相場の再調整、変動幅±2.25%）</td>
+<td>新しい平価</td>
+<td>1年余りで維持できなくなる</td>
+</tr>
+<tr>
+<td>1973年〜</td>
+<td><strong>主要国の変動相場制</strong></td>
+<td>各国の中央銀行の物価安定の約束</td>
+<td>（現在まで継続）</td>
+</tr>
+<tr>
+<td>1979〜1999年</td>
+<td>欧州通貨制度（EMS、ERM）</td>
+<td>欧州の通貨同士を狭い範囲に固定</td>
+<td>1992〜93年のERM危機</td>
+</tr>
+<tr>
+<td>1999年〜</td>
+<td><strong>ユーロ</strong>（現金は2002年）</td>
+<td>通貨そのものを統合する</td>
+<td>（継続。2026年1月にブルガリアが加わった）</td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：歴史的事実【既知・未再照合】（年代と制度名は国際通貨史で広く記録されている。個別の日付は第3章・第15章で改めて示す）</p>
+<h2>1-2　現代の為替制度は8段階以上ある</h2>
+<p>「固定相場か変動相場か」という二分法は、現代の通貨を理解するには粗すぎる。IMFは各国の<strong>事実上（de facto）の制度</strong>を、宣言（de jure）とは別に分類している（IMF「為替取決め・為替制限年次報告（AREAER）」）。概略を示す。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>分類（IMFの事実上の分類の概略）</th>
+<th>意味</th>
+<th>例（2026年時点の情報に基づく）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独自の法定通貨がない</td>
+<td>他国の通貨をそのまま使う、または通貨同盟</td>
+<td>ユーロ圏の各国（ユーロ）、パナマ（米ドル併用）、エクアドル（米ドル）</td>
+</tr>
+<tr>
+<td>カレンシーボード</td>
+<td>発行する通貨を外貨準備で100%裏付け、固定レートで交換を保証</td>
+<td><strong>香港ドル</strong>（1米ドル＝7.75〜7.85）、<strong>東カリブ・ドル</strong>（1米ドル＝2.70）</td>
+</tr>
+<tr>
+<td>伝統的な固定（ペッグ）</td>
+<td>特定の通貨や通貨バスケットに固定</td>
+<td><strong>サウジ・リヤル、UAEディルハム</strong>（対米ドル）、<strong>CFAフラン</strong>（対ユーロ）、<strong>デンマーク・クローネ</strong>（ERM IIでユーロに連動）、<strong>ブルネイ・ドル</strong>（シンガポール・ドルと等価）</td>
+</tr>
+<tr>
+<td>安定化された制度</td>
+<td>公式には変動だが、実際は狭い範囲に保たれている</td>
+<td>ベトナム・ドン（中心レート±5%）など</td>
+</tr>
+<tr>
+<td>クロール・ペッグ／クロール類似</td>
+<td>一定のペースで少しずつ切り下げる（あるいは範囲を動かす）</td>
+<td><strong>シンガポール・ドル</strong>（名目実効レートのバンドと傾き）、<strong>インド・ルピー</strong>（IMFが2025年11月に「クロール類似」へ再分類と報道）</td>
+</tr>
+<tr>
+<td>変動幅付きの制度</td>
+<td>範囲（バンド）の中で動かす</td>
+<td><strong>アルゼンチン・ペソ</strong>（2025年4月からバンド制、2026年1月からバンドをインフレ率で調整）</td>
+</tr>
+<tr>
+<td>その他の管理型</td>
+<td>当局が強く管理している</td>
+<td><strong>中国人民元</strong>（毎朝の基準値と変動幅）</td>
+</tr>
+<tr>
+<td>変動相場</td>
+<td>市場で決まるが、当局が介入することがある</td>
+<td>韓国ウォン、ブラジル・レアル、メキシコ・ペソ、南ア・ランド、インドネシア・ルピアなど</td>
+</tr>
+<tr>
+<td>自由変動</td>
+<td>介入がまれ</td>
+<td><strong>米ドル、ユーロ、円、英ポンド、豪ドル、カナダ・ドル</strong> など</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：IMF AREAERの分類枠組み【既知・未再照合】。個別の国の分類は、補助エージェントがAREAER 2023年版の転載で確認したもので、2024年版・2025年版は取得できていない【要確認】。インドの再分類は【報道：Business Standard 2025-11】。</p>
+<p><strong>注意（重要）</strong>：日本は「自由変動」に分類される国の典型だが、<strong>2022年、2024年、2026年に大規模な円買い介入を行った</strong>（第5章）。自由変動の国でも、介入はゼロではない。制度の分類は「どのくらいの頻度で、どのくらいの規模で当局が手を出すか」の程度問題である。</p>
+<h2>1-3　国際金融のトリレンマ——なぜ全部は選べないのか</h2>
+<p>国際金融の基本的な考え方として、次の3つを<strong>同時にすべて満たすことはできない</strong>とされる（「国際金融のトリレンマ」「不可能な三位一体」）。</p>
+<ol>
+<li>為替レートの安定（固定相場）</li>
+<li>自由な資本移動</li>
+<li>独立した金融政策（自国の都合で金利を決める）</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>選んだ組み合わせ</th>
+<th>あきらめたもの</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固定相場＋資本移動の自由</td>
+<td>独自の金融政策</td>
+<td>香港、サウジ、UAE、デンマーク、ユーロ圏の各国</td>
+</tr>
+<tr>
+<td>資本移動の自由＋独自の金融政策</td>
+<td>為替の安定</td>
+<td>日本、米国、英国、豪州</td>
+</tr>
+<tr>
+<td>固定相場（または管理）＋独自の金融政策</td>
+<td>資本移動の自由</td>
+<td>中国（資本規制）、1998年のマレーシア</td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：経済学の標準的な枠組み【既知】。</p>
+<p><strong>2026年の生きた実例</strong>：2026年9月、米連邦準備制度（FRB）が利上げすると、<strong>サウジアラビアやUAEなど湾岸諸国の中央銀行も同時に利上げした</strong>【報道：Arab News 2026-09】。湾岸諸国は原油高で潤っている時期であり、自国の景気だけを見れば利上げの必要は小さいかもしれない。それでも、ドルに固定している以上、米国の金利に合わせるしかない。<strong>固定相場を選ぶことは、金融政策を他国に預けることである。</strong> 同じことが、ドルに固定している香港にも当てはまる。</p>
+<p>逆に日本は、為替の安定を選んでいない。だから、日銀が金利を低く保つと、資本が金利の高い国へ流れ、円安になる。<strong>2022年以降の円安は、トリレンマの教科書どおりの帰結の一面をもつ</strong>（ただし、それだけでは説明できないことを第6章で示す）。</p>
+<h2>1-4　通貨は生まれ、そして消える</h2>
+<p>本研究で見つけた、見落とされがちな事実をひとつ挙げる。<strong>通貨は永遠ではない。</strong></p>
+<ul>
+<li><strong>ブルガリア・レフ</strong>：2026年1月1日にユーロを導入（1ユーロ＝1.95583レフで交換）。2026年2月1日からユーロが唯一の法定通貨になった【一次（補助確認）：欧州委員会】</li>
+<li><strong>ジンバブエ</strong>：ジンバブエ・ドルの超インフレ（2000年代）と放棄を経て、2024年4月に金に裏付けられたとする新通貨「ZiG」を導入。2024年9月には約43%切り下げた【報道・百科事典経由】</li>
+<li><strong>レバノン・ポンド</strong>：1997年から1米ドル＝1,507.5ポンドに固定されていたが、2019年以降の金融危機で崩壊。2023年2月に公式レートを15,000に、その後89,500に変更【百科事典経由・要確認】</li>
+<li><strong>ドイツ・マルク、フランス・フラン、イタリア・リラ</strong>：1999年（現金は2002年）にユーロへ</li>
+</ul>
+<p>通貨が消えるとき、その通貨で貯金していた人、その通貨で借金していた人、その通貨で給料をもらっていた人の生活が根本から変わる。<strong>FXで取引されている通貨ペアは、現在存在している通貨のごく一部であり、しかも「今後も存在し続けること」が前提になっている。</strong></p>
+<hr />
+<h1>第2章　世界の為替市場の実像——BIS 2025年調査</h1>
+<h2>2-1　BIS調査とは何か、そして「最終版」はどれか</h2>
+<p>BIS（国際決済銀行）は3年ごとに、世界の中央銀行と協力して、為替とデリバティブの取引高を調べている（Triennial Central Bank Survey）。2025年調査は<strong>2025年4月の1営業日平均</strong>が対象で、52の国・地域、1,100を超えるディーラーが参加した。</p>
+<p><strong>公表は3段階で行われた。</strong> ここを混同すると、数字が食い違って見える。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>公表</th>
+<th>日付</th>
+<th>合計取引高（1日平均）</th>
+<th>確認</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>速報</td>
+<td>2025年9月30日</td>
+<td><strong>9.6兆ドル</strong>（2022年比+28%）</td>
+<td>【一次確認：BISページ】</td>
+</tr>
+<tr>
+<td>全データと分析記事（Quarterly Review 12月号）</td>
+<td>2025年12月8日</td>
+<td><strong>9.5兆ドル</strong>（2022年比+27%）</td>
+<td>【一次確認：BIS QR 2025年12月号】</td>
+</tr>
+<tr>
+<td>最終版（決済データとともに）</td>
+<td>2026年6月</td>
+<td><strong>9兆5,102億ドル</strong></td>
+<td>【一次（補助確認）：最終版付属表PDF】</td>
+</tr>
+</tbody>
+</table></div>
+<p>BISの統計ページ自体が、「速報（2025年9月30日）」「全データ（2025年12月、Quarterly Reviewとともに）」「最終結果（2026年6月、決済データとともに）」の3段階を明記している【一次確認】。</p>
+<p><strong>本研究では、最終版（約9.51兆ドル）を主に使う。</strong> ただし、補助エージェントは最終版の主要表（Excel）を読めなかったため、通貨別・商品別の最終値は付属表PDFの金額から計算したシェアであり、BIS公式のシェア表ではない【計算】。速報値と並べる。</p>
+<p><strong>定義</strong>：「ネット・ネット・ベース」（国内および国境をまたぐディーラー間の二重計上を除いた値）、米ドル換算。暗号資産は対象外。</p>
+<h2>2-2　取引高の推移——世界の為替市場は25年で約6倍</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>調査年（各年4月）</th>
+<th>1日平均取引高（兆ドル、名目）</th>
+<th>前回比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2010</td>
+<td>3.97</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>5.36</td>
+<td>+35%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>5.07</td>
+<td>−5%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>6.58</td>
+<td>+30%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>7.47</td>
+<td>+13%</td>
+</tr>
+<tr>
+<td><strong>2025（最終）</strong></td>
+<td><strong>9.51</strong></td>
+<td><strong>+27%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：BIS速報PDF 表1（2022年以前は改訂値）、2025年は最終版付属表【一次（補助確認）】。前回比は【計算】。</p>
+<p><strong>読み方の注意</strong>：BISの速報解説は「2022〜25年の緩やかなドル高は、2025年の報告値を相対的に過小評価させる」と注記している（ドル以外の通貨の取引をドル換算すると、ドル高のときに小さく見えるため）。また、<strong>2016年の減少は「取引が減った」だけでなく、ドル高による換算上の縮小も含む</strong>。名目の取引高の増減を、そのまま市場の「活発さ」と読んではいけない。</p>
+<p><strong>9.5兆ドルの大きさ</strong>：世界の財とサービスの貿易総額は年間30兆ドル程度とされる（WTO等の統計の概算【既知・未再照合】）。為替取引は1日で9.5兆ドルなので、<strong>年間の為替取引は貿易額の数十倍</strong>になる【計算・概算】。為替市場の取引の大半は、貿易の決済ではなく、金融取引である。</p>
+<h2>2-3　商品別——主役は「スワップ」である</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>商品</th>
+<th>2022（兆ドル）</th>
+<th>2025最終（兆ドル）</th>
+<th>2025シェア</th>
+<th>伸び（BIS 12月号）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スポット（直物）</td>
+<td>2.09</td>
+<td><strong>2.95</strong></td>
+<td>31.0%</td>
+<td>+42%</td>
+</tr>
+<tr>
+<td>アウトライト・フォワード（先渡し）</td>
+<td>1.16</td>
+<td>1.75</td>
+<td>18.4%</td>
+<td>+51%</td>
+</tr>
+<tr>
+<td><strong>為替スワップ</strong></td>
+<td>3.80</td>
+<td><strong>4.02</strong></td>
+<td><strong>42.2%</strong></td>
+<td><strong>+6%</strong></td>
+</tr>
+<tr>
+<td>通貨スワップ</td>
+<td>0.12</td>
+<td>0.16</td>
+<td>1.7%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>オプション等</td>
+<td>0.30</td>
+<td>0.63</td>
+<td>6.6%</td>
+<td><strong>+108%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：2022年はBIS速報PDF、2025年は最終版付属表【一次（補助確認）】、シェアは【計算】、伸び率は【一次確認：BIS QR 2025年12月号】。</p>
+<h3>この表から読める3つのこと</h3>
+<p><strong>(1) 為替スワップが最大だが、伸びは最小だった。</strong> スワップは資金繰りの取引であり、景気や金利の構造に連動して安定的に存在する。</p>
+<p><strong>(2) 2025年に急増したのはスポット、フォワード、オプション。</strong> BIS 12月号は、<strong>2025年4月初めの米国の関税発表が、取引高を約1.5兆ドル押し上げた</strong>と推計している（うちスポット約1.1兆ドル）【一次確認】。ただしこれは観測値ではなく「関税がなかった場合」と比べた推計である。</p>
+<p><strong>(3) 2025年4月という調査月そのものが「異常な月」だった。</strong> 3年に1度の調査の対象月に、関税ショックによる歴史的な取引急増が重なった。<strong>2025年の9.5兆ドルを、3年後の2028年調査と単純に比べるときには、2025年4月の特殊性を割り引いて考える必要がある</strong>【分析】。</p>
+<h2>2-4　通貨別——ドルは「89%の取引の片側」にいる</h2>
+<p>為替取引は必ず2つの通貨の組み合わせなので、通貨別のシェアは合計200%になる。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>順位</th>
+<th>通貨</th>
+<th>2022</th>
+<th>2025速報</th>
+<th>2025最終（計算）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>米ドル（USD）</td>
+<td>88.4%</td>
+<td>89.2%</td>
+<td>89.1%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ユーロ（EUR）</td>
+<td>30.6%</td>
+<td>28.9%</td>
+<td>28.5%</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>日本円（JPY）</strong></td>
+<td>16.7%</td>
+<td><strong>16.8%</strong></td>
+<td>16.9%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>英ポンド（GBP）</td>
+<td>12.9%</td>
+<td>10.2%</td>
+<td>10.2%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>中国人民元（CNY）</strong></td>
+<td>7.0%</td>
+<td><strong>8.5%</strong></td>
+<td>8.6%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>スイス・フラン（CHF）</td>
+<td>5.2%</td>
+<td>6.4%</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>豪ドル（AUD）</td>
+<td>6.4%</td>
+<td>6.1%</td>
+<td>6.1%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>カナダ・ドル（CAD）</td>
+<td>6.2%</td>
+<td>5.8%</td>
+<td>5.8%</td>
+</tr>
+<tr>
+<td>9</td>
+<td>香港ドル（HKD）</td>
+<td>2.6%</td>
+<td>3.8%</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>シンガポール・ドル（SGD）</td>
+<td>2.4%</td>
+<td>2.4%</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td>11</td>
+<td>インド・ルピー（INR）</td>
+<td>1.6%</td>
+<td>1.9%</td>
+<td>1.9%</td>
+</tr>
+<tr>
+<td>12</td>
+<td>韓国ウォン（KRW）</td>
+<td>1.8%</td>
+<td>1.8%</td>
+<td>1.8%</td>
+</tr>
+<tr>
+<td>13</td>
+<td>スウェーデン・クローナ（SEK）</td>
+<td>2.2%</td>
+<td>1.6%</td>
+<td>1.7%</td>
+</tr>
+<tr>
+<td>14</td>
+<td>NZドル（NZD）</td>
+<td>1.7%</td>
+<td>1.5%</td>
+<td>1.6%</td>
+</tr>
+<tr>
+<td>15</td>
+<td>メキシコ・ペソ（MXN）</td>
+<td>1.5%</td>
+<td>1.6%</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>16</td>
+<td>ノルウェー・クローネ（NOK）</td>
+<td>1.7%</td>
+<td>1.3%</td>
+<td>1.3%</td>
+</tr>
+<tr>
+<td>17</td>
+<td>台湾ドル（TWD）</td>
+<td>1.1%</td>
+<td>1.2%</td>
+<td>1.2%</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ブラジル・レアル（BRL）</td>
+<td>—</td>
+<td>—</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>19</td>
+<td>南ア・ランド（ZAR）</td>
+<td>—</td>
+<td>—</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ポーランド・ズウォティ（PLN）</td>
+<td>—</td>
+<td>—</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>21</td>
+<td>デンマーク・クローネ（DKK）</td>
+<td>—</td>
+<td>—</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>22</td>
+<td>トルコ・リラ（TRY）</td>
+<td>—</td>
+<td>—</td>
+<td>0.6%</td>
+</tr>
+<tr>
+<td>23</td>
+<td>ハンガリー・フォリント（HUF）</td>
+<td>—</td>
+<td>—</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td>24</td>
+<td>ロシア・ルーブル（RUB）</td>
+<td>—</td>
+<td>—</td>
+<td>0.04%</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：2022年と2025年速報はBIS速報PDF、2025年最終は付属表の金額から【計算】【一次（補助確認）】。</p>
+<p><strong>数値の食い違い（隠さず記す）</strong>：BIS 12月号の本文は人民元のシェアを<strong>8.8%</strong>としているが、最終版の金額から計算すると8.6%、速報は8.5%である。分母の違いによる可能性が高いが、未解決【情報競合】。</p>
+<h3>この表から読めること</h3>
+<ul>
+<li><strong>円は世界3位の通貨であり、その地位は2022年から変わっていない。</strong> 円の「弱さ」（価値の下落）と、円の「大きさ」（取引の多さ）は別のことである。</li>
+<li><strong>人民元が5位</strong>で、通貨ペアでも米ドル/人民元が3位に上がった（BIS 12月号）【一次確認】。ただし人民元取引の96%は対米ドルである（同）【一次（補助確認）】。人民元は「ドルを通じて国際化している」。</li>
+<li><strong>英ポンドの低下</strong>（12.9%→10.2%）は、ロンドン市場の地位低下ではなく、ポンドという通貨そのものの取引の相対的な減少である（ロンドンは依然として世界最大の取引拠点。後述）。</li>
+<li><strong>香港ドルの急増</strong>（2.6%→3.8%）。2025年に香港ドルが弱い側の上限（7.85）に張りつき、HKMA（香港金融管理局）が繰り返し介入した時期と重なる【分析】。</li>
+<li><strong>ロシア・ルーブルはほぼ消えた</strong>（0.04%）。制裁が通貨の国際的な取引をどこまで縮小させるかの、極端な実例である。</li>
+<li><strong>上位24通貨で約96.6%</strong>。世界には約180の法定通貨があるが【既知・概数】、<strong>国際的な為替取引のほとんどは、そのうち20数通貨で行われている</strong>。</li>
+</ul>
+<h2>2-5　通貨ペア別（速報値）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>順位</th>
+<th>通貨ペア</th>
+<th>1日平均（10億ドル）</th>
+<th>シェア2025</th>
+<th>シェア2022</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>米ドル/ユーロ</td>
+<td>2,033</td>
+<td>21.2%</td>
+<td>22.7%</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>米ドル/円</strong></td>
+<td><strong>1,372</strong></td>
+<td><strong>14.3%</strong></td>
+<td>13.5%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>米ドル/人民元</td>
+<td>781</td>
+<td>8.1%</td>
+<td>6.6%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>米ドル/英ポンド</td>
+<td>731</td>
+<td>7.6%</td>
+<td>9.5%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>米ドル/カナダ・ドル</td>
+<td>505</td>
+<td>5.3%</td>
+<td>5.5%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>米ドル/豪ドル</td>
+<td>467</td>
+<td>4.9%</td>
+<td>5.1%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>米ドル/スイス・フラン</td>
+<td>467</td>
+<td>4.9%</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>米ドル/香港ドル</td>
+<td>347</td>
+<td>3.6%</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td>9</td>
+<td>米ドル/シンガポール・ドル</td>
+<td>215</td>
+<td>2.2%</td>
+<td>2.3%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>米ドル/インド・ルピー</td>
+<td>181</td>
+<td>1.9%</td>
+<td>1.5%</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：BIS速報【一次（補助確認）】。<strong>最終版の通貨ペア表は確認できなかった。</strong></p>
+<p><strong>ドル円は世界2位の通貨ペアで、1日約1.4兆ドル（約220兆円）が取引されている</strong>【計算：1兆3,720億ドル×158円】。ユーロ円、ポンド円などの「円クロス」は、上位10ペアに入っていない。日本の個人FXでは円クロスが人気だが、<strong>世界の銀行間市場では、円クロスの多くは「ドル円」と「ドル/相手通貨」の2つを組み合わせて値付けされる</strong>ことが多い【既知・未再照合】。円クロスの流動性は、ドルを介した2つのペアの流動性に依存している。</p>
+<h2>2-6　取引拠点——ロンドン、ニューヨーク、シンガポール、香港、そして東京</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>拠点</th>
+<th>2022（10億ドル）</th>
+<th>2025（10億ドル）</th>
+<th>2025シェア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>英国</td>
+<td>3,735</td>
+<td>4,743</td>
+<td>37.8%</td>
+</tr>
+<tr>
+<td>米国</td>
+<td>1,912</td>
+<td>2,335</td>
+<td>18.6%</td>
+</tr>
+<tr>
+<td>シンガポール</td>
+<td>929</td>
+<td>1,485</td>
+<td>11.8%</td>
+</tr>
+<tr>
+<td>香港</td>
+<td>694</td>
+<td>883</td>
+<td>7.0%</td>
+</tr>
+<tr>
+<td><strong>日本</strong></td>
+<td>433</td>
+<td><strong>440</strong></td>
+<td><strong>3.5%（5位）</strong></td>
+</tr>
+<tr>
+<td>ドイツ</td>
+<td>184</td>
+<td>386</td>
+<td>3.1%</td>
+</tr>
+<tr>
+<td>スイス</td>
+<td>349</td>
+<td>371</td>
+<td>2.9%</td>
+</tr>
+<tr>
+<td>フランス</td>
+<td>214</td>
+<td>242</td>
+<td>1.9%</td>
+</tr>
+<tr>
+<td>カナダ</td>
+<td>172</td>
+<td>243（速報）</td>
+<td>1.9%</td>
+</tr>
+<tr>
+<td>中国</td>
+<td>153</td>
+<td>235</td>
+<td>1.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：BIS速報・最終版付属表（ネット・グロス・ベース、セールスデスクの所在地で計上）【一次（補助確認）】。</p>
+<p><strong>東京市場は5位を保ったが、シェアは4.4%から3.5%へ低下した。</strong> 金額はほぼ横ばい（+1.8%）で、世界全体の伸び（+27%）から大きく取り残された。一方、シンガポールは+60%近く伸び、アジアの為替取引の中心としての地位を固めた【計算】。</p>
+<p><strong>本研究の発見のひとつ</strong>：円は世界3位の通貨で、ドル円は世界2位の通貨ペアなのに、<strong>東京は世界5位の拠点で、シェアは3.5%しかない</strong>。<strong>円の取引の多くは、日本の外——ロンドン、ニューヨーク、シンガポール——で行われている。</strong> 円の値段は、日本の外で決まる時間が長い。この事実は、第12章（時間帯）と第14章（フラッシュクラッシュ）で重要になる。</p>
+<h2>2-7　日本の取引の中身——日銀の集計</h2>
+<p>日本銀行は、BIS調査の日本分を独自に集計して公表している（2025年10月6日、日本銀行金融市場局）【一次（補助確認）：日銀 deri2504】。</p>
+<ul>
+<li>日本の取引高：1日平均 <strong>4,402億ドル</strong>（前回比+1.8%）</li>
+<li>商品別：為替スワップ 55.6%（+19.5%）、スポット 28.5%（<strong>−15.7%</strong>）、フォワード 11.1%（−22.0%）</li>
+<li>通貨ペア：ドル/円 61.3%、ユーロ/ドル 7.7%、ユーロ/円 6.5%</li>
+<li>取引形態：ボイス（電話等）48.8%、電子 49.1%</li>
+<li>集中度：上位10社で70.7%、上位20社で94.6%</li>
+</ul>
+<p><strong>世界ではスポットが+42%伸びたのに、日本ではスポットが−15.7%減った。</strong> 日本の銀行の店頭では、方向性の取引は伸びず、資金繰りのスワップだけが伸びた。この理由は、日銀の資料からは特定できなかった【未確認】。</p>
+<p>注意：日銀の集計は<strong>日本全体</strong>で、東京市場単独の数字ではない。また、BISの最終版に合わせた日本分の改訂版は、確認した範囲では公表されていない。</p>
+<h2>2-8　誰が取引しているのか——取引相手別</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>相手先</th>
+<th>2022（兆ドル）</th>
+<th>2025最終（兆ドル）</th>
+<th>シェア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>報告ディーラー（大手銀行同士）</td>
+<td>3.50</td>
+<td>4.44</td>
+<td>46.7%</td>
+</tr>
+<tr>
+<td>その他金融機関</td>
+<td>3.55</td>
+<td>4.63</td>
+<td>48.6%</td>
+</tr>
+<tr>
+<td>　うち 非報告銀行（中小・地域銀行）</td>
+<td>—</td>
+<td>2.19</td>
+<td>—</td>
+</tr>
+<tr>
+<td>　うち 機関投資家（年金・保険・投信）</td>
+<td>—</td>
+<td>1.26</td>
+<td>—</td>
+</tr>
+<tr>
+<td>　うち ヘッジファンド・自己勘定取引業者（PTF）</td>
+<td>—</td>
+<td>0.76</td>
+<td>—</td>
+</tr>
+<tr>
+<td>　うち 公的部門（中央銀行・政府系ファンド等）</td>
+<td>—</td>
+<td>0.14</td>
+<td>—</td>
+</tr>
+<tr>
+<td>非金融顧客（一般企業）</td>
+<td>0.43</td>
+<td>0.44</td>
+<td><strong>4.6%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：BIS速報・最終版付属表【一次（補助確認）】。</p>
+<p>さらに、同じ表の「うち」項目として、<strong>プライムブローカー経由が2.16兆ドル、個人投資家関連（retail-driven）が2,420億ドル</strong>と記録されている【一次（補助確認）】。</p>
+<h3>「実需」は5%に満たない</h3>
+<p>輸出入企業などの<strong>非金融顧客の取引は、世界全体の4.6%</strong>しかない。「為替は貿易で決まる」という説明は、取引の量で見れば成り立たない。為替市場の95%は、金融機関同士、または金融機関と投資家の取引である。</p>
+<p>ただし、<strong>量が少ないことは、影響が小さいことを意味しない</strong>。輸出入企業の取引は、毎月・毎年、同じ方向に、ヘッジされずに積み上がる。投機的な取引は、買えばいつか売るので、長期的には相殺される。<strong>一方向に積み上がる小さな流れが、往復する大きな流れより、長期的な水準を決めることがある</strong>【分析】。日本の「デジタル赤字」や家計の外国株投資が円相場に与える影響を考えるとき、この視点が重要になる（第6章）。</p>
+<h3>機関投資家のスポット取引が倍増した</h3>
+<p>BIS 12月号によれば、<strong>機関投資家とのスポット取引は2022年からほぼ倍増し、4,400億ドルを超えた</strong>【一次確認】。そして、取引増の主因は<strong>ヘッジ比率の変化</strong>だった。</p>
+<p><strong>BISが名指しした例</strong>【一次確認：BIS QR 2025年12月号】
+- <strong>日本の生命保険会社のヘッジ比率は、2022年から2024年に約60%から約40%に低下した</strong>
+- オランダの年金基金は約30%から約25%に低下した
+- 2022年の間に、ドル円の3か月フォワードのプレミアムは<strong>0.3%から5.5%に上昇</strong>し、ドルを借りて円でヘッジする費用が大きく上がった</p>
+<p>ヘッジ比率が下がるとはどういうことか。日本の生命保険会社が米国債を買うとき、為替リスクをヘッジするには「将来ドルを売って円を買う」予約（フォワード）を結ぶ。<strong>ヘッジ比率を下げるということは、将来の円買いの予約を減らすことであり、裏返せば円を支える力が減ることである。</strong></p>
+<p>このことの意味は、第6章（円安の構造）と第16章（独自論点）で詳しく扱う。結論だけ先に書くと、<strong>ヘッジ比率は「ばね」</strong>である。ヘッジ比率が下がっている間、円は支えを失う。何かのきっかけでヘッジがかけ直されると、<strong>大量の円買いが短期間に集中しうる</strong>【仮説】。</p>
+<h2>2-9　どうやって取引されているか——電子化と内部化</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>執行方法</th>
+<th>2025（10億ドル）</th>
+<th>シェア（計算）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>電子・直接（銀行の単独取引システム等）</td>
+<td>3,092</td>
+<td>32.5%</td>
+</tr>
+<tr>
+<td>電子・間接（複数の銀行が参加する取引システム）</td>
+<td>2,443</td>
+<td>25.7%</td>
+</tr>
+<tr>
+<td>ボイス・直接（電話等）</td>
+<td>2,393</td>
+<td>25.2%</td>
+</tr>
+<tr>
+<td>ボイス・間接（ブローカー経由）</td>
+<td>1,265</td>
+<td>13.3%</td>
+</tr>
+<tr>
+<td>分類不能</td>
+<td>317</td>
+<td>3.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：最終版付属表【一次（補助確認）】、シェアは【計算】。BIS 12月号は「電子取引59%、前回とほぼ同じ」と記しており、私の計算（58.2%）とわずかに合わない【情報競合・軽微】。</p>
+<p><strong>ディーラーは、顧客から受けた注文の80%超を、市場に出さずに自社内で相殺（内部化）している</strong>（BIS 12月号）【一次（補助確認）】。ある顧客の買いと、別の顧客の売りを、銀行の中で突き合わせる。<strong>このため、市場に出てくる注文は、実際の顧客の売買のごく一部になる。</strong> 個人FXの業者も、顧客の注文を同様に内部化し、残った偏りだけを銀行にカバーする（第11章）。</p>
+<h2>2-10　取引のあと——決済という見えない危険</h2>
+<p>2026年6月のBIS最終版で、<strong>為替取引の「決済」のデータが初めて公表された</strong>【一次（補助確認）：BIS QR 2026年6月号「Uncovering FX settlement risk」】。</p>
+<ul>
+<li>1日の総決済額：<strong>14兆ドル超</strong>（グロス）</li>
+<li>両方の通貨を同時に受け渡す方式（PvP：Payment versus Payment）で決済されているのは <strong>5.2兆ドル（36%）</strong></li>
+<li><strong>リスク削減策のない一方向の決済（片方だけ先に払う）が1.4兆ドル超（10%）</strong></li>
+<li>決済不履行は総決済額の0.01%</li>
+</ul>
+<p><strong>「片方だけ先に払う」リスク</strong>は、1974年に西ドイツのヘルシュタット銀行が、ドイツ時間の営業終了後に破綻し、ドイツ・マルクを受け取ったあとで米ドルを払えなくなった事件から「ヘルシュタット・リスク」と呼ばれる【既知・未再照合】。その対策として2002年にCLS銀行が稼働し、現在18通貨（円を含む）の決済を同時受け渡しで行っている【一次（補助確認）】。</p>
+<p><strong>半世紀前の教訓が、まだ1.4兆ドル分は解決していない。</strong> この事実は、為替市場の「平時の安定」が、決済インフラの仕組みに支えられていることを示している。</p>
+<h2>2-11　取引できる通貨・できない通貨——日本のFX口座の現実</h2>
+<p><strong>すべての通貨が、日本のFX口座で自由に売買できるわけではない。</strong> これは指示書が明確な区別を求めた点であり、本研究で整理する。</p>
+<h3>(1) 制度上の分類</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区分</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>完全に自由に取引できる通貨</strong></td>
+<td>資本規制がほぼなく、海外でも自由に受け渡しできる</td>
+<td>USD, EUR, JPY, GBP, CHF, AUD, NZD, CAD, SGD, HKD, NOK, SEK, DKK, PLN, HUF, CZK, MXN, ZAR, ILS など</td>
+</tr>
+<tr>
+<td><strong>国内とオフショアで別の市場がある通貨</strong></td>
+<td>国内市場は管理され、海外向けの市場が別にある</td>
+<td><strong>人民元：国内のCNYと、香港などで取引されるオフショアのCNH</strong>。日本のFX口座で扱われる「人民元」は通常CNH</td>
+</tr>
+<tr>
+<td><strong>受け渡しができない通貨（NDF市場）</strong></td>
+<td>規制のため海外で現物を受け渡せず、差額だけを米ドルで清算する「ノン・デリバラブル・フォワード」で取引される</td>
+<td>韓国ウォン、台湾ドル、インド・ルピー、インドネシア・ルピア、フィリピン・ペソ、ブラジル・レアル、チリ・ペソ、コロンビア・ペソ など</td>
+</tr>
+<tr>
+<td><strong>並行市場（闇レート）がある通貨</strong></td>
+<td>公式レートと実勢レートが分かれている</td>
+<td>ナイジェリア・ナイラ（公式1,333、並行1,373〜1,390：2026年10月中旬）、エジプト・ポンド（過去）、アルゼンチン・ペソ（乖離は2026年10月時点で約2%に縮小）、ジンバブエZiG</td>
+</tr>
+<tr>
+<td><strong>制裁などで事実上取引できない通貨</strong></td>
+<td>国際的な銀行網から切り離されている</td>
+<td>ロシア・ルーブル（ECBは参照レートの公表を停止）</td>
+</tr>
+<tr>
+<td><strong>固定相場の通貨</strong></td>
+<td>理論上は取引できるが、値動きがほとんどない</td>
+<td>サウジ・リヤル、UAEディルハム、香港ドル（バンド内）</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：分類は制度の一般的な整理【既知】。ナイラとアルゼンチン・ペソのレートは【報道：2026-10-15】。</p>
+<h3>(2) 日本のFX口座で一般的に扱われる通貨</h3>
+<p>日本の店頭FX業者が扱う通貨は、業者によって異なる。一般的な傾向として（<strong>特定の業者の取扱いを確認したものではない</strong>【要確認】）：</p>
+<ul>
+<li><strong>ほぼすべての業者が扱う</strong>：米ドル、ユーロ、英ポンド、豪ドル、NZドル、カナダ・ドル、スイス・フラン</li>
+<li><strong>多くの業者が扱う</strong>：南ア・ランド、メキシコ・ペソ、トルコ・リラ、香港ドル、シンガポール・ドル、人民元（CNH）</li>
+<li><strong>一部の業者が扱う</strong>：ノルウェー・クローネ、スウェーデン・クローナ、ポーランド・ズウォティ、ハンガリー・フォリント、チェコ・コルナ など</li>
+<li><strong>一般に扱われない</strong>：韓国ウォン、台湾ドル、インド・ルピー、インドネシア・ルピア、タイ・バーツ、マレーシア・リンギ、ブラジル・レアル、ナイジェリア・ナイラ、エジプト・ポンド など（NDF市場や資本規制のため）</li>
+</ul>
+<p><strong>読者への注意</strong>：「この通貨に投資したい」と思っても、日本の個人が直接その通貨のFX取引をできるとは限らない。また、扱われていても、<strong>流動性の低い通貨はスプレッドが広く、スワップポイントの変動が大きく、急変時に取引が止まる</strong>ことがある（第13章）。</p>
+<hr />
+<h1>第2部　日本円を徹底研究する</h1>
+<h1>第3章　円の誕生から固定相場の終わりまで（1871〜1971年）</h1>
+<h2>3-1　円の誕生——金本位を名乗った銀の通貨</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>年</th>
+<th>出来事</th>
+<th>円の「約束」</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1871年（明治4年）</td>
+<td><strong>新貨条例</strong>。両・分・朱の四進法から、円・銭・厘の十進法へ</td>
+<td>名目上は金本位（1円＝純金1.5g）。しかし実際の国際取引では銀貨が使われ、事実上は金銀複本位・銀本位に近かった</td>
+</tr>
+<tr>
+<td>1882年</td>
+<td><strong>日本銀行設立</strong></td>
+<td>通貨の発行を中央銀行に一本化する準備</td>
+</tr>
+<tr>
+<td>1885年</td>
+<td>日本銀行が兌換銀行券を発行</td>
+<td>銀と交換できる紙幣（銀本位制）</td>
+</tr>
+<tr>
+<td>1897年（明治30年）</td>
+<td><strong>貨幣法</strong>。金本位制へ移行</td>
+<td>1円＝純金0.75g。日清戦争の賠償金（ポンド建て）が金準備の基礎になった</td>
+</tr>
+<tr>
+<td>1917年</td>
+<td>金の輸出禁止（第一次世界大戦）</td>
+<td>事実上、金本位制から離脱</td>
+</tr>
+<tr>
+<td>1930年1月</td>
+<td><strong>金解禁</strong>（井上準之助蔵相）。戦前の平価（旧平価）で金本位制に復帰</td>
+<td>実勢より円高の水準で約束を復活させた</td>
+</tr>
+<tr>
+<td>1931年12月</td>
+<td><strong>金輸出再禁止</strong>（高橋是清蔵相）</td>
+<td>約束を放棄。円は急落</td>
+</tr>
+<tr>
+<td>1930年代</td>
+<td>円安と積極財政。輸出は回復したが、軍事費の拡大へ</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1945〜1949年</td>
+<td>戦後の超インフレ。複数の為替レートが並存</td>
+<td>約束の不在</td>
+</tr>
+<tr>
+<td><strong>1949年4月25日</strong></td>
+<td><strong>1ドル＝360円の単一為替レート</strong>（ドッジ・ライン）</td>
+<td>ドルとの固定（ブレトンウッズ体制への参加）</td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：歴史的事実【既知・未再照合】。360円の実施日は【報道：nippon.com】。</p>
+<h3>3-1-1　1930年の金解禁は「通貨の約束を高すぎる水準で結んだ」失敗の典型</h3>
+<p>金解禁は、日本が国際的な信用を取り戻すために、戦前の平価——すなわち当時の実勢より円高の水準——で金本位制に復帰した政策だった。復帰の直前に世界恐慌（1929年10月）が始まっていたため、日本は<strong>円高・デフレ・世界不況の三重苦</strong>に陥り、正貨（金）が大量に流出した。2年足らずで約束は放棄された。</p>
+<p>この事例は、1992年の英ポンドのERM離脱（第15章）と同じ構造をもつ。<strong>市場の実勢と合わない水準で通貨の約束を結ぶと、その約束を守るための費用（デフレ、高金利、外貨準備の流出）が、約束を守る利益を上回ったときに、約束は崩れる。</strong> 当時の「旧平価か新平価か」という論争は、現代の「為替介入でどこまで円安を止めるべきか」という議論と、驚くほど似た問いを含んでいる【分析】。</p>
+<h2>3-2　360円の時代（1949〜1971年）</h2>
+<p>1ドル＝360円は、22年間変わらなかった。この間、日本は高度経済成長を遂げ、生産性は大きく上がった。</p>
+<p><strong>固定された為替レートのもとで生産性が上がると、何が起きるか。</strong> 同じ360円で、日本はより多くの、より良い製品を作れるようになる。つまり、<strong>日本の輸出品は年を追うごとに「割安」になっていった</strong>。360円は、1949年には円にとって厳しい水準だったが、1960年代後半には円にとって有利すぎる（円安すぎる）水準になっていた【分析：一般的な経済史の解釈】。</p>
+<p>これが、1971年以降の長い円高の出発点である。<strong>円高の歴史は、360円という約束が実態から離れていった時間の長さを、少しずつ取り戻す過程だった</strong>とも言える。</p>
+<hr />
+<h1>第4章　変動相場制の円——円高の40年（1971〜2012年）</h1>
+<h2>4-1　年表</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>年月日</th>
+<th>出来事</th>
+<th>ドル円の水準（目安）</th>
+<th>区分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1971年8月15日</td>
+<td>ニクソン・ショック（米国がドルと金の交換を停止）</td>
+<td>360円から円高へ</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>1971年12月</td>
+<td>スミソニアン協定</td>
+<td><strong>1ドル＝308円</strong>に切り上げ</td>
+<td>【報道：楽天証券】</td>
+</tr>
+<tr>
+<td>1973年2月</td>
+<td><strong>変動相場制へ移行</strong></td>
+<td>260円台へ</td>
+<td>【報道：楽天証券】</td>
+</tr>
+<tr>
+<td>1973〜1974年</td>
+<td>第1次石油危機。円安へ</td>
+<td>300円近辺</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>1978年</td>
+<td>円高が急進（米国のインフレとドル不信）</td>
+<td>一時170円台</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>1978年11月</td>
+<td>米国のドル防衛策（カーター大統領）</td>
+<td>反落</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>1979〜1980年</td>
+<td>第2次石油危機</td>
+<td>円安へ</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>1980年代前半</td>
+<td>レーガン政権の高金利・ドル高</td>
+<td>240〜260円台</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td><strong>1985年9月22日</strong></td>
+<td><strong>プラザ合意</strong>（G5がドル高是正で協調）</td>
+<td>合意前240円台 → 1年余りで150円台</td>
+<td>【報道：野村證券用語解説、Business Insider】</td>
+</tr>
+<tr>
+<td>1987年2月</td>
+<td>ルーブル合意（ドル安の行き過ぎを止める）</td>
+<td>150円前後</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>1987年10月</td>
+<td>ブラックマンデー</td>
+<td>—</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>1988年</td>
+<td>円高のピーク（この局面）</td>
+<td>120円台</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>1989〜1990年</td>
+<td>バブルの頂点と崩壊。1990年春に株・債券・円の「トリプル安」</td>
+<td>1990年4月に一時160円前後</td>
+<td>【要確認：日付・水準とも未検証】</td>
+</tr>
+<tr>
+<td>1993〜1995年</td>
+<td>日米貿易摩擦、円高が急進</td>
+<td>—</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td><strong>1995年4月19日</strong></td>
+<td><strong>79.75円</strong>（当時の戦後最高値）</td>
+<td>79.75円</td>
+<td>【報道：楽天証券】</td>
+</tr>
+<tr>
+<td>1995年夏以降</td>
+<td>日米協調介入、日本の金融緩和で円安へ</td>
+<td>—</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>1997〜1998年</td>
+<td>日本の金融危機（山一證券・北海道拓殖銀行・長銀）、アジア通貨危機</td>
+<td>1998年8月に140円台後半</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>1998年4月10日</td>
+<td>財務省（当時は大蔵省）の円買い介入 2兆6,201億円</td>
+<td>—</td>
+<td>【一次（補助確認）：財務省介入実績CSV】</td>
+</tr>
+<tr>
+<td>1998年10月</td>
+<td><strong>円の急騰</strong>（ヘッジファンドLTCMの危機と円キャリートレードの巻き戻し）</td>
+<td>数日で十数円の円高</td>
+<td>【既知・数値は要確認】</td>
+</tr>
+<tr>
+<td>1999年2月</td>
+<td>日銀がゼロ金利政策</td>
+<td>—</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2001年3月</td>
+<td>日銀が量的緩和政策</td>
+<td>—</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2003年1月〜2004年3月</td>
+<td><strong>史上最大規模の円売り介入</strong>（合計35兆2,564億円）</td>
+<td>105〜120円</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2007年6月</td>
+<td>円キャリートレードの最盛期</td>
+<td>124円前後</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>2008年9月</td>
+<td>リーマン・ショック。円が急騰</td>
+<td>100円割れへ</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2010年9月15日</td>
+<td>円売り介入 2兆1,249億円（6年半ぶり）</td>
+<td>85円前後</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2011年3月18日</td>
+<td><strong>東日本大震災後のG7協調介入</strong>（円売り）6,925億円</td>
+<td>一時76円台</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2011年8月4日</td>
+<td>円売り介入 4兆5,129億円</td>
+<td>—</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>2011年10月31日</strong></td>
+<td><strong>一時75.32円（戦後最高値）</strong>。同日に円売り介入 <strong>8兆722億円（単日で過去最大）</strong></td>
+<td>75.32円</td>
+<td>水準【報道：AFP】／介入額【一次（補助確認）】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>数値の食い違い</strong>：2011年の最高値は、AFPの報道で75.32円、楽天証券の記事で75.54円と、資料によって異なる。75.32円はオセアニア市場での瞬間的な値、75.54円は別の市場・時刻の値と考えられるが、未確定【情報競合】。</p>
+<h2>4-2　円高の40年は、何が動かしたのか</h2>
+<p>この期間の円高は、少なくとも4つの力が重なった結果として説明されることが多い。</p>
+<ol>
+<li><strong>生産性の上昇と貿易黒字</strong>（第3章で述べた360円の「割安」の解消）</li>
+<li><strong>日本の低インフレ</strong>（日本の物価が他国より上がらなければ、購買力平価の考え方では円は上がる）</li>
+<li><strong>政治的な合意</strong>（プラザ合意。米国の貿易赤字を減らすための「ドル安誘導」）</li>
+<li><strong>リスク回避の円買い</strong>（世界の金融危機のたびに円が買われる。1998年、2008年、2011年）</li>
+</ol>
+<p>区分：一般的な経済史の説明【既知】。</p>
+<h3>4-2-1　「リスク回避の円買い」は、なぜ起きるのか——3つの説明</h3>
+<p>円が「安全通貨」と呼ばれる理由について、一般的な説明は「日本は世界最大級の対外純資産国だから」である。しかし、この説明は<strong>なぜ「危機のとき」に円が上がるのか</strong>を直接は説明しない。調査を通じて整理すると、少なくとも3つの仕組みが重なっている【分析】。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>仕組み</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(1) 本国への資金の引き揚げ</td>
+<td>危機のとき、日本の投資家が海外の資産を売って、円に戻す（または、新たな海外投資を止める）</td>
+</tr>
+<tr>
+<td>(2) キャリートレードの巻き戻し</td>
+<td>平時に「円で借りて高金利通貨で運用」していた投資家が、危機で損失を避けるためにポジションを閉じ、借りた円を買い戻す</td>
+</tr>
+<tr>
+<td>(3) ヘッジのかけ直し</td>
+<td>ヘッジしていなかった海外資産について、危機でヘッジを新たにかける（＝先物で円を買う）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>重要なのは、(2)と(3)は「日本が豊かだから」ではなく、「円の金利が低いから」起きる</strong>ことである。円がキャリートレードの調達通貨（借りる通貨）であるかぎり、危機のたびに円の買い戻しが起きる。逆に言えば、<strong>日本の金利が上がり、円で借りるうまみが減ると、「安全通貨としての円」の性質は弱まる可能性がある</strong>【仮説】。2026年に日銀が1.25%まで利上げしたことは、この仮説を検証する局面になる（第8章）。</p>
+<hr />
+<h1>第5章　異次元緩和から正常化、そして2026年（2012〜2026年）</h1>
+<h2>5-1　年表</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>年月日</th>
+<th>出来事</th>
+<th>区分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2012年12月</td>
+<td>第2次安倍政権発足（アベノミクス）。円安へ</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2013年4月</td>
+<td>日銀が「量的・質的金融緩和（QQE）」を導入</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2014年10月</td>
+<td>QQEの拡大</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2015年6月</td>
+<td>ドル円125円台（当時のピーク）。黒田総裁の発言で反落</td>
+<td>【既知・要確認】</td>
+</tr>
+<tr>
+<td>2016年1月29日</td>
+<td><strong>マイナス金利付きQQE</strong>を決定（当座預金の一部に▲0.1%）</td>
+<td>【一次（補助確認）：日銀】</td>
+</tr>
+<tr>
+<td>2016年6月</td>
+<td>英国のEU離脱国民投票。一時100円割れ</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2016年9月21日</td>
+<td><strong>長短金利操作（YCC）付きQQE</strong></td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2020年3月</td>
+<td>コロナ危機</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2022年3月〜</td>
+<td>米国が利上げを開始。日米金利差が急拡大し、円安が進む</td>
+<td>【一次（補助確認）：FRB】</td>
+</tr>
+<tr>
+<td><strong>2022年9月22日</strong></td>
+<td><strong>24年ぶりの円買い介入</strong> 2兆8,382億円</td>
+<td>【一次（補助確認）：財務省】</td>
+</tr>
+<tr>
+<td>2022年10月21日</td>
+<td>円買い介入 5兆6,202億円（ドル円は直前に151円台）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2022年10月24日</td>
+<td>円買い介入 7,296億円</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2022年12月20日</td>
+<td>YCCの運用見直し（長期金利の変動幅拡大）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2023年7月28日、10月31日</td>
+<td>YCCの柔軟化</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>2024年3月19日</strong></td>
+<td><strong>マイナス金利とYCCを終了</strong>（17年ぶりの利上げ）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2024年4月29日</td>
+<td>円買い介入 5兆9,185億円（ドル円は一時160円台）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2024年5月1日</td>
+<td>円買い介入 3兆8,700億円</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>2024年7月3日</strong></td>
+<td><strong>161.95円</strong>（1986年12月以来の円安水準）</td>
+<td>【報道：国際通貨研究所】</td>
+</tr>
+<tr>
+<td>2024年7月11日、12日</td>
+<td>円買い介入 3兆1,678億円、2兆3,670億円</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2024年7月31日</td>
+<td>日銀が政策金利を0.25%程度へ引き上げ</td>
+<td>【既知・一次PDFは取得できず】</td>
+</tr>
+<tr>
+<td><strong>2024年8月5日</strong></td>
+<td><strong>円キャリートレードの巻き戻し</strong>。日経平均は4,451円28銭安（▲12.4%）で過去最大の下げ幅</td>
+<td>【報道：三井住友DSアセットマネジメント】</td>
+</tr>
+<tr>
+<td>2025年1月24日</td>
+<td>0.5%程度へ引き上げ（8対1）</td>
+<td>【一次（補助確認）：日銀】</td>
+</tr>
+<tr>
+<td>2025年4月2日〜</td>
+<td>米国の関税発表。ドル安。ドル円は4月22日に139.89円（2025年の安値）</td>
+<td>安値は【報道・二次資料】</td>
+</tr>
+<tr>
+<td>2025年9月12日</td>
+<td><strong>日米財務当局の為替に関する共同声明</strong>（為替は市場で決まるべき、競争目的の操作をしない、介入した場合は開示）</td>
+<td>【報道：MNI】</td>
+</tr>
+<tr>
+<td>2025年10月21日</td>
+<td>高市内閣発足</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>2025年12月19日</strong></td>
+<td><strong>0.75%程度へ引き上げ</strong>（全員一致）</td>
+<td>【一次（補助確認）：日銀】</td>
+</tr>
+<tr>
+<td>2026年1月23日</td>
+<td>日銀は0.75%据え置き（8対1、高田委員が1.0%を提案）。衆院解散。ドル円159円台から「レートチェック」報道で反落</td>
+<td>決定【一次（補助確認）】／相場【報道】</td>
+</tr>
+<tr>
+<td>2026年2月8日</td>
+<td>総選挙。与党が大勝</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>2026年2月末〜</strong></td>
+<td><strong>米国とイランの戦争</strong>。原油価格が急騰（ブレント原油は4月30日に約126ドル）</td>
+<td>【報道：CNBC等】</td>
+</tr>
+<tr>
+<td>2026年3月19日、4月28日</td>
+<td>日銀は0.75%据え置き（4月は6対3）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>2026年4月30日</strong></td>
+<td><strong>円買い介入 6兆2,787億円（円買いの単日で過去最大）</strong>。ドル円は160.72円から155円台へ</td>
+<td>介入額【一次確認：財務省】／相場【報道】</td>
+</tr>
+<tr>
+<td>2026年5月4日</td>
+<td>円買い介入 7,802億円</td>
+<td>【一次確認】</td>
+</tr>
+<tr>
+<td>2026年5月6日</td>
+<td>円買い介入 4兆6,759億円。<strong>4〜6月期合計 11兆7,349億円</strong></td>
+<td>【一次確認】</td>
+</tr>
+<tr>
+<td><strong>2026年6月16日</strong></td>
+<td><strong>1.0%程度へ引き上げ</strong>（6月17日適用）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2026年6月下旬〜7月</td>
+<td>ドル円は162円台、163円台へ（1986年12月以来の円安水準と報道）</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>2026年7月29日</strong></td>
+<td><strong>高値163.91円</strong>（終値163.41円）</td>
+<td>【報道：りそな銀行】</td>
+</tr>
+<tr>
+<td><strong>2026年7月30日〜8月26日</strong></td>
+<td><strong>円買い介入 合計15兆3,993億円（月次として過去最大）</strong>。7月30日は日本単独、7月31日から<strong>米財務省が加わった協調介入</strong>と報道</td>
+<td>合計額【一次（補助確認）：財務省月次】／協調の経緯【報道】</td>
+</tr>
+<tr>
+<td>2026年7月31日</td>
+<td>日銀は1.0%据え置き</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2026年8月3日</td>
+<td>日米が協調介入の事実を認める。片山財務相は「円の過度な変動や無秩序な動きへの対処」と説明。<strong>日米の協調介入は2011年以来15年ぶり、円買いの協調介入は1998年以来28年ぶり</strong></td>
+<td>【報道：野村総合研究所コラム】</td>
+</tr>
+<tr>
+<td>2026年9月8日</td>
+<td>ドル円は一時152円台（約半年ぶりの円高水準）</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>2026年9月17日</strong></td>
+<td><strong>FRBが2023年以来初の利上げ</strong>（+0.25%で3.75〜4.00%）</td>
+<td>【一次確認：FRB】</td>
+</tr>
+<tr>
+<td><strong>2026年9月18日</strong></td>
+<td><strong>日銀が1.25%程度へ引き上げ（9月24日適用、7対2）</strong>。反対は浅田委員・佐藤委員。「引き続き政策金利を引き上げ…ていく」</td>
+<td>【一次確認：日銀公表文】</td>
+</tr>
+<tr>
+<td>2026年9月18日夜</td>
+<td>日銀がレートチェックを実施したと報道</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>2026年9月末</td>
+<td>外貨準備 1兆1,783億9,600万ドル（前月比291億ドル減）</td>
+<td>【一次（補助確認）：財務省】</td>
+</tr>
+<tr>
+<td><strong>2026年10月16日（金）</strong></td>
+<td><strong>ドル円 158.02円、ユーロ円 177.58円、ユーロドル 1.1239</strong>（NY終値）。米10年債利回り5.07%</td>
+<td>【一次確認：OANDA マーケットダイジェスト 2026-10-17 06:15配信】</td>
+</tr>
+<tr>
+<td>2026年10月29〜30日</td>
+<td>次回の日銀金融政策決定会合（予定）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-2　為替介入の全体像——円買い介入の金額表</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>局面</th>
+<th>期間</th>
+<th>円買い介入の合計</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1998年</td>
+<td>4月10日</td>
+<td>2兆6,201億円</td>
+<td>日本の金融危機</td>
+</tr>
+<tr>
+<td>2022年</td>
+<td>9月22日〜10月24日</td>
+<td><strong>9兆1,880億円</strong>【計算】</td>
+<td>24年ぶりの円買い</td>
+</tr>
+<tr>
+<td>2024年</td>
+<td>4月29日〜7月12日</td>
+<td><strong>15兆3,233億円</strong>【計算】</td>
+<td>4〜5月と7月の2局面</td>
+</tr>
+<tr>
+<td><strong>2026年 第1局面</strong></td>
+<td>4月30日〜5月6日</td>
+<td><strong>11兆7,349億円</strong></td>
+<td>単日の過去最大を更新</td>
+</tr>
+<tr>
+<td><strong>2026年 第2局面</strong></td>
+<td>7月30日〜8月26日</td>
+<td><strong>15兆3,993億円</strong></td>
+<td>月次として過去最大。<strong>日米協調</strong></td>
+</tr>
+<tr>
+<td><strong>2026年 合計</strong></td>
+<td>—</td>
+<td><strong>27兆1,342億円</strong>【計算】</td>
+<td>年間の円買い介入として過去最大と見られる【要確認】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>計算の注記</strong>：2022年は2兆8,382億＋5兆6,202億＋7,296億＝9兆1,880億円。2024年は5兆9,185億＋3兆8,700億＋3兆1,678億＋2兆3,670億＝15兆3,233億円。2026年は11兆7,349億＋15兆3,993億＝27兆1,342億円。</p>
+<p><strong>財務省の1日ごとの内訳</strong>：2026年7〜9月期の日別内訳は、四半期ごとの公表（11月上旬見込み）を待たなければ分からない。<strong>本稿の時点では、7月30日〜8月26日の合計額しか分からない</strong>【一次（補助確認）】。</p>
+<h3>5-2-1　介入は「効いた」のか</h3>
+<p>介入の効果は、一般に次のように評価される。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>評価の観点</th>
+<th>2022年</th>
+<th>2024年</th>
+<th>2026年</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直後の円高</td>
+<td>数円の円高</td>
+<td>数円の円高</td>
+<td>4月30日：160.72円→155円台【報道】</td>
+</tr>
+<tr>
+<td>数か月後</td>
+<td>2022年10月がピークで、その後円高へ（米国の利上げ打ち止め観測と重なった）</td>
+<td>7月がピークで、その後円高へ（日銀の利上げと米国の利下げ観測、8月5日の巻き戻しと重なった）</td>
+<td>7月末に163.91円の新高値。協調介入後、9月に152円台へ</td>
+</tr>
+<tr>
+<td>何と重なったか</td>
+<td>米国のインフレのピーク</td>
+<td>日米の金融政策の方向転換</td>
+<td><strong>日米協調</strong>、日銀の追加利上げ、米国の利上げ</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>私の見方</strong>：2022年と2024年の経験からは、<strong>介入は単独では流れを変えられないが、他の要因（金利の方向転換）と重なると、ピークを作るきっかけになる</strong>という解釈が成り立つ【分析】。2026年の新しい点は、<strong>米国が介入に加わったこと</strong>である。協調介入は、「米国もこれ以上のドル高・円安を望んでいない」というシグナルになる。この協調の意味は、2025年9月の日米共同声明（介入した場合は開示する）と合わせて読むと、<strong>介入の「許可」から「共同作業」への変化</strong>と見ることもできる【仮説】。</p>
+<p>ただし、2026年9月にFRBは利上げに転じ、米10年債利回りは5%を超えた。<strong>ドル円は10月に158円台に戻っている。</strong> 協調介入の効果が持続したかどうかは、本稿の時点では判断できない。</p>
+<h3>5-2-2　介入の原資には限りがある</h3>
+<p>円買い介入は、外貨準備のドルを売って円を買う操作である。日本の外貨準備は2026年9月末で約1.18兆ドル【一次（補助確認）】。2026年の円買い介入27兆円は、158円で換算すると約1,700億ドルに相当する【計算・概算】。<strong>外貨準備の約14%を、1年で使った計算になる</strong>【計算・概算】。</p>
+<p>外貨準備の大部分は米国債などの証券（約8,217億ドル）で、すぐに使える預金は約1,552億ドルである【一次（補助確認）】。<strong>介入を続けるには、米国債を売る必要が出てくる。</strong> 米国債を売れば米国の金利を押し上げる要因になりうる。米国が協調介入に加わったことには、日本による米国債売却を避けたいという動機もありうる——という見方があるが、本研究ではこれを裏付ける公式資料は見つけられなかった【仮説・未確認】。</p>
+<hr />
+<h1>第6章　円の需要と供給——誰が円を売り、誰が円を買うのか</h1>
+<h2>6-1　参加者の一覧</h2>
+<p>円の値段は、円を買いたい人と売りたい人のバランスで決まる。誰がどちらの側に立つかを整理する。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>参加者</th>
+<th>主な行動</th>
+<th>円への影響</th>
+<th>時間軸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>日本銀行</strong></td>
+<td>政策金利の決定、国債買入れ</td>
+<td>利上げ・買入れ減額は円高要因、緩和は円安要因</td>
+<td>中長期</td>
+</tr>
+<tr>
+<td><strong>財務省</strong></td>
+<td>為替介入（日銀が代理で実行）</td>
+<td>円買い介入は円高要因</td>
+<td>短期（介入日）</td>
+</tr>
+<tr>
+<td><strong>政府</strong></td>
+<td>財政政策、外国との交渉</td>
+<td>財政拡大の懸念は円安要因になりうる</td>
+<td>中長期</td>
+</tr>
+<tr>
+<td><strong>輸出企業</strong></td>
+<td>海外で稼いだドルを円に換える</td>
+<td><strong>円買い</strong>（ただし海外に再投資すれば円に戻らない）</td>
+<td>継続</td>
+</tr>
+<tr>
+<td><strong>輸入企業</strong></td>
+<td>エネルギー・原材料・製品の代金をドルで払う</td>
+<td><strong>円売り</strong></td>
+<td>継続</td>
+</tr>
+<tr>
+<td><strong>機関投資家</strong>（生保・年金・投信）</td>
+<td>外国債券・株式を買う。ヘッジの有無で影響が変わる</td>
+<td>外国資産の購入は円売り。<strong>ヘッジすれば影響は相殺される</strong></td>
+<td>中長期</td>
+</tr>
+<tr>
+<td><strong>個人投資家（NISA・投信）</strong></td>
+<td>投信を通じて外国株を買う</td>
+<td><strong>円売り</strong>（ヘッジなしが多い）</td>
+<td>継続・積立</td>
+</tr>
+<tr>
+<td><strong>個人FX投資家</strong></td>
+<td>短期売買、スワップ狙いの長期保有</td>
+<td>方向は局面による。総じて「円安方向の高金利通貨買い」と「急変時の逆張り」</td>
+<td>短期〜中期</td>
+</tr>
+<tr>
+<td><strong>海外投資家</strong>（ヘッジファンド等）</td>
+<td>金利差を狙った円売り（キャリー）、日本株・国債の売買</td>
+<td>キャリーは円売り、巻き戻しは円買い</td>
+<td>短期〜中期</td>
+</tr>
+<tr>
+<td><strong>海外の企業・観光客</strong></td>
+<td>日本への旅行、日本製品の購入</td>
+<td><strong>円買い</strong>（インバウンド）</td>
+<td>継続</td>
+</tr>
+<tr>
+<td><strong>日本の企業</strong>（海外投資）</td>
+<td>海外企業の買収、海外工場への投資</td>
+<td><strong>円売り</strong></td>
+<td>断続的・大口</td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：一般的な整理【分析】。</p>
+<h2>6-2　国際収支で見る円——「黒字なのに円安」の謎</h2>
+<p>日本は<strong>経常収支で巨額の黒字</strong>を出している。それなのに、なぜ円安が続くのか。これは、2022年以降の円安を理解する鍵となる問いである。</p>
+<h3>6-2-1　最新の国際収支</h3>
+<p><strong>2025暦年（財務省、2026年2月9日公表、速報）</strong>【一次（補助確認）】</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>金額</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>経常収支</strong></td>
+<td><strong>＋31兆8,799億円</strong></td>
+<td>前年比＋3兆1,931億円</td>
+</tr>
+<tr>
+<td>貿易収支</td>
+<td>▲8,487億円</td>
+<td>モノの輸出入はほぼ均衡〜小幅赤字</td>
+</tr>
+<tr>
+<td>サービス収支</td>
+<td>▲3兆3,928億円</td>
+<td>旅行は黒字、デジタルは赤字</td>
+</tr>
+<tr>
+<td><strong>第一次所得収支</strong></td>
+<td><strong>＋41兆5,903億円</strong></td>
+<td>海外投資からの配当・利子</td>
+</tr>
+<tr>
+<td>第二次所得収支</td>
+<td>▲5兆4,688億円</td>
+<td>海外への送金・援助など</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2025年度（2026年5月13日公表、速報）</strong>：経常収支＋34兆5,218億円、<strong>貿易収支は＋1兆3,631億円で黒字に転じた</strong>、第一次所得収支＋42兆2,809億円【一次（補助確認）】。</p>
+<p><strong>直近：2026年8月（2026年10月8日公表、速報）</strong>：経常収支＋4兆620億円（19か月連続の黒字）、貿易収支▲6,877億円、第一次所得収支＋5兆1,332億円【一次（補助確認）】。</p>
+<p><strong>デジタル関連収支と旅行収支（2025年）</strong>：デジタル関連収支▲6.7兆円、旅行収支＋6.7兆円【報道：国際通貨研究所ニューズレター 2026-07-08】。<strong>インバウンドで稼いだ分を、ほぼそのままデジタルサービス（クラウド、広告、ソフトウェア、動画配信など）の支払いで海外に払っている</strong>計算になる。</p>
+<h3>6-2-2　黒字の「国籍」——なぜ黒字が円買いにならないのか</h3>
+<p>経常収支の黒字の大部分（約42兆円）は<strong>第一次所得収支</strong>、つまり日本企業や投資家が海外に持っている資産から得た配当・利子・利益である。</p>
+<p>ここに、本研究で強調したい構造がある。</p>
+<blockquote>
+<p><strong>第一次所得収支の黒字は、統計上は「日本の黒字」だが、その多くは円に換えられず、海外でそのまま再投資されている可能性が高い。</strong></p>
+</blockquote>
+<p>日本企業が海外子会社で稼いだ利益は、海外子会社の内部留保として残されたり、現地で再投資されたりする。これも統計上は第一次所得収支に「受け取り」として計上されるが、<strong>実際には外国為替市場で円を買う取引は発生しない</strong>。同じく、日本の投資家が外国債券から受け取った利子も、ドルのまま再投資されれば円買いにならない。</p>
+<p>一方、<strong>貿易赤字・サービス赤字（特にデジタル赤字）は、確実に円売りを伴う</strong>。日本の企業や個人がクラウドや広告の代金を払うとき、最終的には円をドルに換える必要があるからだ。</p>
+<p>つまり、</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>収支</th>
+<th>統計上</th>
+<th>為替市場で実際に起きる取引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次所得収支の黒字</td>
+<td>大きな黒字</td>
+<td><strong>円買いが起きるとは限らない</strong>（再投資されれば起きない）</td>
+</tr>
+<tr>
+<td>貿易・サービス収支の赤字</td>
+<td>小さな赤字</td>
+<td><strong>円売りが確実に起きる</strong></td>
+</tr>
+<tr>
+<td>家計・投信の外国資産購入</td>
+<td>金融収支（統計上は経常収支の外）</td>
+<td><strong>円売りが確実に起きる</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>このため、<strong>経常収支が黒字であっても、為替市場での実際の円の売り買い（「キャッシュフロー・ベースの需給」）は、円売りの方が多い</strong>という状態が成り立ちうる【分析】。</p>
+<p><strong>注意</strong>：この「キャッシュフロー・ベースの需給」を直接測る公式統計はない。いくつかの民間の試算はあるが、本研究では一次資料での確認ができなかった【未確認】。したがって上の議論は、<strong>仕組みとして成り立つ</strong>ことを示すものであり、<strong>どの程度の規模か</strong>を確定するものではない。</p>
+<h2>6-3　家計の円売り——新NISAの影響</h2>
+<p>2024年1月に始まった新NISA（少額投資非課税制度）は、家計の外国株投資を大きく増やした。</p>
+<ul>
+<li>投資信託委託会社等の対外証券投資（ネット取得）：<strong>2024年は11兆5,066億円</strong>。2005年以降で最大（2023年は4兆5,454億円）【報道：大和総研 2025-02-13、元データは財務省】</li>
+<li>公募株式投信への資金流入：2025年は約14.82兆円、うち<strong>外国株式投信が約11.55兆円</strong>【報道：ニッセイ基礎研究所 2026-02-04】</li>
+</ul>
+<p>家計が外国株投信を買うと、投信の運用会社は円を売ってドルなどを買い、外国株を買う。<strong>多くの外国株投信は為替ヘッジをしない</strong>ので、この円売りは相殺されない。しかも、<strong>積立投資は、為替レートにかかわらず毎月同じ額を買う</strong>。円安でも円高でも、機械的に円を売り続ける。</p>
+<p><strong>私の見方</strong>：新NISAによる家計の円売りは、年間10兆円規模の「価格に反応しない、一方向の円売り」として、円の需給構造を変えた可能性がある【分析】。2022年の円安が主に「金利差」で説明されたとすれば、2024年以降の円安には「家計の資本流出」という新しい層が加わった、と考えられる。</p>
+<p><strong>ただし、反論もある</strong>：年10兆円は、ドル円の1日の取引高（約220兆円）の5%程度にすぎない。また、家計は円安局面で外国株の利益を確定するために売ることもありうる。<strong>影響の規模は、議論の余地がある</strong>【見解の対立】。</p>
+<h2>6-4　生命保険会社のヘッジ比率——「円を支えていた予約」が減った</h2>
+<p>第2章で見たとおり、BISは<strong>日本の生命保険会社のヘッジ比率が、2022年から2024年に約60%から約40%に下がった</strong>と指摘した【一次確認】。</p>
+<p>日本の生命保険会社は、合計で数十兆円規模の外国債券を保有しているとされる【既知・規模は要確認】。そのヘッジ比率が20ポイント下がるということは、<strong>将来の円買いの予約が、数兆円から十数兆円規模で減った</strong>ことを意味する【計算の考え方：保有額×ヘッジ比率の変化。正確な保有額は未確認】。</p>
+<p>なぜヘッジ比率を下げたのか。理由は<strong>ヘッジ費用の上昇</strong>である。ヘッジ費用は、おおむね<strong>日米の短期金利差</strong>で決まる。米国の金利が5%で日本の金利が0%なら、ヘッジ費用は年約5%になる。米国債の利回りが4%だと、ヘッジすると利回りがマイナスになってしまう。だから、<strong>ヘッジを外して、為替リスクをとって米国債を持つ</strong>ようになった。</p>
+<p><strong>この構造が2026年にどう変わるか</strong>：日銀が1.25%まで利上げし、FRBが3.75〜4.00%に利上げした2026年10月時点で、日米の短期金利差は約2.5〜2.75%である【計算】。2023年の約5%と比べれば縮小しているが、ヘッジ費用はまだ大きい。</p>
+<p><strong>ヘッジ比率が再び上がると何が起きるか</strong>——これが本研究の独自論点のひとつである（第16章）。</p>
+<hr />
+<h1>第7章　円クロス全体——ドル円だけでは円は分からない</h1>
+<h2>7-1　円クロスの基準値（2026年10月16日時点の参考値）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨ペア</th>
+<th>参考レート</th>
+<th>相手国の政策金利</th>
+<th>日銀1.25%との差</th>
+<th>性格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ドル円（USD/JPY）</td>
+<td><strong>158.02</strong></td>
+<td>3.75〜4.00%</td>
+<td>約+2.6%</td>
+<td>世界2位のペア。金利差・介入・米国の政策で動く</td>
+</tr>
+<tr>
+<td>ユーロ円（EUR/JPY）</td>
+<td><strong>177.58</strong>（NY終値）</td>
+<td>2.50%（預金金利）</td>
+<td>+1.25%</td>
+<td>欧州の景気とECBの政策</td>
+</tr>
+<tr>
+<td>ポンド円（GBP/JPY）</td>
+<td>約210.7</td>
+<td>3.75%</td>
+<td>+2.5%</td>
+<td>値動きが大きいことで知られる</td>
+</tr>
+<tr>
+<td>豪ドル円（AUD/JPY）</td>
+<td>約110.0</td>
+<td>4.60%</td>
+<td>+3.35%</td>
+<td>資源・中国経済・リスク選好の指標</td>
+</tr>
+<tr>
+<td>NZドル円（NZD/JPY）</td>
+<td>約89.5</td>
+<td>2.75%</td>
+<td>+1.5%</td>
+<td>酪農など一次産品。豪ドルと連動しやすい</td>
+</tr>
+<tr>
+<td>カナダ・ドル円（CAD/JPY）</td>
+<td>約111.6</td>
+<td>2.25%</td>
+<td>+1.0%</td>
+<td>原油価格と米国経済</td>
+</tr>
+<tr>
+<td>スイス・フラン円（CHF/JPY）</td>
+<td>約191.8</td>
+<td><strong>0%</strong></td>
+<td><strong>▲1.25%</strong></td>
+<td><strong>円より金利が低い</strong>。安全通貨同士</td>
+</tr>
+<tr>
+<td>人民元円（CNH/JPY）</td>
+<td>約23.6</td>
+<td>1.40%（7日物リバースレポ）</td>
+<td>+0.15%</td>
+<td>管理された通貨。中国の当局の意向</td>
+</tr>
+<tr>
+<td>韓国ウォン円（KRW/JPY）</td>
+<td>100ウォン≒11.9円</td>
+<td>3.00%</td>
+<td>+1.75%</td>
+<td><strong>日本の個人FXでは一般に取引できない</strong>（NDF）</td>
+</tr>
+<tr>
+<td>メキシコ・ペソ円（MXN/JPY）</td>
+<td>約8.60</td>
+<td>6.50%</td>
+<td>+5.25%</td>
+<td>高金利・米国経済との連動</td>
+</tr>
+<tr>
+<td>南ア・ランド円（ZAR/JPY）</td>
+<td>約9.62</td>
+<td>7.25%</td>
+<td>+6.0%</td>
+<td>高金利・資源・政治・電力問題</td>
+</tr>
+<tr>
+<td>トルコ・リラ円（TRY/JPY）</td>
+<td>約3.19</td>
+<td><strong>37%</strong></td>
+<td><strong>+35.75%</strong></td>
+<td>超高金利・高インフレ・長期の下落</td>
+</tr>
+<tr>
+<td>シンガポール・ドル円（SGD/JPY）</td>
+<td>約123.5</td>
+<td>（金利ではなく為替で政策運営）</td>
+<td>—</td>
+<td>名目実効レートのバンドで管理</td>
+</tr>
+<tr>
+<td>香港ドル円（HKD/JPY）</td>
+<td>約20.1</td>
+<td>（米ドル連動）</td>
+<td>—</td>
+<td>実質的にはドル円とほぼ同じ</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>数値の作り方（重要）</strong>：ドル円・ユーロ円はOANDAのNY終値【一次確認】。その他の円クロスは、<strong>ECB参照レート（2026-10-16、中欧時間14:15ごろの値）から換算した対ドルレートと、ドル円のNY終値を掛け合わせた参考値</strong>である【計算】。両者は取得時刻が違うため、たとえばユーロ円は計算値（177.82）とNY終値（177.58）で0.24円ずれる。<strong>本表の円クロスは「水準の目安」であり、取引に使える価格ではない。</strong> 政策金利は各国中央銀行の発表を補助エージェントが確認したもの【一次（補助確認）または報道】。米国はFF金利の誘導目標3.75〜4.00%の中間値3.875%で差を計算した。</p>
+<h2>7-2　円クロスの値動きを決める「2つの足」</h2>
+<p>円クロス、たとえば豪ドル円の値動きは、<strong>ドル円と豪ドル/ドルの2つの値動きの合成</strong>である。</p>
+<blockquote>
+<p>豪ドル円 ＝ 豪ドル/ドル × ドル円</p>
+</blockquote>
+<p>したがって、豪ドル円が上がる理由は2つある。</p>
+<ol>
+<li>ドル円が上がった（ドル高・円安）</li>
+<li>豪ドル/ドルが上がった（豪ドル高・ドル安）</li>
+</ol>
+<p><strong>この分解をすると、「円が弱いのか、相手通貨が強いのか、ドルが動いたのか」を区別できる。</strong> FXトレーダーにとって、この分解は基本だが、ニュースでは区別されないことが多い。</p>
+<p><strong>2026年の例</strong>：2026年には各国が利上げに戻ったが、日銀も利上げした。もし豪ドル円が上がっていたとしても、それが「豪州の利上げによる豪ドル高」なのか「ドル円の円安」なのかを分けなければ、次の動きを読めない【分析】。</p>
+<h2>7-3　各円クロスの特徴</h2>
+<h3>ユーロ円</h3>
+<ul>
+<li>世界の通貨ペア順位では10位以内に入らないが、日本では人気のペア</li>
+<li>欧州の景気、ECBの政策、欧州の政治（財政、選挙）で動く</li>
+<li>2026年はエネルギー価格の上昇（9月のユーロ圏CPIは3.8%、エネルギーは+18.8%）【一次（補助確認）：Eurostat】で、ECBが6月と9月に利上げした</li>
+<li><strong>欧州はエネルギーを輸入する地域</strong>なので、原油高は欧州の景気を悪くする一方、インフレを通じて利上げを促す。<strong>原油高がユーロにとって良いか悪いかは、景気とインフレのどちらが強く効くかで変わる</strong>【分析】</li>
+</ul>
+<h3>ポンド円</h3>
+<ul>
+<li>歴史的に値動きが大きい（2016年のEU離脱国民投票、2016年10月のフラッシュクラッシュ、2022年9月の英国債危機）</li>
+<li>英国はサービス・金融の比重が大きく、エネルギーの一部を輸入する</li>
+<li>2026年9月のイングランド銀行は3.75%で据え置き（6対3で、3人が4%への利上げを主張）【一次（補助確認）】</li>
+</ul>
+<h3>豪ドル円</h3>
+<ul>
+<li><strong>世界のリスク選好の指標</strong>として使われる。株高・資源高・中国の景気回復で上がり、リスク回避で下がる</li>
+<li>豪州は鉄鉱石・石炭・液化天然ガスの輸出国で、最大の輸出先は中国</li>
+<li>2026年9月29日に豪州準備銀行が4.60%へ利上げ（2026年4回目）【一次（補助確認）】。8月のCPIは4.0%</li>
+</ul>
+<h3>NZドル円</h3>
+<ul>
+<li>豪ドルと連動しやすいが、NZ独自の要因（酪農製品の価格、移民、住宅）がある</li>
+<li>2026年は7月と9月に利上げ（2.75%）【一次（補助確認）】</li>
+</ul>
+<h3>カナダ・ドル円</h3>
+<ul>
+<li><strong>原油価格</strong>と<strong>米国経済</strong>の2つに強く影響される（カナダの輸出の大部分は米国向けで、原油は主要輸出品）</li>
+<li>2026年は原油高にもかかわらず、カナダ銀行は2.25%で据え置き（9月2日）【一次（補助確認）】。米国の関税の影響が残る</li>
+</ul>
+<h3>スイス・フラン円——「安全通貨同士」の組み合わせ</h3>
+<ul>
+<li>スイス国立銀行（SNB）の政策金利は<strong>0%</strong>（2026年9月24日に据え置き）【一次（補助確認）】。<strong>円（1.25%）より金利が低い</strong></li>
+<li>これは歴史的に珍しい状態である。長い間、円は世界で最も金利の低い主要通貨のひとつで、スイス・フランも同様だった。<strong>2026年に、円の金利がスイス・フランを上回った</strong></li>
+<li><strong>意味</strong>：キャリートレードの「調達通貨」（借りる通貨）として、円よりスイス・フランの方が有利になった。<strong>危機のときに買い戻される「調達通貨」の役割が、円からスイス・フランに一部移る可能性がある</strong>【仮説】</li>
+<li>SNBは、必要に応じて為替介入する方針を示し、「最近のフラン安」に言及した【一次（補助確認）】</li>
+</ul>
+<h3>人民元円</h3>
+<ul>
+<li>人民元は中国人民銀行（PBOC）が毎朝発表する<strong>基準値（中間値）</strong>を中心に、決められた幅の中で動く（国内のCNY）</li>
+<li>日本のFX口座で扱われるのは、主に<strong>香港などのオフショア市場のCNH</strong>。CNHはCNYより自由に動くが、当局が資金の流れを調整して影響を与えることがある</li>
+<li>2026年10月13日の基準値は1ドル＝6.7298元で、2023年2月以来の元高水準【報道】。9月の貿易黒字は約1,335億ドル、輸出は前年比+36.3%と報じられている【報道】</li>
+<li><strong>人民元は「2026年に最も目立って上昇した主要アジア通貨のひとつ」</strong>だった可能性がある【要確認】</li>
+</ul>
+<h3>韓国ウォン円</h3>
+<ul>
+<li>韓国ウォンは資本規制のため、海外でのウォンの受け渡しは制限されており、海外ではNDFで取引される</li>
+<li><strong>日本の一般的なFX口座では、ウォンは取引できないことが多い</strong>（第2章 2-11）</li>
+<li>韓国銀行は2026年8月27日に3.00%へ利上げ【一次（補助確認）】</li>
+<li>日韓は経済構造（輸出・製造業・エネルギー輸入）が似ており、ウォンと円は同じ方向に動くことが多い</li>
+</ul>
+<h3>メキシコ・ペソ円</h3>
+<ul>
+<li>高金利（6.50%）と米国経済との結びつき（輸出の大部分が米国向け、米国からの送金）</li>
+<li>米国の関税政策の影響を強く受ける</li>
+<li>2026年9月24日、メキシコ銀行は4会合連続で6.50%に据え置いた【報道】</li>
+<li>日本の個人FXでは「スワップポイント狙い」の長期保有で人気がある</li>
+</ul>
+<h3>南ア・ランド円</h3>
+<ul>
+<li>高金利（7.25%）。2026年9月に利上げ（9月25日発効）【一次（補助確認）】</li>
+<li>金・プラチナなどの資源輸出、政治、電力供給の問題で動く</li>
+<li>流動性が低く、スプレッドが広い。急変時の値動きが大きい</li>
+</ul>
+<h3>トルコ・リラ円——「金利が高いことは、得をすることではない」の最も強い例</h3>
+<ul>
+<li>政策金利<strong>37%</strong>、9月のCPIは29.73%【報道】</li>
+<li>2026年は、インフレ率より政策金利の方が高い「<strong>実質金利がプラス</strong>」の状態になっている（37%−29.7%≒+7%）【計算】</li>
+<li>しかし、<strong>トルコ・リラ円は長期的に大きく下落してきた</strong>。2000年代後半には1リラ＝数十円の水準だったが、2026年10月には約3.2円である【長期水準は既知・要確認】</li>
+<li><strong>スワップポイント（金利差の受け取り）が年30%を超えても、リラの下落がそれを上回れば、損失になる。</strong> 高金利は、通貨が下落するリスクへの「補償」として存在する</li>
+</ul>
+<h2>7-4　円クロスの比較——「金利差」と「為替の変動」の綱引き</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>円クロス</th>
+<th>金利差（年、概算）</th>
+<th>為替が年何%下がれば金利差が消えるか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ドル円</td>
+<td>+2.6%</td>
+<td>約2.6%（＝約4円）</td>
+</tr>
+<tr>
+<td>豪ドル円</td>
+<td>+3.4%</td>
+<td>約3.4%（＝約3.7円）</td>
+</tr>
+<tr>
+<td>メキシコ・ペソ円</td>
+<td>+5.3%</td>
+<td>約5.3%（＝約0.45円）</td>
+</tr>
+<tr>
+<td>南ア・ランド円</td>
+<td>+6.0%</td>
+<td>約6.0%（＝約0.58円）</td>
+</tr>
+<tr>
+<td>トルコ・リラ円</td>
+<td>+35.8%</td>
+<td>約35.8%（＝約1.14円）</td>
+</tr>
+</tbody>
+</table></div>
+<p>【計算】：金利差は政策金利の差の概算で、実際のスワップポイントは業者の設定・短期市場金利・期間で異なる。</p>
+<p><strong>この表の読み方</strong>：たとえばトルコ・リラ円を1年間保有すると、金利差で約36%を受け取れる計算になる。しかし、1年でリラが円に対して36%以上下がれば、トータルでは損になる。<strong>過去のトルコ・リラは、1年で30%以上下がった年が何度もある</strong>【既知・要確認】。</p>
+<p><strong>本研究の見方</strong>：高金利通貨のFXは、「金利をもらう取引」ではなく、<strong>「通貨の下落リスクを引き受ける代わりに、保険料（金利差）をもらう取引」</strong>と考える方が実態に近い【分析】。保険を売る側は、平時には保険料が積み上がって利益になるが、大災害（通貨危機）の年に、積み上げた利益を一度に失う。これが第8章のキャリートレードの本質である。</p>
+<hr />
+<h1>第8章　キャリートレード、巻き戻し、そしてリスク回避の円</h1>
+<h2>8-1　キャリートレードの仕組み</h2>
+<p><strong>キャリートレード</strong>とは、金利の低い通貨で借りて（または売って）、金利の高い通貨で運用する（または買う）取引である。</p>
+<ul>
+<li>典型例：円を借りて、米ドルや豪ドルやメキシコ・ペソを買う</li>
+<li>利益の源泉：<strong>金利差</strong>（円の金利が低いほど大きい）</li>
+<li>理論上の問題：経済学の「カバーなし金利平価（UIP）」の考え方では、金利の高い通貨は、金利差の分だけ将来下落すると予想されるので、キャリートレードの期待利益はゼロになるはずである</li>
+</ul>
+<h2>8-2　理論と現実のずれ——「フォワード・プレミアム・パズル」</h2>
+<p>ところが、実際の為替レートは、UIPの予想どおりには動かない。<strong>高金利通貨は、金利差の分だけ下落するどころか、むしろ上昇することが多い</strong>。これは「フォワード・プレミアム・パズル」と呼ばれる、国際金融で最も有名な未解決問題のひとつである。</p>
+<ul>
+<li><strong>Fama（1984）</strong>：将来の為替変化をフォワード・プレミアム（金利差）で回帰すると、理論値の「1」を下回り、しばしばマイナスになる（<em>Journal of Monetary Economics</em> 14(3)）【既知・未再照合】</li>
+<li><strong>Froot &amp; Thaler（1990）</strong>：約75件の研究の推定値の平均は約−0.88（<em>Journal of Economic Perspectives</em> 4(3)）【数値は要確認】</li>
+</ul>
+<p><strong>つまり、平均すると、キャリートレードは儲かってきた。</strong> これは何十年もの研究で確認されている。では、なぜ誰もが「必ず儲かる取引」としてやらないのか。</p>
+<h2>8-3　「階段を上ってエレベーターで下りる」——クラッシュ・リスク</h2>
+<p>答えは<strong>急落リスク</strong>である。</p>
+<ul>
+<li><strong>Brunnermeier, Nagel &amp; Pedersen（2008）</strong>「Carry Trades and Currency Crashes」（<em>NBER Macroeconomics Annual</em> 23）：キャリートレードのリターンには<strong>負の歪み（ネガティブ・スキュー）</strong>がある。平時は小さな利益が積み上がるが、まれに大きな損失が出る。急落は、<strong>投資家のリスク許容度と資金調達の流動性が低下したときに、ポジションが一斉に巻き戻される</strong>ことで起きる【一次（補助確認）】</li>
+<li><strong>Menkhoff, Sarno, Schmeling &amp; Schrimpf（2012）</strong>「Carry Trades and Global FX Volatility」（<em>Journal of Finance</em> 67(2)）：<strong>世界の為替のボラティリティ（変動の大きさ）の変化が、キャリートレードの超過リターンの横断的な差の90%超を説明する</strong>。キャリートレードの利益は、「ボラティリティが急上昇するときに損をする」ことへの補償と解釈できる【一次（補助確認）】</li>
+</ul>
+<p>市場では、この性質を<strong>「階段を上ってエレベーターで下りる」</strong>（stairs up, elevator down）と表現することがある【既知】。</p>
+<h2>8-4　円キャリーの巻き戻しの実例</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時期</th>
+<th>出来事</th>
+<th>円の動き</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1998年10月</td>
+<td>ヘッジファンドLTCMの危機。円キャリーが一斉に巻き戻された</td>
+<td>数日で十数円の円高【既知・数値要確認】</td>
+</tr>
+<tr>
+<td>2007年夏〜2008年</td>
+<td>サブプライム危機からリーマン・ショック</td>
+<td>124円前後から100円割れへ（2007年6月〜2008年末）【既知・要確認】</td>
+</tr>
+<tr>
+<td><strong>2024年8月5日</strong></td>
+<td>日銀の利上げ（7月31日）と米国の景気減速懸念、米国の利下げ観測が重なり、円キャリーが一斉に巻き戻された。<strong>日経平均は12.4%下落し、下落幅は過去最大</strong></td>
+<td>7月の161円台から8月初めに140円台前半へ【下落幅：一次（補助確認）／為替水準：既知・要確認】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2024年8月5日から学べること</h3>
+<p>2024年8月の巻き戻しは、<strong>金利差がまだ大きいうちに起きた</strong>。日米の政策金利差は、7月31日の日銀利上げ後もまだ約5%あった。それでも巻き戻しが起きたのは、<strong>金利差の「水準」ではなく「方向」が変わったから</strong>である。日本は利上げ、米国は利下げへ、という方向の転換が見えたとき、キャリートレードを続ける理由が急に弱まった【分析】。</p>
+<p><strong>もうひとつの教訓</strong>：巻き戻しは為替市場だけで終わらなかった。円高→日本株の下落→世界の株式市場の下落→さらなるリスク回避→さらなる円高、という連鎖が起きた。<strong>円キャリートレードは、世界の金融市場全体の「レバレッジの配管」に組み込まれていた</strong>【分析】。</p>
+<h2>8-5　2026年のキャリートレードの環境</h2>
+<p>2026年の環境は、2024年と比べて何が違うか。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2024年7月</th>
+<th>2026年10月</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日銀の政策金利</td>
+<td>0.25%（7月末）</td>
+<td><strong>1.25%</strong></td>
+</tr>
+<tr>
+<td>FRBの政策金利</td>
+<td>5.25〜5.50%</td>
+<td><strong>3.75〜4.00%</strong></td>
+</tr>
+<tr>
+<td>日米の金利差</td>
+<td>約5%</td>
+<td><strong>約2.6%</strong></td>
+</tr>
+<tr>
+<td>金利差の方向</td>
+<td>縮小へ（日本利上げ・米国利下げ観測）</td>
+<td><strong>日米ともに利上げ</strong>（方向は不明確）</td>
+</tr>
+<tr>
+<td>円より金利の低い主要通貨</td>
+<td>スイス・フランもほぼ同水準</td>
+<td><strong>スイス・フラン（0%）が円を下回る</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>私の見方</strong>：2026年の円キャリーは、2024年より<strong>うまみが小さくなった</strong>が、<strong>なくなってはいない</strong>。また、各国が利上げに戻ったことで、円以外の通貨（スイス・フランなど）をキャリーの調達通貨にする動きが出ている可能性がある【仮説・未確認】。</p>
+<h2>8-6　投機筋のポジション——CFTCのデータ</h2>
+<p>米国の商品先物取引委員会（CFTC）は、シカゴの通貨先物について、投機筋（非商業部門）のポジションを毎週公表している（Commitments of Traders）。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時点</th>
+<th>円先物の投機筋のポジション</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024年4月9日時点</td>
+<td><strong>売り越し 162,151枚</strong>（2007年6月以来の規模）</td>
+<td>【報道：Reuters 2024-04-15】</td>
+</tr>
+<tr>
+<td>2025年4月下旬</td>
+<td><strong>買い越し 177,814枚</strong>（「過去最高」）</td>
+<td>【報道：Rabobank 2025-04-28。基準日は明記なし】</td>
+</tr>
+<tr>
+<td>2026年10月6日時点（10月9日公表）</td>
+<td>非商業部門は<strong>買い越し 約6.2万枚</strong>。レバレッジド・ファンドは売り越し約2.5万枚、アセット・マネージャーは買い越し約6.8万枚</td>
+<td>【報道・二次資料】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>注意</strong>：
+- CFTCのデータは<strong>シカゴの先物市場だけ</strong>の数字であり、世界の為替取引（1日9.5兆ドル）のごく一部である。投機筋全体のポジションを示すものではない
+- 「非商業部門」と「レバレッジド・ファンド」は別の分類（別の報告書）で、方向が逆のこともある。<strong>どちらの分類を使っているかを必ず確認すること</strong>
+- 本研究では、CFTCの一次資料（cftc.gov）を直接取得できなかった【未確認】</p>
+<h2>8-7　日本の個人FX投資家のポジション</h2>
+<p>日本の個人FX投資家は、世界の為替市場で無視できない存在とされてきた（いわゆる「ミセス・ワタナベ」）。</p>
+<p><strong>金融先物取引業協会（FFAJ）の月次統計（2026年9月、46社の報告）</strong>【一次（補助確認）】
+- 月間取引金額：<strong>1,227兆1,914億円</strong>
+- 月末の建玉（ポジション）：売り4兆3,358億円、買い7兆3,799億円、<strong>合計11兆7,158億円</strong></p>
+<p><strong>個人のドル円ポジション（月末、二次集計）</strong>【報道・二次資料】
+- 2026年6月末：ネット約2兆8,634億円の<strong>売り越し</strong>（売り75%）
+- 2026年7月末：ネット約1兆8,949億円の<strong>買い越し</strong>
+- 2026年9月末：ネット約8,661億円の<strong>買い越し</strong></p>
+<p><strong>読み方</strong>：個人投資家は、円安が急に進んだ6月にはドル円を<strong>売っていた</strong>（逆張り）。7月に協調介入で円高に振れると、<strong>買い越しに転じた</strong>（ここでも逆張り）。<strong>日本の個人FX投資家は、総じて「逆張り」の傾向がある</strong>ことが、多くの観察で指摘されてきた【既知・二次】。逆張りは、相場が反転すれば利益になるが、トレンドが続けば損失が膨らみ、<strong>強制ロスカットが連鎖する原因になる</strong>（第14章のフラッシュクラッシュ）。</p>
+<h3>数字の作法：個人FXの「取引金額」は何を数えているのか</h3>
+<p>FFAJの月間取引金額1,227兆円を、1か月の営業日（約21日）で割ると、1日約58兆円、ドル換算で約3,700億ドルになる【計算・概算】。これは、<strong>BISが世界全体の「個人投資家関連」の取引を2,420億ドルとした数字より大きい</strong>。</p>
+<p>この食い違いは、<strong>数え方の違い</strong>から生じていると考えられる【仮説】。
+- BISは、ディーラー（銀行）の側から見た取引を、二重計上を除いて数える
+- FFAJは、FX業者と顧客の間の取引金額（新規と決済の両方を含む可能性がある）を数える
+- 個人の注文の多くは業者の中で相殺（内部化）され、銀行に出る「カバー取引」は一部にすぎない</p>
+<p><strong>同じ「取引高」でも、何を数えているかで2倍以上違いうる。</strong> 個人FXの規模を論じるときは、どの統計かを必ず明記する必要がある。</p>
+<p><strong>関連する事実</strong>：FFAJの実態調査（2025年10月31日公表）によれば、2025年4月の個人FX業者の顧客取引額は約1,472.5兆円で、<strong>業者が銀行に出したカバー取引の総額は、東京市場のスポット取引額の約112.2%に相当した</strong>【一次（補助確認）】。定義の違いには注意が必要だが、<strong>日本の個人FXのカバー取引は、東京の銀行間スポット市場と同じか、それ以上の規模をもつ可能性がある</strong>。東京市場のスポット取引が−15.7%減ったこと（第2章）と合わせると、<strong>東京の為替市場の「方向性の取引」において、個人FXの比重が相対的に高まっている</strong>と読める【分析】。</p>
+<hr />
+<h1>第3部　世界の通貨を地域ごとに見る</h1>
+<h1>第9章　世界の通貨一覧（2026年10月中旬時点）</h1>
+<h2>9-1　この章の作り方</h2>
+<p>各通貨について、中央銀行、政策金利、インフレ率、為替制度、取引上の特徴を整理する。<strong>データは補助エージェントが各国中央銀行・統計局・報道で確認したもので、クロちゃんが直接再取得したのは米国（FRB）だけである。</strong> 確認度を併記する。</p>
+<p><strong>対ドルレート</strong>は、特記がなければECB参照レート（2026-10-16）から換算した値で、市場の終値とは数bp程度ずれることがある【計算】。</p>
+<p><strong>2026年の背景（最重要）</strong>：2026年2月末から米国とイランの戦争が続き、原油価格が急騰した（ブレント原油は4月30日に約126ドル、9月中旬に約109ドル）【報道】。このため<strong>2026年は、FRB、ECB、豪州、NZ、インド、韓国、湾岸諸国などの中央銀行が、利下げ局面から利上げ局面に戻った年</strong>である。これは2025年末時点での多くの予想（「世界的な利下げ局面が続く」）とは異なる展開だった【分析】。</p>
+<h2>9-2　北米・オセアニア・欧州の主要通貨</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨</th>
+<th>中央銀行・政策金利</th>
+<th>最新CPI（前年比）</th>
+<th>対ドル</th>
+<th>制度</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>米ドル（USD）</strong></td>
+<td>FRB：FF金利 <strong>3.75〜4.00%</strong>（2026-09-17に+0.25%、2023年以来初の利上げ）</td>
+<td>9月 3.7%（コア2.6%）</td>
+<td>ドル指数（DXY）101.78</td>
+<td>自由変動</td>
+<td>金利【一次確認】、CPI【一次（補助確認）：BLS】</td>
+</tr>
+<tr>
+<td><strong>ユーロ（EUR）</strong></td>
+<td>ECB：預金金利 <strong>2.50%</strong>（2026-06に2.25%、09-16に2.50%）</td>
+<td>9月 3.8%</td>
+<td>1.1253（ECB参照）、NY終値1.1239</td>
+<td>自由変動</td>
+<td>【二次・一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>英ポンド（GBP）</strong></td>
+<td>BoE：<strong>3.75%</strong> 据え置き（09-17、6対3）</td>
+<td>8月 3.1%</td>
+<td>1.3335</td>
+<td>自由変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>スイス・フラン（CHF）</strong></td>
+<td>SNB：<strong>0%</strong> 据え置き（09-24）。必要に応じ介入</td>
+<td>9月 1.0%</td>
+<td>0.8240 CHF/USD</td>
+<td>変動（介入あり）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>豪ドル（AUD）</strong></td>
+<td>RBA：<strong>4.60%</strong>（09-29に+0.25%、2026年4回目）</td>
+<td>8月 4.0%</td>
+<td>0.6959</td>
+<td>自由変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>NZドル（NZD）</strong></td>
+<td>RBNZ：<strong>2.75%</strong>（07-08に2.50%、09-02に2.75%）</td>
+<td>（予測ピーク3.9%）</td>
+<td>0.5664</td>
+<td>自由変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>カナダ・ドル（CAD）</strong></td>
+<td>BoC：<strong>2.25%</strong> 据え置き（09-02）</td>
+<td>8月 3.0%</td>
+<td>1.4161 CAD/USD</td>
+<td>自由変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>ノルウェー・クローネ（NOK）</strong></td>
+<td>Norges Bank：<strong>4.50%</strong>（09-24に+0.25%）</td>
+<td>8月 3.3%</td>
+<td>9.441</td>
+<td>自由変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>スウェーデン・クローナ（SEK）</strong></td>
+<td>Riksbank：<strong>1.75%</strong>（2025-09に利下げ以来据え置き）</td>
+<td>9月 1.1%</td>
+<td>9.904</td>
+<td>自由変動</td>
+<td>【二次・一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>デンマーク・クローネ（DKK）</strong></td>
+<td>Nationalbanken：<strong>2.10%</strong>（ECBに追随して+0.25%）</td>
+<td>—</td>
+<td>6.6425（EUR/DKK 7.4748）</td>
+<td><strong>ERM IIでユーロに連動</strong></td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>ポーランド・ズウォティ（PLN）</strong></td>
+<td>NBP：<strong>3.75%</strong>（10-07据え置き）</td>
+<td>9月 4.1%</td>
+<td>3.883</td>
+<td>変動</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ハンガリー・フォリント（HUF）</strong></td>
+<td>MNB：<strong>5.50%</strong> 据え置き（09-22）</td>
+<td>9月 1.6%</td>
+<td>322.7</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>チェコ・コルナ（CZK）</strong></td>
+<td>CNB：<strong>3.75%</strong>（06-18に+0.25%）</td>
+<td>9月 2.5%</td>
+<td>21.61</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>ブルガリア（旧レフ）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>2026-01-01にユーロ導入</strong></td>
+<td>【一次（補助確認）：欧州委員会】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>北欧・中東欧の読み方</strong>：ノルウェーは原油・ガスの輸出国で、2026年の原油高の恩恵を受けて利上げした。スウェーデンはエネルギー輸入の影響が相対的に小さく、インフレも低い。<strong>同じ北欧でも、資源の有無で政策が分かれた</strong>【分析】。</p>
+<h2>9-3　中華圏・アジア</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨</th>
+<th>中央銀行・政策</th>
+<th>CPI</th>
+<th>対ドル</th>
+<th>制度・取引上の特徴</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>人民元（CNY/CNH）</strong></td>
+<td>PBOC：7日物リバースレポ 1.40%</td>
+<td>9月 0.9%（PPI +5.0%）</td>
+<td>基準値 6.7298（10-13、2023年2月以来の元高）</td>
+<td>管理型。国内CNYとオフショアCNHの二重市場</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>香港ドル（HKD）</strong></td>
+<td>HKMA：カレンシーボード</td>
+<td>8月 1.7%</td>
+<td>7.8482</td>
+<td><strong>1ドル＝7.75〜7.85</strong>（7.80固定は1983-10-17開始、現行幅は2005年から）</td>
+<td>【百科事典・報道】</td>
+</tr>
+<tr>
+<td><strong>シンガポール・ドル（SGD）</strong></td>
+<td>MAS：<strong>金利ではなく為替のバンド（S$NEER）で政策運営</strong>。2026年4月・7月に傾きを引き上げ、10-14据え置き</td>
+<td>コア 2.1%</td>
+<td>1.2792</td>
+<td>クロール類似</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ブルネイ・ドル（BND）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>=SGD</td>
+<td><strong>シンガポール・ドルと等価で交換</strong>（1967年の協定以来）</td>
+<td>【百科事典】</td>
+</tr>
+<tr>
+<td><strong>韓国ウォン（KRW）</strong></td>
+<td>BoK：<strong>3.00%</strong>（08-27に+0.25%）。次回10-22</td>
+<td>9月 2.9%</td>
+<td>1,332</td>
+<td>変動。<strong>海外ではNDF</strong></td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>台湾ドル（TWD）</strong></td>
+<td>CBC：公定歩合 <strong>2.00%</strong> 据え置き（09-17）</td>
+<td>9月 2.73%</td>
+<td>—</td>
+<td>管理された変動。<strong>海外ではNDF</strong></td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>インド・ルピー（INR）</strong></td>
+<td>RBI：レポ <strong>5.50%</strong>（10-07に+0.25%、4年ぶりの利上げ）</td>
+<td>9月 5.54%</td>
+<td>94.96（安値96.96。97が防衛ラインと報道）</td>
+<td>クロール類似（IMF 2025年11月）。<strong>海外ではNDF</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>インドネシア・ルピア（IDR）</strong></td>
+<td>BI：<strong>5.75%</strong>（2026年に計1.0%の利上げ）</td>
+<td>9月 3.28%</td>
+<td>18,031</td>
+<td>変動。NDF・国内NDF・スポットに介入</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>タイ・バーツ（THB）</strong></td>
+<td>BoT：<strong>1.00%</strong> 据え置き（08-26）</td>
+<td>9月 2.82%</td>
+<td>33.42</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>マレーシア・リンギ（MYR）</strong></td>
+<td>BNM：OPR <strong>2.75%</strong> 据え置き（09-03）</td>
+<td>1〜7月平均 1.8%</td>
+<td>4.0815</td>
+<td>変動（1998〜2005年はペッグと資本規制）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>フィリピン・ペソ（PHP）</strong></td>
+<td>BSP：<strong>5.00%</strong>（08-27に+0.25%）</td>
+<td>9月 <strong>7.2%</strong>（3年ぶり高水準）</td>
+<td>62.97（<strong>史上最安値圏</strong>）</td>
+<td>変動</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ベトナム・ドン（VND）</strong></td>
+<td>SBV：中心レート±5%</td>
+<td>9月 5.08%</td>
+<td>銀行売値 約26,185</td>
+<td>安定化型</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>カザフスタン・テンゲ（KZT）</strong></td>
+<td>NBK：<strong>16.25%</strong></td>
+<td>8月 9.8%</td>
+<td>—</td>
+<td>変動（2015年8月に変動相場へ移行）</td>
+<td>【BIS掲載資料】</td>
+</tr>
+<tr>
+<td><strong>ジョージア・ラリ（GEL）</strong></td>
+<td>NBG：<strong>8.25%</strong></td>
+<td>5月 5.7%</td>
+<td>—</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>モンゴル・トゥグリク（MNT）</strong></td>
+<td>Mongolbank：<strong>12.5%</strong></td>
+<td>8月 12.5%</td>
+<td>—</td>
+<td>クロール類似</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>マカオ・パタカ（MOP）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>1香港ドル＝1.03パタカでペッグ</td>
+<td>【要確認】</td>
+</tr>
+<tr>
+<td><strong>ブータン・ニュルタム（BTN）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>インド・ルピーと等価でペッグ</td>
+<td>【要確認】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>アジアで2026年に見えたこと</h3>
+<ul>
+<li><strong>インド・ルピーとフィリピン・ペソが史上最安値圏にある。</strong> 原油の輸入国で、経常赤字の国の通貨が、原油高とドル高の両方の圧力を受けた【分析】</li>
+<li><strong>人民元は逆に元高。</strong> 輸出が急増し、貿易黒字が大きい【報道】</li>
+<li><strong>香港ドル、シンガポール・ドル、ブルネイ・ドル、マカオ・パタカ、ブータン・ニュルタム</strong>は、他の通貨に「つながれた」通貨である。<strong>つながれた通貨の金利と物価は、つないだ先の国の政策に左右される</strong>（第1章 1-3のトリレンマ）</li>
+</ul>
+<h2>9-4　中南米</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨</th>
+<th>中央銀行・政策金利</th>
+<th>CPI</th>
+<th>対ドル</th>
+<th>特徴</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>メキシコ・ペソ（MXN）</strong></td>
+<td>Banxico：<strong>6.50%</strong>（09-24、4会合連続据え置き）</td>
+<td>9月 3.45%</td>
+<td>18.38</td>
+<td>変動。米国経済・関税・送金</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ブラジル・レアル（BRL）</strong></td>
+<td>Copom：Selic <strong>13.75%</strong>（09-16に−0.25%、5会合連続利下げ）</td>
+<td>9月 4.58%</td>
+<td>5.083</td>
+<td>変動。<strong>海外ではNDF</strong></td>
+<td>【報道・一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>アルゼンチン・ペソ（ARS）</strong></td>
+<td>バンド制（2025年4月に1,000〜1,400で開始、2026-01-02からインフレ連動）</td>
+<td>9月 前年比33.4%（前月比1.9%）</td>
+<td>卸売1,513、並行（ブルー）1,545</td>
+<td><strong>公式と並行の乖離は約2%に縮小</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>チリ・ペソ（CLP）</strong></td>
+<td>BCCh：<strong>4.5%</strong> 据え置き</td>
+<td>9月 4.1%</td>
+<td>983.97</td>
+<td>変動。銅の価格</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>コロンビア・ペソ（COP）</strong></td>
+<td>BanRep：<strong>12.25%</strong>（09-30に+0.25%）</td>
+<td>9月 6.29%</td>
+<td>約3,170</td>
+<td>変動。原油</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>東カリブ・ドル（XCD）</strong></td>
+<td>ECCB：カレンシーボード</td>
+<td>—</td>
+<td>2.70</td>
+<td>1976年から1ドル＝2.70</td>
+<td>【百科事典】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>アルゼンチンの観察</strong>：2023年12月に就任したミレイ政権のもとで、ペソは大幅に切り下げられ、2025年4月にIMFとの合意のもとバンド制に移行した。2026年10月時点で、<strong>公式レートと並行市場（ブルー・ドル）のレートの乖離は約2%まで縮小している</strong>【報道：Infobae 2026-10-15】。インフレ率は前年比33.4%と依然高いが、かつての200%超からは大幅に低下した【過去の水準は既知・要確認】。<strong>並行市場の乖離は、通貨の「約束」に対する市場の信頼度を測る温度計である</strong>【分析】。乖離が縮小したことは、少なくとも短期的には、約束の信頼が回復したことを示している。</p>
+<h2>9-5　中東・アフリカ・ロシア</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨</th>
+<th>中央銀行・政策金利</th>
+<th>CPI</th>
+<th>対ドル</th>
+<th>特徴</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>トルコ・リラ（TRY）</strong></td>
+<td>CBRT：<strong>37%</strong>（2026年1月に38→37%、以後据え置き）。次回10-22</td>
+<td>9月 29.73%</td>
+<td>49.53</td>
+<td>変動（実質的に管理）</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>サウジ・リヤル（SAR）</strong></td>
+<td>SAMA：レポ <strong>4.5%</strong>（09-17にFRBへ追随）</td>
+<td>9月 1.9%</td>
+<td>3.75</td>
+<td><strong>ドル固定</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>UAEディルハム（AED）</strong></td>
+<td>CBUAE：<strong>3.90%</strong>（09-17）</td>
+<td>—</td>
+<td>3.6725</td>
+<td><strong>ドル固定</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>イスラエル・シェケル（ILS）</strong></td>
+<td>BoI：<strong>3.25%</strong>（9月に−0.25%）</td>
+<td>9月 1.6%</td>
+<td>3.0945</td>
+<td>変動</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>南ア・ランド（ZAR）</strong></td>
+<td>SARB：<strong>7.25%</strong>（09-25発効で+0.25%）</td>
+<td>8月 4.4%</td>
+<td>16.43</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>ナイジェリア・ナイラ（NGN）</strong></td>
+<td>CBN：<strong>23%</strong>（9月に26.5%から−3.5%）</td>
+<td>9月 14.63%</td>
+<td>公式（NFEM）1,333、並行1,373〜1,390</td>
+<td>変動（2023〜24年に為替窓口を統合）</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>エジプト・ポンド（EGP）</strong></td>
+<td>CBE：翌日物預金 <strong>19%</strong></td>
+<td>9月 都市部13.9%</td>
+<td>53.04〜53.18</td>
+<td>変動（2024年3月に大幅切り下げ）</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ケニア・シリング（KES）</strong></td>
+<td>CBK：<strong>8.75%</strong> 据え置き（10-07）</td>
+<td>9月 6.8%</td>
+<td>129.81</td>
+<td>変動</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>CFAフラン（XOF・西アフリカ）</strong></td>
+<td>BCEAO：<strong>3.00%</strong></td>
+<td>（2026年予測 1%）</td>
+<td>—</td>
+<td><strong>1ユーロ＝655.957 CFAフランで固定</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td><strong>ジンバブエZiG</strong></td>
+<td>RBZ：30%</td>
+<td>8月 2.9%</td>
+<td>公式 約26.66、並行 約32</td>
+<td>2024年4月導入。2024年9月に約43%切り下げ</td>
+<td>【報道・百科事典】</td>
+</tr>
+<tr>
+<td><strong>レバノン・ポンド（LBP）</strong></td>
+<td>—</td>
+<td>—</td>
+<td>89,500</td>
+<td>1997〜2019年は1,507.5固定。崩壊後、公式レートを段階的に変更</td>
+<td>【百科事典・要確認】</td>
+</tr>
+<tr>
+<td><strong>ロシア・ルーブル（RUB）</strong></td>
+<td>CBR：<strong>14%</strong> 据え置き（09-11）</td>
+<td>9月 6.35%</td>
+<td>公式 83.62</td>
+<td>制裁で国際取引から切り離され、ECBは参照レートを停止</td>
+<td>【報道】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>アフリカの通貨で見落とされがちなこと</h3>
+<p><strong>CFAフラン</strong>は、西アフリカ（8か国）と中部アフリカ（6か国）の計14か国で使われている通貨で、ユーロに固定されている。フランス植民地時代から続く制度で、2019年に西アフリカ側の改革（外貨準備の半分をフランス国庫に預ける義務の廃止など）が発表された【既知・要確認】。<strong>アフリカの一部の国々の金融政策は、事実上ECBの政策に連動している</strong>。</p>
+<p><strong>ナイジェリア・ナイラ</strong>は、2023年6月以降の為替窓口の統合で大幅に下落し、2024年初めに1ドル＝1,500ナイラ前後になった【要確認】。2026年10月時点では1,333前後で、公式と並行の乖離は約3〜4%【報道】。インフレ率は2024年の30%台から、2026年9月には14.63%に低下した【報道】。</p>
+<hr />
+<h1>第10章　「注目されない通貨」から見えること</h1>
+<p>指示書は「小国や市場で注目されにくい通貨も探索してください」と求めた。調査の結果、注目されない通貨にこそ、為替の本質がよく見えると感じた。いくつか挙げる。</p>
+<h2>10-1　ブルネイ・ドル——「2つの国が同じ通貨を使う」別の形</h2>
+<p>ブルネイとシンガポールは、1967年の協定以来、<strong>互いの通貨を等価で交換し、相手国の通貨も自国で使える</strong>仕組みを維持している【百科事典】。ユーロのように通貨を統合したのではなく、2つの通貨を残したまま、価値を完全に一致させている。<strong>通貨統合と固定相場の中間の形</strong>である。</p>
+<h2>10-2　ブータン・ニュルタムとネパール・ルピー——巨大な隣国につながる</h2>
+<p>ブータンのニュルタムはインド・ルピーと等価で、インド・ルピーはブータン国内でも使える【要確認】。ネパール・ルピーもインド・ルピーに固定されている（1インド・ルピー＝1.6ネパール・ルピー）【要確認】。<strong>経済的に巨大な隣国に通貨をつなぐことは、為替の安定と引き換えに、隣国の金融政策と景気を輸入すること</strong>である。2026年10月にインドが利上げしたとき、これらの国も影響を受ける。</p>
+<h2>10-3　東カリブ・ドル——50年間変わらない2.70</h2>
+<p>東カリブ諸国（8つの国・地域）の共通通貨である東カリブ・ドルは、1976年から1米ドル＝2.70で固定されている【百科事典】。<strong>半世紀にわたって固定相場を維持している通貨</strong>は、世界でも珍しい。観光と米国との経済関係が強い小国にとって、ドル固定は合理的な選択である。</p>
+<h2>10-4　ジンバブエ・ZiG——「金の裏付け」は通貨の信頼を保証するか</h2>
+<p>ジンバブエは2024年4月、金と外貨準備に裏付けられたとする新通貨「ZiG（ジンバブエ・ゴールド）」を導入した。しかし、導入から半年後の2024年9月に約43%切り下げた【百科事典】。2026年9月初めには、公式レート約26.66に対し、並行市場では約32で取引されている【報道】。</p>
+<p><strong>教訓</strong>：通貨の信頼は、裏付けとなる資産だけでは決まらない。<strong>発行者が「約束を守る」と市場が信じるかどうか</strong>で決まる。これは、金本位制の時代（1930年の日本の金解禁、第3章）とまったく同じ問題である。</p>
+<h2>10-5　ロシア・ルーブル——「取引できない通貨」になるということ</h2>
+<p>BIS 2025年調査で、ルーブルの取引シェアは0.04%にまで低下した（第2章）。2022年のロシアのウクライナ侵攻後、主要国はロシアの中央銀行の外貨準備を凍結し、ロシアの主要銀行を国際的な決済網から切り離した。2024年6月には米国の制裁でモスクワ取引所のドル・ユーロ取引が停止されたとされる【要確認】。</p>
+<p><strong>教訓</strong>：通貨は、それを受け取ってくれる相手がいてはじめて「国際通貨」になる。<strong>国際通貨としての地位は、経済規模だけでなく、他国との関係で決まる。</strong> ドルの地位も、理論的には同じ原理の上にある（第17章）。</p>
+<h2>10-6　ベトナム・ドンとフィリピン・ペソ——「出稼ぎ送金」が支える通貨</h2>
+<p>フィリピンやベトナムには、海外で働く人々からの送金が大量に流入する【既知】。送金は、景気が悪くても比較的安定して続く外貨の流れであり、通貨を支える。<strong>日本の円が「海外投資の所得」で支えられているのに対して、これらの国の通貨は「海外で働く人の給料」（国際収支では主に第二次所得収支の個人間移転）で支えられている。</strong> 同じ「所得の黒字」でも、日本の第一次所得（投資の果実）とフィリピンの第二次所得（働く人の仕送り）では、為替市場で円・ペソに換えられる確率が違う。仕送りは家族の生活費として、ほぼ確実に自国通貨に換えられるからである【分析】。</p>
+<hr />
+<h1>第4部　FXトレーダーの目線</h1>
+<p><strong>この部の前提</strong>：本研究は、特定の取引手法を推奨するものではない。<strong>特定の手法が必ず利益を生むかのような記述はしない。</strong> 各手法について、利益が期待される仕組み、失敗する局面、実証研究の有無、バックテストの落とし穴を並べて示す。</p>
+<h1>第11章　市場の仕組み——銀行間市場と個人向けFXは別の世界である</h1>
+<h2>11-1　為替市場には「取引所」がない</h2>
+<p>株式は東京証券取引所のような取引所で売買されるが、<strong>為替のスポット取引の大部分は取引所を通らない、相対（あいたい）取引（OTC）</strong>である。世界中の銀行・ディーラー・取引システムが網の目のようにつながり、それぞれが価格を出している。</p>
+<p><strong>このため、為替には「唯一の公式な価格」が存在しない。</strong> ある瞬間のドル円の価格は、どの銀行、どの取引システム、どのFX業者に聞くかによって、わずかに異なる。本研究でユーロ円のNY終値（177.58）と、ECB参照レートからの計算値（177.82）がずれたのも（第7章）、この性質の表れである。</p>
+<h2>11-2　市場の階層</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>階層</th>
+<th>参加者</th>
+<th>取引の場</th>
+<th>特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>第1層：大手銀行間（インターディーラー）</strong></td>
+<td>世界の大手銀行（報告ディーラー）</td>
+<td>電子仲介システム（EBS、LSEGのマッチングなど）、ボイス・ブローカー、直接取引</td>
+<td>最も狭いスプレッド、大口</td>
+</tr>
+<tr>
+<td><strong>第2層：プライムブローカー経由</strong></td>
+<td>ヘッジファンド、自己勘定取引業者（PTF）、中小銀行</td>
+<td>大手銀行の信用を借りて、銀行間市場に近い条件で取引</td>
+<td>1日2.16兆ドル（BIS 2025）</td>
+</tr>
+<tr>
+<td><strong>第3層：顧客取引</strong></td>
+<td>企業、機関投資家、中央銀行</td>
+<td>銀行の単独取引システム、マルチディーラー・プラットフォーム、電話</td>
+<td>銀行は注文の80%超を内部化</td>
+</tr>
+<tr>
+<td><strong>第4層：個人向けFX</strong></td>
+<td>個人投資家</td>
+<td><strong>FX業者の取引システム</strong>（顧客と業者の相対取引）</td>
+<td>業者が価格を提示。顧客の注文は業者の中で相殺され、偏りだけが銀行にカバーされる</td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：一般的な市場構造の整理【既知】、数値はBIS【一次（補助確認）】。</p>
+<h2>11-3　日本の個人向けFXの仕組み</h2>
+<p>日本の個人向けFX（店頭FX）の多くは、<strong>顧客とFX業者の相対取引</strong>である。</p>
+<ol>
+<li>業者は、複数の銀行（カバー先）から価格を受け取り、それをもとに顧客に価格を提示する</li>
+<li>顧客が注文すると、業者が取引の相手になる</li>
+<li>業者は、顧客全体の買いと売りを社内で相殺し、残った偏り（ネット・ポジション）を銀行との取引で「カバー」する</li>
+<li>業者の利益は、主に<strong>スプレッド</strong>（買値と売値の差）と、<strong>スワップポイントの差</strong>（銀行から受け取る金利差と、顧客に渡す金利差の差）から生まれる</li>
+</ol>
+<p><strong>取引所型FX</strong>もある。東京金融取引所の「くりっく365」は、取引所に上場されたFX取引である。ただし、2025年の取引数量は19,843,027枚で前年比▲23.6%と縮小しており、取引所のFXクリアリング取引は2025年9月30日に上場廃止された【一次（補助確認）：東京金融取引所】。<strong>日本の個人FXの大部分は店頭（相対）取引である。</strong></p>
+<h3>11-3-1　相対取引であることの意味</h3>
+<p>相対取引では、<strong>FX業者が顧客の取引の相手方になる</strong>。このため、利益相反の可能性が構造的に存在する。顧客が損をすれば、業者がカバーしていない部分については業者が得をする。</p>
+<p>これに対する日本の規制上の手当てとして、以下が知られている【既知・一次資料での再照合は今回できていない】。
+- <strong>顧客資産の信託保全（区分管理）の義務化</strong>：業者が破綻しても、顧客の証拠金は信託銀行で保全される
+- <strong>ロスカット・ルールの整備・遵守の義務化</strong>
+- <strong>レバレッジ規制</strong>（個人は25倍まで）</p>
+<h3>11-3-2　「ラストルック」</h3>
+<p>銀行がFX業者や顧客に価格を提示したあと、注文を受けた瞬間に、<strong>その価格で取引を受けるかどうかを最終確認する（拒否できる）</strong>慣行を「ラストルック」という。価格の提示から注文到達までのわずかな時間に市場が動いたとき、提示側が不利な取引を避けるための仕組みである。</p>
+<p>2017年5月に公表された、世界の為替市場の行動規範「<strong>FX Global Code</strong>」は、ラストルックについて原則17で透明性を求めている【既知・未再照合】。<strong>個人FXで「約定拒否」や「スリッページ」が起きる背景には、このような上流の仕組みがある。</strong></p>
+<h2>11-4　「仲値」と「フィキシング」——決まった時刻に決まる価格</h2>
+<h3>東京の仲値（9時55分）</h3>
+<p>日本の銀行は、毎営業日の<strong>午前9時55分</strong>ごろの市場レートをもとに、その日の顧客向けの基準レート（仲値、TTM）を決める。輸出入企業の多くは、この仲値で取引する。
+- <strong>五十日（ごとうび）</strong>：5と10のつく日（5日、10日、15日、20日、25日、月末）は、企業の決済が集中し、仲値に向けて<strong>ドル買い（輸入企業の支払い）が多くなりやすい</strong>と言われる【市場の慣行として広く言われる。統計的な検証は本研究では確認できていない】</p>
+<h3>ロンドン・フィキシング（ロンドン時間16時）</h3>
+<p>世界の運用会社は、ロンドン時間午後4時の「WM/ロイター」（現在の名称はWM/Refinitiv、LSEGグループ）の参照レートを、資産評価の基準として使う。<strong>月末には、運用会社のリバランス（資産配分の調整）による注文がこの時刻に集中する。</strong></p>
+<h3>ベンチマーク不正事件（2013〜2015年）</h3>
+<p>2013年以降、<strong>大手銀行のトレーダーが、チャットで情報を交換し、フィキシングの価格を操作していた</strong>ことが発覚した。
+- 米国CFTCは2014年11月に5行に計14億ドル超、英国FCAは5行に計11億ポンド
+- 米国司法省は2015年5月20日、4行が刑事罰金計25億ドル超で有罪を認めたと発表
+- 世界の制裁金の合計は、数え方によって<strong>約90億ドル〜100億ドル超</strong></p>
+<p>出典：【一次（補助確認）／二次：Fideres 2015、Orrick 2015】</p>
+<p><strong>この事件の教訓</strong>：最も規模の大きい、最も「効率的」と言われる市場でも、<strong>特定の時刻に注文が集中する仕組みがあれば、それを悪用する誘因が生まれる</strong>。FX Global Code は、この事件の反省から作られた。</p>
+<h2>11-5　オプションの「カット」</h2>
+<p>通貨オプションには、権利行使の判定時刻（カット）がある。主なものは、<strong>ニューヨーク・カット（NY時間午前10時＝日本時間23時、夏時間は22時）</strong>と<strong>東京カット（日本時間15時）</strong>である【既知】。大きなオプションの権利行使価格（ストライク）の近くでは、カットの時刻に向けて、オプションの売り手・買い手のヘッジ取引で価格が引き寄せられたり、跳ね返されたりすることがあると言われる【市場で広く言われる。実証は本研究で確認できず】。</p>
+<hr />
+<h1>第12章　時間帯と流動性——24時間市場の「薄い時間」</h1>
+<h2>12-1　1日の流れ（日本時間）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>日本時間（冬時間／夏時間）</th>
+<th>市場</th>
+<th>特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月曜 4時〜7時ごろ</td>
+<td>ウェリントン・シドニーが開く</td>
+<td><strong>週明けで最も薄い時間帯</strong>。週末のニュースを反映した「窓開け（ギャップ）」が起きる</td>
+</tr>
+<tr>
+<td>8時50分</td>
+<td>日本の経済指標（GDP、日銀短観など）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>9時〜</td>
+<td><strong>東京市場</strong></td>
+<td>アジアの中心時間帯の一つ</td>
+</tr>
+<tr>
+<td>9時55分</td>
+<td><strong>東京仲値</strong></td>
+<td>輸出入企業の取引</td>
+</tr>
+<tr>
+<td>10時30分前後</td>
+<td>中国の経済指標、人民元の基準値の発表（9時15分ごろ）</td>
+<td>人民元・豪ドルが動きやすい</td>
+</tr>
+<tr>
+<td>12時前後</td>
+<td>日銀の金融政策決定会合の結果（会合の最終日）</td>
+<td><strong>円が大きく動く</strong></td>
+</tr>
+<tr>
+<td>15時</td>
+<td>東京カット</td>
+<td>—</td>
+</tr>
+<tr>
+<td>15時30分</td>
+<td>日銀総裁の記者会見（会合の最終日）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16時／17時</td>
+<td><strong>ロンドン市場が開く</strong></td>
+<td>1日で最も取引が多い時間帯の始まり</td>
+</tr>
+<tr>
+<td>21時30分／22時30分</td>
+<td><strong>米国の主要経済指標</strong>（雇用統計、CPIなど）</td>
+<td><strong>最も大きく動きやすい</strong></td>
+</tr>
+<tr>
+<td>22時30分／23時30分</td>
+<td>ニューヨーク株式市場が開く</td>
+<td>—</td>
+</tr>
+<tr>
+<td>23時／22時</td>
+<td>NYカット</td>
+<td>—</td>
+</tr>
+<tr>
+<td>翌0時／翌1時</td>
+<td><strong>ロンドン・フィキシング（ロンドン時間16時）</strong></td>
+<td>月末は特に注文が集中</td>
+</tr>
+<tr>
+<td>翌3時／4時</td>
+<td><strong>FOMCの結果</strong>（会合の最終日、米東部時間14時）</td>
+<td>ドルが大きく動く</td>
+</tr>
+<tr>
+<td>翌7時／6時</td>
+<td><strong>ニューヨーク市場の終了（NY時間17時）</strong></td>
+<td><strong>日付の切り替え（ロールオーバー）。スワップポイントが計上される時刻</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>区分：一般的な時間帯【既知】。夏時間は米国・欧州の夏時間の期間（それぞれ開始・終了日が異なる）。</p>
+<h2>12-2　流動性の「穴」はどこにあるか</h2>
+<p><strong>流動性</strong>とは、大きな注文を出しても価格が大きく動かずに取引できる度合いである。流動性が低い（薄い）時間帯には、普段なら吸収される注文でも価格が大きく動く。</p>
+<p><strong>流動性が薄くなりやすい時間・時期</strong>【既知】
+- 週明けのオセアニア時間（月曜早朝）
+- ニューヨーク市場の終了直後（日本時間早朝）
+- 日本の祝日の東京時間
+- <strong>年末年始</strong>（12月24日〜1月3日ごろ）
+- 米国の祝日（感謝祭など）</p>
+<h3>12-2-1　本研究で気づいた事実——介入は「休日」に行われる</h3>
+<p>日本の円買い介入の日付を、日本の祝日と照らし合わせると、興味深い事実が見える【日付：一次確認／祝日との対応：分析】。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>介入日</th>
+<th>曜日・日本の祝日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024年4月29日</td>
+<td>月曜・<strong>昭和の日</strong>（祝日）</td>
+</tr>
+<tr>
+<td>2024年5月1日</td>
+<td>水曜（ゴールデンウィークの谷間）</td>
+</tr>
+<tr>
+<td>2026年4月30日</td>
+<td>木曜（ゴールデンウィークの谷間）</td>
+</tr>
+<tr>
+<td><strong>2026年5月4日</strong></td>
+<td>月曜・<strong>みどりの日</strong>（祝日）</td>
+</tr>
+<tr>
+<td><strong>2026年5月6日</strong></td>
+<td>水曜・<strong>振替休日</strong>（祝日）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>流動性が薄い日に介入すれば、同じ金額でも価格への影響が大きくなる</strong>と考えられる【仮説】。財務省がそれを意図したかどうかは公表されていないが、<strong>ゴールデンウィーク中の介入が繰り返されている</strong>ことは事実である。</p>
+<p><strong>FXトレーダーへの示唆</strong>：日本の祝日・連休中の東京時間は、普段より薄い。介入、フラッシュクラッシュ（第14章）、急なギャップは、<strong>薄い時間に起きやすい</strong>。</p>
+<h2>12-3　週末のギャップ</h2>
+<p>為替市場は、金曜日のニューヨーク市場の終了（日本時間土曜早朝）から、月曜日のウェリントン市場の開始（日本時間月曜早朝）まで、<strong>事実上休場する</strong>。この間に重大なニュース（戦争、政変、中央銀行の緊急声明、選挙結果など）が起きると、<strong>月曜の開始価格が金曜の終値から大きく離れて始まる（ギャップ、窓開け）</strong>。</p>
+<p>ギャップが起きると、<strong>ストップ（損切り）注文は、指定した価格ではなく、開始後の最初の価格で執行される</strong>。損失が想定を大きく超えることがある。</p>
+<p><strong>2026年の環境</strong>：米国とイランの戦争が続く2026年は、週末の攻撃や停戦のニュースが、月曜のギャップを生む環境にある【分析】。本稿の価格も、2026年10月16日（金）の終値であり、<strong>週末に起きたことは反映していない</strong>。</p>
+<hr />
+<h1>第13章　取引コストとリスク——数字で理解する</h1>
+<h2>13-1　レバレッジと証拠金</h2>
+<p>日本の個人向けFXの証拠金規制（金融先物取引業協会による整理）【一次（補助確認）】
+- 2010年8月1日：証拠金率2%（<strong>50倍</strong>）の規制開始（経過措置）
+- 2011年8月以降：証拠金率4%（<strong>25倍</strong>）
+- 法人向け：2017年2月27日から、通貨ペアごとの「為替リスク想定比率」（ヒストリカル・ボラティリティから算出、毎週更新）に基づく証拠金規制。<strong>2015年1月のスイス・フラン急変がきっかけ</strong></p>
+<h3>計算例：1万ドルのドル円を買う場合</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>計算</th>
+<th>金額</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>取引金額</td>
+<td>10,000ドル × 158円</td>
+<td>158万円</td>
+</tr>
+<tr>
+<td>必要証拠金（4%）</td>
+<td>158万円 × 4%</td>
+<td><strong>6万3,200円</strong></td>
+</tr>
+<tr>
+<td>1円の値動きの損益</td>
+<td>10,000ドル × 1円</td>
+<td><strong>1万円</strong></td>
+</tr>
+<tr>
+<td>証拠金に対する1円の値動きの比率</td>
+<td>1万円 ÷ 6万3,200円</td>
+<td><strong>約16%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>【計算】</p>
+<p><strong>読み方</strong>：必要証拠金ぎりぎりで取引すると、<strong>ドル円がわずか6.3円（約4%）逆に動いただけで、証拠金がすべて失われる</strong>計算になる。実際にはその前にロスカットされる。</p>
+<p><strong>2026年の現実</strong>：ドル円は、2026年7月29日の高値163.91円から、9月8日に152円台まで、<strong>約1か月余りで約12円</strong>動いた【報道】。証拠金ぎりぎりの取引なら、この動きの3分の1で証拠金を失う。</p>
+<h2>13-2　スプレッド</h2>
+<p>スプレッドは、買値と売値の差であり、<strong>取引のたびに必ず支払うコスト</strong>である。</p>
+<ul>
+<li>主要通貨ペア（ドル円など）は、日本の個人FX業者の提示で0.2〜0.3銭程度の「原則固定」とされることが多い【既知・業者により異なる・要確認】</li>
+<li>ただし、<strong>「原則固定」は「常に固定」ではない</strong>。経済指標の発表時、流動性の薄い時間帯、急変時には、スプレッドは大きく広がる</li>
+<li>2019年1月3日の円の急変では、<strong>ドル円の銀行間のスプレッドが通常の約2pipsから100〜300pipsに広がった</strong>（豪州準備銀行の分析）【一次（補助確認）：RBA SMP 2019年2月 Box B】</li>
+</ul>
+<p><strong>計算例</strong>：0.2銭のスプレッドで1万通貨を1往復取引すると、コストは20円。1日10回往復すれば200円、年250日で5万円になる【計算】。<strong>短期売買を繰り返すほど、スプレッドのコストは積み上がる。</strong></p>
+<h2>13-3　スリッページ</h2>
+<p>注文を出した価格と、実際に約定した価格のずれ。値動きの速い局面、成行注文、ストップ注文で起きやすい。<strong>上流の銀行のラストルック（第11章）、FX業者の処理速度、ネットワークの遅延</strong>が関係する。</p>
+<h2>13-4　スワップポイント</h2>
+<p>スワップポイントは、<strong>2通貨の金利差を、ポジションを翌日に持ち越すたびに受け取る（または支払う）</strong>ものである。</p>
+<h3>計算例：ドル円を1万ドル買って持ち続ける場合（理論値）</h3>
+<ul>
+<li>金利差：約2.6%（米国3.875% − 日本1.25%）【計算】</li>
+<li>1日あたり：158万円 × 2.6% ÷ 365日 ≒ <strong>約113円</strong>【計算】</li>
+</ul>
+<p><strong>実際のスワップポイントは、これより小さいことが多い</strong>。業者が自社の取り分を差し引くこと、実際に使われるのは政策金利ではなく短期市場金利であることなどによる【既知】。また、<strong>スワップポイントは毎日変わる</strong>。</p>
+<h3>スワップポイントの落とし穴</h3>
+<ol>
+<li><strong>売りポジションでは、スワップポイントを支払う</strong>（ドル円の売りは、毎日約113円を払う計算）</li>
+<li><strong>金利差が縮むと、スワップポイントは減る</strong>（2024〜2026年の日銀の利上げで、円売りのスワップポイントは縮小した）</li>
+<li><strong>為替差損がスワップポイントの累積を簡単に上回る</strong>。1日113円のスワップポイントを1年間受け取ると約4万円。ドル円が4円下がれば、それが消える【計算】</li>
+<li><strong>水曜日の3日分</strong>：多くの業者では、週末の分のスワップポイントが特定の曜日（多くは水曜日から木曜日への持ち越し時）にまとめて付与される。これは決済日（受渡日）の計算による【既知】</li>
+</ol>
+<h2>13-5　ロスカット</h2>
+<p>証拠金に対する損失の割合が一定水準（業者が定める、たとえば証拠金維持率50%や100%）を下回ると、業者が<strong>自動的にポジションを決済する</strong>仕組みである。</p>
+<p><strong>ロスカットは、損失を「確定させる」仕組みであって、損失を「限定する」保証ではない。</strong> 価格が急変（ギャップ、フラッシュクラッシュ）すると、ロスカットの水準を飛び越えて決済され、<strong>証拠金以上の損失（追加証拠金、いわゆる「追証」）</strong>が発生することがある。</p>
+<h3>2015年1月15日——スイス・フランの「約束の放棄」</h3>
+<ul>
+<li>スイス国立銀行は2011年9月から、<strong>1ユーロ＝1.20フランの下限</strong>を設けていた（フラン高を防ぐため、無制限に介入する約束）</li>
+<li>2015年1月15日、予告なしにこの下限を撤廃した</li>
+<li>ユーロ/フランは日中に<strong>約30%急落</strong>した【既知・要確認】</li>
+<li><strong>世界のFX業者で巨額の顧客損失が発生した</strong>。英国のAlpari UKが破綻し、米国のFXCMは約2.25億ドルの損失で救済融資を受けたとされる【要確認】</li>
+<li>日本では、この事件が<strong>法人向けの証拠金規制（2017年）のきっかけになった</strong>【一次（補助確認）：金融先物取引業協会】</li>
+</ul>
+<p><strong>この事件の教訓</strong>：「約束」に支えられた価格は、平時は最も安全に見えるが、<strong>約束が放棄された瞬間に、最も危険な価格になる</strong>。ペッグや下限の近くでは、値動きが小さいからといってリスクが小さいわけではない。</p>
+<h2>13-6　相関の変化</h2>
+<p>複数の通貨ペアを組み合わせて「分散」したつもりでも、<strong>危機の局面では、平時の相関が崩れる</strong>。
+- 平時：豪ドル円とメキシコ・ペソ円は、別々の理由で動く
+- 危機：どちらも「円高（キャリーの巻き戻し）」という同じ理由で一斉に下がる</p>
+<p><strong>分散したはずのポジションが、一つの大きなポジションに変わる。</strong> 2024年8月5日には、ほぼすべての円クロスが同時に急落した【既知】。</p>
+<h2>13-7　口座破綻リスク（業者のリスク）</h2>
+<p>FX業者そのものが破綻するリスクもある。日本では信託保全が義務化されているため、<strong>証拠金そのものは保全される</strong>仕組みがあるが、
+- 保全の対象は「証拠金」であり、<strong>未決済のポジションの評価益がどこまで保全されるかは、業者の制度による</strong>
+- 業者の破綻時には、ポジションが強制的に決済され、<strong>取引ができない期間</strong>が生じうる
+- <strong>海外の無登録業者</strong>は、日本の規制の対象外である</p>
+<p>区分：制度の一般的な説明【既知・個別の業者の制度は要確認】。</p>
+<h2>13-8　税金</h2>
+<p>日本の個人の店頭FXの利益は、<strong>雑所得として申告分離課税（税率20.315%）</strong>の対象とされ、<strong>損失は翌年以降3年間繰り越せる</strong>（確定申告が必要）とされている【既知・今回一次資料で再照合していない】。スワップポイントも課税対象になる。<strong>海外の業者を使った場合は、扱いが異なる</strong>（総合課税になる場合がある）【要確認】。</p>
+<hr />
+<h1>第14章　取引手法——仕組み・失敗する局面・実証研究・バックテストの落とし穴</h1>
+<h2>14-1　出発点：為替は予測できるのか</h2>
+<h3>Meese &amp; Rogoff（1983）——「ランダムウォークに勝てない」</h3>
+<p>1983年、Richard Meese と Kenneth Rogoff は、1970年代の代表的な為替モデル（金融政策・物価・金利などのファンダメンタルズに基づくモデル）を使って、1〜12か月先の為替レートを予測した。<strong>その予測精度は、「明日の為替は今日と同じ」と予測するだけのランダムウォークに勝てなかった</strong>（<em>Journal of International Economics</em> 14）【既知・未再照合】。</p>
+<h3>Rossi（2013）——40年後の総括</h3>
+<p>Barbara Rossi の展望論文（<em>Journal of Economic Literature</em> 51(4)）は、40年の研究を総括した【一次（補助確認）】。
+- <strong>最も手強い比較対象は、依然として「ドリフトなしのランダムウォーク」</strong>
+- 予測力が見つかるかどうかは、<strong>予測変数、期間、標本、モデル、評価方法によって変わる</strong>
+- 比較的よく効くのは、テイラー・ルールの変数や対外純資産を使い、パラメータの少ない線形モデルの場合</p>
+<p><strong>本研究の見方</strong>：「為替は予測できない」と「為替は一部の条件で予測できる」は、どちらも学術的には支持されている。<strong>問題は、どの条件で予測できるかが、事後的にしか分からない</strong>ことである【分析】。</p>
+<h2>14-2　手法ごとの整理</h2>
+<h3>(1) ファンダメンタルズ分析</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>金利差、物価（購買力平価）、国際収支、成長率、財政、政治から、為替の「あるべき水準」や方向を判断する</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>長期的には、為替は物価差や生産性に引き寄せられる傾向がある</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td>短中期では、ファンダメンタルズから大きく離れたまま何年も続くことがある。<strong>「正しいが早すぎる」は、レバレッジ取引では「間違い」と同じ結果になる</strong></td>
+</tr>
+<tr>
+<td>実証研究</td>
+<td><strong>購買力平価からの乖離が半分に縮まるまでの期間（半減期）は3〜5年</strong>（Rogoff 1996「The Purchasing Power Parity Puzzle」<em>JEL</em> 34, p.656）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td>経済指標は<strong>速報値が後で改定される</strong>。過去の分析で確定値を使うと、当時は知り得なかった情報を使ったことになる（先読みバイアス）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(2) 金利差・キャリートレード</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>低金利通貨を売り、高金利通貨を買って、金利差を受け取る（第8章）</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>フォワード・プレミアム・パズル：高金利通貨は、理論どおりには下落しない傾向（Fama 1984）</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td><strong>リスク回避・ボラティリティの急上昇・金利差の方向転換</strong>（1998年10月、2008年、2024年8月）</td>
+</tr>
+<tr>
+<td>実証研究</td>
+<td>平均的な超過リターンは存在するが、<strong>負の歪み（急落リスク）</strong>を伴う（Brunnermeier, Nagel &amp; Pedersen 2008）。<strong>超過リターンの横断的な差の90%超は、世界の為替ボラティリティのリスクで説明できる</strong>（Menkhoff et al. 2012 <em>JF</em>）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td><strong>ペソ問題</strong>：まれな大暴落が、検証期間にたまたま含まれていないと、戦略は実際より優秀に見える（Burnside et al. 2011 <em>RFS</em>）【既知・未再照合】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(3) トレンドフォロー・モメンタム</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>上がっている通貨を買い、下がっている通貨を売る</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>情報の伝わり方の遅れ、投資家の行動のくせ、中央銀行の政策の持続性</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td><strong>トレンドの反転点</strong>、方向感のないレンジ相場、急な政策転換</td>
+</tr>
+<tr>
+<td>実証研究</td>
+<td>勝ち通貨と負け通貨の超過リターンの差は<strong>最大で年10%</strong>。伝統的なリスク要因では説明できないが、<strong>取引コストで一部が説明され、簡単には利用できない</strong>（Menkhoff et al. 2012「Currency momentum strategies」<em>JFE</em> 106）。先物58銘柄で、<strong>リターンは1〜12か月持続し、それより長い期間では部分的に反転</strong>（Moskowitz, Ooi &amp; Pedersen 2012 <em>JFE</em>）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td>取引コスト（特に新興国通貨）を低く見積もると、利益が過大になる</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(4) テクニカル分析</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>過去の価格の動き（移動平均、高値・安値、チャートのパターン）から将来の動きを判断する</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>多くの参加者が同じ水準を見ることによる自己実現、行動のくせ</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td>多くの人が同じルールを使うと、利益は消える。急変時には「支持線」は機能しない</td>
+</tr>
+<tr>
+<td>実証研究（<strong>見解が分かれている</strong>）</td>
+<td><strong>否定的な見方</strong>：フィルター・ルールと移動平均ルールの利益は、1970〜80年代には本物だったが、<strong>1990年代初めまでに消滅した</strong>（Neely, Weller &amp; Ulrich 2009 <em>JFQA</em>）。95件の「現代的」研究のうち、肯定56件・否定20件・混合19件だが、<strong>利益が確認されるのは主に1990年代初めまで</strong>（Park &amp; Irwin 2007）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>肯定的な見方</strong>：21,000超のルールを30通貨・45年の日次データで検証し、<strong>データスヌーピング（多重検定）を補正した後でも、相当な予測可能性と超過利益が残り、標本外でも確認された</strong>（Hsu, Taylor &amp; Wang 2016 <em>JIE</em> 102）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td><strong>データスヌーピング</strong>：何千ものルールを試せば、偶然うまくいくルールが必ず見つかる</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>見解の対立を解消しない理由</strong>：Neely らと Hsu らは、検証の対象（ルールの種類、通貨、期間）と統計の方法が違う。どちらが正しいかは、本研究の範囲では判断できない。<strong>「テクニカル分析は無効」とも「有効」とも断定できない</strong>ことを、そのまま記す。</p>
+<h3>(5) ポジション分析</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>投機筋（CFTC）や個人投資家（FX業者の公表データ）のポジションの偏りから、巻き戻しの方向を予想する</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>ポジションが一方に偏ると、新たな買い手（売り手）がいなくなり、反転しやすくなる</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td>偏りは、長期間続くことがある。「偏っているから反転する」は、タイミングを教えない</td>
+</tr>
+<tr>
+<td>実証研究</td>
+<td><strong>オーダーフロー（売買の注文の流れ）が為替の変動をよく説明する</strong>：日次のオーダーフローで、マルク/ドルの変動の64%、円/ドルの45%を説明（Evans &amp; Lyons 2002 <em>JPE</em>、1996年5〜8月のデータ）【一次（補助確認）】。ただし、これは<strong>同時点の説明</strong>であり、将来の予測ではない</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td>CFTCのデータは先物市場だけで、世界の為替取引のごく一部。公表まで数日のずれがある</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(6) 逆張り</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>大きく動いたあとの反転を狙う</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>行き過ぎの修正、レンジ相場</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td><strong>トレンドが続く局面</strong>。損失を確定せずにナンピン（買い下がり）すると、損失が雪だるま式に膨らむ</td>
+</tr>
+<tr>
+<td>実証研究</td>
+<td>長期では購買力平価への回帰（数年単位）がある。短期の逆張りの有効性は、通貨・期間で異なる</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td><strong>日本の個人投資家は逆張りの傾向が強い</strong>と指摘されてきた（第8章）。逆張りの強制ロスカットが、フラッシュクラッシュの燃料になる（後述）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(7) イベント取引</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>経済指標（米雇用統計、CPI）や中央銀行の会合の結果に合わせて取引する</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>結果が市場予想から外れたとき、価格が一方向に大きく動く</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td>発表直後は<strong>スプレッドが広がり、スリッページが大きい</strong>。結果の解釈が数分で逆転することがある。<strong>速報値はあとで改定される</strong></td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td>高速取引の業者は、人間よりはるかに速く反応する。個人は構造的に遅い</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(8) 裁定取引</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td><strong>三角裁定</strong>（例：ドル円・ユーロドル・ユーロ円の3つの価格の矛盾）、<strong>カバー付き金利平価の裁定</strong>（スポット・フォワード・2通貨の金利の矛盾）</td>
+</tr>
+<tr>
+<td>利益が期待される理由</td>
+<td>理論的には、矛盾があれば無リスクで利益が出る</td>
+</tr>
+<tr>
+<td>現実</td>
+<td>三角裁定の機会は、銀行間市場ではミリ秒単位で消える。<strong>個人がFX業者の価格で三角裁定を行うことは、実質的に不可能</strong>（業者の価格は相互に整合するように作られている）【既知】</td>
+</tr>
+<tr>
+<td>学術的な注目点</td>
+<td><strong>2008年以降、カバー付き金利平価（CIP）からの乖離が、主要通貨で持続している</strong>ことが指摘されている（Du, Tepper &amp; Verdelhan 2018 <em>Journal of Finance</em>）【既知・未再照合】。銀行の自己資本規制で、裁定に使える銀行のバランスシートが制約されたことが一因とされる。<strong>「無リスクの裁定」が、規制のコストのせいで放置されている</strong>ことは、為替市場の価格が純粋な市場原理だけで決まっていない証拠でもある</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(9) アルゴリズム取引</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕組み</td>
+<td>プログラムが自動で注文を出す。執行アルゴ（大口注文を細かく分けて目立たずに執行する）と、売買判断そのものを行うアルゴがある</td>
+</tr>
+<tr>
+<td>現状</td>
+<td><strong>スポットFXの電子執行比率は約75%</strong>（BNY、2026年4月のNY連銀外為委員会向け資料）【一次（補助確認）・二次】。BIS（2020年）は執行アルゴの利用拡大を記述しているが、比率の数値はない</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>アルゴ取引の特許出願に占めるAIの比率は、2017年の19%から、2020年以降は50%超（IMF 国際金融安定性報告 2024年10月 第3章）【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>失敗する局面</td>
+<td><strong>流動性供給のアルゴが一斉に停止すると、市場から買い手と売り手が消える</strong>（後述のフラッシュクラッシュ）</td>
+</tr>
+<tr>
+<td>落とし穴</td>
+<td>バックテストで最適化したアルゴは、市場の構造が変わると機能しなくなる</td>
+</tr>
+</tbody>
+</table></div>
+<h2>14-3　バックテストの落とし穴——なぜ「過去に儲かった」は信用できないのか</h2>
+<ol>
+<li><strong>過剰適合（オーバーフィッティング）</strong>：試す戦略の数が比較的少なくても、過去のデータで高い成績を示す戦略は簡単に見つかる。<strong>記憶効果のある市場では、過剰適合したバックテストは、標本外でマイナスの期待リターンになりうる</strong>（Bailey, Borwein, López de Prado &amp; Zhu 2014 <em>Notices of the AMS</em> 61(5)）【一次（補助確認）】</li>
+<li><strong>多重検定</strong>：たくさんの戦略を試したなら、統計的な有意性の基準を厳しくしなければならない。株式の研究では、<strong>新しい要因はt値3.0超をクリアすべき</strong>とされる（Harvey, Liu &amp; Zhu 2016 <em>RFS</em>）【一次（補助確認）】</li>
+<li><strong>生存バイアス</strong>：現在存在する通貨・業者・戦略だけで検証すると、消えたもの（ドイツ・マルク、破綻した業者、うまくいかなかった戦略）が除外され、成績が良く見える</li>
+<li><strong>先読みバイアス</strong>：経済指標の確定値を、発表当時に知っていたかのように使う</li>
+<li><strong>取引コストの過小評価</strong>：スプレッド、スリッページ、スワップポイントの変動、急変時のスプレッド拡大</li>
+<li><strong>ペソ問題</strong>：検証期間に大暴落が含まれていない</li>
+<li><strong>構造変化</strong>：1990年代以前に有効だったルールが、電子化・アルゴ化のあとも有効とは限らない（Neely et al. 2009）</li>
+<li><strong>レバレッジとロスカットの経路依存</strong>：最終的には利益になる戦略でも、<strong>途中の一時的な損失でロスカットされれば、その利益には到達できない</strong>。バックテストは、多くの場合この経路を無視する</li>
+</ol>
+<h2>14-4　個人FXトレーダーの成績——データは何を示しているか</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>資料</th>
+<th>内容</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>欧州証券市場監督機構（ESMA）</strong>、2018年3月</td>
+<td>各国当局の調査で、<strong>個人のCFD口座の74〜89%が損失</strong>、平均損失は口座あたり1,600〜29,000ユーロ。個人向けレバレッジを30倍（主要通貨）〜2倍（暗号資産）に制限</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>米国のFX業者の四半期開示</strong>（CFTC規則に基づく）</td>
+<td>OANDA US：利益が出た口座の比率は2025年第4四半期32.78%、2026年第1四半期31.74%、第2四半期34.04%、第3四半期34.33%。FOREX.com US：2026年第2四半期は利益32.56%、損失67.44%</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td><strong>日本</strong></td>
+<td><strong>利益口座の比率を示す公的な統計は見つからなかった</strong></td>
+<td>【未確認】</td>
+</tr>
+<tr>
+<td>Hayo &amp; Iwatsubo（2022）<em>Sustainability</em> 14(18)</td>
+<td>日本のFX取引者1,000人への調査（2017年の取引）で、<strong>平均利益は12万3,150円とプラス</strong>。高齢ほど、戦略がない人ほど成績が悪い。<strong>自己申告で、生存バイアスがありうる</strong></td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>Abbey &amp; Doukas（2015）</td>
+<td>2004〜09年の428口座で、取引コスト控除後も正の異常リターン</td>
+<td>【抄録のみ確認】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>見解の対立をそのまま残す</h3>
+<p><strong>規制当局と業者の開示は「3分の2以上が損をしている」ことを示し、一部の学術研究は「平均的にはプラス」という結果を示している。</strong> この違いは、
+- 対象（CFD全体か、FXだけか。口座単位か、人単位か）
+- 期間（四半期か、年間か）
+- 方法（業者の記録か、自己申告か）
+- 誰が含まれるか（すでにやめた人を含むか）</p>
+<p>によって生じていると考えられる【分析】。<strong>本研究は、どちらが正しいかを断定しない。</strong> ただし、<strong>日本では公的な統計が存在しないために、この問いに答えられない</strong>ことは、制度上の空白として指摘しておく。</p>
+<h2>14-5　フラッシュクラッシュ——市場が数十秒で消える</h2>
+<h3>2016年10月7日　英ポンドのフラッシュクラッシュ</h3>
+<ul>
+<li>アジア時間の早朝、ポンドは対ドルで<strong>数分のうちに約9%下落</strong>した</li>
+<li>BIS市場委員会の報告（2017年1月13日）は、<strong>アジア時間の薄い流動性、オプションのヘッジのための売り、ストップ注文、アルゴリズムの不適切な運用が重なった</strong>と分析し、<strong>単一の原因はない</strong>とした【一次（補助確認）】</li>
+</ul>
+<h3>2019年1月3日　円のフラッシュクラッシュ</h3>
+<ul>
+<li>日本の正月休み中の早朝（日本時間午前7時台）、<strong>円は対ドルで約30秒の間に約3%上昇</strong>し、<strong>豪ドル円は約7%下落</strong>した</li>
+<li>ドル円の銀行間のスプレッドは、通常の約2pipsから100〜300pipsに広がった</li>
+<li>豪州準備銀行の分析は、要因として、<strong>日本の個人投資家のキャリー取引の強制ロスカット、休日による流動性の薄さ、流動性を供給するアルゴリズムの停止</strong>を挙げた【一次（補助確認）：RBA SMP 2019年2月 Box B】</li>
+</ul>
+<h3>2つの事件の共通点（本研究の分析）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>共通点</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>時間</td>
+<td><strong>アジア時間の早朝</strong>（ニューヨークの終了後、東京の本格的な開始前）</td>
+</tr>
+<tr>
+<td>時期</td>
+<td>休日・休日明け（2019年は日本の正月休み）</td>
+</tr>
+<tr>
+<td>燃料</td>
+<td>ストップ注文・強制ロスカットの連鎖</td>
+</tr>
+<tr>
+<td>引き金</td>
+<td>小さなニュースや大口の注文</td>
+</tr>
+<tr>
+<td>増幅装置</td>
+<td>流動性供給のアルゴリズムの停止</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>日本のFXトレーダーにとっての意味</strong>：フラッシュクラッシュが起きやすい「アジア時間の早朝」は、<strong>日本人の多くが寝ている時間</strong>であり、<strong>日本の個人投資家のロスカット注文が燃料になりやすい時間</strong>である。日本の個人投資家は、フラッシュクラッシュの被害者であると同時に、その燃料の供給者にもなりうる【分析】。</p>
+<hr />
+<h1>第5部　歴史的な大変動と通貨危機</h1>
+<h1>第15章　通貨危機の解剖——前兆・当局・市場・個人・後から分かった原因</h1>
+<h2>15-1　この章の書き方と限界</h2>
+<p>指示書は、各危機について「発生前の兆候、当局の対応、市場の反応、個人投資家が受けた影響、後から判明した原因」を分けることを求めた。本研究では、この5つの欄で整理する。</p>
+<p><strong>重要な限界</strong>：検索回数の上限のため、本章の危機の多くは、<strong>一次資料で再照合できていない</strong>。数値には【要確認】を付けた。ただし、危機の<strong>構造</strong>（どの欄に何が入るか）は、国際金融史で広く共有されている理解に基づく。記事化の前には、各国中央銀行・IMFの事後評価報告での確認が必要である。</p>
+<h2>15-2　主要な危機の5欄整理</h2>
+<h3>(1) 1971年　ブレトンウッズ体制の崩壊</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>米国の財政赤字（ベトナム戦争、社会保障の拡大）、インフレ、金の流出。米国が保有する金より、海外が保有するドルの方が多くなった</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>1971年8月15日、ニクソン大統領が<strong>ドルと金の交換を停止</strong>。10%の輸入課徴金。12月のスミソニアン協定で固定相場を再調整（円は360→308円）</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>東京市場は8月16日以降も開いたまま円を360円で買い支え続け、<strong>ドル売りが殺到した</strong>と伝えられる【要確認】。1973年に主要国は変動相場制へ</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>当時の日本では外貨の個人取引は厳しく規制されており、直接の影響は輸出企業と国家（外貨準備の損失）に集中</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>「金とドルの交換」という約束と、米国の財政・金融政策の自由が両立しなかった（<strong>トリレンマ</strong>）。固定相場を維持するために必要な規律を、基軸通貨国が受け入れなかった</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(2) 1992年9月16日　英ポンドのERM離脱（ブラックウェンズデー）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>英国は1990年に高すぎる水準でERM（欧州為替相場メカニズム）に参加したとされる。東西ドイツ統一後のドイツの高金利が、英国に景気に合わない高金利を強いた</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>イングランド銀行は大規模なポンド買い介入を行い、政策金利を1日のうちに10%から12%へ引き上げ、さらに15%への引き上げを発表した（実施されなかった）【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>同日夜、英国はERMを離脱。ポンドは急落</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>英国の住宅ローン（変動金利）の借り手が高金利の打撃を受けた。一方、ERM離脱後の利下げで景気は回復に向かった</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>景気の状態が違う国が、同じ金融政策を強いられた</strong>。ヘッジファンド（ソロス・ファンドなど）の売り浴びせが引き金になったが、根本は約束の水準と実態のずれ。1930年の日本の金解禁と同じ構造（第3章）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(3) 1994〜95年　メキシコ・ペソ危機（テキーラ危機）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>経常赤字の拡大、短期のドル連動国債（テソボノス）への依存、政治的混乱（大統領候補の暗殺など）、米国の利上げ（1994年）</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>1994年12月20日に変動幅を拡大、22日に変動相場へ移行【要確認】。米国とIMFなどの大規模な支援</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>ペソは数か月で対ドルの価値が半分程度に【要確認】。中南米全体に波及（「テキーラ効果」）</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>銀行危機、ドル建て債務を抱えた企業・個人の破綻</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>短期の外貨建て債務</strong>と、<strong>外貨準備の不足</strong>の組み合わせ。米国の利上げが資金の流れを逆転させた</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(4) 1997〜98年　アジア通貨危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>タイ・インドネシア・韓国などで、<strong>実質的なドル・ペッグのもとで、海外から短期のドル資金を借りて、長期の国内投資（不動産など）に回していた</strong>。経常赤字。1995年以降のドル高（ペッグ通貨も一緒に上昇し、輸出競争力が低下）</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>タイは1997年7月2日にバーツを変動相場へ移行。IMFの支援（緊縮・高金利・構造改革の条件付き）。<strong>マレーシアは1998年9月に資本規制と1ドル＝3.80リンギの固定を導入</strong>（2005年7月21日に解除）【一次（補助確認）：百科事典経由】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>バーツ、ルピア、ウォン、リンギが大幅に下落。<strong>インドネシア・ルピアは数か月で対ドルの価値が数分の一に</strong>【要確認】。株価暴落、銀行の連鎖破綻</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>インドネシアでは失業と物価の急騰で社会不安が広がり、政権崩壊（1998年5月）に至った。韓国では「IMF危機」として記憶され、国民が金の指輪などを供出する「金集め運動」が起きた【既知】</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>通貨の不一致</strong>（外貨で借りて自国通貨で稼ぐ）と<strong>期間の不一致</strong>（短期で借りて長期で貸す）。IMFの処方（高金利・緊縮）が危機を深めたという批判も残っている（<strong>見解の対立</strong>）。<strong>マレーシアの資本規制は、当時は批判されたが、後に一定の効果があったとする評価もある</strong>（同じく見解の対立）</td>
+</tr>
+<tr>
+<td>日本との関係</td>
+<td>日本の銀行はアジアに多額の貸し出しをしており、日本の金融危機（1997〜98年）と重なった。日本は「アジア通貨基金」構想を提案したが、米国などの反対で実現しなかった【既知】。のちのチェンマイ・イニシアティブ（通貨スワップ網）につながる</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(5) 1998年8月　ロシア危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>財政赤字（GDP比約10%）、固定相場、資源価格の下落、アジア危機の波及、外貨準備の喪失（約270億ドル）【一次（補助確認）：百科事典経由】</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>6月に短期国債の金利を150%に引き上げ、7月13日に226億ドルの国際支援【同上】。8月17日に<strong>ルーブルの切り下げ、国内債務の不履行、対外債務の90日間の支払停止</strong></td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>ルーブルは8月14日の約6.29から9月21日には約21へ【同上】</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>預金の目減り、銀行の破綻</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>財政の持続性を欠いた固定相場。<strong>この危機がヘッジファンドLTCMの破綻（1998年9月）につながり、10月の円キャリーの巻き戻し（円の急騰）を引き起こした</strong>——<strong>ロシアの国債と日本円が、ヘッジファンドのレバレッジを通じてつながっていた</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>(6) 2001〜02年　アルゼンチンの兌換法の終わり</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>1991年から1ペソ＝1ドルのカレンシーボード（兌換法）。1999年のブラジルの通貨切り下げで競争力を失い、景気後退と財政悪化</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>2001年12月に預金の引き出し制限（「コラリート」）、債務不履行。2002年1月に兌換法を廃止【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>ペソは1ドル＝1ペソから、数か月で約4ペソ近くまで下落【要確認】</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td><strong>ドル建ての預金が強制的にペソに換えられた（「ペソ化」）</strong>。中間層の貯蓄が大きく失われた</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>「1ペソ＝1ドル」の約束は、インフレを止めることには成功したが、<strong>ショックへの対応手段（為替の調整）を奪った</strong>。その後のアルゼンチンは、何度も通貨危機を繰り返し、2023年以降のミレイ政権の改革につながる（第9章）</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(7) 2008年　アイスランド・クローナ——「注目されなかった」大危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>人口約30万人の国の3大銀行が、国内総生産の約10倍規模にまで資産を膨らませていた【要確認】。高金利のクローナは、<strong>日本の個人投資家を含む世界のキャリートレードの対象</strong>でもあった</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>2008年10月7〜9日に3大銀行が破綻。11月28日に<strong>資本規制</strong>を導入（2017年3月に解除）。IMFの支援【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>クローナは暴落し、一時は国際的な取引がほぼ止まった</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>英国・オランダの預金者が、アイスランドの銀行のネット預金（Icesave）で被害を受け、国家間の紛争になった。国内では外貨建てローンの負担が急増した</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>小国の通貨で、巨大な国際銀行業を営むことの危険</strong>。中央銀行が「最後の貸し手」になれる規模を超えていた</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(8) 2015年1月15日　スイス・フランの下限撤廃</h3>
+<p>第13章 13-5 を参照。<strong>「約束」が放棄された瞬間に、最も安定していた価格が最も危険な価格になった</strong>例。</p>
+<h3>(9) 2015年8月　カザフスタン・テンゲの変動相場移行——もうひとつの「注目されなかった」危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>2014年後半からの原油価格の急落（原油は最大の輸出品）。隣国ロシアのルーブルが大きく下落し、テンゲは割高になった。中央銀行は外貨準備を使ってテンゲを支えた</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>2015年8月20日、<strong>変動相場制へ移行</strong></td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>テンゲは1日で約2割以上下落したとされる（約188→約255）【要確認】</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>ドル建てのローンを持つ人の負担が急増。国民の多くがドル預金に逃げた（ドル化）</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>資源国が、資源価格の下落と隣国の通貨下落の両方に、固定相場で耐えようとした</strong>こと。2026年10月時点のテンゲの政策金利は16.25%【報道】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(10) 2015年8月11日　人民元の基準値切り下げ</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>中国の景気減速、株価の急落（2015年6月〜）、資本流出</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>人民銀行は基準値の決め方を変え、<strong>1日で約1.9%切り下げた</strong>（6.1162→6.2298）【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>世界の株式市場・新興国通貨が動揺。中国からの資本流出が加速し、中国の外貨準備は大きく減少した</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>「市場化」の改革が、市場には「切り下げ競争の始まり」と受け取られた。<strong>当局の意図と市場の受け取り方のずれ</strong>（コミュニケーションの失敗）として語られることが多い</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(11) 2016年　英国のEU離脱国民投票と10月のフラッシュクラッシュ</h3>
+<p>第14章 14-5 を参照。国民投票の6月24日に、ポンドは対ドルで約1.50から約1.32へ急落した【要確認】。</p>
+<h3>(12) 2018年8月　トルコ・リラ危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>高インフレ、経常赤字、外貨建ての企業債務、中央銀行の独立性への懸念、米国との外交対立</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>9月13日に政策金利を24%へ大幅引き上げ【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>8月10日に1日で最大約18%下落したとされる【要確認】</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td><strong>日本の個人投資家には、トルコ・リラ円の高金利を目当てに保有していた人が多く、大きな損失と強制ロスカットが発生した</strong>と報じられた【報道・要確認】</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>その後も、金利を下げてインフレを抑えるという通常とは逆の政策（2021〜2023年）でリラは下落を続けた。2023年6月以降、正統的な引き締めに戻り、2026年は政策金利37%、インフレ率約30%である【報道】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(13) 2019年1月3日　円のフラッシュクラッシュ</h3>
+<p>第14章 14-5 を参照。</p>
+<h3>(14) 2022年　英国債（ギルト）危機</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>インフレ、英国の利上げ、年金基金の債務連動型投資（LDI）でのレバレッジ</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>2022年9月23日の「ミニ予算」（財源のない大型減税）。28日にイングランド銀行が長期国債の買入れを発表【要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>9月26日、<strong>ポンドは対ドルで約1.035の史上最安値</strong>【要確認】。英国債利回りが急騰</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td>住宅ローンの金利が急上昇し、多くの商品が一時的に販売停止になった</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td><strong>先進国でも、財政の信認を失えば、通貨と国債が同時に売られる</strong>（新興国型の危機）。年金基金のレバレッジという見えにくい配管が増幅装置になった。トラス首相は約1か月半で辞任した</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>日本への示唆</strong>：英国の例は、<strong>先進国の自由変動通貨でも、財政政策への信認が急に失われると、通貨・国債・株式の「トリプル安」が起きうる</strong>ことを示した。日本では、1990年春の「トリプル安」の経験がある（第4章）。</p>
+<h3>(15) 2022年　スリランカ、ガーナ、パキスタン——新興国の連鎖</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>国</th>
+<th>何が起きたか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スリランカ</td>
+<td>2022年3月に変動相場へ移行し、ルピーは対ドルで大幅に下落（約200→約360）。4月12日に対外債務の支払停止を宣言【要確認】。燃料・食料・医薬品の輸入が困難になり、政権が崩壊した</td>
+</tr>
+<tr>
+<td>ガーナ</td>
+<td>2022年12月に対外債務の不履行。IMFの支援30億ドル【要確認】</td>
+</tr>
+<tr>
+<td>パキスタン</td>
+<td>2023年にルピーが1ドル＝約300まで下落。IMFの支援【要確認】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>共通点</strong>：ドル高と米国の利上げ（2022年）、エネルギー・食料価格の上昇（ロシアのウクライナ侵攻）、外貨建て債務、外貨準備の不足。<strong>ドルの金利が上がると、世界の弱い通貨から順に崩れる</strong>という、1980年代の中南米危機、1994年のメキシコ危機と同じ型が繰り返された。</p>
+<h3>(16) 2019年〜　レバノン・ポンドの崩壊——「固定相場の死」の長いプロセス</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前兆</td>
+<td>1997年から1ドル＝1,507.5ポンドに固定。中央銀行が高金利でドル預金を集め、それを政府に貸して固定相場を維持する仕組みが、事実上の「ねずみ講」と批判された</td>
+</tr>
+<tr>
+<td>当局の対応</td>
+<td>2019年秋から銀行が預金の引き出しを制限。複数のレートが並存。2023年2月に公式レートを15,000へ、その後89,500へ【百科事典・要確認】</td>
+</tr>
+<tr>
+<td>市場の反応</td>
+<td>並行市場では2023年3月に1ドル＝約111,000ポンドの最安値【百科事典・要確認】</td>
+</tr>
+<tr>
+<td>個人への影響</td>
+<td><strong>銀行に預けたドル預金が引き出せなくなった</strong>。預金者は、銀行の中の「ドル」（ロラー）と、現金のドル（フレッシュ・ドル）という、同じドルの二重の価値に直面した</td>
+</tr>
+<tr>
+<td>後から分かった原因</td>
+<td>固定相場を維持するために、<strong>外貨を集め続けなければ崩れる仕組み</strong>が作られていた</td>
+</tr>
+</tbody>
+</table></div>
+<h3>(17) 2023〜2024年　ナイジェリアとエジプトの切り下げ</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>国</th>
+<th>前兆</th>
+<th>当局の対応</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ナイジェリア</td>
+<td>公式レートと並行市場の大きな乖離、外貨不足</td>
+<td>2023年6月に為替窓口を統合（約465→約750）、その後さらに下落【要確認】</td>
+<td>2024年初めに約1,500前後。2026年10月は公式1,333、並行1,373〜1,390【報道】。インフレ率は2026年9月に14.63%まで低下【報道】</td>
+</tr>
+<tr>
+<td>エジプト</td>
+<td>外貨不足、並行市場の拡大</td>
+<td><strong>2024年3月6日に政策金利を6%引き上げ、為替を市場化</strong>（約30.9→約49.5）【要確認】。UAEによる大型開発投資（350億ドル）とIMF・EU・世界銀行の支援（計約220億ドル）【百科事典経由・要確認】</td>
+<td>2026年10月は1ドル＝約53。並行市場はほぼ解消【報道】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>教訓</strong>：<strong>並行市場の乖離を放置すると、外貨が公式の経路から消え、経済全体が「二重価格」になる。</strong> 切り下げは痛みを伴うが、乖離を解消すると、外貨が公式の経路に戻ってくる。ナイジェリア、エジプト、アルゼンチンは、2026年までに乖離を大幅に縮めた。</p>
+<h2>15-3　危機の「型」——本研究の整理</h2>
+<p>17の事例から、通貨危機の型を5つに整理する【分析】。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>型</th>
+<th>中身</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A 約束の水準のずれ型</strong></td>
+<td>固定相場や下限の水準が、経済の実態と合わなくなる</td>
+<td>1930年日本の金解禁、1971年ブレトンウッズ、1992年英ポンド、2015年スイス・フラン、2015年カザフスタン</td>
+</tr>
+<tr>
+<td><strong>B 通貨・期間の不一致型</strong></td>
+<td>外貨で短期に借り、自国通貨で長期に運用する</td>
+<td>1994年メキシコ、1997年アジア、2008年アイスランド</td>
+</tr>
+<tr>
+<td><strong>C 財政の信認喪失型</strong></td>
+<td>政府の財政への信頼が失われ、通貨と国債が同時に売られる</td>
+<td>1998年ロシア、2001年アルゼンチン、2022年英国</td>
+</tr>
+<tr>
+<td><strong>D ドル金利上昇の波及型</strong></td>
+<td>米国の利上げで、世界の弱い通貨から順に崩れる</td>
+<td>1980年代中南米、1994年メキシコ、2022年スリランカ・ガーナ・パキスタン</td>
+</tr>
+<tr>
+<td><strong>E 市場構造の増幅型</strong></td>
+<td>流動性の穴、アルゴリズム、ロスカット、レバレッジが小さなショックを増幅する</td>
+<td>1998年10月の円、2016年ポンド、2019年円、2024年8月の円</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>多くの危機は、複数の型が重なっている。</strong> たとえば1998年は、ロシア（C）→LTCM（B・E）→円の急騰（E）と、型が連鎖した。</p>
+<p><strong>日本の円が該当しうる型</strong>：日本は外貨建て債務がほとんどなく、巨額の対外純資産をもつため、<strong>B・Dの型の危機は起きにくい</strong>とされる【既知】。一方で、<strong>C（財政の信認）とE（市場構造）</strong>については、日本も無縁ではない。日本の政府債務は国内総生産比で主要国最大級であり、2026年の円安局面では財政への懸念が円安要因として言及されることもあった【報道】。<strong>ただし、「日本の財政危機が円の暴落につながる」という見方には強い反論もある</strong>（国債の大部分が国内で保有されている、円建てである、対外純資産が大きい）。本研究では、この論争を解消しない（第18章）。</p>
+<hr />
+<h1>第6部　2022年から2026年10月の現在地、そして未来</h1>
+<h1>第16章　2022〜2026年——世界の通貨市場の構造変化</h1>
+<h2>16-1　4年間の流れ</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>時期</th>
+<th>主な出来事</th>
+<th>通貨市場への影響</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022年2月</td>
+<td>ロシアのウクライナ侵攻。エネルギー・食料価格の急騰。ロシア中銀の外貨準備の凍結</td>
+<td>ドル高、ルーブルの国際取引の縮小</td>
+<td>【既知】</td>
+</tr>
+<tr>
+<td>2022年3月〜2023年7月</td>
+<td>FRBの急速な利上げ（0〜0.25%→5.25〜5.50%）</td>
+<td><strong>ドル指数は2022年9月下旬に約114でピーク</strong>、ポンドは史上最安値、円は151円台</td>
+<td>利上げ経路【一次（補助確認）】、ドル指数【要確認】</td>
+</tr>
+<tr>
+<td>2022〜2023年</td>
+<td>新興国の債務危機（スリランカ、ガーナ、パキスタン）、ナイジェリア・エジプトの切り下げ</td>
+<td>弱い通貨から崩れる</td>
+<td>【要確認】</td>
+</tr>
+<tr>
+<td>2024年3月</td>
+<td>日銀がマイナス金利を終了</td>
+<td>—</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2024年8月5日</td>
+<td>円キャリーの巻き戻し</td>
+<td>世界同時株安</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>2024年9月〜2025年12月</td>
+<td>FRBが利下げ（5.25〜5.50%→3.50〜3.75%）</td>
+<td>—</td>
+<td>【一次確認：FRB】</td>
+</tr>
+<tr>
+<td>2025年4月2日〜</td>
+<td>米国の関税発表</td>
+<td><strong>ドル安</strong>。為替取引が急増（BIS推計で約1.5兆ドルの押し上げ）。各国の投資家がドル資産のヘッジを増やした</td>
+<td>取引【一次確認：BIS】、ドル安の幅【要確認】</td>
+</tr>
+<tr>
+<td>2025年7月</td>
+<td>米国でステーブルコインの法律（GENIUS法）が成立</td>
+<td>—</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>2025年12月</td>
+<td>日銀0.75%へ</td>
+<td>—</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2026年1月1日</td>
+<td>ブルガリアがユーロを導入</td>
+<td>—</td>
+<td>【一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2026年1月</td>
+<td>中国のデジタル人民元を利息付きの預金型に変更</td>
+<td>—</td>
+<td>【報道：Caixin】</td>
+</tr>
+<tr>
+<td><strong>2026年2月末〜</strong></td>
+<td><strong>米国とイランの戦争</strong>。原油急騰（4月30日に約126ドル）。4月8日に停戦発表、7月と9月に攻撃が再燃</td>
+<td><strong>世界的なインフレの再燃。各国が利上げに戻る</strong></td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>2026年4〜8月</td>
+<td>日本の大規模な円買い介入（計約27兆円）。7月31日から日米協調</td>
+<td>—</td>
+<td>【一次確認／一次（補助確認）】</td>
+</tr>
+<tr>
+<td>2026年6月</td>
+<td>ECBが利上げ再開（2.25%）</td>
+<td>—</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>2026年9月</td>
+<td>FRB（3.75〜4.00%）、ECB（2.50%）、日銀（1.25%）、豪州、NZ、韓国、南ア、湾岸諸国が利上げ。インドは10月</td>
+<td><strong>「同時利上げ」の局面</strong></td>
+<td>【一次確認：FRB・日銀／一次（補助確認）：他】</td>
+</tr>
+<tr>
+<td>2026年10月16日</td>
+<td>米10年債利回り5.07%（19年ぶりの高水準と報道）、ドル指数101.78、ドル円158.02</td>
+<td>—</td>
+<td>【一次確認：OANDA／報道】</td>
+</tr>
+</tbody>
+</table></div>
+<h2>16-2　ドルの地位——「弱いドル」と「強いドルの地位」の同居</h2>
+<h3>準備通貨としてのシェア（IMF COFER）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>通貨</th>
+<th>2026年4〜6月期のシェア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>米ドル</td>
+<td><strong>56.70%</strong></td>
+</tr>
+<tr>
+<td>ユーロ</td>
+<td>20.60%</td>
+</tr>
+<tr>
+<td>日本円</td>
+<td><strong>4.96%</strong></td>
+</tr>
+<tr>
+<td>人民元</td>
+<td>2.11%</td>
+</tr>
+<tr>
+<td>英ポンド・豪ドル・カナダ・ドル・スイス・フラン・その他</td>
+<td>（残り）</td>
+</tr>
+</tbody>
+</table></div>
+<p>出典：IMF COFER（2026年9月30日公表）【一次（補助確認）】。</p>
+<p><strong>数値の作法（重要）</strong>：COFERは、過去にさかのぼって改定される。たとえば2025年4〜6月期のドルのシェアは、当初の公表では56.32%だったが、後の系列とは一致しない【一次（補助確認）】。<strong>COFERの値を比べるときは、同じ時点に取得した系列を使わなければならない。</strong></p>
+<h3>2つの事実を同時に見る</h3>
+<ol>
+<li><strong>ドルの準備通貨としてのシェアは、長期的に低下している</strong>（2000年代初めの約70%前後から、2026年には約57%）【長期の水準は既知・要確認】</li>
+<li><strong>しかし、為替取引でドルが関わる割合は、2025年に89.2%と、むしろ上昇した</strong>（BIS）【一次（補助確認）】</li>
+</ol>
+<p><strong>この2つは矛盾しない。</strong> 各国の中央銀行は外貨準備をドル以外（金、人民元、豪ドル、カナダ・ドルなど）に少しずつ分散させているが、<strong>民間の為替取引では、ドルは「通貨と通貨をつなぐ乗り換え駅」（媒介通貨）として、むしろ使われ続けている</strong>。たとえば、メキシコ・ペソとタイ・バーツを直接交換する市場は小さいので、ペソ→ドル→バーツと乗り換える【分析】。</p>
+<p><strong>本研究の見方</strong>：「ドル離れ」の議論は、<strong>価値の保存手段としてのドル</strong>（準備通貨）と、<strong>交換の手段としてのドル</strong>（媒介通貨）を区別しないと、混乱する。前者は緩やかに低下しているが、後者はむしろ強まっている。</p>
+<h3>金の役割</h3>
+<p>ECBの分析として、2025年末時点で<strong>各国の公的準備に占める金の比率（約27%）が、米国債（約22%）を上回った</strong>とされる。主な要因は金価格の上昇である【報道・二次資料経由】。<strong>2026年の金価格と中央銀行の購入量は、本研究では確認できなかった</strong>【未確認】。</p>
+<p>金の比率の上昇は、「通貨の約束」（どの国の通貨も最終的には政府の約束にすぎない）に対する、中央銀行自身の慎重さの表れと読むこともできる【分析】。特に、2022年にロシアの外貨準備が凍結されたことは、<strong>「外貨準備は、他国の同意がなければ使えないことがある」</strong>ことを世界に示した。金は、誰の約束でもない資産である。</p>
+<h2>16-3　ヘッジの時代</h2>
+<p>BIS 2025年調査の最も重要なメッセージは、<strong>為替市場の主役が「ヘッジ」になった</strong>ことである【一次確認：BIS QR 2025年12月号の記事題名は「Global FX markets when hedging takes centre stage」（ヘッジが主役になったときの世界の為替市場）】。</p>
+<ul>
+<li>2022年からの米国の利上げで、ドルを借りてヘッジする費用が上がった</li>
+<li>日本の生命保険会社やオランダの年金基金は、ヘッジ比率を下げた</li>
+<li>2025年4月の関税ショックで、ドル資産のリスクが意識され、ヘッジのかけ直しが急増した</li>
+<li>機関投資家とのスポット取引はほぼ倍増した</li>
+</ul>
+<p><strong>本研究の解釈</strong>：2022〜2024年の「ドル高・円安」の一部は、<strong>世界の投資家がドル資産のヘッジを外したこと</strong>（＝ドルを買ったまま、ドルを売る予約をしなかったこと）で支えられていた可能性がある。そして2025年4月以降の「ドル安」の一部は、<strong>そのヘッジのかけ直し</strong>で説明できる可能性がある【仮説】。</p>
+<p><strong>もしこの解釈が正しければ、為替の大きな動きは、金利差の変化よりも、ヘッジ比率の変化から生じることがある。</strong> そして、ヘッジ比率は、ほとんど公表されない。BISの3年ごとの調査や、各国の当局の不定期な分析でしか分からない。<strong>為替市場の最も重要な変数のひとつが、ほとんど見えない</strong>——これが本研究の重要な発見のひとつである（第18章）。</p>
+<h2>16-4　2026年の「同時利上げ」の意味</h2>
+<p>2025年末時点の多くの見通しは、「世界的な利下げ局面が続き、日米の金利差が縮小し、円高に向かう」というものだった【分析：当時の一般的な見方の要約。個別の見通しの出典は確認していない】。</p>
+<p>実際の2026年は、
+- 戦争と原油高で世界のインフレが再燃した
+- FRBが利下げから利上げに転じた
+- 日銀も利上げを続けたが、日米の金利差は思ったほど縮まらなかった
+- 米10年債の利回りは5%を超えた
+- ドル円は、介入で何度も押し戻されながら、160円を挟んで推移した</p>
+<p><strong>教訓</strong>：為替の予測で最も外れやすいのは、<strong>「前提となる世界の状態が変わらない」と仮定すること</strong>である。2026年の予想外の展開は、為替の予測の難しさ（第14章のMeese-Rogoff）を、改めて示した。</p>
+<hr />
+<h1>第17章　未来——2030年・2040年・2050年</h1>
+<h2>17-1　すでに進んでいる変化（確認済みの事実）</h2>
+<h3>中央銀行デジタル通貨（CBDC）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2026年の状態</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>検討している国・地域</td>
+<td><strong>146</strong>（世界のGDPの98%超）。開発・パイロット・発行の段階にあるのは77、うちパイロットは41</td>
+<td>【一次（補助確認）：Atlantic Council CBDCトラッカー 2026年5月】</td>
+</tr>
+<tr>
+<td>正式に発行した国</td>
+<td><strong>3か国</strong>（バハマ、ジャマイカ、ナイジェリア）</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>デジタル人民元（e-CNY）</td>
+<td>2025年11月までの累計で34.8億件・16.7兆元の取引。2026年1月から利息付きの預金型に</td>
+<td>【報道：Caixin】</td>
+</tr>
+<tr>
+<td>デジタル・ユーロ</td>
+<td>準備段階（2023年11月〜2025年10月）は完了。欧州理事会は2025年12月、欧州議会は2026年7月に立場を決定し、三者協議中。<strong>パイロットは2027年下半期から12か月、初回発行は2029年を準備</strong>（法律の成立が条件）</td>
+<td>【一次（補助確認）：ECB理事講演 2026-10-06】</td>
+</tr>
+<tr>
+<td>米国</td>
+<td><strong>FRBによるCBDCの発行を2030年12月31日まで禁止する条項が、住宅関連の法律に組み込まれて成立</strong>（2026年7月）。成立日は資料により7月10日または11日</td>
+<td>【報道・二次】</td>
+</tr>
+<tr>
+<td>日本銀行</td>
+<td>パイロット実験を継続中で、<strong>発行は決定していない</strong>。性能試験で毎秒5万件の処理を達成</td>
+<td>【一次（補助確認）：日銀 CBDCフォーラム資料】</td>
+</tr>
+<tr>
+<td>インドのデジタル・ルピー</td>
+<td>2026年3月末の残高は771.7億ルピー（₹771.7 crore）で、前年比24%減</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>ナイジェリアのeNaira</td>
+<td>普及の遅れを中央銀行自身が認め、決済インフラとして位置づけ直した</td>
+<td>【報道】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>観察</strong>：CBDCを「検討している国」は多いが、「本格的に使われている国」はほとんどない。インドとナイジェリアでは、<strong>むしろ利用が減っている</strong>。中国のe-CNYは取引額では最大だが、民間の電子決済（アリペイ、ウィーチャットペイ）と比べると小さいとされる【既知・規模の比較は要確認】。<strong>CBDCは、2026年時点では「通貨の未来」というより「中央銀行の実験」の段階にある</strong>【分析】。</p>
+<h3>ステーブルコイン</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2026年の状態</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市場規模</td>
+<td>2026年10月16日時点で<strong>約3,060億ドル</strong>。テザー（USDT）約1,835億ドル（約60%）、USDC約726億ドル（約24%）</td>
+<td>【報道：TokenPost／DefiLlamaのデータ】</td>
+</tr>
+<tr>
+<td>通貨の内訳</td>
+<td><strong>99%超がドル建て</strong></td>
+<td>【一次（補助確認）：BIS 年次経済報告 2025 第III章】</td>
+</tr>
+<tr>
+<td>米国のGENIUS法</td>
+<td>2025年7月成立。施行は2027年1月18日か、最終規則の120日後の早い方。規則の策定は期限に遅れている</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>欧州のMiCA</td>
+<td>経過措置は2026年7月1日に終了</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>香港</td>
+<td>ステーブルコイン条例は2025年8月施行。最初の発行ライセンスは2026年4月にHSBCとスタンダード・チャータード系の企業へ</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>日本のJPYC</td>
+<td><strong>2025年10月27日に円建てステーブルコインの発行を開始</strong>。累計発行は100億円を突破（2026年9月の自社発表）。流通量は約33.5億円（2026年10月16日、民間のオンチェーン計測で非公式）</td>
+<td>【一次（補助確認）：自社発表／報道】</td>
+</tr>
+<tr>
+<td>BISの評価</td>
+<td>ステーブルコインは、通貨に必要な「単一性・弾力性・健全性」の3つの基準を満たさない。<strong>ステーブルコインの時価総額が35億ドル増えると、米国債の利回りが2.5〜5bp低下する</strong></td>
+<td>【一次（補助確認）：BIS 年次経済報告 2025 第III章】</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>本研究の見方</strong>：ステーブルコインの99%超がドル建てであることは、<strong>デジタル化が「ドル離れ」ではなく「ドルの新しい流通経路」になっている</strong>ことを示す【分析】。新興国の人々が、自国の通貨より米ドルのステーブルコインを持つようになれば、<strong>新興国の通貨は、デジタルの形で「ドル化」が進む可能性がある</strong>。これは、新興国の中央銀行にとって、自国の金融政策の効き目を弱める新しい脅威になりうる【仮説】。</p>
+<p>一方、<strong>BISが示した「ステーブルコインが増えると米国債の利回りが下がる」</strong>という関係は、ステーブルコインの発行体が準備資産として米国債を大量に買うことによる。<strong>ステーブルコインは、ドルの地位だけでなく、米国の財政（国債の買い手）とも結びつき始めている</strong>【分析】。</p>
+<h3>国際送金の仕組み</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>状態</th>
+<th>確認度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mBridge（中央銀行デジタル通貨の多国間送金）</td>
+<td>BISは2024年10月に離脱。サウジは2024年6月に参加。決済量の95%超がデジタル人民元とされる</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>Project Agorá（BIS）</td>
+<td>7つの中央銀行（イングランド銀行、NY連銀、フランス銀行、<strong>日本銀行</strong>、韓国銀行、メキシコ銀行、スイス国立銀行）と40超の金融機関。プロトタイプは成功し、実際の資金を使った試験へ</td>
+<td>【一次（補助確認）：BIS 2026-05-27】</td>
+</tr>
+<tr>
+<td>中国のCIPS（人民元の国際決済システム）</td>
+<td>2025年の取引額180.2兆元</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>BRICS Pay</td>
+<td>パイロット段階。2026年9月のBRICSサミットの宣言に、ドル代替や共通通貨の目標は含まれず</td>
+<td>【報道】</td>
+</tr>
+<tr>
+<td>米国の株式決済のT+1化（2024年5月）</td>
+<td>為替の決済への影響は「ほぼなし」（CLSの分析）</td>
+<td>【一次（補助確認）】</td>
+</tr>
+</tbody>
+</table></div>
+<h2>17-2　未来のシナリオ</h2>
+<p>以下は<strong>予測</strong>であり、確定した事実ではない。それぞれのシナリオに確率は付けない。<strong>シナリオは、「どの前提が変わると、どの未来になるか」を考えるための道具</strong>である。</p>
+<h3>2030年のシナリオ</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>内容</th>
+<th>このシナリオを支える兆候</th>
+<th>このシナリオを否定する兆候</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A：ドル中心の継続</strong></td>
+<td>ドルは準備通貨で50%以上、為替取引で80%以上を維持。ステーブルコインがドルの流通を広げる</td>
+<td>BIS 2025でドルが89.2%、ステーブルコインの99%超がドル建て</td>
+<td>米国の財政悪化、制裁の多用、関税</td>
+</tr>
+<tr>
+<td><strong>B：緩やかな多極化</strong></td>
+<td>ドルの準備通貨シェアが50%前後に低下。ユーロ、人民元、金が分散先に</td>
+<td>COFERでのドルの長期低下、中央銀行の金購入</td>
+<td>人民元の資本規制、ユーロ圏の財政統合の遅れ</td>
+</tr>
+<tr>
+<td><strong>C：ブロック化</strong></td>
+<td>制裁・地政学で、ドル圏と人民元圏の決済網が分かれる</td>
+<td>mBridge、CIPS、BRICS Pay、ロシアの国際取引からの切り離し</td>
+<td>BRICSの共通通貨の目標の不在、新興国のドル需要</td>
+</tr>
+<tr>
+<td><strong>D：円の再評価</strong></td>
+<td>日銀の正常化と日本のヘッジ比率の上昇で、円が大幅に上昇</td>
+<td>日銀の利上げ継続、ヘッジ比率の「ばね」</td>
+<td>家計の外国株投資、デジタル赤字、日本の人口減少</td>
+</tr>
+<tr>
+<td><strong>E：円の長期低迷</strong></td>
+<td>実質実効レートの低迷が続き、円の購買力がさらに低下</td>
+<td>2026年の実質実効レートの歴史的低水準、構造的な円売り</td>
+<td>介入、利上げ、インバウンドの拡大</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2040年のシナリオ</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>論点</th>
+<th>可能性のある姿</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>デジタル通貨</td>
+<td>主要国のCBDCが本格的に稼働しているか、または「民間のステーブルコイン＋中央銀行の決済インフラ」という形に落ち着くか。<strong>本研究の時点では、どちらにも決定的な兆候はない</strong></td>
+</tr>
+<tr>
+<td>24時間の即時決済</td>
+<td>為替の決済が、現在の「2営業日後」（T+2）から、即時決済に近づく可能性。決済リスク（ヘルシュタット・リスク）は縮小するが、流動性管理は難しくなる</td>
+</tr>
+<tr>
+<td>AIによる取引</td>
+<td>AIが価格の提示・執行・ヘッジを大部分担う。<strong>流動性は平時には厚くなるが、AIが一斉に同じ判断をすると、フラッシュクラッシュのような急変が増える可能性がある</strong>（IMFの2024年の分析は、AIが「市場をより効率的に、そしてより変動的にしうる」と指摘）【一次（補助確認）：IMFブログ 2024-10-15】</td>
+</tr>
+<tr>
+<td>日本の人口</td>
+<td>日本の人口減少と高齢化で、<strong>家計が外国資産を取り崩す（円に戻す）段階</strong>に入る可能性。そうなれば、新NISA期の「円売り」が逆転する【仮説】</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2050年のシナリオ</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>論点</th>
+<th>可能性のある姿</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通貨の数</td>
+<td>一部の小国の通貨は、ユーロや米ドル、あるいは地域の共通通貨に統合されている可能性。<strong>通貨は消えうる</strong>（第1章）</td>
+</tr>
+<tr>
+<td>気候変動</td>
+<td>気候変動の影響を受けやすい国（島しょ国、農業国）の通貨は、災害のたびに急落するリスクを抱える。逆に、再生可能エネルギーの資源をもつ国の通貨は、新しい「資源通貨」になりうる</td>
+</tr>
+<tr>
+<td>基軸通貨</td>
+<td>歴史的に、基軸通貨は数十年から百年の単位で交代してきた（スペイン・ドル→英ポンド→米ドル）【既知】。<strong>2050年にドルが基軸通貨であるかどうかは、為替の最大の未解決問題のひとつ</strong></td>
+</tr>
+<tr>
+<td>円</td>
+<td>円が世界の主要通貨の地位（BISで3位）を保っているかどうかは、日本経済の規模、金融市場の開放性、そして<strong>日本が「約束」を守り続けられるか</strong>——物価の安定と財政の持続性——にかかる</td>
+</tr>
+</tbody>
+</table></div>
+<h3>予測についての本研究の立場</h3>
+<p><strong>本研究は、どのシナリオが実現するかを予測しない。</strong> 2026年の展開が2025年末の予想から大きく外れたように（第16章）、為替の長期予測は、前提が変わればすぐに外れる。シナリオの価値は、予測が当たることではなく、<strong>「どの兆候を見れば、どのシナリオに近づいているかが分かるか」を事前に決めておける</strong>ことにある。</p>
+<hr />
+<h1>第7部　クロちゃんの独自研究</h1>
+<h1>第18章　独自の考察・一般的な見解への反論・未解決の疑問</h1>
+<h2>18-1　独自論点1｜為替市場の「見えない最重要変数」はヘッジ比率である</h2>
+<p>為替を動かす要因として、ニュースは金利差、物価、介入、国際収支を挙げる。これらは公表される。しかし、BISの2025年調査が明らかにしたのは、<strong>取引急増の主因が「ヘッジ比率の変化」だった</strong>ということだった（第2章・第16章）。</p>
+<p>ヘッジ比率は、
+- 機関投資家ごとに異なり
+- ほとんど公表されず
+- 金利差（ヘッジ費用）によって大きく変わり
+- 変わるときは、<strong>大量の先物の売買を伴う</strong></p>
+<p><strong>例えば、日本の生命保険会社のヘッジ比率が40%から60%に戻れば</strong>、それは<strong>巨額の円買いの予約</strong>を意味する。そのきっかけになりうるのは、
+- 日米の短期金利差の縮小（ヘッジ費用の低下）
+- ドル資産に対するリスクの意識の高まり（2025年4月のような）
+- 規制・会計の変更</p>
+<p><strong>本研究の仮説</strong>：<strong>円の急騰リスクは、介入や金利差の「水準」よりも、ヘッジ比率の「復元」に潜んでいる。</strong> 2026年は日銀の利上げで金利差が縮小しつつあり、ヘッジ費用が下がる方向にある。もし金利差がさらに縮めば、ヘッジ比率の復元が始まり、円買いが集中する可能性がある【仮説・予測】。</p>
+<p><strong>この仮説の反証条件</strong>：日米の金利差が縮小しても、ヘッジ比率が上がらない（日銀・金融庁・生命保険協会などの資料で確認できる場合）。または、ヘッジ比率が上がっても、円が上がらない。</p>
+<h2>18-2　独自論点2｜「経常黒字国の通貨は強い」という常識は、日本には当てはまりにくくなった</h2>
+<p>第6章で示したとおり、日本の経常黒字の大部分は第一次所得収支（海外投資の果実）であり、その多くは円に戻ってこない可能性がある。一方、デジタル赤字や家計の外国株投資は確実に円売りを伴う。</p>
+<p><strong>一般的な見解</strong>：「日本は経常黒字国なので、長期的には円高圧力がある」</p>
+<p><strong>本研究の反論</strong>：<strong>経常収支は「統計上の黒字」であり、「為替市場での円の需給」ではない。</strong> 経常黒字の中身が、貿易黒字（モノを売って得た外貨）から所得黒字（海外資産の利益）に変わったことで、<strong>黒字が為替市場で円買いになる確率が下がった</strong>【分析】。2025年の旅行収支の黒字（約6.7兆円）がデジタル赤字（約6.7兆円）でほぼ相殺されていることも、この構造を補強する。</p>
+<p><strong>反論への反論（解消しない）</strong>：海外子会社の利益は、いつか配当として日本に戻る可能性がある。また、円安が進めば、海外の利益を円に換える誘因が強まる（2026年の大規模介入の局面で、企業の円転が進んだ可能性もある）。<strong>どちらの力が強いかは、公式の「キャッシュフロー・ベースの需給」統計がないため、確定できない。</strong> 本研究は、この統計の整備を、日本の為替政策の議論に不可欠な課題として指摘する。</p>
+<h2>18-3　独自論点3｜2026年の協調介入は「介入の意味」を変えた可能性がある</h2>
+<p>これまでの円買い介入（1998年、2022年、2024年）は、2022年・2024年は<strong>日本単独</strong>だった。2026年7月31日から、<strong>米国が加わった</strong>と報道されている（第5章）。</p>
+<p><strong>本研究の仮説</strong>：単独介入は「日本がこの水準を嫌っている」というシグナルだが、協調介入は「<strong>米国もこの水準を嫌っている</strong>」というシグナルである。市場にとって、後者の方がはるかに重い。なぜなら、米国は基軸通貨の発行者であり、ドルの供給を事実上無制限に行えるからである【分析】。</p>
+<p><strong>ただし</strong>、協調介入の後も、ドル円は10月に158円台に戻っている。<strong>協調介入は流れを止めたが、流れを変えたわけではない</strong>可能性がある。その評価は、7〜9月期の日別の介入データ（11月上旬公表見込み）と、米国側の介入額（非公表）が分かるまで、確定できない【未確認】。</p>
+<p><strong>FOMC議事要旨（2026年10月8日公表）</strong>は、米国側の介入について「財務省の資金のみで、NY連銀は財務省の代理人として執行した」と記したと報道されている【報道・要確認：一次資料は取得できず】。もしそうであれば、<strong>米国の介入はFRBの金融政策（利上げ）とは切り離された、財務省の為替政策</strong>として行われたことになる。FRBが9月に利上げしたこと（ドル高要因）と、財務省がドル売り介入に参加したこと（ドル安要因）が、<strong>同じ時期に、同じ国の中で、逆方向に作用した</strong>ことになる【分析】。</p>
+<h2>18-4　独自論点4｜円は「安全通貨」でなくなりつつあるのか</h2>
+<p>第4章で、リスク回避の円買いには「本国への引き揚げ」「キャリーの巻き戻し」「ヘッジのかけ直し」の3つの仕組みがあると整理した。このうち2つは、<strong>円の金利が低いこと</strong>を前提にしている。</p>
+<p><strong>2026年の変化</strong>：
+- 日銀の政策金利は1.25%で、<strong>スイス・フラン（0%）より高い</strong>
+- 円は、主要通貨のなかで「最も金利の低い通貨」ではなくなった</p>
+<p><strong>本研究の仮説</strong>：<strong>キャリートレードの調達通貨（借りる通貨）としての役割が、円からスイス・フランなどに移るにつれて、「危機のときに円が買われる」性質は弱まる可能性がある。</strong> 逆に、スイス・フランの「安全通貨」としての性質は強まる可能性がある【仮説】。</p>
+<p><strong>反証条件</strong>：2026年以降のリスク回避局面（株価の急落、地政学の悪化）で、円が引き続き主要通貨のなかで最も上昇するなら、この仮説は否定される。2026年の米国とイランの戦争の局面で、円が「安全通貨」として買われたかどうかは、本研究の時点では十分に検証できていない【未確認】。</p>
+<h2>18-5　独自論点5｜「円はどこで決まるのか」——東京の外で決まる円</h2>
+<p>BIS 2025年調査で、円は世界3位の通貨、ドル円は世界2位のペアだが、<strong>東京市場のシェアは世界の3.5%</strong>にすぎない（第2章）。</p>
+<p><strong>本研究の見方</strong>：<strong>円の値段の大部分は、日本の外で決まっている。</strong> その結果、
+- 日本の祝日・夜間は、円の流動性が薄くなる（第12章）
+- フラッシュクラッシュは、日本人が寝ている時間に起きる（第14章）
+- 日本の当局は、介入の時間帯を選ぶ必要がある（ゴールデンウィーク中の介入）</p>
+<p>さらに、東京市場では<strong>スポット取引が減り（−15.7%）</strong>、<strong>個人FXのカバー取引の比重が相対的に高い</strong>（第8章）。<strong>東京の為替市場は、「銀行の市場」から「個人投資家の注文を銀行に流す市場」に性格が変わりつつある</strong>可能性がある【仮説】。</p>
+<h2>18-6　独自論点6｜為替の数字は「何を数えたか」で何倍も変わる——数字の作法</h2>
+<p>本研究で、同じ対象についての数字が、資料によって大きく異なる例が多数見つかった。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>対象</th>
+<th>数字A</th>
+<th>数字B</th>
+<th>違いの理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>世界の為替取引高（2025年4月）</td>
+<td>9.6兆ドル（速報）</td>
+<td>9.51兆ドル（最終）</td>
+<td>速報後の改訂（非報告銀行の分などが下方修正）</td>
+</tr>
+<tr>
+<td>人民元の取引シェア</td>
+<td>8.5%（速報）</td>
+<td>8.8%（BIS 12月号本文）</td>
+<td>分母の違いと見られる（未解決）</td>
+</tr>
+<tr>
+<td>個人FXの1日の規模</td>
+<td>約2,420億ドル（BIS「個人投資家関連」、世界）</td>
+<td>約3,700億ドル（FFAJ月間取引金額からの概算、日本のみ）</td>
+<td>BISはディーラー側から二重計上を除いて数える。FFAJは業者と顧客の間の取引金額</td>
+</tr>
+<tr>
+<td>2011年の円の最高値</td>
+<td>75.32円</td>
+<td>75.54円</td>
+<td>市場・時刻の違い</td>
+</tr>
+<tr>
+<td>ドル円の「終値」</td>
+<td>各社で異なる</td>
+<td>—</td>
+<td>NY17時、日本時間7時、各社独自の締め時刻</td>
+</tr>
+<tr>
+<td>実質実効為替レートの「最低」</td>
+<td>「1970年以来」</td>
+<td>「1973年以来」</td>
+<td>比較の起点の違い（報道）</td>
+</tr>
+<tr>
+<td>IMF COFERのドルのシェア</td>
+<td>同じ四半期で複数の値</td>
+<td>—</td>
+<td>過去にさかのぼった改定</td>
+</tr>
+<tr>
+<td>個人FXトレーダーの成績</td>
+<td>「74〜89%が損失」（ESMA）</td>
+<td>「平均はプラス」（日本の自己申告調査）</td>
+<td>対象・方法・期間の違い</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>為替の数字を使うときの作法（本研究の提案）</strong>
+1. <strong>どの統計か</strong>（BIS／日銀／FFAJ／CFTC／業者の開示）を書く
+2. <strong>何を数えたか</strong>（ネット・ネット／ネット・グロス／業者と顧客の間）を書く
+3. <strong>いつの数字か</strong>（データの対象時点と、取得した時点）を分けて書く
+4. <strong>速報か確定か</strong>（BISの3段階、国際収支の速報と確定）を書く
+5. <strong>終値の定義</strong>（どの市場の何時か）を書く
+6. <strong>改定される統計</strong>（COFER、国際収支）は、取得日を書く</p>
+<h2>18-7　独自論点7｜高金利通貨のFXは「保険を売る取引」である</h2>
+<p>第7章・第8章で示したとおり、キャリートレードは、平時には小さな利益を積み上げ、まれな危機で大きな損失を出す。これは、<strong>保険会社が保険料を受け取り、まれな大災害で保険金を払う</strong>構造と同じである。</p>
+<p><strong>この見方の実務的な意味</strong>：
+- 高金利通貨のスワップポイントは「利息」ではなく「保険料」と考える
+- 保険を売る者は、<strong>大災害（通貨危機・巻き戻し）に耐えられる資本</strong>を持っていなければならない。レバレッジの高いFX口座は、資本が薄い保険会社と同じ
+- 「何年も儲かっている」ことは、「大災害がまだ来ていない」ことを意味するだけかもしれない（ペソ問題）</p>
+<p><strong>一般的な見解への反論</strong>：「高金利通貨を長期で持てば、スワップポイントで安定的に稼げる」という説明は、<strong>平均的なリターンについては学術的に支持されるが、リターンの分布（急落リスク）を無視している</strong>。平均が正であることと、個人がその平均を受け取れることは別の問題である。個人は、急落の前にロスカットされれば、平均には到達できない。</p>
+<h2>18-8　一般的な見解への反論の一覧</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>一般的な見解</th>
+<th>本研究の反論・補足</th>
+<th>反論の強さ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「為替は金利差で決まる」</td>
+<td>金利差は重要だが、ヘッジ比率・家計の資本流出・デジタル赤字・介入が、同じくらい重要になった。2026年は金利差が縮んでも円安が続いた局面がある</td>
+<td>中</td>
+</tr>
+<tr>
+<td>「円は安全通貨」</td>
+<td>円の金利が上がり、スイス・フランより高くなった。安全通貨の性質が弱まる可能性がある</td>
+<td>弱〜中（仮説段階）</td>
+</tr>
+<tr>
+<td>「経常黒字国の通貨は強い」</td>
+<td>経常黒字の中身が所得黒字に変わり、円買いに結びつきにくい</td>
+<td>中</td>
+</tr>
+<tr>
+<td>「介入は無意味」</td>
+<td>単独では流れを変えにくいが、金利の方向転換や協調と重なるとピークを作るきっかけになった</td>
+<td>中</td>
+</tr>
+<tr>
+<td>「テクニカル分析は無効」／「有効」</td>
+<td>学術研究の結論が分かれている。どちらも断定できない</td>
+<td>—</td>
+</tr>
+<tr>
+<td>「高金利通貨は長期で持てば儲かる」</td>
+<td>平均は正でも、急落リスクがある。保険を売る取引と同じ</td>
+<td>強</td>
+</tr>
+<tr>
+<td>「ドル離れが進んでいる」</td>
+<td>準備通貨としてはゆっくり低下しているが、取引の媒介通貨としてはむしろ強まっている。ステーブルコインはほぼドル建て</td>
+<td>強</td>
+</tr>
+<tr>
+<td>「為替市場は最も効率的な市場」</td>
+<td>最大の市場だが、フィキシングの不正、フラッシュクラッシュ、カバー付き金利平価の持続的な乖離、決済リスクの残存がある</td>
+<td>中</td>
+</tr>
+<tr>
+<td>「実質実効レートが低い＝円は割安だから、いずれ戻る」</td>
+<td>購買力平価への回帰には半減期3〜5年かかるとされ、しかも日本の生産性・人口・資本流出の構造が変われば、「均衡水準」そのものが下がっている可能性がある</td>
+<td>中</td>
+</tr>
+</tbody>
+</table></div>
+<h2>18-9　未解決の疑問（本研究で答えが出なかった問い）</h2>
+<ol>
+<li><strong>日本の「キャッシュフロー・ベースの円の需給」は、実際に円売り超過なのか。どの程度か。</strong>（公式統計がない）</li>
+<li><strong>日本の生命保険会社のヘッジ比率は、2025〜2026年にどう変わったか。</strong>（BISの分析は2024年まで）</li>
+<li><strong>2026年の協調介入で、米国側はいくらドルを売ったのか。</strong>（非公表）</li>
+<li><strong>2026年の米国とイランの戦争の局面で、円は「安全通貨」として買われたのか、売られたのか。</strong>（日次データでの検証が必要）</li>
+<li><strong>日本の個人FXトレーダーのうち、何%が利益を出しているのか。</strong>（公的統計がない）</li>
+<li><strong>FFAJの取引金額とBISの「個人投資家関連」の取引高は、どのような換算でつながるのか。</strong></li>
+<li><strong>テクニカル分析の有効性について、Neely らと Hsu らの結論の違いは、何によって生じているのか。</strong></li>
+<li><strong>ステーブルコインの拡大は、新興国の通貨の「デジタルなドル化」をどこまで進めるのか。</strong></li>
+<li><strong>円の実質実効レートの「均衡水準」は、人口減少と生産性の変化で、どこまで下がったのか。</strong></li>
+<li><strong>1998年10月の円の急騰（LTCM）の正確な値幅と時間は、どの一次資料で確認できるか。</strong></li>
+</ol>
+<hr />
+<h1>付録</h1>
+<h2>【A】最も重要な発見（10項目）</h2>
+<ol>
+<li><strong>世界の為替取引は1日約9.5兆ドル（2025年4月、最終値9兆5,102億ドル）で、その最大の商品は「為替スワップ」（約42%）である。</strong> スポットは約31%にすぎない。為替市場の本体は、方向に賭ける取引ではなく、資金繰りとヘッジの配管である（BIS）</li>
+<li><strong>BISは、2025年の取引急増の主因を「ヘッジ比率の変化」とし、日本の生命保険会社のヘッジ比率が2022〜2024年に約60%から約40%に下がったことを名指しした。</strong> ヘッジ比率は、ほとんど公表されない最重要変数である</li>
+<li><strong>円は世界3位の通貨（16.8%）、ドル円は世界2位のペアだが、東京市場のシェアは3.5%にすぎない。</strong> 円の値段の多くは日本の外で決まる。東京ではスポットが−15.7%減り、個人FXのカバー取引の比重が相対的に高まっている</li>
+<li><strong>2026年の円買い介入は、4〜5月の11兆7,349億円と、7月30日〜8月26日の15兆3,993億円で、計約27兆円。</strong> 4月30日の6兆2,787億円は円買いの単日として過去最大、7〜8月は月次として過去最大。7月31日からは日米協調と報道（円買いの協調は1998年以来）</li>
+<li><strong>2026年は「世界の同時利上げ」の年になった。</strong> 米国とイランの戦争と原油高でインフレが再燃し、FRBは9月に2023年以来初の利上げ（3.75〜4.00%）、日銀は9月に1.25%へ。2025年末の「利下げ局面の継続」の予想は外れた</li>
+<li><strong>日本の経常黒字（2025年に約31.9兆円）の大部分は第一次所得収支（約41.6兆円）で、その多くは円に戻らない可能性がある。</strong> 一方、デジタル赤字（約6.7兆円）と家計の外国株投資は確実に円売りを伴う。「黒字なのに円安」の構造である</li>
+<li><strong>円の政策金利（1.25%）がスイス・フラン（0%）を上回った。</strong> キャリートレードの調達通貨、そして「安全通貨」としての円の性質が変わる可能性がある</li>
+<li><strong>ドルは準備通貨として緩やかに低下（2026年4〜6月期に56.70%）しているが、為替取引の媒介通貨としてはむしろ強まり（89.2%）、ステーブルコインの99%超はドル建てである。</strong> 「ドル離れ」は、どの機能を見るかで結論が逆になる</li>
+<li><strong>個人FXトレーダーの成績について、規制当局・業者の開示（3分の2以上が損失）と、一部の学術研究（平均はプラス）が対立している。日本には公的統計がない</strong></li>
+<li><strong>通貨は消える。</strong> ブルガリア・レフは2026年1月1日にユーロに置き換わった。ジンバブエ、レバノン、アルゼンチンでは、通貨の「約束」が崩れる過程が今も続いている</li>
+</ol>
+<h2>【B】クロちゃん独自の論点（他AIとの比較で残してほしいもの）</h2>
+<ol>
+<li><strong>為替レートは「値段」ではなく「2つの国の約束の比率」</strong>という軸（序章）</li>
+<li><strong>ヘッジ比率は「ばね」</strong>——円の急騰リスクはヘッジ比率の復元に潜む（第6章・第18章）</li>
+<li><strong>黒字の「国籍」</strong>——所得黒字は円買いにならない可能性（第6章・第18章）</li>
+<li><strong>協調介入は「介入の意味」を変えた</strong>——FRBの利上げと財務省のドル売りが同時に逆方向に作用（第18章）</li>
+<li><strong>安全通貨としての円の変質</strong>——スイス・フランへの役割の移行（第18章）</li>
+<li><strong>東京の外で決まる円</strong>——介入は日本の祝日に行われ、フラッシュクラッシュは日本人が寝ている時間に起きる（第12章・第18章）</li>
+<li><strong>高金利通貨のFXは「保険を売る取引」</strong>（第7章・第18章）</li>
+<li><strong>数字の作法</strong>——同じ対象の数字が、数え方で何倍も変わる（第18章）</li>
+<li><strong>通貨危機の5つの型</strong>（約束の水準のずれ／通貨・期間の不一致／財政の信認喪失／ドル金利上昇の波及／市場構造の増幅）（第15章）</li>
+<li><strong>1930年の金解禁、1992年の英ポンド、2015年のスイス・フランは同じ構造</strong>——「約束を高すぎる水準で結ぶ」失敗（第3章・第15章）</li>
+</ol>
+<h2>【C】反対意見・見解の対立（解消せずに残したもの）</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>論点</th>
+<th>見解1</th>
+<th>見解2</th>
+<th>解消しなかった理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>テクニカル分析の有効性</td>
+<td>1990年代初めに利益が消滅（Neely et al. 2009）</td>
+<td>データスヌーピング補正後も利益が残る（Hsu et al. 2016）</td>
+<td>検証対象と方法が違い、本研究では優劣を判断できない</td>
+</tr>
+<tr>
+<td>個人FXの成績</td>
+<td>3分の2以上が損失（ESMA、米国の開示）</td>
+<td>平均はプラス（日本の自己申告調査、Abbey &amp; Doukas）</td>
+<td>対象・方法・期間が違い、日本には公的統計がない</td>
+</tr>
+<tr>
+<td>新NISAの円安への影響</td>
+<td>年10兆円規模の一方向の円売りで、需給を変えた</td>
+<td>1日の取引高の数%で、影響は限定的</td>
+<td>影響の規模を測る公式統計がない</td>
+</tr>
+<tr>
+<td>日本の財政と円</td>
+<td>財政の信認喪失で円が急落するリスクがある</td>
+<td>国内保有・円建て・対外純資産で、そのリスクは小さい</td>
+<td>本研究の範囲を超える大きな論争</td>
+</tr>
+<tr>
+<td>IMFのアジア危機への処方</td>
+<td>必要な改革だった</td>
+<td>危機を深めた</td>
+<td>歴史的評価が分かれたまま</td>
+</tr>
+<tr>
+<td>マレーシアの資本規制（1998年）</td>
+<td>市場を歪めた</td>
+<td>一定の効果があった</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>介入の効果</td>
+<td>単独では流れを変えられない</td>
+<td>他の要因と重なればピークを作る</td>
+<td>2026年の協調介入の評価は、データの公表待ち</td>
+</tr>
+</tbody>
+</table></div>
+<h2>【D】数値の読み方（本研究で守った作法）</h2>
+<ol>
+<li>BIS調査は<strong>速報（2025-09-30）・12月号（2025-12-08）・最終（2026-06）</strong>の3段階。本稿は最終値（9.51兆ドル）を主に使い、速報値と並べた</li>
+<li>BISの取引高は<strong>ネット・ネット・ベース</strong>（国別はネット・グロス・ベース）。FFAJの取引金額とは数え方が違う</li>
+<li>為替レートは<strong>取得元と時刻</strong>を明記。ドル円・ユーロ円はOANDAのNY終値（2026-10-16）、その他はECB参照レート（2026-10-16）からの換算値</li>
+<li><strong>週末（10月17〜18日）の動きは反映していない</strong></li>
+<li>政策金利の差は<strong>政策金利の差の概算</strong>で、実際のスワップポイントとは異なる</li>
+<li>介入額は<strong>財務省の公表値</strong>。2026年7〜9月期の日別内訳は未公表</li>
+<li>国際収支は<strong>速報値</strong>。確定値で改定される</li>
+<li>IMF COFERは<strong>過去にさかのぼって改定される</strong>ため、同じ時点の系列で比べる</li>
+<li>実質実効レートの「最低」の比較起点は、報道で「1970年以来」「1973年以来」と分かれている</li>
+</ol>
+<h2>【E】確認できなかったこと・未確定のこと</h2>
+<ol>
+<li><strong>BIS最終版の通貨ペア表・公式シェア表</strong>（Excelが読めず、APIもブロック）。最終版の通貨シェアは付属表PDFからの計算値</li>
+<li>人民元のシェア（8.5% vs 8.8%）の食い違いの理由</li>
+<li><strong>2026年7〜9月期の日別の介入額</strong>（11月上旬公表見込み）と<strong>米国側の介入額</strong>（非公表）</li>
+<li>2026年の協調介入の経緯（7月30日単独、7月31日から協調）は<strong>報道ベース</strong></li>
+<li>2026年6月16日の日銀の利上げの票決（7対1と読めたが、要確認）</li>
+<li>実質実効為替レートの最新値と「何年ぶりの低水準か」（日銀の原本で未確認）</li>
+<li>2026年のドル円の年初来安値（1月の152.10円か、9月の152円台か）</li>
+<li>CFTCの円先物のポジション（一次資料を直接取得できず）</li>
+<li>FFAJの口座数・証拠金預託額・2025年の年間取引金額（Excelが読めず）</li>
+<li>FX利益への課税（20.315%）の一次資料</li>
+<li>日本の個人FXの利益口座比率（公的統計がない）</li>
+<li>2026年の金価格と中央銀行の金購入量</li>
+<li>IMF AREAERの2024年版・2025年版の為替制度分類</li>
+<li>第15章の歴史的危機の多くの数値（【要確認】と表示）</li>
+<li>1990年のドル円の高値（約160円）の日付と水準</li>
+<li>1998年10月の円の急騰の正確な値幅</li>
+<li>日本のFX業者ごとの取扱通貨ペア（一般的な傾向のみ記載）</li>
+<li>新NISAによる2025〜2026年の投資信託委託会社等の対外証券投資額</li>
+<li>Du, Tepper &amp; Verdelhan（2018）など、一部の学術論文の書誌の再照合</li>
+<li>2025年4〜6月期のドル安の正確な幅（「上半期として1973年以来最大の下落」という記憶ベースの記述は採用しなかった）</li>
+</ol>
+<h2>【F】主要出典一覧</h2>
+<h3>一次資料（クロちゃんが直接確認したもの）【一次確認】</h3>
+<ol>
+<li>財務省「外国為替平衡操作の実施状況（令和8年4月〜6月）」<a href="https://www.mof.go.jp/policy/international_policy/reference/feio/data/quarter/2026_2Q.html" target="_blank" rel="noopener">https://www.mof.go.jp/policy/international_policy/reference/feio/data/quarter/2026_2Q.html</a></li>
+<li>日本銀行「当面の金融政策運営について」（2026年9月18日）<a href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k260918a.pdf" target="_blank" rel="noopener">https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k260918a.pdf</a></li>
+<li>Federal Reserve「Open Market Operations」（FF金利の誘導目標の変更履歴）<a href="https://www.federalreserve.gov/monetarypolicy/openmarket.htm" target="_blank" rel="noopener">https://www.federalreserve.gov/monetarypolicy/openmarket.htm</a></li>
+<li>OANDA「NYマーケットダイジェスト」（2026年10月17日06:15配信）<a href="https://www.oanda.jp/lab-education/market_news/mn_1039417_202610170615/" target="_blank" rel="noopener">https://www.oanda.jp/lab-education/market_news/mn_1039417_202610170615/</a></li>
+<li>BIS「Triennial Central Bank Survey 2025」統計ページ <a href="https://www.bis.org/statistics/rpfx25.htm" target="_blank" rel="noopener">https://www.bis.org/statistics/rpfx25.htm</a></li>
+<li>BIS Quarterly Review 2025年12月「Global FX markets when hedging takes centre stage」<a href="https://www.bis.org/publications/qr-202512/global-fx-markets-when-hedging-takes-centre-stage" target="_blank" rel="noopener">https://www.bis.org/publications/qr-202512/global-fx-markets-when-hedging-takes-centre-stage</a></li>
+<li>共通MASTER・第2研究所START_HERE・Manifest（Google Drive上の正式原本）</li>
+</ol>
+<h3>一次資料（補助エージェントが確認したもの）【一次（補助確認）】</h3>
+<p><strong>BIS・国際機関</strong>
+8. BIS 速報PDF <a href="https://www.bis.org/statistics/rpfx25_fx.pdf" target="_blank" rel="noopener">https://www.bis.org/statistics/rpfx25_fx.pdf</a>
+9. BIS 最終版付属表 <a href="https://www.bis.org/publications/triennial-survey/rpfx25-fx-annex-2606.pdf" target="_blank" rel="noopener">https://www.bis.org/publications/triennial-survey/rpfx25-fx-annex-2606.pdf</a>
+10. BIS 速報解説 <a href="https://www.bis.org/publications/202509-commentary-otc-derivatives" target="_blank" rel="noopener">https://www.bis.org/publications/202509-commentary-otc-derivatives</a>
+11. BIS QR 2025年12月 巻頭言 <a href="https://www.bis.org/publications/qr-202512/foreword-shifting-currents-fx-and-interest-rate-derivatives-highlights-2025-triennial-survey" target="_blank" rel="noopener">https://www.bis.org/publications/qr-202512/foreword-shifting-currents-fx-and-interest-rate-derivatives-highlights-2025-triennial-survey</a>
+12. BIS QR 2026年6月「Uncovering FX settlement risk」<a href="https://www.bis.org/publications/qr-202606/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey" target="_blank" rel="noopener">https://www.bis.org/publications/qr-202606/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey</a>
+13. BIS OTC derivatives statistics at end-June 2025 <a href="https://www.bis.org/publ/otc_hy2512.pdf" target="_blank" rel="noopener">https://www.bis.org/publ/otc_hy2512.pdf</a>
+14. BIS 年次経済報告2025 第III章 <a href="https://www.bis.org/publ/arpdf/ar2025e3.htm" target="_blank" rel="noopener">https://www.bis.org/publ/arpdf/ar2025e3.htm</a>
+15. BIS Project Agorá <a href="https://www.bis.org/press/p260527.htm" target="_blank" rel="noopener">https://www.bis.org/press/p260527.htm</a>
+16. BIS Markets Committee（ポンド急落）<a href="https://bis.org/press/p170113.htm" target="_blank" rel="noopener">https://bis.org/press/p170113.htm</a>
+17. BIS Markets Committee（FX執行アルゴ）<a href="https://www.bis.org/press/p201030.htm" target="_blank" rel="noopener">https://www.bis.org/press/p201030.htm</a>
+18. IMF COFER（2026年9月30日）<a href="https://data.imf.org/en/news/imf%20data%20brief%20september%2030" target="_blank" rel="noopener">https://data.imf.org/en/news/imf%20data%20brief%20september%2030</a>
+19. IMF ブログ（AIと市場、2024年10月15日）<a href="https://www.imf.org/en/blogs/articles/2024/10/15/artificial-intelligence-can-make-markets-more-efficient-and-more-volatile" target="_blank" rel="noopener">https://www.imf.org/en/blogs/articles/2024/10/15/artificial-intelligence-can-make-markets-more-efficient-and-more-volatile</a>
+20. CLS 2025年4月統計 <a href="https://www.cls-group.com/news/cls-fx-trading-activity-april-2025/" target="_blank" rel="noopener">https://www.cls-group.com/news/cls-fx-trading-activity-april-2025/</a>
+21. CLS T+1分析 <a href="https://cls-group.com/media/ngyfp2um/shapingfx06_part2_tplus1-the-fx-ecosystem-and-cls-what-difference-has-a-day-made-so-far.pdf" target="_blank" rel="noopener">https://cls-group.com/media/ngyfp2um/shapingfx06_part2_tplus1-the-fx-ecosystem-and-cls-what-difference-has-a-day-made-so-far.pdf</a></p>
+<p><strong>日本</strong>
+22. 日本銀行 BISサーベイ日本分（2025年10月6日）<a href="https://www.boj.or.jp/statistics/bis/deri/deri2504.htm" target="_blank" rel="noopener">https://www.boj.or.jp/statistics/bis/deri/deri2504.htm</a>
+23. 日本銀行 金融政策の枠組みの推移 <a href="https://www.boj.or.jp/mopo/outline/ref_qqe.htm" target="_blank" rel="noopener">https://www.boj.or.jp/mopo/outline/ref_qqe.htm</a>
+24. 日本銀行 2025年1月24日・12月19日、2026年1月23日・3月19日・4月28日・6月16日・7月31日の公表文（mpmdeci 以下）
+25. 日本銀行 国債買入れ減額計画（2025年6月、2026年6月）
+26. 日本銀行 CBDCフォーラム資料 <a href="https://www.boj.or.jp/en/paym/digital/d_forum/dfo260911a.pdf" target="_blank" rel="noopener">https://www.boj.or.jp/en/paym/digital/d_forum/dfo260911a.pdf</a>
+27. 財務省 外国為替平衡操作の実施状況（CSV）<a href="https://www.mof.go.jp/policy/international_policy/reference/feio/foreign_exchange_intervention_operations.csv" target="_blank" rel="noopener">https://www.mof.go.jp/policy/international_policy/reference/feio/foreign_exchange_intervention_operations.csv</a>
+28. 財務省 外国為替平衡操作 月次（2026年7月30日〜8月26日）
+29. 財務省 外貨準備等の状況（2026年9月末）<a href="https://www.mof.go.jp/policy/international_policy/reference/official_reserve_assets/data/0809.html" target="_blank" rel="noopener">https://www.mof.go.jp/policy/international_policy/reference/official_reserve_assets/data/0809.html</a>
+30. 財務省 国際収支（2025暦年、2025年度、2026年8月）
+31. 金融先物取引業協会 証拠金規制 <a href="https://www.ffaj.or.jp/regulation/corporate-customers/" target="_blank" rel="noopener">https://www.ffaj.or.jp/regulation/corporate-customers/</a>
+32. 金融先物取引業協会 店頭FX月次速報 <a href="https://www.ffaj.or.jp/library/performance/fx_flash/" target="_blank" rel="noopener">https://www.ffaj.or.jp/library/performance/fx_flash/</a>
+33. 東京金融取引所 くりっく365 年間実績 <a href="https://www.tfx.co.jp/newsfile/article/20260105-01" target="_blank" rel="noopener">https://www.tfx.co.jp/newsfile/article/20260105-01</a>
+34. 金融庁・FFAJ資料（2018年3月12日）<a href="https://www.fsa.go.jp/news/29/singi/20180312-1/01.pdf" target="_blank" rel="noopener">https://www.fsa.go.jp/news/29/singi/20180312-1/01.pdf</a></p>
+<p><strong>各国中央銀行・統計局</strong>（主なもの）
+35. 米国労働統計局（CPI）、36. Eurostat、37. イングランド銀行、38. スイス国立銀行、39. 豪州準備銀行、40. NZ準備銀行、41. カナダ銀行、42. ノルウェー銀行、43. デンマーク国立銀行、44. 韓国銀行、45. 台湾中央銀行、46. インドネシア銀行、47. タイ銀行、48. マレーシア中央銀行、49. ハンガリー国立銀行、50. チェコ国立銀行、51. チリ中央銀行、52. コロンビア共和国銀行、53. 南アフリカ準備銀行、54. ケニア中央銀行、55. ジョージア国立銀行、56. モンゴル銀行、57. 香港金融管理局、58. ECB参照レート、59. 欧州委員会（ブルガリアのユーロ導入）、60. IBGE（ブラジル）、61. INE（チリ）</p>
+<p><strong>規制・学術</strong>
+62. ESMA（2018年3月27日）<a href="https://www.esma.europa.eu/node/84933" target="_blank" rel="noopener">https://www.esma.europa.eu/node/84933</a>
+63. OANDA US 規制開示 <a href="https://www.oanda.com/us-en/legal/regulatory-public-disclosures/" target="_blank" rel="noopener">https://www.oanda.com/us-en/legal/regulatory-public-disclosures/</a>
+64. FOREX.com US リスク開示
+65. RBA「The Recent Japanese Yen Flash Event」（2019年2月）<a href="https://www.rba.gov.au/publications/smp/2019/feb/box-b-the-recent-japanese-yen-flash-event.html" target="_blank" rel="noopener">https://www.rba.gov.au/publications/smp/2019/feb/box-b-the-recent-japanese-yen-flash-event.html</a>
+66. Rossi (2013) <em>JEL</em> 51(4)
+67. Brunnermeier, Nagel &amp; Pedersen (2008) <em>NBER Macroeconomics Annual</em> 23
+68. Menkhoff, Sarno, Schmeling &amp; Schrimpf (2012) <em>JF</em> 67(2)（キャリー）
+69. Menkhoff, Sarno, Schmeling &amp; Schrimpf (2012) <em>JFE</em> 106(3)（モメンタム）
+70. Moskowitz, Ooi &amp; Pedersen (2012) <em>JFE</em> 104(2)
+71. Neely, Weller &amp; Ulrich (2009) <em>JFQA</em> 44(2)
+72. Park &amp; Irwin (2007) <em>Journal of Economic Surveys</em> 21(4)
+73. Hsu, Taylor &amp; Wang (2016) <em>JIE</em> 102
+74. Rogoff (1996) <em>JEL</em> 34
+75. Evans &amp; Lyons (2002) <em>JPE</em> 110(1)
+76. Bailey, Borwein, López de Prado &amp; Zhu (2014) <em>Notices of the AMS</em> 61(5)
+77. Harvey, Liu &amp; Zhu (2016) <em>RFS</em>
+78. Hayo &amp; Iwatsubo (2022) <em>Sustainability</em> 14(18)
+79. Abbey &amp; Doukas (2015)（抄録）
+80. Heimer &amp; Simon (2015) Cleveland Fed WP 15-22
+81. ECB Cipollone理事講演（2026年10月6日）<a href="https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261006~0da978f159.en.html" target="_blank" rel="noopener">https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261006~0da978f159.en.html</a>
+82. Atlantic Council CBDCトラッカー <a href="https://www.atlanticcouncil.org/cbdctracker/" target="_blank" rel="noopener">https://www.atlanticcouncil.org/cbdctracker/</a></p>
+<h3>報道・二次資料【報道】（主なもの）</h3>
+<ol start="83">
+<li>国際通貨研究所ニューズレター（nl2026.29、nl2026.38）</li>
+<li>りそな銀行 マーケット情報（2026年8月3日）</li>
+<li>野村総合研究所 木内登英コラム（2026年8月3日）</li>
+<li>三井住友DSアセットマネジメント（2024年8月6日）</li>
+<li>大和総研（2025年2月13日）</li>
+<li>ニッセイ基礎研究所（2026年2月4日）</li>
+<li>AFP（2011年10月31日）、楽天証券、nippon.com、野村證券用語解説、Business Insider</li>
+<li>Reuters（2024年4月15日）、Rabobank（2025年4月28日）</li>
+<li>Fideres（2015年5月26日）、Orrick（2015年5月22日）</li>
+<li>Arab News、Infobae、Chequeado、Turkish Minute、TASS、Agência Brasil、Expansión、Nairametrics、Daily News Egypt、Business Standard ほか各国報道</li>
+<li>TokenPost（DefiLlamaのデータ）、CoinDesk、Caixin、The Block、Duke FinReg Blog、PYMNTS、China Daily、Al Jazeera</li>
+<li>JPYC 自社発表（PR TIMES）、kirifuda（オンチェーン計測）</li>
+<li>Wikipedia（為替制度一覧、各国通貨、危機の経緯。<strong>一次資料の代替としては扱っていない</strong>）</li>
+</ol>
+<h3>資料数</h3>
+<ul>
+<li><strong>クロちゃんが直接確認した一次資料：7件</strong>（Drive原本を含む）</li>
+<li><strong>補助エージェントが確認した一次資料・学術資料：約75件</strong></li>
+<li><strong>報道・二次資料：約60件</strong></li>
+<li><strong>合計：約140件</strong>（同一機関の複数の公表文は、まとめて1件と数えたものがある。正確な件数ではなく目安）</li>
+</ul>
+<hr />
+<h1>付記　本研究の限界</h1>
+<ol>
+<li><strong>検索の上限</strong>：調査の途中でWeb検索の上限に達したため、一部の数値（特に第15章の歴史的危機）を一次資料で再照合できなかった。【要確認】の表示は、記事化の前に必ず確認してほしい</li>
+<li><strong>補助エージェントの利用</strong>：事実収集の多くを、クロちゃんが起動した補助エージェントが行った。重要な数値の一部はクロちゃんが一次資料で再確認したが、すべてではない。確認度の表示で区別した</li>
+<li><strong>BIS最終版の表</strong>：最終版の主要表（Excel）を読めなかったため、通貨シェアは計算値である</li>
+<li><strong>2026年の情報</strong>：2026年の多くの出来事（戦争、協調介入、利上げ）は、情報の基準時点から近く、評価が定まっていない</li>
+<li><strong>地域の偏り</strong>：アフリカ・中東・中央アジアの通貨は、主要通貨に比べて情報が少なく、確認度も低い</li>
+<li><strong>特定の手法を推奨しない</strong>：本研究は、特定のFX手法や通貨への投資を推奨するものではない。学術研究の結果は、将来の利益を保証しない</li>
+<li><strong>他AIの原稿は一切参照していない</strong></li>
+</ol>
+<hr />
+<p><em>本研究は、第2研究所 日曜特集S9（2026年10月18日号）のための独立調査原稿である。他AIとの比較、統合記事、HTML、index変更、commit、push、deploy、公開は行っていない。Google Drive上の正式原本の変更・移動・削除は行っていない。</em></p>
+<p><strong>情報取得日：2026年10月17日（市場価格は2026年10月16日のNY終値）</strong>
+<strong>作成：クロちゃん（Claude）</strong></p>
+</article>
+<nav class="rs-nav" style="margin-top:28px"><a href="sunday-2026-10-18.html">← 日曜特集 第9号の本文へ戻る</a><a href="sunday-2026-10-18.html#part-ai">4AIの独立調査レポート一覧へ</a><a href="#top">↑ ページの先頭へ</a></nav>
+<footer class="foot"><p class="disc">AI総合研究機構 日曜特集 第9号「為替」研究付録。この独立調査原稿は、統合前の段階の記録として公開しています。内容の正確さは、本文で確認・統合した結果を優先してください。</p></footer>
+</div>
+</body>
+</html>
