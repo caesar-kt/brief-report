@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年10月20日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .cont{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;
+    letter-spacing:.07em;color:#6B7280;background:linear-gradient(180deg,#F6F7F9,#EFF1F5);
+    border:1px solid #DDE2E9;border-radius:999px;padding:2px 9px;margin-left:8px;
+    vertical-align:middle;white-space:nowrap;}
+  .cont::before{content:"";width:4px;height:4px;border-radius:50%;background:#9AA5B1;}
+  .compact{background:linear-gradient(180deg,#FCFDFE,#F8FAFC);border:1px dashed var(--line);
+    border-radius:12px;padding:14px 16px;margin:13px 0;}
+  .compact p{font-size:13.5px;margin-bottom:7px;}
+  .compact p:last-child{margin-bottom:0;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  .ar{font-size:9px;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .jump{margin-top:20px;font-size:13px;color:var(--ink-3);text-align:center;}
+  .jump a{color:var(--brand);font-weight:700;text-decoration:none;}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .tagline{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:7px;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .why p strong{color:#3A2C12;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .counter p strong{color:#26313F;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .eq{background:linear-gradient(180deg,#FFFFFF,#FCFDFE);padding:12px 13px;}
+  .eq .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .eq .vl{font-size:17.5px;font-weight:800;margin-top:2px;letter-spacing:-.03em;}
+  .eq .ch{font-size:11px;font-weight:700;margin-top:1px;color:var(--ink-2);}
+  .eq .ch.up{color:var(--up);} .eq .ch.down{color:var(--down);}
+  @media(max-width:620px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .tvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .tvlink{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);box-shadow:var(--sh-1);transition:all .14s;}
+  .tvlink:hover{border-color:var(--brand);box-shadow:var(--sh-2);transform:translateY(-1px);}
+  .tvlink-ja{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .tvlink-desc{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.5;}
+  .tvlink-sym{display:block;font-size:10.5px;color:var(--brand);margin-top:5px;font-weight:700;}
+  @media(max-width:600px){.tvgrid{grid-template-columns:1fr;}}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+  .sp.today .dt{color:var(--up);}
+  .sp.today{background:linear-gradient(90deg,rgba(14,159,110,.06),transparent);border-radius:8px;padding-left:9px;margin-left:-9px;}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+  .disc{font-size:11px;color:var(--ink-3);line-height:1.75;margin-top:15px;padding-top:14px;border-top:1px solid var(--line-2);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-copy{padding:9px 14px;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .chost{height:340px;}
+  }
+</style>
+<style>
+  .quake{background:linear-gradient(180deg,var(--surface),#FFFBFB);
+    border:1px solid rgba(224,36,36,.2);border-radius:16px;box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);
+    box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+  .dmg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:14px 0;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .dmg div{background:#fff;padding:13px 12px;text-align:center;}
+  .dmg .k{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .dmg .v{font-size:21px;font-weight:800;margin-top:3px;letter-spacing:-.03em;color:var(--ink);}
+  .dmg .u{font-size:10.5px;color:var(--ink-3);margin-top:1px;}
+  @media(max-width:600px){.dmg{grid-template-columns:repeat(2,1fr);}}
+  .support{background:linear-gradient(180deg,#F4FBF8,#EAF7F1);border:1px solid rgba(14,159,110,.22);
+    border-left:3px solid var(--up);border-radius:0 12px 12px 0;padding:15px 17px;margin-top:14px;}
+  .support h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+    color:#0B7A55;margin-bottom:8px;}
+  .support p{font-size:13px;color:#2A5F47;margin-bottom:6px;}
+  .support a{color:#0B7A55;font-weight:700;}
+
+  /* ==== 災害支援シグナル ==== */
+  .dsig-wrap{margin:16px 0;}
+  .dsig-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .dsig-head h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);}
+  .dsig-card{border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--line);background:var(--surface-2);}
+  .dsig-red{border-color:rgba(224,36,36,.35);background:linear-gradient(180deg,#FFFBFB,#FFF5F5);}
+  .dsig-amber{border-color:rgba(232,145,45,.35);background:linear-gradient(180deg,#FFFDF8,#FFF8EC);}
+  .dsig-green{border-color:rgba(14,159,110,.3);background:linear-gradient(180deg,#F8FDFB,#F1FAF6);}
+  .dsig-gray{border-color:var(--line);background:var(--surface-2);}
+  .dsig-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800;font-size:14px;margin-bottom:6px;}
+  .dsig-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;}
+  .dsig-red .dsig-badge{color:var(--down);background:#FFF1F1;border:1px solid rgba(224,36,36,.3);}
+  .dsig-amber .dsig-badge{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .dsig-green .dsig-badge{color:#0B7A55;background:#EAF7F1;border:1px solid rgba(14,159,110,.25);}
+  .dsig-gray .dsig-badge{color:#6B7280;background:#F4F6F9;border:1px solid var(--line);}
+  .dsig-days{font-size:11px;color:var(--ink-3);font-weight:700;}
+  .dsig-flow{display:flex;flex-wrap:wrap;gap:4px;font-size:10.5px;margin:8px 0;color:var(--ink-3);}
+  .dsig-flow span{padding:2px 7px;border-radius:6px;background:var(--line-2);}
+  .dsig-flow span.done{background:#EAF7F1;color:#0B7A55;font-weight:700;}
+  .dsig-flow span.unknown{background:var(--line-2);color:var(--ink-3);border:1px dashed var(--line);}
+  .dsig-rows{font-size:12.5px;color:var(--ink-2);}
+  .dsig-rows div{display:flex;gap:6px;padding:3px 0;border-top:1px dashed var(--line-2);}
+  .dsig-rows div:first-child{border-top:none;}
+  .dsig-rows .k{flex:none;width:92px;color:var(--ink-3);font-weight:700;}
+  .dsig-rows .v-unknown{color:#6B7280;font-style:italic;}
+  .dsig-meta{font-size:10.5px;color:var(--ink-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);}
+  .dsig-meta a{color:inherit;}
+  @media(max-width:560px){.dsig-rows div{flex-direction:column;gap:1px;}.dsig-rows .k{width:auto;}}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc h2{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-warn{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-pred{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  details.dd{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;}
+  details.dd summary{cursor:pointer;padding:11px 15px;font-size:12.5px;font-weight:800;color:var(--brand);
+    list-style:none;display:flex;align-items:center;gap:7px;user-select:none;}
+  details.dd summary::-webkit-details-marker{display:none;}
+  details.dd summary::before{content:"▸";font-size:10px;color:var(--brand-2);transition:transform .15s;}
+  details.dd[open] summary::before{transform:rotate(90deg);}
+  details.dd[open] summary{border-bottom:1px solid var(--line);}
+  details.dd .ddbody{padding:15px 16px 4px;}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+  .backtop a:hover{color:var(--brand);border-color:var(--brand);}
+
+  /* ===== チャート（daily-2026-08-08の検証済み実装を再導入） ===== */
+  .cw{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;
+    background:var(--surface);box-shadow:var(--sh-2);}
+  .cw-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 15px;background:linear-gradient(180deg,#FCFDFE,#F7F9FC);border-bottom:1px solid var(--line);}
+  .cw-name{font-size:14.5px;font-weight:800;letter-spacing:-.015em;}
+  .cw-name span{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-left:6px;}
+  .cw-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:10px 15px;background:var(--surface-2);border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--ink-3);}
+  .tfs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tf{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px;
+    font-size:11px;font-weight:700;color:var(--ink-2);cursor:pointer;line-height:1.25;
+    display:flex;flex-direction:column;align-items:center;transition:all .13s;font-family:inherit;}
+  .tf small{font-size:8.5px;font-weight:600;color:var(--ink-3);}
+  .tf:hover{border-color:var(--brand);color:var(--brand);}
+  .tf[aria-pressed="true"]{background:linear-gradient(160deg,var(--brand),var(--brand-2));
+    border-color:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(61,90,254,.28);}
+  .tf[aria-pressed="true"] small{color:rgba(255,255,255,.82);}
+  .chost{height:340px;background:#FCFDFE;}
+  .chost iframe{width:100%;height:100%;display:block;border:0;}
+  .tvopen{text-decoration:none;font-size:11.5px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);border-radius:8px;padding:5px 11px;
+    white-space:nowrap;transition:all .13s;}
+  .tvopen:hover{background:var(--brand);color:#fff;}
+
+  /* ===== 今日いちばん重要なこと ===== */
+  .kbox{border:1px solid rgba(61,90,254,.25);background:linear-gradient(170deg,#F7F9FF,var(--surface));
+    border-radius:16px;padding:22px 20px;margin:16px 0;box-shadow:var(--sh-2);}
+  .kbox-lab{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);}
+  .kbox h3{font-size:19px;font-weight:800;line-height:1.6;letter-spacing:-.015em;margin:8px 0 10px;}
+  .kbox p{font-size:14px;line-height:1.95;color:var(--ink-2);}
+  .kbox p strong{color:var(--ink);}
+
+  /* ===== 分野ひとこと ===== */
+  .glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px;margin:14px 0;}
+  .gl{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:13px 14px;}
+  .gl-k{flex:none;font-size:10.5px;font-weight:800;color:var(--slate);background:var(--slate-soft);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;}
+  .gl-t{font-size:12.5px;line-height:1.75;color:var(--ink-2);}
+  .gl-t b{color:var(--ink);font-weight:800;}
+
+  /* ===== 分野別ダイジェスト ===== */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:16px 0;}
+  .dg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 17px 14px;
+    box-shadow:var(--sh-1);display:flex;flex-direction:column;}
+  .dg-h{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-bottom:9px;
+    border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:8px;}
+  .dg-h em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:2px 7px;}
+  .dg-r{display:flex;gap:9px;margin:7px 0;font-size:12.5px;line-height:1.75;}
+  .dg-r>span:first-child{flex:none;width:6.4em;font-weight:800;font-size:10.5px;color:var(--ink-3);
+    letter-spacing:.02em;padding-top:2px;}
+  .dg-r b{color:var(--ink);font-weight:800;}
+  .dg-r.w>span:first-child{color:var(--amber);}
+  .dg-go{margin-top:auto;padding-top:11px;}
+  .dg-go a{text-decoration:none;font-size:11.5px;font-weight:800;color:var(--brand);}
+  .dg-go a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .dg-r{flex-direction:column;gap:2px;}
+    .dg-r>span:first-child{width:auto;}
+  }
+
+  /* 目次：旧版で class 名と CSS セレクタが一致しておらず無装飾だった箇所を補う */
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+
+  /* 分野ごとの詳細を折りたたむ（内容は削らず、閉じているだけ） */
+  details.dd.sec-dd{margin-top:0;border-color:#DCE3EC;background:#FBFCFE;}
+  details.dd.sec-dd>summary{padding:13px 16px;font-size:13.5px;color:var(--brand);}
+  details.dd.sec-dd>summary:hover{background:var(--brand-soft);}
+  details.dd.sec-dd>.ddbody{padding:18px 17px 6px;}
+
+  /* 2026-09-10 D45：要点リストの本文を span でくるんだことに伴う調整。
+     ラベルの表示は前号までと同じに保つ（見た目を変えないための明示指定）。 */
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+</style>
+<style id="ui-2026-10">
+/* ===== 朝レポート UI 2026-10（新デザイン）=====
+   既存のCSSの後ろに置き、見た目だけを上書きする。内容・機能のクラスは変えない。 */
+body.ui{
+  --bg:#EEF4FC; --surface:#FFFFFF; --surface-2:#F7FAFE;
+  --ink:#13213D; --ink-2:#44526B; --ink-3:#77849B; --navy:#0D1D42;
+  --line:#E1E8F3; --line-2:#ECF1F8;
+  --brand:#1F5FEF; --brand-2:#4D8BFF; --brand-soft:#EBF2FF;
+  --acc:#1F5FEF; --acc-2:#4D8BFF; --acc-soft:#EBF2FF; --badge:#F28A1E;
+  --sh-1:0 1px 2px rgba(20,40,90,.05),0 1px 3px rgba(20,40,90,.06);
+  --sh-2:0 2px 6px rgba(20,40,90,.05),0 10px 26px rgba(20,40,90,.07);
+  --sh-3:0 6px 14px rgba(20,40,90,.06),0 22px 48px rgba(20,40,90,.10);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  background:
+    radial-gradient(1100px 520px at 88% -8%,rgba(77,139,255,.14),transparent 62%),
+    radial-gradient(900px 460px at -5% 0%,rgba(77,139,255,.08),transparent 60%),
+    linear-gradient(180deg,#F5F9FF 0%,var(--bg) 55%);
+  background-attachment:scroll;
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","BIZ UDPGothic","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
+  color:var(--ink);padding:14px 14px 64px;overflow-wrap:anywhere;
+}
+body.ui-w{--brand:#3B5A88;--brand-2:#6F8BB5;--brand-soft:#EDF2F9;--acc:#3B5A88;--acc-2:#7E96BA;--acc-soft:#EDF2F9;--badge:#4C6384;}
+body.ui-s{--brand:#7348CF;--brand-2:#9F7BE6;--brand-soft:#F3EEFC;--acc:#7348CF;--acc-2:#A783EA;--acc-soft:#F3EEFC;--badge:#7348CF;
+  --bg:#F3F0FB;
+  background:radial-gradient(1100px 520px at 88% -8%,rgba(160,120,230,.16),transparent 62%),
+    radial-gradient(900px 460px at -5% 0%,rgba(77,139,255,.07),transparent 60%),
+    linear-gradient(180deg,#F8F6FE 0%,var(--bg) 55%);}
+body.ui-i .wrap{max-width:1080px;}
+body.ui-d .wrap,body.ui-w .wrap{max-width:860px;}
+body.ui-s .wrap{max-width:860px;}
+.ui .wrap>*{min-width:0;}
+.ui img,.ui svg,.ui iframe,.ui video{max-width:100%;}
+
+/* ---- アイコン ---- */
+.ic{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;flex:none;
+  background:var(--c-bg);color:var(--c);vertical-align:middle;}
+.ic svg{width:17px;height:17px;}
+.c-blue{--c:#1F5FEF;--c-bg:#EAF1FF;} .c-orange{--c:#EE7A16;--c-bg:#FFF1E3;}
+.c-sky{--c:#0B95D6;--c-bg:#E4F5FD;} .c-teal{--c:#0E9785;--c-bg:#E2F5F2;}
+.c-amber{--c:#C98A00;--c-bg:#FFF5DA;} .c-red{--c:#D9443A;--c-bg:#FDEBE9;}
+.c-indigo{--c:#5656D6;--c-bg:#EEEEFD;} .c-pink{--c:#D9497F;--c-bg:#FDE9F1;}
+.c-green{--c:#2B9A4E;--c-bg:#E6F5EA;} .c-slate{--c:#566985;--c-bg:#EDF1F7;}
+.c-violet{--c:#7348CF;--c-bg:#F1EBFC;} .c-acc{--c:var(--acc);--c-bg:var(--acc-soft);}
+
+/* ---- サイトの帯 ---- */
+.site{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;
+  background:rgba(255,255,255,.94);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0;
+  padding:8px 16px;box-shadow:var(--sh-1);position:relative;z-index:2;}
+.site-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);min-height:44px;}
+.site-logo{width:36px;height:36px;flex:none;}
+.site-nm{display:flex;flex-direction:column;font-weight:800;font-size:16px;line-height:1.2;letter-spacing:.03em;}
+.site-nm small{font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:.1em;}
+.site-nav{display:flex;gap:4px;flex-wrap:wrap;}
+.site-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:10px;
+  font-size:13px;font-weight:700;color:var(--ink-2);text-decoration:none;}
+.site-nav a:hover{background:var(--brand-soft);color:var(--brand);}
+.site-nav a.pri{background:var(--brand);color:#fff;}
+.site-nav a.pri:hover{background:var(--brand-2);color:#fff;}
+
+/* ---- ヒーロー（装飾画像） ---- */
+.hero{position:relative;overflow:hidden;min-height:330px;display:flex;align-items:center;
+  background:#fff var(--hero) right center/cover no-repeat;border:1px solid var(--line);border-top:0;
+  border-radius:0 0 22px 22px;box-shadow:var(--sh-2);}
+.hero::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 36%,rgba(255,255,255,.35) 60%,rgba(255,255,255,0) 78%);}
+.hero-in{position:relative;padding:36px 38px;max-width:580px;min-width:0;}
+.hero-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.bd-kind,.bd-no{display:inline-flex;align-items:center;height:28px;color:#fff;font-weight:800;font-size:13.5px;border-radius:6px;padding:0 11px;}
+.bd-kind{background:var(--badge);}
+.bd-no{background:var(--navy);font-family:var(--mono);letter-spacing:.02em;}
+.hero .date{font-size:15px;font-weight:700;color:var(--ink);margin-left:4px;}
+.hero-title{font-size:40px;font-weight:900;line-height:1.28;color:var(--navy);margin:16px 0 0;letter-spacing:.01em;}
+.img-note{position:absolute;right:12px;bottom:9px;font-size:10px;line-height:1.6;color:#fff;
+  background:rgba(13,29,66,.42);border-radius:6px;padding:1px 8px;}
+
+/* ---- 誌面（mast） ---- */
+.ui .mast{margin-top:16px;border-radius:20px;padding:26px 28px 24px;background:#fff;box-shadow:var(--sh-2);}
+.ui .mast::before{background:linear-gradient(90deg,var(--acc),var(--acc-2));}
+.ui .mast::after{display:none;}
+.ui .brandtag{color:var(--acc);background:var(--acc-soft);border-color:transparent;}
+.ui .brandtag i{background:var(--acc);}
+.ui h1.hello{font-size:26px;line-height:1.5;margin-top:14px;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--navy);}
+.ui .sub-hello{font-size:14px;line-height:1.9;}
+
+/* 分野アイコンの帯 */
+.fields{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px;}
+.fields a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:5px 16px 5px 7px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1);font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;}
+.fields a:hover{border-color:var(--acc-2);color:var(--acc);}
+
+/* 区切り見出し */
+.blk-h{display:flex;align-items:center;gap:10px;margin:28px 0 12px;font-size:20px;font-weight:900;color:var(--navy);line-height:1.4;}
+.blk-h .ic{width:34px;height:34px;}
+.blk-h .en{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-3);}
+.blk-sub{font-size:12.5px;color:var(--ink-3);margin:-6px 0 10px;}
+
+/* 主なポイント */
+.kp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.kp{display:flex;flex-direction:column;gap:8px;padding:16px 16px 15px;border-radius:16px;min-width:0;
+  background:linear-gradient(180deg,#fff 0%,#fff 40%,var(--c-bg) 140%);border:1px solid var(--line);
+  box-shadow:var(--sh-1);text-decoration:none;color:var(--ink-2);font-size:13px;line-height:1.75;transition:transform .12s,box-shadow .12s;}
+.kp:hover{transform:translateY(-1px);box-shadow:var(--sh-2);}
+.kp-h{display:flex;align-items:center;gap:10px;font-weight:900;font-size:15.5px;color:var(--c);line-height:1.4;}
+.kp-h::after{content:"›";margin-left:auto;font-size:22px;line-height:1;color:var(--ink-3);}
+.kp-t b{color:var(--ink);}
+
+/* 全項目一覧 */
+.ui .three{margin-top:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:2px 18px;box-shadow:var(--sh-1);}
+.ui .three li{gap:14px;padding:14px 0;border-top:1px solid var(--line-2);}
+.ui .three li:first-child{border-top:0;}
+.ui .three li>span.kw{flex:none;width:148px;}
+.ui a.kw-link{display:inline-flex;align-items:center;gap:9px;min-height:40px;font-size:13.5px;font-weight:800;color:var(--navy);
+  border-bottom:0;line-height:1.4;}
+.ui a.kw-link .ic{width:28px;height:28px;}
+.ui a.kw-link:hover{color:var(--acc);}
+.ui .kw-arrow{color:var(--acc);}
+.ui .but{background:var(--surface-2);border-left-color:var(--acc-2);}
+.ui .but em{color:var(--acc);}
+
+/* 数字カード */
+.ui .strip{margin-top:0;border-radius:16px;box-shadow:var(--sh-1);}
+.ui .cell{background:#fff;}
+.ui .cell .vl{color:var(--navy);}
+
+/* 目次 */
+.ui nav.toc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px 20px;margin-top:18px;box-shadow:var(--sh-2);}
+.ui .toc-title{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;color:var(--navy);
+  letter-spacing:0;text-transform:none;margin-bottom:12px;}
+.ui .toc-title .ic{width:34px;height:34px;}
+.ui .toc-title .en{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-3);}
+.ui .toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;counter-reset:toc;}
+.ui .toc-list li{counter-increment:toc;min-width:0;}
+.ui .toc-list a{display:flex;align-items:center;gap:12px;min-height:46px;height:100%;border-radius:12px;background:var(--surface-2);
+  border:1px solid var(--line-2);padding:8px 12px;font-size:13px;line-height:1.55;color:var(--ink);font-weight:700;}
+.ui .toc-list a::before{content:counter(toc,decimal-leading-zero);flex:none;width:32px;height:24px;display:grid;place-items:center;
+  border-radius:7px;background:var(--acc-soft);color:var(--acc);font-size:11.5px;font-weight:800;font-family:var(--mono);}
+.ui .toc-list a::after{content:"›";margin-left:auto;padding-left:6px;color:var(--acc);font-size:19px;line-height:1;}
+.ui .toc-list a:hover{border-color:var(--acc-2);color:var(--acc);}
+
+/* 本文の節 */
+.ui .wrap{counter-reset:sec;}
+.ui .divider span{color:var(--acc);}
+.ui section[id^="sec-"]{counter-increment:sec;background:#fff;border-radius:20px;padding:22px 24px 20px;margin-top:18px;box-shadow:var(--sh-2);}
+.ui .sec-head{align-items:center;gap:8px 12px;padding:0 0 14px;margin-bottom:16px;border-bottom:2px solid var(--acc-soft);}
+.ui .sec-head>.ic{width:40px;height:40px;order:0;}
+.ui .sec-head>.ic svg{width:21px;height:21px;}
+.ui .sec-head .sec-title{order:1;flex:1 1 280px;min-width:0;font-size:18.5px;line-height:1.5;color:var(--navy);}
+.ui .sec-head .sec-title::before{content:counter(sec,decimal-leading-zero);color:var(--acc);font-weight:900;margin-right:10px;font-family:var(--mono);}
+.ui .sec-head .cat{order:2;background:var(--acc-soft);color:var(--acc);letter-spacing:.1em;}
+.ui .dgrid{grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));}
+.ui .dg{border-radius:14px;min-width:0;}
+.ui .dg-h em{color:var(--acc);background:var(--acc-soft);}
+.ui .backtop a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:var(--acc);font-weight:700;border-bottom:0;}
+.ui p.disc{overflow-wrap:anywhere;}
+.ui .src{color:#3A5584;}
+
+/* AIに質問 */
+.ui .askai{background:linear-gradient(180deg,#fff 0%,var(--acc-soft) 160%);border:1px solid var(--line);border-radius:20px;
+  padding:22px 22px 20px;margin-top:22px;box-shadow:var(--sh-2);}
+.ui .askai-title{display:flex;align-items:center;justify-content:center;gap:10px;font-size:18px;font-weight:900;color:var(--navy);}
+.ui .askai-copy{min-height:44px;border-color:var(--acc);background:var(--acc-soft);color:var(--acc);}
+.ui .askai-copy:hover{background:var(--acc);color:#fff;}
+.ui .askai-link{display:flex;align-items:center;justify-content:center;min-height:44px;background:#fff;}
+.ui .askai-link:hover{border-color:var(--acc);color:var(--acc);}
+
+/* フッター */
+.ui .foot{border-radius:20px;background:#fff;box-shadow:var(--sh-1);}
+.ui .foot>p:first-child a,.ui .backlist a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;
+  background:var(--acc-soft);color:var(--acc);font-weight:800;text-decoration:none;}
+
+/* ---- 週刊版：比較・流れ ---- */
+.ui-w .three{position:relative;padding-left:40px;}
+.ui-w .three::before{content:"";position:absolute;left:22px;top:26px;bottom:26px;width:2px;
+  background:linear-gradient(180deg,var(--acc-2),var(--line));}
+.ui-w .three li{position:relative;}
+.ui-w .three li::before{content:"";position:absolute;left:-24px;top:26px;width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--acc);}
+.ui-w .strip .cell .ch{font-family:var(--mono);}
+
+/* ---- 日曜特集：長文読み物 ---- */
+.ui-s h1.hello,.ui-s .part-name,.ui-s .ch h2,.ui-s .hero-title{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","BIZ UDPMincho","Noto Serif JP",serif;}
+.ui-s h1.hello{font-size:30px;line-height:1.5;font-weight:800;}
+.ui-s .sun-sub{font-size:16px;color:var(--ink-2);}
+.ui-s .part-head{border-top:3px solid var(--acc);}
+.ui-s .part-name{color:var(--navy);font-weight:800;}
+.ui-s .ch{border-radius:18px;padding:26px 28px 18px;box-shadow:var(--sh-1);}
+.ui-s .ch p{font-size:15px;line-height:2.05;}
+.ui-s .ch h2{font-size:22px;color:var(--navy);}
+.ui-s .ch .ch-no{color:var(--acc);}
+.ui-s .ch.intro{border-left-color:var(--acc-2);}
+.ui-s .nowbar{border-radius:14px;}
+.ui-s .toc-top{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;}
+.ui-s .toc-top>li{border-top:0;min-width:0;}
+.ui-s .toc-solo a{display:flex;align-items:center;gap:10px;min-height:46px;height:100%;padding:8px 12px;border-radius:12px;
+  background:var(--surface-2);border:1px solid var(--line-2);font-size:13px;line-height:1.55;}
+.ui-s .toc-solo a::after{content:"›";margin-left:auto;padding-left:6px;color:var(--acc);font-size:19px;line-height:1;}
+.ui-s .toc-solo a:hover{border-color:var(--acc-2);color:var(--acc);}
+.ui-s .toc-lead{font-size:13px;}
+.ui-s .hero{min-height:300px;}
+.ui-s .hero .hero-title{font-size:36px;}
+
+/* ---- 入口（index） ---- */
+.ui-i header.ix-hero{position:relative;overflow:hidden;border-radius:0 0 24px 24px;border-top:0;min-height:380px;
+  background:#fff var(--hero) right center/cover no-repeat;padding:42px 42px 46px;}
+.ui-i header.ix-hero::before{inset:0;height:auto;
+  background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.88) 38%,rgba(255,255,255,.15) 64%,rgba(255,255,255,0) 100%);}
+.ui-i header.ix-hero::after{display:none;}
+.ui-i header.ix-hero>*{position:relative;}
+.ui-i header.ix-hero .img-note{position:absolute;}
+.ix-catch{font-size:54px;font-weight:900;line-height:1.24;color:var(--navy);margin-top:18px;letter-spacing:.02em;}
+.ui-i header.ix-hero h1{font-size:19px;line-height:1.5;margin-top:16px;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--navy);}
+.ui-i header.ix-hero .sub{max-width:34em;font-size:14px;}
+.brand3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
+.bc{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:9px;min-height:220px;min-width:0;padding:20px 20px 18px;
+  border-radius:18px;color:#fff;text-decoration:none;background:var(--bcbg) 70% center/cover no-repeat;box-shadow:var(--sh-2);
+  transition:transform .12s,box-shadow .12s;}
+.bc:hover{transform:translateY(-2px);box-shadow:var(--sh-3);}
+.bc::before{content:"";position:absolute;inset:0;background:var(--ov);}
+.bc>*{position:relative;}
+.bc-d{--ov:linear-gradient(160deg,rgba(25,86,226,.97) 0%,rgba(31,95,239,.86) 46%,rgba(31,95,239,.2) 100%);}
+.bc-w{--ov:linear-gradient(160deg,rgba(52,72,104,.97) 0%,rgba(70,92,126,.86) 46%,rgba(76,99,132,.2) 100%);}
+.bc-s{--ov:linear-gradient(160deg,rgba(104,62,196,.97) 0%,rgba(115,72,207,.86) 46%,rgba(170,110,225,.2) 100%);}
+.bc-top{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900;letter-spacing:.04em;}
+.bc-top svg{width:30px;height:30px;fill:none;stroke:#fff;}
+.bc-desc{font-size:13.5px;line-height:1.75;max-width:17em;}
+.bc-cta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border-radius:10px;
+  background:#fff;color:var(--navy);font-size:13.5px;font-weight:800;}
+.bc-cta span{font-size:18px;color:var(--brand);}
+.bc-cnt{font-size:12.5px;font-weight:700;}
+.ui-i .counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:14px;padding:6px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-1);}
+.ui-i .cbadge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0;border:0;border-left:1px solid var(--line-2);border-radius:0;
+  background:none;padding:10px 16px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);}
+.ui-i .cbadge:first-child{border-left:0;}
+.ui-i .cbadge .ic{width:40px;height:40px;}
+.ui-i .cbadge .ic svg{width:21px;height:21px;}
+.ui-i .cb-l{flex-basis:auto;}
+.ui-i .cbadge b{font-size:28px;font-family:var(--mono);color:var(--navy);line-height:1.1;}
+.ui-i .divider span{display:inline-flex;align-items:center;gap:10px;font-size:20px;font-weight:900;letter-spacing:.02em;
+  text-transform:none;color:var(--navy);}
+.ui-i .divider span .ic{width:34px;height:34px;}
+.ui-i .hero-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.ui-i .hcard{min-width:0;border-radius:20px;}
+.ui-i .hcard.d{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:26px;align-content:start;
+  border:1.5px solid #F7CF9F;background:linear-gradient(180deg,#fff,#FFFBF5);}
+.ui-i .hcard.d>*{grid-column:2;}
+.ui-i .hcard.d>.hc-thumb{grid-column:1;grid-row:1/span 7;align-self:start;height:250px;}
+.hc-thumb{border-radius:14px;background:var(--hero) 72% center/cover no-repeat;}
+.ui-i .hcard.w>.hc-thumb,.ui-i .hcard.s>.hc-thumb{height:150px;margin:-4px 0 14px;}
+.ui-i .hcard-go{display:flex;align-items:center;justify-content:center;min-height:48px;}
+.ui-i .hcard.w::before{background:linear-gradient(90deg,#3B5A88,#7E96BA);}
+.ui-i .hcard.w .hcard-kind{color:#3B5A88;}
+.ui-i .hcard.w .hcard-pts li::before{background:#7E96BA;}
+.ui-i .hcard.w .hcard-go{background:linear-gradient(160deg,#3B5A88,#6F8BB5);box-shadow:0 3px 12px rgba(59,90,136,.28);}
+.ui-i .hcard.d .hcard-kind{color:var(--brand);}
+.ui-i .ar-no.kw{color:#3B5A88;background:#EDF2F9;}
+.ui-i .ar-go{display:inline-flex;align-items:center;min-height:44px;}
+.ui-i details.mo{border-radius:16px;}
+.ui-i details.mo summary{min-height:56px;}
+.ui-i details.mo-note summary{min-height:44px;}
+.ui-i .foot{border-top:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 20px;}
+
+/* ---- 中間幅 ---- */
+@media (max-width:1023px){
+  .brand3{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .bc-s{grid-column:1/-1;}
+  .ix-catch{font-size:44px;}
+}
+@media (max-width:860px){
+  .ui-i .hcard.d{display:flex;}
+  .ui-i .hcard.d>.hc-thumb{min-height:0;height:170px;width:100%;flex:none;margin:-4px 0 14px;}
+  .ui-i .counts{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ui-i .cbadge:nth-child(3){border-left:0;}
+  .ui-i .cbadge:nth-child(n+3){border-top:1px solid var(--line-2);}
+}
+@media (max-width:760px){
+  .kp-grid{grid-template-columns:1fr;}
+  .ui-i .hero-grid{grid-template-columns:1fr;}
+}
+/* ---- スマホ ---- */
+@media (max-width:640px){
+  body.ui{padding:10px 10px 56px;}
+  .site{padding:6px 10px;border-radius:16px 16px 0 0;}
+  .site-nm{font-size:15px;}
+  .site-nav a{padding:0 10px;font-size:12.5px;}
+  .hero{display:block;min-height:0;padding-top:150px;background-image:var(--hero-m,var(--hero));background-size:100% auto;background-position:center top;border-radius:0 0 18px 18px;}
+  .hero::before{background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 100px,rgba(255,255,255,.94) 165px,#fff 205px);}
+  .hero-in{padding:0 18px 22px;}
+  .hero-title,.ui-s .hero .hero-title{font-size:27px;margin-top:12px;}
+  .hero .date{font-size:13.5px;margin-left:0;width:100%;}
+  .img-note{top:8px;bottom:auto;right:8px;}
+  .ui .mast{padding:20px 16px 18px;}
+  .ui h1.hello{font-size:21px;}
+  .ui-s h1.hello{font-size:24px;}
+  .fields a{font-size:12.5px;padding-right:13px;}
+  .blk-h{font-size:18px;margin-top:24px;}
+  .blk-h .en{display:none;}
+  .ui .three{padding:2px 14px;}
+  .ui .three li>span.kw{width:auto;}
+  .ui-w .three{padding-left:30px;}
+  .ui-w .three::before{left:15px;}
+  .ui-w .three li::before{left:-20px;top:22px;}
+  .ui nav.toc{padding:16px 14px;}
+  .ui .toc-title .en{display:none;}
+  .ui .toc-list,.ui-s .toc-top{grid-template-columns:1fr;}
+  .ui section[id^="sec-"]{padding:18px 14px 16px;border-radius:18px;}
+  .ui .sec-head .sec-title{font-size:16.5px;flex-basis:100%;order:2;}
+  .ui .sec-head .cat{order:1;}
+  .ui-s .ch{padding:18px 15px 12px;}
+  .ui-s .ch p{font-size:14.5px;line-height:1.95;}
+  .ui-s .ch h2{font-size:19px;}
+  .ui-i header.ix-hero{display:block;min-height:0;padding:192px 18px 24px;background-image:var(--hero-m,var(--hero));background-size:100% auto;background-position:center top;border-radius:0 0 20px 20px;}
+  .ui-i header.ix-hero::before{background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 120px,rgba(255,255,255,.92) 188px,#fff 230px);}
+  .ui-i header.ix-hero .img-note{top:8px;bottom:auto;right:8px;}
+  .ix-catch{font-size:33px;margin-top:12px;}
+  .brand3{grid-template-columns:1fr;}
+  .bc{min-height:0;}
+  .ui-i .counts{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ui-i .cbadge:nth-child(3){border-left:0;}
+  .ui-i .cbadge:nth-child(n+3){border-top:1px solid var(--line-2);}
+  .ui-i .cbadge{padding:10px;gap:8px;}
+  .ui-i .cbadge .ic{width:34px;height:34px;}
+  .ui-i .cbadge b{font-size:24px;}
+  .ui-i .divider span{font-size:18px;}
+}
+
+/* 日曜特集：目次の注記の余白 */
+.ui-s .toc-note{margin-top:14px;}
+
+</style>
+</head><body class="ui ui-d">
+<div class="wrap" id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></symbol><symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol><symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l7-7"/></symbol><symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11h12M8 17l-2 4M16 17l2 4M9 14h.01M15 14h.01"/></symbol><symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/></symbol><symbol id="i-storm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><path d="M4 10c1.6-4.6 7.6-7 12.4-4.6M20 14c-1.6 4.6-7.6 7-12.4 4.6"/></symbol><symbol id="i-water" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6M6.5 9.5V15M17.5 9.5V15"/><path d="M3 19c2 0 2-1.5 4.5-1.5S9.5 19 12 19s2.5-1.5 4.5-1.5S19 19 21 19"/></symbol><symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10h7M8.5 14h7M8.5 18h4"/></symbol><symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 2.5-6.5 6-11z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8 5.7-5.8"/></symbol><symbol id="i-question" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.6 2.6 0 1 1 3.6 2.4c-.8.4-1.1.9-1.1 1.8M12 17h.01"/></symbol><symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol><symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol><symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-7M12 20V5M18 20v-10"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2zM12 6v14"/></symbol><symbol id="i-sum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5H7l6 7-6 7h10"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.5 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol><symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol><symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.6"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 21h12M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></symbol><symbol id="i-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-6 4 12 3-6h4"/></symbol><symbol id="i-num" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19h14M7 15V9M12 15V5M17 15v-4"/></symbol><symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="5" rx="1.5"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></symbol></svg>
+<nav class="site" aria-label="サイト"><a class="site-brand" href="index.html"><svg class="site-logo" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="lgL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D86FF"/><stop offset="1" stop-color="#1546C8"/></linearGradient></defs><circle cx="20" cy="20" r="19" fill="url(#lgL)"/><path d="M7.5 27.5c6.5 2.2 16.5-.5 24.5-12" stroke="#BCD4FF" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M20 8.5l2.9 8.6 8.6 2.9-8.6 2.9L20 31.5l-2.9-8.6-8.6-2.9 8.6-2.9z" fill="#fff"/></svg><span class="site-nm">AI総合研究機構<small>Morning Brief</small></span></a><span class="site-nav"><a href="#toc">目次</a><a href="#askai">AIに質問</a><a href="index.html" class="pri">レポート一覧</a></span></nav>
+<div class="hero" style="--hero:url(assets/hero/daily-2026-10.webp);--hero-m:url(assets/hero/daily-2026-10-m.webp)"><div class="hero-in"><div class="hero-badges"><span class="bd-kind">毎日版</span><span class="bd-no">D85</span><span class="date">2026年10月20日（火）</span></div><p class="hero-title">AI総合研究機構<br>朝の一日レポート</p></div><span class="img-note">背景はイメージ画像です</span></div>
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>今朝4時41分、H3ロケットが火星衛星探査機MMXを打ち上げ、フォボスの砂を持ち帰る約5年の旅が始まりました（報道）。台風30号は「猛烈な」勢力に発達しています。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の一日レポートです。今朝は、<strong>MMXの打ち上げと「これから」</strong>、<strong>19日の東京市場の答え合わせと米国のハイテク株の反発</strong>、<strong>中国のGDPと家計</strong>、<strong>日銀と金利</strong>、<strong>防災メールの一斉配信サービスの第12報</strong>、<strong>酒々井町の新しい支援</strong>、<strong>台風30号</strong>を中心にお伝えします。あわせて、中東の海の道、ウクライナ、ニフティとゲオ、日本の研究、交通の新制度、世界・国内政治、文化・スポーツも扱います。本号は、報道とJAXAの正式発表、前年同期比と前期比、漏えいの「可能性」と「確定」を分けて書きます。</p>
+    <nav class="fields" aria-label="分野から読む"><a href="#sec-mmx"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span>そのほか</span></a><a href="#sec-market"><span class="ic c-slate" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cal"/></svg></span><span>確認と予定</span></a><a href="#sec-china"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><span>経済・市場</span></a><a href="#sec-raiden"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><span>災害・防災</span></a><a href="#sec-ukraine"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><span>世界情勢</span></a><a href="#sec-science"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg></span><span>暮らし・社会</span></a><a href="#sec-transport"><span class="ic c-teal" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-train"/></svg></span><span>交通・ライフライン</span></a></nav>
+<h2 class="blk-h"><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>本日の主なポイント<span class="en">KEY POINTS</span></h2><div class="kp-grid"><a class="kp c-blue" href="#sec-mmx"><span class="kp-h"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span>MMX</span></span><span class="kp-t">H3ロケット10号機が<b>20日4時41分</b>にMMXを打ち上げ、約1時間11分後に分離し予定の軌道に投入と報道。フォボスの砂を2031年に持ち帰る旅へ。</span></a><a class="kp c-green" href="#sec-market"><span class="kp-h"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span>市場（答え合わせ）</span></span><span class="kp-t">19日の日経平均は<b>407円安の64,916円</b>。9時16分に63,831円まで下げた後に戻した。米国はナスダック+1.11%とハイテクが反発。</span></a><a class="kp c-orange" href="#sec-china"><span class="kp-h"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><span>中国経済</span></span><span class="kp-t">7〜9月期のGDPは前年同期比<b>4.5%増</b>。輸出は9月に29.6%増、小売は1.1%増、不動産開発投資は1〜9月で20.6%減。</span></a></div>
+<h2 class="blk-h"><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg></span>本日の全項目一覧<span class="en">ALL TOPICS</span></h2><p class="blk-sub">本文に独立して載せた項目を、すべてここに並べています。</p>
+<ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-mmx"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span>MMX <span class="kw-arrow">↓</span></a></span><span>
+        <b>H3ロケット10号機が<b>20日4時41分</b>にMMXを打ち上げ、約1時間11分後に分離し予定の軌道に投入と報道。フォボスの砂を2031年に持ち帰る旅へ。</b>
+        <span class="but"><em>JAXAの正式発表は未掲載</em> 探査機の状態はこれから確認。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>市場（答え合わせ） <span class="kw-arrow">↓</span></a></span><span>
+        <b>19日の日経平均は<b>407円安の64,916円</b>。9時16分に63,831円まで下げた後に戻した。米国はナスダック+1.11%とハイテクが反発。</b>
+        <span class="but"><em>確定値</em> AI関連の借入への警戒が消えたとは言えません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-china"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span>中国経済 <span class="kw-arrow">↓</span></a></span><span>
+        <b>7〜9月期のGDPは前年同期比<b>4.5%増</b>。輸出は9月に29.6%増、小売は1.1%増、不動産開発投資は1〜9月で20.6%減。</b>
+        <span class="but"><em>一次情報</em> 「GDPは伸びたのに家計は苦しい」理由。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-boj"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span>日銀・金利 <span class="kw-arrow">↓</span></a></span><span>
+        <b>植田総裁は今月の挨拶で、基調的な物価上昇率は「<b>2％に近づいています</b>」。決定会合は29・30日。</b>
+        <span class="but"><em>一次情報</em> 19日の発言とされる報道は原文未確認。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-raiden"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>防災メールの漏えい <span class="kw-arrow">↓</span></a></span><span>
+        <b>第12報で侵入の経路と時系列を公表。不正なプログラムが外部へ<b>約142万通</b>のメールを送信、多くはフィッシングの疑い。</b>
+        <span class="but"><em>漏えいは可能性のまま</em> 送信通数は漏えい件数ではありません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-shisui"><span class="ic c-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-water"/></svg></span>酒々井・暮らし <span class="kw-arrow">↓</span></a></span><span>
+        <b>馬橋地区の<b>下水道の使用自粛を解除</b>。国民健康保険税・介護保険料などの減免と、災害援護資金の貸付の案内も。</b>
+        <span class="but"><em>新しい支援</em> 申請には罹災証明書などが必要。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-weather"><span class="ic c-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-storm"/></svg></span>気象・台風 <span class="kw-arrow">↓</span></a></span><span>
+        <b>台風30号は「大型で<b>猛烈な</b>」勢力、935hPa。22日に沖縄の南で925hPa、25日に東シナ海の予報。</b>
+        <span class="but"><em>予報は予報</em> 沖縄方面への移動は最新情報を。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-sea"><span class="ic c-amber" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-drop"/></svg></span>中東・海の道 <span class="kw-arrow">↓</span></a></span><span>
+        <b>ホルムズ海峡付近でタグボートが被弾。イランは「6日以内に開く」提案を維持、米大統領は警告。WTIは103.66ドル。</b>
+        <span class="but"><em>主体は断定しない</em> 海峡は再開していません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ukraine"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span>ウクライナ <span class="kw-arrow">↓</span></a></span><span>
+        <b>キーウの電力施設が攻撃され「50万人超が電気・暖房・水を失った」（大統領）。米国務長官は「情報共有の停止はなかった」。</b>
+        <span class="but"><em>当事者の発表</em> 被害の数は第三者による確認なし。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-security"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span>ニフティ・ゲオ <span class="kw-arrow">↓</span></a></span><span>
+        <b>ニフティで最大<b>54万件余り</b>に漏えいの可能性。ゲオは「外部への漏洩は確認されず」、サービスは停止のまま。</b>
+        <span class="but"><em>可能性と確定は別</em> 不審なメールに注意。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-science"><span class="ic c-pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></span>科学・医療 <span class="kw-arrow">↓</span></a></span><span>
+        <b>イモリの免疫細胞と皮膚の線維化、既存薬で高齢マウスの筋機能改善、ウラン半導体の磁気の「波」。タイヌビエの形質転換系を世界初確立。</b>
+        <span class="but"><em>研究段階</em> 動物実験は人の治療法ではありません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-transport"><span class="ic c-teal" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-train"/></svg></span>交通・暮らしの制度 <span class="kw-arrow">↓</span></a></span><span>
+        <b>ANAが宮古・石垣便の<b>手数料なしの変更</b>を案内（欠航の決定ではない）。オートバイにも「希望ナンバー」。成田のC滑走路は2034年12月に。</b>
+        <span class="but"><em>新しい制度</em> 最短で26日交付。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span>世界 <span class="kw-arrow">↓</span></a></span><span>
+        <b>イエメンで政府軍の基地への攻撃で<b>少なくとも53人</b>死亡と報道。ガンツ氏がイスラエル総選挙から撤退。アルバータは開票待ち。</b>
+        <span class="but"><em>報道</em> 各国の当局の発表と報道を分けます。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-politics"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span>国内政治 <span class="kw-arrow">↓</span></a></span><span>
+        <b>消費税減税法案は<b>20日</b>に衆院本会議で審議入り。首相は「価格に反映」、日本保守党は賛成へ。</b>
+        <span class="but"><em>報道</em> 会期末は12月12日。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-culture"><span class="ic c-pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></span>文化・スポーツ・発見 <span class="kw-arrow">↓</span></a></span><span>
+        <b>国際かんがい排水委員会で<b>日本人初の会長</b>。京大の学部生の自主ゼミが若い星のスーパーフレアの性質を発見。FA有資格者は104人。</b>
+        <span class="but"><em>一次情報</em> 秋華賞はモンローウォーク。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-check"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>答え合わせ <span class="kw-arrow">↓</span></a></span><span>
+        <b>東京市場の実際、MMXの打ち上げ、台風の発達、SpeeCAN第12報、ゲオの調査結果。</b>
+        <span class="but"><em>比較</em> 前号以前の本文は変えていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-unknown"><span class="ic c-slate" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-question"/></svg></span>確認の限界 <span class="kw-arrow">↓</span></a></span><span>
+        <b>JAXAの正式発表、探査機の状態、漏えいの確定、先物の公式の清算値、19日の総裁発言の原文などは確認できませんでした。</b>
+        <span class="but"><em>未確認</em> 「調べたが材料なし」と「調べきれず」を分けます。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cal"/></svg></span>予定 <span class="kw-arrow">↓</span></a></span><span>
+        <b>22日 台風30号が沖縄の南、23日 金融システムレポート、24日 日本シリーズとワールドシリーズ開幕、29・30日 日銀の決定会合。</b>
+        <span class="but"><em>予定は予定</em> 日付は日本時間。</span>
+      </span></li>
+    </ul>
+
+    <h2 class="blk-h"><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-num"/></svg></span>数字で見る<span class="en">KEY NUMBERS</span></h2>
+<div class="strip">
+      <div class="cell"><div class="nm">日経平均（19日）</div><div class="vl mono">64,916.70</div><div class="ch down">−407.59円（−0.62%）</div><div class="ctx">安値63,831（9:16）</div></div>
+      <div class="cell"><div class="nm">ナスダック総合（19日）</div><div class="vl mono">+1.11%</div><div class="ch up">26,430.89</div><div class="ctx">ハイテクが反発</div></div>
+      <div class="cell"><div class="nm">中国GDP 7〜9月期</div><div class="vl mono">4.5%</div><div class="ch">前年同期比</div><div class="ctx">1〜9月は4.6%</div></div>
+      <div class="cell"><div class="nm">不正なメール（SpeeCAN）</div><div class="vl mono">1,423,428</div><div class="ch up">外部へ送信された通数</div><div class="ctx">漏えい件数ではない</div></div>
+      <div class="cell"><div class="nm">台風30号</div><div class="vl mono">935hPa</div><div class="ch down">猛烈な・大型</div><div class="ctx">20日3時 フィリピンの東</div></div>
+      <div class="cell"><div class="nm">ニフティ</div><div class="vl mono">最大542,513件</div><div class="ch">漏えいの可能性</div><div class="ctx">調査中</div></div>
+    </div>
+  </header>
+
+  <nav class="toc" id="toc">
+    <div class="toc-title"><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg></span>目次<span class="en">CONTENTS</span></div>
+    <ol class="toc-list">
+      <li><a href="#sec-mmx">MMX：打ち上げ、分離、これから</a></li>
+      <li><a href="#sec-market">市場：19日の東京の答え合わせ、米国のハイテク反発、原油</a></li>
+      <li><a href="#sec-china">中国経済：GDP、輸出と消費・不動産</a></li>
+      <li><a href="#sec-boj">日銀・金利：総裁の見方と今週の予定</a></li>
+      <li><a href="#sec-raiden">防災メールの漏えい：SpeeCAN RAIDEN第12報</a></li>
+      <li><a href="#sec-shisui">酒々井・暮らし：下水道の自粛解除、減免と貸付</a></li>
+      <li><a href="#sec-weather">気象・台風：猛烈な台風30号</a></li>
+      <li><a href="#sec-sea">中東・海の道：タグボートの被弾、提案と警告、原油</a></li>
+      <li><a href="#sec-ukraine">ウクライナ：キーウの電力施設、情報共有、制裁</a></li>
+      <li><a href="#sec-security">ニフティ・ゲオ：不正アクセス</a></li>
+      <li><a href="#sec-science">科学・医療：イモリ、筋肉、ウラン半導体、タイヌビエ、脳腫瘍</a></li>
+      <li><a href="#sec-transport">交通・暮らしの制度：航空便、希望ナンバー、成田</a></li>
+      <li><a href="#sec-world">世界：イエメン、イスラエル、カナダ、豪州</a></li>
+      <li><a href="#sec-politics">国内政治：消費税減税法案、靖国</a></li>
+      <li><a href="#sec-culture">文化・スポーツ・発見：ICID、スーパーフレア、FA、秋華賞</a></li>
+      <li><a href="#sec-check">前号D84の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">本日と、この先のウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+  <section id="sec-mmx">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span class="cat">宇宙</span><span class="sec-title">H3ロケット10号機が火星衛星探査機MMXを打ち上げ。約1時間11分後に分離し、予定の軌道に投入と報道。フォボスの砂を持ち帰る約5年の旅へ <span class="sub">/ 報道（日本経済新聞・マイナビニュース、20日朝）／JAXAの事前の発表</span></span></div>
+    <div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-imp">本日早朝の出来事</span><span class="lab lab-warn">JAXAの正式な結果の発表は、本号の確認時点で未掲載</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>今朝の打ち上げ</em>報道（20日）</div>
+        <div class="dg-r"><span>打ち上げ</span><span>20日<b>4時41分03秒</b>、種子島宇宙センターからH3ロケット10号機が離昇（マイナビニュースはJAXAの公式ライブ中継の画面とともに報道）</span></div>
+        <div class="dg-r"><span>分離・軌道</span><span>日本経済新聞は、<b>約1時間11分後にMMXをロケットから分離し、予定する軌道に投入した</b>と報道。マイナビニュースは、JAXAの中継で「MMXのH3ロケットからの分離を確認」した場面を伝え、打ち上げは成功としています</span></div>
+        <div class="dg-r"><span>確認の段階</span><span>①打ち上げの実施、②探査機の分離、③予定の軌道への投入までが報じられています。<b>探査機との通信の確立や、太陽電池パネルの展開など探査機側の状態は、本号では確認できていません</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>MMXとは</em>JAXA</div>
+        <div class="dg-r"><span>目的</span><span>火星の衛星フォボスに着陸し、<b>約10グラムの砂</b>を持ち帰る、JAXAが主導する世界初の計画。NASA、ESA、フランス（CNES）、ドイツ（DLR）も参加する国際プロジェクト</span></div>
+        <div class="dg-r"><span>なぜフォボス</span><span>フォボスは、火星に大きな天体がぶつかってできたのか、小惑星が火星の重力に捕まったのか、成り立ちが分かっていません。持ち帰った砂の成分で、これを確かめます。フォボスの砂には、火星から飛ばされた物質がわずかに含まれている可能性もあります</span></div>
+        <div class="dg-r"><span>これから</span><span>フォボスに着陸して試料を採り、<b>2031年の地球帰還</b>を目指します（JAXA）。はやぶさ・はやぶさ2に続くサンプルリターンで、火星圏からの帰還は世界初の挑戦です</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>「打ち上げの成功」は、ロケットが探査機を予定の軌道に届けたところまでです。<strong>探査機が正常に動いているか、約5年の旅をやり遂げられるかは、これからの運用で一つずつ確かめていく段階</strong>です。本号の確認の時点で、JAXAの正式な「打ち上げ結果」の発表はまだ掲載されていません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.nikkei.com/article/DGXZQOSG085610Y6A001C2000000/" target="_blank" rel="noopener">日本経済新聞（20日、報道）</a>／<a class="src" href="https://news.mynavi.jp/techplus/article/20261020-5156160/" target="_blank" rel="noopener">マイナビニュース（20日、報道）</a>／<a class="src" href="https://www.jaxa.jp/press/h3/index_j.html" target="_blank" rel="noopener">［一次］JAXA H3ロケットの発表一覧</a>／<a class="src" href="https://www.jaxa.jp/press/2026/10/20261018-1_j.html" target="_blank" rel="noopener">［一次］JAXA 打ち上げの決定（10月18日）</a>／<a class="src" href="https://www.mmx.jaxa.jp/" target="_blank" rel="noopener">［一次］JAXA MMX公式サイト</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-market">
+    <div class="sec-head"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span class="cat">市場（答え合わせ）</span><span class="sec-title">19日の日経平均は407円安の64,916円。寄り付きは65,000円を割り、9時16分に63,831円まで下げた後に戻した。米国はハイテク株が反発 <span class="sub">/ 日経平均（日本経済新聞社の公式の値）・データ提供会社・米財務省・財務省</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">確定値</span><span class="lab lab-imp">前号の答え合わせ</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>19日の東京</em>日経平均（公式）</div>
+        <div class="dg-r"><span>終値</span><span><b>64,916.70円</b>（前営業日比−407.59円、−0.62%）</span></div>
+        <div class="dg-r"><span>一日の動き</span><span>始値 64,819.56円（9時00分）、<b>安値 63,831.78円（9時16分）</b>、高値 65,067.80円（15時08分）。売買代金は5.61兆円</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>前号の手がかりとの比較</em>前号D84と実際</div>
+        <div class="dg-r"><span>先物</span><span>前号では、16日のシカゴの円建ての日経平均先物が63,925円（17日朝のデータ提供会社の表示）で、東京の16日の終値（65,324.29円）を約2.1%下回っていたと書きました。<b>19日の始値を示すものではない</b>とも明記しました</span></div>
+        <div class="dg-r"><span>実際</span><span>始値は16日の終値より<b>504.73円安い</b>水準で、先物の値（約1,400円安）ほどは下がらずに始まりました。ただ、取引開始から16分後の安値（16日比−1,492.51円）は、先物に近い水準まで下げています。その後は戻し、終値は−0.62%でした</span></div>
+        <div class="dg-r"><span>注意</span><span>データ提供会社の日足では、16日の先物の値が<b>63,720円</b>と表示されており、前号の63,925円とは違います。取引所の公式の清算値は、本号でも確認できていません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>19日の米国</em>データ提供会社（日本時間20日6時台の表示）</div>
+        <div class="dg-r"><span>株</span><span>ナスダック総合 26,430.89（<b>+1.11%</b>）、S&amp;P500 7,690.73（+0.41%）、ダウ 51,966.03（−0.07%）。半導体株指数 11,316.34（+1.61%、データ提供会社の表示）。CNBCは、前週のAI関連の急落からハイテク株に買い戻しが入ったと説明し、インテル +2%、マイクロン 約+3%の一方、AIデータセンターのCoreWeaveは一時の上げを消して−0.4%（前週は25%超の下落）と伝えています</span></div>
+        <div class="dg-r"><span>金利・為替</span><span>米10年国債 <b>5.15%</b>（16日 5.09%、米財務省）。日本10年国債 2.958%（16日、財務省）。ドル円 158.49円（20日6時33分）</span></div>
+        <div class="dg-r"><span>原油</span><span>19日の清算値は<b>WTI 103.66ドル（+2.22%）</b>、北海ブレント 109.55ドル（−0.28%）（CNBC）。データ提供会社の画面では限月の切り替えで違う値が出るため、本号は報道の清算値を使います</span></div>
+        <div class="dg-r"><span>欧州</span><span>STOXX600 639.56（−0.80%）</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>先物は東京が閉まっている間の売買の結果で、翌朝の東京の値動きの「手がかり」にはなりますが、そのまま始値になるわけではありません。19日は、寄り付き直後に先物の水準近くまで下げ、その後に戻すという動きでした。<strong>米国のハイテク株は19日に反発しましたが、先週の下げの背景にあったAI関連の借入への警戒が消えたことを示す材料は、本号では確認できていません。</strong>AIの需要が強いことと、その投資を借入で賄う企業への不安は、同時に存在します。</p>
+
+    <p class="disc">出典：<a class="src" href="https://indexes.nikkei.co.jp/nkave/archives/summary?dt=20261019&idx=nk225" target="_blank" rel="noopener">［一次］日経平均 10月19日（日本経済新聞社）</a>／<a class="src" href="https://finance.yahoo.com/" target="_blank" rel="noopener">データ提供会社（Yahoo Finance）</a>／<a class="src" href="https://www.cnbc.com/2026/10/18/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC（19日の米国市場、報道）</a>／<a class="src" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve" target="_blank" rel="noopener">［一次］米財務省</a>／<a class="src" href="https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm" target="_blank" rel="noopener">［一次］財務省 国債金利</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-china">
+    <div class="sec-head"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chart"/></svg></span><span class="cat">中国経済</span><span class="sec-title">中国の7〜9月期のGDPは前年同期比4.5%増。輸出は9月に3割近く伸びた一方、小売は1.1%増、不動産開発投資は1〜9月で20.6%減 <span class="sub">/ 中国国家統計局（10月19日の発表、英文・中文の原文）</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-warn">前年同期比・前期比・累計を分けて書きます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>成長率</em>国家統計局</div>
+        <div class="dg-r"><span>四半期</span><span>前年同期比で、1〜3月 5.0%、4〜6月 4.3%、<b>7〜9月 4.5%</b>。1〜9月の累計は<b>4.6%</b></span></div>
+        <div class="dg-r"><span>前期比</span><span>7〜9月は前の四半期より1.2%増（季節調整済み、年率換算ではない）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>強いもの</em>国家統計局</div>
+        <div class="dg-r"><span>輸出</span><span>9月の輸出は前年同月比<b>29.6%増</b>（人民元建て）、輸入も24.6%増。1〜9月の輸出は16.4%増</span></div>
+        <div class="dg-r"><span>工業</span><span>9月の工業生産（規模以上）は前年同月比5.5%増。1〜9月は装備製造業が10.2%増、<b>ハイテク製造業が14.3%増</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>弱いもの</em>国家統計局</div>
+        <div class="dg-r"><span>消費</span><span>9月の小売売上（社会消費品小売総額）は前年同月比<b>1.1%増</b>にとどまる。1〜9月も1.1%増</span></div>
+        <div class="dg-r"><span>投資</span><span>1〜9月の固定資産投資は前年同期比<b>7.2%減</b>。不動産開発投資は<b>20.6%減</b>、民間投資は10.4%減。新築の商品不動産の販売面積は13.2%減</span></div>
+        <div class="dg-r"><span>雇用・物価</span><span>9月の都市部の調査失業率は5.2%（前月より0.1ポイント低下）。9月の消費者物価は前年同月比0.9%上昇。若年層の失業率は、本号の時点で統計局の発表一覧に見当たりません</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。「GDPは伸びたのに、なぜ家計は苦しいのか」。</strong>今回の数字は、成長を支えているのが輸出と製造業で、家計の消費と不動産・民間の投資は弱いままであることを示しています。工場と輸出が伸びても、住宅の値下がりや雇用の不安があれば、家計は財布のひもを締めます（本号の整理）。中国の輸出の伸びは、日本やアジアの企業にとって、部品の需要と、競争の激しさの両方の意味を持ちます。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html" target="_blank" rel="noopener">［一次］国家統計局 英文（10月19日）</a>／<a class="src" href="https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261019_1965618.html" target="_blank" rel="noopener">［一次］国家統計局 中文（10月19日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-boj">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span class="cat">日銀・金利</span><span class="sec-title">植田総裁は今月の挨拶で、基調的な物価上昇率は「2％に近づいています」と説明。決定会合は29日・30日 <span class="sub">/ 日本銀行（10月6日の総裁の挨拶、公表予定）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-warn">19日の総裁の発言とされる報道は、本号では原文を確認できず</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>総裁の見方</em>植田総裁の挨拶（10月6日、全国証券大会）</div>
+        <div class="dg-r"><span>物価</span><span>「消費者物価の基調的な上昇率は<b>2％に近づいています</b>」</span></div>
+        <div class="dg-r"><span>リスク</span><span>中東情勢やAI関連需要の拡大、為替相場の変動に留意が必要で、基調的な物価上昇率が2％を「超えて上振れていくリスクがあります」</span></div>
+        <div class="dg-r"><span>政策</span><span>経済・物価の見通しが実現していけば「<b>引き続き政策金利を引き上げ</b>、金融緩和の度合いを調整していく」。基調的な物価上昇率を「2％程度の水準で安定させていくという観点が、これまでよりも重要になってきている」</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>この先の予定</em>日本銀行（予定は変わることがあります）</div>
+        <div class="dg-r"><span>政策金利</span><span>1.25%程度（9月18日決定、9月24日から）</span></div>
+        <div class="dg-r"><span>今週</span><span>22日（木）8時50分 主要銀行貸出動向アンケート調査、23日（金）15時 <b>金融システムレポート</b>。本号の時点では、まだ公表されていません</span></div>
+        <div class="dg-r"><span>決定会合</span><span><b>10月29日（木）・30日（金）</b>。30日に展望レポートと総裁会見</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>19日にも総裁が基調的な物価について発言したとの報道がありますが、日銀のサイトに記録がなく、本号では原文を確認できませんでした。そのため、日銀の公式に掲載されている10月6日の挨拶の言葉を載せています。<strong>市場の利上げの予想と、日銀が30日に実際に決める政策は別</strong>です。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.boj.or.jp/about/press/koen_2026/ko261006a.htm" target="_blank" rel="noopener">［一次］日本銀行 植田総裁の挨拶（10月6日）</a>／<a class="src" href="https://www.boj.or.jp/about/calendar/index.htm" target="_blank" rel="noopener">［一次］日本銀行 公表予定</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-raiden">
+    <div class="sec-head"><span class="ic c-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><span class="cat">情報セキュリティ</span><span class="sec-title">防災メールの一斉配信サービスが第12報。侵入の経路と時系列を公表し、不正なプログラムが外部へ約142万通のメールを送っていたと説明 <span class="sub">/ アルカディア「不正アクセスの経過と当社の対処について」（10月19日、第12報のPDF）</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号からの変化</span><span class="lab lab-warn">漏えいは「可能性」のまま。送信通数は漏えい件数ではありません</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>侵入の経路</em>会社の説明</div>
+        <div class="dg-r"><span>入口</span><span>添付ファイルを公開する<b>メディアサーバーにディレクトリパストラバーサル</b>（本来見えない場所のファイルを読める欠陥）があり、内部のソースファイルが取られた</span></div>
+        <div class="dg-r"><span>その先</span><span>設定ファイルにあったサービス間ログイン用の<b>秘密鍵</b>が取られ、アカウントIDへの総当たり攻撃でログインされ、内部の情報が取得された</span></div>
+        <div class="dg-r"><span>時系列</span><span>11日6時26分にアクセス開始、16時39分に設定ファイルの取得に成功、23時40分にデータベースの異常な負荷で検知。12日3時に経路を遮断</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>新しく分かったこと</em>第12報</div>
+        <div class="dg-r"><span>不正なメール</span><span>13日に、仕掛けられたバックドアから大量のメールが送られていたことが発覚。<b>外部に配信されたメールは、現時点で1,423,428通</b>。多くはクレジットカード会社の残高確認のような内容で、<b>フィッシング詐欺が疑われる</b></span></div>
+        <div class="dg-r"><span>影響</span><span>パスワード変更の影響で、ある町の消防情報の外部連携の失敗や、電話発信の不具合（12日）、自動応答の停止（14日）などもあった</span></div>
+        <div class="dg-r"><span>調査</span><span>セキュリティの専門の<b>第三者機関</b>に詳しい調査を依頼。個人情報保護委員会などへ報告済みで、警察と協議し、<b>被害届を出す予定</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>まだ分からないこと</em>第12報</div>
+        <div class="dg-r"><span>漏えい</span><span>個人情報の漏えいの<b>可能性</b>についての調査と、具体的な数の特定には「なお時間を要する見通し」。NET119は9,020件のメールアドレスに紐づく情報に漏洩の可能性（第11報）</span></div>
+        <div class="dg-r"><span>再発防止</span><span>外部の脆弱性診断、パスワードをサービスごとに分ける、2段階認証、監視の強化、SOC（監視センター）の導入の検討など</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>約142万通は「不正なプログラムが外へ送ったメールの数」で、<strong>漏えいした個人情報の件数ではありません</strong>。ただ、このサービスから届いたように見えるメールに、カード会社をかたる偽の案内が混じっていた可能性があります。<strong>カード会社や自治体を名乗るメールのリンクは開かず、公式の窓口で確かめてください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://raiden.site.ktaiwork.jp/wp-content/uploads/sites/2/2026/10/2026_10_19AccessIncident.pdf" target="_blank" rel="noopener">［一次］アルカディア 第12報（PDF、10月19日）</a>／<a class="src" href="https://raiden.site.ktaiwork.jp/archives/4597" target="_blank" rel="noopener">［一次］SpeeCAN RAIDEN 公式ブログ</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-shisui">
+    <div class="sec-head"><span class="ic c-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-water"/></svg></span><span class="cat">酒々井・暮らし</span><span class="sec-title">酒々井町で、馬橋地区の下水道の使用自粛が解除。国民健康保険税・介護保険料などの減免と、災害援護資金の貸付の案内も <span class="sub">/ 酒々井町（10月19日公開の案内）／東京電力・千葉県</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">新しい支援の案内</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>下水道</em>酒々井町 19日</div>
+        <div class="dg-r"><span>解除</span><span>馬橋地区の一部（<b>ネオポリス団地、開運団地、南酒々井駅周辺</b>）でお願いしていた下水道の使用の自粛を、排水の状況が改善したとして<b>解除</b>。通常どおり使えるようになりました</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>保険料などの減免</em>酒々井町 19日</div>
+        <div class="dg-r"><span>国民健康保険税</span><span>住宅・家財の損害（保険金などで補われる分を除く）が30%以上の世帯が対象。<b>損害50%以上は全額、30%以上50%未満は半額</b>を減免。罹災証明書などが必要</span></div>
+        <div class="dg-r"><span>介護保険</span><span>65歳以上の方などで損害30%以上の場合、介護保険料や介護サービスの利用料を、所得や被害に応じて減免</span></div>
+        <div class="dg-r"><span>医療費</span><span>国民健康保険の入院の自己負担や、後期高齢者医療の保険料・自己負担の減免や支払いの猶予を受けられる場合があります</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>貸付と期限</em>酒々井町</div>
+        <div class="dg-r"><span>災害援護資金</span><span>世帯主の1か月以上の負傷や、住居の半壊以上・家財の3分の1以上の損害がある世帯に、生活の立て直しの資金を<b>貸し付け</b>。世帯の所得の上限があります（1人世帯で220万円未満など）</span></div>
+        <div class="dg-r"><span>期限</span><span>災害救助法による生活必需品の支給の申請は<b>11月5日まで</b>（前号までに掲載）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>そのほか</em>各機関（20日朝）</div>
+        <div class="dg-r"><span>停電</span><span>20日6時29分現在、千葉県で約20軒（市原市10軒未満・富津市約20軒）</span></div>
+        <div class="dg-r"><span>本復旧</span><span>関東地方整備局・千葉県の新しい発表はなし。本復旧の時期は示されていません</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>減免や貸付は「申請」が必要で、罹災証明書などの書類がいります。<strong>対象になるか、どの書類が要るかは、酒々井町の各担当（住民課・福祉課など）の案内でご確認ください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026092800043/" target="_blank" rel="noopener">［一次］酒々井町 下水道の自粛の解除</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026101500018/" target="_blank" rel="noopener">［一次］酒々井町 国民健康保険税の減免</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026101400035/" target="_blank" rel="noopener">［一次］酒々井町 介護保険料等の減免</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026101500032/" target="_blank" rel="noopener">［一次］酒々井町 後期高齢者医療</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026100700013/" target="_blank" rel="noopener">［一次］酒々井町 災害援護資金</a>／<a class="src" href="https://teideninfo.tepco.co.jp/flash/12000000000.html" target="_blank" rel="noopener">［一次］東京電力パワーグリッド</a>／<a class="src" href="https://www.ktr.mlit.go.jp/kisha/river_index.html" target="_blank" rel="noopener">［一次］関東地方整備局</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-weather">
+    <div class="sec-head"><span class="ic c-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-storm"/></svg></span><span class="cat">気象・台風</span><span class="sec-title">台風30号は「大型で猛烈な」勢力、935hPa。22日に沖縄の南で925hPaの予報。沖縄では21日から北東の風が強まる見込み <span class="sub">/ 気象庁（台風は20日3時45分、各地の天気は20日4時台の発表）</span></span></div>
+    <div class="labs"><span class="lab lab-top">重要</span><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">前号からの変化</span><span class="lab lab-warn">予報は予報</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>台風第30号</em>気象庁 20日3時45分</div>
+        <div class="dg-r"><span>いま</span><span>フィリピンの東（北緯15.4度・東経136.7度）を西北西へ時速20km。<b>中心気圧935hPa、最大風速55m/s、最大瞬間風速75m/s</b>。大きさは「大型」、強さは<b>「猛烈な」</b>。前日（960hPa）から大きく発達</span></div>
+        <div class="dg-r"><span>この先</span><span>21日3時・22日3時ごろは925hPa（猛烈な）、<b>22日3時に沖縄の南</b>、23日3時も沖縄の南（935hPa、非常に強い）、<b>25日3時には東シナ海</b>（985hPa）の予報</span></div>
+        <div class="dg-r"><span>暴風域</span><span>現在、中心から150kmの範囲が暴風域。72時間後の予報では暴風警戒域が410kmに広がります</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>沖縄</em>沖縄気象台 20日4時39分</div>
+        <div class="dg-r"><span>見通し</span><span>20日はおおむね晴れ。<b>21日は台風周辺の湿った空気の影響で次第に曇り、所により雨。北東の風が強く吹く見込み</b></span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>関東・千葉県</em>銚子地方気象台 20日4時36分</div>
+        <div class="dg-r"><span>20日・21日</span><span>20日は前線の影響で曇り、雨の降る所。21日は曇り時々晴れ。千葉県の太平洋沿岸の海上は<b>21日は波が高い</b>見込みで、船舶は高波に注意</span></div>
+        <div class="dg-r"><span>地震</span><span>19日朝以降、国内で震度3以上の地震はなし</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>台風30号は、前号の時点の予報より強い「猛烈な」勢力になりました。<strong>沖縄・先島・台湾方面に住む方や移動を予定している方は、気象庁の最新の台風情報と、航空会社・船会社の運航情報を早めにご確認ください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json" target="_blank" rel="noopener">［一次］気象庁 台風第30号（20日3時45分）</a>／<a class="src" href="https://www.jma.go.jp/bosai/map.html#contents=typhoon" target="_blank" rel="noopener">［一次］気象庁 台風情報</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=471000" target="_blank" rel="noopener">［一次］気象庁 沖縄の天気</a>／<a class="src" href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=120000" target="_blank" rel="noopener">［一次］気象庁 千葉県の天気</a>／<a class="src" href="https://www.jma.go.jp/bosai/map.html#contents=earthquake_map" target="_blank" rel="noopener">［一次］気象庁 地震情報</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-sea">
+    <div class="sec-head"><span class="ic c-amber" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><span class="cat">中東・海の道</span><span class="sec-title">ホルムズ海峡付近で18日にタグボートが被弾、乗員1人が軽傷。イランは「6日以内に開く」提案を維持し、米大統領は警告を強める。原油はWTIが上昇、ブレントは小幅安 <span class="sub">/ 報道（Maritime Executive・Guardian・CNBC・Al Jazeera、10月19日）</span></span></div>
+    <div class="labs"><span class="lab lab-imp">新しい事案</span><span class="lab lab-thin">報道で確認</span><span class="lab lab-warn">機雷・攻撃主体は断定しません</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>新しい事案</em>UKMTOの報告を伝える報道</div>
+        <div class="dg-r"><span>タグボート</span><span>18日、UAEのコールファッカンの北東約20海里で、オランダ船籍のタグボートが所属不明の飛翔体2発を受けた。<b>乗員1人が軽傷</b>、航行は継続（Maritime Executive、船名の特定はVanguard Tech）</span></div>
+        <div class="dg-r"><span>イランの主張</span><span>イラン革命防衛隊は、タンカー2隻が「機雷」に触れて炎上したと主張しているが、<b>独立した確認はありません</b></span></div>
+        <div class="dg-r"><span>全体</span><span>Guardianは、過去10日間に少なくとも15隻のコンテナ船が攻撃を受けたと報道。UKMTOの週報では、14日までの1週間の通航は254回で、紛争前より約70%少ない</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>政治</em>報道</div>
+        <div class="dg-r"><span>イラン</span><span>アラグチ外相は、米国が条件をのめば6日以内に海峡を開くという提案は<b>まだ有効</b>と改めて表明（前号で詳報）</span></div>
+        <div class="dg-r"><span>米国</span><span>トランプ大統領は18日、イランについて「やり方を早く変えなければ、すぐに仕上げる」とSNSに投稿（Al Jazeera）。提案を受け入れる米国の公式の回答は確認できていません</span></div>
+        <div class="dg-r"><span>カタール</span><span>カタールの副首相は、エネルギーの衝撃は「まだピークに達していない」と述べ、3月に被害を受けたラスラファンの施設の修理には数年かかる見込みと説明（Al Jazeera）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>原油</em>CNBC（19日の清算値）</div>
+        <div class="dg-r"><span>価格</span><span>WTI 103.66ドル（+2.22%）、北海ブレント 109.55ドル（−0.28%）。CNBCは、米国の対ロシア制裁の免除でロシア産の供給が増えるとの見方が上値を抑えたと伝えています</span></div>
+        <div class="dg-r"><span>LNG・保険</span><span>液化天然ガスの価格、タンカーの運賃、戦争保険料の19〜20日の公表値は、本号では見つかりませんでした</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>「再開の提案」は続いていますが、<strong>海峡は再開しておらず、攻撃も続いています</strong>。原油は指標によって動きが違い（WTIは上昇、ブレントは小幅安）、どちらの時点の値かを確かめる必要があります。</p>
+
+    <p class="disc">出典：<a class="src" href="https://www.ukmto.org/recent-incidents" target="_blank" rel="noopener">［一次］UKMTO（本号の取得時は開けず）</a>／<a class="src" href="https://maritime-executive.com/article/tug-attacked-near-strait-of-hormuz" target="_blank" rel="noopener">Maritime Executive（報道）</a>／<a class="src" href="https://www.theguardian.com/world/2026/oct/19/strait-of-hormuz-spilt-cargo-iran-attacks-container-ships" target="_blank" rel="noopener">Guardian（報道）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/18/iran-says-two-tankers-catch-fire-after-hitting-mines-in-strait-of-hormuz" target="_blank" rel="noopener">Al Jazeera イランの主張（報道）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/qatar-warns-global-energy-shockwaves-from-iran-war-have-yet-to-peak" target="_blank" rel="noopener">Al Jazeera カタール（報道）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/trump-backs-netanyahu-is-the-us-planning-a-new-iran-attack-with-israel" target="_blank" rel="noopener">Al Jazeera 米大統領の投稿（報道）</a>／<a class="src" href="https://www.cnbc.com/2026/10/18/oil-price-today-ukraine-russia-iran-strait-hormuz.html" target="_blank" rel="noopener">CNBC 原油（報道）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-ukraine">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><span class="cat">ウクライナ・ロシア・米国</span><span class="sec-title">ロシアがキーウの電力施設を攻撃、ゼレンスキー大統領「50万人超が電気・暖房・水を失った」。米国務長官は「情報共有の停止はなかった」 <span class="sub">/ 報道（Guardian・Al Jazeera、10月19日）／ホワイトハウスの大統領文書</span></span></div>
+    <div class="labs"><span class="lab lab-imp">前号からの変化</span><span class="lab lab-thin">当事者の発表と報道</span><span class="lab lab-warn">被害の数は第三者による確認なし</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>キーウへの攻撃</em>ゼレンスキー大統領の発表（Guardian）</div>
+        <div class="dg-r"><span>被害</span><span>ロシアは18日夜、キーウとその周辺に<b>弾道ミサイル16発</b>を撃ち、変電所など<b>28か所</b>のエネルギー施設が被害を受け、<b>50万人超</b>が電気・暖房・水道を失ったと大統領は述べた。キーウでは21歳の女性が死亡（市当局）</span></div>
+        <div class="dg-r"><span>確認の度合い</span><span>施設の数と影響を受けた人数は、ウクライナ側の発表で、<b>第三者による確認は本号では見つかりません</b>でした</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>米国</em>報道・大統領文書</div>
+        <div class="dg-r"><span>情報共有</span><span>ルビオ国務長官は、ウズベキスタンで記者団に「停止はなかった」と述べた（Al Jazeera）。前号でゼレンスキー大統領は「3日間止められた」と述べていた</span></div>
+        <div class="dg-r"><span>制裁</span><span>前号で伝えた大統領文書は、対ロシア制裁法（グラム法）の関税と一部の制裁の適用を免除するもので、<b>既存の大統領令による対ロシア制裁は変えていない</b>と明記しています。対ロシア制裁全体の解除ではありません</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>欧州のエネルギー</em>Guardian</div>
+        <div class="dg-r"><span>英国</span><span>英国北海の石油施設で、労働組合が21日から24時間のストを予告。対象の施設は、英国の石油生産の約30%を担うパイプラインにつながっていると組合は説明</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>米国の制裁の扱いと情報共有をめぐり、米国とウクライナの説明が食い違っています。<strong>攻撃の規模の数字は当事者の発表で、確定した被害の集計ではありません。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.theguardian.com/world/2026/oct/19/no-us-warning-russian-strikes-kyiv-power-plants-zelenskyy-ukraine-trump" target="_blank" rel="noopener">Guardian（報道）</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/rubio-says-there-was-no-us-pause-in-intelligence-sharing-with" target="_blank" rel="noopener">Al Jazeera（報道）</a>／<a class="src" href="https://www.whitehouse.gov/presidential-actions/2026/10/implementing-the-lindsey-o-graham-sanctioning-russia-and-iran-act-of-2026/" target="_blank" rel="noopener">［一次］ホワイトハウス 大統領文書</a>／<a class="src" href="https://www.theguardian.com/uk-news/2026/oct/19/north-sea-strikes-could-severely-disrupt-uk-fuel-supplies-union-warns" target="_blank" rel="noopener">Guardian 北海のスト（報道）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-security">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-news"/></svg></span><span class="cat">情報セキュリティ（そのほか）</span><span class="sec-title">ニフティで不正アクセス、最大54万件余りの顧客情報に漏えいの可能性。ゲオは調査結果を公表し「外部への漏洩は確認されず」、サービスは停止のまま <span class="sub">/ ニフティ・セカンドリテイリングの発表（10月19日）</span></span></div>
+    <div class="labs"><span class="lab lab-imp">新しい事案</span><span class="lab lab-fact">一次情報</span><span class="lab lab-warn">可能性と確定は別</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>ニフティ</em>第一報（19日）</div>
+        <div class="dg-r"><span>事案</span><span>19日10時20分ごろ、回線の申し込み・受付を管理するシステムへの不正アクセスを確認し、通信元を遮断</span></div>
+        <div class="dg-r"><span>対象</span><span>2019年以降に回線（@nifty光など）を申し込んだ人（同社サイト経由を除く）で、<b>最大542,513件</b>。会員ID・氏名・性別・生年月日・住所・電話番号・メールアドレス。<b>口座やクレジットカードの情報はシステムになく、対象外</b></span></div>
+        <div class="dg-r"><span>段階</span><span>実際に何が漏れたかは<b>調査中</b>。個人情報保護委員会への報告の手続き中</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>ゲオ</em>セカンドリテイリング 第2報（19日）</div>
+        <div class="dg-r"><span>結果</span><span>外部の専門機関と調べた結果、データベースへの不審な接続の形跡はなく、<b>個人情報・機密情報の外部への漏洩は確認されなかった</b></span></div>
+        <div class="dg-r"><span>サービス</span><span>セカンドストリートやゲオのアプリ・Webサービスは停止したままで、<b>再開の時期は未定</b></span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>ニフティの54万件余りは「漏えいの可能性がある最大の件数」です。<strong>漏えいを口実にした不審なメールや電話に注意してください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.nifty.co.jp/newsrelease/nifty202610195434.htm" target="_blank" rel="noopener">［一次］ニフティ 第一報（19日）</a>／<a class="src" href="https://2nd-rtl.com/news/82032" target="_blank" rel="noopener">［一次］セカンドリテイリング 第2報（19日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-science">
+    <div class="sec-head"><span class="ic c-pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></span><span class="cat">科学・医療</span><span class="sec-title">イモリの免疫細胞が皮膚の線維化の回復に関わる、既存薬が高齢マウスの筋機能を改善、ウラン半導体の磁気の「波」。日本の研究を科学技術振興機構が英語で紹介 <span class="sub">/ Science Japan（10月19日掲載）と各研究機関の発表・論文</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">新しい紹介</span><span class="lab lab-warn">動物実験は人の治療法ではありません</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>Science Japan の3件</em>19日に英語版で紹介（研究の発表は8〜9月）</div>
+        <div class="dg-r"><span>イモリ</span><span>三重大学・筑波大学：アカハライモリに皮膚を移植すると線維化が起きるが自然に消えていき、<b>再生に関わる免疫細胞</b>がその回復に関わることを示した。<b>動物での研究</b></span></div>
+        <div class="dg-r"><span>筋肉</span><span>東京都健康長寿医療センター研究所など：血小板の病気の治療薬<b>ホスタマチニブ</b>が、ミトコンドリアの働きを高め、<b>高齢マウスの筋機能を改善</b>。人での試験ではなく、加齢による筋力の低下（サルコペニア）への応用は今後の課題</span></div>
+        <div class="dg-r"><span>物質</span><span>日本原子力研究開発機構：層状のウラン半導体で、磁気の向きが交互にそろうだけでなく、<b>強さが波のように変わる構造</b>を発見。基礎研究</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>19日の新しい発表</em>各大学・JST</div>
+        <div class="dg-r"><span>雑草</span><span>東京農工大学などは、稲作の厄介な雑草<b>タイヌビエ</b>で、遺伝子を入れて代々残せる仕組み（形質転換系）を<b>世界で初めて</b>確立。雑草自身で遺伝子の働きを直接確かめられるようになり、除草剤の開発などにつながると期待</span></div>
+        <div class="dg-r"><span>脳腫瘍</span><span>東北大学は、悪性脳腫瘍（膠芽腫）が、自ら出したセレンを運ぶたんぱく質を回収して<b>限られたセレンを使い回す</b>仕組みを解明。細胞などでの研究で、治療への応用は今後</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>どれも研究の段階の成果です。<strong>「ホスタマチニブで筋力が戻る」と自分で薬を使うことはせず、治療は医師に相談してください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://sj.jst.go.jp/" target="_blank" rel="noopener">［一次］Science Japan（JST）</a>／<a class="src" href="https://sj.jst.go.jp/news/202610/n1019-03k.html" target="_blank" rel="noopener">［一次］Science Japan イモリ</a>／<a class="src" href="https://sj.jst.go.jp/news/202610/n1019-02k.html" target="_blank" rel="noopener">［一次］Science Japan 筋肉</a>／<a class="src" href="https://sj.jst.go.jp/news/202610/n1019-01k.html" target="_blank" rel="noopener">［一次］Science Japan ウラン半導体</a>／<a class="src" href="https://www.jst.go.jp/pr/announce/20261019/index.html" target="_blank" rel="noopener">［一次］JST ほか タイヌビエ（19日）</a>／<a class="src" href="https://www.tohoku.ac.jp/japanese/2026/10/press20261019-04-selenoprotein.html" target="_blank" rel="noopener">［一次］東北大学 脳腫瘍（19日）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-transport">
+    <div class="sec-head"><span class="ic c-teal" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-train"/></svg></span><span class="cat">交通・暮らしの制度</span><span class="sec-title">台風30号に備え、ANAが宮古・石垣発着便の手数料なしの変更・払い戻しを案内。オートバイにも「希望ナンバー」。成田のC滑走路は完成予定を2034年12月に変更と報道 <span class="sub">/ ANA・JAL（20日朝）／国土交通省（19日）／JR東日本（20日6時28分現在）／業界紙</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">新しい制度・案内</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>台風と空の便</em>各社（20日朝）</div>
+        <div class="dg-r"><span>ANA</span><span>台風30号に伴い、<b>宮古空港・石垣空港を10月21日12時から23日の最終便まで</b>に発着する便は、実際の運航状況にかかわらず、手数料なしで変更・払い戻しができる（19日11時30分現在の案内）。<b>欠航の決定ではありません</b></span></div>
+        <div class="dg-r"><span>JAL</span><span>国内線の運航の見通しで、九州・沖縄は「対象となる空港はありません」（20日6時現在）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>オートバイ</em>国土交通省（19日）</div>
+        <div class="dg-r"><span>希望ナンバー</span><span>小型二輪と軽二輪にも「希望ナンバー制」を導入し、<b>19日から申し込みを開始</b>。最短で26日から交付。料金は1枚2,500〜3,000円（税込）。登録自動車は1998年、軽自動車は2005年から導入済み</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>鉄道・空港</em>JR東日本・報道</div>
+        <div class="dg-r"><span>千葉県の鉄道</span><span>総武本線・しおさいは平常運転。内房線の姉ケ崎〜長浦は終日見合わせ（少なくとも3か月程度）、久留里線の久留里〜上総亀山は再開の見込みが立たず</span></div>
+        <div class="dg-r"><span>成田空港</span><span>成田国際空港会社が、C滑走路の完成予定を<b>2034年12月</b>に変更する届出を出したと業界紙が報道（会社の原文は本号では未確認）</span></div>
+      </div>
+    </div>
+    <p><strong>読み方。</strong>手数料なしの扱いは、予定を早めに変えられるようにするための措置で、欠航が決まったという意味ではありません。<strong>沖縄・先島へ移動する方は、各航空会社の最新の運航情報をご確認ください。</strong></p>
+
+    <p class="disc">出典：<a class="src" href="https://www.ana.co.jp/asw/ncf_info" target="_blank" rel="noopener">［一次］ANA 航空券の取り扱い</a>／<a class="src" href="https://www.jal.co.jp/jp/ja/other/weather_info_dom/" target="_blank" rel="noopener">［一次］JAL 国内線の運航の見通し</a>／<a class="src" href="https://www.mlit.go.jp/report/press/jidosha06_hh_000187.html" target="_blank" rel="noopener">［一次］国土交通省 オートバイの希望ナンバー（19日）</a>／<a class="src" href="https://traininfo.jreast.co.jp/train_info/kanto.aspx" target="_blank" rel="noopener">［一次］JR東日本 運行情報</a>／<a class="src" href="https://www.lnews.jp/2026/10/s1019104.html" target="_blank" rel="noopener">LNEWS（業界紙、報道）</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-world">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><span class="cat">世界</span><span class="sec-title">イエメンでフーシ派の攻撃により政府軍の基地で少なくとも53人死亡と報道。イスラエルのガンツ氏が総選挙から撤退。カナダ・アルバータ州は住民投票の開票待ち <span class="sub">/ 報道（Al Jazeera・Guardian、10月19日）</span></span></div>
+    <div class="labs"><span class="lab lab-thin">報道</span><span class="lab lab-warn">当局の発表と報道を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>中東</em>Al Jazeera</div>
+        <div class="dg-r"><span>イエメン</span><span>フーシ派の攻撃で、南部シャブワ州の政府軍の基地で<b>少なくとも53人</b>が死亡と報道（当初の報道は18人）</span></div>
+        <div class="dg-r"><span>イスラエル</span><span>ガンツ元国防相が、27日の総選挙に出ないと表明。所属政党の支持率が、議席を得る基準（3.25%）を下回る調査が続いていた</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>北米・オセアニア</em>報道</div>
+        <div class="dg-r"><span>カナダ</span><span>アルバータ州で19日（現地）、州がカナダに残るか、独立を問う住民投票を行うかなどを問う投票。本号の時点で結果は出ていません（Guardian）</span></div>
+        <div class="dg-r"><span>豪州</span><span>無所属の下院議員ヘレン・ヘインズ氏が車にはねられ重体。首相は「意図的な行為」と述べた（Al Jazeera）</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.aljazeera.com/news/2026/10/19/at-least-18-killed-in-houthi-attack-on-military-camp-in-yemens-shabwa" target="_blank" rel="noopener">Al Jazeera イエメン</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/benny-gantz-drops-out-of-israels-election-race" target="_blank" rel="noopener">Al Jazeera イスラエル</a>／<a class="src" href="https://www.theguardian.com/world/2026/oct/19/alberta-goes-to-polls-in-referendum-divisions-separatists-canada" target="_blank" rel="noopener">Guardian カナダ</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/australian-mp-helen-haines-critically-injured-in-deliberate-car-ramming" target="_blank" rel="noopener">Al Jazeera 豪州</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-politics">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><span class="cat">国内政治</span><span class="sec-title">消費税減税法案は20日に衆院本会議で審議入り。首相は「価格に反映」と説明、日本保守党は賛成へ。首相は靖国神社の例大祭で参拝せず <span class="sub">/ 共同通信の配信（10月16日〜19日）</span></span></div>
+    <div class="labs"><span class="lab lab-thin">報道</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>国会</em>共同通信</div>
+        <div class="dg-r"><span>審議入り</span><span>飲食料品の消費税を2027年4月から2年間、8%から1%に下げる法案が、<b>20日に衆院本会議で審議入り</b>し、首相が出席する</span></div>
+        <div class="dg-r"><span>首相</span><span>19日の参院予算委員会で、減税分は「価格に反映」されるとし、財源は確保できると説明（見出し）</span></div>
+        <div class="dg-r"><span>野党</span><span>日本保守党は法案に賛成する方針（見出し）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>靖国神社</em>共同通信</div>
+        <div class="dg-r"><span>首相</span><span>高市首相は、19日までの秋季例大祭の期間中、参拝しなかった（真榊の奉納は前号で既報）</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://kumanichi.com/articles/2047225" target="_blank" rel="noopener">共同通信 審議入り（熊本日日新聞掲載）</a>／<a class="src" href="https://kumanichi.com/articles/2048296" target="_blank" rel="noopener">共同通信 首相の答弁</a>／<a class="src" href="https://kumanichi.com/articles/2048301" target="_blank" rel="noopener">共同通信 日本保守党</a>／<a class="src" href="https://kumanichi.com/articles/2048312" target="_blank" rel="noopener">共同通信 靖国</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-culture">
+    <div class="sec-head"><span class="ic c-pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></span><span class="cat">文化・スポーツ・発見</span><span class="sec-title">かんがいの国際組織で日本人初の会長。京大の学部生の自主ゼミが「若い太陽型の星」のスーパーフレアの性質を発見。秋華賞はモンローウォーク <span class="sub">/ 農林水産省・京都大学・NPB・JRA（10月16日〜19日）</span></span></div>
+    <div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab lab-imp">新しい発見</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>世界と日本の農業</em>農林水産省</div>
+        <div class="dg-r"><span>ICIDの会長</span><span>国際かんがい排水委員会（ICID、本部インド）の次期会長に、<b>渡邉紹裕・京都大学名誉教授</b>が選ばれた（17日、フランス・マルセイユ）。1950年の創設以来、<b>日本人で初めて</b>。任期は3年。ICIDは「世界かんがい施設遺産」の認定機関でもある</span></div>
+        <div class="dg-r"><span>女性農業者</span><span>国連食糧農業機関（FAO）が選ぶ「100人の女性ヒーロー」に、群馬県の清水由紀江さんが選ばれた。131か国から609件の推薦があった</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>学生の発見</em>京都大学（19日）</div>
+        <div class="dg-r"><span>研究</span><span>当時学部生だった学生らが<b>自主ゼミ</b>で、NASAの宇宙望遠鏡TESSの約7年分のデータを解析。年齢約3,000万〜1億年の3つの若い太陽型の星で、<b>表面の巨大な黒点が大きい時期ほど、スーパーフレアの頻度やエネルギーが大きい</b>ことを明らかにした。太陽の小さなフレアと同じ性質だという</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>スポーツ</em>NPB・JRA・MLB</div>
+        <div class="dg-r"><span>プロ野球</span><span>NPBが19日、FA（フリーエージェント）の有資格選手を公示。今季新たに国内FA21人・海外FA17人が資格を得て、<b>計104人</b>。日本シリーズは24日に横浜で開幕、ドラフト会議は22日</span></div>
+        <div class="dg-r"><span>競馬</span><span>18日の秋華賞（京都・芝2,000m）は<b>モンローウォーク</b>（戸崎圭太騎手、1番人気）が1分56秒1で優勝。2着ギャラボーグ（クビ差）</span></div>
+        <div class="dg-r"><span>MLB</span><span>ア・リーグ優勝決定シリーズはレイズが3勝2敗でリード（第6戦は日本時間20日9時8分開始の予定）。ワールドシリーズは日本時間24日に開幕</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.maff.go.jp/j/press/nousin/sekkei/261019.html" target="_blank" rel="noopener">［一次］農林水産省 ICID会長（19日）</a>／<a class="src" href="https://www.maff.go.jp/j/press/y_kokusai/kikou/261016.html" target="_blank" rel="noopener">［一次］農林水産省 FAOの表彰（16日）</a>／<a class="src" href="https://www.kyoto-u.ac.jp/ja/research-news/2026-10-19-0" target="_blank" rel="noopener">［一次］京都大学（19日）</a>／<a class="src" href="https://npb.jp/news/detail/20261019_01.html" target="_blank" rel="noopener">［一次］NPB FA有資格選手（19日）</a>／<a class="src" href="https://npb.jp/nippons/2026/" target="_blank" rel="noopener">［一次］NPB 日本シリーズ</a>／<a class="src" href="https://www.jra.go.jp/datafile/seiseki/g1/shuka/result/shuka2026.html" target="_blank" rel="noopener">［一次］JRA 秋華賞の成績</a>／<a class="src" href="https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2026-10-10&endDate=2026-11-05&gameType=L,W,D" target="_blank" rel="noopener">［一次］MLB 公式記録</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-check">
+    <div class="sec-head"><span class="ic c-green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span class="cat">答え合わせ</span><span class="sec-title">前号D84の「予定」「未確認」はどうなったか <span class="sub">/ 10月19日号との比較</span></span></div>
+    <div class="labs"><span class="lab lab-fact">答え合わせ</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>予定・未確認だったこと</em></div>
+        <div class="dg-r"><span>東京市場</span><span>前号は先物の手がかり（16日のシカゴ63,925円）だけで、19日の始値ではないと明記 → 19日は始値64,819.56円、<b>終値64,916.70円（−0.62%）</b>（市場の節で詳報）</span></div>
+        <div class="dg-r"><span>MMX</span><span>前号は「20日4時41分03秒に決定」→ <b>打ち上げ、分離と軌道投入を報道</b>。JAXAの正式な結果の発表は本号の確認時点で未掲載</span></div>
+        <div class="dg-r"><span>台風30号</span><span>前号は「960hPa、22日に沖縄の南で925hPa」→ <b>935hPaの「猛烈な」勢力に発達</b>。22日に沖縄の南、25日に東シナ海の予報</span></div>
+        <div class="dg-r"><span>SpeeCAN RAIDEN</span><span>前号は第11報 → <b>第12報（19日）</b>で侵入の経路と不正なメール約142万通を公表。漏えいの確定はまだ</span></div>
+        <div class="dg-r"><span>ゲオ</span><span>前号は「漏えいの有無は未確認」→ 第2報で<b>外部への漏洩は確認されず</b>。サービスは停止のまま</span></div>
+        <div class="dg-r"><span>ウクライナの情報共有</span><span>前号はゼレンスキー大統領の「3日間止まった」→ 米国務長官は「停止はなかった」</span></div>
+        <div class="dg-r"><span>酒々井町</span><span>前号は「週末の新しい発表なし」→ 19日に下水道の自粛の解除と、減免・貸付の案内</span></div>
+      </div>
+    </div>
+    <p>前号（10月19日号）以前の本文には、今回は手を加えていません。</p>
+
+    <p class="disc">出典：<a class="src" href="https://indexes.nikkei.co.jp/nkave/archives/summary?dt=20261019&idx=nk225" target="_blank" rel="noopener">［一次］日経平均（10月19日）</a>／<a class="src" href="https://www.nikkei.com/article/DGXZQOSG085610Y6A001C2000000/" target="_blank" rel="noopener">日本経済新聞</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json" target="_blank" rel="noopener">［一次］気象庁</a>／<a class="src" href="https://raiden.site.ktaiwork.jp/wp-content/uploads/sites/2/2026/10/2026_10_19AccessIncident.pdf" target="_blank" rel="noopener">［一次］アルカディア 第12報</a>／<a class="src" href="https://2nd-rtl.com/news/82032" target="_blank" rel="noopener">［一次］セカンドリテイリング</a>／<a class="src" href="https://www.aljazeera.com/news/2026/10/19/rubio-says-there-was-no-us-pause-in-intelligence-sharing-with" target="_blank" rel="noopener">Al Jazeera</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026092800043/" target="_blank" rel="noopener">［一次］酒々井町</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-unknown">
+    <div class="sec-head"><span class="ic c-slate" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-question"/></svg></span><span class="cat">確認の限界</span><span class="sec-title">確認できなかったこと <span class="sub">/ 本号の取材の範囲</span></span></div>
+    <div class="labs"><span class="lab lab-warn">未確認</span><span class="lab lab-thin">調べたが材料なし／調べきれず を分けます</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>最重要の未確認</em></div>
+        <div class="dg-r"><span>MMX</span><span><b>JAXAの正式な打ち上げ結果の発表</b>、探査機との通信の確立、太陽電池パネルの展開など探査機側の状態</span></div>
+        <div class="dg-r"><span>SpeeCAN RAIDEN・ニフティ</span><span>漏えいの確定と件数</span></div>
+        <div class="dg-r"><span>日経平均先物</span><span>16日のシカゴの先物の取引所の公式の清算値（データ提供会社の表示が63,925円と63,720円で違う）</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>そのほか</em></div>
+        <div class="dg-r"><span>日銀</span><span>19日の植田総裁の発言とされる報道の原文（日銀のサイトに記録なし）</span></div>
+        <div class="dg-r"><span>海の道</span><span>UKMTOの原文、液化天然ガス・運賃・保険料の公表値、イランの主張する「機雷」の確認</span></div>
+        <div class="dg-r"><span>ウクライナ</span><span>28か所・50万人超の被害の第三者による確認</span></div>
+        <div class="dg-r"><span>中国</span><span>9月の若年層の失業率（統計局の一覧に未掲載）</span></div>
+        <div class="dg-r"><span>本復旧</span><span>印旛沼の堤防の本復旧の時期</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jaxa.jp/press/h3/index_j.html" target="_blank" rel="noopener">［一次］JAXA</a>／<a class="src" href="https://raiden.site.ktaiwork.jp/wp-content/uploads/sites/2/2026/10/2026_10_19AccessIncident.pdf" target="_blank" rel="noopener">［一次］アルカディア</a>／<a class="src" href="https://www.nifty.co.jp/newsrelease/nifty202610195434.htm" target="_blank" rel="noopener">［一次］ニフティ</a>／<a class="src" href="https://www.ukmto.org/recent-incidents" target="_blank" rel="noopener">［一次］UKMTO</a>／<a class="src" href="https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html" target="_blank" rel="noopener">［一次］国家統計局</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+  <section id="sec-watch">
+    <div class="sec-head"><span class="ic c-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cal"/></svg></span><span class="cat">予定</span><span class="sec-title">本日と、この先のウォッチリスト <span class="sub">/ 日付は日本時間</span></span></div>
+    <div class="labs"><span class="lab lab-thin">予定は予定</span></div>
+
+<div class="dgrid">
+      <div class="dg">
+        <div class="dg-h"><em>本日 10月20日（火）</em></div>
+        <div class="dg-r"><span>MMX</span><span>JAXAの打ち上げ結果の発表と、探査機の状態の続報</span></div>
+        <div class="dg-r"><span>国会</span><span>消費税減税法案が衆院本会議で審議入り</span></div>
+        <div class="dg-r"><span>カナダ</span><span>アルバータ州の住民投票の結果</span></div>
+      </div>
+      <div class="dg">
+        <div class="dg-h"><em>この先</em></div>
+        <div class="dg-r"><span>10月21日</span><span>英国北海の石油施設で24時間のスト（予告）。ANAの宮古・石垣便の手数料なしの扱いが12時から</span></div>
+        <div class="dg-r"><span>10月22日</span><span><b>台風30号が沖縄の南（925hPa）の予報</b>。日銀 主要銀行貸出動向アンケート、プロ野球ドラフト会議</span></div>
+        <div class="dg-r"><span>10月23日</span><span><b>日銀 金融システムレポート</b>（15時）</span></div>
+        <div class="dg-r"><span>10月24日</span><span>プロ野球 日本シリーズ第1戦、MLB ワールドシリーズ第1戦</span></div>
+        <div class="dg-r"><span>10月25日</span><span>台風30号が東シナ海の予報</span></div>
+        <div class="dg-r"><span>10月26日</span><span>オートバイの希望ナンバーの交付開始（最短）</span></div>
+        <div class="dg-r"><span>10月29日・30日</span><span>日銀の金融政策決定会合</span></div>
+        <div class="dg-r"><span>11月5日</span><span>酒々井町の生活必需品の支給の申請期限</span></div>
+      </div>
+    </div>
+
+    <p class="disc">出典：<a class="src" href="https://www.jaxa.jp/press/h3/index_j.html" target="_blank" rel="noopener">［一次］JAXA</a>／<a class="src" href="https://www.boj.or.jp/about/calendar/index.htm" target="_blank" rel="noopener">［一次］日本銀行</a>／<a class="src" href="https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json" target="_blank" rel="noopener">［一次］気象庁</a>／<a class="src" href="https://www.ana.co.jp/asw/ncf_info" target="_blank" rel="noopener">［一次］ANA</a>／<a class="src" href="https://npb.jp/nippons/2026/" target="_blank" rel="noopener">［一次］NPB</a>／<a class="src" href="https://www.town.shisui.chiba.jp/docs/2026101400011/" target="_blank" rel="noopener">［一次］酒々井町</a></p>
+    <div class="backtop"><a href="#top">↑ 目次へ</a></div>
+  </section>
+
+<div class="askai" id="askai">
+    <div class="askai-title"><span class="ic c-acc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>気になった項目を、AIでもっと詳しく</div>
+    <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった項目の名前に書き換えてからお使いください。</p>
+    <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。レポート本文は自動送信されません。</p>
+    <div class="askai-box">
+      <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+      <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+    </div>
+    <div class="askai-links">
+      <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+      <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+      <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+    </div>
+  </div>
+
+
+  <footer class="foot">
+    <p><a href="index.html">← レポート一覧へ戻る</a></p>
+    <p><strong>AI総合研究機構 — 朝の一日レポート</strong></p>
+    <p><strong>本号は、AI総合研究機構の朝の一日レポートです。</strong>広域の収集対象（金融・市場／政治・世界情勢／災害・安全／AI・技術／通信／宇宙・衛星／ロボット・モビリティ／住まい・地域／暮らし／消費者技術／社会・文化／ランダム・ニッチ発見の12領域）を一巡し、さらに試行中の4領域（政治・世界情勢、社会・文化・ニッチ、AI・技術・宇宙、交通）の追加収集を行ったうえで、掲載情報を選別しました。<strong>「確認したが掲載する材料がなかった領域」と「十分に調べられなかった領域」は、「確認できなかったこと」の章で示しています。</strong><strong>本文に独立したトピックとして載せた項目は、原則すべて冒頭に一覧しています。件数は日によって変わります。</strong></p>
+    <p><strong>収集の基準時刻: 2026年10月20日 6時15分（日本時間）。本号全体の最終確認時刻は2026年10月20日 7時16分（日本時間）です。</strong>これ以降の動きは、次号で扱います。<strong>情報ごとの基準時刻は次のとおりです。MMX＝報道（日本経済新聞 20日4時42分配信・5時53分更新、マイナビニュース 20日6時16分更新）、JAXAの発表一覧は本号の最終確認時刻の時点で打ち上げ結果が未掲載。日経平均＝10月19日の公式の値（日本経済新聞社）。米国株＝10月19日の終値（データ提供会社・CNBC）。原油＝10月19日の清算値（CNBC）。為替・暗号資産＝10月20日6時台の表示。米国債＝米財務省 10月19日分。日本国債＝財務省 10月16日分。中国＝国家統計局 10月19日発表。日本銀行＝10月6日の総裁の挨拶と公表予定。SpeeCAN RAIDEN＝第12報（10月19日10時、PDF）。酒々井町＝10月19日公開の案内。停電＝東京電力パワーグリッド 20日6時29分現在。台風・天気＝気象庁（台風第30号は20日3時45分、各地の天気は20日4時台）。航空＝ANA（19日11時30分現在）・JAL（20日6時現在）。世界・政治・研究・スポーツ＝各発表・報道の日付どおり。</strong></p>
+    <p><strong>本号の編集方針。</strong>①数字には出典と基準時刻を添えました。②<strong>MMXは、報道で確認できた「打ち上げ」「分離」「予定の軌道への投入」と、まだ確認できていない「探査機の状態」を分け、JAXAの正式な結果の発表が本号の時点で未掲載であることを明記しました。「完全成功」とは書いていません。</strong>③<strong>市場は、前号の先物の手がかりと19日の実際の値動きを比べる「答え合わせ」として書き、前号の本文は変えていません。16日の先物の値がデータ提供会社の表示で異なることも明記しました。</strong>④<strong>中国の統計は、前年同期比・前年同月比・前期比・累計を分けて書きました。</strong>⑤<strong>日銀は、日銀の公式に掲載された10月6日の総裁の挨拶を使い、19日の発言とされる報道は原文を確認できないため本文の根拠にしていません。</strong>⑥<strong>SpeeCAN RAIDENの約142万通は、不正なプログラムが外部へ送ったメールの通数で、漏えい件数ではないと明記しました。ニフティの件数も「可能性」の最大件数です。</strong>⑦<strong>海上の事案は攻撃主体や「機雷」を断定せず、ウクライナの被害の数は当事者の発表として書きました。米国の制裁の免除を、対ロシア制裁全体の解除とは書いていません。</strong>⑧<strong>研究は、研究の段階（動物・細胞・基礎研究）を明記し、人の治療法とは書いていません。</strong>⑨<strong>ANAの手数料なしの扱いを欠航の決定とは書いていません。</strong>⑩<strong>前号（10月19日号）以前の本文は書き換えていません。</strong>⑪<strong>AIによる調査・執筆・編集が関与しています。制作体制は複数のAIと編集担当の分担で、固有名は出していません。</strong></p>
+    <p><strong>数字の検算について。</strong>日経平均の19日の始値は64,819.56−65,324.29＝<strong>−504.73円</strong>、安値は63,831.78−65,324.29＝<strong>−1,492.51円</strong>（16日の終値との差）、終値は−407.59円で−407.59÷65,324.29＝<strong>約−0.62%</strong>です。米10年国債は5.09%→5.15%で<strong>0.06ポイント</strong>の上昇です。台風30号は960hPa（19日3時）→935hPa（20日3時）で<strong>25hPa深まりました</strong>。中国の四半期の伸び率は1〜3月5.0%、4〜6月4.3%、7〜9月4.5%で、累計の4.6%と矛盾しません。</p>
+    <p><strong>本号の情報源について。</strong>JAXA・日本経済新聞社（日経平均）・米財務省・財務省・日本銀行・中国国家統計局・アルカディア（SpeeCAN RAIDEN）・酒々井町・関東地方整備局・東京電力パワーグリッド・気象庁・ANA・JAL・JR東日本・国土交通省・ニフティ・セカンドリテイリング・ホワイトハウス・科学技術振興機構（Science Japan）・東京農工大学ほか・東北大学・農林水産省・京都大学・NPB・JRA・MLBの発表を一次情報として用いました。MMXの打ち上げの経過は日本経済新聞とマイナビニュース、米国株と原油はCNBC、海上の事案はMaritime Executive・Guardian・Al Jazeera・CNBC、ウクライナはGuardian・Al Jazeera、世界の動きはAl Jazeera・Guardian、成田空港は業界紙LNEWS、国内政治は共同通信の報道です。株価・為替はデータ提供会社の値です。</p>
+    <p>避難や移動の判断にあたっては、本レポートではなく、<strong>気象庁と各自治体、および各交通事業者・電力会社・水道事業者・通信事業者の最新の発表を直接ご確認ください。</strong>自治体や会社を名乗る不審なメールには注意し、記載されたリンクを開かずに、公式の窓口で確かめてください。</p>
+    <p>本レポートは情報提供を目的としたもので、投資、法務、税務、医療、その他の専門的助言ではありません。掲載した数値・日付・出典は公開情報に基づいて確認していますが、完全性・正確性を保証するものではありません。実際の判断にあたっては、一次情報と専門家の助言をご確認ください。</p>
+    <p class="cr">© 2026 AI総合研究機構</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  function tvSrc(sym, iv){
+    var p = new URLSearchParams({
+      symbol: sym, interval: iv, theme:'light', style:'1', locale:'ja',
+      timezone:'Asia/Tokyo', hidesidetoolbar:'0', symboledit:'1', saveimage:'0',
+      withdateranges:'1', hideideas:'1', toolbarbg:'F7F9FC'
+    });
+    return 'https://s.tradingview.com/widgetembed/?' + p.toString();
+  }
+  function openUrl(sym, iv){
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym)
+         + '&interval=' + encodeURIComponent(iv);
+  }
+  function syncLink(cw){
+    var host = cw.querySelector('.chost'), a = cw.querySelector('.tvopen');
+    if(host && a) a.href = openUrl(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+  }
+  var hosts = document.querySelectorAll('.chost');
+  Array.prototype.forEach.call(hosts, function(host, idx){
+    var fr = document.createElement('iframe');
+    fr.src = tvSrc(host.getAttribute('data-sym'), host.getAttribute('data-i'));
+    if(idx > 1) fr.setAttribute('loading','lazy');
+    fr.setAttribute('title', host.getAttribute('data-sym') + ' チャート');
+    fr.setAttribute('frameborder','0');
+    fr.setAttribute('scrolling','no');
+    fr.setAttribute('allowtransparency','true');
+    fr.setAttribute('allowfullscreen','');
+    host.appendChild(fr);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.cw'), function(cw){
+    var foot = cw.querySelector('.cw-foot');
+    if(!foot) return;
+    var a = document.createElement('a');
+    a.className = 'tvopen'; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'TradingViewで開く ↗';
+    foot.appendChild(a);
+    syncLink(cw);
+  });
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest ? ev.target.closest('.tf') : null;
+    if(!btn) return;
+    var group = btn.parentNode, cw = group.closest('.cw');
+    var host = cw.querySelector('.chost'), fr = host.querySelector('iframe');
+    Array.prototype.forEach.call(group.querySelectorAll('.tf'), function(b){
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    var iv = btn.getAttribute('data-i');
+    host.setAttribute('data-i', iv);
+    if(fr) fr.src = tvSrc(host.getAttribute('data-sym'), iv);
+    syncLink(cw);
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var q = document.getElementById('askaiQ');
+  if(!btn || !q) return;
+  btn.addEventListener('click', function(){
+    var text = q.value;
+    function done(){
+      btn.classList.add('is-copied');
+      var old = btn.textContent;
+      btn.textContent = 'コピーしました';
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('is-copied'); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ q.select(); });
+    } else {
+      q.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+    }
+  });
+})();
+</script>
+</body>
+</html>
