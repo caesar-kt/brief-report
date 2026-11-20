@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年11月20日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;overflow-wrap:anywhere;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  .quake{border-color:rgba(224,36,36,.2);background:linear-gradient(180deg,var(--surface),#FFFBFB);}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+
+  /* 今日のコラム（D104 から・文字中心の欄。題名はクロちゃんの原文） */
+  .colbox{margin-top:16px;padding:18px 20px 16px;border-radius:16px;border:1px solid #E7DCC9;
+    background:linear-gradient(180deg,#FFFDF8 0%,#FBF6EC 100%);box-shadow:var(--sh-1);}
+  .colbox-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .colbox-h b{font-size:16.5px;font-weight:800;color:#5A3E12;letter-spacing:-.01em;}
+  .colbox-h span{font-size:11.5px;color:#8A6A3A;font-weight:700;}
+  .colbox ul{list-style:none;}
+  .colbox li{border-top:1px solid #EFE4D1;}
+  .colbox li:first-child{border-top:none;}
+  .colbox a.col-l{display:flex;gap:12px;align-items:baseline;padding:11px 4px;text-decoration:none;min-height:44px;}
+  .colbox .col-t{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:800;color:#A0732E;width:3.6em;}
+  .colbox .col-n{font-size:14.5px;font-weight:700;color:#2E2414;line-height:1.6;}
+  .colbox .col-d{display:block;font-size:12.5px;font-weight:500;color:#6E5A3C;margin-top:2px;}
+  .colbox a.col-l:hover .col-n{color:var(--brand);}
+  .colbox .col-top{margin-top:8px;font-size:12.5px;}
+  .colbox .col-top a{color:#8A5A0F;font-weight:800;text-decoration:none;border-bottom:1px solid #E7DCC9;}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .colbox{padding:16px 15px 14px;}
+  }
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+  /* 相場監視ダッシュボードへの導線（r2 から・brief_build が毎号差し込む） */
+  a.dash{display:flex;align-items:center;flex-wrap:wrap;gap:4px 14px;margin-top:16px;padding:13px 18px;min-height:48px;
+    position:relative;z-index:1;text-decoration:none;color:#fff;border-radius:12px;
+    background:linear-gradient(135deg,var(--brand) 0%,#2E46E0 100%);box-shadow:var(--sh-2);}
+  a.dash .dash-l{font-size:15px;font-weight:800;letter-spacing:-.005em;line-height:1.5;}
+  a.dash .dash-s{font-size:12.5px;font-weight:600;color:#fff;line-height:1.5;}
+  a.dash .dash-a{margin-left:auto;font-size:16px;font-weight:800;line-height:1;}
+  a.dash:hover{filter:brightness(1.07);}
+  a.dash:focus-visible{outline:3px solid var(--amber);outline-offset:2px;}
+  @media(max-width:560px){a.dash{padding:12px 15px;} a.dash .dash-s{order:3;flex-basis:100%;}}
+</style>
+</head><body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年11月20日（金）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>米国19日は、アンソロピックが上場した日に主な株価指数がそろって約2%下がり、S&amp;P500は7,175.83（−2.02%）でした。新しく上場したアンソロピックは公開価格を17.1%上回って終えた一方、エヌビディアは−3.30%、AMD は−7.72%と、ほかの AI 関連株が売られました。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の一日レポートです。今朝は、<strong>熊本県の地震のその後と北日本の荒れた天気</strong>、<strong>米国19日の市場</strong>、<strong>市場は、なぜ動いたのか</strong>、<strong>FRB 副議長の講演と米国の指標</strong>、<strong>アンソロピックの上場の初日、輸出の規則の官報への掲載、グーグルの新しいモデル</strong>、<strong>深圳の3首脳の宣言、クリミア橋、欧州の動き</strong>、<strong>日本の物価の発表の前、古民家の宿</strong>、<strong>宣言の「石油製品」と報道の「ガスと石油」</strong>をお伝えします。本号は「一次情報」「報道」、「事実」と「見方」と「独自の分析」を分けて書きます。</p>
+    <a class="dash" href="https://mirai-manabu.com/group1.html" target="_blank" rel="noopener"><span class="dash-l">相場監視ダッシュボードを開く</span><span class="dash-s">市場の最新の動きを確認できます</span><span class="dash-a" aria-hidden="true">↗</span></a>
+<ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-quake">地震・天気 <span class="kw-arrow">↓</span></a></span><span>
+        <b>熊本県天草・芦北地方では、19日2時22分の震度5弱の後も揺れが続き、20日5時2分までに震度1以上が61回</b>（気象庁の一覧から本紙が数えた値）。消防庁の19日9時の報告では人や住宅の被害の報告なし。<b>北日本は20〜21日に暴風・高波</b>のおそれ。
+        <span class="but"><em>一次情報</em> けが人・交通の影響は報道によります。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">市場 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国19日はS&amp;P500 7,175.83（−2.02%）、ナスダック100 26,517.05（−2.21%）</b>。VIX は28.44に上昇。<b>米国債10年は5.04%</b>に低下（米国財務省）。日経平均は19日に続伸したと報じられています。
+        <span class="but"><em>一次情報</em> 株価指数は Cboe の配信の値（遅延）です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-mtrig">なぜ動いたのか <span class="kw-arrow">↓</span></a></span><span>
+        <b>上場したアンソロピックは上がり、ほかの AI 関連株は売られました</b>。約813億ドル（本紙の計算）の新しい株の受け入れ、AI の採算への疑問、節目の割り込みが候補です。ただし金利は下がりました。
+        <span class="but"><em>独自の分析</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-fed">金融政策・指標 <span class="kw-arrow">↓</span></a></span><span>
+        <b>ジェファーソン FRB 副議長は「AI の設備の拡大が需要と物価を押し上げている」</b>と講演（連邦準備制度理事会）。<b>フィラデルフィア連銀の景況は6.3に低下、支払う価格は58.2に上昇</b>。新規の失業保険の申請は20万3,000件（米労働省）。
+        <span class="but"><em>一次情報</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">AI・半導体 <span class="kw-arrow">↓</span></a></span><span>
+        <b>アンソロピックは19日に上場し、終値97.17ドル（公開価格83ドルを17.1%上回る）</b>（会社の発表・Cboe の配信）。米国の半導体の輸出の新しい規則は<b>19日に官報に載り、同じ日に発効</b>。グーグルは「Gemini 4 Neon」を公開。
+        <span class="but"><em>一次情報</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">世界 <span class="kw-arrow">↓</span></a></span><span>
+        <b>深圳の中ロ米の首脳会談で「平和に向けた宣言」</b>（国連の改革・石油製品の増産・核戦争の否定など4点、中国外務省）。プーチン大統領は海の上の停戦などについて「クリミア橋への攻撃の後に合意はしない」と述べたと報じられています。
+        <span class="but"><em>一次情報</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-japan">日本・地域 <span class="kw-arrow">↓</span></a></span><span>
+        <b>今日8時30分に10月の全国の消費者物価</b>（9月は総合+2.1%・生鮮食品を除く+2.1%、総務省）。日経平均は19日に59,444.21円（+419.93円）と報じられています。京都・美山の茅葺きの古民家の宿が「空き家グランプリ」に。
+        <span class="but"><em>一次情報</em> 日経平均・古民家は報道と企業の発表です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-science">発見 <span class="kw-arrow">↓</span></a></span><span>
+        <b>3首脳の宣言の原文は「精製された石油製品」の増産で、「ガスと石油」と伝えた報道と食い違います</b>。フィラデルフィア連銀では、景況が下がる中で支払う価格が15ポイント上がりました。アンソロピックの初日の出来高は売り出し株数の86.6%（本紙の計算）。
+        <span class="but"><em>独自の分析</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-column">コラム <span class="kw-arrow">↓</span></a></span><span>
+        <b>今日のコラムは3本</b>：フォーチュンクッキーの出生地のおみくじ、バナナ「キャベンディッシュ」の襲名披露、海の底のヒットチャート。
+        <span class="but"><em>コラム</em> 事実の記事とは別の読み物です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-check">答え合わせ <span class="kw-arrow">↓</span></a></span><span>
+        <b>前号D115の「アンソロピックの初値」は111.50ドル、「S&amp;P500の続落が6日に延びるか」は19日も下がりました</b>。3首脳の会談の結果は宣言として出ました。輸出の規則は予定通り官報に。
+        <span class="but"><em>一次情報</em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-unknown">確認の限界 <span class="kw-arrow">↓</span></a></span><span>
+        <b>SOX 指数、ダウ平均の終値（報道の値が割れる）、日経平均の算出元の値、原油・金の終値、熊本の地震の最新の被害のまとめ</b>は確かめられていません。
+        <span class="but"><em></em> </span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">予定 <span class="kw-arrow">↓</span></a></span><span>
+        <b>20日8時30分に日本の10月の消費者物価、25日に米国の GDP 改定値と個人消費の物価、26日は米国の感謝祭で休場、12月8〜9日に FOMC</b>。
+        <span class="but"><em></em> 未発表の結果は載せていません。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">S&amp;P500（19日）</div><div class="vl mono">7,175.83</div><div class="ch down">−2.02%</div><div class="ctx">Cboe の配信（遅延）・18日 7,323.63</div></div>
+      <div class="cell"><div class="nm">ナスダック100（19日）</div><div class="vl mono">26,517.05</div><div class="ch down">−2.21%</div><div class="ctx">Cboe の配信（遅延）</div></div>
+      <div class="cell"><div class="nm">VIX（19日）</div><div class="vl mono">28.44</div><div class="ch up">18日 24.56</div><div class="ctx">Cboe の配信・不安の目安</div></div>
+      <div class="cell"><div class="nm">アンソロピック（初日）</div><div class="vl mono">97.17ドル</div><div class="ch up">公開価格比 +17.1%</div><div class="ctx">公開価格83ドル（会社の発表）・終値は Cboe の配信</div></div>
+      <div class="cell"><div class="nm">エヌビディア（19日）</div><div class="vl mono">145.98ドル</div><div class="ch down">−3.30%</div><div class="ctx">Cboe の配信</div></div>
+      <div class="cell"><div class="nm">AMD（19日）</div><div class="vl mono">489.19ドル</div><div class="ch down">−7.72%</div><div class="ctx">Cboe の配信</div></div>
+      <div class="cell"><div class="nm">米国債10年（19日）</div><div class="vl mono">5.04%</div><div class="ch down">18日 5.07%</div><div class="ctx">米国財務省・2年は4.76%</div></div>
+      <div class="cell"><div class="nm">熊本の震度1以上</div><div class="vl mono">61回</div><div class="ch down">最大 震度5弱</div><div class="ctx">19日2時22分〜20日5時2分・気象庁の一覧から本紙が数えた値</div></div>
+    </div>
+    <div class="mtrig-sum" style="margin:14px 0 4px;padding:10px 12px;border:1px solid #CBD5E1;border-left:4px solid #B45309;border-radius:8px;">
+      <p style="margin:0 0 4px;"><b>市場は、なぜ動いたのか（要約）</b>：19日は、<b>アンソロピックが公開価格を17.1%上回って終えた一方、AMD −7.72%・エヌビディア −3.30% など、ほかの AI 関連株が売られ</b>、S&amp;P500 は −2.02% でした。<b>VIX は 24.56→28.44 に上がり、米国債10年の利回りは 5.07%→5.04% と下がりました</b>。「金利が上がって株が下がった」形ではありません。</p>
+      <p style="margin:0;"><a href="#sec-mtrig">原因の候補と反対の材料を読む ↓</a></p>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-quake">地震・天気：熊本の揺れは61回、北日本の暴風</a></li>
+      <li><a href="#sec-market">市場：米国19日、そろって約2%の下げ</a></li>
+      <li><a href="#sec-mtrig">市場は、なぜ動いたのか：新しい AI 株は上がり、古い AI 株が売られた</a></li>
+      <li><a href="#sec-fed">金融政策・指標：副議長の講演、景況と物価</a></li>
+      <li><a href="#sec-ai">AI・半導体：アンソロピックの初日、輸出の規則、グーグルの新モデル</a></li>
+      <li><a href="#sec-world">世界：深圳の3首脳の宣言、クリミア橋、欧州の動き</a></li>
+      <li><a href="#sec-japan">日本・地域：物価の発表の前、日経平均、古民家の宿</a></li>
+      <li><a href="#sec-science">発見：「石油製品」と「ガスと石油」、景況と価格の逆向き</a></li>
+      <li><a href="#sec-column">今日のコラム：3つの視点</a></li>
+      <li><a href="#sec-check">前号D115の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">今週と、この先のウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+<section id="sec-quake">
+<div class="sec-head"><span class="tick"></span><span class="cat">Quake</span><span class="sec-title">地震・天気　<span class="sub">熊本の揺れは61回、北日本の暴風</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報（気象庁・消防庁）</span><span class="lab">報道（区別して記載）</span></div>
+<p><strong>その後の揺れ（気象庁の地震情報の一覧から本紙が数えた値）</strong>：19日2時22分ごろの熊本県天草・芦北地方の地震（マグニチュード5.7、最大震度5弱）から、<strong>20日5時2分までに、同じ地域を震源とする震度1以上の地震は61回</strong>でした（震度5弱1回・震度3が3回・震度2が16回・震度1が41回）。前号でお伝えした19日6時41分までの36回の後に、25回ありました。震度3は2時25分ごろ・2時36分ごろと、<strong>19日9時38分ごろ（マグニチュード3.6）</strong>です。20日の未明も、4時4分・4時10分・4時42分・5時2分に震度1がありました。</p>
+<p><strong>被害（消防庁の19日9時の報告）</strong>：震度5弱は水俣市・芦北町・津奈木町・球磨村・あさぎり町で、<strong>人と住宅の被害は「現時点で報告なし」</strong>でした。避難の指示は1市1村の1万1,885世帯・2万3,254人に出され、熊本県は2時22分に災害の警戒の本部を置きました。</p>
+<p><strong>その後の被害と交通（報道）</strong>：19日夕方の報道（熊本朝日放送など）は、熊本県などのまとめとして、<strong>転んで軽いけがをした人が2人、住宅の一部の壊れが5棟</strong>と伝えています。南九州自動車道の八代ジャンクション〜日奈久インターチェンジが通行止めになり、九州新幹線は上下線で8本が運休して約5,600人に影響が出たと報じられています。消防庁の9時の報告の後の正式なまとめと、今朝の運行は、本号の確認の時点で確かめられていません。</p>
+<p><strong>天気（気象庁の発表を伝える報道）</strong>：北海道は20日にかけて暴風に警戒、北陸は21日にかけて暴風・高波に警戒が必要で、22日ごろにかけて土砂災害に厳重な警戒が必要です。北陸の20日18時までの24時間の雨の量は多い所で120ミリの予想で、北日本から西日本の山地では雪が積もるおそれがあります（時事通信・NHK）。</p>
+<p><strong>本紙の注記</strong>：震度5弱の地域では、しばらく同じ程度の揺れに注意が必要と伝えられています。避難や移動の判断は、気象庁・自治体・交通事業者の最新の発表をご確認ください。</p>
+<div class="srcline">出典：<a class="src" href="https://www.jma.go.jp/bosai/quake/data/list.json">気象庁（地震情報の一覧）</a>／<a class="src" href="https://www.fdma.go.jp/disaster/info/items/20260119kumamotoamakusajisin4.pdf">消防庁（第4報・19日9時）</a>／<a class="src" href="https://news.yahoo.co.jp/articles/07e9109b0061a6803ff5735e8b6f6dc29d3f671f">熊本朝日放送（Yahoo!ニュースの掲載）</a>／<a class="src" href="https://www.jiji.com/jc/article?k=2026111900403&amp;g=soc&amp;m=rss">時事通信（天気）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261119de78575">NHK（北海道の暴風）</a></div>
+</section>
+<section id="sec-market">
+<div class="sec-head"><span class="tick"></span><span class="cat">Markets</span><span class="sec-title">市場　<span class="sub">米国19日、そろって約2%の下げ</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報・配信の値（遅延）</span><span class="lab">報道（区別して記載）</span></div>
+<p><strong>最新の米国の取引日は19日（木）</strong>です。下の株価指数・個別株は、Cboe の配信の値（遅延・通常の取引の終わりの後の値）です。</p>
+<p><strong>株価指数（19日）</strong>：S&amp;P500 <strong>7,175.83</strong>（前日比 −147.80、−2.02%）、ナスダック100 <strong>26,517.05</strong>（−599.25、−2.21%）、ダウの指標の1/100の値 490.97（−2.19%）、VIX（株価の変動の大きさの予想を示す指数）<strong>28.44</strong>（18日 24.56）。ナスダック総合は23,879.20（−2.25%）、ラッセル2000は2,655.13（−2.18%）と報じられています（CNBC・investingLive）。ダウ平均の終値は報道によって値が割れる（49,097.06・49,101.92）ため、本号では載せません。<strong>CNBC は、ダウ平均が6月以来の5万ドル割れ</strong>と伝えています。</p>
+<p><strong>AI半導体株（19日の終値、Cboe の配信）</strong>：エヌビディア <strong>145.98ドル</strong>（−3.30%）、<strong>AMD 489.19ドル（−7.72%）</strong>、ブロードコム 346.65ドル（−2.09%）、台湾積体電路製造（TSMC）の米国の預託証券 352.09ドル（−2.90%）、マイクロン 690.44ドル（−2.10%）。前の日に上がった AMD・ブロードコムも、そろって下げました。</p>
+<p><strong>米国債の利回り（米国財務省、19日）</strong>：2年 <strong>4.76%</strong>（18日 4.80%）、10年 <strong>5.04%</strong>（18日 5.07%）、30年 5.40%（18日 5.41%）。株が大きく下がる中で、金利も下がりました。</p>
+<p><strong>為替</strong>：欧州中央銀行の19日の参照レートは1ユーロ＝1.0992ドル・175.84円で、ここから計算したドル円は<strong>約159.97円</strong>です（本紙の計算・参照レートは市場の終値ではありません）。160円の手前で、介入への警戒が報じられています。</p>
+<p><strong>決算（報道）</strong>：ウォルマートは19日の取引の前に決算を発表し、1株あたりの利益と売上高が予想を上回り、通期の見通しを引き上げた一方、既存店の売上は2四半期続けて予想を下回ったと報じられています（CNBC）。会社の資料は確かめていません。</p>
+<p><strong>日本（報道）</strong>：日経平均は19日、<strong>59,444.21円（+419.93円）で続伸</strong>したと報じられています（OANDA が掲載した DZH フィナンシャルリサーチの配信）。ファーストリテイリングや東京エレクトロンなど日経平均への影響の大きい銘柄に買いが入り、午後にはソフトバンクグループが上げ幅を広げたと報じられています（OANDA が掲載した DZH フィナンシャルリサーチの配信）。算出元のページでは照合できていません。日本国債10年の利回りは、財務省の掲載で18日に<strong>2.916%</strong>でした（19日の分は未掲載）。</p>
+<div class="srcline">出典：<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/_SPX.json">Cboe（S&amp;P500）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/_NDX.json">Cboe（ナスダック100）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/_VIX.json">Cboe（VIX）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/NVDA.json">Cboe（エヌビディア）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/AMD.json">Cboe（AMD）</a>／<a class="src" href="https://www.cnbc.com/2026/11/18/stock-market-today-live-updates.html">CNBC（19日の米国株）</a>／<a class="src" href="https://investinglive.com/stocks/stock-indices-get-beat-up-with-the-dow-s-p-nasdaq-and-russell-indices-all-falling-more-than-2/">investingLive（19日の株価指数）</a>／<a class="src" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&amp;field_tdr_date_value_month=202611">米国財務省（国債の利回り・11月）</a>／<a class="src" href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml">欧州中央銀行</a>／<a class="src" href="https://www.oanda.jp/lab-education/market_news/mn_1044845_202611191753/">OANDA（19日の日本株）</a>／<a class="src" href="https://www.mof.go.jp/jgbs/reference/interest_rate/jgbcm.csv">財務省（国債金利）</a></div>
+</section>
+<section id="sec-mtrig">
+<div class="sec-head"><span class="tick"></span><span class="cat">Why</span><span class="sec-title">市場は、なぜ動いたのか　<span class="sub">新しい AI 株は上がり、古い AI 株が売られた</span></span></div>
+<p><strong>何が動いたか（事実）</strong>：19日は S&amp;P500 が −2.02%、ナスダック100 が −2.21%、ダウの指標が −2.19% と、そろって約2%下がりました。VIX は 24.56→28.44 に上がりました。<strong>同じ日に上場したアンソロピックは、始値111.50ドル・終値97.17ドルで、公開価格（83ドル）を17.1%上回って終えた</strong>一方、AMD は −7.72%、エヌビディアは −3.30% でした。米国債10年の利回りは 5.07%→5.04% と下がりました（Cboe の配信・会社の発表・米国財務省）。</p>
+<p><strong>原因の候補1：新しい AI 株の大きな受け入れ</strong>。アンソロピックの売り出しは9億8,000万株・1株83ドルで、<strong>掛け算で約813億ドル</strong>（本紙の計算・手数料の前）です。investingLive の記事は、大きな上場は投資家に<strong>ほかの持ち株を減らして買う場所を空けることを促しうる</strong>とし、それが AI 株への圧力を強めた可能性を書き手の見方として挙げています。<br><strong>原因の候補2：AI の採算への疑問とエヌビディアの経営の体制</strong>。CNBC は、エヌビディアがここ数週間、前の CEO の辞任などの騒ぎに揺れていると伝えています。<br><strong>原因の候補3：節目の割り込み</strong>。CNBC は、S&amp;P500 が<strong>200日の移動平均（7,348.54）をさらに下回った</strong>と伝えています。節目を割ると機械的な売りが出やすいというのは本紙の見方で、19日にどれだけ効いたかは確かめていません。</p>
+<div class="counter"><h5>反対の材料</h5><p>①<strong>米国債の利回りは下がりました</strong>。「金利の上昇が株を押し下げた」形ではありません。②<strong>アンソロピック自身は大きく上がりました</strong>。「AI そのものが嫌われた」なら、新しい AI 株も下がるはずです。③フィラデルフィア連銀の景況の悪化（本号「金融政策・指標」）は、利上げの観測を弱める材料で、株には追い風にもなりえます。④資金の移動の説は、売買の記録で確かめられるものではなく、本紙では確かめていません。</p></div>
+<p><strong>独自の分析</strong>：19日は、<strong>「AI に賭ける資金」の中で、新しい銘柄への乗り換えが起きた</strong>ように見えます。アンソロピックの初日の出来高は8億4,884万株で、<strong>売り出した株数の86.6%</strong>に当たります（本紙の計算）。ただし、株価指数全体の約2%の下げは AI 株だけでは説明しきれず、VIX の上昇は市場全体の不安の高まりを示しています。</p>
+<p><strong>まだ分からないこと</strong>：どの材料がどれだけ効いたか、売りが20日以降も続くか、フィラデルフィア半導体株指数（SOX）の終値。</p>
+<p><strong>今後の観測点</strong>：<strong>(1) アンソロピックの2日目</strong>（20日に受け渡し、引受会社の追加の1億4,700万株の権利）。<strong>(2) VIX が25を超えたままか</strong>。<strong>(3) 20日の日本の消費者物価と、25日の米国の個人消費の物価</strong>。<strong>(4) ドル円が160円を超えるか</strong>と、日本の当局の発言。</p>
+<div class="srcline">出典：<a class="src" href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">アンソロピック（公開価格の発表）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/ANT.json">Cboe（アンソロピック）</a>／<a class="src" href="https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html">CNBC（上場の初日）</a>／<a class="src" href="https://investinglive.com/stocks/stock-indices-get-beat-up-with-the-dow-s-p-nasdaq-and-russell-indices-all-falling-more-than-2/">investingLive</a>／<a class="src" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&amp;field_tdr_date_value_month=202611">米国財務省</a>／<a class="src" href="daily-2026-11-19.html#sec-mtrig">前号D115「市場は、なぜ動いたのか」</a></div>
+</section>
+<section id="sec-fed">
+<div class="sec-head"><span class="tick"></span><span class="cat">Policy</span><span class="sec-title">金融政策・指標　<span class="sub">副議長の講演、景況と物価</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報（連邦準備制度理事会・各連銀・米労働省）</span></div>
+<p><strong>ジェファーソン副議長の講演（19日、ブラジリア）</strong>：国際通貨基金とブラジル中央銀行の会議で「頻繁で複雑なショックの中の金融政策」と題して話しました。<strong>「最近のエネルギーの価格のショックが起きたとき、米国の物価はすでに2%の目標を上回っていた」</strong>、<strong>「物価の予想が不安定になるおそれがあれば、物価により強く対応することが正当化される」</strong>、<strong>「現在、AI の設備の拡大が、需要と物価を押し上げている」</strong>と述べました。12月の会合や利上げの幅には触れていません。</p>
+<p><strong>フィラデルフィア連銀の製造業の景況（19日）</strong>：景況の指数は<strong>6.3</strong>（10月 20.9）に下がり、新しい注文は −0.4（10月 4.3）でした。一方、<strong>支払う価格は58.2（10月 43.2）、受け取る価格は47.0（10月 40.1）</strong>と上がりました。</p>
+<p><strong>失業保険（米労働省、19日）</strong>：11月14日までの週の新規の申請（季節の調整後の速報）は<strong>20万3,000件</strong>で、前の週（改定後20万2,000件）から増えました。4週の平均は19万7,750件。11月7日までの週の継続の受給は176万3,000件（+7万件）です。</p>
+<p><strong>独自の分析</strong>：副議長の講演と前日の議事要旨は、どちらも <strong>AI を物価と金融の両面の論点</strong>として扱いました。一方、19日の景況は「景気は弱まり、仕入れの価格は上がる」組み合わせで、利上げの判断を難しくする材料です。CME の FedWatch の確率は報道によって値が割れているため、本号では載せません。</p>
+<div class="srcline">出典：<a class="src" href="https://www.federalreserve.gov/newsevents/speech/jefferson20261119a.htm">連邦準備制度理事会（ジェファーソン副議長の講演）</a>／<a class="src" href="https://www.philadelphiafed.org/surveys-and-data/regional-economic-analysis/mbos-2026-11">フィラデルフィア連銀（製造業の景況・11月）</a>／<a class="src" href="https://www.dol.gov/ui/data.pdf">米労働省（失業保険の週の報告）</a>／<a class="src" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm">連邦準備制度理事会（会合の日程）</a></div>
+</section>
+<section id="sec-ai">
+<div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; Chips</span><span class="sec-title">AI・半導体　<span class="sub">アンソロピックの初日、輸出の規則、グーグルの新モデル</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab">報道（区別して記載）</span></div>
+<p><strong>アンソロピックの上場（会社の18日の発表）</strong>：クラスAの普通株<strong>9億8,000万株を1株83.00ドル</strong>で売り出し、ナスダックのグローバル・セレクト市場で「ANT」の記号で19日に取引を始めると発表しました。受け渡しは20日の予定で、引受会社には30日の間に最大1億4,700万株を追加で買う権利があります。発表文に調達の総額の記載はありません。</p>
+<p><strong>初日の値動き（Cboe の配信）</strong>：始値<strong>111.50ドル</strong>（公開価格の+34.3%）、高値115.10ドル、安値92.72ドル、<strong>終値97.17ドル（公開価格の+17.1%、始値からは−12.9%）</strong>、出来高は8億4,884万株でした（比率は本紙の計算）。<br>※本号の調査と執筆にはアンソロピックの AI（Claude）を使っています。本紙は数字の出典を示し、評価を加えていません。</p>
+<p><strong>米国の輸出の新しい規則（米官報、19日）</strong>：米商務省の産業安全保障局の暫定の最終規則「先端の半導体への遠くからの利用への対処」が<strong>19日に官報に載り、同じ日に発効</strong>しました。対象国に本社がある企業へ大きな計算の力を遠くから提供する海外のデータセンターへの輸出などを制限し、インドネシア・マレーシア・シンガポール・タイ・ブラジルへの先端の半導体の輸出に許可を求めます（条件を満たす米国に本社のある企業は除外）。前の政権の「AI の拡散の規則」を正式に取り消しました。官報の記録に意見の受付の期限は書かれていません。</p>
+<p><strong>グーグル「Gemini 4 Neon」（同社の18日の発表）</strong>：Gemini 4 の中で、難しい長い仕事向けの「Carbon」と速い日常の仕事向けの「Hydrogen」の間に位置するモデルです。API の料金は100万トークンあたり入力3ドル・出力15ドルで、一度に扱える長さは100万トークンです。</p>
+<p><strong>宇宙の計算の衛星（報道）</strong>：グーグルは、宇宙で AI の計算をする衛星の計画「Project Suncatcher」の打ち上げを、ブルーオリジンの大型ロケット「New Glenn」に発注したと報じられています（Via Satellite）。両社の発表文は確かめていません。</p>
+<div class="srcline">出典：<a class="src" href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">アンソロピック（公開価格の発表）</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/ANT.json">Cboe（アンソロピック）</a>／<a class="src" href="https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors">米官報（暫定の最終規則 2026-23529）</a>／<a class="src" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/pdf/2026-23529.pdf">米政府出版局（同じ規則の PDF）</a>／<a class="src" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/">グーグル（Gemini 4 Neon）</a>／<a class="src" href="https://satellitetoday.com/launch/2026/11/19/google-orders-heavy-lift-launch-for-project-suncatcher-from-blue-origin">Via Satellite</a></div>
+</section>
+<section id="sec-world">
+<div class="sec-head"><span class="tick"></span><span class="cat">World</span><span class="sec-title">世界　<span class="sub">深圳の3首脳の宣言、クリミア橋、欧州の動き</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab">報道（区別して記載）</span></div>
+<p><strong>深圳の3首脳の会談（中国外務省、19日）</strong>：習近平国家主席が議長を務めた中国・ロシア・米国の首脳会談で、<strong>「平和に向けた中ロ米首脳宣言」</strong>が出されました。①国連がより効果的に動けるよう改革する、②<strong>精製された石油製品の生産と供給を増やし</strong>、エネルギーの安定した流れを重んじる、③国家の同意と公職にある人の免除を重んじ、国際刑事裁判所などは管轄を濫用してはならない、④<strong>「核戦争に勝者はなく、決して戦ってはならない」</strong>を再確認し、核の危険を減らす対話を行う、の4点です。会談では、ウクライナの危機・核の不拡散・中東・朝鮮半島の情勢が話し合われました（中国外務省の会談の記事。台湾への言及はありません）。習主席は「産業と供給の網の切り離しは進むべき道ではない」と述べました。</p>
+<p><strong>ウクライナ（報道）</strong>：プーチン大統領は19日、海の上の停戦やエネルギーの施設への攻撃の停止を求める声について、「クリミア橋への攻撃の後に合意はしない」「これらの攻撃に対応する」と述べたと報じられています（CBS。タス通信は、厳しい対応を約束したと伝えています。キーウ・インディペンデント）。ロシア政府の原文は確かめていません。</p>
+<p><strong>欧州</strong>：欧州連合は、インド・日本・台湾・トルコ・ベトナムからの冷延鋼板に反ダンピングの関税を課す規則（2026/2547）を、13日に採択し16日に官報に載せました（欧州連合の官報）。税率は原文の条文で確かめていないため、本号では載せません。英国政府によると、英国の首相は20日にブリュッセルで、欧州理事会のコスタ議長・欧州委員会のフォンデアライエン委員長と首脳会議を開き、安全保障・不法な移民・農家と企業の手続きの負担の軽減を話し合う予定です。</p>
+<div class="srcline">出典：<a class="src" href="https://www.fmprc.gov.cn/eng/xw/zyxw/202611/t20261119_12063224.html">中国外務省（中ロ米首脳宣言）</a>／<a class="src" href="https://www.fmprc.gov.cn/eng/xw/zyxw/202611/t20261119_12063266.html">中国外務省（会談の記事）</a>／<a class="src" href="https://www.cbsnews.com/news/putin-russia-ukraine-bridge-strike/">CBS（プーチン大統領）</a>／<a class="src" href="https://kyivindependent.com/we-will-not-negotiate-putin-addresses-ukraines-strikes-on-crimean-bridge/">キーウ・インディペンデント</a>／<a class="src" href="https://eur-lex.europa.eu/eli/reg_impl/2026/2547/oj/eng">欧州連合の官報（規則 2026/2547）</a>／<a class="src" href="https://www.gov.uk/government/news/prime-minister-to-attend-uk-eu-summit-in-brussels-on-20-november">英国政府（英EU首脳会議）</a></div>
+</section>
+<section id="sec-japan">
+<div class="sec-head"><span class="tick"></span><span class="cat">Japan</span><span class="sec-title">日本・地域　<span class="sub">物価の発表の前、日経平均、古民家の宿</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab">報道・企業の発表（区別して記載）</span></div>
+<p><strong>今日8時30分に10月の全国の消費者物価（総務省統計局）</strong>：前回の9月分は、総合が102.2（前年同月比+2.1%）、生鮮食品を除く総合が102.3（+2.1%）、生鮮食品とエネルギーを除く総合が102.8（+2.4%）でした（2025年＝100）。10月分の結果は本号の後に出ます。予想の値は報道によって幅があるため、本号では載せません。</p>
+<p><strong>日経平均（報道）</strong>：19日は59,444.21円（+419.93円）で続伸したと報じられています。ファーストリテイリングや東京エレクトロンなど日経平均への影響の大きい銘柄に買いが入ったと伝えられています。米国株がその後に大きく下げたため、<strong>20日の東京市場の反応</strong>が注目です。</p>
+<p><strong>古民家の宿（企業の発表）</strong>：京都府南丹市美山町の一棟貸しの宿「えにし美山 霞月」が、「劇的！空き家グランプリ2026」のグランプリに選ばれたと、運営会社が発表しました。築百年を超える茅葺きの古民家を約3年かけて直し、2026年1月に開業したとしています。独立した報道での裏付けはありません。</p>
+<div class="srcline">出典：<a class="src" href="https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.html">総務省統計局（消費者物価指数）</a>／<a class="src" href="https://www.e-stat.go.jp/release-calendar/detail/00200573/202611200830">政府統計の総合窓口（公表の予定）</a>／<a class="src" href="https://www.oanda.jp/lab-education/market_news/mn_1044845_202611191753/">OANDA（19日の日本株）</a>／<a class="src" href="https://prtimes.jp/main/html/rd/p/000000088.000098998.html">運営会社の発表（PR TIMES）</a></div>
+</section>
+<section id="sec-science">
+<div class="sec-head"><span class="tick"></span><span class="cat">Discovery</span><span class="sec-title">発見　<span class="sub">「石油製品」と「ガスと石油」、景況と価格の逆向き</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報</span><span class="lab">独自の分析</span></div>
+<p><strong>宣言の言葉と、報道の言葉</strong>：3首脳の宣言の英文（中国外務省）は、増やす対象を<strong>「精製された石油製品」（refined petroleum products）</strong>と書いています。一方、宣言の中身を<strong>「ガスと石油の増産」</strong>として伝えた報道もあります（CBS）。石油やガスそのものを増やすのか、ガソリンや軽油のような製品を増やすのかで、意味は大きく違います。ロシア側の原文は確かめられていないため、<strong>どちらの言い方が正しいかは、各国の原文の照合が必要</strong>です。大きな宣言ほど、要約の一語で意味が変わる例です。</p>
+<p><strong>景況は下がり、価格は上がる</strong>：フィラデルフィア連銀の11月の調査では、景況の指数が10月から14.6ポイント下がる一方、<strong>支払う価格の指数は15.0ポイント上がりました</strong>（本紙の計算）。「物が売れにくくなるのに、仕入れは高くなる」組み合わせです。地域の1つの調査で、全米の流れとは限りません。</p>
+<p><strong>1日で、売り出した株の86.6%が売買された</strong>：アンソロピックの初日の出来高（8億4,884万株、Cboe の配信）は、売り出した9億8,000万株の86.6%でした（本紙の計算）。同じ株が何度も売買された分も数えるため、「持ち主の86.6%が替わった」という意味ではありません。</p>
+<div class="srcline">出典：<a class="src" href="https://www.fmprc.gov.cn/eng/xw/zyxw/202611/t20261119_12063224.html">中国外務省（宣言の英文）</a>／<a class="src" href="https://www.cbsnews.com/news/trump-xi-putin-china-apec-summit/">CBS（会談の報道）</a>／<a class="src" href="https://www.philadelphiafed.org/surveys-and-data/regional-economic-analysis/mbos-2026-11">フィラデルフィア連銀</a>／<a class="src" href="https://cdn.cboe.com/api/global/delayed_quotes/quotes/ANT.json">Cboe（アンソロピック）</a></div>
+</section>
+<section id="sec-column">
+<div class="sec-head"><span class="tick"></span><span class="cat">Column</span><span class="sec-title">今日のコラム　<span class="sub">3つの視点</span></span></div>
+<div class="colbox">
+  <div class="colbox-h"><b>今日のコラム｜3つの視点</b><span>筆者：クロちゃん（AI）</span></div>
+  <ul>
+    <li><a class="col-l" href="column/2026-11-19-1102.html"><span class="col-t">11:02</span><span class="col-n">【おみくじ】第三十億番　フォーチュンクッキーの中の紙を引いたら「出生地：中国ではありません」と書いてありました<span class="col-d">米国の中華料理店のお菓子の、意外な生まれを、おみくじの形で紹介します。</span></span></a></li>
+    <li><a class="col-l" href="column/2026-11-19-1802.html"><span class="col-t">18:02</span><span class="col-n">【襲名披露口上】二代目「バナナ」キャベンディッシュ、八百屋の舞台より謹んで申し上げます<span class="col-d">いま食べているバナナが「二代目」である理由を、襲名披露の口上の形で紹介します。</span></span></a></li>
+    <li><a class="col-l" href="column/2026-11-20-0102.html"><span class="col-t">翌 1:02</span><span class="col-n">【深夜ヒットチャート】海の底ベスト5　今週もランクインした「歌手」は、ほぼ全員が南極の氷山でした<span class="col-d">海の底で録音された正体不明の音を、深夜のラジオのランキングの形で紹介します。</span></span></a></li>
+  </ul>
+  <p class="col-top"><a href="column/">コラムの一覧（過去の作品）へ →</a></p>
+</div>
+<p>コラムは、本紙の事実の記事とは別の読み物です。この欄の題名は、各コラムの題名の前半です。各コラムのページに、事実と創作の区別と出典を載せています。</p>
+</section>
+<section id="sec-check">
+<div class="sec-head"><span class="tick"></span><span class="cat">Check</span><span class="sec-title">前号D115の答え合わせ</span></div>
+<p><strong>アンソロピックの初値</strong>：前号の観測点「19日のアンソロピックの初値」は、<strong>111.50ドル</strong>でした（Cboe の配信）。終値は97.17ドルで、始値からは下げて終えました。</p>
+<p><strong>S&amp;P500 の続落</strong>：前号の「続落が6日に延びるか」は、19日も <strong>−2.02%</strong> で下がりました。前号は AP の集計として「5日続落」と伝えており、19日の下げで6日続けての下げになります（本紙の数え方）。</p>
+<p><strong>深圳の3首脳の会談</strong>：前号で「結果は未発表」とした会談は、19日に<strong>宣言</strong>として結果が出ました（中国外務省）。本号の「世界」の欄にあります。</p>
+<p><strong>輸出の規則</strong>：前号の「19日に官報に載る予定」の通り、<strong>19日に官報に載り、同じ日に発効</strong>しました。</p>
+<p><strong>熊本の地震の九州の工場・物流への影響</strong>：前号の観測点に挙げましたが、企業の正式な発表は確かめられていません。九州新幹線の運休と高速道路の通行止めは報道されています。</p>
+<p>前号以前の本文は変えていません。</p>
+</section>
+<section id="sec-unknown">
+<div class="sec-head"><span class="tick"></span><span class="cat">Limits</span><span class="sec-title">確認できなかったこと</span></div>
+<p><strong>フィラデルフィア半導体株指数（SOX）の終値</strong>：許可された取得先で確かめられませんでした。<br><strong>ダウ平均の終値</strong>：報道によって値が割れる（49,097.06・49,101.92）ため、載せていません（本文は Cboe の配信のダウの指標の1/100の値）。<br><strong>日経平均の19日の終値の算出元の値</strong>：算出元のページで照合できず、報道の値として載せています。<br><strong>原油・金・ユーロ圏の株と金利の19日の終値</strong>：時刻のはっきりした値を確かめられなかったため、載せていません。<br><strong>熊本の地震の最新の被害のまとめ、九州新幹線の今朝の運行、北海道の鉄道の運休</strong>：自治体と交通事業者の正式な発表を確かめていません。<br><strong>宣言のロシア側の原文、ホルムズ海峡の19日以降の動き、欧州連合の関税の税率</strong>：確かめていません。<br><strong>CME の FedWatch の確率</strong>：報道によって値が割れるため、載せていません。</p>
+</section>
+<section id="sec-watch">
+<div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">今週と、この先のウォッチリスト</span></div>
+<div class="sp"><span class="dt">20日（金）8時30分</span><span class="ev">10月の全国の消費者物価指数（総務省）</span></div>
+<div class="sp"><span class="dt">20日（金）</span><span class="ev">英EU首脳会議（ブリュッセル、英国政府）・アンソロピックの株の受け渡し（会社の発表）</span></div>
+<div class="sp"><span class="dt">20〜21日</span><span class="ev">北海道の暴風、北陸の暴風・高波（気象庁の発表を伝える報道）</span></div>
+<div class="sp"><span class="dt">25日（水）</span><span class="ev">米国の7〜9月期の GDP の改定値、10月の個人の所得と消費の物価（米商務省の経済分析局・米国東部時間8時30分）</span></div>
+<div class="sp"><span class="dt">26日（木）・27日（金）</span><span class="ev">米国の感謝祭でニューヨーク証券取引所は休場、27日は米国東部時間13時までの短い取引</span></div>
+<div class="sp"><span class="dt">27日（金）8時30分</span><span class="ev">東京都区部の11月中旬の消費者物価指数（総務省）</span></div>
+<div class="sp"><span class="dt">12月4日（金）</span><span class="ev">米国の11月の雇用統計（米労働統計局・米国東部時間8時30分）</span></div>
+<div class="sp"><span class="dt">12月8〜9日</span><span class="ev">米国の FOMC（経済の見通しつき）</span></div>
+<div class="sp"><span class="dt">12月17〜18日</span><span class="ev">日本銀行の金融政策決定会合（日本銀行の日程表）</span></div>
+<p>未発表の統計・会議の結果は載せていません。</p>
+</section>
+<div class="askai" id="askai">
+    <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+    <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった項目の名前に書き換えてからお使いください。</p>
+    <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。レポート本文は自動送信されません。</p>
+    <div class="askai-box">
+      <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+      <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+    </div>
+    <div class="askai-links">
+      <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+      <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+      <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+    </div>
+  </div>
+
+
+  <footer class="foot">
+    <p><a href="index.html">← レポート一覧へ戻る</a></p>
+    <p><strong>AI総合研究機構 — 朝の一日レポート（毎日版D116）</strong></p>
+    <p><strong>収集の基準時刻</strong>：一次資料・市場の値の取得は2026年11月20日6時39分〜6時42分（日本時間・取得の記録による。地震の情報は気象庁の20日5時2分の地震まで、講演・宣言・報道は6時40分〜7時ごろにウェブで直接確認）。本号全体の最終確認時刻は2026年11月20日（Gate C の提出の時点で確定）です。これ以降の動き（日本の10月の消費者物価、英EU首脳会議の結果、熊本の地震の続報を含む）は、次号で扱います。</p>
+    <p><strong>本号の編集方針</strong>：①米国の約2%の下げとアンソロピックの上場の初日を中心にしました。②米国株は19日の通常の取引の値を最新として載せました。③算出元の値、取引所の配信の値（遅延）、報道の値、本紙の計算を分けて書きました。④報道で値が割れるダウ平均の終値・FedWatch の確率は載せず、代わりの値で埋めていません。⑤市場の動きの原因は候補として書き、断定していません。「独自の分析」は本紙の見方です。⑥アンソロピックの上場は、本号の制作に同社の AI を使っていることを明記し、数字の出典を示しました。⑦コラムは本紙の事実の記事と分けています。⑧AIによる調査・執筆・編集が関与しています。</p>
+    <p>本レポートは情報提供を目的としたもので、投資、法務、税務、医療、その他の専門的助言ではありません。避難や移動の判断にあたっては、気象庁・自治体・交通事業者の最新の発表を直接ご確認ください。</p>
+    <p class="cr">© 2026 AI総合研究機構</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var q = document.getElementById('askaiQ');
+  if(!btn || !q) return;
+  btn.addEventListener('click', function(){
+    var text = q.value;
+    function done(){
+      btn.classList.add('is-copied');
+      var old = btn.textContent;
+      btn.textContent = 'コピーしました';
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('is-copied'); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ q.select(); });
+    } else {
+      q.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+    }
+  });
+})();
+</script>
+</body>
+</html>
