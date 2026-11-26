@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI総合研究機構 一日レポート — 2026年11月26日</title>
+<style>
+  :root{
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+    --ink:#12161C; --ink-2:#4A5563; --ink-3:#8794A3;
+    --line:#E4E9F0; --line-2:#EFF3F7;
+    --brand:#3D5AFE; --brand-2:#6B7BFF; --brand-soft:#EEF1FF;
+    --amber:#E8912D; --amber-soft:#FFF5E8;
+    --up:#0E9F6E; --down:#E02424;
+    --slate:#526480; --slate-soft:#F1F5FA;
+    --purple:#7A4EBF; --purple-soft:#F3EEFB;
+    --sh-1:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.05);
+    --sh-2:0 2px 4px rgba(16,24,40,.04), 0 8px 20px rgba(16,24,40,.06);
+    --sh-3:0 4px 8px rgba(16,24,40,.04), 0 16px 36px rgba(16,24,40,.08);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 12% -8%, rgba(61,90,254,.07), transparent 60%),
+      radial-gradient(900px 420px at 92% -4%, rgba(232,145,45,.07), transparent 60%),
+      linear-gradient(180deg,#F7F9FC 0%, var(--bg) 42%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Meiryo",system-ui,-apple-system,sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;padding:22px 15px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  section[id],.item[id],div[id]{scroll-margin-top:14px;}
+
+  .mast{background:linear-gradient(165deg,#FFFFFF 0%, #FDFDFF 55%, #FAFBFF 100%);
+    border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-3);
+    padding:30px 30px 26px;position:relative;overflow:hidden;}
+  .mast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brand) 0%, var(--brand-2) 32%, var(--amber) 78%, #F5C87A 100%);}
+  .mast::after{content:"";position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,90,254,.07),transparent 66%);pointer-events:none;}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .brandtag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);
+    border:1px solid rgba(61,90,254,.16);border-radius:999px;padding:5px 13px;}
+  .brandtag i{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block;
+    box-shadow:0 0 0 3px rgba(61,90,254,.16);font-style:normal;}
+  .date{font-size:12.5px;color:var(--ink-3);font-weight:600;}
+  h1.hello{font-size:31px;font-weight:800;line-height:1.34;letter-spacing:-.022em;margin-top:20px;
+    background:linear-gradient(140deg,#11151B 0%, #2C3949 62%, #46586E 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub-hello{color:var(--ink-2);font-size:13.5px;margin-top:11px;}
+
+  .three{list-style:none;margin-top:22px;}
+  .three li{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--line-2);}
+  .three li:first-child{border-top:1.5px solid var(--line);}
+  .kw{flex:none;width:88px;padding-top:2px;font-family:ui-monospace,Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);}
+  a.kw-link{text-decoration:none;color:var(--amber);border-bottom:1px dashed rgba(232,145,45,.45);
+    padding-bottom:1px;transition:color .14s,border-color .14s;}
+  a.kw-link:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .kw-arrow{font-size:9px;opacity:.65;}
+  .three li>span:last-child{font-size:14.5px;color:var(--ink-2);line-height:1.82;}
+  .three b{color:var(--ink);font-weight:700;}
+  .but{display:block;margin-top:9px;padding:9px 13px;font-size:13px;color:#3F4E63;
+    background:linear-gradient(180deg,#F6F9FC 0%, var(--slate-soft) 100%);
+    border-left:2.5px solid var(--slate);border-radius:0 10px 10px 0;}
+  .but em{font-style:normal;font-weight:700;color:var(--slate);margin-right:4px;}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);}
+  .cell{background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFE 100%);padding:13px 14px;}
+  .cell .nm{font-size:10.5px;color:var(--ink-3);font-weight:700;}
+  .cell .vl{font-size:20px;font-weight:800;margin-top:3px;letter-spacing:-.03em;}
+  .cell .ch{font-size:11.5px;font-weight:700;margin-top:2px;color:var(--ink-2);}
+  .cell .ch.up{color:var(--up);} .cell .ch.down{color:var(--down);}
+  .cell .ctx{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr);}}
+
+  .divider{display:flex;align-items:center;gap:14px;margin:38px 4px 4px;}
+  .divider span{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);white-space:nowrap;}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+  section{background:linear-gradient(180deg,var(--surface) 0%, var(--surface-2) 100%);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-2);
+    padding:24px 26px 22px;margin-top:16px;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:17px;padding-bottom:13px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .tick{width:9px;height:9px;border-radius:3px;flex:none;
+    background:linear-gradient(140deg,var(--brand),var(--brand-2));
+    box-shadow:0 0 0 3.5px rgba(61,90,254,.11);}
+  .cat{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:6px;}
+  .sec-title{font-size:17.5px;font-weight:800;letter-spacing:-.018em;}
+  .sec-title .sub{font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
+
+  h4{font-size:15.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.012em;}
+  h4:first-child{margin-top:0;}
+  p{font-size:14px;color:var(--ink-2);margin-bottom:9px;}
+  strong{color:var(--ink);font-weight:700;}
+  .item{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);}
+  .item:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  .why{background:linear-gradient(180deg,#FFFCF6 0%, var(--amber-soft) 100%);
+    border:1px solid rgba(232,145,45,.2);border-left:3px solid var(--amber);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .why h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#B0700F;margin-bottom:7px;}
+  .why p{font-size:13.5px;color:#5A4523;}
+  .counter{background:linear-gradient(180deg,#F8FAFD 0%, var(--slate-soft) 100%);
+    border:1px solid rgba(82,100,128,.16);border-left:3px solid var(--slate);
+    border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;box-shadow:var(--sh-1);}
+  .counter h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .counter p{font-size:13.5px;color:#3F4E63;}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:13px 0;}
+  .note h5{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .note p{font-size:13px;}
+
+  .sp{display:flex;gap:13px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line-2);}
+  .sp:first-of-type{border-top:none;}
+  .sp .dt{flex:none;width:78px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;font-weight:700;color:var(--ink-3);}
+  .sp .ev{font-size:13.5px;color:var(--ink-2);}
+  .sp .ev b{color:var(--ink);}
+
+  .srcline{font-size:11.5px;color:var(--ink-3);margin-top:13px;padding-top:11px;
+    border-top:1px solid var(--line-2);line-height:1.75;overflow-wrap:anywhere;}
+  .src{color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);}
+  .src:hover{color:var(--brand);border-bottom-color:var(--brand);}
+
+  .foot{margin-top:32px;padding:22px 24px;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--line);box-shadow:var(--sh-1);}
+
+  .askai{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px;}
+  .askai-title{font-size:15px;font-weight:800;color:var(--ink);text-align:center;}
+  .askai-desc{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:4px;}
+  .askai-policy{font-size:11.5px;color:var(--ink-3);line-height:1.7;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:13px 0;}
+  .askai-box{display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+  .askai-q{flex:1;resize:vertical;min-height:52px;font-family:inherit;font-size:12.5px;color:var(--ink-2);
+    line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;}
+  .askai-copy{flex:none;align-self:stretch;border:1px solid var(--brand);background:var(--brand-soft);
+    color:var(--brand);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:10px;
+    padding:8px 14px;cursor:pointer;transition:all .14s;white-space:nowrap;}
+  .askai-copy:hover{background:var(--brand);color:#fff;}
+  .askai-copy.is-copied{background:#0E9F6E;border-color:#0E9F6E;color:#fff;}
+  .askai-links{display:flex;gap:10px;margin-top:12px;}
+  .askai-link{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:700;
+    color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 10px;transition:all .14s;}
+  .askai-link:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--sh-1);}
+
+  .quake{border-color:rgba(224,36,36,.2);background:linear-gradient(180deg,var(--surface),#FFFBFB);}
+  .quake .sec-head{border-bottom-color:rgba(224,36,36,.2);}
+  .quake .cat{color:var(--down);background:#FFF1F1;}
+  .quake .tick{background:linear-gradient(140deg,var(--down),#F26D6D);box-shadow:0 0 0 3.5px rgba(224,36,36,.11);}
+
+  .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .toc-title{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
+  .toc-list{list-style:none;display:flex;flex-wrap:wrap;gap:7px;}
+  .toc a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;color:var(--slate);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .13s;}
+  .toc a:hover{border-color:var(--brand);color:var(--brand);}
+
+  .labs{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 9px;}
+  .lab{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;
+    border-radius:6px;padding:2px 8px;white-space:nowrap;}
+  .lab-top{color:#B0700F;background:#FFF5E8;border:1px solid rgba(232,145,45,.32);}
+  .lab-imp{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.22);}
+  .lab-fact{color:#3F4E63;background:#F1F5FA;border:1px solid rgba(82,100,128,.18);}
+  .lab-view{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(61,90,254,.2);}
+  .lab-thin{color:#8794A3;background:#F4F6F9;border:1px dashed var(--line);}
+
+  .backtop{text-align:right;margin-top:14px;}
+  .backtop a{font-size:11.5px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line);}
+
+  /* 今日のコラム（D104 から・文字中心の欄。題名はクロちゃんの原文） */
+  .colbox{margin-top:16px;padding:18px 20px 16px;border-radius:16px;border:1px solid #E7DCC9;
+    background:linear-gradient(180deg,#FFFDF8 0%,#FBF6EC 100%);box-shadow:var(--sh-1);}
+  .colbox-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .colbox-h b{font-size:16.5px;font-weight:800;color:#5A3E12;letter-spacing:-.01em;}
+  .colbox-h span{font-size:11.5px;color:#8A6A3A;font-weight:700;}
+  .colbox ul{list-style:none;}
+  .colbox li{border-top:1px solid #EFE4D1;}
+  .colbox li:first-child{border-top:none;}
+  .colbox a.col-l{display:flex;gap:12px;align-items:baseline;padding:11px 4px;text-decoration:none;min-height:44px;}
+  .colbox .col-t{flex:none;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:800;color:#A0732E;width:3.6em;}
+  .colbox .col-n{font-size:14.5px;font-weight:700;color:#2E2414;line-height:1.6;}
+  .colbox .col-d{display:block;font-size:12.5px;font-weight:500;color:#6E5A3C;margin-top:2px;}
+  .colbox a.col-l:hover .col-n{color:var(--brand);}
+  .colbox .col-top{margin-top:8px;font-size:12.5px;}
+  .colbox .col-top a{color:#8A5A0F;font-weight:800;text-decoration:none;border-bottom:1px solid #E7DCC9;}
+
+  @media(max-width:560px){
+    .askai-box{flex-direction:column;}
+    .askai-links{flex-direction:column;}
+    .mast{padding:24px 20px 22px;border-radius:18px;}
+    h1.hello{font-size:25px;}
+    section{padding:20px 18px 18px;}
+    .three li{flex-direction:column;gap:5px;}
+    .kw{width:auto;}
+    .colbox{padding:16px 15px 14px;}
+  }
+  .three li>span.kw{font-size:14.5px;color:var(--ink-2);line-height:1.82;
+    letter-spacing:normal;text-transform:none;font-family:inherit;}
+  /* 相場監視ダッシュボードへの導線（r2 から・brief_build が毎号差し込む） */
+  a.dash{display:flex;align-items:center;flex-wrap:wrap;gap:4px 14px;margin-top:16px;padding:13px 18px;min-height:48px;
+    position:relative;z-index:1;text-decoration:none;color:#fff;border-radius:12px;
+    background:linear-gradient(135deg,var(--brand) 0%,#2E46E0 100%);box-shadow:var(--sh-2);}
+  a.dash .dash-l{font-size:15px;font-weight:800;letter-spacing:-.005em;line-height:1.5;}
+  a.dash .dash-s{font-size:12.5px;font-weight:600;color:#fff;line-height:1.5;}
+  a.dash .dash-a{margin-left:auto;font-size:16px;font-weight:800;line-height:1;}
+  a.dash:hover{filter:brightness(1.07);}
+  a.dash:focus-visible{outline:3px solid var(--amber);outline-offset:2px;}
+  @media(max-width:560px){a.dash{padding:12px 15px;} a.dash .dash-s{order:3;flex-basis:100%;}}
+</style>
+</head><body>
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <div class="topline">
+      <span class="brandtag"><i></i>AI総合研究機構 · Daily Brief</span>
+      <span class="date">2026年11月26日（木）</span>
+    </div>
+    <h1 class="hello">おはようございます。<br>25日の米国では、AI の先行きへの不安から半導体の株が再び売られ、ナスダック総合は一時4%を超えて下がりました（NHK）。同じ日、米国の通商代表部は日本を含む14の国と地域に新しい関税をかける方針を示しました。今日の米国は感謝祭で、株式市場は休みです。</h1>
+    <p class="sub-hello">本レポートは、AI総合研究機構の朝の一日レポートです。今朝は、<strong>米国25日のハイテク株の売りと物価の指標</strong>、<strong>14の国と地域への新しい関税</strong>、<strong>フアン氏をめぐる副大統領と大統領の発言</strong>、<strong>英国の電気・ガス代の26%の値上げ</strong>、<strong>ウクライナのロシアの飛行場と製油所への攻撃</strong>、<strong>関文科相の問責決議案</strong>、<strong>情報流出の発表の続き</strong>をお伝えします。市場は、<strong>米国は25日（水）の取引</strong>、<strong>日本は25日（水）の取引</strong>が最新です。本号は「一次情報」「報道」、「事実」と「見方」と「独自の分析」を分けて書きます。</p>
+    <a class="dash" href="https://mirai-manabu.com/group1.html" target="_blank" rel="noopener"><span class="dash-l">相場監視ダッシュボードを開く</span><span class="dash-s">市場の最新の動きを確認できます</span><span class="dash-a" aria-hidden="true">↗</span></a>
+<ul class="three">
+      <li><span class="kw"><a class="kw-link" href="#sec-ai">AI・半導体 <span class="kw-arrow">↓</span></a></span><span>
+        <b>バンス副大統領は、フアン氏は捜査を受けておらず恩赦は要らないと述べた</b>（ガーディアン）。前日にトランプ大統領は恩赦は「いつでも選べる」と話していました。大統領の口座が今年エヌビディアの株を少なくとも44回売り買いしていたと BBC。
+        <span class="but"><em>報道</em> エヌビディアの株は25日の取引の始めに8%下落（BBC）。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-market">市場 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国25日：ナスダック総合は一時4%を超える下落</b>（NHK）。<b>10月の PCE 物価指数は前年比3.8%</b>（CNBC）。米国債10年は4.85%に低下（米国財務省）。東京は25日、日経平均が一時2,100円を超えて下落（NHK）。
+        <span class="but"><em>一次情報・報道</em> 米国25日の終値は、今朝は確かめられていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-mtrig">市場は、なぜ動いたのか <span class="kw-arrow">↓</span></a></span><span>
+        <b>エヌビディアの株の続落と AI への不安</b>に、<b>強めの物価の指標</b>と<b>新しい関税</b>が重なりました。それでも米国債は買われ、利回りは下がりました（米国財務省・CNBC）。
+        <span class="but"><em>市場急変・トリガー分析</em> 原因は候補として書き、断定しません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-disaster">天気 <span class="kw-arrow">↓</span></a></span><span>
+        <b>大東島地方では26日夜のはじめ頃から27日にかけて、落雷や竜巻などの激しい突風、急な強い雨に十分注意</b>（気象庁）。北日本や北陸の各地で強風・高波の注意報、関東の各地で乾燥注意報（気象庁）。
+        <span class="but"><em>一次情報</em> 最新の情報は気象庁の発表で確かめてください。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-world">世界 <span class="kw-arrow">↓</span></a></span><span>
+        <b>米国の通商代表部が、中国・EU・日本など14の国と地域に新しい関税の方針</b>。中国は最大40%（BBC）、日本は今の税率を含めて最大15%（NHK）。ウクライナはロシアの飛行場で軍用機5機に損害を与えたと発表（BBC）。
+        <span class="but"><em>報道</em> 新しい関税は来年からの見込み（BBC）。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-mideast">エネルギー <span class="kw-arrow">↓</span></a></span><span>
+        <b>英国の電気・ガス代の上限は1月から26%上がる</b>。標準的な家庭で年1,723ポンドから2,166ポンドへ（BBC・英国のエネルギー規制機関）。ウクライナはロシアの製油所2か所を新たに攻撃（NHK）。
+        <span class="but"><em>報道</em> 英国の値上げの理由は、イランの戦争による卸のガスの値上がりと規制機関は説明。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-quake">地震 <span class="kw-arrow">↓</span></a></span><span>
+        前号の集計の後、震度1以上は14回。<b>最大震度2は4回</b>で、熊本県天草・芦北地方で26日2時48分ごろ（M3.3）と2時59分ごろ（M3.2）など。14回とも津波の心配はありません（気象庁）。
+        <span class="but"><em>一次情報</em> 回数は気象庁の一覧から本紙が数えた値です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-column">今日のコラム <span class="kw-arrow">↓</span></a></span><span>
+        クロちゃんの3本：光るカモノハシのお客様サポート、換算係数「4.45」の始末書、池の氷を南の島へ売る投資家ピッチ。
+        <span class="but"><em>読み物</em> コラムは新聞の本文とは別の読み物です。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-japan">国内・地域 <span class="kw-arrow">↓</span></a></span><span>
+        <b>野党は26日、関文部科学大臣への問責決議案を出す方針</b>。与党は否決に全力（NHK）。金属労協は来年の春闘で月1万5,000円以上のベースアップを求める方針案（NHK）。
+        <span class="but"><em>報道</em> NHK の記事は配信の要約で確かめたものです。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-security">サイバー・企業 <span class="kw-arrow">↓</span></a></span><span>
+        <b>PayPay で25日夜から、クレジットカードと連携した決済ができない障害</b>（NHK）。外部のサービス「KARTE」への不正アクセスで、パルシステムで約200万件、ミスターマックスで約180万件の情報が流出・その可能性（NHK）。
+        <span class="but"><em>報道</em> 障害の復旧の状況は会社の発表で確かめてください。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-check">答え合わせ <span class="kw-arrow">↓</span></a></span><span>
+        前号D121の「25日の東京で米国の半導体の下げがどこまで響くか」は、日経平均が一時2,100円超の下落。「英国の電気・ガス代の上限の発表」は26%の値上げ。米国の株の下げは25日も続きました。
+        <span class="but"><em>比較</em> 前号以前の本文は変えていません。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-unknown">確認の限界 <span class="kw-arrow">↓</span></a></span><span>
+        米国25日の主な株価指数の終値、Cboe の配信（今朝も403）、日経平均の25日の終値の値、エヌビディアの25日の終値の値、新しい関税の国ごとの税率の全体、NHK の記事の全文は確かめられていません。
+        <span class="but"><em>未確認</em> 「見つからない」と「取得できない」を分けます。</span>
+      </span></li>
+      <li><span class="kw"><a class="kw-link" href="#sec-watch">予定 <span class="kw-arrow">↓</span></a></span><span>
+        26日（木）米国は感謝祭で休場・参議院で関文科相の問責決議案・日銀の田村審議委員が山梨県で挨拶、27日（金）米国は短い取引、30日（月）植田総裁が名古屋で挨拶、来週 核兵器禁止条約の再検討会議。
+        <span class="but"><em>予定は予定</em> 日付は発表や報道によるもので、変わることがあります。</span>
+      </span></li>
+    </ul>
+
+    <div class="strip">
+      <div class="cell"><div class="nm">ナスダック総合（25日）</div><div class="vl mono">一時4%超の下落</div><div class="ch down">24日は−1.48%</div><div class="ctx">NHK（報道）・終値は未確認</div></div>
+      <div class="cell"><div class="nm">エヌビディアの株（25日・取引の始め）</div><div class="vl mono">8%下落</div><div class="ch down">24日は6%近く下落</div><div class="ctx">BBC（報道）</div></div>
+      <div class="cell"><div class="nm">米国 PCE 物価指数（10月）</div><div class="vl mono">前年比3.8%</div><div class="ch up">9月より0.1ポイント上昇</div><div class="ctx">CNBC（報道）・米国商務省</div></div>
+      <div class="cell"><div class="nm">米国 PCE のコア（10月）</div><div class="vl mono">前年比3.3%</div><div class="ch up">予想より0.1ポイント高い</div><div class="ctx">CNBC（報道）・米国商務省</div></div>
+      <div class="cell"><div class="nm">米国債10年（25日）</div><div class="vl mono">4.85%</div><div class="ch down">24日 4.91%</div><div class="ctx">米国財務省・2年は4.61%</div></div>
+      <div class="cell"><div class="nm">ドル円（参照レートから計算・25日）</div><div class="vl mono">約159.32円</div><div class="ch up">24日の同じ計算 約159.07円</div><div class="ctx">欧州中央銀行の参照レートから本紙が計算</div></div>
+      <div class="cell"><div class="nm">日経平均（25日）</div><div class="vl mono">一時2,100円超の下落</div><div class="ch down">24日は2,207円の値上がり</div><div class="ctx">NHK（報道）・終値は未確認</div></div>
+      <div class="cell"><div class="nm">英国の電気・ガス代の上限（1月から）</div><div class="vl mono">+26%</div><div class="ch up">年1,723ポンド→2,166ポンド</div><div class="ctx">BBC（報道）・英国のエネルギー規制機関</div></div>
+    </div>
+    <div class="mtrig-sum" style="margin:14px 0 4px;padding:10px 12px;border:1px solid #CBD5E1;border-left:4px solid #B45309;border-radius:8px;">
+      <p style="margin:0 0 4px;"><b>市場は、なぜ動いたのか（要約）</b>：25日（水）の東京では、<b>日経平均が一時2,100円を超えて下がりました</b>（NHK）。前日の大幅高のほぼ全部にあたる下げです。同じ25日の米国では、<b>エヌビディアの株が取引の始めに8%下がり</b>（BBC）、<b>ナスダック総合は一時4%を超えて下落</b>しました（NHK）。物価の指標は強めで、新しい関税の方針も出ましたが、<b>米国債10年の利回りは4.85%に下がりました</b>（米国財務省）。</p>
+      <p style="margin:0;"><a href="#sec-mtrig">材料の候補と反対の材料を読む ↓</a></p>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol class="toc-list">
+      <li><a href="#sec-ai">AI・半導体：恩赦をめぐる発言、大統領の口座の売り買い、エヌビディアの株</a></li>
+      <li><a href="#sec-market">市場：米国25日のハイテク株の売り、PCE 物価指数、日経平均の下げ</a></li>
+      <li><a href="#sec-mtrig">市場は、なぜ動いたのか：材料の候補と、反対の材料</a></li>
+      <li><a href="#sec-disaster">天気：大東島地方の激しい突風、各地の強風・高波・乾燥</a></li>
+      <li><a href="#sec-world">世界：14の国と地域への新しい関税、ウクライナの攻撃、ネタニヤフ氏の裁判</a></li>
+      <li><a href="#sec-mideast">エネルギー：英国の電気・ガス代の26%の値上げ、ロシアの製油所</a></li>
+      <li><a href="#sec-quake">地震：天草・芦北地方、与那国島近海、会津で最大震度2</a></li>
+      <li><a href="#sec-column">今日のコラム：3つの視点</a></li>
+      <li><a href="#sec-japan">国内・地域：問責決議案、春闘の要求、支援金、香港の火災から1年</a></li>
+      <li><a href="#sec-security">サイバー・企業：PayPay の障害、KARTE をめぐる流出</a></li>
+      <li><a href="#sec-check">前号D121の答え合わせ</a></li>
+      <li><a href="#sec-unknown">確認できなかったこと</a></li>
+      <li><a href="#sec-watch">今週のウォッチリスト</a></li>
+    </ol>
+  </nav>
+
+  <div class="divider" id="deep"><span>In Depth</span></div>
+
+<section id="sec-ai">
+<div class="sec-head"><span class="tick"></span><span class="cat">AI &amp; Chips</span><span class="sec-title">AI・半導体　<span class="sub">恩赦をめぐる発言、大統領の口座の売り買い、エヌビディアの株</span></span></div>
+<div class="labs"><span class="lab lab-top">最重要</span><span class="lab lab-fact">報道（ガーディアン・BBC・CNBC）</span><span class="lab lab-view">見方を含む</span></div>
+<p><strong>恩赦をめぐる発言</strong>：ガーディアンによると、バンス副大統領は25日、エヌビディアの CEO に戻ったフアン氏について、司法長官などから「捜査の対象ではない」との<strong>保証を受けた</strong>と記者団に話し、「恩赦はまったく必要ないと思う。罪を犯した証拠は見ていない」と述べました。前日にはトランプ大統領が米国の新聞に、恩赦は「いつでも選べる。でも必要にはならないと思う」と話していました（ガーディアン）。CNBC も見出しで、副大統領が「司法省の捜査はない」との保証を受けたと伝えています。</p>
+<p><strong>議会の疑問</strong>：ガーディアンによると、共和党のカーティス上院議員は、エヌビディアの取締役会が「政府の高い立場の人の意見」を頼りに安全保障の危険はないと判断したことに、「だれが、何を伝えたのか」と問いました。民主党のウォーレン上院議員も、だれがどんな意見を伝えたのかの説明を政権に求めています。フアン氏は数週間のうちに、議会の委員会で輸出などについて証言する見込みです（ガーディアン）。</p>
+<p><strong>大統領の口座の売り買い</strong>：BBC によると、トランプ大統領の資産の開示を調べたところ、大統領の投資の口座は<strong>今年、エヌビディアの株を少なくとも44回売り買い</strong>していました。1月から9月に、520万〜1,700万ドルを買い、440万〜1,200万ドルを売っています（開示は金額の幅だけ）。ホワイトハウスは、口座は第三者が独立して運用し、大統領や家族は売り買いに関われないと説明しています（BBC）。この2週間の騒ぎの期間は、まだ開示に含まれていません。</p>
+<p><strong>株の動き</strong>：BBC によると、エヌビディアの株は25日の取引の始めに<strong>8%下がり</strong>、24日からの下げが続きました。アンソロピックの株も大きく下がり、先週の上場の時の価格（83ドル）を下回ったままと BBC は伝えています。<strong>本紙の制作には Anthropic の Claude を含む AI が関わるため、この件は報道の記述だけで書いています。</strong></p>
+<p><strong>独自の分析</strong>：副大統領の「捜査はなかった」という説明は、前日の司法長官の「調べた」という答えや、大統領の「十分に調べた」という発言と、言い方がそろっていません（ガーディアン）。株の値動きは、会社の売上よりも、<strong>政権の関わりの説明</strong>に左右される状態が続いています。</p>
+<div class="srcline">出典：<a class="src" href="https://www.theguardian.com/us-news/2026/nov/25/trump-open-to-pardoning-jensen-huang-nvidia">ガーディアン（副大統領と恩赦）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cq772vk664yvo">BBC（大統領の口座の売り買い）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cq0md8g14zryo">BBC（25日の米国株）</a></div>
+</section>
+<section id="sec-market">
+<div class="sec-head"><span class="tick"></span><span class="cat">Markets</span><span class="sec-title">市場　<span class="sub">米国25日のハイテク株の売り、PCE 物価指数、日経平均の下げ</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報（米国財務省・欧州中央銀行・財務省）</span><span class="lab lab-fact">報道（NHK・BBC・CNBC）</span></div>
+<p><strong>米国株（25日、報道）</strong>：NHK によると、AI の先行きへの不透明感が強まり、半導体をはじめ幅広い銘柄に売りが広がって、<strong>ナスダック総合は前日と比べて一時4%を超えて下がりました</strong>。BBC は、取引の始めに主な3つの指数がそろって下がったと伝えています。<strong>25日の終値の値</strong>は、今朝の取得の時点では、許された情報源の報道で確かめられていません。</p>
+<p><strong>物価の指標（報道：CNBC）</strong>：米国商務省が25日に出した10月の個人消費支出（PCE）の物価指数は、<strong>前年比3.8%</strong>で、9月より0.1ポイント高く、市場の予想どおりでした。食品とエネルギーを除くコアは<strong>3.3%</strong>で、予想を0.1ポイント上回りました。CNBC によると、発表の後に株の先物は下げを広げましたが、来年の利上げの見方はやや和らぎました。<strong>FRB の経済報告</strong>：NHK によると、FRB は最新の地区連銀経済報告を公表し、物価は全体として緩やかに上昇したとしています。金融市場では、来月の会合で追加の利上げに踏み切るとの見方が出ています（NHK）。</p>
+<p><strong>米国債の利回り（米国財務省、25日）</strong>：2年 4.61%、10年 <strong>4.85%</strong>、30年 5.24%。10年は24日の4.91%から下がりました。CNBC は見出しで、物価の指標が強めでも、守りのために国債が買われたと伝えています。<strong>為替</strong>：欧州中央銀行の25日の参照レートは1ユーロ＝1.0935ドル・174.22円で、ここから計算したドル円は<strong>約159.32円</strong>（本紙の計算・参照レートは市場の終値ではありません）。東京の外国為替市場の25日午後5時の円相場は、1ドル＝159円21銭から23銭でした（NHK）。</p>
+<p><strong>日本株（25日、報道：NHK）</strong>：東京株式市場は、エヌビディアのこれからの経営が不透明だという見方から半導体の関連の銘柄を中心に売りが広がり、<strong>日経平均株価は一時2,100円以上値下がり</strong>しました（NHK）。24日の2,207円の値上がりの、ほぼ全部にあたる下げです。<strong>終値の値</strong>は、今朝は確かめていません。</p>
+<p><strong>日本国債</strong>：財務省の掲載は、26日朝の取得で24日分まで加わりました。<strong>10年は2.781%</strong>で、20日の2.838%より下がりました。</p>
+<div class="srcline">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81556">NHK（25日のニューヨーク株式市場）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cq0md8g14zryo">BBC（25日の米国株）</a>／<a class="src" href="https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html">CNBC（10月の PCE）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81570">NHK（FRB の経済報告）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de80958">NHK（25日の東京株式市場）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81440">NHK（25日の円相場）</a>／<a class="src" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&amp;field_tdr_date_value=2026&amp;page&amp;_format=csv">米国財務省（国債の利回り）</a>／<a class="src" href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml">欧州中央銀行</a>／<a class="src" href="https://www.mof.go.jp/jgbs/reference/interest_rate/jgbcm.csv">財務省（国債金利）</a></div>
+</section>
+<section id="sec-mtrig">
+<div class="sec-head"><span class="tick"></span><span class="cat">Why</span><span class="sec-title">市場は、なぜ動いたのか　<span class="sub">材料の候補と、反対の材料</span></span></div>
+<p><strong>確認の範囲</strong>：米国株の動きは NHK と BBC の報道、物価の指標は CNBC、日本株は NHK、利回りは米国財務省で確かめました。原因は報道と市場関係者の見方を<strong>候補</strong>として書き、断定しません。</p>
+<p><strong>候補1：エヌビディアの株の続落</strong>：フアン氏の復帰を受けた23日の大きな上げは、24日・25日と2日続けて戻りました。BBC は、エヌビディアは AI の多くの会社への部品の売り手で、資金の出し手でもあるため、その揺れが広く響いていると書いています。<strong>候補2：強めの物価の指標</strong>：コアの PCE が予想を上回り、発表の後に株の先物の下げが広がりました（CNBC）。<strong>候補3：新しい関税</strong>：14の国と地域への関税の方針が同じ日に示されました（BBC）。ただし、英国の調査会社キャピタル・エコノミクスの専門家は「見た目ほど心配ではない」としています（BBC）。</p>
+<p><strong>大統領の見方</strong>：ガーディアンによると、トランプ大統領は25日、株の下げは AI への自信の低下や関税、物価ではなく、「11月3日の選挙の結果のせい」だと主張しました。これは大統領の見方で、本紙は確かめていません。</p>
+<p><strong>日本への観測点</strong>：<strong>(1)</strong> 26日の東京で、25日の米国のハイテク株の下げがどこまで響くか。<strong>(2)</strong> 26日の米国は感謝祭で休みで、新しい手がかりが少なくなります。<strong>(3)</strong> 新しい関税で、日本は今の税率を含めて最大15%とされます（NHK）。</p>
+<div class="counter"><h5>反対の材料</h5><p>米国債10年の利回りは、強めの物価の指標の後でも4.85%に下がりました（米国財務省）。CNBC は見出しで、フアン氏の復帰で売りは「いったん底を打つ」との見方や、オプションの取引で変動の高まりに逆らう賭けが増えていることも伝えています（どちらも CNBC の見出しによる）。</p></div>
+<div class="srcline">出典：<a class="src" href="https://www.bbc.co.uk/news/articles/cq0md8g14zryo">BBC（25日の米国株）</a>／<a class="src" href="https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html">CNBC（10月の PCE）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/c893r9ke5p97o">BBC（新しい関税）</a>／<a class="src" href="https://www.theguardian.com/us-news/live/2026/nov/25/donald-trump-jensen-huang-nvidia-pardon-senate-hearing-iowa-abdul-el-sayed-latest-news-updates">ガーディアン（25日の米国の政治）</a>／<a class="src" href="daily-2026-11-25.html#sec-mtrig">前号D121「市場は、なぜ動いたのか」</a></div>
+</section>
+<section id="sec-disaster">
+<div class="sec-head"><span class="tick"></span><span class="cat">Weather</span><span class="sec-title">天気　<span class="sub">大東島地方の激しい突風、各地の強風・高波・乾燥</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報（気象庁）</span></div>
+<p><strong>大東島地方</strong>：南大東島地方気象台の大東島地方気象解説情報（26日4時22分）によると、近くの海の前線の影響で、<strong>26日夜のはじめ頃から27日にかけて、大気の状態が非常に不安定</strong>になる見込みです。落雷や竜巻などの激しい突風、急な強い雨に十分注意し、発達した積乱雲が近づく兆しがあれば、建物の中に移るよう求めています。</p>
+<p><strong>各地の注意報</strong>：気象庁の発表では、北海道・東北・北陸の各地で<strong>強風や高波、落雷の注意報</strong>が出ています。新潟県の下越・中越・上越などでは土砂災害、北海道の一部では電線への着雪にも注意が必要です。東京・神奈川・千葉・埼玉などでは<strong>乾燥注意報</strong>が出ていて、火の取り扱いに注意してください。今朝の取得の時点で、警報は確かめた範囲では出ていません。</p>
+<p><strong>独自の分析</strong>：先週からの雪や大雨の後で、今週の天気は全体として落ち着いてきました。関東では空気の乾いた日が続いていて、火事に気をつける時期です。</p>
+<div class="srcline">出典：<a class="src" href="https://www.data.jma.go.jp/developer/xml/data/20261125192221_0_VPFJ51_472000.xml">気象庁 大東島地方気象解説情報（26日4時22分）</a>／<a class="src" href="https://www.data.jma.go.jp/developer/xml/feed/extra.xml">気象庁 防災情報の配信（警報・注意報）</a></div>
+</section>
+<section id="sec-world">
+<div class="sec-head"><span class="tick"></span><span class="cat">World</span><span class="sec-title">世界　<span class="sub">14の国と地域への新しい関税、ウクライナの攻撃、ネタニヤフ氏の裁判</span></span></div>
+<div class="labs"><span class="lab lab-fact">報道（BBC・NHK・ガーディアン）</span></div>
+<p><strong>新しい関税</strong>：BBC によると、米国は中国、EU、日本など<strong>14の国と地域に新しい関税</strong>をかけると発表しました。最も高いのは中国の最大40%で、ベトナムが最大35%、ほかは20%か25%です。実際に始まるのは来年の見込みで、各国と合意した上限で下がる部分もあります。NHK によると、米国の通商代表部は、過剰に作った製品の輸出で米国の産業に打撃を与えているとして、通商法301条に基づく方針で、<strong>日本は今の税率を含めて最大15%</strong>になります。欧州委員会は、上限は前に合意した15%だとして反発しました（BBC）。米中の関税の休戦の期限は1月10日です（BBC）。</p>
+<p><strong>ウクライナ</strong>：BBC によると、ウクライナは、モスクワの東300キロにあるロシアのサバスレイカ飛行場を攻撃し、<strong>軍用機5機に損害を与えた</strong>と発表しました。ロシアは極超音速ミサイルを積む飛行機をここに置いています。一方、ウクライナでも24日から25日に各地で10人が死亡し、エネルギーの施設への攻撃で数千の人が停電しています（BBC）。BBC はまた、流出したロシアの統計から、戦争でロシアの人口が50万人近く失われたと伝えています。</p>
+<p><strong>イスラエル</strong>：BBC によると、イスラエルの裁判所の判事たちは、ネタニヤフ首相の3つの事件のうち1つで有罪の見込みは小さいとして、検察に<strong>収賄の罪を取り下げるよう提案</strong>しました。首相は裁判をすぐに終えるよう求めています。</p>
+<p><strong>宇宙</strong>：BBC によると、欧州の探査機ヘラが、2022年に NASA の探査機がわざとぶつかった小惑星ディモルフォスを撮り、<strong>競技場ほどの大きさのくぼみ</strong>が見つかりました。地球を小惑星から守る方法の試験の続きです。</p>
+<p><strong>米国</strong>：CNBC の見出しによると、ニューヨークの感謝祭のパレードは、悪天候のため延期になりました。</p>
+<div class="srcline">出典：<a class="src" href="https://www.bbc.co.uk/news/articles/c893r9ke5p97o">BBC（新しい関税）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81560">NHK（日本への関税）</a>／<a class="src" href="https://www.theguardian.com/us-news/2026/nov/25/trump-new-china-tariffs-europe">ガーディアン（新しい関税）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/ck9q8xp5r5pgo">BBC（ロシアの飛行場）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cmx27g533zwyo">BBC（ロシアの人口）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cxj05mv723r2o">BBC（ネタニヤフ氏の裁判）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/cw8dv112r5gmo">BBC（小惑星のくぼみ）</a></div>
+</section>
+<section id="sec-mideast">
+<div class="sec-head"><span class="tick"></span><span class="cat">Energy</span><span class="sec-title">エネルギー　<span class="sub">英国の電気・ガス代の26%の値上げ、ロシアの製油所</span></span></div>
+<div class="labs"><span class="lab lab-fact">報道（BBC・NHK）</span></div>
+<p><strong>英国の電気・ガス代</strong>：BBC によると、英国のエネルギーの規制機関 Ofgem は、1月からの料金の上限を<strong>26%上げる</strong>と発表しました。標準的な量を使う家庭（イングランド・スコットランド・ウェールズ、口座振替）では、年間の料金が<strong>1,723ポンドから2,166ポンド</strong>になります（1年続いた場合）。規制機関は、値上げはすべて供給する会社の卸の費用の上昇によるもので、主に<strong>イランの戦争</strong>のためだと説明しています。卸のガスの値は過去3か月で33%上がりました。政府は1月4日から、多くの家庭に100ポンドを支払います（BBC）。</p>
+<p><strong>ロシアの製油所</strong>：NHK によると、ウクライナは25日、ロシア中部の2つの製油所を新たに攻撃したと発表しました。ロシアの資金源を断つのがねらいで、ロシアの製油の能力は10月下旬からおよそ30%下がったと伝えられています（NHK）。</p>
+<p><strong>独自の分析</strong>：前号で伝えた原油の安い水準とは逆に、欧州では<strong>ガスの値</strong>が家計を強く押し上げています。日本も液化天然ガスを輸入に頼っており、冬の電気・ガス代の動きに注意が要ります。</p>
+<div class="srcline">出典：<a class="src" href="https://www.bbc.co.uk/news/articles/cm20qnq33e90o">BBC（英国の電気・ガス代）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81562">NHK（ロシアの製油所）</a></div>
+</section>
+<section id="sec-quake">
+<div class="sec-head"><span class="tick"></span><span class="cat">Earthquake</span><span class="sec-title">地震　<span class="sub">天草・芦北地方、与那国島近海、会津で最大震度2</span></span></div>
+<div class="labs"><span class="lab lab-fact">一次情報（気象庁）</span></div>
+<p>前号D121で数えた期間（25日5時35分の発表まで）の後、26日5時24分の発表までに、<strong>震度1以上の地震は14回</strong>ありました（気象庁の震源・震度の一覧から本紙が数えた値）。</p>
+<p><strong>最大震度2（4回）</strong>：福島県会津で25日6時46分ごろ（M3.8）、与那国島近海で19時18分ごろ（M4.3）、<strong>熊本県天草・芦北地方で26日2時48分ごろ（M3.3）と2時59分ごろ（M3.2）</strong>。</p>
+<p><strong>最大震度1（10回）</strong>：福島県会津で25日7時20分ごろ（M3.4）、熊本県天草・芦北地方で8時40分ごろ（M1.8）、10時35分ごろ（M2.9）、10時42分ごろ（M1.6）、16時38分ごろ（M2.3）、19時32分ごろ（M1.7）、23時14分ごろ（M2.4）、26日3時6分ごろ（M1.2）、熊本県熊本地方で5時12分ごろ（M2.5）、釧路地方中南部で5時18分ごろ（M1.8）。<strong>14回とも、電文で「この地震による津波の心配はありません」</strong>と確かめました。熊本県の天草・芦北地方では、14回のうち9回が起きていて、揺れが続いています。</p>
+<div class="srcline">出典：<a class="src" href="https://www.jma.go.jp/bosai/quake/data/list.json">気象庁 震源・震度の一覧</a>／<a class="src" href="https://www.jma.go.jp/bosai/quake/data/20261126025222_20261126024823_VXSE5k_1.json">気象庁 震源・震度情報（26日2時48分ごろの地震）</a>／<a class="src" href="https://www.jma.go.jp/bosai/quake/data/20261125192207_20261125191853_VXSE5k_1.json">気象庁 震源・震度情報（25日19時18分ごろの地震）</a></div>
+</section>
+<section id="sec-column">
+<div class="sec-head"><span class="tick"></span><span class="cat">Column</span><span class="sec-title">今日のコラム　<span class="sub">3つの視点</span></span></div>
+<div class="colbox">
+  <div class="colbox-h"><b>今日のコラム｜3つの視点</b><span>筆者：クロちゃん（AI）</span></div>
+  <ul>
+    <li><a class="col-l" href="column/2026-11-25-1102.html"><span class="col-t">11:02</span><span class="col-n">【お客様サポート・チャット履歴】「届いた動物が、部品の寄せ集めでした。返品できますか？」</span></a></li>
+    <li><a class="col-l" href="column/2026-11-25-1802.html"><span class="col-t">18:02</span><span class="col-n">【始末書】件名：火星の手前で、私が「掛け算されなかった」件</span></a></li>
+    <li><a class="col-l" href="column/2026-11-26-0102.html"><span class="col-t">翌 1:02</span><span class="col-n">【投資家ピッチ・審査会】登壇者：ボストンの池の氷</span></a></li>
+  </ul>
+  <p class="col-top"><a href="column/">コラムの一覧（過去の作品）へ →</a></p>
+</div>
+<p>コラムは、本紙の事実の記事とは別の読み物です。この欄の題名は、各コラムの題名の前半です。各コラムのページに、事実と創作の区別と出典を載せています。</p>
+</section>
+<section id="sec-japan">
+<div class="sec-head"><span class="tick"></span><span class="cat">Japan</span><span class="sec-title">国内・地域　<span class="sub">問責決議案、春闘の要求、支援金、香港の火災から1年</span></span></div>
+<div class="labs"><span class="lab lab-fact">報道（NHK）</span></div>
+<p><strong>問責決議案</strong>：政治資金パーティーをめぐる指摘が続く関文部科学大臣について、<strong>野党は26日、問責決議案を出す方針</strong>です。与党は否決に向けて全力を挙げることにしています（NHK）。</p>
+<p><strong>春闘</strong>：自動車や電機などの労働組合でつくる金属労協は、来年の春闘で、ベースアップにあたる分として<strong>月額1万5,000円以上</strong>の賃上げを求める方針案を発表しました（NHK）。</p>
+<p><strong>支援金</strong>：政府は、2029年度から本格的に始めるとしている「支援金」について、世帯の税や社会保険料の負担が外国の平均より最大で27万円重くなる場合があるというデータをふまえ、支給の額を検討しています（NHK）。</p>
+<p><strong>香港</strong>：香港で2025年に168人が死亡した高層住宅の火災から、26日で1年です。香港政府は監督の責任を認めて謝罪し、工事現場での抜き打ちの検査を強めています（NHK）。</p>
+<p><strong>そのほか</strong>：米国の西部の乳牛の牧場で働く3人が鳥インフルエンザに感染し、1人が死亡したと WHO が明らかにしました。今の段階で、人から人への感染の証拠はありません（NHK）。</p>
+<div class="srcline">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81559">NHK（問責決議案）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81491">NHK（金属労協）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81566">NHK（支援金）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81564">NHK（香港の火災から1年）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81523">NHK（鳥インフルエンザ）</a></div>
+</section>
+<section id="sec-security">
+<div class="sec-head"><span class="tick"></span><span class="cat">Security</span><span class="sec-title">サイバー・企業　<span class="sub">PayPay の障害、KARTE をめぐる流出</span></span></div>
+<div class="labs"><span class="lab lab-fact">報道（NHK）</span></div>
+<p><strong>PayPay</strong>：スマホ決済の大手の PayPay は、システムの障害で、<strong>25日午後8時過ぎから、クレジットカードと連携したサービスで決済ができなくなっている</strong>と伝えられました。会社は原因を調べています（NHK）。</p>
+<p><strong>KARTE をめぐる流出</strong>：メールの配信などに使われていた外部のサービス「KARTE」が不正アクセスを受けた件で、<strong>パルシステム生活協同組合連合会は顧客の情報199万7,000件余りが漏えいした</strong>と発表しました。ディスカウントストアのミスターマックスも、<strong>およそ180万件の個人情報が流出した可能性</strong>があると発表しています（NHK）。KARTE を手がける会社は、情報が漏えい、または漏えいのおそれがある顧客の会社が、のべおよそ2,200社にのぼるとしていました（前号まで・NHK）。</p>
+<p><strong>独自の分析</strong>：今回は、それぞれの会社ではなく、<strong>多くの会社が使う外部のサービス</strong>から流出が広がっています。自分が使ったことのある店から「流出のお知らせ」が届くことがあります。心当たりのない連絡には、会社の公式の窓口で確かめてから応じてください。</p>
+<div class="srcline">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81532">NHK（PayPay）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81299">NHK（パルシステム）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261125de81519">NHK（ミスターマックス）</a></div>
+</section>
+<section id="sec-check">
+<div class="sec-head"><span class="tick"></span><span class="cat">Check</span><span class="sec-title">前号D121の答え合わせ</span></div>
+<p><strong>東京への響き</strong>：前号は「25日の東京で、24日の米国の半導体の下げがどこまで響くか」を観測点にしました。結果は、<strong>日経平均が一時2,100円以上の値下がり</strong>で（NHK）、24日の2,207円の上げのほぼ全部にあたります。</p>
+<p><strong>米国の下げの続き</strong>：前号は、24日の米国の下げを「全体の下げとまでは言えない」と書きました。25日は主な3つの指数がそろって下がり、ナスダック総合は一時4%を超えて下がりました（BBC・NHK）。前号の「反対の材料」の BTIG やウルフ・リサーチの慎重な見方に近い動きです。</p>
+<p><strong>英国の電気・ガス代</strong>：前号のウォッチリストの25日の発表は、<strong>1月から26%の値上げ</strong>でした（BBC）。</p>
+<p><strong>円</strong>：前号は参照レートからの計算で約159.07円と書きました。25日は約159.32円で、少し円安です。</p>
+<p><strong>日本国債</strong>：前号は、財務省の掲載が20日までと書きました。今朝は24日分が加わりました（10年 2.781%）。</p>
+<p>前号以前の本文は変えていません。</p>
+</section>
+<section id="sec-unknown">
+<div class="sec-head"><span class="tick"></span><span class="cat">Limits</span><span class="sec-title">確認できなかったこと</span></div>
+<p><strong>米国25日の終値の値</strong>：S&amp;P500・ナスダック総合・ダウ平均の終値は、7時前までの取得では、許された情報源の報道に見つかりませんでした。本文は NHK と BBC の取引の途中の記述で書いています。<br><strong>Cboe の配信の値</strong>：アクセスを拒否（HTTP 403）されました。<br><strong>日経平均の25日の終値の値</strong>：NHK の「一時2,100円以上値下がり」の記述だけで、終値は確かめていません。<br><strong>エヌビディアの25日の終値の値</strong>：BBC の「取引の始めに8%」の記述だけです。<br><strong>新しい関税の国ごとの税率の全体</strong>：BBC と NHK の記述の範囲で書きました。米国の通商代表部の発表の原文は確かめていません。<br><strong>大統領の「選挙のせい」の主張</strong>：本人の見方として書き、確かめていません。<br><strong>ナスダック100・SOX・VIX・金・暗号資産の値</strong>：許された情報源で確かめていません。<br><strong>アンソロピックの株の値</strong>：本紙の方針として、値は載せていません。<br><strong>NHK の記事</strong>：本文の全文ではなく、配信の要約と見出しで確かめたものです。</p>
+</section>
+<section id="sec-watch">
+<div class="sec-head"><span class="tick"></span><span class="cat">Watch</span><span class="sec-title">今週のウォッチリスト</span></div>
+<div class="sp"><span class="dt">26日（木）</span><span class="ev">米国の感謝祭で株式市場は休み（前号・ニューヨーク証券取引所）。野党が関文部科学大臣への問責決議案を提出の方針（NHK）。日銀の田村審議委員が山梨県で挨拶（日本銀行）</span></div>
+<div class="sp"><span class="dt">27日（金）</span><span class="ev">米国の株式市場は米国東部時間13時までの短い取引（前号）</span></div>
+<div class="sp"><span class="dt">30日（月）</span><span class="ev">日銀の植田総裁が名古屋で経済界の代表と懇談、挨拶（前号・日本銀行）</span></div>
+<div class="sp"><span class="dt">来週</span><span class="ev">ニューヨークで核兵器禁止条約の再検討会議。日本はオブザーバーとしての参加を見送り（NHK）。フアン氏が議会の委員会で証言する見込み（ガーディアン）</span></div>
+<div class="sp"><span class="dt">12月8〜9日</span><span class="ev">米国の FOMC（経済の見通しつき、前号による）</span></div>
+<div class="sp"><span class="dt">1月10日</span><span class="ev">米中の関税の休戦の期限（BBC）</span></div>
+<div class="srcline">出典：<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261126de81559">NHK（問責決議案）</a>／<a class="src" href="https://news.web.nhk/newsweb/na/nd-20261124de80811">NHK（核兵器禁止条約）</a>／<a class="src" href="https://www.boj.or.jp/about/press/index.htm">日本銀行（講演・挨拶の予定）</a>／<a class="src" href="https://www.bbc.co.uk/news/articles/c893r9ke5p97o">BBC（米中の期限）</a>／<a class="src" href="daily-2026-11-25.html#sec-watch">前号D121「ウォッチリスト」</a></div>
+</section>
+<div class="askai" id="askai">
+    <div class="askai-title">気になった項目を、AIでもっと詳しく</div>
+    <p class="askai-desc">質問文をコピーして、下のいずれかを開いて貼り付けてください。「〇〇」の部分を、気になった項目の名前に書き換えてからお使いください。</p>
+    <p class="askai-policy">本レポートは、事実・見方・予測を区別して記載しています。確定していない内容は、「見方」「観測」「可能性」「予報」などと明記しています。レポート本文は自動送信されません。</p>
+    <div class="askai-box">
+      <textarea class="askai-q" id="askaiQ" readonly rows="3">このレポートの「〇〇」について、背景・現在の状況・今後の影響・注意点を、事実・見方・予測を分けて詳しく説明してください。</textarea>
+      <button type="button" class="askai-copy" id="askaiCopyBtn">質問文をコピー</button>
+    </div>
+    <div class="askai-links">
+      <a class="askai-link" href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">AIに質問する(1)　ChatGPT ↗</a>
+      <a class="askai-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">AIに質問する(2)　Gemini ↗</a>
+      <a class="askai-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">AIに質問する(3)　Claude ↗</a>
+    </div>
+  </div>
+
+
+  <footer class="foot">
+    <p><a href="index.html">← レポート一覧へ戻る</a></p>
+    <p><strong>AI総合研究機構 — 朝の一日レポート（毎日版D122）</strong></p>
+    <p><strong>収集の基準時刻</strong>：気象庁・各報道・市場の値の取得は2026年11月26日6時10分〜6時56分（日本時間・取得の記録による）。本号全体の最終確認時刻は7時30分です。これ以降の動きは次号で扱います。</p>
+    <p><strong>本号の編集方針</strong>：①米国は25日の取引、日本は25日の取引の結果を扱いました。②算出元・公的機関の値と、報道の値を分けて書きました。③確かめられない指数・商品・暗号資産は載せず、代わりの値で埋めていません。④市場の動きの原因は候補として書き、断定していません。「独自の分析」は本紙の見方です。⑤発言や主張は、だれの見方かを書きました。⑥アンソロピックの株の件は、本紙の制作に Claude を含む AI が関わるため、報道の記述だけで書いています。⑦コラムは本紙の事実の記事と分けています。⑧AIによる調査・執筆・編集が関与しています。</p>
+    <p>本レポートは情報提供を目的としたもので、投資、法務、税務、医療、その他の専門的助言ではありません。避難や移動の判断にあたっては、気象庁・自治体・交通事業者の最新の発表を直接ご確認ください。</p>
+    <p class="cr">© 2026 AI総合研究機構</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('askaiCopyBtn');
+  var q = document.getElementById('askaiQ');
+  if(!btn || !q) return;
+  btn.addEventListener('click', function(){
+    var text = q.value;
+    function done(){
+      btn.classList.add('is-copied');
+      var old = btn.textContent;
+      btn.textContent = 'コピーしました';
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('is-copied'); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ q.select(); });
+    } else {
+      q.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+    }
+  });
+})();
+</script>
+</body>
+</html>
